@@ -254,7 +254,7 @@ class _BaseSSEAdapter:
         self.max_attempts = max_attempts
         self.output_capture = OutputCapture(artifacts)
 
-    def set_output_observer(self, observer: OutputObserver) -> None:
+    def set_output_observer(self, observer: OutputObserver | None) -> None:
         self.output_capture.observer = observer
 
     def _validate(self, request: ModelRequest) -> None:
@@ -359,8 +359,10 @@ class _BaseSSEAdapter:
         for attempt in range(self.max_attempts):
             cancellation.ensure_active()
             try:
+                idle_timeout = cancellation.model_idle_timeout_seconds
                 with self.client.stream(
-                    "POST", self.endpoint, json=body, headers=headers
+                    "POST", self.endpoint, json=body, headers=headers,
+                    timeout=self.client.timeout if idle_timeout is None else idle_timeout,
                 ) as response:
                     if response.status_code == 429 and (
                         attempt + 1 < self.max_attempts

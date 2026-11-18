@@ -24,6 +24,7 @@ from mgar_v3.harness.contracts import (
     EvaluationProfile,
     EventDraft,
     EventEnvelope,
+    ModelRequest,
     ModelResponse,
 )
 from mgar_v3.harness.events import _public
@@ -845,6 +846,21 @@ class HarnessStore:
             assert result is not None
             return result
 
+    @staticmethod
+    def _run_token_usage(conn: Connection, run_id: UUID) -> dict[str, int]:
+        usage = conn.execute(
+            "SELECT coalesce(sum((usage->>'input_tokens')::bigint),0) AS input_tokens,"
+            "coalesce(sum((usage->>'output_tokens')::bigint),0) AS output_tokens "
+            "FROM app.usage_calls WHERE run_id=%s AND status='known'",
+            (run_id,),
+        ).fetchone()
+        assert usage is not None
+        return {key: int(value) for key, value in usage.items()}
+
+    def run_token_usage(self, task_id: str) -> dict[str, int]:
+        with self.engine.transaction() as conn:
+            return self._run_token_usage(conn, self._row(conn, task_id)["run_id"])
+
     def dispatch_operation(
         self, task_id: str, epoch: int, operation_id: str, *, intent: Row | None = None,
     ) -> Row:
@@ -861,6 +877,8 @@ class HarnessStore:
                 if row["managed_workspace_id"] is not None:
                     self._managed_model_authority(conn, row)
                 self._group_known(conn, row)
+                if row["request"].get("product_session_id"):
+                    self._check_product_model_dispatch(conn, row, op)
             result = conn.execute(
                 "UPDATE app.harness_operations SET state='dispatched',intent=%s,"
                 "execution_epoch=%s,updated_at=now() WHERE reservation_id=%s RETURNING *",
@@ -869,6 +887,42 @@ class HarnessStore:
             ).fetchone()
             assert result is not None
             return result
+
+    def _check_product_model_dispatch(self, conn: Connection, row: Row, op: Row) -> None:
+        from mgar_v3.harness.delegation import EXPERT_BUDGET, EXPERT_OPERATION
+        from mgar_v3.harness.product_models import product_request_input_bound
+
+        request = row["request"]
+        limit = request.get("product_expert_max_tokens", 0)
+        if EXPERT_OPERATION in op["operation_id"]:
+            if not (
+                limit and request.get("product_expert_enabled")
+                and self.engine.settings.harness_experts_enabled
+            ):
+                raise DomainError("HARNESS_EXPERT_DISABLED", "Expert consultation is disabled", 403)
+            count = conn.execute(
+                "SELECT count(*) AS n FROM app.harness_operations WHERE run_id=%s "
+                "AND budget_kind='model' AND operation_id LIKE %s "
+                "AND state IN ('known','dispatched','unknown')",
+                (row["run_id"], f"%{EXPERT_OPERATION}%"),
+            ).fetchone()
+            if count and count["n"] >= EXPERT_BUDGET.max_calls_per_revision:
+                raise DomainError(
+                    "HARNESS_EXPERT_CALL_LIMIT", "Expert consultation limit reached", 429,
+                )
+        if not limit:
+            return
+        # The Run row is locked by _guard. Do not overcommit while a request is in flight.
+        if conn.execute(
+            "SELECT 1 FROM app.harness_operations WHERE run_id=%s AND budget_kind='model' "
+            "AND state='dispatched' LIMIT 1", (row["run_id"],),
+        ).fetchone():
+            raise DomainError("RECOVERY_BLOCKED", "A Run model call is still in flight", 409)
+        pending = ModelRequest.model_validate(op["intent"])
+        estimate = product_request_input_bound(pending) + pending.max_output_tokens
+        known = sum(self._run_token_usage(conn, row["run_id"]).values())
+        if known + estimate > limit:
+            raise DomainError("HARNESS_TOKEN_BUDGET", "Run has insufficient token budget", 429)
 
     def known_operation(
         self, task_id: str, epoch: int, operation_id: str, *,

@@ -70,6 +70,7 @@ from mgar_v3.harness.contracts import (
     execution_matches,
     sha256_text,
 )
+from mgar_v3.harness.delegation import CONSULT
 from mgar_v3.harness.entrypoints import EntryPointChecker
 from mgar_v3.harness.lifecycle_types import (
     EntryPointBatch,
@@ -1793,6 +1794,11 @@ class CodingLoop:
                         last_evaluation,
                     )
                 self.budgets.release(reservation.reservation_id)
+                if exc.code == "HARNESS_TOKEN_BUDGET":
+                    return self._finish(
+                        state, "budget_exhausted", "budget_tokens",
+                        "The Run has insufficient cumulative model tokens", last_evaluation,
+                    )
                 if exc.code == "HARNESS_CANCELLED":
                     return self._finish(
                         state, "cancelled", "cancelled", "Cancelled during the model step"
@@ -2568,6 +2574,11 @@ class CodingLoop:
                         state.tool_correction_receipts.append(correction)
                         self._emit(state.task, "tool_correction_recorded", state.revision,
                                    correction.model_dump(mode="json"))
+            if result.code == "HARNESS_EXPERT_MODEL_UNKNOWN":
+                return self._finish(
+                    state, "unknown", "model_unknown",
+                    "Expert model usage requires reconciliation", None,
+                )
             if result.status == "denied":
                 return self._finish(
                     state, "denied", result.code, f"Tool {call.name} was denied", None
@@ -2909,6 +2920,8 @@ class CodingLoop:
         result: HarnessToolResult,
         spec: ToolSpec,
     ) -> tuple[str, ...]:
+        if call.name == CONSULT.name:
+            return ()
         # A malformed cursor can return a validated first page as correction
         # data. Count that page once, with the same identity as a normal page.
         # Repeating the same malformed cursor must still hit the stagnation guard.

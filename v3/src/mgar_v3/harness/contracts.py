@@ -160,6 +160,10 @@ class CancellationToken:
     def cancelled(self) -> bool:
         return self._cancelled
 
+    @property
+    def model_idle_timeout_seconds(self) -> float | None:
+        return None
+
     def ensure_active(self) -> None:
         if self._cancelled:
             raise DomainError("HARNESS_CANCELLED", "Harness execution was cancelled", 409)

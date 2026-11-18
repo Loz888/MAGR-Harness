@@ -1376,6 +1376,19 @@
     ],
     "timeout_seconds": 450
   },
+  "HV4-H17": {
+    "components": {
+      "scope": "product sessions, authorized exact repository excerpts and advisory-only outputs",
+      "accounting": "same Run, original PostgreSQL fee ledger and cumulative token gate",
+      "recovery": "bounded dispatch, cancellation, expiry, deduplication and unknown-use fencing",
+      "paired": "controlled transports and real local sandbox, default stays single",
+      "live": "NOT_RUN"
+    },
+    "tests": [
+      "tests/test_harness_h17.py"
+    ],
+    "timeout_seconds": 320
+  },
   "HV4-H12": {
     "components": {
       "frozen_catalog": "H00 byte hashes, original judge objects, fixed twelve-case denominator and resource limits",

@@ -136,7 +136,10 @@ def error_receipt(
     spec: ToolSpec | None, scope: dict[str, Any], allow_write: bool, allow_execute: bool,
 ) -> ToolErrorReceipt:
     code = result.code
-    reconcile = code in {"RECOVERY_BLOCKED", "RECOVERY_OPERATION_CONFLICT", "WORKSPACE_STALE"}
+    reconcile = code in {
+        "RECOVERY_BLOCKED", "RECOVERY_OPERATION_CONFLICT", "WORKSPACE_STALE",
+        "HARNESS_EXPERT_MODEL_UNKNOWN",
+    }
     if code in {"HARNESS_EPOCH_MISMATCH", "STALE_EPOCH", "FENCED", "RUN_NOT_ACTIVE"}:
         category: ErrorCategory = "EPOCH_STALE"
     elif code == "WORKSPACE_SYMLINK_DENIED" or (

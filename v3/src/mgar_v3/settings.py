@@ -56,6 +56,8 @@ class Settings(BaseSettings):
     harness_root: Path = ROOT / ".local/harness-v4"
     harness_image_lock: Path = ROOT / ".local/r03/sandbox-lock.json"
     harness_plugin_lock: Path | None = None
+    harness_experts_enabled: bool = False
+    harness_expert_token_limit: int = Field(default=200_000, ge=4096, le=10_000_000)
     harness_queue_limit: int = Field(default=32, ge=1, le=256)
     web_allowed_hosts: tuple[str, ...] = ("127.0.0.1", "localhost", "[::1]")
     web_allowed_origins: tuple[str, ...] = (

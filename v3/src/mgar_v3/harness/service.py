@@ -78,6 +78,7 @@ from mgar_v3.harness.contracts import (
     is_workspace_artifact,
     sha256_text,
 )
+from mgar_v3.harness.delegation import CONSULT, RepositoryConsultation
 from mgar_v3.harness.entrypoints import EntryPointChecker
 from mgar_v3.harness.events import STREAM_VERSION, PersistentEventSink
 from mgar_v3.harness.inbox import TaskInbox
@@ -526,6 +527,7 @@ class CodingToolRegistry:
         self.command_timeout_seconds = command_timeout_seconds
         self.feedback_plan = feedback_plan
         self.guidance: GuidanceDelivery | None = None
+        self.expert: RepositoryConsultation | None = None
         self.workspace_tools = WorkspaceToolRegistry(workspace)
         self.context_tools = ScopedContextTools(workspace, broker.authority)
         self._active_commands: set[str] = set()
@@ -669,7 +671,7 @@ class CodingToolRegistry:
             return invoke()
 
         def verify(result: HarnessToolResult) -> None:
-            self._verify_known(result, cancellation)
+            self._verify_known(result, cancellation, context)
             if validate_known is not None:
                 validate_known(result)
 
@@ -682,9 +684,13 @@ class CodingToolRegistry:
         )
         return self._restored_feedback(result, call, context)
 
-    def _verify_known(self, result: HarnessToolResult, cancellation: CancellationToken) -> None:
+    def _verify_known(
+        self, result: HarnessToolResult, cancellation: CancellationToken, context: ToolContext,
+    ) -> None:
         cancellation.ensure_active()
         self.broker.authority.peek()
+        if self.expert is not None:
+            self.expert.verify_known(result, context)
         if self.guidance is not None and result.code == GUIDANCE_REQUIRED:
             self.guidance.authorize(*result.data["guidance_paths"])
 
@@ -794,7 +800,7 @@ class CodingToolRegistry:
                 + ". Checks run after edits. Inspect real failures, fix the code, or ask_user "
                 "to clarify ambiguous public requirements. Private Judge results are unavailable."})
         return (*workspace_specs, spec, ASK_USER_SPEC, READ_LINES_SPEC, READ_SYMBOL_SPEC,
-                *ARTIFACT_TOOLS, *extra)
+                *ARTIFACT_TOOLS, *extra, *((CONSULT,) if self.expert is not None else ()))
 
     def invoke(
         self,
@@ -811,7 +817,7 @@ class CodingToolRegistry:
                 encode=lambda item: item.model_dump(mode="json"),
                 decode=HarnessToolResult.model_validate,
                 read_only=call.name not in {"apply_edits", "run_tests", "run_command", "ask_user"},
-                validate_known=lambda result: self._verify_known(result, cancellation),
+                validate_known=lambda result: self._verify_known(result, cancellation, context),
             )
             return self._restored_feedback(result, call, context)
         return self._invoke(call, context, cancellation)
@@ -825,6 +831,12 @@ class CodingToolRegistry:
         if call.name != "run_tests":
             try:
                 cancellation.ensure_active()
+                if call.name == CONSULT.name:
+                    if self.expert is None:
+                        raise DomainError(
+                            "HARNESS_EXPERT_DISABLED", "Expert consultation is disabled", 403,
+                        )
+                    return self.expert.invoke(call, context, cancellation)
                 if call.name == "read_public_probe":
                     self.broker.authority.check_scope(
                         actor=context.task.actor,
@@ -1193,6 +1205,8 @@ class CodingTaskRequest:
     # Product metadata is constructed by the authenticated orchestration service,
     # never accepted by the historical task/fixture API. No credentials live here.
     product_session_id: str = ""
+    product_expert_enabled: bool = False
+    product_expert_max_tokens: int = 0
     product_managed: bool = False
     product_membership_id: str = ""
     product_turn_id: int = 0
@@ -3423,7 +3437,7 @@ class HarnessCodingService:
             model = adapter(
                 api_key=live_key,
                 capabilities=capabilities,
-                max_attempts=1 if profile else 2,
+                max_attempts=1 if profile or request.product_expert_max_tokens else 2,
                 artifacts=self.engine.artifacts if self.engine is not None else None,
             )
             if request.product_session_id and self.product_adapter_factory is not None:
@@ -3603,11 +3617,22 @@ class HarnessCodingService:
                 max_seconds=DEFAULT_MAX_SECONDS,
             )
         )
+        from mgar_v3.harness.product_models import product_request_reservation
+
         model_adapter: Any = guarded_model
         continuation = None
         if self.store is not None:
             budgets = PersistentBudgetLedger(self.store, task_id, epoch)
             model_adapter = DurableModel(guarded_model, self.store, task_id, epoch, self.fault_hook)
+            if request.product_session_id and request.product_expert_enabled:
+                assert io is not None and self.engine is not None
+                settings = self.engine.settings
+                tools.expert = RepositoryConsultation(
+                    tools.context_tools, io, budgets, model_adapter,
+                    lambda model_request: product_request_reservation(model_request, capabilities),
+                    model_id=model_id, price_version=price_version,
+                    enabled=lambda: settings.harness_experts_enabled,
+                )
             continuation = DurableContinuation(
                 self.store, task_id, epoch, workspace, self.fault_hook
             )
@@ -3643,8 +3668,6 @@ class HarnessCodingService:
             if kind == "run_app"
             else None
         )
-        from mgar_v3.harness.product_models import product_request_reservation
-
         loop = CodingLoop(
             model=model_adapter,
             tools=tools,
@@ -3958,6 +3981,8 @@ class HarnessCodingService:
         }
         if self.store is not None:
             assert runtime.task is not None
+            if request.product_session_id and request.product_expert_max_tokens:
+                payload.update(self.store.run_token_usage(task_id))
             usage = PersistentBudgetLedger(
                 self.store, task_id, runtime.task.execution_epoch,
             ).resource_snapshot(task_id)

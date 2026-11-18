@@ -185,6 +185,7 @@ class DurableModel:
             intent=payload,
         )
         self.fault("model_before_dispatch", {"operation_id": request.operation_id})
+        cancellation.ensure_active()
         self.store.dispatch_operation(self.task_id, self.epoch, request.operation_id)
         self.fault("model_dispatched", {"operation_id": request.operation_id})
         observer = getattr(self.inner, "set_output_observer", None)
@@ -199,7 +200,10 @@ class DurableModel:
                     execution_epoch=self.epoch, revision=0, kind="model_output_captured",
                     payload=payload,
                 ))
-            observer(capture)
+            # Child partial output must stay separate from the main answer.
+            from mgar_v3.harness.delegation import EXPERT_OPERATION
+
+            observer(None if EXPERT_OPERATION in request.operation_id else capture)
         try:
             response = self.inner.complete(request, cancellation)
         except BaseException:

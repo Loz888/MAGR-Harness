@@ -870,6 +870,11 @@ class HarnessProductService:
             approved=bool(authorization["allow_write"]),
             mode="live",
             product_session_id=session["session_id"],
+            product_expert_enabled=self.engine.settings.harness_experts_enabled,
+            product_expert_max_tokens=(
+                self.engine.settings.harness_expert_token_limit
+                if self.engine.settings.harness_experts_enabled else 0
+            ),
             product_managed=managed is not None,
             product_membership_id=membership_id,
             product_intent=intent,

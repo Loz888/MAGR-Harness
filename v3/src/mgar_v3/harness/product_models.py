@@ -85,7 +85,7 @@ def product_model_reservation(
     ) // 1000000
 
 
-def product_request_reservation(request: ModelRequest, capabilities: ModelCapabilities) -> int:
+def product_request_input_bound(request: ModelRequest) -> int:
     """Count serialized UTF-8 bytes as a conservative token upper bound.
 
     This avoids treating four Chinese characters as one token. Wrapper/role
@@ -100,9 +100,13 @@ def product_request_reservation(request: ModelRequest, capabilities: ModelCapabi
         ensure_ascii=False,
         separators=(",", ":"),
     ).encode()
+    return len(encoded) + provider_context_bytes(request.messages) + 1024
+
+
+def product_request_reservation(request: ModelRequest, capabilities: ModelCapabilities) -> int:
     return product_model_reservation(
         capabilities,
-        max_input_tokens=len(encoded) + provider_context_bytes(request.messages) + 1024,
+        max_input_tokens=product_request_input_bound(request),
         max_output_tokens=request.max_output_tokens,
     )
 
