@@ -1,0 +1,113 @@
+{
+  "schema_version": "harness-h13-independent-acceptance-v1",
+  "task": "HV4-H13",
+  "recorded_at": "2026-11-18T09:07:12.023001+00:00",
+  "implementation_commit": "108a0b63e5c904b03cb442f1382d7e9b9447ec66",
+  "reviewed_records_commit": "f09ac0b8e6cfd32fcb0d7f7444a71350654e1bd4",
+  "source_sha256": "1de02f0c565aaed4bd0bae7630c9842d7161b44c314c95640ffd4e3b9cf07c2c",
+  "engineering_gate": "PASS",
+  "local_runtime_readonly_gate": "PASS",
+  "live_model_gate": "NOT_RUN",
+  "real_provider_calls": 0,
+  "checks": {
+    "HV4-H13": {
+      "status": "PASS",
+      "counts": {
+        "tests": 42,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "duration_seconds": 645.854,
+      "result": {
+        "path": "evidence/harness-v4/H13-INDEPENDENT-20261118/da33f66e087d/HV4-H13/20261118T085546Z-e0043a73/result.json",
+        "sha256": "cc19bad075b65bc765ae9a78f3a7e2d33049d9f739684045fd942ba5ff7f4460"
+      },
+      "junit": {
+        "path": "evidence/harness-v4/H13-INDEPENDENT-20261118/da33f66e087d/HV4-H13/20261118T085546Z-e0043a73/junit.xml",
+        "sha256": "305f1acbf02498d5ccc3fa2d474477b9549c6c70896115070a0a8ed615690d9f"
+      },
+      "command_log": {
+        "path": "evidence/harness-v4/H13-INDEPENDENT-20261118/da33f66e087d/HV4-H13/20261118T085546Z-e0043a73/command.log",
+        "sha256": "b6fbc80764c2e7bd5a89d587c92f9e3bd40be88f1f56fef8669c3f154baf493c"
+      }
+    },
+    "AGENT-UI": {
+      "status": "PASS",
+      "counts": {
+        "tests": 111,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "duration_seconds": 126.0,
+      "result": {
+        "path": "evidence/harness-v4/H13-INDEPENDENT-20261118/da33f66e087d/AGENT-UI/20261118T085546Z-44d98ba9/result.json",
+        "sha256": "a2274e91ea37d1c83da6ec89b1e8b26b81d849ac2c9ad82327f39a4c0129a192"
+      },
+      "junit": {
+        "path": "evidence/harness-v4/H13-INDEPENDENT-20261118/da33f66e087d/AGENT-UI/20261118T085546Z-44d98ba9/junit.xml",
+        "sha256": "03aefe2263f94b2026f267a3685c10a7de425943f1a77beee79f1d5f71b4ca3b"
+      },
+      "command_log": {
+        "path": "evidence/harness-v4/H13-INDEPENDENT-20261118/da33f66e087d/AGENT-UI/20261118T085546Z-44d98ba9/command.log",
+        "sha256": "3fea0c55276eb1765d4fba0a5480eefddb962184e7d67128e46f3145304faaeb"
+      }
+    }
+  },
+  "static": {
+    "lint": {
+      "path": "evidence/harness-v4/H13-INDEPENDENT-20261118/da33f66e087d/lint.log",
+      "sha256": "a220b562d6bdb3655673add818cabd1dbd6857a7efc7d06ff8178f9e0e2501e2"
+    },
+    "typecheck": {
+      "path": "evidence/harness-v4/H13-INDEPENDENT-20261118/da33f66e087d/typecheck.log",
+      "sha256": "213b1406e6c818951842481b1e376abe3eaabfac42646abb9f02a115203eee17"
+    }
+  },
+  "isolated_test_dependencies": {
+    "path": "evidence/harness-v4/H13-INDEPENDENT-20261118/da33f66e087d/orchestration.json",
+    "sha256": "af1264888865263cdd60c85ae987b9ee541f0448981418a5d5f64fcafaf54fb6"
+  },
+  "production_runtime": {
+    "commit": "108a0b63e5c904b03cb442f1382d7e9b9447ec66",
+    "listen_origin": "http://127.0.0.1:18080",
+    "runtime_directory": "/home/imini/magr-harness-h13-runtime/v3",
+    "health_http_status": 200,
+    "unauthenticated_http_status": 401,
+    "sessions_with_equal_http_cli_sdk_exports": 6,
+    "legacy_failed_task_terminal_replays": 3,
+    "registered_projects_ready_and_authorized": 2,
+    "repository_analysis_list_count_bounded_30": 30,
+    "original_integration_evidence_hashes_verified": 6,
+    "export_comparison": {
+      "path": "evidence/harness-v4/H13-INDEPENDENT-20261118/da33f66e087d/runtime-readonly.json",
+      "sha256": "a5ec99573b6b68b5b2e899601b8a60e3fd26a447fe24176564edf93ced8bb791"
+    },
+    "projects_and_events": {
+      "path": "evidence/harness-v4/H13-INDEPENDENT-20261118/da33f66e087d/projects-and-terminal-replay.json",
+      "sha256": "8c7ad9da31c982f76d2c96d6ef95ef8dee25300490471ee031e3cf243241653b"
+    },
+    "initial_wsl_error": {
+      "path": "evidence/harness-v4/H13-INDEPENDENT-20261118/da33f66e087d/runtime-first-attempt.json",
+      "sha256": "259f61da3639b8c7d6e453849538ee9dd47f1f5ffce97e609ed5c73eab5b2744"
+    }
+  },
+  "controllers": [
+    {
+      "path": "evidence/harness-v4/H13-INDEPENDENT-20261118/da33f66e087d/h13_independent_checks.py",
+      "sha256": "19fd4ff7cecf53ea0b3d94599c4863b055c73f209a516fad38907ce36e0135a4"
+    },
+    {
+      "path": "evidence/harness-v4/H13-INDEPENDENT-20261118/da33f66e087d/h13_independent_runtime.py",
+      "sha256": "271fde7b5146f5d2fe9b0dc5eb30eeba5884c9b66d757909b2cb6e26a498330a"
+    },
+    {
+      "path": "evidence/harness-v4/H13-INDEPENDENT-20261118/da33f66e087d/h13_independent_project_state.py",
+      "sha256": "72451a55d1248109767cb8c7cd4f515c0bcd6fa7a5ce76cd21f5ed825129b97b"
+    }
+  ],
+  "production_session_write_requests": 0,
+  "production_restarts": 0,
+  "continued_existing_failure_in_fixture_only": true
+}

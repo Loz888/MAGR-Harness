@@ -435,6 +435,7 @@ class HarnessProductService:
                     "status": task.get("status", turn["state"]),
                     "summary": task.get("summary", ""),
                     "error_code": turn["error_code"],
+                    "reason": task.get("reason") or turn["error_code"],
                 }
             )
         current = tasks.get(latest)
@@ -526,7 +527,7 @@ class HarnessProductService:
                         "此前请求未进入执行；处理配置或环境问题后请重新发送。",
                         409,
                     )
-                return {**self.get(session_id), "duplicate": True}
+                return {**self._submission(session_id, previous["turn_id"]), "duplicate": True}
             authorization = self.authorization(session["project_id"], required=True)
             current_id = session["latest_task_id"]
             current = self.harness.get_task(current_id) if current_id else {}
@@ -562,7 +563,18 @@ class HarnessProductService:
                         (exc.code, turn),
                     )
                 raise
-            return self.get(session_id)
+            return self._submission(session_id, turn)
+
+    def _submission(self, session_id: str, turn_id: int) -> dict[str, Any]:
+        session = self.get(session_id)
+        turn = next(row for row in session["turns"] if row["turn_id"] == turn_id)
+        return {
+            **session,
+            "submission": {
+                key: turn[key]
+                for key in ("turn_id", "client_id", "task_id", "state", "status", "reason")
+            },
+        }
 
     def _submit_turn(
         self,
@@ -590,6 +602,8 @@ class HarnessProductService:
         source = self.harness.registry._source_root(
             self.harness.registry.load(project_id), Path(project["path"])
         )
+        if previous_id and self._failed_before_harness_work(project_id, previous_id):
+            previous_id = None
         if previous_id:
             previous = self._verified_workspace(project_id, previous_id)
             source = previous.root
@@ -651,6 +665,28 @@ class HarnessProductService:
             ).model_dump(mode="json"),
         )
         self.harness.submit_task(request)
+
+    def _failed_before_harness_work(self, project_id: str, task_id: str) -> bool:
+        """Recognize a legacy scheduler rejection before this task touched its workspace."""
+        assert self.harness.store is not None
+        with self.engine.transaction() as conn:
+            prior = self.harness.store.get(task_id)
+            if (
+                prior["workspace_id"] != project_id
+                or prior["status"] != "failed"
+                or prior["reason_code"] != "LIVE_PROFILE_REQUIRED"
+                or any(prior[key] for key in (
+                    "tree_hash", "manifest_hash", "checkpoint_hash", "result_hash",
+                ))
+            ):
+                return False
+            effects = conn.execute(
+                "SELECT EXISTS (SELECT 1 FROM app.harness_operations WHERE run_id=%s) "
+                "OR EXISTS (SELECT 1 FROM app.usage_calls WHERE run_id=%s) AS has_effects",
+                (prior["run_id"], prior["run_id"]),
+            ).fetchone()
+            assert effects is not None
+            return not bool(effects["has_effects"])
 
     def apply(self, session_id: str, task_id: str, expected_tree: str) -> dict[str, Any]:
         with self._lock:

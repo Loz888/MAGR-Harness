@@ -22,7 +22,7 @@ JSON
 
 默认使用 `http://127.0.0.1:18080`。自定义地址用 `mgar --api URL harness ...`，URL 必须是回环 HTTP(S) origin。CLI 从 `MGAR_V3_LOCAL_TOKEN` 或当前安装的服务 `.env` 读取操作者令牌。浏览器通过登录会话及 CSRF 校验访问相同 API。自动化使用稳定的 `client_id`，请求回执丢失时用相同标识和相同内容确认提交。
 
-使用提交结果中的 `session_id` 和 `task_id` 进行后续查询。
+使用提交结果中的 `session_id` 和 `submission.task_id` 进行后续查询。响应顶层展示会话当前任务，`submission` 固定对应本次 `client_id`，保留回合标识和所关联任务的状态。用相同 ID 重查较早的提交时，取 `submission.task_id` 获取原任务。准备中的回合会返回 `submission.status=preparing`，退出码为 2，任务标识将在接收成功后出现。
 
 ```bash
 uv run --frozen mgar harness task TASK_ID
@@ -53,6 +53,8 @@ uv run --frozen mgar harness export SESSION_ID > session.json
 
 本地 CLI 中断只结束客户端读流。任务中止通过 `cancel TASK_ID` 向服务提交。
 
+服务重启后，`resume TASK_ID` 按已保存回执恢复原 Run，暂停和取消仍使用相同接口。早期版本中被通用调度器以 `LIVE_PROFILE_REQUIRED` 拒绝的任务会显示原失败。已确认该轮没有执行记录、费用或工作区变更的会话，收到带新 `client_id` 的消息后可从登记的项目继续。
+
 ## SDK 与兼容策略
 
 ```python
@@ -73,4 +75,4 @@ Web 路由以 `/api/v3` 版本提供。会话导出是 `GET /api/v3/agent/sessio
 
 H06 的执行面提供命令句柄、取消和分段日志。H13 的 Headless 客户端通过任务事件和产物查看这些结果。[H06 命令契约](COMMAND_EXECUTION.md)
 
-运行 `make verify TASK=HV4-H13` 复验 CLI、SDK、Browser API 和持久化任务的共享契约。使用隔离测试 PostgreSQL 实例和固定 Docker 镜像。[机器验收](accept/HV4-H13/accept.json)
+运行 `make verify TASK=HV4-H13` 复验 CLI、SDK、Browser API 和持久化任务的共享契约。使用隔离测试 PostgreSQL 实例和固定 Docker 镜像。[本地集成验收](accept/HV4-H13/integration.json) · [初始机器验收](accept/HV4-H13/accept.json)

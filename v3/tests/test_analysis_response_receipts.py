@@ -22,7 +22,7 @@ SOURCE = '[project]\nrequires-python = ">=3.12"\ndependencies = ["fastapi", "uvi
 PRIVATE = "PRIVATE_PROVIDER_REASONING" * 12000
 
 
-def stream(model, content, *, usage=True, private=True, tokens=False):
+def stream(model, content, *, usage=True, private=True, tokens=False, finish_reason="stop"):
     frames = []
 
     def emit(value):
@@ -36,7 +36,7 @@ def stream(model, content, *, usage=True, private=True, tokens=False):
             frame.update({"id": "chatcmpl-" + "c" * 64, "object": "chat.completion.chunk",
                           "created": 1700000000, "system_fingerprint": "f" * 320})
         emit(frame)
-    emit({"model": model, "choices": [{"delta": {}, "finish_reason": "stop"}]})
+    emit({"model": model, "choices": [{"delta": {}, "finish_reason": finish_reason}]})
     if usage:
         emit({"model": model, "choices": [], "usage": {
             "prompt_tokens": 100, "completion_tokens": 100,
@@ -61,6 +61,75 @@ def environment(settings, engine, monkeypatch):
 
     monkeypatch.setattr(RepositoryAnalysisTools, "execute", execute)
     return service, value
+
+
+def test_truncated_analysis_retries_with_compact_copy_of_exact_evidence(
+    settings, engine, resolved, monkeypatch,
+):
+    service, value = environment(settings, engine, monkeypatch)
+    requests = []
+    read = {"action": "tool", "thought": "brief",
+            "tool_calls": [{"tool": "read_file", "path": "pyproject.toml"}]}
+
+    def provider(req):
+        body = json.loads(req.content)
+        payload = json.loads(body["messages"][1]["content"])
+        requests.append(payload)
+        finish = "stop"
+        if len(requests) <= 2:
+            content = json.dumps(read)
+        elif len(requests) == 3:
+            finish = "length"
+            content = '{"action":"final","report":'
+            assert payload["progress_instruction"]
+            assert sum(item.get("tool") == "read_file" for item in payload["history"]) == 1
+        elif len(requests) == 4:
+            assert payload["task"] == requests[-2]["task"]
+            assert payload["commit"] == value.commit
+            assert len(json.dumps(payload)) < len(json.dumps(requests[-2]))
+            observation = next(item for item in payload["history"] if item.get("evidence_id"))
+            quote = 'dependencies = ["fastapi", "uvicorn"]'
+            assert quote in observation["content"]
+            claim = {"statement": "Web 框架是 FastAPI。", "evidence_id": observation["evidence_id"],
+                     "quote": quote}
+            content = json.dumps({"action": "final", "thought": "brief", "report": {
+                "conclusion": "Web 框架是 FastAPI。",
+                "structure": "依赖在 pyproject.toml 声明。",
+                "key_files": [claim], "findings": [claim],
+            }}, ensure_ascii=False)
+        else:
+            assert len(requests) == 5 and "source_checks" in payload
+            content = json.dumps({"accepted": True, "summary": "完整", "missing_requirements": []})
+        assert body["thinking"] == {"type": "enabled"} and body["reasoning_effort"] == "max"
+        return httpx.Response(
+            200, headers={"content-type": "text/event-stream"},
+            content=stream(body["model"], content, private=False, finish_reason=finish),
+        )
+
+    with httpx.Client(transport=httpx.MockTransport(provider)) as remote:
+        monkeypatch.setattr(
+            "mgar_v3.repository_analysis.service.DeepSeekAnalysisModel",
+            lambda settings, model: DeepSeekAnalysisModel(
+                settings, model, client=remote, rate_limit=lambda *args: None,
+            ),
+        )
+        service.execute(value.run_id)
+    detail = service.detail(value.run_id)
+    assert detail["run"]["run_status"] == "succeeded", detail["run"]["stop_reason"]
+    assert "FastAPI" in detail["report"] and len(requests) == 5
+    with engine.transaction() as conn:
+        receipts = conn.execute(
+            "SELECT safe_payload FROM app.run_events WHERE run_id=%s "
+            "AND kind='model_response_recorded' ORDER BY event_id", (value.run_id,),
+        ).fetchall()
+        usage = conn.execute(
+            "SELECT status,count(*) AS n FROM app.usage_calls WHERE run_id=%s GROUP BY status",
+            (value.run_id,),
+        ).fetchall()
+    failed = json.loads(engine.artifacts.read(receipts[2]["safe_payload"]["content_hash"]))
+    assert failed["output_issue"] == "MODEL_OUTPUT_TRUNCATED"
+    assert usage == [{"status": "known", "n": 5}]
+    assert detail["budget"]["reserved_micros"] == 0
 
 
 @pytest.mark.parametrize("wire_kind", ["private_frame", "public_token_frames"])

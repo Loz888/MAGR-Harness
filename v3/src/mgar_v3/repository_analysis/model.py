@@ -50,6 +50,7 @@ def public_usage(value: dict[str, Any]) -> dict[str, Any]:
 
 def completion_receipt(
     value: dict[str, Any], raw: bytes | WireReceipt, result: Model | None,
+    *, output_issue: str | None = None,
 ) -> tuple[bytes, bool]:
     """Persist bounded public semantics rather than SSE transport overhead.
 
@@ -71,6 +72,8 @@ def completion_receipt(
             {"wire_bytes": len(raw), "wire_sha256": hashlib.sha256(raw).hexdigest()}
         ),
     }
+    if output_issue is not None:
+        receipt["output_issue"] = output_issue
 
     def encoded() -> bytes:
         return json.dumps(receipt, ensure_ascii=False, separators=(",", ":")).encode()
@@ -82,6 +85,67 @@ def completion_receipt(
         receipt["transport"]["public_content_sha256"] = hashlib.sha256(content.encode()).hexdigest()
         body = encoded()
     return body, oversized
+
+
+def _retry_payload(payload: dict[str, Any]) -> dict[str, Any]:
+    """Keep the exact task and recent citable excerpts, dropping duplicated context views."""
+    required = (
+        "task", "repository", "commit", "constraints", "available_tools", "permissions",
+        "remaining_budget",
+        "remaining_model_calls", "remaining_tool_calls", "remaining_input_tokens",
+        "progress_instruction", "prior_evidence_id_map", "failed_attempts",
+    )
+    compact = {key: payload[key] for key in required if key in payload}
+    if isinstance(prior := payload.get("prior_report"), str) and prior:
+        compact["prior_report"] = prior[:2500]
+    history = payload.get("history")
+    if not isinstance(history, list):
+        return payload
+    selected: dict[tuple[str, str], dict[str, Any]] = {}
+    candidates = [item for item in reversed(history) if isinstance(item, dict)]
+    for item in sorted(candidates, key=lambda item: item.get("tool") != "read_file"):
+        if not item.get("content"):
+            continue
+        tool, reference = str(item.get("tool", "")), str(item.get("reference", ""))
+        if tool not in {"read_file", "search_code", "list_directory", "verification", "tool_error"}:
+            continue
+        if tool == "read_file" and not item.get("evidence_id"):
+            continue
+        key = (tool, reference)
+        if key in selected:
+            continue
+        excerpt = str(item["content"])
+        if len(excerpt) > 2200:
+            end = excerpt.rfind("\n", 0, 2200)
+            excerpt = excerpt[: end if end > 0 else 2200]
+        observation = {
+            k: item[k] for k in ("tool", "reference", "evidence_id", "source_version", "locator")
+            if k in item
+        }
+        observation.update(content=excerpt, truncated=bool(item.get("truncated"))
+                           or excerpt != item["content"])
+        selected[key] = observation
+        if len(selected) == 10:
+            break
+    compact["history"] = list(reversed(selected.values()))
+    return compact
+
+
+def _decode_result[T: Model](
+    value: dict[str, Any], schema: type[T]
+) -> tuple[T | None, str | None]:
+    try:
+        choice = value["choices"][0]
+        if choice.get("finish_reason") == "length":
+            return None, "MODEL_OUTPUT_TRUNCATED"
+        result = schema.model_validate_json(choice["message"]["content"])
+    except ValidationError as exc:
+        if any(item["type"] == "json_invalid" for item in exc.errors(include_input=False)):
+            return None, "MODEL_INVALID_JSON"
+        return None, "MODEL_INVALID_SCHEMA"
+    except (KeyError, IndexError, TypeError, AttributeError, ValueError):
+        return None, "MODEL_INVALID_SCHEMA"
+    return result, None
 
 
 class AnalysisLedger(Protocol):
@@ -328,17 +392,10 @@ class DeepSeekAnalysisModel:
                     # Local failures cannot erase it; finally settles once.
                     cost = checked_cost
                     usage = public_usage(received_usage)
-                result = None
-                try:
-                    choice = value["choices"][0]
-                    if choice.get("finish_reason") == "length":
-                        raise ValueError("Truncated output")
-                    result = schema.model_validate_json(choice["message"]["content"])
-                except (
-                    KeyError, IndexError, TypeError, AttributeError, ValueError, ValidationError,
-                ):
-                    pass
-                receipt, content_oversized = completion_receipt(value, raw, result)
+                result, output_issue = _decode_result(value, schema)
+                receipt, content_oversized = completion_receipt(
+                    value, raw, result, output_issue=output_issue,
+                )
                 ledger.record_model_response(call_id, status, receipt)
                 if content_oversized:
                     raise DomainError(
@@ -353,19 +410,34 @@ class DeepSeekAnalysisModel:
                 if not getattr(ledger, "accounts_usage", False):
                     ledger.note_input_tokens(run_id, cast(int, usage["prompt_tokens"]))
                 if result is None:
-                    emit("draft_rejected", reason="MODEL_INVALID_RESPONSE")
+                    emit("draft_rejected", reason=output_issue)
                     if attempt < 2:
+                        if output_issue == "MODEL_OUTPUT_TRUNCATED" and phase == "analysis":
+                            messages[1] = {
+                                "role": "user",
+                                "content": json.dumps(
+                                    _retry_payload(payload), ensure_ascii=False,
+                                    separators=(",", ":"),
+                                ),
+                            }
                         messages = messages[:2] + [{
                             "role": "user", "content": (
                                 "Return one complete JSON object matching the schema. "
-                                "Use every required field. " + (
-                                    "An answer needs key_files and findings with exact quotes."
+                                "Close the JSON within the output limit. " + (
+                                    "If the evidence answers the question, finalize now. "
+                                    "Use a short conclusion and structure, 1–4 key_files and "
+                                    "findings, and short exact quotes. Use brief thought. "
+                                    "If a specific fact remains missing, request one new tool."
                                     if phase == "analysis"
-                                    else "Use accepted, missing_requirements and summary only."
+                                    else "Use accepted, missing_requirements and a short summary."
                                 )
                             ),
                         }]
                         continue
+                    if output_issue == "MODEL_OUTPUT_TRUNCATED":
+                        raise DomainError(
+                            "MODEL_OUTPUT_TRUNCATED", "Provider reached the output token limit"
+                        )
                     raise DomainError("MODEL_INVALID_RESPONSE", "Output failed schema validation")
                 accepted_result = result
                 return result

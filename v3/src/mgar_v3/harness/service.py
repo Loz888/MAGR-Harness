@@ -1817,19 +1817,15 @@ class HarnessCodingService:
                 self._prepare_product_permissions(workspace)
         directory = self.runs / task_id
         directory.mkdir(parents=True, exist_ok=True)
-        control = TaskControl()
         runtime = _TaskRuntime(
             task_id=task_id,
             workspace=workspace,
             registration=registration,
             request=request,
-            control=control,
+            control=TaskControl(),
             inbox=TaskInbox(directory / "inbox.json"),
             events=PersistentEventSink(directory / "events.jsonl"),
         )
-        control.on_paused = lambda: self._control_event(runtime, "paused")
-        control.on_resumed = lambda: self._control_event(runtime, "resumed")
-        control.on_cancel_observed = lambda: self._control_event(runtime, "cancel_observed")
         if self.store is not None:
             limits = (
                 profile.resources.budget_limits()
@@ -1860,8 +1856,7 @@ class HarnessCodingService:
             )
             runtime.inbox = EngineInbox(self.store, task_id)
             runtime.events = EngineEvents(self.store, task_id, 0)
-        with self._runtime_lock:
-            self._runtimes[task_id] = runtime
+        self._register_runtime(runtime)
         self._status(
             runtime,
             status="queued",
@@ -1873,6 +1868,14 @@ class HarnessCodingService:
             inbox_revision=0,
         )
         return runtime
+
+    def _register_runtime(self, runtime: _TaskRuntime) -> None:
+        control = runtime.control
+        control.on_paused = lambda: self._control_event(runtime, "paused")
+        control.on_resumed = lambda: self._control_event(runtime, "resumed")
+        control.on_cancel_observed = lambda: self._control_event(runtime, "cancel_observed")
+        with self._runtime_lock:
+            self._runtimes[runtime.task_id] = runtime
 
     def recover_task(self, task_id: str, *, background: bool = False) -> dict[str, Any]:
         if self.store is None:
@@ -2235,8 +2238,7 @@ class HarnessCodingService:
             events=EngineEvents(self.store, task_id, row["execution_epoch"]),
             durable_row=row,
         )
-        with self._runtime_lock:
-            self._runtimes[task_id] = runtime
+        self._register_runtime(runtime)
         if background:
             thread = threading.Thread(target=self._background, args=(runtime,), daemon=True)
             runtime.thread = thread
@@ -2416,8 +2418,10 @@ class HarnessCodingService:
         if not self._task_exists(task_id):
             raise DomainError("HARNESS_TASK_UNKNOWN", "Task is unavailable", 404)
         sink = self._event_sink(task_id)
-        records, next_cursor, has_more = sink.page(after_cursor=after, limit=limit)
+        # Terminal status is saved after the last event. Observe status before
+        # looking for pending events so a concurrent finish can't hide them.
         status = self._current_status(task_id)
+        records, next_cursor, has_more = sink.page(after_cursor=after, limit=limit)
         return {
             "stream_version": STREAM_VERSION,
             "task_id": task_id,
@@ -2562,7 +2566,7 @@ class HarnessCodingService:
                 row = self.store.cancel(task_id)
             return {
                 "task_id": task_id,
-                "status": row["public_status"],
+                "status": self._task_public_status(row),
                 "execution_epoch": row["execution_epoch"],
                 "refund": "not_promised",
                 "reconciliation_errors": errors,
@@ -2723,6 +2727,12 @@ class HarnessCodingService:
         # Ask lives in the original PG inbox. status.json is only a cache and
         # cannot override epoch, cancellation, paused or terminal ledger facts.
         status = str(row["public_status"])
+        if status not in _TERMINAL:
+            run_status = str(row["status"])
+            if run_status in {"failed", "cancelled", "paused"}:
+                return run_status
+            if run_status == "succeeded":
+                return "incomplete"
         if status == "running" and any(
             message.get("kind") == "question" and message.get("status") == "waiting"
             for message in row["inbox"].get("messages", [])
@@ -2759,12 +2769,15 @@ class HarnessCodingService:
                 payload = {}
         if self.store is not None:
             row = self.store.get(task_id)
+            status = self._task_public_status(row)
             payload.update(
-                status=self._task_public_status(row),
+                status=status,
                 run_id=str(row["run_id"]),
                 execution_epoch=row["execution_epoch"],
                 recovery_required=row["status"] == "paused",
             )
+            if status in _TERMINAL and row["reason_code"]:
+                payload["reason"] = row["reason_code"]
             # The durable inbox can precede status.json. Project the question
             # from the same PG snapshot as waiting_input, never a missing or
             # stale cache ID that prevents the caller from answering.

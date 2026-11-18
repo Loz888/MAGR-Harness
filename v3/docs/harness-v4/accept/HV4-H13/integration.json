@@ -1,0 +1,92 @@
+{
+  "schema_version": "harness-h13-integration-acceptance-v1",
+  "task": "HV4-H13",
+  "engineering_gate": "PASS",
+  "live_gate": "NOT_RUN",
+  "git_commit": "108a0b63e5c904b03cb442f1382d7e9b9447ec66",
+  "source_sha256": "1de02f0c565aaed4bd0bae7630c9842d7161b44c314c95640ffd4e3b9cf07c2c",
+  "previous_acceptance": "docs/harness-v4/accept/HV4-H13/accept.json",
+  "checks": {
+    "HV4-H13": {
+      "command": "make verify TASK=HV4-H13",
+      "counts": {
+        "tests": 42,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "started_at": "2026-11-18T08:33:44.924560+00:00",
+      "finished_at": "2026-11-18T08:41:58.082096+00:00",
+      "duration_seconds": 493.052,
+      "evidence": {
+        "result.json": {
+          "path": "evidence/HV4-H13/20261118T083344Z-e0cc486f/result.json",
+          "sha256": "0dd68df1583d9b9155ed7762f055adb8277884b4df6057ddacd75579237a7dc8"
+        },
+        "command.log": {
+          "path": "evidence/HV4-H13/20261118T083344Z-e0cc486f/command.log",
+          "sha256": "2519f55d1effc73442bfc9324f8bd0025944880da60de26ad503cb212341a931"
+        },
+        "junit.xml": {
+          "path": "evidence/HV4-H13/20261118T083344Z-e0cc486f/junit.xml",
+          "sha256": "f2eb5f63a898caaffaf8067741268393f44225cd3b6e41d19d8139fa64f64dcc"
+        }
+      }
+    },
+    "AGENT-UI": {
+      "command": "make verify TASK=AGENT-UI",
+      "counts": {
+        "tests": 111,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "started_at": "2026-11-18T08:33:44.925172+00:00",
+      "finished_at": "2026-11-18T08:35:54.745282+00:00",
+      "duration_seconds": 129.715,
+      "evidence": {
+        "result.json": {
+          "path": "evidence/AGENT-UI/20261118T083344Z-68717258/result.json",
+          "sha256": "3404bd199198c5ab7a636f0aaaac7fc7787483d6a6166b7fd3f6feacd53d7f20"
+        },
+        "command.log": {
+          "path": "evidence/AGENT-UI/20261118T083344Z-68717258/command.log",
+          "sha256": "7c05f6bf6063473fc052bbed80e53e07af3c45e171c78f1921bec93268242de7"
+        },
+        "junit.xml": {
+          "path": "evidence/AGENT-UI/20261118T083344Z-68717258/junit.xml",
+          "sha256": "e8b7563413af48773d215ca79ca8dc87d4ab0c66c93923b4ed501538e9d74af3"
+        }
+      }
+    }
+  },
+  "lint": "PASS",
+  "typecheck": "PASS",
+  "environment": {
+    "postgres": "isolated pgvector / PostgreSQL 16",
+    "execution": "pinned R03 Docker sandbox",
+    "http": "local uvicorn with the production supervisor enabled in the routing regression",
+    "model": "controlled responses"
+  },
+  "reproduced_failures": {
+    "retry": "A preparing submission returned a success exit code.",
+    "terminal_events": "An event committed during task completion could be missed.",
+    "scheduler": "The generic supervisor ended Harness tasks with LIVE_PROFILE_REQUIRED.",
+    "recovery": "A recovered worker did not project a later safe-point pause."
+  },
+  "local_deployment": {
+    "started_at": "2026-11-18T08:42:18.815292+00:00",
+    "finished_at": "2026-11-18T08:42:29.298690+00:00",
+    "old_git_commit": "a91ae4ca9051fdd5c468db69c502ebfc30e7d255",
+    "listen_origin": "http://127.0.0.1:18080",
+    "mode": "pinned checkout using the existing local configuration, database and artifact data",
+    "health_http_status": 200,
+    "existing_sessions_preserved": 6,
+    "existing_exports_verified_by_http_cli_sdk": 6,
+    "legacy_scheduler_failures_visible_and_terminal": 3,
+    "historical_repository_analysis_preserved": true,
+    "registered_projects_ready_and_authorized": 2,
+    "receipt_sha256": "d8ab4ea824df60cee3f5347df2b1453513ac6be0962eae22118862b59fc5acf0"
+  },
+  "real_provider_calls": 0
+}

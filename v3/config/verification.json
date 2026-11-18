@@ -1307,6 +1307,7 @@
     "components": {
       "contract": "Web cookie, operator CLI and Python SDK, shared PostgreSQL Run and persisted task artifacts",
       "control": "same-Run pause, resume and cancel, bounded cursor replay and authenticated event streaming",
+      "scheduler": "Harness Worker ownership under the production supervisor, stale failure projection, restored control after recovery",
       "automation": "JSON stdin and output, NDJSON events, versioned export, missing dependency and incomplete exit codes",
       "live": "controlled model fixtures, real PostgreSQL, Docker and HTTP"
     },
