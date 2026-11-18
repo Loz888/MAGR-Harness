@@ -434,7 +434,7 @@
     {
       "id": "HV4-H17",
       "title": "按需子 Agent 与效果验证",
-      "status": "PLANNED",
+      "status": "IMPLEMENTED",
       "priority": "P2，可选",
       "milestone": "M4",
       "depends_on": [
@@ -447,7 +447,11 @@
       },
       "optional": true,
       "card": "TASKS.md#hv4-h17",
-      "verification_target_on_implementation": "HV4-H17"
+      "verification_target_on_implementation": "HV4-H17",
+      "engineering_gate": "PASS",
+      "live_model_gate": "NOT_RUN",
+      "default_mode": "single_agent",
+      "accept_record": "accept/HV4-H17/accept.json"
     },
     {
       "id": "HV4-H18",
