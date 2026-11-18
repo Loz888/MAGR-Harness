@@ -1,0 +1,194 @@
+{
+  "schema_version": "harness-h16-independent-acceptance-v1",
+  "task": "HV4-H16",
+  "recorded_at": "2026-11-18T13:18:15.720922+00:00",
+  "git_commit": "ec02dbf8f89eee05b25b86bb0c402e8ed4bc2c97",
+  "reviewed_records_commit": "0ba6089c2c93fae082e38ff345e79581c77f8bc8",
+  "source_sha256": "fea038e15235b7b8d995d6715207a15c2289f62db05413300444946a87c8d602",
+  "engineering_gate": "PASS",
+  "compatibility_gates": {
+    "HV4-H13": "PASS",
+    "HV4-H14": "PASS",
+    "HV4-H15": "PASS"
+  },
+  "live_gate": "NOT_RUN",
+  "real_provider_calls": 0,
+  "external_writes": 0,
+  "original_acceptance": {
+    "path": "docs/harness-v4/accept/HV4-H16/accept.json",
+    "sha256": "669541899dab140a8060eb1f69e4940b8a4d6b443057ad5d2ee6639c69fddcf1"
+  },
+  "original_evidence_hashes_verified": 20,
+  "registered_attempts": {
+    "HV4-H16": {
+      "status": "PASS",
+      "counts": {
+        "tests": 13,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "duration_seconds": 127.687,
+      "result": {
+        "path": "evidence/harness-v4/H16-INDEPENDENT-20261118/eef964f2ea82/HV4-H16/20261118T130800Z-632b37c2/result.json",
+        "sha256": "f2704370fe277fd4a92874df9e481a9de0ff0dcee3e4664dba571a69c811d79b"
+      },
+      "junit": {
+        "path": "evidence/harness-v4/H16-INDEPENDENT-20261118/eef964f2ea82/HV4-H16/20261118T130800Z-632b37c2/junit.xml",
+        "sha256": "cfdbf5000b3b72b1f51f4ee7155cb55337e777cd48aec8e5837b0da281a1ec1c"
+      },
+      "log": {
+        "path": "evidence/harness-v4/H16-INDEPENDENT-20261118/eef964f2ea82/HV4-H16/20261118T130800Z-632b37c2/command.log",
+        "sha256": "5a3842b77db24b5154ec6db752b4a803c80b1d9515ccbd97a81f4b1126d94d6d"
+      },
+      "failed_nodes": []
+    },
+    "HV4-H13": {
+      "status": "PASS",
+      "counts": {
+        "tests": 42,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "duration_seconds": 600.973,
+      "result": {
+        "path": "evidence/harness-v4/H16-INDEPENDENT-20261118/eef964f2ea82/HV4-H13/20261118T130800Z-2e9e2e59/result.json",
+        "sha256": "80a1ee66392ed316ceeef4fa4a41f3fcd0df4ecbb5385187c023ad9bc6de1d59"
+      },
+      "junit": {
+        "path": "evidence/harness-v4/H16-INDEPENDENT-20261118/eef964f2ea82/HV4-H13/20261118T130800Z-2e9e2e59/junit.xml",
+        "sha256": "96432feadd298b0933dbe92da56f291f5ad6dba94c65eb027ac54dc1a6ab1b20"
+      },
+      "log": {
+        "path": "evidence/harness-v4/H16-INDEPENDENT-20261118/eef964f2ea82/HV4-H13/20261118T130800Z-2e9e2e59/command.log",
+        "sha256": "de59edbcca96f0bf1628ed8ba9912a4bf7a92a7a04afa6b252288737f550e868"
+      },
+      "failed_nodes": []
+    },
+    "HV4-H14": {
+      "status": "PASS",
+      "counts": {
+        "tests": 181,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "duration_seconds": 340.12,
+      "result": {
+        "path": "evidence/harness-v4/H16-INDEPENDENT-20261118/eef964f2ea82/HV4-H14/20261118T130800Z-6b16feec/result.json",
+        "sha256": "5ff653f055b419d2b0cb6558e544676322531fe3eec0059eb9cf2f2a54f4e7df"
+      },
+      "junit": {
+        "path": "evidence/harness-v4/H16-INDEPENDENT-20261118/eef964f2ea82/HV4-H14/20261118T130800Z-6b16feec/junit.xml",
+        "sha256": "a3dc8e14836793b60ab3ea21f490eb617f41d40f4934828ac7e3eebcae3ddc18"
+      },
+      "log": {
+        "path": "evidence/harness-v4/H16-INDEPENDENT-20261118/eef964f2ea82/HV4-H14/20261118T130800Z-6b16feec/command.log",
+        "sha256": "c77e780dab6d07654a2c634f86a2d94e5e05bb57bd03f81231656386247ca93e"
+      },
+      "failed_nodes": []
+    },
+    "HV4-H15": {
+      "status": "PASS",
+      "counts": {
+        "tests": 19,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "duration_seconds": 125.571,
+      "result": {
+        "path": "evidence/harness-v4/H16-INDEPENDENT-20261118/eef964f2ea82/HV4-H15/20261118T130800Z-7f8ba65d/result.json",
+        "sha256": "4bb82e4cc89ae930d5274106a78447ab55d62a9d754f1075b30f98b1567607e3"
+      },
+      "junit": {
+        "path": "evidence/harness-v4/H16-INDEPENDENT-20261118/eef964f2ea82/HV4-H15/20261118T130800Z-7f8ba65d/junit.xml",
+        "sha256": "065e4e5ebaec5dc7a463134bf74c81dc809cfa8e3b5ae6ea524fe39cbf75e8a5"
+      },
+      "log": {
+        "path": "evidence/harness-v4/H16-INDEPENDENT-20261118/eef964f2ea82/HV4-H15/20261118T130800Z-7f8ba65d/command.log",
+        "sha256": "89f56a44fac92fb8b5b3a40349dc49bfa4e51c3aa7fa588dc0aa18535d1c68e7"
+      },
+      "failed_nodes": []
+    }
+  },
+  "targeted_rechecks": {},
+  "static": {
+    "lint": {
+      "path": "evidence/harness-v4/H16-INDEPENDENT-20261118/eef964f2ea82/lint.log",
+      "sha256": "a220b562d6bdb3655673add818cabd1dbd6857a7efc7d06ff8178f9e0e2501e2"
+    },
+    "mypy": {
+      "path": "evidence/harness-v4/H16-INDEPENDENT-20261118/eef964f2ea82/typecheck.log",
+      "sha256": "b9823e16f7c78fb6f2a74a1f269a13b887f208008eaeeffc43746854ceef3d04"
+    },
+    "node_syntax": {
+      "path": "evidence/harness-v4/H16-INDEPENDENT-20261118/eef964f2ea82/browser-assets-recheck.json",
+      "sha256": "0c79ff04000cc2738e080898edc2b0001a425139c228da2d56866b2552c3a887"
+    },
+    "node_windows_unc_attempt": {
+      "path": "evidence/harness-v4/H16-INDEPENDENT-20261118/eef964f2ea82/browser-assets.json",
+      "sha256": "e782ef0e6cf926cd6ed07b53da947615f8fc4af4d5122b3c6a8213bd24b29977"
+    }
+  },
+  "owned_dependencies": {
+    "path": "evidence/harness-v4/H16-INDEPENDENT-20261118/eef964f2ea82/orchestration.json",
+    "sha256": "e93f858baea3cc250d5e98b81c11bda5ece5ba11d5dc474487ef6ef19db687f1"
+  },
+  "fresh_upgrade": {
+    "result": {
+      "path": "evidence/harness-v4/H16-INDEPENDENT-20261118/eef964f2ea82/h15-to-h16-upgrade.json",
+      "sha256": "a30783d6ee03c5efa3b2495994b71599751c49a141db4b416c8af5d41928308e"
+    },
+    "seed_first_attempt_log": {
+      "path": "evidence/harness-v4/H16-INDEPENDENT-20261118/eef964f2ea82/h15-upgrade-seed.log",
+      "sha256": "744686687ad09e963864d5a0a086010deec7c2c49ca086af48bed297ee74afd6"
+    },
+    "seed_log": {
+      "path": "evidence/harness-v4/H16-INDEPENDENT-20261118/eef964f2ea82/h15-upgrade-seed-recheck.log",
+      "sha256": "c4c528707860c7db0c7afdc00f21613fca91fa649f67e85c221a180d10b696fc"
+    }
+  },
+  "local_burst": {
+    "prior": {
+      "projects": 2,
+      "jobs": 6,
+      "simultaneous_workers": 2,
+      "project_parallel_limit": 1,
+      "initial_waiting_jobs": 4,
+      "dispatch_wait_ms": [
+        127,
+        173,
+        5572,
+        6576,
+        8208,
+        9133
+      ],
+      "median_wait_ms": 6074.0,
+      "burst_duration_ms": 19397
+    },
+    "independent": {
+      "projects": 2,
+      "jobs": 6,
+      "simultaneous_workers": 2,
+      "project_parallel_limit": 1,
+      "initial_waiting_jobs": 4,
+      "dispatch_wait_ms": [
+        178,
+        193,
+        5827,
+        6856,
+        8306,
+        9218
+      ],
+      "median_wait_ms": 6341.5,
+      "burst_duration_ms": 20702
+    },
+    "controlled_model": true,
+    "timing_context": "Local fixture workload with compatibility tests running in parallel."
+  },
+  "production_multi_machine": "NOT_RUN",
+  "production_database_modified": false,
+  "paid_model_acceptance": "NOT_RUN"
+}
