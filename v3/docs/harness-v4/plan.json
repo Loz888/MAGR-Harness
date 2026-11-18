@@ -2,7 +2,7 @@
   "plan_version": "1",
   "status": "IN_PROGRESS",
   "application_baseline": "1d07285aa27ece9bae4ccbedc3a77ce2fbcbaf3a",
-  "scope": "H12 implementation and frozen evaluation delivered pending independent recheck. Engineering checks PASS in listed scope; actual dev and holdout each 0/12, live Agent FAIL and MVP not released. All H12 candidates share original 12 USD authorization; historical FAIL and H09/H10 OPEN findings retained. H13-H18 PLANNED.",
+  "scope": "The initial H12 evaluation retained its 0/12 development and holdout results and original USD 12 authorization. TASKS.md indexes the subsequent H12 formal result and scoped H13/H15 engineering acceptances. Historical failures and open H09/H10 findings remain recorded.",
   "tasks": [
     {
       "id": "HV4-H00",
@@ -390,7 +390,10 @@
     {
       "id": "HV4-H15",
       "title": "远程 Runner 配对与本机执行",
-      "status": "PLANNED",
+      "status": "IMPLEMENTED",
+      "verification_status": "PASS",
+      "accept_record": "accept/HV4-H15/accept.json",
+      "acceptance_scope": "Device pairing and fixed isolated tests, with a separate local Runner process over real HTTPS. Cross-host deployment and remote editing remain open.",
       "priority": "P2",
       "milestone": "M4",
       "depends_on": [

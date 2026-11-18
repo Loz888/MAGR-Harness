@@ -1,0 +1,199 @@
+{
+  "schema_version": "harness-engineering-acceptance-v1",
+  "task": "HV4-H15",
+  "base_commit": "de719b4",
+  "implementation_commit": "f51fa37144e00346756e48052d3b501c0e2a47cc",
+  "git_commit": "e9123c9834246f884fe8263b1deb71ebdfec6da0",
+  "engineering_gate": "PASS",
+  "live_gate": "NOT_RUN",
+  "scope": "device pairing and fixed isolated project tests from a paired Runner",
+  "verification": {
+    "status": "PASS",
+    "git_commit": "e9123c9834246f884fe8263b1deb71ebdfec6da0",
+    "source_sha256": "74f1d20718f0bea79ea83777e57682448f694dec7cb9318eca01ac8c1b9d5667",
+    "finished_source_sha256": "74f1d20718f0bea79ea83777e57682448f694dec7cb9318eca01ac8c1b9d5667",
+    "counts": {
+      "tests": 19,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "started_at": "2026-11-18T10:08:19.554720+00:00",
+    "finished_at": "2026-11-18T10:09:43.504998+00:00",
+    "duration_seconds": 83.89,
+    "command": "make verify TASK=HV4-H15",
+    "receipts": [
+      {
+        "path": "evidence/HV4-H15/20261118T100819Z-9c2fb8b9/result.json",
+        "sha256": "11f8a3fdb5141c1f3d894449f0935c05b1103fa021d0a1dc2cdd9267eb404a67"
+      },
+      {
+        "path": "evidence/HV4-H15/20261118T100819Z-9c2fb8b9/junit.xml",
+        "sha256": "0f1623ef61a2bd868a05ba34385613d09659862cd9673e803edc365a097e54a0"
+      },
+      {
+        "path": "evidence/HV4-H15/20261118T100819Z-9c2fb8b9/command.log",
+        "sha256": "0a88004267ed7e1b0b14d99f9ad581194738493f9c2d56e73b553afae55bb367"
+      }
+    ]
+  },
+  "compatibility": {
+    "HV4-H13": {
+      "status": "PASS",
+      "git_commit": "f51fa37144e00346756e48052d3b501c0e2a47cc",
+      "source_sha256": "77cb928fa42fdfe6417fc4bca438ce6ba10d1d52e607b975d8304299043ea381",
+      "finished_source_sha256": "77cb928fa42fdfe6417fc4bca438ce6ba10d1d52e607b975d8304299043ea381",
+      "counts": {
+        "tests": 42,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "started_at": "2026-11-18T09:56:19.438524+00:00",
+      "finished_at": "2026-11-18T10:03:42.624279+00:00",
+      "duration_seconds": 443.115,
+      "command": "make verify TASK=HV4-H13",
+      "receipts": [
+        {
+          "path": "evidence/HV4-H13/20261118T095619Z-66cc5597/result.json",
+          "sha256": "562b900e2cc58117f9110c65ca609a518a160c8ada761a30e93dbe6b4b3a3252"
+        },
+        {
+          "path": "evidence/HV4-H13/20261118T095619Z-66cc5597/junit.xml",
+          "sha256": "3d613c5d3d5e357d3fe30db3975f7b37381ade12137540b4c02949ffed891195"
+        },
+        {
+          "path": "evidence/HV4-H13/20261118T095619Z-66cc5597/command.log",
+          "sha256": "87825ffd8fb545bd9a2cf1c55f3ee69fe64c109b199a389f0b5c04bb27e9f641"
+        }
+      ]
+    },
+    "AGENT-UI": {
+      "status": "PASS",
+      "git_commit": "f51fa37144e00346756e48052d3b501c0e2a47cc",
+      "source_sha256": "77cb928fa42fdfe6417fc4bca438ce6ba10d1d52e607b975d8304299043ea381",
+      "finished_source_sha256": "77cb928fa42fdfe6417fc4bca438ce6ba10d1d52e607b975d8304299043ea381",
+      "counts": {
+        "tests": 111,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "started_at": "2026-11-18T09:58:28.725732+00:00",
+      "finished_at": "2026-11-18T10:00:42.823151+00:00",
+      "duration_seconds": 134.052,
+      "command": "make verify TASK=AGENT-UI",
+      "receipts": [
+        {
+          "path": "evidence/AGENT-UI/20261118T095828Z-080ac8a0/result.json",
+          "sha256": "49ddb4e8a257f424c6894765cf02a7a262fffa7ffe44f369d3eb50d7977d3714"
+        },
+        {
+          "path": "evidence/AGENT-UI/20261118T095828Z-080ac8a0/junit.xml",
+          "sha256": "55f0a4b7d842821624104841e529f3166c198f106fc7062485ad98fb6fdc665a"
+        },
+        {
+          "path": "evidence/AGENT-UI/20261118T095828Z-080ac8a0/command.log",
+          "sha256": "9cd9277b2f9e36d566295d855b8e6d2242d097c8d2543db72381a91f528ee974"
+        }
+      ]
+    },
+    "final_headless_cli_recheck": {
+      "status": "PASS",
+      "tests": 12,
+      "evidence": {
+        "path": ".local/h15/final-cli.xml",
+        "sha256": "3e3acd5e66f4ad82cee2e2c169c4e208cf6235821b8434023abcb33a5818fe8f"
+      }
+    }
+  },
+  "initial_registered_attempt": {
+    "path": "evidence/HV4-H15/20261118T095619Z-e93d6058/result.json",
+    "sha256": "e4d1e7da5fe7ac6966ee3b90d1115d3b258167ddd8dd4129b8c5947d9f1a21af"
+  },
+  "forward_schema_upgrade": {
+    "status": "PASS",
+    "previous_migrations_checked": 33,
+    "applied_only": "0056_harness_remote_runner.sql",
+    "idempotent_reapplication": true,
+    "h13_run_and_cas_unchanged": true,
+    "migration_sha256": "4c7ca7ff4f028b84b5be7f74a49ffdf19a7e9a32088038c54516f50f0d21a25b",
+    "migration": {
+      "path": "migrations/0056_harness_remote_runner.sql",
+      "sha256": "4c7ca7ff4f028b84b5be7f74a49ffdf19a7e9a32088038c54516f50f0d21a25b"
+    },
+    "evidence": {
+      "path": ".local/h15/schema-upgrade.json",
+      "sha256": "8f97675684fb18762b79528723b868f297d47c8b8a3e0aa94fece3d48594c1be"
+    }
+  },
+  "additional_runtime_observations": {
+    "node": {
+      "git_commit": "f51fa37144e00346756e48052d3b501c0e2a47cc",
+      "status": "completed",
+      "tests": {
+        "status": "passed",
+        "run": 1,
+        "failed": 0,
+        "skipped": 0
+      },
+      "process_state": "exited",
+      "exit_code": 0,
+      "evidence": {
+        "path": ".local/h15/language-matrix.json",
+        "sha256": "2715afac1014953bfbd0b460200041d9ad068a3b9fa34546adf30b9ccfe8be22"
+      }
+    },
+    "go_initial": {
+      "git_commit": "f51fa37144e00346756e48052d3b501c0e2a47cc",
+      "status": "failed",
+      "tests": {
+        "status": "unverified",
+        "run": 0,
+        "failed": 0,
+        "skipped": 0
+      },
+      "process_state": "exited",
+      "exit_code": 1,
+      "temporary_space_limit_mb": 64,
+      "observation": "ENOSPC during cold compilation",
+      "evidence": {
+        "path": ".local/h15/language-matrix.log",
+        "sha256": "653e5c9eaef55d0231e628e4fcb48b573e236fb93c14141d2de02105e48b1923"
+      }
+    },
+    "go_temporary_space_recheck": {
+      "temporary_space_limit_mb": 256,
+      "memory_limit_mb": 256,
+      "observation": "Compiler received SIGKILL, with no confirmed OOM cause",
+      "evidence": {
+        "path": ".local/h15/go-recheck.xml",
+        "sha256": "259490e9bc6c02ea483f8a6dfdaec714fbf14ecc85dd72abf71fe3a273c86724"
+      }
+    },
+    "go_final": {
+      "temporary_space_limit_mb": 256,
+      "memory_limit_mb": 512,
+      "status": "PASS",
+      "tests": 1,
+      "evidence": {
+        "path": ".local/h15/go-recheck-512.xml",
+        "sha256": "c65d87099b014e7432869f96735cdf8967c2f59cf3b16b971dd0ea496a7461af"
+      }
+    }
+  },
+  "environment": {
+    "postgres": "isolated PostgreSQL 16 with pgvector",
+    "redis": "disposable Redis for Web compatibility checks",
+    "runner": "separate Linux/WSL process and independently monitored local Docker container",
+    "transport": "real loopback HTTP plus certificate-verified HTTPS with a test CA",
+    "github": "local Git fixture for the controller snapshot boundary"
+  },
+  "lint": "PASS",
+  "typecheck": "PASS",
+  "real_provider_calls": 0,
+  "remaining_scope": [
+    "cross-host deployment trial",
+    "remote natural-language editing and applying changes"
+  ]
+}
