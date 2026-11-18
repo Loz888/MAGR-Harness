@@ -539,6 +539,8 @@ R00本地验收已PASS：40项、lint/mypy通过，原输入字节与账本不�
 
 ## HV4-H13：Headless、CLI 与 SDK 契约
 
+2026-11-18，H13 在本地分支 `hv4-h13` 通过 38 项工程验收，涵盖真实 PostgreSQL、Docker 和 HTTP。首次联调发现数据库未呈现 Worker 的暂停状态，修复后验证了同一 Run 的暂停、恢复与取消。[CLI 与 SDK 契约](HEADLESS.md) · [机器验收](accept/HV4-H13/accept.json)
+
 - **工作**：提供与 Web 同源的会话、提交、中断、恢复、事件订阅和产物 API；CLI 支持
   本机项目/headless JSON 输入输出，SDK 复用这些协议。终端交互和 PTY 根据 H06 的
   进程能力扩展，IDE/ACP 适配保持为客户端，不另建 Agent 状态机。
@@ -549,6 +551,8 @@ R00本地验收已PASS：40项、lint/mypy通过，原输入字节与账本不�
 <a id="hv4-h14"></a>
 
 ## HV4-H14：项目指令、Skills、MCP 与插件接口
+
+现有实现、分支起点、权限边界及验收命令见 [H14 开发交接](H14_HANDOFF.md)。
 
 - **工作**：明确系统/操作者策略、用户要求、项目 AGENTS.md、子目录指令与 Skill 的
   加载规则。增加带版本、能力声明和生命周期的插件注册；已有 GitHub/知识/数据 MCP

@@ -73,4 +73,4 @@ Web 路由以 `/api/v3` 版本提供。会话导出是 `GET /api/v3/agent/sessio
 
 H06 的执行面提供命令句柄、取消和分段日志。H13 的 Headless 客户端通过任务事件和产物查看这些结果。[H06 命令契约](COMMAND_EXECUTION.md)
 
-运行 `make verify TASK=HV4-H13` 复验 CLI、SDK、Browser API 和持久化任务的共享契约。使用隔离测试 PostgreSQL 实例和固定 Docker 镜像。
+运行 `make verify TASK=HV4-H13` 复验 CLI、SDK、Browser API 和持久化任务的共享契约。使用隔离测试 PostgreSQL 实例和固定 Docker 镜像。[机器验收](accept/HV4-H13/accept.json)

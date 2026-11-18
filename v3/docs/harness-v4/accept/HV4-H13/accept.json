@@ -1,0 +1,65 @@
+{
+  "schema_version": "harness-engineering-acceptance-v1",
+  "task": "HV4-H13",
+  "base_commit": "d703fc71f0feeaa4e45b997eecf4081d38f73d30",
+  "engineering_gate": "PASS",
+  "live_gate": "NOT_RUN",
+  "git_commit": "fc2f7d24f1a8771df8ff9ef51508bd87b085ecc5",
+  "source_sha256": "adf551a6888f1523addcbb070dda82f8fb4c36e975de1ec879badcaf89f59d40",
+  "finished_source_sha256": "adf551a6888f1523addcbb070dda82f8fb4c36e975de1ec879badcaf89f59d40",
+  "started_at": "2026-11-18T07:01:05.610895+00:00",
+  "finished_at": "2026-11-18T07:06:46.183153+00:00",
+  "counts": {
+    "tests": 38,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "duration_seconds": 340.526,
+  "command": "make verify TASK=HV4-H13",
+  "environment": {
+    "postgres": "isolated pgvector / PostgreSQL 16",
+    "execution": "pinned R03 Docker sandbox",
+    "http": "local uvicorn",
+    "model": "scripted fixture"
+  },
+  "evidence": {
+    "junit.xml": {
+      "path": "evidence/HV4-H13/20261118T070105Z-ad65b8b5/junit.xml",
+      "sha256": "98871b318b397d181a801134c5caac0fc7f9fa1655380f875b587c2b49dd98ae"
+    },
+    "command.log": {
+      "path": "evidence/HV4-H13/20261118T070105Z-ad65b8b5/command.log",
+      "sha256": "fdd15aaa19ec63271b615294d354e371696a470cd1aa3676a335edeaf5929950"
+    },
+    "result.json": {
+      "path": "evidence/HV4-H13/20261118T070105Z-ad65b8b5/result.json",
+      "sha256": "ed15db75a0ef29fed08eeb90ee6c94291210e411452d1dc9cedafcc01228f7e4"
+    }
+  },
+  "initial_control_failure": {
+    "outcome": "PAUSE_STATUS_NOT_PROJECTED_FROM_WORKER",
+    "fix": "Engine persists safe-point status on the existing Run and epoch",
+    "recheck": "PASS"
+  },
+  "lint": "PASS",
+  "typecheck": "PASS",
+  "real_provider_calls": 0,
+  "product_release_status": "NOT_RELEASED",
+  "h14_baseline": {
+    "counts": {
+      "tests": 91,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "junit_sha256": "62bf32c654c03c2d8e33668c41053fa5f2d1f1604ef3b49abd3a7f6efbb4b2a8",
+    "tests": [
+      "tests/test_harness_product_context.py",
+      "tests/test_harness_product_extensions.py",
+      "tests/test_harness_product_models.py",
+      "tests/test_mcp.py",
+      "tests/test_r4_mcp.py"
+    ]
+  }
+}
