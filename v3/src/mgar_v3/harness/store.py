@@ -631,13 +631,15 @@ class HarnessStore:
             return envelope.model_copy(update={"cursor": event["event_id"],
                                                "occurred_at": event["created_at"]})
 
-    def events(self, task_id: str, after_cursor: int = 0) -> tuple[EventEnvelope, ...]:
+    def events(
+        self, task_id: str, after_cursor: int = 0, *, limit: int | None = None,
+    ) -> tuple[EventEnvelope, ...]:
         with self.engine.transaction() as conn:
             task = self._row(conn, task_id)
             rows = conn.execute(
                 "SELECT * FROM app.run_events WHERE run_id=%s AND event_id>%s "
-                "AND safe_payload->>'schema'='harness-event-v1' ORDER BY event_id",
-                (task["run_id"], max(0, after_cursor)),
+                "AND safe_payload->>'schema'='harness-event-v1' ORDER BY event_id LIMIT %s",
+                (task["run_id"], max(0, after_cursor), limit),
             ).fetchall()
         return tuple(EventEnvelope(
             envelope_id=row["safe_payload"]["envelope_id"], run_id=row["run_id"],

@@ -22,7 +22,7 @@ JSON
 
 默认使用 `http://127.0.0.1:18080`。自定义地址用 `mgar --api URL harness ...`，URL 必须是回环 HTTP(S) origin。CLI 从 `MGAR_V3_LOCAL_TOKEN` 或当前安装的服务 `.env` 读取操作者令牌。浏览器通过登录会话及 CSRF 校验访问相同 API。自动化使用稳定的 `client_id`，请求回执丢失时用相同标识和相同内容确认提交。
 
-使用提交结果中的 `session_id` 和 `task_id` 进行后续查询。
+使用提交结果中的 `session_id` 和 `submission.task_id` 进行后续查询。响应顶层展示会话当前任务，`submission` 固定对应本次 `client_id`，保留回合标识和所关联任务的状态。用相同 ID 重查较早的提交时，取 `submission.task_id` 获取原任务。准备中的回合会返回 `submission.status=preparing`，退出码为 2，任务标识将在接收成功后出现。
 
 ```bash
 uv run --frozen mgar harness task TASK_ID

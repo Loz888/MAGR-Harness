@@ -360,10 +360,14 @@ class EngineEvents:
     def page(
         self, after_cursor: int = 0, limit: int = 200
     ) -> tuple[list[dict[str, Any]], int, bool]:
-        records = [item.model_dump(mode="json") for item in self.events(after_cursor=after_cursor)]
         limit = max(1, min(limit, 1000))
+        records = self.store.events(self.task_id, after_cursor=after_cursor, limit=limit + 1)
         page = records[:limit]
-        return page, int(page[-1]["cursor"]) if page else after_cursor, len(records) > limit
+        return (
+            [item.model_dump(mode="json") for item in page],
+            page[-1].cursor if page else after_cursor,
+            len(records) > limit,
+        )
 
     def summary(self) -> dict[str, Any]:
         records = self.events()

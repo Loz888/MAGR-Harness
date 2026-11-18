@@ -2389,8 +2389,10 @@ class HarnessCodingService:
         if not self._task_exists(task_id):
             raise DomainError("HARNESS_TASK_UNKNOWN", "Task is unavailable", 404)
         sink = self._event_sink(task_id)
-        records, next_cursor, has_more = sink.page(after_cursor=after, limit=limit)
+        # Terminal status is saved after the last event. Observe status before
+        # looking for pending events so a concurrent finish can't hide them.
         status = self._current_status(task_id)
+        records, next_cursor, has_more = sink.page(after_cursor=after, limit=limit)
         return {
             "stream_version": STREAM_VERSION,
             "task_id": task_id,

@@ -27,6 +27,7 @@ _INCOMPLETE = {
     "idle",
     "submitted",
     "queued",
+    "preparing",
     "running",
     "cancelling",
     "pausing",
@@ -139,8 +140,11 @@ def _call(client: HarnessClient, args: argparse.Namespace) -> int:
                 reply_to=payload["reply_to"],
                 message_id=payload["message_id"],
             )
+        status_source = result.get("submission", result)
+        if name in {"submit", "send"} and not isinstance(status_source, dict):
+            raise HarnessAPIError("INVALID_API_RESPONSE", "Expected submitted turn status")
         _print(result)
-        return _status(result) if name in {"submit", "send"} else 0
+        return _status(status_source) if name in {"submit", "send"} else 0
 
     if name == "events":
         for frame in client.events(resource, after=args.after, follow=args.follow):

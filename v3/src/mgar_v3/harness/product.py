@@ -435,6 +435,7 @@ class HarnessProductService:
                     "status": task.get("status", turn["state"]),
                     "summary": task.get("summary", ""),
                     "error_code": turn["error_code"],
+                    "reason": task.get("reason") or turn["error_code"],
                 }
             )
         current = tasks.get(latest)
@@ -526,7 +527,7 @@ class HarnessProductService:
                         "此前请求未进入执行；处理配置或环境问题后请重新发送。",
                         409,
                     )
-                return {**self.get(session_id), "duplicate": True}
+                return {**self._submission(session_id, previous["turn_id"]), "duplicate": True}
             authorization = self.authorization(session["project_id"], required=True)
             current_id = session["latest_task_id"]
             current = self.harness.get_task(current_id) if current_id else {}
@@ -562,7 +563,18 @@ class HarnessProductService:
                         (exc.code, turn),
                     )
                 raise
-            return self.get(session_id)
+            return self._submission(session_id, turn)
+
+    def _submission(self, session_id: str, turn_id: int) -> dict[str, Any]:
+        session = self.get(session_id)
+        turn = next(row for row in session["turns"] if row["turn_id"] == turn_id)
+        return {
+            **session,
+            "submission": {
+                key: turn[key]
+                for key in ("turn_id", "client_id", "task_id", "state", "status", "reason")
+            },
+        }
 
     def _submit_turn(
         self,

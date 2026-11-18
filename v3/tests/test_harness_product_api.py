@@ -351,13 +351,45 @@ def test_h13_web_sdk_and_headless_share_the_authoritative_result(
         assert resumed[-1]["event"] == "done"
         assert [item["data"] for item in resumed[:-1]] == page["events"]
         assert resumed[-1]["cursor"] == page["next_cursor"]
+        first_page = sdk.event_page(task_id, limit=1)
+        assert first_page["has_more"] and first_page["next_cursor"] == first["cursor"]
+        next_page = sdk.event_page(task_id, after=first_page["next_cursor"], limit=1)
+        assert next_page["events"] == page["events"][:1]
+        assert any(item["data"]["kind"] == "artifact_ready" for item in resumed[:-1])
 
         continued = sdk.send(session_id, "再次调整加法函数写法", client_id="h13-followup")
         assert continued["status"] == "completed" and len(continued["turns"]) == 2
         assert continued["task_id"] != task_id
+        assert continued["submission"]["task_id"] == continued["task_id"]
+        replayed = _headless(api, "submit", payload=payload)
+        assert replayed.returncode == 0, replayed.stderr
+        replayed_session = json.loads(replayed.stdout)
+        assert replayed_session["duplicate"]
+        assert replayed_session["task_id"] == continued["task_id"]
+        assert replayed_session["submission"] == submitted["submission"]
+        assert replayed_session["submission"]["task_id"] == task_id
+        assert len(env.captured) == 2
         exported = _headless(api, "export", session_id)
         assert exported.returncode == 0
         assert json.loads(exported.stdout) == sdk.export_session(session_id)
+
+
+def test_h13_replay_of_preparing_turn_returns_incomplete(api_env, headless_gateway):
+    session = _completed(api_env)
+    session_id = session["session_id"]
+    payload = {"client_id": "h13-preparing", "text": "再次调整加法函数写法"}
+    with api_env.engine.transaction() as conn:
+        conn.execute(
+            "INSERT INTO app.harness_session_turns(session_id,client_id,text) VALUES (%s,%s,%s)",
+            (session_id, payload["client_id"], payload["text"]),
+        )
+    replayed = _headless(headless_gateway, "send", session_id, payload=payload)
+    assert replayed.returncode == 2, replayed.stderr
+    view = json.loads(replayed.stdout)
+    assert view["duplicate"] and view["status"] == "completed"
+    assert view["submission"]["state"] == "preparing"
+    assert view["submission"]["status"] == "preparing" and view["submission"]["task_id"] is None
+    assert len(api_env.captured) == 1
 
 
 def test_h13_authentication_and_dependency_exit_codes(api_env, headless_gateway, monkeypatch):
