@@ -539,6 +539,8 @@ R00本地验收已PASS：40项、lint/mypy通过，原输入字节与账本不�
 
 ## HV4-H13：Headless、CLI 与 SDK 契约
 
+2026-11-18，后续复验通过 42 项 H13 检查和 111 项 Web／仓库分析回归。修正后台调度归属、旧提交回查、末尾事件和重启后的暂停状态。本机 18080 已运行验收源码，6 个既有会话均通过 API、CLI 和 SDK 的导出核对。[集成验收](accept/HV4-H13/integration.json)
+
 2026-11-18，H13 在本地分支 `hv4-h13` 通过 38 项工程验收，涵盖真实 PostgreSQL、Docker 和 HTTP。首次联调发现数据库未呈现 Worker 的暂停状态，修复后验证了同一 Run 的暂停、恢复与取消。[CLI 与 SDK 契约](HEADLESS.md) · [机器验收](accept/HV4-H13/accept.json)
 
 - **工作**：提供与 Web 同源的会话、提交、中断、恢复、事件订阅和产物 API；CLI 支持
