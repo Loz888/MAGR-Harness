@@ -503,7 +503,7 @@ def runner_argv(state, *args):
     return [sys.executable, "-m", "mgar_v3.cli", "runner", "--state", str(state), *args]
 
 
-def device_cli(state, *args, code=None):
+def device_cli(state, *args, code=None, timeout=35):
     # A device can run without the server's PostgreSQL or operator token.
     env = {key: value for key, value in os.environ.items() if not key.startswith("MGAR_V3_")}
     return subprocess.run(
@@ -512,7 +512,7 @@ def device_cli(state, *args, code=None):
         env=env,
         capture_output=True,
         text=True,
-        timeout=35,
+        timeout=timeout,
     )
 
 
@@ -548,9 +548,21 @@ def enroll(url, owner, state, root, name):
     return json.loads(registered.stdout), json.loads(paired.stdout)
 
 
-def test_cli_runner_uses_real_docker_and_shared_harness_receipt(settings, engine, tmp_path):
+@pytest.mark.parametrize("language", ["python", "go"])
+def test_cli_runner_uses_real_docker_and_shared_harness_receipt(
+    settings, engine, tmp_path, language,
+):
     project, state = tmp_path / "developer-only-project", tmp_path / "device-state"
-    sample_project(project)
+    if language == "go":
+        project.mkdir()
+        (project / ".env").write_text("PROJECT_SECRET=not-mounted\n")
+        (project / "go.mod").write_text("module fixture.test/runner\n\ngo 1.22\n")
+        (project / "probe_test.go").write_text(
+            'package fixture\nimport "testing"\n'
+            'func TestProbe(t *testing.T) { if 2+3 != 5 { t.Fatal("incorrect sum") } }\n',
+        )
+    else:
+        sample_project(project)
     token = settings.local_token.get_secret_value()
     assert LOCK.is_file()
     with live_server(settings, engine) as url, HarnessClient(token, api=url) as owner:
@@ -569,7 +581,7 @@ def test_cli_runner_uses_real_docker_and_shared_harness_receipt(settings, engine
         job = owner.queue_runner_job(spec["workspace_id"], client_id=str(uuid4()))
         assert job["status"] == "queued" and str(project) not in json.dumps(job)
         assert job["execution_site"]["device_id"] == identity["device_id"]
-        executed = device_cli(state, "work", "--once")
+        executed = device_cli(state, "work", "--once", timeout=150)
         assert executed.returncode == 0, executed.stderr
         assert json.loads(executed.stdout)["claimed"] is True
         result = owner.task(job["task_id"])

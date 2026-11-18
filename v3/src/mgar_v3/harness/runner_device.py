@@ -506,6 +506,7 @@ def _execute(
     claim = keeper.claim
     binding = workspace.registration
     program = Path(project.argv[0]).name
+    go_project = project.spec.project_kind == "go"
     request = ExecutionRequest(
         operation_id=claim.task_id + ":tests",
         purpose="test",
@@ -531,6 +532,8 @@ def _execute(
         allowed_commands=(program,),
         timeout_seconds=TEST_SECONDS,
         max_output_bytes=OUTPUT_BYTES,
+        scratch_mb=256 if go_project else 64,
+        memory_mb=512 if go_project else 256,
         max_calls=1,
         ttl_seconds=TEST_SECONDS + 30,
     )
