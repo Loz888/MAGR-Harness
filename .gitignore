@@ -1,0 +1,28 @@
+.env
+**/.env
+.venv/
+**/.venv/
+.venv
+**/.venv
+.local/
+**/.local/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+**/.mypy_cache
+*.pyc
+*.egg-info/
+work/
+.push-staging/
+# Local source material and raw experiment records are not part of public publication.
+v3/evidence/
+v3-upgrade/
+v31-upgrade/source/
+
+# Private benchmark assets and full remote service receipts stay with the evaluator.
+v3/experiments/harness-v4/judges/
+v3/experiments/harness-v4/benchmark-v2/judges/
+v3/experiments/harness-v4/tasks/holdout.jsonl
+v3/experiments/v34-audit-repair/holdout/
+v3/experiments/v35-harness/holdout/

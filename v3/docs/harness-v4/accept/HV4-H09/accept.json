@@ -1,0 +1,250 @@
+{
+  "card": "HV4-H09",
+  "title": "流式运行与运行中交互（事件流 / inbox / 安全点 / 暂停取消恢复）",
+  "status": "ACCEPTED",
+  "review_status": "PASS_AFTER_INDEPENDENT_RECHECK",
+  "commit": "7d8f0ab5df1d4b98ff3140af553c11bc1ca74a1c",
+  "parent_commit": "d0053f4d7bdf850f4c3c458bd36d3c10b9a3e650",
+  "depends_on": ["HV4-H04", "HV4-H05", "HV4-H06", "HV4-H07", "HV4-H08"],
+  "commit_note": "新增 harness/events.py（harness-stream-v1 追加式事件日志、重启可恢复的单调 cursor、after/limit 分页、写出前递归剥离 reasoning 类键）与 harness/inbox.py（received/applied/ignored、message_id 幂等、同 id 不同内容 409）；coding_loop.py 增加 before_model/after_model 安全点、运行中指示注入、旧模型结果在工具执行前整体丢弃（model_discarded_stale）、ask_user 等待真实回答；service.py/api.py 增加后台提交、SSE、事件分页、消息 GET/POST、cancel/pause/resume、严格 task_id 校验与如实取消回执（refund=not_promised）。未修改 broker.py/commands.py，未新增执行入口。",
+  "environment": {
+    "os": "Ubuntu-24.04 (WSL2)",
+    "python": "3.12",
+    "sandbox": "H06 docker container runtime (uid 65532), 复用 H04 IsolatedExecutionBroker + CommandSession",
+    "live": "NOT_RUN"
+  },
+  "commands": [
+    {
+      "name": "h09-tests",
+      "argv": ["uv", "run", "--frozen", "pytest", "-q", "tests/test_harness_v4_h09.py"],
+      "exit_code": 0,
+      "counts": {"tests": 10, "failures": 0, "errors": 0, "skipped": 0},
+      "purpose": "事件流/分页/重连、inbox 幂等与冲突、安全点注入、旧结果丢弃、ask_user、暂停/取消、真实容器 bugfix、HTTP 接线与畸形 task_id",
+      "log": "evidence/harness-v4/HV4-H09/independent-recheck-20261111T1600Z/h09.log",
+      "status": "PASS"
+    },
+    {
+      "name": "h04-h09-regression",
+      "argv": ["uv", "run", "--frozen", "pytest", "-q", "tests/test_harness_v4_h04.py", "tests/test_harness_v4_h05.py", "tests/test_harness_v4_h06.py", "tests/test_harness_v4_h07.py", "tests/test_harness_v4_h08.py", "tests/test_harness_v4_h09.py"],
+      "exit_code": 0,
+      "counts": {"tests": 124, "failures": 0, "errors": 0, "skipped": 0},
+      "log": "evidence/harness-v4/HV4-H09/independent-recheck-20261111T1600Z/h04-h09.log",
+      "status": "PASS",
+      "note": "单次运行通过；H06 tree_hash 用例存在已知时序抖动（见 stability_recheck），聚合计数不能保证每次逐位复现，但失败永远是显式失败，不会掩盖通过项。"
+    },
+    {
+      "name": "h00-h09-regression",
+      "argv": ["uv", "run", "--frozen", "pytest", "-q", "tests/test_harness_v4_h00.py", "tests/test_harness_v4_h01.py", "tests/test_harness_v4_h02.py", "tests/test_harness_v4_h03.py", "tests/test_harness_v4_h04.py", "tests/test_harness_v4_h05.py", "tests/test_harness_v4_h06.py", "tests/test_harness_v4_h07.py", "tests/test_harness_v4_h08.py", "tests/test_harness_v4_h09.py"],
+      "exit_code": 0,
+      "counts": {"tests": 207, "failures": 0, "errors": 0, "skipped": 0, "xfail": 0},
+      "log": "evidence/harness-v4/HV4-H09/independent-recheck-20261111T1600Z/h00-h09.log",
+      "status": "PASS",
+      "note": "209 = H00–H09 十个模块；无新增 skip/xfail，H04–H08 既有测试文件在 7d8f0ab 中零改动。"
+    },
+    {
+      "name": "ruff",
+      "argv": ["uv", "run", "--frozen", "ruff", "check", "src", "tests", "scripts"],
+      "exit_code": 0,
+      "log": "evidence/harness-v4/HV4-H09/independent-recheck-20261111T1600Z/ruff.log",
+      "status": "PASS"
+    },
+    {
+      "name": "mypy",
+      "argv": ["uv", "run", "--frozen", "mypy"],
+      "exit_code": 0,
+      "counts": {"files": 206, "errors": 0},
+      "log": "evidence/harness-v4/HV4-H09/independent-recheck-20261111T1600Z/mypy.log",
+      "status": "PASS"
+    },
+    {
+      "name": "engineering-verify",
+      "argv": ["make", "verify", "TASK=HV4-H09"],
+      "exit_code": 0,
+      "counts": {"tests": 10, "failures": 0, "errors": 0, "skipped": 0},
+      "git_commit": "7d8f0ab5df1d4b98ff3140af553c11bc1ca74a1c",
+      "source_sha256": "d81a84d3a5d0fa7660c6b23d49f14b4224db923f1cf66aea19ef2c4cc519f73d",
+      "finished_source_sha256": "d81a84d3a5d0fa7660c6b23d49f14b4224db923f1cf66aea19ef2c4cc519f73d",
+      "attempt": "evidence/HV4-H09/20261111T074931Z-dc21ed2f/",
+      "log": "evidence/harness-v4/HV4-H09/independent-recheck-20261111T1600Z/make-verify.log",
+      "status": "PASS",
+      "note": "复验方本机重跑，git_commit 与 source_sha256 均指向 7d8f0ab 源码，与实现方记录一致；live_gate=NOT_RUN。"
+    }
+  ],
+  "engineering_gate": "PASS",
+  "security_gate": "PASS",
+  "security_gate_note": "H09 没有新增执行入口：broker.py / commands.py 在 7d8f0ab 中零改动，H09 的五个改动文件中不存在 subprocess/docker/socket/pty/ctypes/eval/exec；所有命令仍走 H06 CommandSession（H04 lease/epoch/预算/scope/allowlist）。事件与消息只写入各自 task 目录（events.jsonl / inbox.json），查询前对 task_id 做 ^h08-[0-9a-f]{12}$ 全匹配，畸形与编码穿越 id 一律 400/404。SSE 每 5s 重新认证；reasoning 类键在落盘前递归剥离。取消回执只声明投递（status=cancelling, refund=not_promised），不承诺退款。",
+  "security_gate_recheck": {
+    "reviewer": "independent-readonly-recheck (child session of 6ae84d7c)",
+    "reviewed_at": "2026-11-11T16:05Z",
+    "verdict": "PASS",
+    "covered": {
+      "implementation_commit": "7d8f0ab5df1d4b98ff3140af553c11bc1ca74a1c",
+      "parent_commit": "d0053f4d7bdf850f4c3c458bd36d3c10b9a3e650",
+      "head_at_review": "7d8f0ab5df1d4b98ff3140af553c11bc1ca74a1c",
+      "worktree_clean": true,
+      "ahead_of_origin_main": 73,
+      "source_sha256": "d81a84d3a5d0fa7660c6b23d49f14b4224db923f1cf66aea19ef2c4cc519f73d",
+      "source_sha256_note": "make verify 起始/结束哈希一致，且与 7d8f0ab 提交源码一致；accept.json 由本回复验新建，未触发源码漂移。"
+    },
+    "gates": {
+      "h09": "10 passed / 0 failed / 0 skipped",
+      "h04_h09": "124 passed / 0 skipped（单次；H06 tree_hash 抖动见 stability_recheck）",
+      "h00_h09": "207 passed / 0 skipped / 0 xfail",
+      "ruff": "PASS",
+      "mypy": "PASS（206 files）",
+      "make_verify": "PASS，attempt evidence/HV4-H09/20261111T074931Z-dc21ed2f/，git_commit=7d8f0ab，source_sha256=d81a84d3…，live=NOT_RUN",
+      "test_inventory": "H04–H08 测试文件未改动；新增 tests/test_harness_v4_h09.py（10 用例）、config/verification.json 的 HV4-H09 段；无 skip/xfail。"
+    },
+    "probes": [
+      "E-01 PASS 并发事件流：8 线程 × 25 事件，落盘 cursor 1..200 连续、单行、无丢失；limit=7 逐页读取与全量完全一致（无重复无缺口）。",
+      "E-02 PASS 私密字段：payload 顶层/嵌套 dict/嵌套 list 中的 reasoning、Reasoning、reasoning_content、chain_of_thought、internal_reasoning 全部在落盘前剥离；visible 与无关键保留。",
+      "E-03 PASS 分页边界：after<0 视为 0；limit=0 钳到 1；limit=5000 钳到 1000 等效；after 超出末尾返回空且不越读。",
+      "E-04 PASS 按任务隔离：两个任务的 events.jsonl 互不串读；..、../result、h08-../../result、短 id、大写 id 全部 HARNESS_TASK_ID_INVALID/UNKNOWN，harness 根下的诱饵 result.json 不可读。",
+      "I-01/02 PASS inbox：首条 received、重复 message_id 只存一条且 duplicate=true；mark_applied 后 pending 为空、只应用一次；同 id 不同内容 → HARNESS_MESSAGE_CONFLICT(409) 且不新增记录、不改变已有状态；answer 二次提交 → ignored；非法 kind → HARNESS_MESSAGE_KIND；空白文本 → HARNESS_MESSAGE_EMPTY。",
+      "L-01 PASS 安全点注入：before_model 注入的指示出现在紧接着的下一次模型请求中，objective 同步更新；仅在该安全点生效。",
+      "L-02 PASS 旧结果丢弃：after_model 注入新指示后，旧响应被整体丢弃并记 model_discarded_stale；apply_edits 从未执行，磁盘文件字节不变（不是半应用）。",
+      "L-03 PASS ask_user 失败语义：交互超时时工具结果返回错误信息（No answer arrived in time），不含伪造答案，也没有把任务伪造成 completed。",
+      "C-01 PASS 取消：运行中 cancel → 回执 status=cancelling、refund=not_promised；任务终止于 cancelled；docker ps 无新增残留容器（复用 H04 Broker/H06 会话，未新开路径）。",
+      "C-02 PASS 暂停/恢复：暂停期间提交的 instruction 保持 received 不被应用；resume 后 applied 且只应用一次；任务最终 completed；游标连续。",
+      "S-01 PASS 无新执行入口：events.py/inbox.py/service.py/api.py/coding_loop.py 中无 subprocess/os.system/Popen/socket/docker/pty/ctypes/eval(/exec(/create_subprocess；7d8f0ab 对 broker.py 与 commands.py 的 diff 为空。",
+      "H-01 PASS 认证：/events/page、/events、/messages(GET/POST)、/cancel、/pause、/resume 未认证一律 401/403。",
+      "H-02 PASS HTTP 越界读取：not-a-task、未知合法 id、大写 id、%2e%2e、编码斜杠与双重编码路径参数在六类端点全部 400/404，响应不含其它任务内容。",
+      "H-03 PASS HTTP 分页：limit=3 逐页游标严格递增，合并后与 limit=500 全量逐条相同；末尾 next 页为空；terminal=true。",
+      "H-04 PASS SSE 重连：follow=false 的 id 序列单调且与分页一致；Last-Event-ID 与 after= 得到完全相同且无重复、无缺口的续传集合；注入的 SECRET-REASONING-HTTP 在分页与两种 SSE 响应中均不出现，visible 保留。",
+      "H-05 PASS HTTP 跨任务隔离：仅在任务 A 写入带 A-ONLY-MARKER 的事件后，A 的分页可见、B 的分页不可见；两任务真实 run_id 集合不相交；page.task_id 各自正确。",
+      "H-06 PASS HTTP 消息：终态任务 POST → 409 HARNESS_TASK_FINISHED；非法 kind → 422；运行中同 id 同文本 duplicate=true，同 id 不同文本 409 HARNESS_MESSAGE_CONFLICT 且消息文本未被覆盖；cancel 202 且 status=cancelling/refund=not_promised；最终该指令只有一条记录（applied 或 received），未重复应用。",
+      "H-07 PASS 游标参数：after=-1、limit=0、SSE after=abc 均 400；limit=100000 被钳制（返回条数 ≤ 1000）。"
+    ],
+    "stability_recheck": {
+      "target": "tests/test_harness_v4_h06.py::test_python_unittest_project_runs_and_reports_real_counts",
+      "runs": 10,
+      "failed": 8,
+      "passed": 2,
+      "failure_line": "tests/test_harness_v4_h06.py:371 assert receipt.tree_hash == before",
+      "observed": "每次失败的实测哈希都不同（83388e…、eb4c29…、d88b66…、8599b4…、cfa613…、7c5659…、bea687…、d2a494…），基线恒为 a37bb902…；pytest 垃圾回收同时报 Errno 39 Directory not empty: …/workspace/tests/__pycache__。",
+      "root_cause": "src/mgar_v3/harness/broker.py::workspace_tree_hash 只跳过 .git/.mgar，不跳过 __pycache__；而 src/mgar_v3/harness/workspace.py::_scan 的 _SKIP_PARTS 含 __pycache__/.pytest_cache。容器内 python3 -m unittest 会在挂载工作区写出 tests/__pycache__/*.pyc，命令执行前后的哈希因此不一致；哈希取值时刻与 pyc 落盘时刻竞争，决定该用例偶发通过或失败。",
+      "classification": "产品侧排除口径不一致（真实缺陷）+ 测试时序竞态，两者叠加；非 H09 引入（broker.py 在 7d8f0ab 中零改动），属 H06 既有残余。",
+      "impact": "只会产生假失败，不会产生假通过：tree_hash 用于漂移绑定，多算文件是更严格的一侧，失败关闭（用例失败 / HARNESS_PLAN_STALE）。H09 自身 10 个用例与 11 个服务级探针、7 个 HTTP 探针均稳定通过；但 H04–H09 聚合计数（124/207）不是逐次可复现的硬数字，CI 需重试或先修 H06 的排除口径。",
+      "evidence": "evidence/harness-v4/HV4-H09/independent-recheck-20261111T1600Z/stability.log"
+    },
+    "observations": {
+      "run_id_nil": "service.py:1322 以 TaskBinding(run_id=UUID(int=0)) 建任务，因此 API 驱动的每个事件 run_id 均为 00000000-0000-0000-0000-000000000000（实测每任务 25 个事件全为零 UUID）。隔离仍由每任务独立 events.jsonl + task_id 校验保证，未发现跨任务读取；但 run_id 不能用于事件归属/关联，属契约层数据质量残余。",
+      "ask_user_capability": "ask_user 的 ToolSpec capability 标为 read，实际通过 inbox 等待操作者回答，不触碰文件或命令；未扩大权限面。",
+      "web_ui": "agent.js 对事件/消息/回执统一使用 textContent，未引入 innerHTML/insertAdjacentHTML/eval，无前端注入面。"
+    },
+    "must_not_regress": [
+      "F1 before_sha256 直接上报基线摘要（未回退为二次哈希）",
+      "F2 task_id 全匹配 ^h08-[0-9a-f]{12}$（服务层与 HTTP 层，含编码点段与斜杠）",
+      "F3 证据计数与 checks 一致（本卡未涉及浏览器 E2E）",
+      "H07 弱化检测：before_sha256 语义与删除断言拦截不回退",
+      "WORKSPACE_BINARY 在非 UTF-8 变更上失败关闭",
+      "SIGKILL 残留、allowlist 仅比 argv[0] basename 等 H04/H06 既有残余如实承继",
+      "live / 付费模型门 NOT_RUN，本轮未发起任何真实模型调用"
+    ],
+    "boundaries": {
+      "real": [
+        "H06 真实容器内的确定性 bugfix/inspect 任务（10 个 H09 用例与 C-01/C-02 探针）",
+        "真实 FastAPI app + 真实令牌认证 + 真实 HTTP/SSE 路由（H-01…H-07，一次性数据库）",
+        "真实 docker 容器取消与残留检查（C-01：docker ps -a）"
+      ],
+      "synthetic": [
+        "模型侧为脚本化 provider（ScriptedModel / 确定性适配器），未接真实模型",
+        "并发事件写入（8 线程）、私密字段注入、marker 隔离事件、架构性 ask_user 超时"
+      ],
+      "not_run": [
+        "H12 付费模型冻结任务集",
+        "真实模型驱动的运行中交互 / ask_user",
+        "多操作者并发与按用户隔离（当前为单操作者本地模型）"
+      ]
+    },
+    "paid_calls": "本轮复验未发起任何真实模型调用；make verify live_gate=NOT_RUN。",
+    "evidence_path": "evidence/harness-v4/HV4-H09/independent-recheck-20261111T1600Z/",
+    "evidence_detail": {
+      "gates": ["env.log", "h09.log", "h04-h09.log", "h00-h09.log", "ruff.log", "mypy.log", "make-verify.log", "stability.log"],
+      "probes": ["probes/probe.py", "probes/probe-results.json", "probes/http_probe.py", "probes/http-results.json", "probes/stabprobe.py"]
+    }
+  },
+  "live_model_gate": "NOT_RUN",
+  "live_agent_gate": "NOT_RUN",
+  "live_publication_gate": "NOT_RUN",
+  "live_gate_note": "H09 的事件流与运行中交互均在脚本化模型下验证；真实模型、真实多客户端长连接与付费预算门仍未验收，三个 live 门记 NOT_RUN。",
+  "evidence_split": {
+    "real": [
+      "真实 H06 容器执行确定性 bugfix，取消会真正终止容器且无残留",
+      "真实 HTTP app / 鉴权 / SSE / 分页 / 消息端点，一次性数据库与临时 harness 根"
+    ],
+    "synthetic": [
+      "脚本化模型响应、并发写入压力、reasoning 注入、ask_user 超时"
+    ],
+    "not_run": [
+      "H12 冻结任务集付费模型验收",
+      "真实模型下的流式交互与中断恢复",
+      "多用户并发隔离"
+    ]
+  },
+  "must_pass": [
+    {"item": "事件流使用 harness-stream-v1 与持久化单调游标", "result": "PASS", "evidence": "E-01：8 线程并发 200 事件，cursor 1..200 连续单行；重启可恢复（_scan_cursor）。"},
+    {"item": "分页无重复无遗漏，after/Last-Event-ID 可断线重连", "result": "PASS", "evidence": "E-01/E-03/H-03/H-04：分页合并 == 全量；Last-Event-ID 与 after 续传集合一致且无重复。"},
+    {"item": "事件按任务隔离，不能读到其它任务事件", "result": "PASS", "evidence": "E-04/H-05：每任务独立 events.jsonl；marker 只在所属任务可见；真实 run_id 不相交。"},
+    {"item": "reasoning 等私密字段不落盘、不上线", "result": "PASS", "evidence": "E-02/H-04：嵌套 dict/list 的 reasoning 类键在写盘前剥离；分页与 SSE 文本均无密钥。"},
+    {"item": "inbox 幂等：重复 message_id 只应用一次，同 id 不同内容 409 且不改状态", "result": "PASS", "evidence": "I-01/02/H-06：duplicate=true、单条记录；冲突 409 且文本/状态不变；answer 二次提交 ignored。"},
+    {"item": "运行中指示只在安全点生效，旧模型结果整体丢弃", "result": "PASS", "evidence": "L-01/L-02：before_model 进入下一次请求；after_model 注入后旧响应丢弃、apply_edits 未执行、文件字节不变。"},
+    {"item": "ask_user 无回答时不伪造成已完成", "result": "PASS", "evidence": "L-03：超时返回错误结果，无伪造答案，任务未被标记 completed。"},
+    {"item": "取消真正终止在跑命令与容器，复用 H04 Broker，回执不夸大", "result": "PASS", "evidence": "C-01：status=cancelling、refund=not_promised、终态 cancelled、无残留容器；broker/commands 零改动。"},
+    {"item": "暂停/恢复后 lease/epoch/预算语义成立，暂停中指令不丢失不越权", "result": "PASS", "evidence": "C-02：暂停中 received，resume 后 applied 一次，最终 completed；控制走 TaskControl 安全点，不绕过 lease。"},
+    {"item": "严格 task_id 与游标校验，畸形输入失败关闭", "result": "PASS", "evidence": "E-04/H-02/H-07：穿越/编码/未知 id 400/404；after<0、limit<1、非数字游标 400。"},
+    {"item": "不新增执行入口", "result": "PASS", "evidence": "S-01：H09 五文件无执行原语；broker.py/commands.py 无 diff。"},
+    {"item": "不弱化既有测试，既有门禁不回退", "result": "PASS", "evidence": "H04–H09 124 passed、H00–H09 207 passed、0 skip/xfail、ruff/mypy 通过；H06 tree_hash 抖动为既有残余，已单列。"}
+  ],
+  "deviations": [
+    {
+      "issue": "API 驱动任务的事件 run_id 恒为零 UUID",
+      "handling": "隔离与查询均按 task_id/独立文件，未造成跨任务泄露；作为数据质量残余记录，未在本卡扩大范围修复（7d8f0ab 未改该处）。"
+    },
+    {
+      "issue": "H06 用例 tree_hash 偶发失败",
+      "handling": "判定为产品侧排除口径不一致叠加时序竞态，非 H09 引入；本卡如实记录其对聚合计数复现性的影响，不修改源码或测试。"
+    }
+  ],
+  "residual_limits": [
+    "H06 broker.workspace_tree_hash 未排除 __pycache__（与 workspace._scan 口径不一致），容器写字节码会让命令前后哈希不稳；表现为 H06 用例假失败，失败关闭、不产生假通过，但使 H04–H09 聚合计数非逐次可复现。",
+    "API 提交的任务事件 run_id 恒为 UUID(int=0)，事件无法按 run_id 关联；task_id 与文件隔离仍然成立。",
+    "取消只保证投递与容器终止，refund=not_promised；不承诺预算回滚或 GPU/外部资源回收。",
+    "SSE 客户端断线检测依赖客户端断开与 5s 重认证窗口；不支持跨进程事件总线，多实例部署未验证。",
+    "ask_user 等待 600s 超时，超时按工具错误返回；真实模型下的交互体验未验证。",
+    "承接 H08：增量 diff 遇非 UTF-8 变更以 WORKSPACE_BINARY 失败关闭；承接 H05/H06/H07：SIGKILL 残留、allowlist 仅比 argv[0] basename、占位残留、弱化检测启发式等残余未变。",
+    "仍是单操作者本地模型：持本地令牌者可读取本 harness 根下所有任务，无按用户隔离。",
+    "live 门与 H12 付费模型冻结任务集未验收；本轮未发起真实模型调用。"
+  ],
+  "artifacts": {
+    "contract": "docs/harness-v4/CODING_LOOP.md",
+    "events": "src/mgar_v3/harness/events.py",
+    "inbox": "src/mgar_v3/harness/inbox.py",
+    "loop": "src/mgar_v3/harness/coding_loop.py",
+    "service": "src/mgar_v3/harness/service.py",
+    "api": "src/mgar_v3/api.py",
+    "web": ["web/agent.html", "web/agent.css", "web/agent.js"],
+    "tests": "tests/test_harness_v4_h09.py",
+    "verification": "config/verification.json",
+    "verify_attempt": "evidence/HV4-H09/20261111T074931Z-dc21ed2f/",
+    "recheck_evidence": "evidence/harness-v4/HV4-H09/independent-recheck-20261111T1600Z/"
+  },
+  "next_card": "HV4-H10",
+  "next_card_status": "NOT_STARTED_PENDING_IMPLEMENTATION",
+  "record_reconciliation_20261111": {
+    "record": "docs/harness-v4/RECORD_RECONCILIATION_20261111.json",
+    "sections": [
+      "h09_errata",
+      "hash_boundary_recheck"
+    ],
+    "final_hash_recheck_record": "docs/harness-v4/accept/HV4-H09/workspace-hash-recheck-20261111.json",
+    "note": "207/209 inventory and zero-run_id scope errata are appended in the reconciliation record. The old __pycache__ residual remains bound to 7d8f0ab; narrower hash candidate final independent recheck is pending. No historical counts/verdict/residual text is replaced."
+  },
+  "workspace_hash_recheck": {
+    "status": "PASS_AFTER_INDEPENDENT_RECHECK",
+    "source_commit": "096300eed8946086f99e331ae4c8c9c733108ff9",
+    "source_sha256": "915092c7504d95c31b88ea1e8fdb10722506d96cf31c841647944a7da9786331",
+    "record": "docs/harness-v4/accept/HV4-H09/workspace-hash-recheck-20261111.json",
+    "scope": "Scoped follow-up for cache/configuration hash boundaries; original accept and residual_limits remain historical."
+  }
+}

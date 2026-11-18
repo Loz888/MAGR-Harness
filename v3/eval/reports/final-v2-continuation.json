@@ -1,0 +1,8 @@
+{
+  "_public_export": {
+    "original_record_sha256": "607432db189cde582db635b4391a84498baa5de9bbf547f58eb0a306c2795887",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "schema": "r6-explicit-supervision-continuation-v1",
+  "scope": "supervision_only_no_reruns_no_new_grant"
+}

@@ -1,0 +1,120 @@
+{
+  "schema": "h12-v2-quality-acceptance-v1",
+  "card": "HV4-H12",
+  "recorded_at": "2026-11-13T08:03:59.745098+00:00",
+  "status": "FAIL",
+  "decision_reason": "DEV_THRESHOLD_MATHEMATICALLY_UNREACHABLE",
+  "release_status": "MVP_NOT_RELEASED",
+  "source_commit": "d8ee974",
+  "local_branch": "h12-quality-v2-20261113",
+  "candidate_source_sha256": "600c8b9e39be0faa1aa9f7fd4796bbefcee9b672e8c62f3b86142fa6cf13947c",
+  "experiment_id": "hv4-h12-v2-20261113-d8ee974",
+  "freeze": {
+    "path": ".local/h12/benchmark-v2/freeze-manifest-d8ee974.json",
+    "sha256": "d62b707b5039b5ab68aea21363386b55da09501b2f630d129f05dfb416f3cc3e"
+  },
+  "thresholds": {
+    "dev": 10,
+    "holdout": 9,
+    "denominator_each": 12
+  },
+  "zero_model_readiness": {
+    "dev": {
+      "path": "evidence/harness-v4/HV4-H12-V2-FREEZE/dev-readiness-d8ee974/readiness-v4.json",
+      "sha256": "bcc4d9ed56d0abe582329ecb3dbf9d6bd03486d5e64bc015e8a1ca6a629e6654"
+    },
+    "holdout": {
+      "path": ".local/h12/independent-holdout-v2-20261113/zero-model-readiness-d8ee974-executed-v5.json",
+      "sha256": "ce387dbbd279a14cdbb5d27d043211cf2009778e738b768b2fdc4eae7b2229fd"
+    },
+    "dev_ready": 12,
+    "holdout_ready": 12
+  },
+  "engineering": {
+    "registered_h12": {
+      "path": "evidence/harness-v4/HV4-H12-V2-REGISTERED-d8ee974/HV4-H12/20261113T075913Z-0ae1c869/result.json",
+      "sha256": "73ceb65496ac05e13fb4b3639a54831e33c6dc425454b114ad598755321a5608"
+    },
+    "registered_counts": {
+      "tests": 441,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "related_context_and_recovery_tests": {
+      "passed": 87,
+      "failures": 0
+    },
+    "lint": "PASS_CHANGED_FILES",
+    "typecheck": "PASS_CHANGED_SOURCE",
+    "current_source_aggregate": "NOT_RUN",
+    "aggregate_limitation": "Historical H04/H06 global-container assertions see an active prior offline fixture; stopping that running container was rejected by automatic approval review."
+  },
+  "live_dev": {
+    "pass_count": 0,
+    "fail_count": 3,
+    "not_run_count": 9,
+    "maximum_possible_pass_count": 9,
+    "threshold_met": false,
+    "cases": [
+      {
+        "task_id": "hv4-dev-click-help-name",
+        "status": "FAIL",
+        "reason": "budget_model_calls",
+        "candidate_status": "budget_exhausted",
+        "judge_status": "NOT_RUN",
+        "model_calls": 20,
+        "cost_micros": 85967,
+        "score": {
+          "path": "evidence/harness-v4/HV4-H12-V2-LIVE/d8ee974/candidate/dev/hv4-dev-click-help-name/score.json",
+          "sha256": "d31092f1480535eb4be7d8cd4fe6a353e769621b9f0de84f8298b9e2d8c2eca3"
+        }
+      },
+      {
+        "task_id": "hv4-dev-requests-http-url-helper",
+        "status": "FAIL",
+        "reason": "independent_judge_not_passed",
+        "candidate_status": "completed",
+        "judge_status": "FAIL",
+        "model_calls": 9,
+        "cost_micros": 29576,
+        "score": {
+          "path": "evidence/harness-v4/HV4-H12-V2-LIVE/d8ee974/candidate/dev/hv4-dev-requests-http-url-helper/score.json",
+          "sha256": "23558212508c204b7b484d7cc35957adb704fef670d23639b442752f0bca288d"
+        }
+      },
+      {
+        "task_id": "hv4-v2-dev-requests-quoted-content-type",
+        "status": "FAIL",
+        "reason": "no_progress",
+        "candidate_status": "blocked",
+        "judge_status": "PASS",
+        "model_calls": 15,
+        "cost_micros": 64810,
+        "score": {
+          "path": "evidence/harness-v4/HV4-H12-V2-LIVE/d8ee974/candidate/dev/hv4-v2-dev-requests-quoted-content-type/score.json",
+          "sha256": "5116b56e758e5e9521890b29c845dcfc9ecd19d8cc421d1a371a1c0ceb15f83c"
+        }
+      }
+    ]
+  },
+  "live_holdout": {
+    "status": "NOT_RUN",
+    "reason": "DEV_GATE_FAIL",
+    "not_run_count": 12
+  },
+  "shared_budget": {
+    "limit_micros": 12000000,
+    "reserved_micros": 0,
+    "settled_micros": 1316981,
+    "used_calls": 305,
+    "call_limit": 1536,
+    "unknown_model_calls": 0,
+    "classification": "conservative_peak_price_bound_not_invoice"
+  },
+  "original_h12_scores_preserved": true,
+  "prior_v2_attempts_preserved": true,
+  "paid_holdout_calls_this_revision": 0,
+  "pushed": false,
+  "h13_started": false
+}

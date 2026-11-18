@@ -1,0 +1,83 @@
+{
+  "version": "harness-r07-public-boundary-matrix-v1",
+  "scope": "PUBLIC_SYNTHETIC_DEVELOPMENT_SUPPLEMENT",
+  "historical_catalog_changed": false,
+  "actual_h12_benchmark_refrozen": false,
+  "new_holdout_created": false,
+  "cases": [
+    {
+      "case_id": "r07-public-unknown_argv",
+      "category": "unknown_remaining_argv",
+      "language": "python",
+      "project": "public/python-argv",
+      "asset": "tests/fixtures/h12_r07/unknown_argv_public.py",
+      "asset_sha256": "02261d95ef9d16c0642ba8f7cef7747cecb669ee2d08111509e09d134cd9de66",
+      "positive_and_negative_required": true,
+      "negative_expected": "FAIL with actual public test identities"
+    },
+    {
+      "case_id": "r07-public-quoted_delimiter",
+      "category": "quoted_delimiter",
+      "language": "javascript",
+      "project": "public/node-delimiter",
+      "asset": "tests/fixtures/h12_r07/quoted_delimiter_public.cjs",
+      "asset_sha256": "01fb27b5b55cd81fb6e1a6c89bba0956077f61d3a50ad94db873118e03e08726",
+      "positive_and_negative_required": true,
+      "negative_expected": "FAIL with actual public test identities"
+    },
+    {
+      "case_id": "r07-public-module_import",
+      "category": "module_entry_import",
+      "language": "python",
+      "project": "public/python-module",
+      "asset": "tests/fixtures/h12_r07/module_import_public.py",
+      "asset_sha256": "d95b50130ce89e227d586ac7f12f918cab807b40f57177bc314532806187b35e",
+      "positive_and_negative_required": true,
+      "negative_expected": "FAIL with actual public test identities"
+    },
+    {
+      "case_id": "r07-public-light_import",
+      "category": "lightweight_import_regression",
+      "language": "go",
+      "project": "public/go-import",
+      "asset": "tests/fixtures/h12_r07/light_import_public_test.go",
+      "asset_sha256": "7e4ea0f3101bc369e694c82cb12ed015564d539fcc2d61326cf1b955a522c66b",
+      "positive_and_negative_required": true,
+      "negative_expected": "BLOCKED with null test counts"
+    },
+    {
+      "case_id": "r07-public-readiness",
+      "category": "readiness",
+      "language": "javascript",
+      "project": "public/node-http",
+      "asset": "tests/fixtures/h12_r07/server_public.cjs",
+      "asset_sha256": "e9ef0a2fbdb62c62a32d6de65e71ce992e98bed8ca562d54a509d968b696ffa0",
+      "positive_and_negative_required": true,
+      "negative_expected": "readiness false; owned processes still cleaned"
+    },
+    {
+      "case_id": "r07-public-cleanup",
+      "category": "cleanup",
+      "language": "javascript",
+      "project": "public/node-http",
+      "asset": "tests/fixtures/h12_r07/server_public.cjs",
+      "asset_sha256": "e9ef0a2fbdb62c62a32d6de65e71ce992e98bed8ca562d54a509d968b696ffa0",
+      "positive_and_negative_required": true,
+      "negative_expected": "graceful false; forced cleanup completes"
+    }
+  ],
+  "languages": [
+    "go",
+    "javascript",
+    "python"
+  ],
+  "projects": [
+    "public/go-import",
+    "public/node-delimiter",
+    "public/node-http",
+    "public/python-argv",
+    "public/python-module"
+  ],
+  "real_model_quality_claimed": false,
+  "note": "Engineering public regression supplement; R08 must bind project-specific revised plans and a fresh unseen holdout, without rewriting historical scores."
+}

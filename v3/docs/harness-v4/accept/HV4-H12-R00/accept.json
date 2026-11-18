@@ -1,0 +1,32 @@
+{
+  "_public_export": {
+    "original_record_sha256": "86f6b40ac521c7b57fa55ebc09378dace3f1570764a58e24971b91b9f8d60c09",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "card": "HV4-H12-R00",
+  "status": "PASS",
+  "recorded_at": "2026-11-15T10:07:02.857131+00:00",
+  "scope": "LOCAL_BASELINE_FREEZE_AND_EVIDENCE_VERIFICATION_ONLY",
+  "source_commit": "f3390e6367b3232cf54e3c0fa572b3df591ef8fa",
+  "source_sha256": "6bff0896ec4c15e8c3322d7c8688afd88b8a6676d8fb8fe09f227600abaa4636",
+  "baseline_commit": "3804a401c2d52fd18291990c9a886b4772db420a",
+  "baseline_source_sha256": "81f17c419139c832ee20199d9390b3f941445079af55978ffdc3bbdb69134cc8",
+  "branch": "hv4-h12-r00-20261115",
+  "engineering_gate": "PASS",
+  "security_gate": "NOT_RUN",
+  "live_model_gate": "NOT_RUN",
+  "live_agent_gate": "NOT_RUN",
+  "live_publication_gate": "NOT_RUN",
+  "mvp": "NOT_RELEASED",
+  "h12_quality": "FAIL",
+  "h13": "NOT_STARTED",
+  "counts": {
+    "tests": 40,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "status_field_occurrences": {
+    "PASS": 8
+  }
+}

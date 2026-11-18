@@ -1,0 +1,165 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "harness-independent-report-v1",
+      "default": "harness-independent-report-v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "receipt_id": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Receipt Id",
+      "type": "string"
+    },
+    "producer": {
+      "const": "independent-runner",
+      "default": "independent-runner",
+      "title": "Producer",
+      "type": "string"
+    },
+    "task_id": {
+      "title": "Task Id",
+      "type": "string"
+    },
+    "experiment_id": {
+      "title": "Experiment Id",
+      "type": "string"
+    },
+    "execution_task_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Execution Task Id"
+    },
+    "run_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Run Id"
+    },
+    "execution_epoch": {
+      "anyOf": [
+        {
+          "minimum": 1,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Execution Epoch"
+    },
+    "phase": {
+      "enum": [
+        "baseline",
+        "final"
+      ],
+      "title": "Phase",
+      "type": "string"
+    },
+    "role": {
+      "default": "public_regression",
+      "enum": [
+        "public_regression",
+        "target_behavior"
+      ],
+      "title": "Role",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "NOT_RUN",
+        "BLOCKED"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "tree_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Tree Hash",
+      "type": "string"
+    },
+    "observed_tree_before": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Observed Tree Before",
+      "type": "string"
+    },
+    "observed_tree_after": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Observed Tree After",
+      "type": "string"
+    },
+    "public_tests_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Public Tests Hash",
+      "type": "string"
+    },
+    "plan_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Plan Hash",
+      "type": "string"
+    },
+    "environment_spec_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Environment Spec Hash",
+      "type": "string"
+    },
+    "image_id": {
+      "title": "Image Id",
+      "type": "string"
+    },
+    "suite_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Suite Ids",
+      "type": "array"
+    },
+    "receipt_refs": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Receipt Refs",
+      "type": "array"
+    },
+    "detail": {
+      "title": "Detail",
+      "type": "string"
+    }
+  },
+  "required": [
+    "receipt_id",
+    "task_id",
+    "experiment_id",
+    "phase",
+    "status",
+    "tree_hash",
+    "observed_tree_before",
+    "observed_tree_after",
+    "public_tests_hash",
+    "plan_hash",
+    "environment_spec_hash",
+    "image_id",
+    "suite_ids",
+    "receipt_refs",
+    "detail"
+  ],
+  "title": "IndependentRegressionReport",
+  "type": "object"
+}

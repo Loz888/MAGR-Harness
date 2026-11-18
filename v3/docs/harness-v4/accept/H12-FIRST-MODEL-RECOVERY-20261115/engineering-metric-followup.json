@@ -1,0 +1,22 @@
+{
+  "_public_export": {
+    "original_record_sha256": "652648796f7f60df4b83fa4abb013ef57c6bba00a19790092699a9060b14c28d",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "schema": "h12-post-sample-metric-repair-engineering-v1",
+  "recorded_at": "2026-11-15T08:18:17.784416+00:00",
+  "source_commit": "c58d0eb79a1eda4eb3aaecc7ce731f911d48ffb8",
+  "source_sha256": "81f17c419139c832ee20199d9390b3f941445079af55978ffdc3bbdb69134cc8",
+  "status": "PASS",
+  "counts": {
+    "tests": 253,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "mypy_source_files": 256,
+  "paid_model_calls": 0,
+  "status_field_occurrences": {
+    "PASS": 1
+  }
+}

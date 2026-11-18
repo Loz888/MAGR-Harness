@@ -1,0 +1,30 @@
+{
+  "schema": "h12-benchmark-revision-proposal-v1",
+  "revision": "h12-benchmark-v2",
+  "status": "DRAFT_NOT_FROZEN",
+  "user_authorized": true,
+  "original_catalog_unchanged": true,
+  "dev_catalog_sha256": "b5006b3a60a9b2bc1eda5fa4774a573475b6ac5da262a92bef4838e3b0d7df41",
+  "dev_replacement": "hv4-v2-dev-requests-quoted-content-type",
+  "holdout_status": "NEW_INDEPENDENT_CATALOG_REQUIRED",
+  "thresholds": {
+    "dev": 10,
+    "holdout": 9,
+    "denominator_each": 12
+  },
+  "budget": {
+    "shared_original_authorization": true,
+    "max_cost_micros": 12000000
+  },
+  "paid_dispatch": "BLOCKED_UNTIL_COMPLETE_FREEZE_AND_ALL_READINESS",
+  "pending": [
+    "Prove replacement baseline and judge adequacy",
+    "Resolve Got public benchmark flakes in a versioned protocol",
+    "Curate new independent holdout and bind public assets to exact source",
+    "Complete and hash-bind both judge registries",
+    "Integrate explicit revision dispatch without weakening original gates",
+    "Run full zero-model readiness, freeze candidate, then dev/live and independent holdout"
+  ],
+  "dev_registry_sha256": "ec0ee13aa2ea25e390dac20a5b341c1d9b6c24bb8a6d323231ca970f0e537cb8",
+  "public_amendments_sha256": "b792f594b8b97efd5c255f210cf706b6c0384233157a6bad556d4088d6ced5bf"
+}

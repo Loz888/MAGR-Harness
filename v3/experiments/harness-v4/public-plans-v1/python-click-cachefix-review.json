@@ -1,0 +1,113 @@
+{
+  "assets_unchanged": true,
+  "changes": {
+    "execution_environment": "trusted investigate entry appends scratch cache_dir to existing PYTEST_ADDOPTS; workspace remains read-only",
+    "sandbox_scratch_mb": 256,
+    "task_model_token_tool_usd_calls_deadline": "UNCHANGED"
+  },
+  "cost_micros": 0,
+  "current_attempt": {
+    "assertion_path": "tests/test_help_name_public.py::test_argument_named_help_keeps_its_value",
+    "cache_directory": "/scratch/pytest-cache",
+    "evidence": {
+      "attempt.json": {
+        "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/broker-originals-cachefix/hv4-dev-click-help-name/attempt.json",
+        "sha256": "36af35dc58945ccfebb467a10e8fc66e227b3b85b5c533ea3d2a17007c70c2c5"
+      },
+      "probe-receipt.json": {
+        "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/broker-originals-cachefix/hv4-dev-click-help-name/probe-receipt.json",
+        "sha256": "215a487d3ca91e40bf2c45376ba6a89cc00aa8cef6510fef194c20f24c735d5a"
+      },
+      "probe.log": {
+        "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/broker-originals-cachefix/hv4-dev-click-help-name/probe.log",
+        "sha256": "be86a8c327c2d207be6555e10973f2481d5771a8fdcef463508403b16d73d7f5"
+      },
+      "regression-receipt.json": {
+        "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/broker-originals-cachefix/hv4-dev-click-help-name/regression-receipt.json",
+        "sha256": "79f9e59b4d32a46239e5ab4e032375f0f2d6ac82e664bb99c570a71761ca6184"
+      },
+      "regression.log": {
+        "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/broker-originals-cachefix/hv4-dev-click-help-name/regression.log",
+        "sha256": "a965ce800fce20631d98c37f5aa62a42b6441432a12fcd042f6eb9abc742d735"
+      },
+      "result.json": {
+        "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/broker-originals-cachefix/hv4-dev-click-help-name/result.json",
+        "sha256": "5d8dc92caebc913c0ea5167a3ece9ad6380ac67b0b8de2ac9d7196be6e086b6b"
+      }
+    },
+    "facts": {
+      "blockers": [],
+      "probe_outcome": "red",
+      "regression_failed": 1,
+      "regression_skipped": 0,
+      "regression_status": "failed",
+      "regression_tests": 1,
+      "status": "READY"
+    },
+    "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/broker-originals-cachefix/hv4-dev-click-help-name/result.json",
+    "regression_argv": [
+      "python3",
+      "-B",
+      "-m",
+      "pytest",
+      "tests/test_help_name_public.py"
+    ],
+    "scratch_mb": 256,
+    "sha256": "5d8dc92caebc913c0ea5167a3ece9ad6380ac67b0b8de2ac9d7196be6e086b6b",
+    "tree_after": "f4f0c1a5988ccc66a606fafefe2d24492fb8420b273335b40e9e06ff61f22f21",
+    "tree_before": "f4f0c1a5988ccc66a606fafefe2d24492fb8420b273335b40e9e06ff61f22f21"
+  },
+  "frozen_manifest": {
+    "path": "experiments/harness-v4/public-plans-v1/manifests/hv4-dev-click-help-name.json",
+    "sha256": "cc0f99757e61cff25b80992efa17730e6432c1aa84f4bfdf0c050635542caecf"
+  },
+  "new_real_unit": {
+    "checks": [
+      "actual Broker + CommandSession readonly container",
+      "synthetic preconfigured --strict-markers remains in PYTEST_ADDOPTS",
+      "pytest cache read/write succeeds in scratch under warnings=error",
+      "workspace file write denied and source tree hash unchanged"
+    ],
+    "earlier_fixture_failures": [
+      {
+        "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/cache-test.log",
+        "sha256": "2d2f5cb32e4776d741b35dbc2be57c35aae1f8e420d7fcbb54411750b144c94c"
+      },
+      {
+        "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/cache-test-v2.log",
+        "sha256": "f018733203bb6000bce0acbf0dd341f93ca8f02cb8123fbe14e9b54ea9b0d973"
+      },
+      {
+        "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/cache-test-v3.log",
+        "sha256": "acdb2b67adc29f50200f8a8f427ad200df29a281981e322a59e46646a754aaee"
+      }
+    ],
+    "earlier_fixture_failures_explanation": "Test harness setup only: initial chmod ancestor walk, missing lease epoch, then request epoch mismatch. None reached the target container; all failure logs retained.",
+    "environment_fixture": "A test-only create-args wrapper configures the container option as an image would; no production environment override or model permission is added.",
+    "failed": 0,
+    "junit": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/cache-test-v4.junit.xml",
+    "log": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/cache-test-v4.log",
+    "passed": 1,
+    "skipped": 0,
+    "source_sha256": "f3b20f390200d97a2b92825e56d49adeaa82862d861f26fdd928481531c8e54a",
+    "test": "tests/test_h12_readonly_pytest_cache.py"
+  },
+  "old_asset_unit_15_and_prior_128": "NOT_RERUN",
+  "paid_model_calls": 0,
+  "previous_attempt": {
+    "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/broker-originals/hv4-dev-click-help-name/result.json",
+    "preserved": true,
+    "sha256": "68e70dda89354316e914146f187d2b9a73cf13b3c32dce56e8133f9dd692e174",
+    "status": "NOT_RUN"
+  },
+  "quality_status": "NOT_RUN",
+  "requests_two_previously_passing_originals": "NOT_RERUN",
+  "schema": "h12-python-click-cachefix-retest-v1",
+  "source_snapshot_at_record": {
+    "src/mgar_v3/harness/broker.py": "bd2d72bfde0765cc3c5ce64bcb2fa1b787ca79cb5c66e23d8c121c2282dde557",
+    "src/mgar_v3/harness/contracts.py": "2b304e681db7c2d5abb9da738860580478cc1bffa02488c1789b50894d94ae4f",
+    "src/mgar_v3/quality_eval/h12_public_readiness.py": "314f8c18280ef3eea28c52703a97d2fc412b366ca49b514cbce3dc4a38cbbb22"
+  },
+  "status": "READY",
+  "task_id": "hv4-dev-click-help-name"
+}

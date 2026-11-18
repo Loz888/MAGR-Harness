@@ -1,0 +1,17 @@
+{
+  "_public_export": {
+    "original_record_sha256": "36830f067604ecc9be818066df1a9a2211743567045c6fa655bd8be20d7a1856",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "schema": "h12-owner-bill-continuation-v1",
+  "source_sha256": "494ad6d3c0114ecea8e2d8c47900bd34803f364de9cbb37b6f7d40c7c59f94d0",
+  "thresholds": {
+    "dev": 10,
+    "holdout": 9,
+    "denominator": 12
+  },
+  "status_field_occurrences": {
+    "UNKNOWN": 1,
+    "FAIL": 5
+  }
+}

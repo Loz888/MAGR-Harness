@@ -1,0 +1,69 @@
+{
+  "_public_export": {
+    "original_record_sha256": "8b5386dd719cfc5053d83a69895977cd5ea8968428e6de73386d97946fd7bc83",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "schema": "h12-r08-read-size-reassessment-v4",
+  "at": "2026-11-18T02:23:20.891613+00:00",
+  "status": "PASS",
+  "scope": "only_remaining_development_failure",
+  "development_counts": {
+    "PASS": 1
+  },
+  "source_commit": "33e39a4c18043613965d4490fd4001b3b5da5524",
+  "source_sha256": "387a6577c3cb9c7b82a568bbc1d4c5f188489df9c51b27066d47d8537c746165",
+  "model": "deepseek-flash",
+  "first_sample_only": true,
+  "serial_dispatch": true,
+  "new_physical_calls": 7,
+  "new_upper_cost_micros": 47628,
+  "original_scores_verified": 128,
+  "old_passes_combined": false,
+  "engineering": {
+    "collected_only": 896,
+    "full_suite_run": false
+  },
+  "thresholds": {
+    "dev": 10,
+    "holdout": 9,
+    "denominator_each": 12
+  },
+  "remaining_development": 11,
+  "remaining_development_status": "NOT_RUN_BY_USER_SCOPE",
+  "formal_same_source_development": "NOT_FULLY_EVALUATED",
+  "formal_h12_pass": false,
+  "mvp_released": false,
+  "latest_observations_are_mixed_source": true,
+  "all_reassessment_calls": 23,
+  "all_reassessment_upper_micros": 127490,
+  "all_reassessment_model_runs": 4,
+  "heldout_aggregate": {
+    "status": "NOT_RUN_NOT_ADMITTED",
+    "count": 12
+  },
+  "development": [
+    {
+      "task_id": "r08-dev-05-requests-http-url-helper",
+      "status": "PASS",
+      "reason": "verified",
+      "candidate_status": "completed",
+      "split": "dev",
+      "model_calls": 7,
+      "tool_calls": 17,
+      "input_tokens": 123319,
+      "output_tokens": 8858,
+      "wall_seconds": 514.0278625590145,
+      "compaction_count": 0,
+      "independent_judge_status": "PASS",
+      "independent_public_regression_status": "PASS",
+      "new_regression_failures": 0,
+      "regression_evidence_known": true,
+      "acceptance_integrity_status": "PASS",
+      "output_integrity_status": "PASS",
+      "lifecycle_integrity_status": "PASS"
+    }
+  ],
+  "status_field_occurrences": {
+    "PASS": 7
+  }
+}

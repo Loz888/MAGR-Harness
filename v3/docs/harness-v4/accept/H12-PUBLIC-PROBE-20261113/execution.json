@@ -1,0 +1,111 @@
+{
+  "generated_at": "2026-11-13T10:35:09.819760+00:00",
+  "engineering": "PASS_IN_RECORDED_SCOPES_NOT_FULL_CURRENT_RERUN",
+  "live": "NOT_RUN",
+  "new_model_calls": 0,
+  "private_judge_read": false,
+  "holdout_read": false,
+  "scope": "Public DTO, strict controller asset and result normalization, opt-in Broker readonly mount only. Budget/PG/loop/profile routing remain parent-owned.",
+  "current_unique_tests": 39,
+  "accounting": "Historical 38 execution tests retain their original source hashes. The new strict verifier file has 39 distinct cases covered by an initial 36 PASS plus three newly added task-kind guard PASS; neither the earlier 36 nor historical 38 were rerun for these additions.",
+  "verified": [
+    "Actual Docker/CommandSession original-tree assertion red, host-controlled source fix, identical frozen readonly public probe green with separate bound tree and raw/derived receipt identities.",
+    "Controller file mounted outside workspace, readonly, single file only. Adjacent unapproved asset is absent. Only exact fixed argv receives the mount.",
+    "Constructor pairs plan/root and denies controller root under workspace. Original actor/epoch/execute authority remains effective.",
+    "No-follow root/hash directory/file, bounded regular asset and SHA check; symlink/FIFO/directory and changed bytes fail closed.",
+    "Held inode and container-entry SHA check reject an actual same-inode content swap before command execution.",
+    "Public asset reads hash-check returned bytes again, preventing a host mutation after initial pin from reaching a model response.",
+    "Exact single JSON frame with newline EOF, no stderr/extra output, duplicate-key/case rejection, exact case identity set, exit-code/status consistency, explicit log completeness/limits/hash and provenance/tree binding.",
+    "Import/collection-style errors, timeout, skipped and xfailed output never count as baseline assertion red or candidate green.",
+    "Known archived receipts preserve their original generating epoch and provenance, never re-sign as a newly executed request."
+  ],
+  "limits": [
+    "Only newly frozen opt-in python-json-v1 public assets; no arbitrary argv, model payload, shell or python-c tool was added.",
+    "The public probe is engineering evidence, not a tamper-proof semantic oracle or independent private Judge.",
+    "Normalizer requires actual complete log and lease byte cap from caller; service must preserve same Broker/authority and before/after current fence and budget accounting.",
+    "No historical freeze, main worktree, paid provider, new holdout or private Judge was changed or used."
+  ],
+  "logs_note": "Preserved command summaries and explicit failure excerpts, not represented as complete captured stdout. Final root registered run retains complete logs.",
+  "evidence": [
+    "evidence/harness-v4/H12-PUBLIC-PROBE-20261113/execution/first-metadata-failure.log",
+    "evidence/harness-v4/H12-PUBLIC-PROBE-20261113/execution/fixture-constructor-error.log",
+    "evidence/harness-v4/H12-PUBLIC-PROBE-20261113/execution/complete-35-pass.log",
+    "evidence/harness-v4/H12-PUBLIC-PROBE-20261113/execution/new-boundaries-first.log",
+    "evidence/harness-v4/H12-PUBLIC-PROBE-20261113/execution/new-boundary-corrected.log",
+    "evidence/harness-v4/H12-PUBLIC-PROBE-20261113/execution/asset-read-race-pass.log",
+    "evidence/harness-v4/H12-PUBLIC-PROBE-20261113/execution/final-static.log"
+  ],
+  "source_sha256": {
+    "src/mgar_v3/harness/public_probe.py": "6e1e0d43735ba5918e1bc7220034e7797ebdebff833db665ab3eefee1a374af9",
+    "src/mgar_v3/harness/public_probe_types.py": "049551a60ff9778ff1dce6add4687f62ead498312cecf78cfbd1c2b2a55e4980",
+    "src/mgar_v3/harness/contracts.py": "a514a0403dfb7bd13c3a0a77df43b4f316788675623c255e377cd65d94305b6c",
+    "src/mgar_v3/harness/adapters.py": "8d733c6c102e46e7acdf9be73cf254b8f117a2a31b86f7fe165665ec92589aa7",
+    "src/mgar_v3/harness/coding_loop.py": "1bb6c021e6de76ea1e8db5c781c7f697b89ffde2032480f891d52dbda8354caa",
+    "src/mgar_v3/harness/service.py": "2aa5f4441808eabd2ea537535c9a7172a5a8a0dfae8836841bbcc75b21a076ba",
+    "tests/test_public_probe_verification.py": "e3c343fe6f4a83951a6a12482e327be9984f9ae0d8a11712f4fa6e9f60cec5b0",
+    "tests/test_public_probe_service_feedback.py": "c51356d4f94e7d43f6b3b9314f143ca0bc99d562c48ccfff161c1511c65b6f91"
+  },
+  "historical_execution_before_strict_plan_embedding": {
+    "current_unique_tests": 38,
+    "accounting": "35-case complete run plus updated asset/FIFO and two new capability boundaries (2 passed, then corrected fixture 1 passed) plus final read-race case 1 passed cover all 38 current cases. Overlapping counts are not added as independent totals. Root stable registered gate reruns final combined source.",
+    "source_sha256": {
+      "src/mgar_v3/harness/public_probe_types.py": "049551a60ff9778ff1dce6add4687f62ead498312cecf78cfbd1c2b2a55e4980",
+      "src/mgar_v3/harness/public_probe.py": "8b0efeb674a9a33f2d0356488ddc7ad44980b1551c0a77ba9cd73b753acf3b04",
+      "src/mgar_v3/harness/broker.py": "b09b79b63c08b9546fe6cdc110185aeb041dd582519780d58abcd0c6c6b97ae4",
+      "tests/test_harness_public_probe.py": "64ab37e6fb6d78c693cf2aa6691918998b204a5f8a6530e203859621600a692f"
+    },
+    "engineering": "PASS"
+  },
+  "strict_verification_summary": "evidence/harness-v4/H12-PUBLIC-PROBE-20261113/verification/summary.json",
+  "strict_verification_counts": {
+    "passed": 36,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "strict_verification_source_sha256": {
+    "src/mgar_v3/harness/public_probe.py": "6e1e0d43735ba5918e1bc7220034e7797ebdebff833db665ab3eefee1a374af9",
+    "src/mgar_v3/harness/public_probe_types.py": "049551a60ff9778ff1dce6add4687f62ead498312cecf78cfbd1c2b2a55e4980",
+    "src/mgar_v3/harness/contracts.py": "cd1d1fa75e325187e7881c9532d50574959963a0a0182c7766b9fae64a2875c1",
+    "src/mgar_v3/harness/adapters.py": "8d733c6c102e46e7acdf9be73cf254b8f117a2a31b86f7fe165665ec92589aa7",
+    "src/mgar_v3/harness/coding_loop.py": "dbbc39e22079536d8340437785226f4ec517ff5ca0dd97fa509b98718eea9ffb",
+    "src/mgar_v3/harness/service.py": "1f897ba65ac7aaf1ce53539c3a80cb521714e4b823260d79efaee297543f5697",
+    "tests/test_public_probe_verification.py": "64f647adaf343dc4ebb13e95bfdbb9ae1e9e6b439ab639b8cb0e7b6659d75e42"
+  },
+  "verification_review_remaining": "No new deterministic DTO/recovery wiring defect observed. A targeted command.after_receipt recovery test is parent/sibling-owned and is not claimed as executed here. Formal public assets must classify import/collection exceptions separately from target assertion failures.",
+  "strict_verification_static": {
+    "ruff": "PASS after renaming one fixture variable (B020 initial failure retained)",
+    "mypy_public_probe_2_files": "PASS"
+  },
+  "task_kind_guard_extension": {
+    "counts": {
+      "passed": 3,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "evidence": "evidence/harness-v4/H12-PUBLIC-PROBE-20261113/verification/task-kind-guards-summary.json",
+    "source_sha256": {
+      "tests/test_public_probe_verification.py": "e3c343fe6f4a83951a6a12482e327be9984f9ae0d8a11712f4fa6e9f60cec5b0",
+      "src/mgar_v3/harness/contracts.py": "a514a0403dfb7bd13c3a0a77df43b4f316788675623c255e377cd65d94305b6c",
+      "src/mgar_v3/harness/coding_loop.py": "1bb6c021e6de76ea1e8db5c781c7f697b89ffde2032480f891d52dbda8354caa"
+    }
+  },
+  "service_feedback_extension": {
+    "counts": {
+      "passed": 5,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "summary": "evidence/harness-v4/H12-PUBLIC-PROBE-20261113/feedback/summary.json",
+    "source_sha256": {
+      "tests/test_public_probe_service_feedback.py": "c51356d4f94e7d43f6b3b9314f143ca0bc99d562c48ccfff161c1511c65b6f91",
+      "src/mgar_v3/harness/service.py": "2aa5f4441808eabd2ea537535c9a7172a5a8a0dfae8836841bbcc75b21a076ba"
+    },
+    "limits": [
+      "The large payload case covers one million ASCII characters only; it does not assert all JSON escaping patterns fit the CAS bound.",
+      "The original 39 strict verification cases and historical 38 execution cases were not rerun."
+    ]
+  }
+}

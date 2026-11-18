@@ -1,0 +1,11 @@
+{
+  "status": "EXECUTED",
+  "manifest_hash": "61147ae43e2e8f9cfff3b430b9422d27ed7fa609a8e77447a3f30f2c132695d9",
+  "quality_gate": "PASS",
+  "call_limit": 222,
+  "actual_calls": 162,
+  "session_limit": 469,
+  "session_actual": 409,
+  "additional_approval_needed": false,
+  "external_business_writes": false
+}

@@ -1,0 +1,71 @@
+{
+  "hv4-dev-click-help-name": {
+    "asset_sha256": "e7bfde07ae8f12c20c7fd1e788c9da67dc2458b65bb093fa3d86f80e260f86e5",
+    "case_ids": [
+      "argument-retains-value",
+      "automatic-help-option",
+      "help-after-positional"
+    ],
+    "manifest_sha256": "cc0f99757e61cff25b80992efa17730e6432c1aa84f4bfdf0c050635542caecf",
+    "original_tree_sha256": "f4f0c1a5988ccc66a606fafefe2d24492fb8420b273335b40e9e06ff61f22f21",
+    "plan_hash": "8838b464997def38ca612b157af52f1e8835603f8c7357d7d48379d6cb4837a6",
+    "public_task_projection_sha256": "0cdb154720e3d95542a7d1b43a4159e3589e5bfbc71bf0a8ba8d0588f6a66d2b",
+    "regression_argv": [
+      "python3",
+      "-B",
+      "-m",
+      "pytest",
+      "tests/test_help_name_public.py"
+    ]
+  },
+  "hv4-dev-requests-http-url-helper": {
+    "asset_sha256": "399d2dbd650ae7832c460da535cc7c69dd3a5687e2731171ca45d141422275e6",
+    "case_ids": [
+      "plain-http",
+      "https-port-path",
+      "ipv6-authority",
+      "userinfo-host",
+      "scheme-case",
+      "relative-references",
+      "other-schemes",
+      "whitespace",
+      "non-strings",
+      "missing-host",
+      "invalid-port",
+      "malformed-ipv6"
+    ],
+    "manifest_sha256": "90e1c376527b739faabd4f35b6638fb1fc2f65cc3f30450f554abc03070720f7",
+    "original_tree_sha256": "5a8bee3cbc91cde5b8f240c938a78cc1eb17197639b895943d76b23b934d0b94",
+    "plan_hash": "18391f23819fb7c8b19fa2d5f3cf49a47bbab32bb7f33e0544cff1e0dbef6c5e",
+    "public_task_projection_sha256": "7347264d8358a17293aed14aba5f0f577a3e06f2e0b5971ae85415fa7d54b715",
+    "regression_argv": [
+      "python3",
+      "-B",
+      "-m",
+      "pytest",
+      "tests/test_utils.py"
+    ]
+  },
+  "hv4-v2-dev-requests-quoted-content-type": {
+    "asset_sha256": "70b557db561e2b6dee8998b7ccc1150d725cf9abb65f9834deebc71fe43af7ad",
+    "case_ids": [
+      "quoted-semicolon-equals",
+      "independent-quoted-parameters",
+      "unquoted-separators",
+      "media-type-and-name-case",
+      "quote-removal",
+      "no-parameters"
+    ],
+    "manifest_sha256": "25033d0c9a0b3ad49bbdcaaa1a7813f89e49b62c23ed27007907d691ea57dc11",
+    "original_tree_sha256": "0f0a284dec45e4ef471a82632420c6ee7834817e54423c82d11eb6d845800dcf",
+    "plan_hash": "2b404801cfd1006a5dbbe51f28d0f6c4fb5fa39c83f2f24c8c1a19c0365b2542",
+    "public_task_projection_sha256": "7477d8103bc96a8081f5409d7712fa299f13c804a01ad034844f4f42cc5dfe07",
+    "regression_argv": [
+      "python3",
+      "-B",
+      "-m",
+      "pytest",
+      "tests/"
+    ]
+  }
+}

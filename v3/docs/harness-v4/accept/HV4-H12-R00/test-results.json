@@ -1,0 +1,18 @@
+{
+  "_public_export": {
+    "original_record_sha256": "de6760d37144b343a3a7595013417598d6ca7db65e4bdbc87d4f553a3a352772",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "status": "PASS",
+  "engineering_gate": "PASS",
+  "counts": {
+    "tests": 40,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "source_sha256": "6bff0896ec4c15e8c3322d7c8688afd88b8a6676d8fb8fe09f227600abaa4636",
+  "status_field_occurrences": {
+    "PASS": 1
+  }
+}

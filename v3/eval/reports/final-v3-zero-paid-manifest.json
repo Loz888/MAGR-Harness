@@ -1,0 +1,11 @@
+{
+  "_public_export": {
+    "original_record_sha256": "3a4149e449e42c98b32da3d0821d5bbfff6b641f89aee9636b4db60ce1f00ebd",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "schema": "r6-final-evaluation-v1",
+  "case_count": 30,
+  "status_field_occurrences": {
+    "NOT_RUN": 90
+  }
+}

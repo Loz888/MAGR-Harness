@@ -1,0 +1,1 @@
+{"kind":"contract_loss","visibility":"public_synthetic","observation":{"required_ids":["http_response","observed_status_stdout"],"projected_ids":["http_response"]}}

@@ -1,0 +1,100 @@
+{
+  "schema": "h12-full-public-development-repair-v1",
+  "recorded_at_utc": "2026-11-13T12:24:24.685076+00:00",
+  "starting_commit": "86e1717",
+  "source_sha256": "e3e2d7b779674a4a5cedce07d5ff4bc30c351d5bbbabd8550443938391c29759",
+  "engineering_scope": "SCOPED_PASS_PENDING_LIVE_PREPARATION",
+  "registered_target": "HV4-H12-FULL-DEV",
+  "collected_cases": 70,
+  "new_provider_calls": 0,
+  "live_dev_quality": "NOT_RUN",
+  "historical_quality": "FAIL",
+  "coding_mvp_released": false,
+  "cases_by_component": {
+    "formal_python_assets": 15,
+    "readonly_pytest_cache": 1,
+    "full_public_dev_controller": 15,
+    "v2_public_dev_freeze": 18,
+    "real_pg_docker_scratch_alignment": 1,
+    "declared_public_regression": 10,
+    "build_acceptance": 3,
+    "build_command": 7
+  },
+  "retesting": "Incremental unique cases. First failures retained; only failed/new nodes rerun. Original128 not rerun, no final70 execution claim. First2 negative declared-regression fixtures used a pytest-less image and were not accepted as semantic coverage; all3 relevant scenarios rerun with frozen pytest image.",
+  "runtime_changes": {
+    "policy": "h12-public-runtime-v1",
+    "scratch_mib_before": 64,
+    "scratch_mib_candidate": 256,
+    "reason": "Align actual Harness with original independent readiness/Judge scratch256; Go compilation proved original64 insufficient",
+    "readonly_pytest_cache": "/scratch/pytest-cache",
+    "image_pytest_addopts": "preserved; fixed cache_dir appended",
+    "model_tool_token_dollar_deadline_limits": "unchanged"
+  },
+  "public_plans": {
+    "hv4-dev-click-help-name": {
+      "path": "experiments/harness-v4/public-plans-v1/manifests/hv4-dev-click-help-name.json",
+      "sha256": "cc0f99757e61cff25b80992efa17730e6432c1aa84f4bfdf0c050635542caecf"
+    },
+    "hv4-dev-requests-http-url-helper": {
+      "path": "experiments/harness-v4/public-plans-v1/manifests/hv4-dev-requests-http-url-helper.json",
+      "sha256": "90e1c376527b739faabd4f35b6638fb1fc2f65cc3f30450f554abc03070720f7"
+    },
+    "hv4-v2-dev-requests-quoted-content-type": {
+      "path": "experiments/harness-v4/public-plans-v1/manifests/hv4-v2-dev-requests-quoted-content-type.json",
+      "sha256": "25033d0c9a0b3ad49bbdcaaa1a7813f89e49b62c23ed27007907d691ea57dc11"
+    },
+    "hv4-dev-pflag-unknown-flag": {
+      "path": "experiments/harness-v4/public-plans-v1/manifests/hv4-dev-pflag-unknown-flag.json",
+      "sha256": "c57b535b6b88c8f9448bec15a0bc3bf69b0b5b4909151b1e383c29a6e92fd44d"
+    }
+  },
+  "source_files_sha256": {
+    "config/verification.json": "7d703306a9848fdf08f306f76a2ae7162ed630b2dfefd25ea22b697af6e0bb1f",
+    "scripts/h12_eval.py": "93909634fad6d0a7bb55098eeb8dc7640f41b8ab41c2152f262738919391f151",
+    "scripts/h12_public_dev_freeze.py": "2442e788d4cf084ac9caa3edd558ed072b960d134d1bfc3f143207aecdba48e8",
+    "src/mgar_v3/harness/broker.py": "bd2d72bfde0765cc3c5ce64bcb2fa1b787ca79cb5c66e23d8c121c2282dde557",
+    "src/mgar_v3/harness/coding_loop.py": "4b36d2ddc4320ca10a5e9cc4cdb0b232e863c477fabb4331d1d40fa8733c4e23",
+    "src/mgar_v3/harness/contracts.py": "8c0a760c55f168b3e864ea936789640589a42ac81d1dff724370ab799b244c3a",
+    "src/mgar_v3/harness/service.py": "83c8122e088908e6b91b404c40fa5f0a8b26eebfd9d1ed929a1123706927b2a5",
+    "src/mgar_v3/harness/store.py": "8453c3ee3a403343f93c4cc7a661b5eac1805e88cd639432de8a5b5bee51a242",
+    "src/mgar_v3/quality_eval/h12_full_dev_readiness.py": "39e014eafdf319d173a6c5fbce08bc3aa1e2bb8fe8056a34fa74bbb774ada42e",
+    "src/mgar_v3/quality_eval/h12_public_plan.py": "ecad740e8d63b39c861c3f074e57b53c87b8eed1d80df40efca781d156427bd8",
+    "src/mgar_v3/quality_eval/h12_public_readiness.py": "314f8c18280ef3eea28c52703a97d2fc412b366ca49b514cbce3dc4a38cbbb22",
+    "src/mgar_v3/quality_eval/h12_public_regression.py": "90f79cdb06fadc6d1e6a813173677714af1a5a48ed84e7125f782c92875bd3f1",
+    "src/mgar_v3/quality_eval/h12_runner.py": "225b7d6cf76612d82f30a026df336f5e01431c63c4dac4e455868fc9dee9e645",
+    "src/mgar_v3/quality_eval/h12_v2_freeze.py": "cc6547f64ad70a9466e9ec6110d98ac02bc26f61687b5b607145668f35cbbb2b",
+    "src/mgar_v3/quality_eval/h12_v2_runner.py": "94d00293b95056498742304f30481d0c15e1aaa425429320adcc1dbd9f52f840",
+    "tests/test_h12_build_acceptance.py": "574815e5db9b7df03c437da2a7aa995d38d92af9ede7112d99e8a0294a82f4b3",
+    "tests/test_h12_build_command.py": "4d7fb16e22bd96cfe4911e1a51acd07d86f2328bef3129d2d7328a1f5c8b94f8",
+    "tests/test_h12_declared_public_regression.py": "14f6b13a6a2e7634e4a35d43ec1757eceb8709302596603ce64212c2c51c7b7f",
+    "tests/test_h12_formal_public_probe_assets.py": "b0167e1383da543bd7b473f1b3c9d5c1099c1de0915d3a846e49036884ef3168",
+    "tests/test_h12_full_dev_readiness.py": "a5f317040d125042f638d4ed0a988bb2b9e64df0aba448cb2e4d29a98118ec7e",
+    "tests/test_h12_public_runtime_alignment.py": "5c8ad8be96e99c9ad02323bcc90a16216928832faa5d21a402f321495c36ae58",
+    "tests/test_h12_readonly_pytest_cache.py": "f3b20f390200d97a2b92825e56d49adeaa82862d861f26fdd928481531c8e54a",
+    "tests/test_h12_v2_public_development.py": "a2b71aa6516a3b4dc9bbf1cf842dd8ae790408bf4cd59a938fcdc09f38f21d54"
+  },
+  "original_full_gate": "128PASS independently on0308789, preserved at86e1717; not evidence of new real model quality",
+  "static": {
+    "make_lint": "PASS",
+    "make_typecheck": "PASS",
+    "mypy_source_files": 245,
+    "git_diff_check": "PASS"
+  },
+  "next": "Freeze current candidate and run explicit public subset + complete12 original readiness, then seal and revalidate both reports before original failed dev task scores.",
+  "last_reported_h12_ledger": {
+    "provider_calls": 305,
+    "conservative_cost_micros": 1316981,
+    "reserved_micros": 0,
+    "unknown_calls": 0,
+    "shared_limit_micros": 12000000
+  },
+  "scope": {
+    "private_judge_or_holdout_implementation_read": false,
+    "main_source_modified": false,
+    "main_db_written": false,
+    "new_real_budget_created": false,
+    "sa13_files_modified": false,
+    "pushed": false,
+    "h13_started": false
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "schema": "h12-independent-recheck-v1",
+  "recorded_at": "2026-11-14T07:04:46.974291+00:00",
+  "implementation_commit": "1e68aef",
+  "reviewed_records_commit": "673912936c83baf2d87df4c27ce7c40a5aa9d2a8",
+  "candidate_source_sha256": "494ad6d3c0114ecea8e2d8c47900bd34803f364de9cbb37b6f7d40c7c59f94d0",
+  "independent_engineering_status": "PASS",
+  "independent_readiness_status": "PASS",
+  "real_quality_status": "NOT_RUN_THIS_RECHECK",
+  "mvp_release_authorized": false,
+  "registered": {
+    "path": "evidence/HV4-H12-FULL-DEV/20261114T065842Z-a4828084/result.json",
+    "sha256": "5c4c4fad9bca50bb1e07a17d8f2bb71dc39e857c12bbb46405343f8a000f3388",
+    "counts": {
+      "tests": 75,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "junit": {
+      "path": "evidence/HV4-H12-FULL-DEV/20261114T065842Z-a4828084/junit.xml",
+      "sha256": "4ff1e1b3c6b312448fdef0044664cc90a1a17c4b8436b6d702cd0c2eb86d2b5a"
+    },
+    "raw_log": {
+      "path": "evidence/HV4-H12-FULL-DEV/20261114T065842Z-a4828084/command.log",
+      "sha256": "51255e01fa6ef53c2cdf83568a5730da47e0b8015b0cd5d0dbde69d59fc6b13c"
+    }
+  },
+  "freeze_and_actual_evidence": {
+    "freeze_sha256": "3190e0e7ba222d9ea74f12ae0867004cf45c43f4c8ec575871bdfbe3ab29cfca",
+    "full_dev_ready": 12,
+    "public_subset_ready": 4,
+    "actual_profiles": 24,
+    "referenced_raw_evidence_hashes_verified": 279,
+    "negative_probes_passed": 17,
+    "record": {
+      "path": "evidence/harness-v4/H12-INDEPENDENT-1e68aef-20261114/probes.json",
+      "sha256": "dcfab50e0464fe99b6ef6fdbca2634c23185c8ba8e7ccd45ca2da37b4cd39c7c"
+    },
+    "controller": {
+      "path": "evidence/harness-v4/H12-INDEPENDENT-1e68aef-20261114/independent_probe_controller.py",
+      "sha256": "a97209992a317a6570b1fc151feb756a4c687fb9906287cf519ad1ec3ee7eaf4"
+    },
+    "physical_preparation_reexecuted": false,
+    "validation": "Rematerialized exact public source; revalidated frozen plans, original trees, profile authority, image/environment hashes, complete raw receipts and logs."
+  },
+  "review_harness_first_rejection": {
+    "path": "evidence/harness-v4/H12-INDEPENDENT-1e68aef-20261114/first-revalidation-rejection.json",
+    "sha256": "1f5880c0b9101aadd8eca3ab9354ad287931dca2a7e045662ac7d39e37e0bf47"
+  },
+  "lint": {
+    "status": "PASS",
+    "path": "evidence/harness-v4/H12-INDEPENDENT-1e68aef-20261114/lint.log",
+    "sha256": "a220b562d6bdb3655673add818cabd1dbd6857a7efc7d06ff8178f9e0e2501e2"
+  },
+  "mypy": {
+    "status": "PASS",
+    "source_files": 245,
+    "path": "evidence/harness-v4/H12-INDEPENDENT-1e68aef-20261114/typecheck.log",
+    "sha256": "12f9186b2306e6e9f541b87a3f70b8a4cb7d7f8fd34072aa4cc3ec7f2e4637b5"
+  },
+  "new_model_calls": 0,
+  "billing_or_vendor_access": false,
+  "ledger_or_engine_access_by_independent_probe_controller": false,
+  "engineering_test_database": "Only registered tests own disposable PostgreSQL/Docker fixtures; no H12 shared-budget mutation.",
+  "original_live_sample_archive": {
+    "status": "UNKNOWN",
+    "reason": "RECOVERY_BLOCKED",
+    "candidate_status": "NOT_RUN",
+    "current_billing_reconciliation": "OUT_OF_SCOPE_CLI_OWNED"
+  },
+  "historical_failures_preserved": true,
+  "previous_passed_128_suite_reexecuted": false,
+  "full_h00_h12_aggregate_reexecuted": false,
+  "implementation_changed": false,
+  "main_or_sa13_changed": false,
+  "holdout_or_private_judge_content_read": false,
+  "pushed": false,
+  "h13_started": false
+}

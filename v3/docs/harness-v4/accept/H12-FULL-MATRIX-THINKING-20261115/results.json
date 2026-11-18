@@ -1,0 +1,17 @@
+{
+  "_public_export": {
+    "original_record_sha256": "35284f21a07cc4219f8d8a735301fc01af77ac8f93b68024e9513a70d39097c5",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "schema": "h12-complete-thinking-matrix-report-v1",
+  "recorded_at": "2026-11-15T06:29:00.929199+00:00",
+  "source_commit": "d272a01c577a9f7e3dcc826c569eaad28e3adb6d",
+  "source_sha256": "b7dfff2c71320db22c3f5e541b4ba72e878475041a22d3c54ceb034ff1f84629",
+  "mvp": "NOT_RELEASED",
+  "historical_scores_unchanged": true,
+  "status_field_occurrences": {
+    "PASS": 12,
+    "FAIL": 9,
+    "NOT_RUN": 3
+  }
+}

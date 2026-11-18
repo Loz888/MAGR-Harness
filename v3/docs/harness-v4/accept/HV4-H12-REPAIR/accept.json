@@ -1,0 +1,22 @@
+{
+  "_public_export": {
+    "original_record_sha256": "345b49fdd80171d64d24792de5b15ba1b3a3e6feb0c7e58f6a523245a8fb228f",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "schema": "mgar-hv4-h12-repair-delivery-v1",
+  "card": "HV4-H12-REPAIR",
+  "recorded_at": "2026-11-12T08:32:07.210313+00:00",
+  "status": "IMPLEMENTED",
+  "source_commit": "6c80f8e8d4459b6a573a4429d4eb7002afcbe490",
+  "source_sha256": "a04ae631c886c3feca1a8891b7d26a9ed9268939b35b8858b3b2332186022b10",
+  "engineering_gate": "PASS",
+  "security_gate": "PASS",
+  "live_model_gate": "NOT_RUN",
+  "live_agent_gate": "NOT_RUN",
+  "live_publication_gate": "NOT_RUN",
+  "historical_scores_unchanged": true,
+  "status_field_occurrences": {
+    "PASS": 7,
+    "NOT_RUN": 8
+  }
+}

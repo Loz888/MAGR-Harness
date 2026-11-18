@@ -1,0 +1,73 @@
+{
+  "card": "HV4-H10",
+  "status": "FAIL",
+  "review_status": "FAIL_INDEPENDENT_RECHECK",
+  "reviewed_at": "2026-11-11T10:59:13.208594+00:00",
+  "reviewer": "Codex desktop independent review",
+  "source_commit": "5707785a840677d2a47589dcab0377f366f37204",
+  "source_sha256": "5529fbf59c60f40eb6346446f46807809c03ea700d4836c3741c122da48bae33",
+  "finished_source_sha256": "5529fbf59c60f40eb6346446f46807809c03ea700d4836c3741c122da48bae33",
+  "engineering_gate": "FAIL",
+  "security_gate": "FAIL",
+  "live_model_gate": "NOT_RUN",
+  "live_agent_gate": "NOT_RUN",
+  "live_publication_gate": "NOT_RUN",
+  "base_record": "docs/harness-v4/accept/HV4-H10/independent-recheck-20261111T104041Z.json",
+  "additional_blocking_findings": [
+    {
+      "id": "HV4-H10-IR-F02",
+      "priority": "P1",
+      "title": "Finished command output is rebound to a replacement lease",
+      "file": "src/mgar_v3/harness/service.py",
+      "lines": {
+        "start": 479,
+        "end": 508
+      },
+      "related_locations": [
+        "src/mgar_v3/harness/context_tools.py:122-138",
+        "src/mgar_v3/harness/commands.py:323-330"
+      ],
+      "observed": {
+        "name": "log-must-stay-bound-to-generating-lease",
+        "passed": false,
+        "method": "Real H04/H06 container command reads a harmless temporary marker under original permission; replace lease after real wait completes, before Registry archive",
+        "real_container_command": true,
+        "result_status": "ok",
+        "generating_lease_hash": "e838c36a26d5103f353dfc42a9ac7657207577bce207f188b1516a3124653350",
+        "current_replacement_lease_hash": "9c3d9a349d1d03d0bcdad2f2533ca529c2a5aaf6f8343d681d9b79ddf4f1ba83",
+        "archived_lease_hash": "9c3d9a349d1d03d0bcdad2f2533ca529c2a5aaf6f8343d681d9b79ddf4f1ba83",
+        "replacement_protects": "private.txt",
+        "previous_scope_marker_in_response": true,
+        "previous_scope_marker_in_artifact_page": true,
+        "expected": "Reject returning or archiving old-scope output after replacement; never relabel it with the replacement lease",
+        "paid_calls": 0,
+        "repository_source_modified": false
+      },
+      "expected": "Log provenance must retain the authority that generated the output; a replacement that protects the original source cannot retroactively authorize or relabel that output.",
+      "cause": "The Registry finishes and reads the old command, then archive() samples the current lease. A replacement after wait returns is not associated with the generating lease, so old-scope bytes are marked with the new lease hash and pass later page checks.",
+      "reproduction_scope": "Actual H04/H06 container and real wait/read_log/archive/page. Only wait return scheduling is wrapped to replace authority deterministically. The private marker is a harmless temporary fixture, not a real secret.",
+      "evidence": "evidence/harness-v4/HV4-H10/independent-recheck-20261111T104041Z-5a4fd0/log-generating-lease-probe.json",
+      "log": "evidence/harness-v4/HV4-H10/independent-recheck-20261111T104041Z-5a4fd0/log-generating-lease-probe-retry1.log",
+      "reproducer": "evidence/harness-v4/HV4-H10/independent-recheck-20261111T104041Z-5a4fd0/h10_log_lease_probe.py",
+      "repair_request": [
+        "Capture the generating lease identity/provenance before launching the command and carry it through log collection and CAS registration.",
+        "Reject old-scope output when authority was replaced or revoked before response/archive; do not resample and relabel it as current authority.",
+        "Add boundary regressions for finished wait/poll/read_log/return/archive, including a replacement that adds a protected path while retaining a root read path.",
+        "Recheck the newly frozen implementation; this review does not modify production source or start H11."
+      ]
+    }
+  ],
+  "review_infrastructure_error": {
+    "path": "evidence/harness-v4/HV4-H10/independent-recheck-20261111T104041Z-5a4fd0/log-generating-lease-probe.log",
+    "classification": "INFRA_ERROR: reviewer probe omitted CancellationToken import before exercising product code",
+    "corrected_attempt": "evidence/harness-v4/HV4-H10/independent-recheck-20261111T104041Z-5a4fd0/log-generating-lease-probe-retry1.log"
+  },
+  "other_local_review_record": {
+    "path": "docs/harness-v4/accept/HV4-H10/independent-recheck-20261111T104754Z.json",
+    "ownership": "Not created, modified or staged by this review",
+    "use": "Its lease finding prompted a separate real-container reproduction. Other listed findings are not promoted into independently confirmed results here."
+  },
+  "paid_calls": 0,
+  "repository_source_modified": false,
+  "next_action": "Fix F01 and F02 on a new implementation commit, preserve all failures and obtain a fresh independent recheck before H11."
+}

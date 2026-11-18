@@ -1,0 +1,160 @@
+{
+  "schema": "mgar-hv4-h12-environment-repair-delivery-v1",
+  "date": "2026-11-12",
+  "implementation_commit": "cc7f897383ac71aeb02f717c4a514b7e1504f963",
+  "source_sha256": "7ab8d82953c2cd8a57f1a8009b2c2768929f9210dfd57d0ec6777d75c553f355",
+  "implementation_status": "IMPLEMENTED_WITH_REMAINING_BENCHMARK_BLOCKERS",
+  "taskbook_completion_status": "INCOMPLETE",
+  "review_status": "PENDING_INDEPENDENT_RECHECK",
+  "engineering_gate": "PASS",
+  "security_gate": "PASS",
+  "security_scope": "Listed diagnostics, disconnected DNS/TLS/H2, owned cleanup/recovery and regression checks only; historical H09/H10 OPEN retained",
+  "environment_readiness_gate": "NOT_READY",
+  "live_model_gate": "NOT_RUN",
+  "live_agent_gate": "NOT_RUN",
+  "live_publication_gate": "NOT_RUN",
+  "mvp_gate": "FAIL",
+  "engineering_checks": {
+    "h12": {
+      "status": "PASS",
+      "result": "evidence/harness-v4/HV4-H12-ENV/20261112T101921Z-h12-463e3d51/result.json",
+      "sha256": "464e5e83c23090f7cb02969900717bf1847d669fe986740fc7b8ad63539c517f",
+      "counts": {
+        "tests": 409,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "registered_attempt": "evidence/HV4-H12/20261112T101921Z-acb49b22"
+    },
+    "aggregate": {
+      "status": "PASS",
+      "result": "evidence/harness-v4/HV4-H12-ENV/20261112T103349Z-aggregate-6f2ddd6b/result.json",
+      "sha256": "c51ae2152c65ca56717ae684881de9d2bd9d0bb84cf6b579a50fc72b4024b074",
+      "counts": {
+        "tests": 758,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    "compatibility": {
+      "status": "PASS",
+      "result": "evidence/harness-v4/HV4-H12-ENV/20261112T102210Z-compatibility-5fff1871/result.json",
+      "sha256": "e09475685eea909b8e81939afbb6dbf694ac6f88f9e877f4f883ade7c55093a8",
+      "counts": {
+        "tests": 24,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    "lint": {
+      "status": "PASS",
+      "result": "evidence/harness-v4/HV4-H12-ENV/20261112T101921Z-lint-59241aa1/result.json",
+      "sha256": "85b085d10509c04037cdf09a2b2a49a4b1e1ed7d46459068e765cefb6a364286",
+      "counts": null
+    },
+    "typecheck": {
+      "status": "PASS",
+      "result": "evidence/harness-v4/HV4-H12-ENV/20261112T101921Z-typecheck-271da5c3/result.json",
+      "sha256": "b945ca273b446b5e02300dc8782099aa68e630846324e25827e7bad2513e8455",
+      "counts": null
+    }
+  },
+  "checks_overlap": "409 H12 included in758 aggregate;24 compatibility separate",
+  "readiness": {
+    "dev": {
+      "record": "evidence/harness-v4/HV4-H12-ENV/readiness-v4-final-7ab8d829/readiness-v4.json",
+      "sha256": "35cb6bc14568a58fbda09456465fdbec6bd8c07035e6aa4a2a904d8907c24255",
+      "revision": "h12-dev-environment-v4",
+      "ready": 11,
+      "not_ready": 1,
+      "denominator": 12,
+      "source_stable": true
+    },
+    "original_holdout": {
+      "record": "evidence/harness-v4/HV4-H12-ENV/holdout-infrastructure-v4-7ab8d829/summary.json",
+      "sha256": "b0f723e34a9acc8fd7aed7e835cee51675e945c050927a00e30bb05fe032c8df",
+      "revision": "h12-holdout-infrastructure-v4",
+      "ready": 10,
+      "not_ready": 2,
+      "denominator": 12,
+      "source_stable": true,
+      "privacy": "aggregate infrastructure only; not candidate quality score"
+    },
+    "combined": {
+      "ready": 21,
+      "not_ready": 3,
+      "denominator": 24,
+      "same_source": true,
+      "is_model_quality_score": false
+    }
+  },
+  "remaining_blockers": [
+    {
+      "scope": "dev",
+      "task_id": "hv4-dev-requests-content-type",
+      "cause": "BASELINE_NOT_REPRODUCED",
+      "certainty": "confirmed exact frozen source already passes original defect probe"
+    },
+    {
+      "scope": "original_holdout",
+      "count": 1,
+      "cause": "H12_PUBLIC_TEST_SOURCE_BINDING_CONFLICT",
+      "certainty": "confirmed frozen metadata mismatch"
+    },
+    {
+      "scope": "original_holdout",
+      "count": 1,
+      "cause": "GENERAL_PUBLIC_RETRY_TIMING_ASSERTION_FAILURE",
+      "certainty": "failure confirmed; scheduling cause unconfirmed; no memory/PID limit events",
+      "policy": "final failure retained, no rerun or historical11READY selection"
+    }
+  ],
+  "additional_open_benchmark_issue": {
+    "cause": "GOT_INVALID_KEY_PASSPHRASE_FLAKE",
+    "status": "OPEN",
+    "record": "evidence/harness-v4/HV4-H12-ENV/node/got-crypto-benchmark-flake-audit.json",
+    "note": "final dev public commands passed; earlier original failure retained, not declared repaired"
+  },
+  "new_real_model_calls": 0,
+  "new_cost_micros": 0,
+  "environment_controller_engine_runs_created": 0,
+  "historical_budget_snapshot": {
+    "calls": 195,
+    "conservative_cost_micros": 839914,
+    "cumulative_cap_micros": 12000000,
+    "budget_reset": false
+  },
+  "historical_scores": {
+    "dev": {
+      "pass": 0,
+      "fail": 7,
+      "not_run": 5,
+      "denominator": 12
+    },
+    "holdout": {
+      "pass": 0,
+      "fail": 5,
+      "not_run": 7,
+      "denominator": 12
+    },
+    "unchanged": true
+  },
+  "thresholds": {
+    "dev_pass_at_least": 10,
+    "holdout_pass_at_least": 9,
+    "denominator_each": 12,
+    "unchanged": true
+  },
+  "frozen_h00_hashes": "PASS",
+  "prior_attempts_preserved": true,
+  "no_push_or_publication": true,
+  "sa08_coordination": {
+    "commit": "1e397ab73feeaa6e9a5d747963bb9889eec5a51f",
+    "document": "docs/harness-v4/SUPER_AGENT_HANDOFF.md",
+    "section": 31,
+    "only_confirmation_document": true
+  }
+}

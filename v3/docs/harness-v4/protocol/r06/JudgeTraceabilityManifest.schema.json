@@ -1,0 +1,109 @@
+{
+  "$defs": {
+    "JudgeAssertion": {
+      "additionalProperties": false,
+      "properties": {
+        "assertion_id": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Assertion Id",
+          "type": "string"
+        },
+        "acceptance_requirement_id": {
+          "title": "Acceptance Requirement Id",
+          "type": "string"
+        },
+        "file": {
+          "title": "File",
+          "type": "string"
+        },
+        "line": {
+          "minimum": 1,
+          "title": "Line",
+          "type": "integer"
+        },
+        "column": {
+          "minimum": 0,
+          "title": "Column",
+          "type": "integer"
+        },
+        "expression_hash": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Expression Hash",
+          "type": "string"
+        }
+      },
+      "required": [
+        "assertion_id",
+        "acceptance_requirement_id",
+        "file",
+        "line",
+        "column",
+        "expression_hash"
+      ],
+      "title": "JudgeAssertion",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "harness-judge-traceability-v1",
+      "default": "harness-judge-traceability-v1",
+      "title": "Version",
+      "type": "string"
+    },
+    "task_id": {
+      "title": "Task Id",
+      "type": "string"
+    },
+    "benchmark_revision": {
+      "title": "Benchmark Revision",
+      "type": "string"
+    },
+    "public_acceptance_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Public Acceptance Hash",
+      "type": "string"
+    },
+    "files": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "maxProperties": 64,
+      "minProperties": 1,
+      "title": "Files",
+      "type": "object"
+    },
+    "assertions": {
+      "items": {
+        "$ref": "#/$defs/JudgeAssertion"
+      },
+      "maxItems": 4096,
+      "minItems": 1,
+      "title": "Assertions",
+      "type": "array"
+    },
+    "command_hash": {
+      "anyOf": [
+        {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Command Hash"
+    }
+  },
+  "required": [
+    "task_id",
+    "benchmark_revision",
+    "public_acceptance_hash",
+    "files",
+    "assertions"
+  ],
+  "title": "JudgeTraceabilityManifest",
+  "type": "object"
+}

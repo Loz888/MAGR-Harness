@@ -1,0 +1,13 @@
+{
+  "_public_export": {
+    "original_record_sha256": "cd74ecd2a47967b6b95b07d75746149f671818a2746bbc12e1319c0ea9e50128",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "schema": "deepseek-thinking-max-repair-v1",
+  "recorded_at": "2026-11-15T04:05:03.294493+00:00",
+  "engineering_gate": "PASS",
+  "mvp": "NOT_RELEASED",
+  "status_field_occurrences": {
+    "PASS": 8
+  }
+}

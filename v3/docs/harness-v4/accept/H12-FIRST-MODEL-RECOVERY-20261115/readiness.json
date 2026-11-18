@@ -1,0 +1,12 @@
+{
+  "_public_export": {
+    "original_record_sha256": "9f6cd2d84d8bbe6c04a312e42b28aae81698eda3d7a04c395c5d8d2ea41152bd",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "schema": "h12-first-model-recovery-dispatch-plan-v1",
+  "recorded_at": "2026-11-15T07:56:42.414701+00:00",
+  "source_commit": "0655b59210d247cede5a43fab3c8279ebf3dc2d6",
+  "source_sha256": "14379894ecc51a06c005d3244052f11e2f1d58ceb575182bec7accf4563591e4",
+  "original_scores_unchanged": true,
+  "mvp": "NOT_RELEASED"
+}

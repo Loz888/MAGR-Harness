@@ -1,0 +1,31 @@
+{
+  "schema": "h12-original-card-and-recovery-recheck-v1",
+  "source_sha256": "ba4cbb0fa7fe389234405a32a8ab941ae9ae14e5a2e8ba57eb4c85b0239b3925",
+  "runs": [
+    {
+      "path": "evidence/HV4-H12/20261114T125250Z-dc9240cd/result.json",
+      "sha256": "d7ce7d7531a2092178a85adcd5bd4d47e56c54fc19cc3dedd41d340da6693432",
+      "counts": {
+        "tests": 443,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "path": "evidence/HV4-H11/20261114T125504Z-02d0a590/result.json",
+      "sha256": "5642d4ab04a86c6d2038358d49a6a7cc8ec9c1d88d9bca3e251106d770019a37",
+      "counts": {
+        "tests": 68,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "status": "PASS"
+    }
+  ],
+  "new_model_calls": 0,
+  "main_or_unrelated_containers_stopped": false,
+  "scope_note": "Registered original H12 and H11 at the same source. Groups overlap with the separate 540 targeted checks; do not sum as unique tests. Historical H11 pointer restored; fresh full logs remain at their attempt paths."
+}

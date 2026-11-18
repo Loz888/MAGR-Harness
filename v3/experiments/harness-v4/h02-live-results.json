@@ -1,0 +1,174 @@
+{
+  "schema": "harness-h02-live-evidence-v1",
+  "card": "HV4-H02",
+  "authorization": {
+    "approved_scope": "DeepSeek deepseek-flash only",
+    "max_cost_micros_per_card": 2000000,
+    "anthropic_authorized": false,
+    "data": "synthetic workspace and prompt only"
+  },
+  "started_at": "2026-11-10T15:19:46.970263+00:00",
+  "finished_at": "2026-11-10T15:19:49.384451+00:00",
+  "git_commit": "169925f22b770bbcdb1294f079d5d8c76d05b1b4",
+  "endpoint": "https://api.deepseek.com/v1/chat/completions",
+  "model_id": "deepseek-flash",
+  "documented_model_version": "DeepSeek-V4.1-Flash-1017",
+  "protocol": "openai-chat-sse",
+  "price_version": "DeepSeek-V4.1-Flash-1017-peak",
+  "price_micros_per_million": {
+    "input_peak_upper": 300000,
+    "output_peak_upper": 1200000
+  },
+  "thinking_mode": "disabled for this probe (experiment-only body field)",
+  "preflight_worst_case_micros": 1884,
+  "provider_request_count": 2,
+  "provider_requests": [
+    {
+      "method": "POST",
+      "path": "/v1/chat/completions"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/chat/completions"
+    }
+  ],
+  "responses": [
+    {
+      "operation_id": "h02-live-flash:model:1",
+      "finish_reason": "tool_calls",
+      "error_code": "",
+      "usage": {
+        "input_tokens": 407,
+        "output_tokens": 45,
+        "cost_micros": 177,
+        "known": true
+      },
+      "tool_calls": [
+        {
+          "name": "read_file",
+          "arguments": {
+            "path": "calc.py"
+          }
+        }
+      ],
+      "text_length": 27,
+      "text_sha256": "0cf76de1729395bf767e9e79babd3fb75f4d677b7421177c013fdcd15551542e",
+      "cached": false
+    },
+    {
+      "operation_id": "h02-live-flash:model:2",
+      "finish_reason": "stop",
+      "error_code": "",
+      "usage": {
+        "input_tokens": 476,
+        "output_tokens": 74,
+        "cost_micros": 232,
+        "known": true
+      },
+      "tool_calls": [],
+      "text_length": 285,
+      "text_sha256": "9b19310b1d30644d2b39d5033a7dfcf71bf6823d78fd424113c8f7d66e45b987",
+      "cached": false
+    }
+  ],
+  "result": {
+    "status": "incomplete",
+    "tool_calls": 1,
+    "model_calls": 2,
+    "unresolved": [
+      "live-read"
+    ]
+  },
+  "error": null,
+  "ledger": {
+    "snapshot": {
+      "task_id": "h02-live-flash",
+      "model_calls": 2,
+      "tool_calls": 1,
+      "cost_micros": 409
+    },
+    "reservations": [
+      {
+        "reservation_id": "d28fd39397dbfb44db27bb5bbed3d6c254f237a5535c9bbb961e802a651b0850",
+        "task_id": "h02-live-flash",
+        "operation_id": "h02-live-flash:model:1",
+        "kind": "model",
+        "reserved_micros": 100000,
+        "reserved_units": 1,
+        "status": "settled",
+        "actual_micros": 177,
+        "actual_units": 1,
+        "reason": ""
+      },
+      {
+        "reservation_id": "7265ff12f556cedc85f44c1ef59bdef57b257dc71fc07e56bcf200479882fb67",
+        "task_id": "h02-live-flash",
+        "operation_id": "h02-live-flash:tool:1:1",
+        "kind": "tool",
+        "reserved_micros": 0,
+        "reserved_units": 1,
+        "status": "settled",
+        "actual_micros": 0,
+        "actual_units": 1,
+        "reason": ""
+      },
+      {
+        "reservation_id": "1fe90bc1862a2db7cff67e743e137165cd57240307bb576a64a00f9ddf1aa47a",
+        "task_id": "h02-live-flash",
+        "operation_id": "h02-live-flash:model:2",
+        "kind": "model",
+        "reserved_micros": 100000,
+        "reserved_units": 1,
+        "status": "settled",
+        "actual_micros": 232,
+        "actual_units": 1,
+        "reason": ""
+      }
+    ]
+  },
+  "events": [
+    {
+      "kind": "model_completed",
+      "payload": {
+        "finish_reason": "tool_calls",
+        "tool_calls": 1,
+        "cost_micros": 177,
+        "cached": false
+      }
+    },
+    {
+      "kind": "tool_started",
+      "payload": {
+        "operation_id": "h02-live-flash:tool:1:1",
+        "name": "read_file"
+      }
+    },
+    {
+      "kind": "tool_completed",
+      "payload": {
+        "operation_id": "h02-live-flash:tool:1:1",
+        "name": "read_file",
+        "status": "ok",
+        "code": ""
+      }
+    },
+    {
+      "kind": "model_completed",
+      "payload": {
+        "finish_reason": "stop",
+        "tool_calls": 0,
+        "cost_micros": 232,
+        "cached": false
+      }
+    },
+    {
+      "kind": "run_finished",
+      "payload": {
+        "status": "incomplete"
+      }
+    }
+  ],
+  "live_model_gate": "PASS_DEEPSEEK_FLASH",
+  "anthropic_live": "NOT_RUN_NOT_AUTHORIZED",
+  "credentials_recorded": false
+}

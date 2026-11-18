@@ -1,0 +1,23 @@
+{
+  "_public_export": {
+    "original_record_sha256": "408f88b34f5031b28b8c5fdb2ec01b2f09e849ee016763a49eb117dccec6d70f",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "schema": "h12-quality-v8-real-development-v1",
+  "source_commit": "0cb766fa5d6b3ab78c57ecd1f2d74a84120de45b",
+  "source_sha256": "2e8bc6b0725a41b40de1c9ad3dcc97ea391a703d9aa4db9c704a33beab3aa193",
+  "recorded_at": "2026-11-14T12:30:40.834861+00:00",
+  "unknown_calls": 0,
+  "mvp": "NOT_RELEASED",
+  "h13": "NOT_STARTED",
+  "historical_scores_unchanged": true,
+  "holdout_aggregate": {
+    "pass": 0,
+    "fail": 0,
+    "not_run": 12,
+    "model_scoring": "NOT_RUN_DEV_GATE_FAILED"
+  },
+  "status_field_occurrences": {
+    "FAIL": 3
+  }
+}

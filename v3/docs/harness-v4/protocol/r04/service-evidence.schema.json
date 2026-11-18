@@ -1,0 +1,578 @@
+{
+  "$defs": {
+    "HTTPObservation": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "title": "Path",
+          "type": "string"
+        },
+        "host": {
+          "default": "127.0.0.1",
+          "title": "Host",
+          "type": "string"
+        },
+        "port": {
+          "maximum": 65535,
+          "minimum": 1,
+          "title": "Port",
+          "type": "integer"
+        },
+        "status_code": {
+          "title": "Status Code",
+          "type": "integer"
+        },
+        "content_type": {
+          "title": "Content Type",
+          "type": "string"
+        },
+        "body_hash": {
+          "title": "Body Hash",
+          "type": "string"
+        },
+        "observed_at": {
+          "title": "Observed At",
+          "type": "string"
+        },
+        "source": {
+          "enum": [
+            "independent-container-probe",
+            "instrumented-client"
+          ],
+          "title": "Source",
+          "type": "string"
+        },
+        "matched": {
+          "default": true,
+          "title": "Matched",
+          "type": "boolean"
+        },
+        "detail": {
+          "default": "",
+          "title": "Detail",
+          "type": "string"
+        },
+        "body_bytes": {
+          "default": 0,
+          "title": "Body Bytes",
+          "type": "integer"
+        },
+        "body_artifact_hash": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Body Artifact Hash"
+        }
+      },
+      "required": [
+        "path",
+        "port",
+        "status_code",
+        "content_type",
+        "body_hash",
+        "observed_at",
+        "source"
+      ],
+      "title": "HTTPObservation",
+      "type": "object"
+    },
+    "ProcessObservation": {
+      "additionalProperties": false,
+      "properties": {
+        "pid": {
+          "title": "Pid",
+          "type": "integer"
+        },
+        "parent_pid": {
+          "title": "Parent Pid",
+          "type": "integer"
+        },
+        "group_id": {
+          "title": "Group Id",
+          "type": "integer"
+        },
+        "session_id": {
+          "title": "Session Id",
+          "type": "integer"
+        },
+        "start_ticks": {
+          "title": "Start Ticks",
+          "type": "integer"
+        },
+        "state": {
+          "title": "State",
+          "type": "string"
+        },
+        "exit_code": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Exit Code"
+        }
+      },
+      "required": [
+        "pid",
+        "parent_pid",
+        "group_id",
+        "session_id",
+        "start_ticks",
+        "state"
+      ],
+      "title": "ProcessObservation",
+      "type": "object"
+    },
+    "ProcessPortReceipt": {
+      "additionalProperties": false,
+      "properties": {
+        "receipt_id": {
+          "title": "Receipt Id",
+          "type": "string"
+        },
+        "observed_at": {
+          "title": "Observed At",
+          "type": "string"
+        },
+        "command_id": {
+          "title": "Command Id",
+          "type": "string"
+        },
+        "tree_hash": {
+          "title": "Tree Hash",
+          "type": "string"
+        },
+        "signal": {
+          "title": "Signal",
+          "type": "string"
+        },
+        "graceful": {
+          "title": "Graceful",
+          "type": "boolean"
+        },
+        "forced": {
+          "title": "Forced",
+          "type": "boolean"
+        },
+        "processes_exited": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Processes Exited"
+        },
+        "port_released": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Port Released"
+        },
+        "container_removed": {
+          "title": "Container Removed",
+          "type": "boolean"
+        },
+        "orphan_pids": {
+          "default": [],
+          "items": {
+            "type": "integer"
+          },
+          "title": "Orphan Pids",
+          "type": "array"
+        },
+        "before": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RuntimeSnapshot"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "after": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RuntimeSnapshot"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "detail": {
+          "default": "",
+          "title": "Detail",
+          "type": "string"
+        },
+        "signal_sent_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Signal Sent At"
+        },
+        "grace_seconds": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Grace Seconds"
+        },
+        "duration_seconds": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Duration Seconds"
+        }
+      },
+      "required": [
+        "receipt_id",
+        "observed_at",
+        "command_id",
+        "tree_hash",
+        "signal",
+        "graceful",
+        "forced",
+        "processes_exited",
+        "port_released",
+        "container_removed"
+      ],
+      "title": "ProcessPortReceipt",
+      "type": "object"
+    },
+    "ReadyReceipt": {
+      "additionalProperties": false,
+      "properties": {
+        "receipt_id": {
+          "title": "Receipt Id",
+          "type": "string"
+        },
+        "ready": {
+          "title": "Ready",
+          "type": "boolean"
+        },
+        "observed_at": {
+          "title": "Observed At",
+          "type": "string"
+        },
+        "task_id": {
+          "title": "Task Id",
+          "type": "string"
+        },
+        "run_id": {
+          "title": "Run Id",
+          "type": "string"
+        },
+        "command_id": {
+          "title": "Command Id",
+          "type": "string"
+        },
+        "execution_epoch": {
+          "title": "Execution Epoch",
+          "type": "integer"
+        },
+        "tree_hash": {
+          "title": "Tree Hash",
+          "type": "string"
+        },
+        "environment_hash": {
+          "title": "Environment Hash",
+          "type": "string"
+        },
+        "handle_id": {
+          "title": "Handle Id",
+          "type": "string"
+        },
+        "host": {
+          "default": "127.0.0.1",
+          "title": "Host",
+          "type": "string"
+        },
+        "port": {
+          "anyOf": [
+            {
+              "maximum": 65535,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Port"
+        },
+        "process_id": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Process Id"
+        },
+        "group_id": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Group Id"
+        },
+        "log_port": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Log Port"
+        },
+        "observations": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/HTTPObservation"
+          },
+          "title": "Observations",
+          "type": "array"
+        },
+        "printed_statuses": {
+          "default": [],
+          "items": {
+            "type": "integer"
+          },
+          "title": "Printed Statuses",
+          "type": "array"
+        },
+        "observation_started_at": {
+          "default": "",
+          "title": "Observation Started At",
+          "type": "string"
+        },
+        "duration_seconds": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Duration Seconds"
+        },
+        "timeout_seconds": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Timeout Seconds"
+        },
+        "snapshot": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RuntimeSnapshot"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "detail": {
+          "default": "",
+          "title": "Detail",
+          "type": "string"
+        },
+        "acceptance_hash": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Acceptance Hash"
+        }
+      },
+      "required": [
+        "receipt_id",
+        "ready",
+        "observed_at",
+        "task_id",
+        "run_id",
+        "command_id",
+        "execution_epoch",
+        "tree_hash",
+        "environment_hash",
+        "handle_id"
+      ],
+      "title": "ReadyReceipt",
+      "type": "object"
+    },
+    "RuntimeSnapshot": {
+      "additionalProperties": false,
+      "properties": {
+        "observed_at": {
+          "title": "Observed At",
+          "type": "string"
+        },
+        "monotonic": {
+          "title": "Monotonic",
+          "type": "number"
+        },
+        "supervisor": {
+          "$ref": "#/$defs/ProcessObservation"
+        },
+        "processes": {
+          "items": {
+            "$ref": "#/$defs/ProcessObservation"
+          },
+          "title": "Processes",
+          "type": "array"
+        },
+        "listeners": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Listeners",
+          "type": "array"
+        },
+        "bind_available": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Bind Available"
+        }
+      },
+      "required": [
+        "observed_at",
+        "monotonic",
+        "supervisor",
+        "processes",
+        "listeners"
+      ],
+      "title": "RuntimeSnapshot",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "mode": {
+      "enum": [
+        "http",
+        "oneshot"
+      ],
+      "title": "Mode",
+      "type": "string"
+    },
+    "assets_hash": {
+      "title": "Assets Hash",
+      "type": "string"
+    },
+    "ready": {
+      "$ref": "#/$defs/ReadyReceipt"
+    },
+    "cleanup": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ProcessPortReceipt"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "root_exit_code": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Root Exit Code"
+    },
+    "raw_log_hash": {
+      "default": "",
+      "title": "Raw Log Hash",
+      "type": "string"
+    },
+    "stdout_hash": {
+      "default": "",
+      "title": "Stdout Hash",
+      "type": "string"
+    }
+  },
+  "required": [
+    "mode",
+    "assets_hash",
+    "ready"
+  ],
+  "title": "ServiceEvidence",
+  "type": "object"
+}

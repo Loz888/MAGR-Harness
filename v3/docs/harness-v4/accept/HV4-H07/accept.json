@@ -1,0 +1,409 @@
+{
+  "card": "HV4-H07",
+  "title": "统一编码循环与多种任务验收",
+  "status": "ACCEPTED",
+  "review_status": "PASS_AFTER_INDEPENDENT_RECHECK",
+  "commit": "2114a8778c2b575824b5aade8a7a3d6ec09ecc23",
+  "parent_commit": "e06328d5f71d696bfb4c88510a77bcccc97b777e",
+  "base_commit": "e06328d5f71d696bfb4c88510a77bcccc97b777e",
+  "commit_note": "新增统一编码循环 CodingLoop：按任务类型生成 TaskPolicy 与 AcceptanceChecklist，计划把验收项与 checkpoint_tree 绑定，工作树不一致返回 HARNESS_PLAN_STALE；模型提案只能追加 behavior/regression/build 项，不能替换既有 item_id 或降低 required；进展只认可工作树变化与新命令证据，补丁往返、同错重跑、文字改写与重复空搜索不重置保护，连续两轮无进展 blocked 并保留 checkpoint/未完成项/所缺信息；legacy 策略保留 3 次修复上限，resource 策略在有实质进展时可超过；删除测试文件、测试函数或 assert* 数量下降、tests_run 下降均不能完成；CodingResult 把 status/diff/receipts/checklist/attempts/feedback/run graph/checkpoint 绑定到最终树。只组合 H01/H02 冻结端口与 H04 Broker / H05 工作区 / H06 命令适配，未新增执行入口；ApplicationPort 只是 H06 容器生命周期接缝。",
+  "depends_on": ["HV4-H02", "HV4-H05", "HV4-H06"],
+  "environment": {
+    "os": "Ubuntu-24.04 (WSL2)",
+    "python": "3.12",
+    "model": "scripted_offline_provider",
+    "sandbox_image": "not_used_by_h07_tests",
+    "live": "NOT_RUN"
+  },
+  "commands": [
+    {
+      "name": "h07-tests",
+      "argv": ["uv", "run", "--frozen", "pytest", "-q", "tests/test_harness_v4_h07.py"],
+      "exit_code": 0,
+      "counts": {"tests": 27, "failures": 0, "errors": 0, "skipped": 0},
+      "purpose": "计划绑定与提案约束、bugfix 复现/修复、缺复现不可完成、验证失败不完成、feature 新行为+回归、缺新行为不完成、删/弱化测试不可完成、refactor 签名与回归、run_app 就绪/清理、inspect 只读与证据、重复失败 blocked 并留 checkpoint、补丁往返、空搜索、进展重置、legacy 上限 vs resource 超限、预算耗尽、未知用量、未知工具/越权命令、stale plan、取消",
+      "log": "evidence/HV4-H07/20261111T031717Z-eb4e3829/command.log",
+      "junit": "evidence/HV4-H07/20261111T031717Z-eb4e3829/junit.xml",
+      "status": "PASS"
+    },
+    {
+      "name": "h04-h05-h06-h07-tests",
+      "argv": ["uv", "run", "--frozen", "pytest", "-q", "tests/test_harness_v4_h04.py", "tests/test_harness_v4_h05.py", "tests/test_harness_v4_h06.py", "tests/test_harness_v4_h07.py"],
+      "exit_code": 0,
+      "counts": {"tests": 93, "failures": 0, "errors": 0, "skipped": 0},
+      "log": "evidence/HV4-H07/round1-20261111T0317Z/h04-h05-h06-h07.log",
+      "status": "PASS"
+    },
+    {
+      "name": "h00-h05-regression",
+      "argv": ["uv", "run", "--frozen", "pytest", "-q", "tests/test_harness_v4_h00.py", "tests/test_harness_v4_h01.py", "tests/test_harness_v4_h02.py", "tests/test_harness_v4_h03.py", "tests/test_harness_v4_h04.py", "tests/test_harness_v4_h05.py"],
+      "exit_code": 0,
+      "counts": {"tests": 124, "failures": 0, "errors": 0, "skipped": 0},
+      "log": "evidence/HV4-H07/round1-20261111T0317Z/h00-h05-regression.log",
+      "status": "PASS"
+    },
+    {
+      "name": "h00-h07-regression",
+      "argv": ["uv", "run", "--frozen", "pytest", "-q", "tests/test_harness_v4_h00.py", "tests/test_harness_v4_h01.py", "tests/test_harness_v4_h02.py", "tests/test_harness_v4_h03.py", "tests/test_harness_v4_h04.py", "tests/test_harness_v4_h05.py", "tests/test_harness_v4_h06.py", "tests/test_harness_v4_h07.py"],
+      "exit_code": 0,
+      "counts": {"tests": 176, "failures": 0, "errors": 0, "skipped": 0},
+      "log": "evidence/HV4-H07/round1-20261111T0317Z/h00-h07-regression.log",
+      "status": "PASS"
+    },
+    {
+      "name": "ruff",
+      "argv": ["uv", "run", "--frozen", "ruff", "check", "src", "tests", "scripts"],
+      "exit_code": 0,
+      "log": "evidence/HV4-H07/round1-20261111T0317Z/ruff.log",
+      "status": "PASS"
+    },
+    {
+      "name": "mypy",
+      "argv": ["uv", "run", "--frozen", "mypy"],
+      "exit_code": 0,
+      "counts": {"files": 202, "errors": 0},
+      "log": "evidence/HV4-H07/round1-20261111T0317Z/mypy.log",
+      "status": "PASS"
+    },
+    {
+      "name": "engineering-verify",
+      "argv": ["make", "verify", "TASK=HV4-H07"],
+      "exit_code": 0,
+      "counts": {"tests": 27, "failures": 0, "errors": 0, "skipped": 0},
+      "git_commit": "e06328d5f71d696bfb4c88510a77bcccc97b777e",
+      "source_sha256": "8a632ec6633f75d2c5f99268e65af8f74e595a3910bf3ae05fa51931bbdbe5e2",
+      "finished_source_sha256": "8a632ec6633f75d2c5f99268e65af8f74e595a3910bf3ae05fa51931bbdbe5e2",
+      "attempt": "evidence/HV4-H07/20261111T031717Z-eb4e3829/",
+      "log": "evidence/HV4-H07/20261111T031717Z-eb4e3829/command.log",
+      "status": "PASS"
+    },
+    {
+      "name": "independent-security-recheck",
+      "argv": ["uv", "run", "--frozen", "python", "/tmp/h07_probe.py"],
+      "exit_code": 0,
+      "counts": {"checks": 25, "passed": 25, "failed": 0, "gaps": 2},
+      "purpose": "独立复验方自写探针：stale plan、提案替换/降级/改目标、同错重跑/文字改写/补丁往返/空搜索的进展保护、blocked 保留 checkpoint、删测试文件/函数/assert* 下降/tests_run 下降、非验证不得完成、CodingResult 与磁盘绑定、越权命令与 baseline 授权、inspect 只读、run_app 接缝与 fail-closed、adapters FAILED(...) 解析",
+      "log": "evidence/harness-v4/HV4-H07/independent-recheck-20261111T1200Z/probe.log",
+      "results": "evidence/harness-v4/HV4-H07/independent-recheck-20261111T1200Z/probe-results.json",
+      "status": "PASS"
+    },
+    {
+      "name": "h07-tests-postfix",
+      "argv": ["uv", "run", "--frozen", "pytest", "-q", "tests/test_harness_v4_h07.py"],
+      "exit_code": 0,
+      "counts": {"tests": 29, "failures": 0, "errors": 0, "skipped": 0},
+      "purpose": "P-13/P-15 修复后的 H07 全量；新增裸 assert 删除与断言抽辅助函数两个双向用例",
+      "log": "evidence/HV4-H07/fix-round-20261111T0340Z/h07-tests.log",
+      "status": "PASS"
+    },
+    {
+      "name": "h04-h05-h06-h07-postfix",
+      "argv": ["uv", "run", "--frozen", "pytest", "-q", "tests/test_harness_v4_h04.py", "tests/test_harness_v4_h05.py", "tests/test_harness_v4_h06.py", "tests/test_harness_v4_h07.py"],
+      "exit_code": 0,
+      "counts": {"tests": 95, "failures": 0, "errors": 0, "skipped": 0},
+      "log": "evidence/HV4-H07/fix-round-20261111T0340Z/h04-h07.log",
+      "status": "PASS"
+    },
+    {
+      "name": "h00-h07-postfix",
+      "argv": ["uv", "run", "--frozen", "pytest", "-q", "tests/test_harness_v4_h00.py", "tests/test_harness_v4_h01.py", "tests/test_harness_v4_h02.py", "tests/test_harness_v4_h03.py", "tests/test_harness_v4_h04.py", "tests/test_harness_v4_h05.py", "tests/test_harness_v4_h06.py", "tests/test_harness_v4_h07.py"],
+      "exit_code": 0,
+      "counts": {"tests": 178, "failures": 0, "errors": 0, "skipped": 0},
+      "log": "evidence/HV4-H07/fix-round-20261111T0340Z/h00-h07.log",
+      "status": "PASS"
+    },
+    {
+      "name": "ruff-postfix",
+      "argv": ["uv", "run", "--frozen", "ruff", "check", "src", "tests", "scripts"],
+      "exit_code": 0,
+      "log": "evidence/HV4-H07/fix-round-20261111T0340Z/ruff.log",
+      "status": "PASS"
+    },
+    {
+      "name": "mypy-postfix",
+      "argv": ["uv", "run", "--frozen", "mypy"],
+      "exit_code": 0,
+      "counts": {"files": 202, "errors": 0},
+      "log": "evidence/HV4-H07/fix-round-20261111T0340Z/mypy.log",
+      "status": "PASS"
+    },
+    {
+      "name": "engineering-verify-postfix",
+      "argv": ["make", "verify", "TASK=HV4-H07"],
+      "exit_code": 0,
+      "counts": {"tests": 29, "failures": 0, "errors": 0, "skipped": 0},
+      "git_commit": "3b7bdf21c6a6e3e8b605749d3ca769f805fa2973",
+      "source_sha256": "42e9c97c84a83c3b154cffa2847a796bb062e6f81f642fab4c5d6222d066f462",
+      "finished_source_sha256": "42e9c97c84a83c3b154cffa2847a796bb062e6f81f642fab4c5d6222d066f462",
+      "attempt": "evidence/HV4-H07/20261111T034509Z-1b1811e8/",
+      "log": "evidence/HV4-H07/20261111T034509Z-1b1811e8/command.log",
+      "status": "PASS"
+    },
+    {
+      "name": "mutation-old-weakening-impl",
+      "argv": ["uv", "run", "--frozen", "pytest", "-q", "-o", "pythonpath=/tmp/h07mut/src", "tests/test_harness_v4_h07.py::test_deleting_a_bare_assert_cannot_complete", "tests/test_harness_v4_h07.py::test_extracting_an_assertion_into_a_helper_is_not_weakening"],
+      "exit_code": 1,
+      "counts": {"tests": 2, "failed": 2},
+      "purpose": "只读变异：/tmp 副本移除 ast.Assert 计数（仅此一处差异）后，两条新用例均失败，证明用例能区分新旧实现、不是空转",
+      "log": "evidence/HV4-H07/fix-round-20261111T0340Z/mutation-old-impl.log",
+      "import_path": "evidence/HV4-H07/fix-round-20261111T0340Z/mutation-import-path.log",
+      "diff": "evidence/HV4-H07/fix-round-20261111T0340Z/mutation-diff.log",
+      "status": "PASS"
+    }
+  ],
+  "engineering_gate": "PASS",
+  "security_gate": "PASS",
+  "security_gate_recheck": {
+    "reviewer": "independent recheck (TraeCode sub-session, read-only)",
+    "reviewed_at": "2026-11-11T03:30:00Z",
+    "head_commit": "3b7bdf21c6a6e3e8b605749d3ca769f805fa2973",
+    "implementation_commit": "2114a8778c2b575824b5aade8a7a3d6ec09ecc23",
+    "worktree_clean": true,
+    "source_sha256": "8a632ec6633f75d2c5f99268e65af8f74e595a3910bf3ae05fa51931bbdbe5e2",
+    "verdict": "PASS",
+    "gates": {
+      "make_verify": {"argv": "make verify TASK=HV4-H07", "tests": 27, "failures": 0, "errors": 0, "skipped": 0, "attempt": "evidence/HV4-H07/20261111T032944Z-7e3924ca/"},
+      "h07_pytest": {"tests": 27, "failures": 0, "errors": 0, "skipped": 0},
+      "h04_h05_h06_h07_pytest": {"tests": 93, "failures": 0, "errors": 0, "skipped": 0},
+      "h00_h07_regression": {"tests": 176, "failures": 0, "errors": 0, "skipped": 0},
+      "ruff": "All checks passed",
+      "mypy": {"files": 202, "errors": 0}
+    },
+    "adversarial_probes": {"checks": 25, "passed": 25, "failed": 0, "gaps": 2},
+    "probe_results": {
+      "plan_staleness": "P-01：plan 后改动工作树，run 抛 HARNESS_PLAN_STALE 且 model_calls=0",
+      "proposals": "P-02/P-03/P-04：替换既有 item、required 但无受信 requirement、required 非 behavior/regression/build、改 objective 全部 HARNESS_ACCEPTANCE_REJECTED；追加 required behavior 保留原有 required 集合",
+      "progress": "P-05/P-06/P-07/P-08：同错重跑、纯文字改写、补丁往返（含两次编辑间先评估）、重复空搜索均 no_progress，且连续两轮后 blocked",
+      "checkpoint": "P-09：blocked 时 checkpoint.tree_hash == 磁盘树，unmet_items=['verify.…']，missing_information 仅在确有缺失时非空",
+      "weakening": "P-10/P-11/P-12/P-16：清空测试文件、删测试函数、少一个 self.assert*、缩小 tests_run 都不能 completed",
+      "no_false_pass": "P-17：无验证结论时 status=blocked，verification=failed，绝不 completed",
+      "binding": "P-18：completed 时 tree_after==磁盘树、diff 含 calc.py、最终树回执存在、checkpoint 为空、run graph 末节点 verification、末次 attempt verified",
+      "no_new_entry": "P-19/P-20/P-21：coding_loop 无 subprocess/docker/socket/os.system；未列入 grant 的命令与 baseline 命令均 HARNESS_COMMAND_DENIED；inspect 写操作 HARNESS_WRITE_DENIED 且磁盘未变",
+      "run_app": "P-22：ApplicationPort 停靠下 start/stop 各 1 次、readiness/cleanup passed、service_receipts 2 条且绑定进结果；P-23：无 application 时 fail-closed，detail 为 'no readiness receipt'，不 completed",
+      "adapter_parse": "P-24：FAILED (failures=1)/(errors=1) 与 pytest '1 failed, 2 passed' 均不崩溃，status 全为 failed，tests_failed 解析为 1"
+    },
+    "gaps": [
+      "P-13：_test_strength 只统计 assert* 调用属性，裸 `assert` 语句不计入；删除测试里的裸 assert 后 tests_run 不变、无 weaken 标记，实测仍 completed/verified（守卫存在漏检面）。",
+      "P-15：把 self.assertEqual 抽到使用裸 assert 的辅助函数会被判 'tests weakened' 并 blocked（合法重构被误杀，属 fail-closed）。"
+    ],
+    "contract_checks": {
+      "no_relaxation": "adapters.py 只把 FAILED(...) 解析从 int('failures=1') 崩溃改为 failures=(\\d+)，status 仍由 exit_code 决定，未改通过/失败语义；P-24 三类输出全为 failed",
+      "tests_run_accounting": "tests_run=max(Ran N, N passed)，失败数不加入总数（P-25）；只会少算不会多算，未见放宽",
+      "no_test_weakeningInRepo": "H07 测试文件为纯新增（1163 行，0 删除），未改动既有测试；H00–H07 全量 176 passed，无 skip/xfail",
+      "round_trip_window": "同一评估窗口内连续两次编辑往返不会被标记 patch_round_trip（末树等于 checkpoint，视为无变化），但仍以 no_progress 连续两轮 blocked，不产生完成"
+    },
+    "evidence": "evidence/harness-v4/HV4-H07/independent-recheck-20261111T1200Z/",
+    "residual_limits": [
+      "弱化检测的漏检面：裸 `assert` 语句、pytest.raises/with 断言、断言移入裸 assert 辅助函数都不计入 assert* 计数；实测可删除裸 assert 后 completed，需 H12 独立判定器补强。",
+      "弱化检测的误杀面：把 self.assert* 改写为裸 assert 辅助函数会被判 tests weakened 并 blocked（安全但阻塞合法重构）。",
+      "run_app 的真实容器就绪/清理仍 NOT_RUN：H07 测试与本轮探针都使用内存 ApplicationPort；真实 HTTP/TCP 探测、容器内进程、超时清理依赖 H06/H08 接线。",
+      "tests_run 只取 'Ran N tests' 与 'N passed' 的最大值，失败用例数不合并进总数（少算不多算）。",
+      "进展判定以树/回执为单位：同一评估窗口内的多次往返编辑看不到中间树；只读不改或只改文字会被判无进展（有意为之）。",
+      "承接 H05/H06 既有残余：SIGKILL 占位残留、pytest/node 真实执行 NOT_RUN、total_bytes 轮转不可重建、exec_probe 任意容器名、allowlist 只比 basename、仓库内代码可伪造测试摘要、占位并发未测。",
+      "三个 live 门（模型/agent/发布）仍 NOT_RUN。"
+    ],
+    "incremental_recheck": {
+      "reviewer": "same independent recheck (TraeCode sub-session, read-only)",
+      "reviewed_at": "2026-11-11T04:15:00Z",
+      "head_commit": "b0ad2583e94bd61643bdc97ed28a98478ead5fe4",
+      "fix_commit": "cef74826e66e6e4e7e800dd0869140f0be010cb5",
+      "accept_commit": "b0ad2583e94bd61643bdc97ed28a98478ead5fe4",
+      "verdict": "PASS",
+      "coverage": "上方 PASS 由 3b7bdf2 上的复核给出，事实覆盖 implementation_commit 2114a87（source 8a632ec6…），不覆盖其后的 cef7482。本次增量复核针对 cef7482 的 _test_strength 文件级计数与新增双向用例，结论 PASS，故 security_gate=PASS 对当前 HEAD b0ad258 继续有效。",
+      "worktree_clean": true,
+      "gates": {
+        "head_verify": {"argv": "make verify TASK=HV4-H07", "tests": 29, "failures": 0, "errors": 0, "skipped": 0, "git_commit": "b0ad2583e94bd61643bdc97ed28a98478ead5fe4", "source_sha256": "42e9c97c84a83c3b154cffa2847a796bb062e6f81f642fab4c5d6222d066f462", "attempt": "evidence/HV4-H07/20261111T035246Z-57178bab/"},
+        "h07_pytest": {"tests": 29, "failures": 0, "errors": 0, "skipped": 0},
+        "h04_h05_h06_h07_pytest": {"tests": 95, "failures": 0, "errors": 0, "skipped": 0},
+        "h00_h07_regression": {"tests": 178, "failures": 0, "errors": 0, "skipped": 0, "deselected": 913},
+        "ruff": "All checks passed",
+        "mypy": {"files": 202, "errors": 0}
+      },
+      "no_new_skips": "H07 测试函数 27→29（纯新增），skip/xfail 标记计数 3→3 不变，既有用例零删除零改写。",
+      "probe_results": {
+        "Q-01": "P-13 重放：删裸 assert → blocked，detail 含 'tests weakened: test_calc.py'（原漏检已闭合）",
+        "Q-02": "P-15 重放：assertEqual 抽到裸 assert 辅助函数 → completed/verified，无误判（原误杀已闭合）",
+        "Q-03": "断言在 test_add/test_mul 间移动，文件总数 2→2 不变 → completed，未被判 weakened（GAP：每测试归属不可见，但断言仍在套件中执行）",
+        "Q-04": "同一位置换成 self.assertTrue(True)，总数不变 → completed（GAP：同义反复无法靠计数识别）",
+        "Q-05": "三条断言折成一个元组断言辅助函数，3→1 → blocked/weakened（GAP：等价重构被误杀，fail-closed）",
+        "Q-06": "带消息裸 assert 删除 → blocked（已计入）",
+        "Q-07": "一函数三条断言删一条 → blocked（已计入）",
+        "Q-08": "pytest 风格裸 assert 删除 → blocked 且 weakened 标记出现（复现项另因 pytest 产生 __pycache__ 导致树漂移，属探针夹具现象，不影响弱化判定）",
+        "Q-09": "断言写在非测试文件 calc.py → completed（守卫不覆盖，符合契约）",
+        "Q-10": "断言只留在未被调用的辅助函数里，总数 2→2 → completed（GAP：计数看不到可达性，与 Q-04 同类）",
+        "Q-11": "把一个测试文件掏空、在另一测试文件多加断言补偿 → blocked/weakened（逐文件比较拦住跨文件补偿）"
+      },
+      "adversarial_probes": {"checks": 11, "passed": 7, "failed": 0, "gaps": 4, "evidence": "evidence/harness-v4/HV4-H07/independent-recheck2-20261111T1400Z/probe.log"},
+      "mutation": "在 /tmp/h07mut2 副本仅删除 ast.Assert 计数的两行（已记录 diff 与导入路径），两条新用例均失败（2 failed），证明它们能区分新旧实现、不是空转；仓库工作树保持干净。",
+      "scope_verdict": "文件级断言总数是可接受的口径取舍，不判 FAIL：删除任一断言站点都会使总数下降而被拦截（Q-01/Q-06/Q-07/Q-08），跨文件补偿也被逐文件比较拦住（Q-11）；must_pass 的承诺是“测试/断言计数下降不得完成”，该口径满足且闭合了 P-13。Q-03/Q-04/Q-10 的“总数不变但单个测试意图被削弱”是任何计数启发式的固有漏检，Q-05 的等价重构被拦是 fail-closed 误杀，四者均记入残余限制，交由 H12 独立判定器补强，不阻断本卡。",
+      "patch_truncated_followup": "已独立核实实现方结论属实：全 src 中 PATCH_TRUNCATED 仅在 repair/providers/structured.py 的 propose 且 finish_reason=='length' 分支产生；src/mgar_v3/harness 无 'replacements' 入口，apply_edits 只接受 edits(path/expected_sha256/content)+expected_tree（整文件 content）；E02 在统一循环路径上未被绕开、只是未被触发。记为 H08 前置条件（大文件增量替换接线），本卡不扩大修复。",
+      "accept_commit_note": "b0ad258 的 diff 并非只新增 post_recheck_fixes/patch_truncated_review：它还一并提交了复验方第 3 轮遗留的未提交 accept.json 修改（status/review_status/security_gate 翻转、security_gate_recheck、commands、artifacts、residual_limits 增补），这些内容与复验方记录一致；新增的两字段为本轮实现方补记。",
+      "evidence": "evidence/harness-v4/HV4-H07/independent-recheck2-20261111T1400Z/"
+    }
+  },
+  "post_recheck_fixes": {
+    "addressed_gaps": ["P-13", "P-15"],
+    "status": "FIXED_PENDING_RECHECK",
+    "note": "本字段不改变复验方写入的 status/review_status/security_gate 与 security_gate_recheck 结论；修复后的 commit 仍需复验方复核 P-13/P-15 是否闭合，H08 仍不启动。",
+    "implementation": {
+      "file": "src/mgar_v3/harness/coding_loop.py",
+      "function": "_test_strength",
+      "change": "断言站点按文件汇总：ast.Assert（裸 assert，含 assert x, 'msg' 形式）与 self.assert* 属性调用各计 1；比较仍用 (测试函数数, 断言站点数) 的下降判定。",
+      "rationale": "按文件级断言总数而不是单函数计数：删掉任意一条裸 assert 都会让总数下降而被拦截；把 self.assertEqual 抽到使用裸 assert 的辅助函数时总数不变（1→1），不会误杀等价重构。这是通用计数口径，没有对某一种断言写法做例外放行。"
+    },
+    "p13_bare_assert": {
+      "case": "test_deleting_a_bare_assert_cannot_complete",
+      "result": "PASS",
+      "detail": "基线测试用裸 assert 且真实失败；修复 calc.py 后把测试改成不含断言的 add(2, 3) 调用，tests_run 仍为 1 且命令通过，但断言站点 1→0 被判 weakened，最终不是 completed。"
+    },
+    "p15_helper_refactor": {
+      "case": "test_extracting_an_assertion_into_a_helper_is_not_weakening",
+      "result": "PASS",
+      "detail": "把 self.assertEqual 抽到使用裸 assert 的 _check_equal 辅助函数，断言站点 1→1，任务仍正常 completed，且没有任何 item 出现 tests weakened。"
+    },
+    "mutation_check": {
+      "method": "将 src 复制到 /tmp/h07mut/src，仅移除 ast.Assert 计数两行；用 -o pythonpath=/tmp/h07mut/src 强制导入变异副本（已记录模块来自 /tmp），再跑两条新用例。",
+      "result": "2 failed",
+      "detail": "旧实现下裸 assert 删除被判不 weakened（用例失败）、等价重构被判 weakened（用例失败），说明两条用例能区分新旧实现，不是空转。",
+      "log": "evidence/HV4-H07/fix-round-20261111T0340Z/mutation-old-impl.log",
+      "import_path": "evidence/HV4-H07/fix-round-20261111T0340Z/mutation-import-path.log",
+      "diff": "evidence/HV4-H07/fix-round-20261111T0340Z/mutation-diff.log"
+    },
+    "remaining_heuristics": [
+      "pytest.raises / with 上下文断言仍不计入站点数（复验方残余限制继续有效）。",
+      "把同一断言抽成被多处调用的辅助函数时，站点总数会下降，仍可能被判 weakened（fail-closed，安全但可能阻塞）。",
+      "测试改名、拆分、参数化与非 Python 测试仍只靠 tests_run 与文件存在性。"
+    ]
+  },
+  "patch_truncated_review": {
+    "question": "PATCH_TRUNCATED 的真实状态、H05 之后是否有真实/合成触发、E02 整文件输出上限问题是否被增量编辑绕开",
+    "producers": [
+      {
+        "path": "src/mgar_v3/repair/providers/structured.py",
+        "lines": "252-256",
+        "condition": "StructuredPatchProvider.propose 收到 finish_reason == 'length'",
+        "code": "PATCH_TRUNCATED",
+        "note": "V3.5 修复 provider 的整文件补丁协议，仍被 quality_eval/v35/live_provider.py 使用；H07 统一循环不经过该 provider，也不产生该错误码。"
+      }
+    ],
+    "synthetic_triggers_after_h05": [
+      "tests/test_harness_v4_h05.py::test_large_file_provider_plan_is_small_and_truncation_is_rejected：MockModel 返回 finish_reason='length'，断言 PatchProposalRejected.code == 'PATCH_TRUNCATED'。"
+    ],
+    "real_triggers_after_h05": "没有。H05/H06/H07 全部使用脚本化 provider；H05 之后未再执行真实模型调用。唯一的真实触发是 V35-E02（H05 之前的旧整文件协议）：docs/v35/accept/V35-E02/accept.json 记录 4 臂 12 次真实付费调用全部 fail:PATCH_TRUNCATED，live_agent_gate=FAIL，原因是 deepseek-chat 8192 输出上限无法返回完整 142KB core.py；该轮原始 evidence/v35 目录是 gitignore，当前 checkout 中不存在，只能复核已入库的 accept 记录。",
+    "e02_status": {
+      "bypassed_by_incremental_edits": false,
+      "why": "H05 的增量替换能力存在于 PatchWorktree 层（TextReplacement 计划），但 H06/H07 暴露给模型的唯一写工具 apply_edits 只接受 WorkspaceEdit(path, expected_sha256, content)，即整文件 content（上限 2,000,000 字符），没有 replacements 入口。因此统一循环的可执行写路径仍可能撞输出 token 上限。",
+      "triggered_in_h07": false,
+      "trigger_note": "H07 全部用例使用几十行的小文件与脚本化模型，不会触发；live_model_gate=NOT_RUN，没有真实模型大文件修复样本。"
+    },
+    "evidence_level": {
+      "real_process_and_filesystem": "H05 worktree 用例在真实临时目录读写文件、计算 sha256，增量替换路径与陈旧/哈希/歧义/重放错误码是真实文件系统执行结果；仓库内 fixture 为 3100 行（约 130KB），186KB/944B/216B 是复验方探针的数字，本仓库测试与 accept 记录中不存在这些值，本次未复现该组数字。",
+      "contract_or_synthetic": "PATCH_TRUNCATED 的产生条件、H05 截断拒绝、E02 的增量绕开思路目前只有契约/合成证据。",
+      "real_model": "仅 V35-E02 的旧协议 4 臂真实失败；harness v4 尚无任何真实模型运行证据。"
+    },
+    "conclusion": "PATCH_TRUNCATED 目前只在旧 StructuredPatchProvider 的 length 分支产生，H05 之后只有合成触发，没有真实触发；增量编辑在 H05 工作区层提供了绕开 E02 的能力，但 H07 循环尚未接入 replacements，E02 在统一循环路径上只是未被触发而非已被绕开。该问题不在 H07 修复范围，记录为残余限制/后续接线项。"
+  },
+  "live_model_gate": "NOT_RUN",
+  "live_agent_gate": "NOT_RUN",
+  "live_publication_gate": "NOT_RUN",
+  "security_gate_note": "H07 不新增执行入口：写入、读取、命令与应用启动仍由 H06 适配器和 H04 Broker 的 lease/grant/epoch/预算/scope/allowlist 决定。循环只做前置校验（未声明工具、只读任务禁写/禁执行、写路径与 argv 是否在 grant 内）并原样透传授权对象；未放宽既有隔离，未调用真实凭据，未外发。仍需独立复验方确认提案约束、只读策略与越权路径无绕过。独立复验已完成（25 项自写探针全通过，2 项启发式 gap 记入残余限制），结论见 security_gate_recheck。",
+  "live_gate_note": "本卡使用脚本化离线 provider 与真实 Python unittest 命令，无容器、无网络、无付费，费用 0。未调用真实模型，live_model_gate 保持 NOT_RUN。",
+  "must_pass": [
+    {
+      "item": "真实测试首次失败后能修复再测",
+      "result": "PASS",
+      "evidence": "test_bugfix_reproduces_then_fixes_and_completes：基线 unittest 真实失败，编辑后同一命令真实通过，reproduction 与 verify 两项均 passed。"
+    },
+    {
+      "item": "预算内超过旧 3 次尝试仍可成功",
+      "result": "PASS",
+      "evidence": "test_legacy_cap_stops_while_resource_policy_can_continue：legacy 策略在 3 次后停手，resource 策略第 4 次修复后完成；test_progress_resets_the_no_progress_guard 覆盖有进展时保护被重置。"
+    },
+    {
+      "item": "新增功能与绿色基线重构可完成",
+      "result": "PASS",
+      "evidence": "test_feature_requires_new_behavior_and_regression（基线绿、新增行为测试从 1 项增到 2 项）、test_refactor_keeps_behavior_and_public_signatures（不改公共签名，回归通过）。"
+    },
+    {
+      "item": "已知 bugfix 不能绕过复现",
+      "result": "PASS",
+      "evidence": "test_bugfix_cannot_skip_reproduction_even_when_the_fix_passes：即使最终测试全绿，没有基线失败回执仍不 complete。"
+    },
+    {
+      "item": "核验失败、预算耗尽和未知调用均不生成已完成结果",
+      "result": "PASS",
+      "evidence": "test_verification_failure_keeps_the_task_incomplete、test_budget_exhaustion_never_completes、test_unknown_model_usage_never_completes、test_unknown_tool_and_out_of_grant_command_are_denied、test_cancellation_never_completes。"
+    },
+    {
+      "item": "最终结论绑定实际代码树和验证回执",
+      "result": "PASS",
+      "evidence": "CodingResult 的 tree_after 取自最终 snapshot，verification 由 H06 LocalVerifier 基于该树与 receipts 生成；test_stale_plan_is_rejected 拒绝在旧树上继续。"
+    },
+    {
+      "item": "不能通过删测试、改目标变成完成",
+      "result": "PASS",
+      "evidence": "test_deleting_or_weakening_tests_cannot_complete_a_task（删除测试文件、用 skipTest 替换断言均不能 complete）、test_proposal_cannot_replace_required_items_or_invent_commands（不能替换/新增受信要求）。"
+    },
+    {
+      "item": "无法推进时保留检查点、未完成项与所缺信息",
+      "result": "PASS",
+      "evidence": "test_repeated_failure_without_new_evidence_blocks_with_a_checkpoint、test_patch_round_trip_is_detected、test_empty_search_is_reported_and_blocks 均返回 blocked 且 checkpoint 含 unmet_items/missing_information。"
+    }
+  ],
+  "deviations": [
+    {
+      "issue": "TASKS.md 标注的主要位置是旧 agent 模块",
+      "handling": "H07 交付统一循环运行时 src/mgar_v3/harness/coding_loop.py；repository_analysis/agent.py、repair/repair_agent.py、workbench/orchestrator.py 未改写。按卡片序列，H08 才负责把首页/API 接入 H07 的真实运行时；在未接新入口前改写旧回路会破坏现有只读/修复路径。旧 RepairBudget 的 3 次上限以 legacy 策略保留。"
+    },
+    {
+      "issue": "应用进程只做接缝",
+      "handling": "ApplicationPort 由 H06 容器生命周期实现；H07 测试用内存实现验证 readiness/cleanup 判定，不启动容器，也不新增端口发布或网络。"
+    },
+    {
+      "issue": "adapters.py 的失败计数正则修复",
+      "handling": "原 FAILED \\(([^)]*)\\) 在 unittest 输出 FAILED (failures=1) 时把 failures=1 当整数解析而崩溃。改为 failures=(\\d+) 后仍识别 pytest 与 unittest 的失败数，不改变通过/失败判定语义。"
+    },
+    {
+      "issue": "弱化检测采用 AST 计数启发式",
+      "handling": "删除测试文件、测试函数数或 assert* 调用数下降、tests_run 下降均判失败；测试改名、拆分或把断言移入辅助函数可能误判，已在契约中写明，需独立判定器（H12）补强。"
+    },
+    {
+      "issue": "承接 H06 与 H05 的既有残余限制",
+      "handling": "未改变 broker.py/project_commands.py 的挂载、占位、日志总量语义；SIGKILL 占位残留、pytest/node 真实执行 NOT_RUN、total_bytes 轮转不可重建、exec_probe 任意容器名、allowlist 只比 basename、仓库内代码可伪造测试摘要与 H05 六条限制继续适用。"
+    }
+  ],
+  "residual_limits": [
+    "SIGKILL 时容器与 broker 预建的 0700 空占位目录会残留（正常退出/超时/取消/close 已清理）。",
+    "pytest/node 真实执行仍 NOT_RUN（R03 镜像缺运行时，仅验证 waiting_approval 路径）；H07 只用 Python unittest 真命令。",
+    "total_bytes 依赖 docker logs 单调计数，轮转/清理后不可重建。",
+    "exec_probe 接受任意容器名；allowlist 只比对 argv[0] basename；仓库内代码可伪造测试摘要；占位目录并发/竞态未测。",
+    "H05 的六条编辑限制继续适用（输出预算不约束回复体积、revert_patch 不检测外部改动、一次性落盘非事务、重命名不计 max_deleted_files、软链 TOCTOU、混合换行仅精确匹配）。",
+    "H07 弱化检测是 AST 计数启发式：测试改名、拆分、参数化或断言移入辅助函数可能被误判；非 Python 测试不做 AST 计数，仅靠 tests_run 与文件存在性。",
+    "独立复验补充：裸 `assert` 语句（非 assert* 调用）不计入计数，实测删除测试里的裸 assert 后仍可 verified/completed；把 self.assert* 抽到裸 assert 辅助函数则会被误判 tests weakened 并 blocked（fail-closed）。漏检面需 H12 独立判定器补强。",
+    "独立复验补充：tests_run=max('Ran N tests','N passed')，失败的用例数不合并进总数，只会少算不会多算。",
+    "增量复验补充（cef7482）：裸 `assert`（含带消息形式）已按文件计入断言站点总数，P-13 的漏检与 P-15 的误杀均已闭合；文件级总数口径的残余为：断言跨测试函数移动（Q-03）、同数量同义反复如 assertTrue(True)（Q-04）、断言只留在未被调用的辅助函数里（Q-10）时总数不变而单个测试意图可能被削弱；多条断言折成一个元组断言会被判 weakened 并 blocked（Q-05，fail-closed）。以上交由 H12 独立判定器补强。",
+    "进展判定以树/回执为单位，模型只读不改或只改文字会被判无进展；这条是有意为之，不是遗漏。",
+    "ApplicationPort 只是接缝，真实应用启动/就绪/清理仍由 H06 负责；H07 未启动容器。",
+    "三个 live 门（模型/agent/发布）仍 NOT_RUN。"
+  ],
+  "artifacts": {
+    "contract": "docs/harness-v4/CODING_LOOP.md",
+    "loop": "src/mgar_v3/harness/coding_loop.py",
+    "exports": "src/mgar_v3/harness/__init__.py",
+    "tests": "tests/test_harness_v4_h07.py",
+    "verification_config": "config/verification.json",
+    "verify_attempt": "evidence/HV4-H07/20261111T031717Z-eb4e3829/",
+    "round_logs": "evidence/HV4-H07/round1-20261111T0317Z/",
+    "independent_recheck": "evidence/harness-v4/HV4-H07/independent-recheck-20261111T1200Z/",
+    "post_recheck_fix": "evidence/HV4-H07/fix-round-20261111T0340Z/",
+    "post_recheck_verify_attempt": "evidence/HV4-H07/20261111T034509Z-1b1811e8/",
+    "incremental_recheck": "evidence/harness-v4/HV4-H07/independent-recheck2-20261111T1400Z/"
+  },
+  "next_card": "HV4-H08",
+  "next_card_prerequisites": "H07 已通过独立复验（security_gate PASS，见 security_gate_recheck）；H08 可按下发顺序接线，启动前仍需确认弱化检测漏检面是否纳入 H12 范围。",
+  "record_reconciliation_20261111": {
+    "record": "docs/harness-v4/RECORD_RECONCILIATION_20261111.json",
+    "section": "h07_postfix_record_audit",
+    "note": "Appended historical evidence reconciliation only; original acceptance verdicts, FIXED_PENDING_RECHECK field, counts and GAP records remain unchanged."
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "receipt_id": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Receipt Id",
+      "type": "string"
+    },
+    "producer": {
+      "const": "independent-judge-adapter",
+      "default": "independent-judge-adapter",
+      "title": "Producer",
+      "type": "string"
+    },
+    "task_id": {
+      "title": "Task Id",
+      "type": "string"
+    },
+    "experiment_id": {
+      "title": "Experiment Id",
+      "type": "string"
+    },
+    "execution_task_id": {
+      "title": "Execution Task Id",
+      "type": "string"
+    },
+    "run_id": {
+      "title": "Run Id",
+      "type": "string"
+    },
+    "execution_epoch": {
+      "minimum": 1,
+      "title": "Execution Epoch",
+      "type": "integer"
+    },
+    "tree_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Tree Hash",
+      "type": "string"
+    },
+    "judge_sha256": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Judge Sha256",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "NOT_RUN",
+        "BLOCKED"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "raw_report_ref": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Raw Report Ref",
+      "type": "string"
+    },
+    "log_refs": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Log Refs",
+      "type": "array"
+    },
+    "log_bytes": {
+      "items": {
+        "type": "integer"
+      },
+      "title": "Log Bytes",
+      "type": "array"
+    },
+    "commands": {
+      "items": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "title": "Commands",
+      "type": "array"
+    },
+    "detail": {
+      "title": "Detail",
+      "type": "string"
+    }
+  },
+  "required": [
+    "receipt_id",
+    "task_id",
+    "experiment_id",
+    "execution_task_id",
+    "run_id",
+    "execution_epoch",
+    "tree_hash",
+    "judge_sha256",
+    "status",
+    "raw_report_ref",
+    "log_refs",
+    "log_bytes",
+    "commands",
+    "detail"
+  ],
+  "title": "JudgeAttestation",
+  "type": "object"
+}

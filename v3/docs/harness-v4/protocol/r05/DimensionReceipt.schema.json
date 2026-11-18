@@ -1,0 +1,68 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "receipt_id": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Receipt Id",
+      "type": "string"
+    },
+    "kind": {
+      "enum": [
+        "target_behavior",
+        "public_regression",
+        "independent_judge",
+        "structural_constraints",
+        "execution_integrity"
+      ],
+      "title": "Kind",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "NOT_RUN",
+        "BLOCKED"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "required": {
+      "title": "Required",
+      "type": "boolean"
+    },
+    "tree_hash": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Tree Hash"
+    },
+    "evidence_refs": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Evidence Refs",
+      "type": "array"
+    },
+    "detail": {
+      "title": "Detail",
+      "type": "string"
+    }
+  },
+  "required": [
+    "receipt_id",
+    "kind",
+    "status",
+    "required",
+    "tree_hash",
+    "evidence_refs",
+    "detail"
+  ],
+  "title": "DimensionReceipt",
+  "type": "object"
+}

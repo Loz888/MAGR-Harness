@@ -1,0 +1,13 @@
+{
+  "_public_export": {
+    "original_record_sha256": "3208f3477543f311ecb1b03932ffd0e1f0710928baadd2cd745809e88c56100a",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "status": "PASS",
+  "scope": "real evidence connectors and conservative prompt bounds only",
+  "new_paid_calls": 0,
+  "case_count": 30,
+  "status_field_occurrences": {
+    "PASS": 1
+  }
+}

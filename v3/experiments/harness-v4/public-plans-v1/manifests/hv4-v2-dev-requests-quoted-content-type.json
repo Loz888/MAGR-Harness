@@ -1,0 +1,46 @@
+{
+  "base_commit": "bc7dd0fc4d56e808bcdd85ac2d797b3107c89259",
+  "original_tree_sha256": "0f0a284dec45e4ef471a82632420c6ee7834817e54423c82d11eb6d845800dcf",
+  "probe": {
+    "asset_sha256": "70b557db561e2b6dee8998b7ccc1150d725cf9abb65f9834deebc71fe43af7ad",
+    "case_ids": [
+      "quoted-semicolon-equals",
+      "independent-quoted-parameters",
+      "unquoted-separators",
+      "media-type-and-name-case",
+      "quote-removal",
+      "no-parameters"
+    ],
+    "plan_id": "h12-public-requests-quoted-content-type-v1",
+    "runner": "python-json-v1",
+    "schema_version": "harness-public-probe-plan-v1"
+  },
+  "public_basis": [
+    {
+      "path": "src/requests/utils.py",
+      "sha256": "c433154e14f78de6d50ea7fe753825b8bbb3c9459468dee052f8b68edc2572dc"
+    },
+    {
+      "path": "tests/test_utils.py",
+      "sha256": "da6e0498a5053d7c4d558dd7602ee6738fcc4146eb82006b056199725f8d3627"
+    }
+  ],
+  "public_goal_sha256": "6ab6dc90048bad9fdc4449a68c6df512125781463c9c0ba61877863a60fbc278",
+  "regression_argv": [
+    "python3",
+    "-B",
+    "-m",
+    "pytest",
+    "tests/"
+  ],
+  "repository": "psf/requests",
+  "resources_sha256": "d784b79980f61df462ecc4ef8c47bc67c0851a2d99af7d9997688278314b7595",
+  "roles": {
+    "behavior": "same_public_probe_all_cases_pass_on_final",
+    "regression": "original_public_regression_on_final",
+    "reproduction": "same_public_probe_assertion_failure_on_original"
+  },
+  "schema": "h12-public-plan-v1",
+  "status": "FROZEN",
+  "task_id": "hv4-v2-dev-requests-quoted-content-type"
+}

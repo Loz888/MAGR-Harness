@@ -1,0 +1,1 @@
+{"kind":"feature_red_baseline","visibility":"public_synthetic","observation":{"legacy_environment_status":"BLOCKED","public_files":["public_feature_test.go"],"compiler_output":"./public_feature_test.go:3:4: x.NewFeature undefined (type *Example has no field or method NewFeature)\nFAIL\n"}}

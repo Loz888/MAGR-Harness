@@ -1,0 +1,66 @@
+{
+  "change": {
+    "existing_protected_directory": "empty read-only tmpfs mode0555",
+    "existing_protected_file": "unchanged unreadable empty regular-file mask mode000 readonly bind",
+    "missing_protected_mountpoint_below_writable_scope": "empty read-only tmpfs mode0555; broker-owned placeholder cleaned after command",
+    "unchanged": [
+      "exact scope mount plan",
+      "lease and grant boundaries",
+      "protected-path read/cwd denial",
+      "no-follow symlink checks",
+      "opened inode retention and trusted container-entry identity validation",
+      "nonroot UID, dropped capabilities, readonly root, no network/credentials"
+    ]
+  },
+  "cost_micros": 0,
+  "evidence": {
+    "first.junit.xml": {
+      "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/protected-directory-mask/first.junit.xml",
+      "sha256": "e7804972bc127febb39e24d177e2f2c6a7e0140377fb760cfb1ac0131f159908"
+    },
+    "first.log": {
+      "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/protected-directory-mask/first.log",
+      "sha256": "3d52ccaa619e47722efd42b9a36bfb8bd9d2ba4c66fa1216685f31e65bd6ba96"
+    }
+  },
+  "files": {
+    "src/mgar_v3/harness/broker.py": "e1458c72bc9a93cc0372bd88ee3c6f3b705dfbe6d18adb04c143f101ba51e926",
+    "tests/test_h12_protected_directory_traversal.py": "3dbdbd0ed681e3f52b8563a34b0eb458b89a1745617cb58a035be37ae0297518"
+  },
+  "history": "Old H04/H12 security and public-probe suites were not rerun; parent will execute all twelve public prerequisites on the newly frozen source. Old 8READY/4NOT_RUN report remains historical, not reused as final-source readiness.",
+  "new_test": {
+    "actual_command": "node check.js <fixed-test-mode>",
+    "actual_modes": [
+      "investigate",
+      "modify_test"
+    ],
+    "assertions": [
+      "recursive source-directory traversal succeeds",
+      "protected .git and .mgar expose empty directories",
+      "real config, object/token, .mgar token and .env contents remain unreadable",
+      "protected writes, new directories/files and rename remain denied",
+      "ordinary source remains readable",
+      "ordinary writable control succeeds only under fixture modify_test grant and is cleaned",
+      "original host bytes and file list unchanged",
+      "protected cwd and direct authority read paths remain denied"
+    ],
+    "duration_seconds": 2.45,
+    "failed": 0,
+    "passed": 1,
+    "path": "tests/test_h12_protected_directory_traversal.py",
+    "skipped": 0,
+    "warnings": "84 cleanup warnings refer to older pytest temporary directories; original log preserved."
+  },
+  "paid_model_calls": 0,
+  "problem": "Got public source traversal received EACCES on a protected .git directory masked by mode000 tmpfs. Real contents were already hidden; traversal of the empty mask was blocked.",
+  "quality_status": "NOT_RUN",
+  "schema": "h12-protected-directory-mask-review-v1",
+  "scope": "No private judge, held-out input, model, new image, external write or database was used.",
+  "status": "ENGINEERING_PASS",
+  "validation": {
+    "diff_check": "PASS",
+    "target_format_new_test": "PASS",
+    "target_mypy_broker": "PASS",
+    "target_ruff": "PASS"
+  }
+}

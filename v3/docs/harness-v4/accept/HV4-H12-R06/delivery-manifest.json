@@ -1,0 +1,100 @@
+{
+  "card": "HV4-H12-R06",
+  "status": "LOCAL_ENGINEERING_PASS",
+  "source_commit": "88be4949c712e0e1c5fc8256a08325adf0339cc6",
+  "source_sha256": "514e99fea7f55287bb857a240e75b60ea8ab00a07c4b985021c728f27f6cb21d",
+  "h12_quality": "FAIL",
+  "mvp": "NOT_RELEASED",
+  "stop_after": "R06",
+  "next_cards_started": false,
+  "paid_calls": 0,
+  "merge_push_deploy": false,
+  "delivery_commit": "See local git history and ignored evidence delivery-seal.json; this manifest does not hash itself.",
+  "files": [
+    {
+      "path": "docs/harness-v4/CODEX_CLI_H12_R06_TASK.md",
+      "sha256": "8b454691894eea671364cc8cd141a40510a393e3eb2718803eb2dc76e7c2b677",
+      "bytes": 3823
+    },
+    {
+      "path": "docs/harness-v4/H12_R06_BASELINE_JUDGE_PROTOCOL.md",
+      "sha256": "eefea4b3d0b6f3221762e23281f02189dd5caca053b166ae77e5fe9c923e43a6",
+      "bytes": 7475
+    },
+    {
+      "path": "docs/harness-v4/H12_R06_BASELINE_JUDGE_REVIEW_20261116.md",
+      "sha256": "99c53eb17b047554c2a6d7214d8d00b8f3a85df68bbf823d138aae04e862426e",
+      "bytes": 8143
+    },
+    {
+      "path": "docs/harness-v4/H12_R06_BENCHMARK_REVIEW_20261116.md",
+      "sha256": "ce7cf80e7a27ff12ef067ecdcbea9defb6c7b6d52515cdcc95b9e0e2cfa61f44",
+      "bytes": 6866
+    },
+    {
+      "path": "docs/harness-v4/protocol/r06/README.md",
+      "sha256": "a0cce3471d4f4a8f8ad024376851eb4f01483ceb0e87deff103804052a3ce7da",
+      "bytes": 1469
+    },
+    {
+      "path": "docs/harness-v4/protocol/r06/BaselineAssessment.schema.json",
+      "sha256": "fc6b1d6a07cf69fc5685b19554df72dfc31868f571c4ee700b25a63c4e27f773",
+      "bytes": 1518
+    },
+    {
+      "path": "docs/harness-v4/protocol/r06/IndependentEvaluationEvidence.schema.json",
+      "sha256": "369cac1cb7b3ab8927c6770442eea890cf8aa11999bea2bee2e180a40d0d71d2",
+      "bytes": 2577
+    },
+    {
+      "path": "docs/harness-v4/protocol/r06/JudgeAttestation.schema.json",
+      "sha256": "41b5008101d8b91cbb8e2b28d252f90f4ab3730709a9e0cfb7ea3d1883280ae5",
+      "bytes": 2344
+    },
+    {
+      "path": "docs/harness-v4/protocol/r06/JudgeTraceabilityManifest.schema.json",
+      "sha256": "2166cf24297d8de8e203f5375061331f8973aa99b519834ea861b11674a5283f",
+      "bytes": 2382
+    },
+    {
+      "path": "docs/harness-v4/protocol/r06/SemanticRevision.schema.json",
+      "sha256": "3c7c2cb8899a9e3b0536f72406dd6af642a49bee94d03206e425c7517ef47e4c",
+      "bytes": 9923
+    },
+    {
+      "path": "docs/harness-v4/protocol/r06/SharedHelperSpec.schema.json",
+      "sha256": "2c671d27ce376ecbb8595a92f63ebde6c93a0d1a35f27ae51774b08a793d7d08",
+      "bytes": 1189
+    },
+    {
+      "path": "docs/harness-v4/protocol/r06/TaskBaselinePolicy.schema.json",
+      "sha256": "8e897196964e36022236eb9b99a1c284668d0d55fe786de4dde827dda5052c61",
+      "bytes": 8610
+    },
+    {
+      "path": "docs/harness-v4/protocol/r06/benchmark-review.json",
+      "sha256": "cca584721354d13f4df45c32fe9571dca75b751b0232c283cfb74ab3042eba54",
+      "bytes": 40834
+    },
+    {
+      "path": "docs/harness-v4/protocol/r06/public-synthetic-policy.json",
+      "sha256": "589ab81e88609c32934fb513ac1ce0d9cfba365f3fa2c2188a6c83204c539d36",
+      "bytes": 1606
+    },
+    {
+      "path": "docs/harness-v4/protocol/r06/synthetic-traceability-example.json",
+      "sha256": "c35151f694644c7795a99ef18bb63add4a93f9c9c52e64f0c9abce60f48016a3",
+      "bytes": 1148
+    },
+    {
+      "path": "docs/harness-v4/accept/HV4-H12-R06/accept.json",
+      "sha256": "e3fe66899c206eaac9522bf651df7fa6d4a38c369e18b55b9372db3ab5fc66f4",
+      "bytes": 8170
+    },
+    {
+      "path": "docs/harness-v4/accept/HV4-H12-R06/cases.json",
+      "sha256": "5d505ed744febc22a952552f1fd19020a926bb5cb64413042e7ffffb25b3f8ba",
+      "bytes": 31525
+    }
+  ]
+}

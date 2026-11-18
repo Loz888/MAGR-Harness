@@ -1,0 +1,34 @@
+{
+  "_public_export": {
+    "original_record_sha256": "9101173dc8b61768da141be602bbab9d36cb98a8b127421e3d1da982e79baca8",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "card": "HV4-H12-R03",
+  "status": "PASS",
+  "scope": "LOCAL_SCOPED_TOOL_FEEDBACK_AND_CORRECTION_ENGINEERING_ONLY",
+  "recorded_at": "2026-11-15T13:42:20.598049+00:00",
+  "branch": "hv4-h12-r03-20261115",
+  "source_commit": "eb80eeebcde31537e4945720c765043ed50ecffd",
+  "source_sha256": "0c592451a1e3a2f9491898412e063001bf1a006e04ddf2efc13bcd4085558b6f",
+  "baseline_commit": "d148cc11ada0f9757f1db4a9d7b1db0a9eac9e42",
+  "engineering_gate": "PASS",
+  "security_gate": "PASS",
+  "live_model_gate": "NOT_RUN",
+  "live_agent_gate": "NOT_RUN",
+  "live_publication_gate": "NOT_RUN",
+  "h12_quality": "FAIL",
+  "mvp": "NOT_RELEASED",
+  "h13": "NOT_STARTED",
+  "counts": {
+    "tests": 464,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "registered_test_files": 30,
+  "new_paid_calls": 0,
+  "new_paid_cost_micros": 0,
+  "status_field_occurrences": {
+    "PASS": 52
+  }
+}

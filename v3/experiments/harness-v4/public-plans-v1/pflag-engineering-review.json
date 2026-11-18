@@ -1,0 +1,30 @@
+{
+  "schema": "h12-formal-public-pflag-review-v1",
+  "status": "PUBLIC_ENGINEERING_READY",
+  "task_id": "hv4-dev-pflag-unknown-flag",
+  "asset_sha256": "8e7382b7852ce1b9247110b9e0742f1415349a7c20da955f6a6a64233170a62b",
+  "public_sources": [
+    "goal and acceptance in benchmark-v2/dev.jsonl",
+    "flag.go public PassUnknownFlagToArgs, SetInterspersed and FlagSet APIs",
+    "go.mod"
+  ],
+  "cases": [
+    "unknown before a recognized flag preserves the rest",
+    "recognized prefix remains parsed, later known flags remain unconsumed",
+    "unknown before a value preserves remainder",
+    "interspersed=true retains its existing behavior"
+  ],
+  "assertion_boundary": "Compile/import/runtime/output errors are error; only explicit comparison to public goal produces assertion_failed. Go helper is fixed source in private scratch, no shell/model arguments/workspace edits.",
+  "real_original": {
+    "status": "READY",
+    "probe": "red",
+    "regression": "passed",
+    "regression_tests": 195,
+    "calls": 0,
+    "record": "evidence/harness-v4/H12-FORMAL-PUBLIC-ASSETS-20261113/pflag-original-attempt-1/result.json"
+  },
+  "runtime": "Original immutable Go1.22.12+Python3.12.16 image, explicit scratch256MiB matches old independent preparation; model/tool/token/USD/deadline unchanged.",
+  "private_judge_or_holdout_read": false,
+  "candidate_source_edited": false,
+  "quality": "NOT_RUN"
+}

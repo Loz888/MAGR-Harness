@@ -1,0 +1,50 @@
+{
+  "schema": "h12-original-card-and-recovery-recheck-v1",
+  "source_sha256": "2e8bc6b0725a41b40de1c9ad3dcc97ea391a703d9aa4db9c704a33beab3aa193",
+  "original_h12_result": {
+    "path": "evidence/HV4-H12/20261114T115856Z-56ae539a/result.json",
+    "sha256": "8a61c14bfdd834e4c146164b5940d6d21821355ff04bf43a0d12e6ce5a3dcb45"
+  },
+  "original_h12_counts": {
+    "tests": 443,
+    "failures": 7,
+    "errors": 0,
+    "skipped": 0
+  },
+  "environment_fix": {
+    "path": ".local/h12/quality-repair-20261114/environment-lock-v8-provision.json",
+    "sha256": "c662bda921ca86f512eac79338d382c80d4b0830932a402b738bcff4697855a2"
+  },
+  "same_source_failed_only_recheck": {
+    "path": ".local/h12/quality-repair-20261114/environment-lock-v8-recheck.json",
+    "sha256": "1e0d3ced884a02dd143df2a6fe73cb3082633dcd9433ceb681c4840bfc98a5df"
+  },
+  "recheck_junit": {
+    "path": ".local/h12/quality-repair-20261114/environment-lock-v8-recheck.xml",
+    "sha256": "ee784d32141c56cea714d56a12972edf4e712e6dc2973b917a323c3d3fc66770"
+  },
+  "latest_h12_view": {
+    "tests": 443,
+    "pass": 443,
+    "fail": 0,
+    "errors": 0,
+    "skips": 0,
+    "first_run_passes_preserved": 436,
+    "failed_nodeids_retested": 7,
+    "all_original_failures_preserved": true
+  },
+  "h11": {
+    "path": "evidence/HV4-H11/20261114T120305Z-dce573b6/result.json",
+    "sha256": "9fd368b16ff8999a2ec70920da7a11791573e6b1122d9e75b9af64fa971a9bb1",
+    "status": "PASS",
+    "counts": {
+      "tests": 68,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "scope_note": "Same-source append-only latest view, not a rewritten first result or independent review. Overlaps with the separate 532 targeted checks; counts must not be added as unique tests.",
+  "new_model_calls": 0,
+  "main_or_unrelated_containers_stopped": false
+}

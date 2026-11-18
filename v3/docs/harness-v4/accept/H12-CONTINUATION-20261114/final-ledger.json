@@ -1,0 +1,8 @@
+{
+  "_public_export": {
+    "original_record_sha256": "cda22b2ff787c6277c1c6680ec518902fda8fd2bfa7a944b968198a950c07206",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "schema": "h12-post-billing-read-only-ledger-audit-v1",
+  "original_scores_unchanged": true
+}

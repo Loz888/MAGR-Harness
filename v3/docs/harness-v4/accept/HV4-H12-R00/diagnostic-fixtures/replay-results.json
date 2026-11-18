@@ -1,0 +1,81 @@
+{
+  "diagnostics": [
+    {
+      "fixture": "contract-loss.json",
+      "observation": {
+        "issue_observed": true,
+        "missing_required_ids": [
+          "observed_status_stdout"
+        ]
+      },
+      "sha256": "d34066ebc072dfc1dd940b6ca2915d340f27605db56cab0d8eadf3b7c69eb67b",
+      "status": "PASS"
+    },
+    {
+      "fixture": "feature-red-baseline.json",
+      "observation": {
+        "declared_missing_target": true,
+        "issue_observed": true
+      },
+      "sha256": "f0e28462b084e9dd1e6091af82b691e41387cb1fef7098555558a45e4451eb9e",
+      "status": "PASS"
+    },
+    {
+      "fixture": "invalid-tool-call.json",
+      "observation": {
+        "dispatch_allowed": false,
+        "issue_observed": true
+      },
+      "sha256": "bd66fa7e6484860ce093c8af6e61c34251c69f1f34b41c9513f253ca09c8c390",
+      "status": "PASS"
+    },
+    {
+      "fixture": "output-truncated.json",
+      "observation": {
+        "completion_verified": false,
+        "issue_observed": true
+      },
+      "sha256": "94e022726ad9ad82828cf1299bddb9c32edac3b14183ccddb4f85c341ce3e674",
+      "status": "PASS"
+    },
+    {
+      "fixture": "path-denied.json",
+      "observation": {
+        "denial_code": "HARNESS_PATH_DENIED",
+        "issue_observed": true
+      },
+      "sha256": "361bba86cb62c455e42720d8454542761bbb7af25b54a5f59c8ad0cf0d3dfdca",
+      "status": "PASS"
+    },
+    {
+      "fixture": "ready-missing.json",
+      "observation": {
+        "http_success_alone_is_ready": false,
+        "issue_observed": true
+      },
+      "sha256": "be320484285674e1edf6c141bf6ba1eb2158c3602b7ebe4db9132cdf75da199f",
+      "status": "PASS"
+    },
+    {
+      "fixture": "refactor-structure.json",
+      "observation": {
+        "issue_observed": true,
+        "original_behavior_passed": true
+      },
+      "sha256": "474ab6d10b3173c4590690fbd6b834d0adbe6d76cd40d2968f876e2af7b00009",
+      "status": "PASS"
+    },
+    {
+      "fixture": "regression-not-run.json",
+      "observation": {
+        "issue_observed": true,
+        "verified_failure_count": null
+      },
+      "sha256": "41c9eaa65b55c38e08ffd79430491c593335ae121147b5085771967792907e82",
+      "status": "PASS"
+    }
+  ],
+  "model_calls": 0,
+  "scope": "Reproduction only, not implementation of R01-R06",
+  "status": "PASS"
+}

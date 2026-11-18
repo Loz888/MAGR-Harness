@@ -1,0 +1,48 @@
+{
+  "_public_export": {
+    "original_record_sha256": "bb2eff2818fc6871a7987d7dda8d5bdf1e5de7bf199cb4025c81a39fb1384fa7",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "card": "HV4-H10",
+  "status": "PENDING_INDEPENDENT_RECHECK",
+  "engineering_gate": "PASS",
+  "security_gate": "PASS_IMPLEMENTATION_TEST_SCOPE",
+  "source_commit": "c140dadf5aff517527c3c5e107843e215cc76556",
+  "source_sha256": "38a02725fe2a5b5967e2604951a0749d69aeea1c5b1640e6dc65901d10d10de8",
+  "recorded_at": "2026-11-11T11:35:04.959726+00:00",
+  "counts": {
+    "new_boundary_tests_passed": 26,
+    "h00_h07_passed": 184,
+    "h08_h10_and_legacy_compactor_nonpg_passed": 75,
+    "postgres_api_tests_deferred": 0,
+    "postgres_old_context_tests_deferred": 0,
+    "total_nonpg_tests_passed_in_disjoint_groups": 285,
+    "full_h10_registered": {
+      "tests": 68,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "full_old_context": {
+      "tests": 15,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "full_h00_h10": {
+      "tests": 281,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "live_model_gate": "NOT_RUN",
+  "live_agent_gate": "NOT_RUN",
+  "live_publication_gate": "NOT_RUN",
+  "paid_model_calls": 0,
+  "status_field_occurrences": {
+    "FAIL": 1,
+    "NOT_RUN": 1,
+    "PASS": 1
+  }
+}

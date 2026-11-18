@@ -1,0 +1,55 @@
+{
+  "_public_export": {
+    "original_record_sha256": "308152b41dcc75b1063aaee4709b290d303633f027418c9ba03c7dd35da2af5a",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "card": "HV4-H10",
+  "status": "INDEPENDENT_REVIEW_FAIL_REPAIR_REQUIRED",
+  "reviewed_at_utc": "2026-11-11T10:47:54.916130+00:00",
+  "scope": "Frozen H10 source, registration and relevant regressions; independently authored real repair scenario, pure/context/tool negatives, and unchanged prior H09 blocker probes",
+  "head": "a4c2dbc76174aea8a17222b6306e9e5cced6188d",
+  "source_commit": "5707785a840677d2a47589dcab0377f366f37204",
+  "record_commit": "a4c2dbc76174aea8a17222b6306e9e5cced6188d",
+  "source_sha256": "5529fbf59c60f40eb6346446f46807809c03ea700d4836c3741c122da48bae33",
+  "source_stable": true,
+  "engineering_gate": "FAIL",
+  "security_gate": "FAIL",
+  "live_model_gate": "NOT_RUN",
+  "live_agent_gate": "NOT_RUN",
+  "live_publication_gate": "NOT_RUN",
+  "paid_model_calls": 0,
+  "h11_status": "NOT_RELEASED",
+  "registered_counts": {
+    "tests": 42,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "context_regression_counts": {
+    "tests": 15,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "regression_counts_excluding_h04": {
+    "tests": 228,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "h10_new_semantic_counts": {
+    "tests": 3,
+    "failures": 3,
+    "errors": 0,
+    "skipped": 0
+  },
+  "h09_previous_blockers_counts": {
+    "tests": 5,
+    "failures": 3,
+    "errors": 0,
+    "skipped": 0
+  },
+  "status_field_occurrences": {
+    "PASS": 1
+  }
+}

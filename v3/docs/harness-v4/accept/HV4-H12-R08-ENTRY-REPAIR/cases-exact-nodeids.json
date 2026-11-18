@@ -1,0 +1,67 @@
+{
+  "schema": "h12-r08-entry-exact-pytest-node-index-v1",
+  "source_commit": "a3499b79cf5674085d7ad2cc6a7dc961e822c430",
+  "source_sha256": "c3e9eef3303d9f61bd4f9b59febfc95d65c8c571c82085c1685056d75bd2c20c",
+  "original_acceptance_unchanged_sha256": "97abcb6519d21df4c9a43aa15ddd4ff555ba308c6d1460e40f7cbd28446a36fe",
+  "clarification": "Original cases.node_id uses the JUnit module/function label. This append-only index adds executable pytest file node IDs; no test or result is changed.",
+  "junit": {
+    "path": "evidence/HV4-H12-R08-ENTRY-REPAIR/20261117T152238Z-78340523/junit.xml",
+    "sha256": "f808cc942c5acd1b9c080268c951375012dd26b0e5d5364f6313d9c897e0550b"
+  },
+  "cases": [
+    {
+      "pytest_node_id": "tests/test_h12_r08_entry_observer_race.py::test_real_exit_snapshot_requires_finished_log[completed-prefix-race]",
+      "junit_classname": "tests.test_h12_r08_entry_observer_race",
+      "junit_test_name": "test_real_exit_snapshot_requires_finished_log[completed-prefix-race]",
+      "status": "PASS"
+    },
+    {
+      "pytest_node_id": "tests/test_h12_r08_entry_observer_race.py::test_real_exit_snapshot_requires_finished_log[load-error]",
+      "junit_classname": "tests.test_h12_r08_entry_observer_race",
+      "junit_test_name": "test_real_exit_snapshot_requires_finished_log[load-error]",
+      "status": "PASS"
+    },
+    {
+      "pytest_node_id": "tests/test_h12_r08_entry_observer_race.py::test_real_exit_snapshot_requires_finished_log[missing-load-observation]",
+      "junit_classname": "tests.test_h12_r08_entry_observer_race",
+      "junit_test_name": "test_real_exit_snapshot_requires_finished_log[missing-load-observation]",
+      "status": "PASS"
+    },
+    {
+      "pytest_node_id": "tests/test_h12_r04_runtime.py::test_entry_src_cwd_missing_module_esm_and_import_binding[src/pkg/entry.py-python-files0-src-roots0-PASS]",
+      "junit_classname": "tests.test_h12_r04_runtime",
+      "junit_test_name": "test_entry_src_cwd_missing_module_esm_and_import_binding[src/pkg/entry.py-python-files0-src-roots0-PASS]",
+      "status": "PASS"
+    },
+    {
+      "pytest_node_id": "tests/test_h12_r04_runtime.py::test_entry_src_cwd_missing_module_esm_and_import_binding[missing.py-python-files1-.-roots1-FAIL]",
+      "junit_classname": "tests.test_h12_r04_runtime",
+      "junit_test_name": "test_entry_src_cwd_missing_module_esm_and_import_binding[missing.py-python-files1-.-roots1-FAIL]",
+      "status": "PASS"
+    },
+    {
+      "pytest_node_id": "tests/test_h12_r04_runtime.py::test_entry_src_cwd_missing_module_esm_and_import_binding[app.py-python-files2-.-roots2-FAIL]",
+      "junit_classname": "tests.test_h12_r04_runtime",
+      "junit_test_name": "test_entry_src_cwd_missing_module_esm_and_import_binding[app.py-python-files2-.-roots2-FAIL]",
+      "status": "PASS"
+    },
+    {
+      "pytest_node_id": "tests/test_h12_r04_runtime.py::test_entry_src_cwd_missing_module_esm_and_import_binding[entry.mjs-node-files3-.-roots3-PASS]",
+      "junit_classname": "tests.test_h12_r04_runtime",
+      "junit_test_name": "test_entry_src_cwd_missing_module_esm_and_import_binding[entry.mjs-node-files3-.-roots3-PASS]",
+      "status": "PASS"
+    },
+    {
+      "pytest_node_id": "tests/test_h12_r04_runtime.py::test_entry_src_cwd_missing_module_esm_and_import_binding[entry.cjs-node-files4-.-roots4-FAIL]",
+      "junit_classname": "tests.test_h12_r04_runtime",
+      "junit_test_name": "test_entry_src_cwd_missing_module_esm_and_import_binding[entry.cjs-node-files4-.-roots4-FAIL]",
+      "status": "PASS"
+    },
+    {
+      "pytest_node_id": "tests/test_h12_r04_runtime.py::test_controlled_entry_does_not_bypass_original_lease_grant_or_frozen_assets",
+      "junit_classname": "tests.test_h12_r04_runtime",
+      "junit_test_name": "test_controlled_entry_does_not_bypass_original_lease_grant_or_frozen_assets",
+      "status": "PASS"
+    }
+  ]
+}

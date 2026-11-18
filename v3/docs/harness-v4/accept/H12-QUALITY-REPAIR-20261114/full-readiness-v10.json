@@ -1,0 +1,79 @@
+{
+  "schema": "h12-full-quality-readiness-v1",
+  "source_commit": "3345d4cc576b5cb99ab951fa2e83736e1b36a332",
+  "source_sha256": "84e41245c86571eaaa2bb4dac56b33aba0599b125ee62a236943de72f346fe32",
+  "recorded_at": "2026-11-14T14:47:06.252613+00:00",
+  "reports": [
+    {
+      "path": ".local/h12/quality-repair-20261114/subset-v10/report.json",
+      "sha256": "541f96af4f1bc906dd97deb5e12f084d316afa54e86cb1f7bcf408185fa96fa1",
+      "scope": "subset-v10",
+      "status": "PUBLIC_SUBSET_READY",
+      "ready": 4,
+      "paid_model_calls": 0
+    },
+    {
+      "path": ".local/h12/quality-repair-20261114/full-dev-v10/report.json",
+      "sha256": "3e9bc57c79c783b02585a10cfa1ee1ad2ec26ea0bbabd7e8a82f49b63f73ce50",
+      "scope": "full-dev-v10",
+      "status": "FULL_DEV_READY",
+      "ready": 12,
+      "paid_model_calls": 0
+    },
+    {
+      "path": ".local/h12/quality-repair-20261114/holdout-v10/report.json",
+      "sha256": "c5ad693b31b0a3696e74c31e3908c83e0b4fb37e1e49ee5f7887d1d7f872d734",
+      "scope": "holdout-v10",
+      "status": "FULL_HOLDOUT_READY",
+      "ready": 12,
+      "paid_model_calls": 0
+    }
+  ],
+  "freezes": [
+    {
+      "path": ".local/h12/quality-repair-20261114/public-dev-frozen-v10.json",
+      "sha256": "bcb20190cc34f0bf8ef0d653183ae9076fe16127daf1322f85dfa6d6a22faa6a"
+    },
+    {
+      "path": ".local/h12/quality-repair-20261114/quality-frozen-v10.json",
+      "sha256": "b91e33e2a19cad85813f556689c57ca5b4e1b8b384a54cf0164e9e140f3a41da"
+    }
+  ],
+  "physical_validation": "PASS",
+  "validation_log": {
+    "path": ".local/h12/quality-repair-20261114/seal-quality-v10.log",
+    "sha256": "5584640d23bdfcca147375099244cb1abecfffbb60cb531d1ded1a15d2798cae"
+  },
+  "quality_status": "NOT_RUN_AT_SEALING",
+  "thresholds": {
+    "dev": 10,
+    "holdout": 9,
+    "denominator_each": 12
+  },
+  "shared_budget_before_live": {
+    "budget": {
+      "limit_micros": 12000000,
+      "reserved_micros": 0,
+      "settled_micros": 2436049,
+      "used_calls": 547,
+      "call_limit": 1536
+    },
+    "unknown_calls": 0,
+    "new_v10_model_calls": 0
+  },
+  "experiment_id": "hv4-h12-quality-amended-v10-20261114",
+  "model_scores": ".local/h12/quality-repair-20261114/live-v10",
+  "first_sample_policy": "Got local-roundtrip, Click style-refactor, pflag unknown-flag, then remaining dev in frozen order. Same-candidate dev gate precedes independent holdout. No best-of, reused PASS, unknown resend or holdout feedback tuning.",
+  "first_sample_driver": {
+    "path": ".local/h12/quality-repair-20261114/run_quality_v10.py",
+    "sha256": "bae6608778cbb3ff19d6978f40c54347e643e10784bfc2ebf38823e079ac5d47"
+  },
+  "development_amendment": {
+    "path": ".local/h12/quality-repair-20261114/click-amendment-v2/amendment.json",
+    "sha256": "9c7fe148f1a8af1dab94fb811be86279fb8f9a39d02428ed1ce8f3014b94057b"
+  },
+  "engineering_completed_before_dispatch": {
+    "path": "docs/harness-v4/accept/H12-QUALITY-REPAIR-20261114/engineering-environment-v10.json",
+    "sha256": "0f2a1eab91da148334af4cbd629eccfb83c41d16ee4d14eef257bcea39b75b33"
+  }
+}

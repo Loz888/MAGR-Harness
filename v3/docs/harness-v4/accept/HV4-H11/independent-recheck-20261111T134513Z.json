@@ -1,0 +1,52 @@
+{
+  "_public_export": {
+    "original_record_sha256": "786481b3ceac91b3f3503154ee002d57fabc6df917985d88aaafd8eea0d511ac",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "card": "HV4-H11",
+  "status": "PASS",
+  "recorded_at": "2026-11-11T13:45:13.359086+00:00",
+  "source_commit": "d3f3457b3d9dfab68bc73a40add299e4e633fbeb",
+  "source_sha256": "a0cc8fac7467f7a99866df01c8ebea9f611f9844c0001c2d4130190fd9676cf2",
+  "scope": "H11 recovery engineering and security boundaries on the listed source plus recorded regressions. No product-wide or live-model acceptance.",
+  "engineering_gate": "PASS",
+  "security_gate": "PASS_REVIEWED_H11_SCOPE",
+  "counts": {
+    "lint": {
+      "exit_code": 0
+    },
+    "typecheck": {
+      "exit_code": 0
+    },
+    "h11-registered": {
+      "tests": 68,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "legacy-context": {
+      "tests": 15,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "engine-recovery": {
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "h00-h11": {
+      "tests": 349,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "live_model_gate": "NOT_RUN",
+  "live_agent_gate": "NOT_RUN",
+  "paid_model_calls": 0,
+  "status_field_occurrences": {
+    "PASS": 17
+  }
+}

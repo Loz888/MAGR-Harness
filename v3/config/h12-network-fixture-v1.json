@@ -1,0 +1,45 @@
+{
+  "schema": "h12-offline-protocol-fixture-v1",
+  "mode": "got-network-v1",
+  "helper_image_id": "sha256:def135df6d92bbba761909299d2ccdbf00787bd6e553db94c9551eac5405fcb3",
+  "base_image_id": "sha256:07888e96c44b8bca66539a6fcf23c140405f43961c29b213435ea05600b6c84c",
+  "programs": {
+    "offline_fixture.py": "5e92b4474de42a34bb00578ec0452c330b431778421a64d5dca69b49dca8323d",
+    "offline_http2.cjs": "7db21d4b4be426c53d1c1a822642f6837d8bc02fb336188ca79de313bf54c2e9"
+  },
+  "public_ca_sha256": "6bd53e80676a7787bb91e3db2433f407873d651ca7d21d3beb357f05ab06254b",
+  "dns": {
+    "localhost": "127.0.0.1",
+    "example.com": "127.0.0.2",
+    "www.google.com": "127.0.0.3"
+  },
+  "dns_unknown": "NXDOMAIN",
+  "dns_aaaa": "NODATA",
+  "tls": {
+    "port": 443,
+    "alpn": [
+      "h2",
+      "http/1.1"
+    ],
+    "verify": true
+  },
+  "http": {
+    "method": "GET",
+    "path": "/",
+    "response_delay_ms": 15,
+    "cache_control": "public, max-age=60"
+  },
+  "timeout_routes": [
+    "10.255.255.1/32",
+    "123.123.123.123/32"
+  ],
+  "addrconfig_interface": {
+    "kind": "dummy",
+    "name": "harness0",
+    "ipv4": "192.0.2.2/32",
+    "peer": null,
+    "default_route": false
+  },
+  "project_authority": "no external interface/peer/default route, zero capabilities",
+  "private_keys": "helper image only, root mode 0400; never in project image"
+}

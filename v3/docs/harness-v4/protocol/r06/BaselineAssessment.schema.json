@@ -1,0 +1,78 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "receipt_id": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Receipt Id",
+      "type": "string"
+    },
+    "producer": {
+      "const": "independent-baseline-policy",
+      "default": "independent-baseline-policy",
+      "title": "Producer",
+      "type": "string"
+    },
+    "policy_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Policy Hash",
+      "type": "string"
+    },
+    "tree_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Tree Hash",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "NOT_RUN",
+        "BLOCKED"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "behavior_ref": {
+      "title": "Behavior Ref",
+      "type": "string"
+    },
+    "target_ref": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Target Ref"
+    },
+    "target_observation": {
+      "enum": [
+        "NOT_RUN",
+        "ASSERTION_RED",
+        "GREEN",
+        "DECLARED_TARGET_MISSING",
+        "UNVERIFIED"
+      ],
+      "title": "Target Observation",
+      "type": "string"
+    },
+    "detail": {
+      "title": "Detail",
+      "type": "string"
+    }
+  },
+  "required": [
+    "receipt_id",
+    "policy_hash",
+    "tree_hash",
+    "status",
+    "behavior_ref",
+    "target_ref",
+    "target_observation",
+    "detail"
+  ],
+  "title": "BaselineAssessment",
+  "type": "object"
+}

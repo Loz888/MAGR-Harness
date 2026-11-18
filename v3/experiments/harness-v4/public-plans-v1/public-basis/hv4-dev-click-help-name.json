@@ -1,0 +1,32 @@
+{
+  "acceptance": {
+    "baseline": [
+      "public test test_help_name_public.py fails on the pinned snapshot"
+    ],
+    "regression": [
+      "python -m pytest tests/"
+    ],
+    "required": [
+      "argument named help receives its value",
+      "--help still renders"
+    ]
+  },
+  "base_commit": "8c1a0a7abbc1c36f70d1f65f3604acc46c5ce6ab",
+  "goal": "Repair click so a command that declares an argument named \"help\" keeps its value; the automatic help option must still render and parse --help.",
+  "language": "python",
+  "repository": "pallets/click",
+  "resources": {
+    "deadline_seconds": 1800,
+    "max_context_tokens": 200000,
+    "max_cost_micros": 6000000,
+    "max_model_calls": 20,
+    "max_repair_rounds": 8,
+    "max_tool_calls": 120
+  },
+  "scope": [
+    "src/click/core.py"
+  ],
+  "split": "dev",
+  "task_id": "hv4-dev-click-help-name",
+  "type": "bugfix"
+}

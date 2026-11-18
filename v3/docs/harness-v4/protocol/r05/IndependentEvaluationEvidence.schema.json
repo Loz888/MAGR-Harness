@@ -1,0 +1,107 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "receipt_id": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Receipt Id",
+      "type": "string"
+    },
+    "producer": {
+      "const": "independent-evaluator",
+      "default": "independent-evaluator",
+      "title": "Producer",
+      "type": "string"
+    },
+    "task_id": {
+      "title": "Task Id",
+      "type": "string"
+    },
+    "experiment_id": {
+      "title": "Experiment Id",
+      "type": "string"
+    },
+    "execution_task_id": {
+      "title": "Execution Task Id",
+      "type": "string"
+    },
+    "run_id": {
+      "title": "Run Id",
+      "type": "string"
+    },
+    "execution_epoch": {
+      "minimum": 1,
+      "title": "Execution Epoch",
+      "type": "integer"
+    },
+    "baseline_tree": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Baseline Tree",
+      "type": "string"
+    },
+    "final_tree": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Final Tree",
+      "type": "string"
+    },
+    "plan_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Plan Hash",
+      "type": "string"
+    },
+    "baseline_ref": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Baseline Ref"
+    },
+    "final_ref": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Final Ref"
+    },
+    "target_ref": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Target Ref"
+    },
+    "judge_ref": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Judge Ref",
+      "type": "string"
+    }
+  },
+  "required": [
+    "receipt_id",
+    "task_id",
+    "experiment_id",
+    "execution_task_id",
+    "run_id",
+    "execution_epoch",
+    "baseline_tree",
+    "final_tree",
+    "plan_hash",
+    "baseline_ref",
+    "final_ref",
+    "target_ref",
+    "judge_ref"
+  ],
+  "title": "IndependentEvaluationEvidence",
+  "type": "object"
+}

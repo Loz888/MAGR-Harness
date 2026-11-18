@@ -1,0 +1,39 @@
+{
+  "recorded_utc": "2026-11-13T08:15:00.090301+00:00",
+  "status": "PASS",
+  "scope": "Frontend only: persistent repository/model/mode toolbar and running indicators in recent conversations",
+  "browser_checks": 46,
+  "analysis_checks": 21,
+  "project_checks": 25,
+  "viewports": [
+    1280,
+    390
+  ],
+  "behavior": [
+    "Toolbar remains visible and clickable during document or project-stage scrolling",
+    "Repository and model labels remain visible on narrow screens",
+    "Selected and background recent conversations reflect queued/running, waiting and terminal states",
+    "Reduced-motion preference keeps the status circle static"
+  ],
+  "artifacts": [
+    "evidence/harness-v4/TOPBAR-HISTORY-20261113/analysis/summary.json",
+    "evidence/harness-v4/TOPBAR-HISTORY-20261113/product/summary.json",
+    "evidence/harness-v4/TOPBAR-HISTORY-20261113/served-assets.json"
+  ],
+  "source": {
+    "web/agent.css": "72e8057d2f5bc7727b13cb866ac5310c272909f7dfb4ddd78c7a39f5615ec4e6",
+    "web/agent.js": "4e7d70c0db44842d9f0b6e7bbb0f773153586a31f6ef4b1deab951fd6ace398e",
+    "web/agent-product.js": "976523710fd3a948615b46a3b97ecd0c0fb0e3136214bbfad52068da30e2f377"
+  },
+  "lint": "PASS",
+  "typecheck": "PASS",
+  "main_server_restart": false,
+  "main_database_writes": 0,
+  "paid_model_calls": 0,
+  "real_github_writes": 0,
+  "failed_diagnostics_retained": [
+    "evidence/harness-v4/TOPBAR-HISTORY-20261113/browser-attempt-1.log",
+    "evidence/harness-v4/TOPBAR-HISTORY-20261113/browser-attempt-2.log"
+  ],
+  "diagnostic_repair": "Renamed the temporary diagnostic script to avoid shadowing Python inspect; placed scroll probe outside asynchronously rerendered content. No application source was relaxed for the check."
+}

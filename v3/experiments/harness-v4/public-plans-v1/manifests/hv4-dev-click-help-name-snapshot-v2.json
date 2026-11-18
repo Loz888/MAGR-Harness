@@ -1,0 +1,43 @@
+{
+  "base_commit": "8c1a0a7abbc1c36f70d1f65f3604acc46c5ce6ab",
+  "original_tree_sha256": "93dccdf5c2c42051e54016a728503612f3c3299994576c132bdf5b5d37f8a70a",
+  "probe": {
+    "asset_sha256": "e7bfde07ae8f12c20c7fd1e788c9da67dc2458b65bb093fa3d86f80e260f86e5",
+    "case_ids": [
+      "argument-retains-value",
+      "automatic-help-option",
+      "help-after-positional"
+    ],
+    "plan_id": "h12-public-click-help-name-v1",
+    "runner": "python-json-v1",
+    "schema_version": "harness-public-probe-plan-v1"
+  },
+  "public_basis": [
+    {
+      "path": "src/click/core.py",
+      "sha256": "6ce6ad79d4f89e700cbd3b2dff2eb98a0526978bdda25f6cde551f10c152e662"
+    },
+    {
+      "path": "tests/test_help_name_public.py",
+      "sha256": "31cc493fa58517af0250bc3ff54d9ea46f90196b3f84254c060dd767f537d493"
+    }
+  ],
+  "public_goal_sha256": "45b10c3ad8634b040b7dbecf13c9a2a178e860193434bb9f218de100ca50f631",
+  "regression_argv": [
+    "python3",
+    "-B",
+    "-m",
+    "pytest",
+    "tests/test_help_name_public.py"
+  ],
+  "repository": "pallets/click",
+  "resources_sha256": "d784b79980f61df462ecc4ef8c47bc67c0851a2d99af7d9997688278314b7595",
+  "roles": {
+    "behavior": "same_public_probe_all_cases_pass_on_final",
+    "regression": "original_public_regression_on_final",
+    "reproduction": "same_public_probe_assertion_failure_on_original"
+  },
+  "schema": "h12-public-plan-v1",
+  "status": "FROZEN",
+  "task_id": "hv4-dev-click-help-name"
+}

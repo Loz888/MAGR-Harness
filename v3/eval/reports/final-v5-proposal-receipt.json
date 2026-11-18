@@ -1,0 +1,10 @@
+{
+  "_public_export": {
+    "original_record_sha256": "e52b4baa06694d40a8d837139e71b03995723211b0c9df5ec2d1bfd7cc907793",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "schema": "r6-next-repair-proposal-v1",
+  "status": "FROZEN_NOT_AUTHORIZED",
+  "source_commit": "9486279ea967e0925e569ec4d70e0f9db38fbb7f",
+  "baseline_source_sha256": "156abe3232d799e1b160a74f5255db4f078fc5bd114bea64cd3b2c688bba38d6"
+}

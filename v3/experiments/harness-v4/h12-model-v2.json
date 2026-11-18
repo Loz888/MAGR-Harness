@@ -1,0 +1,25 @@
+{
+  "schema": "harness-h12-model-observation-v2",
+  "observed_on": "2026-11-15",
+  "sources": [
+    "https://api-docs.deepseek.com/guides/thinking_mode/",
+    "https://api-docs.deepseek.com/api/create-chat-completion/"
+  ],
+  "endpoint": "https://api.deepseek.com/v1/chat/completions",
+  "provider": "deepseek",
+  "model_id": "deepseek-flash",
+  "thinking": "enabled",
+  "reasoning_effort": "max",
+  "reasoning_policy": "deepseek-thinking-max-20261115-v1",
+  "provider_context_tokens": 1048576,
+  "harness_output_token_cap": 8192,
+  "output_cap_includes_reasoning": true,
+  "price_version": "DeepSeek-V4.1-Flash-1017-peak-20261111",
+  "input_micros_per_million": 300000,
+  "output_micros_per_million": 1200000,
+  "cost_basis": "Retain the existing conservative peak cache-miss price bound and shared authorization; not a new invoice or price certification.",
+  "http_attempts_per_reservation": 1,
+  "authorization": "Explicit user instruction on 2026-11-15: every new DeepSeek API request must enable thinking at the highest supported effort.",
+  "history": "h12-model-v1.json and all old evidence remain unchanged. New source/protocol requires new readiness and a new freeze before real scoring.",
+  "private_continuation": "Tool-calling history retains task-bound provider reasoning in private CAS. Public messages, reports and receipts contain no reasoning text. Referenced bytes count toward input/context and reservation bounds."
+}

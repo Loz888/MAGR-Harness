@@ -1,0 +1,31 @@
+{
+  "kind": "OFFLINE_DIAGNOSTIC_NOT_MODEL_SCORE",
+  "paid_calls": 0,
+  "public_objective": "Repair click so a command that declares an argument named \"help\" keeps its value; the automatic help option must still render and parse --help.",
+  "public_checks": [
+    {
+      "exit_code": 0,
+      "status": "passed"
+    },
+    {
+      "exit_code": 0,
+      "status": "passed"
+    },
+    {
+      "exit_code": 0,
+      "status": "passed"
+    }
+  ],
+  "original_judge_status": "NOT_RUN",
+  "original_judge_reason": "DEPENDENCY_OR_LOG_UNAVAILABLE",
+  "private_import_contract_failure": true,
+  "control_tree": "6071ba16077f39a6609c3eb6627d3cd4714d986a896656441869e8f3e6767898",
+  "model_workspace_modified": false,
+  "old_evidence_modified": false,
+  "evidence_path": ".local/h12/quality-repair-20261114/click-judge-contract-control-v3/report.json",
+  "evidence_sha256": "62d55a1303c114d1fd8e710dcea0bf01ee33f6aa959f205581a337c124f12f06",
+  "interpretation": "The original Click judge imports an implementation-only symbol absent from the public goal. A separate local implementation passes the public reproduction, public behavior probe and full existing tests, yet that judge cannot collect. This is a benchmark false-negative contract defect. The real model patch still fails public checks; its FAIL is not changed.",
+  "model_score_changed": false,
+  "holdout_judge_inspected": false,
+  "new_model_calls": 0
+}

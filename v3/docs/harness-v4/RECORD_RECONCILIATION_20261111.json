@@ -1,0 +1,356 @@
+{
+  "schema_version": "harness-record-reconciliation-v1",
+  "recorded_at": "2026-11-11T09:02:11.516881+00:00",
+  "audited_start_head": "68dc81a55bbdfffe23b0ee18a96436b809bf448a",
+  "status": "COMPLETE",
+  "scope": "Hash-boundary recheck and acceptance-document reconciliation only; H10 is not started.",
+  "preservation_policy": "Original accepts, counts, verdicts, residual_limits and failed evidence remain historical records. This record appends current facts and errata; it does not upgrade live or independent acceptance gates.",
+  "current_task_states": {
+    "HV4-H00": {
+      "status": "DONE",
+      "review_status": "HISTORICAL_PASS"
+    },
+    "HV4-H01": {
+      "status": "DONE",
+      "review_status": "ACCEPTED_BY_SUPER_AGENT"
+    },
+    "HV4-H02": {
+      "status": "DONE",
+      "review_status": "PASS_EXTERNAL_REVIEW",
+      "live_model_gate": "PARTIAL"
+    },
+    "HV4-H03": {
+      "status": "IMPLEMENTED",
+      "review_status": "PENDING_EXTERNAL_REVIEW",
+      "engineering_gate": "PASS",
+      "security_gate": "PASS"
+    },
+    "HV4-H04": {
+      "status": "ACCEPTED",
+      "review_status": "PASS_AFTER_INDEPENDENT_RECHECK",
+      "scope": "Historical accepted card commit; does not certify subsequent hash-fix candidate."
+    },
+    "HV4-H05": {
+      "status": "ACCEPTED",
+      "review_status": "PASS_AFTER_INDEPENDENT_RECHECK",
+      "scope": "Historical accepted card commit; does not certify subsequent hash-fix candidate."
+    },
+    "HV4-H06": {
+      "status": "ACCEPTED",
+      "review_status": "PASS_AFTER_INDEPENDENT_RECHECK",
+      "scope": "Historical accepted card commit; does not certify subsequent hash-fix candidate."
+    },
+    "HV4-H07": {
+      "status": "ACCEPTED",
+      "review_status": "PASS_AFTER_INDEPENDENT_RECHECK",
+      "scope": "Historical accepted card commit; does not certify subsequent hash-fix candidate."
+    },
+    "HV4-H08": {
+      "status": "ACCEPTED",
+      "review_status": "PASS_AFTER_INDEPENDENT_RECHECK",
+      "scope": "Historical accepted card commit; does not certify subsequent hash-fix candidate."
+    },
+    "HV4-H09": {
+      "status": "ACCEPTED",
+      "review_status": "PASS_AFTER_INDEPENDENT_RECHECK",
+      "scope": "Historical accepted card commit; does not certify subsequent hash-fix candidate."
+    },
+    "HV4-H10": {
+      "status": "PLANNED"
+    },
+    "HV4-H11": {
+      "status": "PLANNED"
+    },
+    "HV4-H12": {
+      "status": "PLANNED"
+    },
+    "HV4-H13": {
+      "status": "PLANNED"
+    },
+    "HV4-H14": {
+      "status": "PLANNED"
+    },
+    "HV4-H15": {
+      "status": "PLANNED"
+    },
+    "HV4-H16": {
+      "status": "PLANNED"
+    },
+    "HV4-H17": {
+      "status": "PLANNED"
+    },
+    "HV4-H18": {
+      "status": "PLANNED"
+    }
+  },
+  "hash_boundary_recheck": {
+    "original_fix_commit": "98d3042acd7ce9ab92ce21cfe8c517adabe0ded6",
+    "initial_reviewed_head": "68dc81a55bbdfffe23b0ee18a96436b809bf448a",
+    "initial_verdict": "FAIL",
+    "initial_evidence_root": "evidence/harness-v4/hash-recheck-20261111T084848Z/",
+    "initial_source_fingerprint": "evidence/harness-v4/hash-recheck-20261111T084848Z/initial/source-fingerprint.json",
+    "initial_failure_evidence": "evidence/harness-v4/hash-recheck-20261111T084848Z/baseline/",
+    "finding": "The broad .coverage* exclusion also excluded .coveragerc configuration from local workspace copying/scanning and tree hashes.",
+    "candidate_rule": "Exclude exact .coverage and full-match .coverage.<host>.<numeric-pid>.<nonce> data names; coverage.xml and htmlcov are no longer globally excluded. Configurations and reports participate in workspace hashes.",
+    "candidate_status": "PASS_AFTER_INDEPENDENT_RECHECK",
+    "final_source_commit": "096300eed8946086f99e331ae4c8c9c733108ff9",
+    "final_source_sha256": "915092c7504d95c31b88ea1e8fdb10722506d96cf31c841647944a7da9786331",
+    "final_evidence_paths": [
+      "evidence/harness-v4/hash-recheck-20261111T084848Z",
+      "docs/harness-v4/accept/HV4-H09/workspace-hash-recheck-20261111.json"
+    ],
+    "final_engineering_gate": "PASS",
+    "final_security_gate": "PASS",
+    "aggregate_rounds": [
+      {
+        "name": "h04-h09-round1",
+        "argv": [
+          "uv",
+          "run",
+          "--frozen",
+          "pytest",
+          "-q",
+          "tests/test_harness_v4_h04.py",
+          "tests/test_harness_v4_h05.py",
+          "tests/test_harness_v4_h06.py",
+          "tests/test_harness_v4_h07.py",
+          "tests/test_harness_v4_h08.py",
+          "tests/test_harness_v4_h09.py",
+          "--junitxml=/home/developer/magr-harness/v3/evidence/harness-v4/hash-recheck-20261111T084848Z/final/h04-h09-round1.xml"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "pass": true,
+        "elapsed_seconds": 122.073,
+        "log": "evidence/harness-v4/hash-recheck-20261111T084848Z/final/h04-h09-round1.log",
+        "counts": {
+          "tests": 130,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "passed": 130
+        },
+        "junit": "evidence/harness-v4/hash-recheck-20261111T084848Z/final/h04-h09-round1.xml",
+        "log_sha256": "b1c307e6514eb61c0a495c8de9d639b4cdc005a84030b4d4f2febec51541535c"
+      },
+      {
+        "name": "h00-h09-round1",
+        "argv": [
+          "uv",
+          "run",
+          "--frozen",
+          "pytest",
+          "-q",
+          "tests/test_harness_v4_h00.py",
+          "tests/test_harness_v4_h01.py",
+          "tests/test_harness_v4_h02.py",
+          "tests/test_harness_v4_h03.py",
+          "tests/test_harness_v4_h04.py",
+          "tests/test_harness_v4_h05.py",
+          "tests/test_harness_v4_h06.py",
+          "tests/test_harness_v4_h07.py",
+          "tests/test_harness_v4_h08.py",
+          "tests/test_harness_v4_h09.py",
+          "--junitxml=/home/developer/magr-harness/v3/evidence/harness-v4/hash-recheck-20261111T084848Z/final/h00-h09-round1.xml"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "pass": true,
+        "elapsed_seconds": 119.477,
+        "log": "evidence/harness-v4/hash-recheck-20261111T084848Z/final/h00-h09-round1.log",
+        "counts": {
+          "tests": 213,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "passed": 213
+        },
+        "junit": "evidence/harness-v4/hash-recheck-20261111T084848Z/final/h00-h09-round1.xml",
+        "log_sha256": "d836dc467d1e5b2c8ccfe994e375c8d193f8d453c1feef5f384efbfc414d8d5b"
+      },
+      {
+        "name": "h04-h09-round2",
+        "argv": [
+          "uv",
+          "run",
+          "--frozen",
+          "pytest",
+          "-q",
+          "tests/test_harness_v4_h04.py",
+          "tests/test_harness_v4_h05.py",
+          "tests/test_harness_v4_h06.py",
+          "tests/test_harness_v4_h07.py",
+          "tests/test_harness_v4_h08.py",
+          "tests/test_harness_v4_h09.py",
+          "--junitxml=/home/developer/magr-harness/v3/evidence/harness-v4/hash-recheck-20261111T084848Z/final/h04-h09-round2.xml"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "pass": true,
+        "elapsed_seconds": 119.875,
+        "log": "evidence/harness-v4/hash-recheck-20261111T084848Z/final/h04-h09-round2.log",
+        "counts": {
+          "tests": 130,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "passed": 130
+        },
+        "junit": "evidence/harness-v4/hash-recheck-20261111T084848Z/final/h04-h09-round2.xml",
+        "log_sha256": "f32c81e2c7a137377a43e57416029f5d9515fb6d2b0351b98e8856f5dcc41cae"
+      },
+      {
+        "name": "h00-h09-round2",
+        "argv": [
+          "uv",
+          "run",
+          "--frozen",
+          "pytest",
+          "-q",
+          "tests/test_harness_v4_h00.py",
+          "tests/test_harness_v4_h01.py",
+          "tests/test_harness_v4_h02.py",
+          "tests/test_harness_v4_h03.py",
+          "tests/test_harness_v4_h04.py",
+          "tests/test_harness_v4_h05.py",
+          "tests/test_harness_v4_h06.py",
+          "tests/test_harness_v4_h07.py",
+          "tests/test_harness_v4_h08.py",
+          "tests/test_harness_v4_h09.py",
+          "--junitxml=/home/developer/magr-harness/v3/evidence/harness-v4/hash-recheck-20261111T084848Z/final/h00-h09-round2.xml"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "pass": true,
+        "elapsed_seconds": 128.71,
+        "log": "evidence/harness-v4/hash-recheck-20261111T084848Z/final/h00-h09-round2.log",
+        "counts": {
+          "tests": 213,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "passed": 213
+        },
+        "junit": "evidence/harness-v4/hash-recheck-20261111T084848Z/final/h00-h09-round2.xml",
+        "log_sha256": "e638c381fb94beff5e77d09657e8683ef5f9fc292cadf108cfb918116ceaf18b"
+      }
+    ],
+    "required_scope": [
+      "Caches do not change the tree hash",
+      "Source/configuration/report changes change the tree hash",
+      "Old tree and old file pre-image are rejected",
+      "Two preserved H04-H09 and H00-H09 aggregate regression rounds",
+      "Repeated H06 stability reproduction and negative/mutation probes"
+    ],
+    "workspace_compatibility": "Rebuild workspaces created under the old exclusion policy from the registered source. Do not reuse old test or approval receipts across the changed tree-hash policy.",
+    "final_record": "docs/harness-v4/accept/HV4-H09/workspace-hash-recheck-20261111.json",
+    "current_scope_note": "Scoped hash-boundary recheck passed; H03 historical reviewer provenance remains pending. H10 has not started."
+  },
+  "h03_historical_record_audit": {
+    "audited_at": "2026-11-11T09:02:11.516828+00:00",
+    "audit_kind": "historical_record_reconciliation_only_no_new_independent_acceptance",
+    "audited_start_head": "68dc81a55bbdfffe23b0ee18a96436b809bf448a",
+    "implementation_commit": "a8037844008eb6a3ea5196509e256bb4a9683220",
+    "accept_record_commit": "0bbe935cc491e36de1ba3447a0d294ad8727d977",
+    "source_sha256": "e0f2ced7cb8ab0deecbd811aebe30cadcfe189bc91b12fb0eefbb2ef3eea09eb",
+    "source_scope": "Historical verify source fingerprint; a803784..0bbe935 changes only documentation, not src/tests/scripts/config.",
+    "verify_records": [
+      {
+        "path": "evidence/HV4-H03/20261110T172433Z-4ee1323a/result.json",
+        "git_commit": "a8037844008eb6a3ea5196509e256bb4a9683220",
+        "tests": 25,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "evidence/HV4-H03/20261110T172459Z-1890f6e5/result.json",
+        "git_commit": "a8037844008eb6a3ea5196509e256bb4a9683220",
+        "tests": 25,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "evidence/HV4-H03/20261110T172558Z-cefda502/result.json",
+        "git_commit": "0bbe935cc491e36de1ba3447a0d294ad8727d977",
+        "tests": 25,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    ],
+    "verify_fingerprint_note": "All three result.json records have equal source_sha256 and finished_source_sha256 matching the historical fingerprint above.",
+    "correct_probe_root": "evidence/harness-v4/HV4-H03/h03-independent-review/",
+    "original_probe_failures_preserved": true,
+    "fixed_probe_results": "fixed-results.json, fixed-concurrent-result.json, fixed-filter-result.json, fixed-dirty-matrix-result.json, fixed-dirty-symlink-result.json, fixed-diff-symlink-result.json, fixed-manifest-temp-symlink-result.json exist under correct_probe_root.",
+    "historical_acceptance_claim": {
+      "path": "docs/harness-v4/SUPER_AGENT_HANDOFF.md",
+      "section": "18",
+      "introduced_by_commit": "8cf07d2",
+      "claim": "H03 已通过独立复验并接收；实现 a803784、验收 0bbe935。"
+    },
+    "provenance_limits": [
+      "Probe JSON files do not bind their result to a commit, source fingerprint or named independent reviewer.",
+      "The available git author identity is shared across implementation and documentation; it cannot establish the identity or independence of the reviewer.",
+      "a04dbde commit message still described H03 as under review; the subsequent handoff claim is retained as a historical statement, not converted into a new independent verdict."
+    ],
+    "later_workspace_source_changes": [
+      "d467d8a",
+      "7ce512f",
+      "98d3042"
+    ],
+    "current_source_scope_limit": "These historical results do not certify the current workspace implementation or the pending hash-boundary candidate.",
+    "review_status_retained": "PENDING_EXTERNAL_REVIEW",
+    "followup": "A final independent acceptance record with reviewer, covered commit/fingerprint and scope remains to be archived; no old PASS/FAIL or probe result is overwritten.",
+    "reconciliation_record": "docs/harness-v4/RECORD_RECONCILIATION_20261111.json"
+  },
+  "h07_postfix_record_audit": {
+    "historical_accept_commit": "2114a8778c2b575824b5aade8a7a3d6ec09ecc23",
+    "postfix_implementation_commit": "cef7482",
+    "observed_review_head": "b0ad2583e94bd61643bdc97ed28a98478ead5fe4",
+    "source_sha256": "42e9c97c84a83c3b154cffa2847a796bb062e6f81f642fab4c5d6222d066f462",
+    "evidence_root": "evidence/harness-v4/HV4-H07/independent-recheck2-20261111T1400Z/",
+    "verify_result": "evidence/HV4-H07/20261111T035246Z-57178bab/result.json",
+    "observed_facts": "Historical result records 29 tests, zero failures/errors/skips and equal start/end fingerprint. probe-results.json reports Q-01 (P-13) and Q-02 (P-15) PASS while retaining four GAP results Q-03/Q-04/Q-10/Q-05.",
+    "retained_field": "accept/HV4-H07/accept.json post_recheck_fixes.status=FIXED_PENDING_RECHECK is a preserved historical field, not the current task-sequencing instruction.",
+    "scope_limit": "No new H07 independent verdict is generated by this document audit."
+  },
+  "h08_record_audit": {
+    "covered_implementation_commit": "fadea5d93d0b6a54bf855eb24eed4a382e6e3125",
+    "historical_counts": {
+      "h08": 19,
+      "h04_h08": 114,
+      "h00_h08": 197,
+      "browser_checks": 15
+    },
+    "browser_count_check": "The recorded browser-e2e counts.checks=15 equals the 15-entry checks array; F3 is already consistent.",
+    "next_card_status_note": "The preserved next_card_status=NOT_STARTED_PENDING_INDEPENDENT_RECHECK reflects the old H09 handoff. H09 now has its own accepted historical record.",
+    "counts_scope_note": "114/197 are valid historical counts when H06 had 25 tests. They are not replaced with counts from later source versions."
+  },
+  "h09_errata": [
+    {
+      "field": "commands[name=h00-h09-regression].note",
+      "original_note_prefix": "209 = H00–H09 十个模块",
+      "correction": "The covered 7d8f0ab version ran 207 tests (H04-H09=124). 209 (H04-H09=126) is the later 98d3042 inventory after two H06 cache regressions; original numeric counts and logs remain unchanged."
+    },
+    {
+      "fields": [
+        "security_gate_recheck.probes[H-05]",
+        "must_pass[item=事件按任务隔离，不能读到其它任务事件]"
+      ],
+      "correction": "The HTTP probe filtered zero UUID values before comparing run_id sets. http-results.json records nil_run_id_events=50. Non-zero sets being disjoint can include empty/synthetic sets and does not prove unique real Run identity. Task-file/task_id/marker isolation is the supported claim; the zero-run_id residual remains open.",
+      "evidence": [
+        "evidence/harness-v4/HV4-H09/independent-recheck-20261111T1600Z/probes/http_probe.py",
+        "evidence/harness-v4/HV4-H09/independent-recheck-20261111T1600Z/probes/http-results.json"
+      ]
+    },
+    {
+      "field": "residual_limits[H06 broker.workspace_tree_hash 未排除 __pycache__]",
+      "correction": "This residual describes 7d8f0ab. 98d3042 changed the rule but failed the later configuration-boundary recheck. The narrower candidate and its final independent result are tracked separately in hash_boundary_recheck; the original residual is not deleted."
+    }
+  ],
+  "live_gates": "No new paid model or publication experiment is part of this reconciliation. H02 remains PARTIAL; other existing NOT_RUN/FAIL records remain unchanged.",
+  "h10_status": "NOT_STARTED",
+  "completed_at": "2026-11-11T09:18:28.458918+00:00"
+}

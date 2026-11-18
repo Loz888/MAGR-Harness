@@ -1,0 +1,116 @@
+import json
+from collections.abc import Iterator
+from uuid import uuid4
+
+import httpx
+import psycopg
+import pytest
+from psycopg import sql
+from psycopg.conninfo import make_conninfo
+
+from mgar_v3.coordination.engine import Engine
+from mgar_v3.domain import TriggerInput
+from mgar_v3.evidence.artifacts import ArtifactStore
+from mgar_v3.settings import Settings
+from mgar_v3.store.migrate import migrate
+
+
+@pytest.fixture(autouse=True)
+def controlled_model_network_only(monkeypatch):
+    """A mistaken default client must never turn registered tests into paid calls."""
+    send = httpx.HTTPTransport.handle_request
+    async_send = httpx.AsyncHTTPTransport.handle_async_request
+    client_send = httpx.Client.send
+
+    def checked_send(self, request, *args, **kwargs):
+        if request.url.host == "api.deepseek.com" and request.method == "POST":
+            body = json.loads(request.content)
+            assert body["thinking"] == {"type": "enabled"}
+            assert body["reasoning_effort"] == "max"
+        return client_send(self, request, *args, **kwargs)
+
+    def guarded(self, request):
+        if request.url.host == "api.deepseek.com":
+            raise AssertionError("Registered tests require a controlled model transport")
+        return send(self, request)
+
+    async def async_guarded(self, request):
+        if request.url.host == "api.deepseek.com":
+            raise AssertionError("Registered tests require a controlled model transport")
+        return await async_send(self, request)
+
+    monkeypatch.setattr(httpx.HTTPTransport, "handle_request", guarded)
+    monkeypatch.setattr(httpx.AsyncHTTPTransport, "handle_async_request", async_guarded)
+    monkeypatch.setattr(httpx.Client, "send", checked_send)
+
+
+@pytest.fixture(scope="session")
+def database() -> Iterator[str]:
+    base = Settings().database_url.get_secret_value()
+    name = "mgar_v3_test_" + uuid4().hex
+    with psycopg.connect(base, autocommit=True) as conn:
+        conn.execute(sql.SQL("CREATE DATABASE {}").format(sql.Identifier(name)))
+    dsn = make_conninfo(base, dbname=name)
+    migrate(dsn)
+    yield dsn
+    with psycopg.connect(dsn, autocommit=True) as conn:
+        roles = conn.execute(
+            "SELECT DISTINCT r.rolname FROM pg_database d CROSS JOIN LATERAL "
+            "aclexplode(d.datacl) a JOIN pg_roles r ON r.oid=a.grantee WHERE "
+            "d.datname=current_database() AND r.rolname ~ "
+            "'^r4_reader_[a-f0-9]{12}$'"
+        ).fetchall()
+        for (role,) in roles:
+            conn.execute(sql.SQL("DROP OWNED BY {}").format(sql.Identifier(role)))
+            conn.execute(sql.SQL("DROP ROLE {}").format(sql.Identifier(role)))
+    # Only this session's uniquely generated disposable database can be removed.
+    assert name.startswith("mgar_v3_test_") and len(name) == 45
+    with psycopg.connect(base, autocommit=True) as conn:
+        conn.execute(sql.SQL("DROP DATABASE {} WITH (FORCE)").format(sql.Identifier(name)))
+
+
+@pytest.fixture
+def settings(database: str, tmp_path) -> Settings:
+    with psycopg.connect(database, autocommit=True) as conn:
+        for (schema,) in conn.execute(
+            "SELECT nspname FROM pg_namespace WHERE nspname ~ '^r4_data_[a-f0-9]{12}$'"
+        ).fetchall():
+            conn.execute(sql.SQL("DROP SCHEMA {} CASCADE").format(sql.Identifier(schema)))
+        tables = conn.execute(
+            "SELECT schemaname,tablename FROM pg_tables WHERE schemaname IN ('app','knowledge') "
+            "AND tablename NOT IN ('schema_migrations','workbench_phase_transitions')"
+        ).fetchall()
+        conn.execute(
+            sql.SQL("TRUNCATE {} RESTART IDENTITY CASCADE").format(
+                sql.SQL(",").join(sql.Identifier(row[0], row[1]) for row in tables)
+            )
+        )
+    return Settings(
+        database_url=database,
+        artifact_root=tmp_path / "artifacts",
+        harness_root=tmp_path / "harness-v4",
+        repository="example/mgar-test",
+        local_actor="owner",
+        allowed_actors=["owner"],
+        graph_version="r1-quotes-v1",
+    )
+
+
+@pytest.fixture
+def engine(settings: Settings) -> Iterator[Engine]:
+    value = Engine(settings, ArtifactStore(settings.artifact_root))
+    yield value
+    value.close()
+
+
+@pytest.fixture
+def trigger() -> TriggerInput:
+    return TriggerInput(
+        source="github",
+        external_event_id="delivery-1",
+        project_id="orders-demo",
+        repository="example/mgar-test",
+        issue_number=1,
+        actor="owner",
+        body="/mgar investigate Summarize documented duplicate-count symptoms",
+    )

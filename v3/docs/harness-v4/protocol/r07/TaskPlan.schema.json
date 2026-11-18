@@ -1,0 +1,883 @@
+{
+  "$defs": {
+    "AcceptanceBinding": {
+      "additionalProperties": false,
+      "description": "An integrity receipt, not a statement that every natural-language clause passed.",
+      "properties": {
+        "stage": {
+          "enum": [
+            "planner",
+            "worker",
+            "context",
+            "verifier",
+            "scorer"
+          ],
+          "title": "Stage",
+          "type": "string"
+        },
+        "acceptance_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "title": "Acceptance Id",
+          "type": "string"
+        },
+        "acceptance_revision": {
+          "minimum": 1,
+          "title": "Acceptance Revision",
+          "type": "integer"
+        },
+        "acceptance_hash": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Acceptance Hash",
+          "type": "string"
+        },
+        "required_ids": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Required Ids",
+          "type": "array"
+        },
+        "check_evidence": {
+          "additionalProperties": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "title": "Check Evidence",
+          "type": "object"
+        }
+      },
+      "required": [
+        "stage",
+        "acceptance_id",
+        "acceptance_revision",
+        "acceptance_hash",
+        "required_ids"
+      ],
+      "title": "AcceptanceBinding",
+      "type": "object"
+    },
+    "AcceptanceChecklist": {
+      "additionalProperties": false,
+      "properties": {
+        "task_id": {
+          "title": "Task Id",
+          "type": "string"
+        },
+        "task_kind": {
+          "enum": [
+            "inspect",
+            "bugfix",
+            "feature",
+            "refactor",
+            "run_app"
+          ],
+          "title": "Task Kind",
+          "type": "string"
+        },
+        "revision": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Revision",
+          "type": "integer"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/$defs/AcceptanceItem"
+          },
+          "maxItems": 24,
+          "minItems": 1,
+          "title": "Items",
+          "type": "array"
+        }
+      },
+      "required": [
+        "task_id",
+        "task_kind",
+        "items"
+      ],
+      "title": "AcceptanceChecklist",
+      "type": "object"
+    },
+    "AcceptanceContract": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "harness-acceptance-v1",
+          "default": "harness-acceptance-v1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "acceptance_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "title": "Acceptance Id",
+          "type": "string"
+        },
+        "acceptance_revision": {
+          "maximum": 256,
+          "minimum": 1,
+          "title": "Acceptance Revision",
+          "type": "integer"
+        },
+        "acceptance_hash": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Acceptance Hash",
+          "type": "string"
+        },
+        "catalog_revision": {
+          "maxLength": 100,
+          "minLength": 1,
+          "title": "Catalog Revision",
+          "type": "string"
+        },
+        "objective": {
+          "maxLength": 16000,
+          "minLength": 1,
+          "title": "Objective",
+          "type": "string"
+        },
+        "required_checks": {
+          "items": {
+            "$ref": "#/$defs/ContractCheck"
+          },
+          "maxItems": 96,
+          "minItems": 1,
+          "title": "Required Checks",
+          "type": "array"
+        },
+        "required_artifacts": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 8,
+          "minItems": 1,
+          "title": "Required Artifacts",
+          "type": "array"
+        },
+        "scope": {
+          "$ref": "#/$defs/AcceptanceScope"
+        },
+        "baseline_commit": {
+          "pattern": "^[a-f0-9]{40}$",
+          "title": "Baseline Commit",
+          "type": "string"
+        },
+        "task_type": {
+          "maxLength": 40,
+          "minLength": 1,
+          "title": "Task Type",
+          "type": "string"
+        },
+        "verification_requirements_hash": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Verification Requirements Hash",
+          "type": "string"
+        },
+        "previous_hash": {
+          "anyOf": [
+            {
+              "pattern": "^[a-f0-9]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Previous Hash"
+        },
+        "change_reason": {
+          "maxLength": 1024,
+          "minLength": 1,
+          "title": "Change Reason",
+          "type": "string"
+        },
+        "affected_check_ids": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Affected Check Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "acceptance_id",
+        "acceptance_revision",
+        "acceptance_hash",
+        "catalog_revision",
+        "objective",
+        "required_checks",
+        "required_artifacts",
+        "scope",
+        "baseline_commit",
+        "task_type",
+        "verification_requirements_hash",
+        "change_reason",
+        "affected_check_ids"
+      ],
+      "title": "AcceptanceContract",
+      "type": "object"
+    },
+    "AcceptanceItem": {
+      "additionalProperties": false,
+      "properties": {
+        "item_id": {
+          "pattern": "^[a-z][a-z0-9_.-]{1,60}$",
+          "title": "Item Id",
+          "type": "string"
+        },
+        "description": {
+          "maxLength": 500,
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "reproduction",
+            "behavior",
+            "regression",
+            "build",
+            "readiness",
+            "cleanup",
+            "evidence",
+            "signature",
+            "entrypoint"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "source": {
+          "enum": [
+            "user_goal",
+            "trusted_command",
+            "model"
+          ],
+          "title": "Source",
+          "type": "string"
+        },
+        "requirement_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Requirement Id"
+        },
+        "required": {
+          "default": true,
+          "title": "Required",
+          "type": "boolean"
+        },
+        "status": {
+          "default": "pending",
+          "enum": [
+            "pending",
+            "passed",
+            "failed",
+            "unmet"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "detail": {
+          "default": "",
+          "title": "Detail",
+          "type": "string"
+        },
+        "evidence": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence",
+          "type": "array"
+        }
+      },
+      "required": [
+        "item_id",
+        "description",
+        "kind",
+        "source"
+      ],
+      "title": "AcceptanceItem",
+      "type": "object"
+    },
+    "AcceptanceScope": {
+      "additionalProperties": false,
+      "properties": {
+        "workspace_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "title": "Workspace Id",
+          "type": "string"
+        },
+        "repository": {
+          "maxLength": 250,
+          "minLength": 1,
+          "title": "Repository",
+          "type": "string"
+        },
+        "read_paths": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Read Paths"
+        },
+        "write_paths": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Write Paths"
+        },
+        "execute": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Execute"
+        },
+        "network": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Network"
+        },
+        "allowed_commands": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Allowed Commands"
+        }
+      },
+      "required": [
+        "workspace_id",
+        "repository"
+      ],
+      "title": "AcceptanceScope",
+      "type": "object"
+    },
+    "ContractCheck": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[a-z][a-z0-9_.-]{1,60}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "maxLength": 50,
+          "minLength": 1,
+          "title": "Kind",
+          "type": "string"
+        },
+        "description": {
+          "maxLength": 1024,
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "required": {
+          "const": true,
+          "title": "Required",
+          "type": "boolean"
+        },
+        "requirement_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Requirement Id"
+        },
+        "evidence_check_ids": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence Check Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "description",
+        "required"
+      ],
+      "title": "ContractCheck",
+      "type": "object"
+    },
+    "HTTPExpectation": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "default": "/",
+          "maxLength": 1024,
+          "minLength": 1,
+          "title": "Path",
+          "type": "string"
+        },
+        "status_code": {
+          "default": 200,
+          "maximum": 599,
+          "minimum": 100,
+          "title": "Status Code",
+          "type": "integer"
+        },
+        "content_type": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Content Type"
+        },
+        "body": {
+          "anyOf": [
+            {
+              "maxLength": 8192,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Body"
+        },
+        "json_body": {
+          "anyOf": [
+            {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Json Body"
+        }
+      },
+      "title": "HTTPExpectation",
+      "type": "object"
+    },
+    "LifecyclePolicy": {
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "const": "harness-lifecycle-v1",
+          "default": "harness-lifecycle-v1",
+          "title": "Version",
+          "type": "string"
+        },
+        "entry_timeout_seconds": {
+          "default": 10,
+          "exclusiveMinimum": 0,
+          "maximum": 60,
+          "title": "Entry Timeout Seconds",
+          "type": "number"
+        },
+        "shutdown_seconds": {
+          "default": 5,
+          "exclusiveMinimum": 0,
+          "maximum": 30,
+          "title": "Shutdown Seconds",
+          "type": "number"
+        },
+        "cleanup_seconds": {
+          "default": 5,
+          "exclusiveMinimum": 0,
+          "maximum": 30,
+          "title": "Cleanup Seconds",
+          "type": "number"
+        },
+        "require_ready_line": {
+          "default": true,
+          "title": "Require Ready Line",
+          "type": "boolean"
+        },
+        "require_selfcheck_status": {
+          "default": true,
+          "title": "Require Selfcheck Status",
+          "type": "boolean"
+        },
+        "control_assets_hash": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Control Assets Hash",
+          "type": "string"
+        },
+        "shutdown_exit_codes": {
+          "default": [
+            0,
+            -15
+          ],
+          "items": {
+            "type": "integer"
+          },
+          "title": "Shutdown Exit Codes",
+          "type": "array"
+        }
+      },
+      "title": "LifecyclePolicy",
+      "type": "object"
+    },
+    "OutputPolicy": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "harness-output-policy-v1",
+          "default": "harness-output-policy-v1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "investigate_tokens": {
+          "default": 4096,
+          "maximum": 131072,
+          "minimum": 1,
+          "title": "Investigate Tokens",
+          "type": "integer"
+        },
+        "implement_tokens": {
+          "default": 8192,
+          "maximum": 131072,
+          "minimum": 1,
+          "title": "Implement Tokens",
+          "type": "integer"
+        },
+        "finalize_tokens": {
+          "default": 4096,
+          "maximum": 131072,
+          "minimum": 1,
+          "title": "Finalize Tokens",
+          "type": "integer"
+        },
+        "continuation_tokens": {
+          "default": 8192,
+          "maximum": 131072,
+          "minimum": 1,
+          "title": "Continuation Tokens",
+          "type": "integer"
+        },
+        "max_continuations": {
+          "default": 2,
+          "maximum": 4,
+          "minimum": 0,
+          "title": "Max Continuations",
+          "type": "integer"
+        }
+      },
+      "title": "OutputPolicy",
+      "type": "object"
+    },
+    "PublicFeedbackPolicy": {
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "const": "harness-public-feedback-v1",
+          "default": "harness-public-feedback-v1",
+          "title": "Version",
+          "type": "string"
+        },
+        "stagnant_batches": {
+          "default": 3,
+          "maximum": 6,
+          "minimum": 2,
+          "title": "Stagnant Batches",
+          "type": "integer"
+        }
+      },
+      "title": "PublicFeedbackPolicy",
+      "type": "object"
+    },
+    "ServicePlan": {
+      "additionalProperties": false,
+      "description": "Trusted application start plan; the loop never invents a start command.",
+      "properties": {
+        "argv": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 64,
+          "minItems": 1,
+          "title": "Argv",
+          "type": "array"
+        },
+        "mode": {
+          "default": "http",
+          "enum": [
+            "http",
+            "oneshot"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "port": {
+          "default": 8000,
+          "maximum": 65535,
+          "minimum": 0,
+          "title": "Port",
+          "type": "integer"
+        },
+        "path": {
+          "default": "/",
+          "title": "Path",
+          "type": "string"
+        },
+        "timeout_seconds": {
+          "default": 10,
+          "exclusiveMinimum": 0,
+          "maximum": 300,
+          "title": "Timeout Seconds",
+          "type": "number"
+        },
+        "routes": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/HTTPExpectation"
+          },
+          "title": "Routes",
+          "type": "array"
+        },
+        "acceptance_hash": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Acceptance Hash"
+        }
+      },
+      "required": [
+        "argv"
+      ],
+      "title": "ServicePlan",
+      "type": "object"
+    },
+    "ToolErrorPolicy": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "harness-tool-errors-v1",
+          "default": "harness-tool-errors-v1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "max_corrections": {
+          "default": 3,
+          "maximum": 8,
+          "minimum": 0,
+          "title": "Max Corrections",
+          "type": "integer"
+        }
+      },
+      "title": "ToolErrorPolicy",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "harness-task-plan-v2",
+      "default": "harness-task-plan-v2",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "task_id": {
+      "title": "Task Id",
+      "type": "string"
+    },
+    "objective": {
+      "title": "Objective",
+      "type": "string"
+    },
+    "acceptance_revision": {
+      "title": "Acceptance Revision",
+      "type": "string"
+    },
+    "task_kind": {
+      "enum": [
+        "inspect",
+        "bugfix",
+        "feature",
+        "refactor",
+        "run_app"
+      ],
+      "title": "Task Kind",
+      "type": "string"
+    },
+    "checklist": {
+      "$ref": "#/$defs/AcceptanceChecklist"
+    },
+    "checkpoint_tree": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Checkpoint Tree",
+      "type": "string"
+    },
+    "baseline_command": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Baseline Command",
+      "type": "array"
+    },
+    "service_plan": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ServicePlan"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "attempt_policy": {
+      "default": "resource",
+      "enum": [
+        "legacy",
+        "resource"
+      ],
+      "title": "Attempt Policy",
+      "type": "string"
+    },
+    "output_policy": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/OutputPolicy"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "tool_error_policy": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ToolErrorPolicy"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "public_feedback_policy": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PublicFeedbackPolicy"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "lifecycle_policy": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/LifecyclePolicy"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "acceptance_contract": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AcceptanceContract"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "acceptance_binding": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AcceptanceBinding"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    }
+  },
+  "required": [
+    "task_id",
+    "objective",
+    "acceptance_revision",
+    "task_kind",
+    "checklist",
+    "checkpoint_tree"
+  ],
+  "title": "TaskPlan",
+  "type": "object"
+}

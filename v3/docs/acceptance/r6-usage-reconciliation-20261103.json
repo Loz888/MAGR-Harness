@@ -1,0 +1,9 @@
+{
+  "_public_export": {
+    "original_record_sha256": "4e11a96bf1fae82d804cc1dec3a93af8fe80495b75d4daa8eafaaf320c4b9d55",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "schema": "r6-usage-reconciliation-v1",
+  "status": "RECONCILED_AGGREGATE",
+  "model": "deepseek-flash"
+}

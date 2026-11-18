@@ -1,0 +1,67 @@
+{
+  "schema": "harness-r04-document-delivery-v1",
+  "source_commit": "24cce0b3b2341b1c6172559398c019a07c74ed13",
+  "source_sha256": "0c729bdc2fb1b1a05b2471995e60eea5b3103b0d57662266b8c89b761be8e16a",
+  "entries": [
+    {
+      "path": "v3/docs/harness-v4/CODEX_CLI_H12_R04_TASK.md",
+      "sha256": "30856d997a457d9bd23b1f6d8a8c9a01b8619a145f935b7acb88ed649aeff85f",
+      "bytes": 2748
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_R04_LIFECYCLE_20261116.md",
+      "sha256": "c04bdf7fc8a7f439fab10ef60e02a72f68447f2b1c15798c2d3bc114858bf0ff",
+      "bytes": 7759
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_R04_LIFECYCLE_PROTOCOL.md",
+      "sha256": "e6d69b12ffc7238a2601c48815d1fb9d2e7d19935201299fca1c6a74b9743b53",
+      "bytes": 5967
+    },
+    {
+      "path": "v3/docs/harness-v4/README.md",
+      "sha256": "297e2c05ac9b4b2ce4d1ce8df3b1661deb78a156cfb5103ba457e07b6a5281af",
+      "bytes": 22826
+    },
+    {
+      "path": "v3/docs/harness-v4/TASKS.md",
+      "sha256": "6e4ab58a34573d4ce24563ee4286156d42f65c70230ea3d50bc72c8f850a5d47",
+      "bytes": 44577
+    },
+    {
+      "path": "v31-upgrade/TASK_QUEUE.md",
+      "sha256": "2adb2ea905ea949a163d68413b8d03e7542d9a94c9559958a8f66939eb081be9",
+      "bytes": 16962
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R04/accept.json",
+      "sha256": "d69e0337b1a5591b47546cce923a93725686ec1688200d373a87066fcd745727",
+      "bytes": 5918
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R04/cases.json",
+      "sha256": "3dc77d3dd1d9693b4b5e547058c80604e92ab3e6b1ff1d56097947e3617036cd",
+      "bytes": 15910
+    },
+    {
+      "path": "v3/docs/harness-v4/protocol/r04/entrypoint-batch.schema.json",
+      "sha256": "3502aa64a28adc5ca5e9fc960b15290ed86dbb75da00444869a908941b53c144",
+      "bytes": 9916
+    },
+    {
+      "path": "v3/docs/harness-v4/protocol/r04/process-port-receipt.schema.json",
+      "sha256": "34dbe246c21e1d87a0c281bb688e93e489ebcba14e0a3028f798eb9f66b8f9b8",
+      "bytes": 4846
+    },
+    {
+      "path": "v3/docs/harness-v4/protocol/r04/ready-receipt.schema.json",
+      "sha256": "3d56fe13347e4bd47ab8ee3af9a342831e3933b21d106cf88d5e4079b0c4f247",
+      "bytes": 7532
+    },
+    {
+      "path": "v3/docs/harness-v4/protocol/r04/service-evidence.schema.json",
+      "sha256": "e0f8938ec3cbc0484175d1a0a95fc6102ec442d9ac80985b35760e1d4d8bcbc3",
+      "bytes": 12468
+    }
+  ]
+}

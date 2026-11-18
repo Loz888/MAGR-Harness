@@ -1,0 +1,45 @@
+{
+  "schema": "h12-quality-readiness-identity-engineering-v1",
+  "engineering_gate": "PASS",
+  "live_gate": "NOT_RUN",
+  "historical_quality": "FAIL",
+  "source_sha256": "893b3cfef5ab4d5ce87570dccc18d183fd9579f390c884c402a2f7fdf9405735",
+  "tests": 260,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "lint": "PASS",
+  "mypy": "PASS",
+  "runs": [
+    {
+      "path": "evidence/HV4-H12-QUALITY-REPAIR/20261114T092234Z-d76478ec/result.json",
+      "sha256": "f0c59cc3db14b15501045887b7f3005bfa7be10b559ffcdd5f46f6a3714a6fce",
+      "counts": {
+        "tests": 162,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "path": "evidence/HV4-H12-FULL-DEV/20261114T092359Z-ec53e9bf/result.json",
+      "sha256": "8e2f46135c8eb6db620e57ac8ffaf2368beeda87c325a92486ddbabad66ac6f7",
+      "counts": {
+        "tests": 98,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    }
+  ],
+  "previous_freeze_validation_failure": {
+    "source_sha256": "ffa7660fd312af26b512e17586f7b4df6ecedfa35a1849d0f5b425127d970e34",
+    "log": ".local/h12/quality-repair-20261114/seal-quality-v3.log",
+    "cause": "Original public readiness profile hash included preparation experiment_id; separate registration and seal validation names mismatched. Full dev and holdout physical validators passed independently."
+  },
+  "change": "Versioned v2 original-readiness profile hash excludes only experiment_id. All authority/resources/commands/source fields remain bound; v1 retains exact original hash semantics. Real Broker receipts and controller preparation validate across experiment names.",
+  "test_environment_failure_preserved": "evidence/HV4-H12-QUALITY-REPAIR/20261114T092034Z-dfbc4d39/result.json",
+  "test_environment_correction": "Four PG fixtures failed before execution because temporary LOCAL_TOKEN was shorter than 24 chars. Corrected test-only environment; no source change; registered target rerun passed all 162.",
+  "new_paid_calls": 0,
+  "readiness": "Fresh subset-v4/full-dev-v4/holdout-v4; quality sealing revalidates all physical receipts before paid dispatch"
+}

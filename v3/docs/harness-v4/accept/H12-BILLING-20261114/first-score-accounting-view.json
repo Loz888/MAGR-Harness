@@ -1,0 +1,11 @@
+{
+  "_public_export": {
+    "original_record_sha256": "5ff4a21278a5957a70d13bd4e51e8cbdf00ae752ce0319709b19657d9c37546c",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "schema": "h12-billing-response-loss-classification-v1",
+  "status_field_occurrences": {
+    "UNKNOWN": 1,
+    "FAIL": 1
+  }
+}

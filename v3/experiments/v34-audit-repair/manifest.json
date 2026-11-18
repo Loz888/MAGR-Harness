@@ -1,0 +1,10 @@
+{
+  "_public_export": {
+    "original_record_sha256": "8896f28e58c7cc638f0f033d19bbd556a38a0a4f61c012289aaffdf1f4e91bad",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "baseline_commit": "19c6ff29c107a4d94d4ed903b222988873ffcb07",
+  "card": "E01",
+  "mode": "real_model_live",
+  "schema": "mgar-quality-eval-manifest-v1"
+}

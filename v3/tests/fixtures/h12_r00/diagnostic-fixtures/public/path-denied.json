@@ -1,0 +1,1 @@
+{"kind":"path_denied","visibility":"public_synthetic","observation":{"path":"/host/runtime/package.py","workspace_root":".","expected_code":"HARNESS_PATH_DENIED"}}

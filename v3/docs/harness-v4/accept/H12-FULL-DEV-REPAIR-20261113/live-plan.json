@@ -1,0 +1,45 @@
+{
+  "schema": "h12-public-dev-new-candidate-live-plan-v1",
+  "recorded_at_utc": "2026-11-13T13:12:47.068995+00:00",
+  "candidate_implementation_commit": "1e68aef",
+  "source_sha256": "494ad6d3c0114ecea8e2d8c47900bd34803f364de9cbb37b6f7d40c7c59f94d0",
+  "experiment_id": "hv4-h12-public-1e68aef",
+  "task_order": [
+    "hv4-dev-click-help-name",
+    "hv4-dev-requests-http-url-helper",
+    "hv4-v2-dev-requests-quoted-content-type",
+    "hv4-dev-click-short-help",
+    "hv4-dev-pflag-unknown-flag",
+    "hv4-dev-express-healthz",
+    "hv4-dev-got-header-value",
+    "hv4-dev-requests-encoding-refactor",
+    "hv4-dev-click-style-refactor",
+    "hv4-dev-express-server-lifecycle",
+    "hv4-dev-got-local-roundtrip",
+    "hv4-dev-click-multifile-placeholder"
+  ],
+  "preconditions": [
+    "both real reports valid on identical final source",
+    "subset4READY",
+    "full12FULL_DEV_READY",
+    "new FROZEN bridge",
+    "original shared PG authorization and unknown/reserved0"
+  ],
+  "thresholds": {
+    "dev": 10,
+    "denominator": 12,
+    "holdout": 9
+  },
+  "early_stop": "Stop once FAIL>=3 or any UNKNOWN/provider accounting ambiguity. Do not replace recorded scores or retry to select best samples.",
+  "shared_budget": {
+    "limit_micros": 12000000,
+    "limit_calls": 1536,
+    "known_before_calls": 305,
+    "known_before_conservative_micros": 1316981
+  },
+  "per_task_model_tool_context_money_deadline": "original frozen values, no increase",
+  "sandbox_change": "explicit256MiB scratch alignment and empty read-only protected-directory traversal; original image bytes retained",
+  "real_publication_authorized": false,
+  "holdout_protocol": "Not part of dev-only bridge. Requires successful dev gate before independent scoring; never use held-out evidence for repair.",
+  "status": "PLANNED_NO_MODEL_DISPATCH_YET"
+}

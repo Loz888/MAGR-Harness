@@ -1,0 +1,33 @@
+{
+  "task_id": "hv4-dev-pflag-unknown-flag",
+  "repository": "spf13/pflag",
+  "base_commit": "f8a990678a6d44385313e9b19e40737f889f9b14",
+  "type": "bugfix",
+  "language": "go",
+  "goal": "With interspersed parsing disabled, stop parsing at the first unknown short flag and leave the remaining arguments unconsumed so the caller can distinguish them.",
+  "acceptance": {
+    "baseline": [
+      "hidden test observes the unknown flag consuming later arguments"
+    ],
+    "regression": [
+      "go test ./..."
+    ],
+    "required": [
+      "parse stops at the unknown flag",
+      "Args() keeps the remainder"
+    ]
+  },
+  "resources": {
+    "deadline_seconds": 1800,
+    "max_context_tokens": 200000,
+    "max_cost_micros": 6000000,
+    "max_model_calls": 20,
+    "max_repair_rounds": 8,
+    "max_tool_calls": 120
+  },
+  "scope": [
+    "flag.go",
+    "string.go"
+  ],
+  "review": "Cases derive from non-interspersed stop-at-unknown goal and public flag.go PassUnknownFlagToArgs API. Compile/import/runtime failures are error, never assertion red. No private judge/fix/holdout read."
+}

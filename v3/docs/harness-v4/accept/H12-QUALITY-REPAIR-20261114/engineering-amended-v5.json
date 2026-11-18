@@ -1,0 +1,73 @@
+{
+  "schema": "h12-quality-symbol-and-judge-contract-engineering-v1",
+  "source_sha256": "5551c00494c3d78e89166c091f827091d2171f07adf819bed6bfee974ffde93e",
+  "engineering_gate": "PASS",
+  "live_gate": "NOT_RUN_FOR_V5",
+  "tests": 292,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "lint": "PASS",
+  "mypy": "PASS",
+  "mypy_source_files": 250,
+  "runs": [
+    {
+      "path": "evidence/HV4-H12-QUALITY-REPAIR/20261114T100932Z-c62ce641/result.json",
+      "sha256": "06e9747ce6dccd79e62be9887036b321eecc381dab66638f30b448c8100ea72b",
+      "counts": {
+        "tests": 194,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "path": "evidence/HV4-H12-FULL-DEV/20261114T101044Z-1234b3b2/result.json",
+      "sha256": "dc612aa8e3314f6d6a1bc6e755255ed6f3d160680485f8e6cb46f3188d661fce",
+      "counts": {
+        "tests": 98,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    }
+  ],
+  "amendment": {
+    "path": ".local/h12/quality-repair-20261114/click-amendment-v2/amendment.json",
+    "sha256": "9c7fe148f1a8af1dab94fb811be86279fb8f9a39d02428ed1ce8f3014b94057b"
+  },
+  "controls": {
+    "path": ".local/h12/quality-repair-20261114/click-amendment-v2/controls.json",
+    "sha256": "c45f0394457a3d1aa2693f3520d2a5e356e3afdee46fb0b93a9c262b37b340fc",
+    "baseline_expected_red": 1,
+    "different_positive_implementations": 2,
+    "negative_implementations_rejected": 2,
+    "paid_model_calls": 0
+  },
+  "failed_control_draft_preserved": ".local/h12/quality-repair-20261114/click-amendment-v1/not-eager/judge-result.json",
+  "control_revision": "Initial draft did not distinguish a non-eager help option on simple argv. Added public-contract help precedence over invalid non-eager option conversion; two positive implementations still pass and both negative variants fail. Old draft remains unapproved.",
+  "replacement": {
+    "old_id": "hv4-dev-click-help-name",
+    "new_id": "hv4-v3-dev-click-help-name",
+    "public_goal_source_scope_resources_unchanged": true,
+    "old_judge_files_unchanged": true,
+    "holdout_unchanged_and_unseen": true
+  },
+  "runtime_changes": [
+    "Scoped Python symbol reads with full-function bounds and existing tree/lease checks",
+    "Generic data-flow and batched-read planning guidance",
+    "Complete failing-test identity comparison for red baselines; unknown reporters/coverage stay unknown"
+  ],
+  "historical_live_v4": {
+    "pass": 2,
+    "fail": 1,
+    "not_run": 9,
+    "heldout_not_run": 12,
+    "shared_calls": 366,
+    "settled_micros": 1631830,
+    "unknown_calls": 0,
+    "reserved_micros": 0
+  },
+  "fresh_physical_preparation": "subset-v5/full-dev-v5/holdout-v5",
+  "new_v5_model_calls_at_recording": 0
+}

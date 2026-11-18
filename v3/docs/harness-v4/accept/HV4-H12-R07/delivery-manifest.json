@@ -1,0 +1,75 @@
+{
+  "card": "HV4-H12-R07",
+  "status": "LOCAL_ENGINEERING_PASS",
+  "source_commit": "7f19289dcf92618ac5298e0a9b2c4bd119dd2921",
+  "source_sha256": "73d871033444376e23283f00ede50abefbc393dedf1cbb46cdbcd18c1fc23346",
+  "h12_quality": "FAIL",
+  "mvp": "NOT_RELEASED",
+  "stop_after": "R07",
+  "next_cards_started": false,
+  "paid_calls": 0,
+  "merge_push_deploy": false,
+  "delivery_commit": "See local git history and ignored evidence delivery-seal.json; manifest does not hash itself.",
+  "files": [
+    {
+      "path": "docs/harness-v4/CODEX_CLI_H12_R07_TASK.md",
+      "sha256": "5efac3efc3bbf5324d4fb2bac16a4ac986e21aa93f5023b5a4f7233972570a80",
+      "bytes": 3498
+    },
+    {
+      "path": "docs/harness-v4/H12_R07_PUBLIC_FEEDBACK_20261116.md",
+      "sha256": "91d035528a8f2477afdb00000c6d2acd35bf5fc1d58828c8d125ff8867e1a00c",
+      "bytes": 9243
+    },
+    {
+      "path": "docs/harness-v4/H12_R07_PUBLIC_FEEDBACK_PROTOCOL.md",
+      "sha256": "d9a2c7107e8a2178f9a27c64aaa12a511201846328be1d6103e20f2edb57e50f",
+      "bytes": 7440
+    },
+    {
+      "path": "docs/harness-v4/H12_R07_PUBLIC_BOUNDARY_MATRIX.md",
+      "sha256": "af0a85d8a4695ba65bae5d087d6ee1192bfbeb2e1d29c1c346b85b4f38b7ee57",
+      "bytes": 3025
+    },
+    {
+      "path": "docs/harness-v4/protocol/r07/README.md",
+      "sha256": "119f1a1430c87598b67159924dac2c5d80d574a899cd3e805eed18fac46732fb",
+      "bytes": 1020
+    },
+    {
+      "path": "docs/harness-v4/accept/HV4-H12-R07/accept.json",
+      "sha256": "f56cc8a84aaffebf7d0312d8f4c9c4872ca77aee3d89fcc78df6f0dca5be9af9",
+      "bytes": 7963
+    },
+    {
+      "path": "docs/harness-v4/accept/HV4-H12-R07/cases.json",
+      "sha256": "a942d8ca8bc91fc6fde34e26182f22b67d137d5bf0e470dc9e1e29d278830b65",
+      "bytes": 31076
+    },
+    {
+      "path": "docs/harness-v4/protocol/r07/ExecutionReceipt.schema.json",
+      "sha256": "2a474e99e4ba841bb8f1a97cf8e7d765fb0c64aa8f9b139817894372b6f56f79",
+      "bytes": 9565
+    },
+    {
+      "path": "docs/harness-v4/protocol/r07/PublicFeedbackPolicy.schema.json",
+      "sha256": "6d7d2195e85ba531c21a27363ff97bb3b1994d527930f487477980f008d3111d",
+      "bytes": 430
+    },
+    {
+      "path": "docs/harness-v4/protocol/r07/PublicTestFeedback.schema.json",
+      "sha256": "0dec9dde07ea624882485a92f79d3f24722187e849acf9ebbe53d8a838956b2b",
+      "bytes": 3930
+    },
+    {
+      "path": "docs/harness-v4/protocol/r07/TaskPlan.schema.json",
+      "sha256": "b15c4d6f9af33618e450f5b1b2e54b6f2a194bf2f0b0ee177abfc88bd85be572",
+      "bytes": 20402
+    },
+    {
+      "path": "docs/harness-v4/protocol/r07/WorkingState.schema.json",
+      "sha256": "bbd1f916e9b903c7266360e874e23db89ed7477f46c3e45b7d3b0ac92fd08c60",
+      "bytes": 18014
+    }
+  ]
+}

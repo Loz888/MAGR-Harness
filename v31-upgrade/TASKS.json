@@ -1,0 +1,220 @@
+{
+  "version": "v31-incremental-v1",
+  "tasks": [
+    {
+      "id": "V31-R0-01",
+      "phase": "R0",
+      "title": "独立仓库、V2 基线与架构边界",
+      "status": "DONE",
+      "dependencies": [],
+      "engineering_gate": "PASS",
+      "live_gate": "NOT_APPLICABLE",
+      "maps_to": [
+        "V3-P0-01"
+      ]
+    },
+    {
+      "id": "V31-R0-02",
+      "phase": "R0",
+      "title": "锁定环境、PG/Redis、MCP 适配与验收框架",
+      "status": "DONE",
+      "dependencies": [
+        "V31-R0-01"
+      ],
+      "engineering_gate": "PASS",
+      "live_gate": "NOT_APPLICABLE",
+      "maps_to": [
+        "V3-P0-02"
+      ],
+      "evidence": "v3/evidence/V31-R0-02/acceptance.json"
+    },
+    {
+      "id": "V31-R0-03",
+      "phase": "R0",
+      "title": "事件、授权、工作项、执行与动作持久化契约",
+      "status": "DONE",
+      "dependencies": [
+        "V31-R0-02"
+      ],
+      "engineering_gate": "PASS",
+      "live_gate": "NOT_APPLICABLE",
+      "maps_to": [
+        "V3-P0-03"
+      ],
+      "evidence": "v3/evidence/V31-R0-03/acceptance.json"
+    },
+    {
+      "id": "V31-R1-01",
+      "phase": "R1",
+      "title": "确定性调查、Verifier、审批与统一出口工程闭环",
+      "status": "DONE",
+      "dependencies": [
+        "V31-R0-03"
+      ],
+      "engineering_gate": "PASS",
+      "live_gate": "NOT_RUN",
+      "maps_to": [
+        "V3-P1-01",
+        "V3-P1-02",
+        "V3-P1-04",
+        "V3-P1-05",
+        "V3-P1-07",
+        "V3-P4-01",
+        "V3-P4-02"
+      ],
+      "note": "按 V3.1 纵切面抽取必要行为，不表示原卡整张完成。",
+      "evidence": "v3/evidence/V31-R1-01/acceptance.json"
+    },
+    {
+      "id": "V31-R1-BUDGET-02",
+      "phase": "R1",
+      "title": "候选最多 3 次调用、累计预算 USD 2",
+      "status": "DONE",
+      "dependencies": [
+        "V31-R1-01"
+      ],
+      "engineering_gate": "PASS",
+      "live_gate": "PASS",
+      "maps_to": [],
+      "requested_limits": {
+        "max_model_calls": 3,
+        "max_cost_micros": 2000000,
+        "currency": "USD"
+      },
+      "execution_requested": true,
+      "evidence": "v3/evidence/V31-R1-BUDGET-02/acceptance.json"
+    },
+    {
+      "id": "V31-R1-LIVE",
+      "phase": "R1",
+      "title": "V3 Issue #1 真实模型、审批与结果评论验收",
+      "status": "DONE",
+      "dependencies": [
+        "V31-R1-01"
+      ],
+      "engineering_gate": "NOT_APPLICABLE",
+      "live_gate": "PASS",
+      "maps_to": [],
+      "blockers": [],
+      "issue_url": "https://github.com/Loz888/MAGR-v3/issues/1",
+      "candidate_limits": {
+        "max_model_calls": 3,
+        "max_cost_micros": 2000000,
+        "currency": "USD"
+      },
+      "evidence": "v3/docs/acceptance/r1-live-20261102.json"
+    },
+    {
+      "id": "V31-R2",
+      "phase": "R2",
+      "title": "Mailbox 与显式 intake/replan",
+      "status": "DONE",
+      "dependencies": [
+        "V31-R1-LIVE"
+      ],
+      "engineering_gate": "PASS",
+      "live_gate": "NOT_RUN",
+      "maps_to": [],
+      "started_after_gate": "2026-11-02T03:43:08.968350+00:00",
+      "evidence": "v3/docs/acceptance/r2-engineering-20261102.json"
+    },
+    {
+      "id": "V31-R3",
+      "phase": "R3",
+      "title": "受限 Router LLM 与多任务",
+      "status": "DONE",
+      "dependencies": [
+        "V31-R2"
+      ],
+      "engineering_gate": "PASS",
+      "live_gate": "PASS",
+      "maps_to": [],
+      "live_scope": "Real Router decisions on two frozen synthetic events; no additional external business publication",
+      "evidence": "v3/docs/acceptance/r3-20261102.json"
+    },
+    {
+      "id": "V31-R4",
+      "phase": "R4",
+      "title": "RAG 与多专家",
+      "status": "DONE",
+      "dependencies": [
+        "V31-R3"
+      ],
+      "engineering_gate": "PASS",
+      "live_gate": "PARTIAL",
+      "maps_to": [
+        "V3-P2-01",
+        "V3-P2-02",
+        "V3-P2-03",
+        "V3-P2-04",
+        "V3-P3-01",
+        "V3-P3-02",
+        "V3-P3-03",
+        "V3-P3-04"
+      ],
+      "evidence": "v3/docs/acceptance/r4-20261102.json",
+      "local_retrieval_gate": "PASS",
+      "local_combination_gate": "PASS",
+      "note": "Engineering PASS. Five real-model multi/single cases executed; primary comparison 4/5 per arm, one bounded multi recovery PASS. Raw failures retained; no production-ready claim.",
+      "live_evidence": "v3/docs/acceptance/r4-live-20261102.json"
+    },
+    {
+      "id": "V31-R4-LIVE",
+      "phase": "R4",
+      "title": "真实跨源调查、独立判定与单 Agent 对照",
+      "status": "DONE",
+      "dependencies": [
+        "V31-R4"
+      ],
+      "engineering_gate": "PASS",
+      "live_gate": "PARTIAL",
+      "maps_to": [
+        "V3-P3-05"
+      ],
+      "evidence": "v3/docs/acceptance/r4-live-20261102.json",
+      "scope": "Five owned synthetic cases with actual DeepSeek, GitHub code, RAG, SQL and MCP; original 8/10 retained; multi final 5/5 after bounded recovery; single first-pass 4/5."
+    },
+    {
+      "id": "V31-R5",
+      "phase": "R5",
+      "title": "受限修复与 Draft PR",
+      "status": "DONE",
+      "dependencies": [
+        "V31-R4"
+      ],
+      "engineering_gate": "PASS",
+      "live_gate": "PASS",
+      "maps_to": [],
+      "evidence": "v3/docs/acceptance/r5-live-20261103.json",
+      "live_evidence": "v3/docs/acceptance/r5-live-20261103.json",
+      "note": "249-test final regression PASS. Original frozen model trial FAIL retained; counts-only recorded-result recovery passes public/28 hidden tests and one real Draft PR #2. Model-settlement and PR-acceptance SIGKILL recovery PASS. Narrow bounded-function scope; not general coding readiness."
+    },
+    {
+      "id": "V31-R6",
+      "phase": "R6",
+      "title": "Watchdog、主动性与发布评测",
+      "status": "IN_PROGRESS",
+      "dependencies": [
+        "V31-R5"
+      ],
+      "engineering_gate": "PARTIAL",
+      "live_gate": "NOT_RUN",
+      "maps_to": [],
+      "evidence": "v3/docs/acceptance/r6-observe-engineering-20261103.json",
+      "note": "Observe-only watchdog first slice PASS (82 checks); heartbeat/backlog/health, proactive auto, speculation budgets, ABC and deployment pending."
+    },
+    {
+      "id": "V31-R6-01",
+      "phase": "R6",
+      "title": "确定性观察与恢复请求首个切片",
+      "status": "DONE",
+      "dependencies": [
+        "V31-R5"
+      ],
+      "engineering_gate": "PASS",
+      "live_gate": "NOT_RUN",
+      "maps_to": [],
+      "evidence": "v3/docs/acceptance/r6-observe-engineering-20261103.json"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "version": "harness-task-baseline-v1",
+  "benchmark_revision": "r06-public-revision-2",
+  "task_kind": "refactor",
+  "requirements": [
+    {
+      "acceptance_requirement_id": "public.21236bd226247b1b",
+      "description": "Preserve Box behavior for mixed-case keys, overwrite, delete, iteration and missing keys.",
+      "kind": "behavior"
+    },
+    {
+      "acceptance_requirement_id": "public.8624cc7aef7f2ac2",
+      "description": "Box __setitem__, __getitem__ and __delitem__ use one shared key canonicalizer; its name is unrestricted, and its result supplies each mapping key.",
+      "kind": "structure"
+    }
+  ],
+  "behavior_plan": {
+    "version": "harness-independent-regression-v1",
+    "parser_version": "harness-test-results-v1",
+    "commands": [
+      {
+        "suite_id": "public-cc930138e2a8f2962c8a",
+        "public_argv": [
+          "python3",
+          "-B",
+          "-m",
+          "pytest",
+          "tests/"
+        ],
+        "argv": [
+          "python3",
+          "-B",
+          "-m",
+          "pytest",
+          "tests/",
+          "--verbosity=2",
+          "--maxfail=0"
+        ],
+        "cwd": ".",
+        "framework": "pytest",
+        "public_probe": null
+      }
+    ],
+    "timeout_seconds": 300.0,
+    "package_scripts": {}
+  },
+  "target_plan": null,
+  "missing_targets": [],
+  "shared_helper": {
+    "acceptance_requirement_id": "public.8624cc7aef7f2ac2",
+    "path": "box.py",
+    "language": "python",
+    "owner_class": "Box",
+    "callers": [
+      "__setitem__",
+      "__getitem__",
+      "__delitem__"
+    ],
+    "required_name": null
+  }
+}

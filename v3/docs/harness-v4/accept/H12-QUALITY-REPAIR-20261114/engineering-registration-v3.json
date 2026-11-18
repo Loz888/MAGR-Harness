@@ -1,0 +1,45 @@
+{
+  "schema": "h12-quality-registration-engineering-v1",
+  "engineering_gate": "PASS",
+  "live_gate": "NOT_RUN",
+  "historical_quality": "FAIL",
+  "source_sha256": "ffa7660fd312af26b512e17586f7b4df6ecedfa35a1849d0f5b425127d970e34",
+  "tests": 245,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "lint": "PASS",
+  "mypy": "PASS",
+  "mypy_source_files": 248,
+  "runs": [
+    {
+      "path": "evidence/HV4-H12-QUALITY-REPAIR/20261114T090008Z-855a4d64/result.json",
+      "sha256": "ae024d270230e1d73fd5d9cd0043090fdefa516ec70ec7165d78daefe22207e7",
+      "counts": {
+        "tests": 147,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "path": "evidence/HV4-H12-FULL-DEV/20261114T090106Z-fe1b089b/result.json",
+      "sha256": "d1693251cdb0d5e8e2c2ad0c25876d2029adb754f5b187e2ca3d0aac578e6995",
+      "counts": {
+        "tests": 98,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    }
+  ],
+  "pg_registration": "Full 48-profile candidate/legacy dev+holdout matrix accepted through original Engine/HarnessStore; second experiment shares same original budget identity and limits; zero model dispatch",
+  "change": "Full quality config uses the existing h12-benchmark-v2 matrix revision; in-memory development profile preparation stays unchanged",
+  "new_paid_calls": 0,
+  "readiness_v2_historical": {
+    "dev": 12,
+    "holdout": 12,
+    "source_sha256": "afb37899bef354d4622e0d2788d170e7e02eef5e603dc11512e36576b3f92ab5"
+  },
+  "final_readiness": "New subset-v3/full-dev-v3/holdout-v3 executions, never relabel earlier evidence"
+}

@@ -1,0 +1,19 @@
+{
+  "_public_export": {
+    "original_record_sha256": "8f208e58243055e265aa42faed6fef94060eeab2f549b81c0c5d415c44d30376",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "schema": "h12-quality-v5-real-development-v1",
+  "source_commit": "3813488",
+  "source_sha256": "5551c00494c3d78e89166c091f827091d2171f07adf819bed6bfee974ffde93e",
+  "mvp_released": false,
+  "holdout_aggregate": {
+    "status": "NOT_RUN",
+    "denominator": 12
+  },
+  "status_field_occurrences": {
+    "PASS": 8,
+    "FAIL": 6,
+    "NOT_RUN": 1
+  }
+}

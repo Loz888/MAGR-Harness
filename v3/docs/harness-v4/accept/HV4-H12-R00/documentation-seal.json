@@ -1,0 +1,14 @@
+{
+  "_public_export": {
+    "original_record_sha256": "1dec35fa2f23375e357813bd7470a7072f9b4857b897fd517f658a7e89807cb3",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "recorded_at": "2026-11-15T10:10:54.281477+00:00",
+  "status": "PASS",
+  "scope": "R00_ONLY",
+  "source_commit": "f3390e6367b3232cf54e3c0fa572b3df591ef8fa",
+  "source_sha256": "6bff0896ec4c15e8c3322d7c8688afd88b8a6676d8fb8fe09f227600abaa4636",
+  "status_field_occurrences": {
+    "PASS": 1
+  }
+}

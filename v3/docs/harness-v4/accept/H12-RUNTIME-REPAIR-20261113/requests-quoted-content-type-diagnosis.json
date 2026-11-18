@@ -1,0 +1,7 @@
+{
+  "_public_export": {
+    "original_record_sha256": "6d243435a6a7ff820fecab9362780f00179a57f73b31e12e9c495ffd40d2aca8",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "mode": "offline_read_only_diagnosis; report-only write in isolated repair worktree"
+}

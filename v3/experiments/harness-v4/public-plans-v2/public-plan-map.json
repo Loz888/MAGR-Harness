@@ -1,0 +1,18 @@
+{
+  "hv4-dev-requests-http-url-helper": {
+    "path": "experiments/harness-v4/public-plans-v1/manifests/hv4-dev-requests-http-url-helper.json",
+    "sha256": "90e1c376527b739faabd4f35b6638fb1fc2f65cc3f30450f554abc03070720f7"
+  },
+  "hv4-v2-dev-requests-quoted-content-type": {
+    "path": "experiments/harness-v4/public-plans-v1/manifests/hv4-v2-dev-requests-quoted-content-type.json",
+    "sha256": "25033d0c9a0b3ad49bbdcaaa1a7813f89e49b62c23ed27007907d691ea57dc11"
+  },
+  "hv4-dev-pflag-unknown-flag": {
+    "path": "experiments/harness-v4/public-plans-v1/manifests/hv4-dev-pflag-unknown-flag.json",
+    "sha256": "c57b535b6b88c8f9448bec15a0bc3bf69b0b5b4909151b1e383c29a6e92fd44d"
+  },
+  "hv4-v3-dev-click-help-name": {
+    "path": "experiments/harness-v4/public-plans-v2/click-help-name.json",
+    "sha256": "8a24cf1e8a5a5d4cd129d561e0515bad73190eb7d07eb8e2d822a76061c07867"
+  }
+}

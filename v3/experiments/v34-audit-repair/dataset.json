@@ -1,0 +1,53 @@
+{
+  "card": "E01",
+  "case_ids": [
+    "click-help-name-collision",
+    "click-help-name-repair",
+    "click-negative-no-subprocess",
+    "click-sentinel-identity",
+    "click-sentinel-repair",
+    "click-short-help-abbreviation",
+    "click-short-help-repair",
+    "click-show-envvar-sequence",
+    "goexample-weave-newline",
+    "pflag-count-preserve-on-error",
+    "pflag-native-int-overflow",
+    "pflag-unknown-flag-non-interspersed",
+    "requests-content-type-parameter",
+    "requests-negative-no-dynamic-eval",
+    "requests-netrc-empty-default"
+  ],
+  "experiment_id": "v34-audit-repair",
+  "grading_contract": "v3.4 Finding Precision@K, Recall@Budget, citation validity, call-chain equality, repair binary gates",
+  "holdout": {
+    "count": 3,
+    "file": "holdout/tasks.jsonl",
+    "sha256": "aa901ffd87123f9a67d0031914b005ea1d06bc31f47b3b7158567ef3144dbefe"
+  },
+  "live_authorization": {
+    "authorization": {
+      "budget_usd": 2.0,
+      "external_writes": false,
+      "paid_models": true,
+      "paid_models_granted_at": "2026-11-09",
+      "production_actions": false
+    },
+    "authorized": true,
+    "records": "cases.jsonl",
+    "records_status": "see_cases_jsonl"
+  },
+  "repositories": {
+    "file": "repositories.json",
+    "sha256": "57cce9949d883834bb6340bc9cda2bd25b289b833d40e30d06f0310861efee4c"
+  },
+  "schema": "mgar-v34-dataset-v1",
+  "selftest": {
+    "file": "harness-selftest.json",
+    "sha256": "46abd87062fa90b796532255cd62f5fe9f132a92cfa8e91597753f809500710b"
+  },
+  "tasks": {
+    "count": 18,
+    "file": "tasks.jsonl",
+    "sha256": "7e31d37f88347a9cd68bcbc14a053854e520e350933e0105a1f849a4d47d1b28"
+  }
+}

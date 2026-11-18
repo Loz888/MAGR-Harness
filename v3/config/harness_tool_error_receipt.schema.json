@@ -1,0 +1,175 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "harness-tool-error-v1",
+      "default": "harness-tool-error-v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "operation_id": {
+      "title": "Operation Id",
+      "type": "string"
+    },
+    "call_id": {
+      "title": "Call Id",
+      "type": "string"
+    },
+    "tool": {
+      "title": "Tool",
+      "type": "string"
+    },
+    "code": {
+      "title": "Code",
+      "type": "string"
+    },
+    "category": {
+      "enum": [
+        "PATH_OUT_OF_SCOPE",
+        "SYMLINK_ESCAPE",
+        "INVALID_ARGUMENT",
+        "MISSING_DEPENDENCY",
+        "CAPABILITY_NOT_GRANTED",
+        "RESOURCE_LIMIT",
+        "EPOCH_STALE",
+        "NON_RECOVERABLE_POLICY_DENIAL"
+      ],
+      "title": "Category",
+      "type": "string"
+    },
+    "task_id": {
+      "title": "Task Id",
+      "type": "string"
+    },
+    "run_id": {
+      "title": "Run Id",
+      "type": "string"
+    },
+    "workspace_id": {
+      "title": "Workspace Id",
+      "type": "string"
+    },
+    "execution_epoch": {
+      "title": "Execution Epoch",
+      "type": "integer"
+    },
+    "tree_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Tree Hash",
+      "type": "string"
+    },
+    "acceptance_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Acceptance Hash",
+      "type": "string"
+    },
+    "request_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Request Hash",
+      "type": "string"
+    },
+    "policy_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Policy Hash",
+      "type": "string"
+    },
+    "diagnostic_hash": {
+      "anyOf": [
+        {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Diagnostic Hash"
+    },
+    "allowed_read_roots": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Allowed Read Roots",
+      "type": "array"
+    },
+    "allowed_write_roots": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Allowed Write Roots",
+      "type": "array"
+    },
+    "allowed_command_ids": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Allowed Command Ids",
+      "type": "array"
+    },
+    "argument_constraints": {
+      "additionalProperties": true,
+      "title": "Argument Constraints",
+      "type": "object"
+    },
+    "recoverable": {
+      "default": false,
+      "title": "Recoverable",
+      "type": "boolean"
+    },
+    "remaining_corrections": {
+      "maximum": 8,
+      "minimum": 0,
+      "title": "Remaining Corrections",
+      "type": "integer"
+    },
+    "requires_approval": {
+      "default": false,
+      "title": "Requires Approval",
+      "type": "boolean"
+    },
+    "requires_reconciliation": {
+      "default": false,
+      "title": "Requires Reconciliation",
+      "type": "boolean"
+    },
+    "executed": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Executed"
+    },
+    "next_action": {
+      "title": "Next Action",
+      "type": "string"
+    }
+  },
+  "required": [
+    "operation_id",
+    "call_id",
+    "tool",
+    "code",
+    "category",
+    "task_id",
+    "run_id",
+    "workspace_id",
+    "execution_epoch",
+    "tree_hash",
+    "acceptance_hash",
+    "request_hash",
+    "policy_hash",
+    "remaining_corrections",
+    "next_action"
+  ],
+  "title": "ToolErrorReceipt",
+  "type": "object"
+}

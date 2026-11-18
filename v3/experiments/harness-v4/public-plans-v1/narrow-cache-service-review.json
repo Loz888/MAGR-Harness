@@ -1,0 +1,83 @@
+{
+  "change": "Trusted entry appends the existing image-preserving PYTEST_ADDOPTS scratch cache suffix for investigate and modify_test; expected_environment_hash has exactly the same mode condition. Publish execution remains denied.",
+  "cost_micros": 0,
+  "diagnosis": {
+    "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/narrow-cache-diagnostic/diagnosis.json",
+    "result": "Before patch modify_test, with only src/click/core.py writable, hit PytestCacheWarning on readonly root and produced no complete test summary.",
+    "sha256": "71c5bf167da8f9cffd86199e3c24f158f34bf749df4ee6f612242d12098e03d6"
+  },
+  "environment_hashes": {
+    "after": {
+      "investigate": "c6632595c64a9b567ee770d5293c9c8fbfdb4173590b1b757ce1907b9579e90e",
+      "modify_test": "c6632595c64a9b567ee770d5293c9c8fbfdb4173590b1b757ce1907b9579e90e",
+      "publish": "792d73b80c47731c56b6bab53787add5046b74ecece2d3aaf3586b81543bdb7f"
+    },
+    "before": {
+      "investigate": "c6632595c64a9b567ee770d5293c9c8fbfdb4173590b1b757ce1907b9579e90e",
+      "modify_test": "792d73b80c47731c56b6bab53787add5046b74ecece2d3aaf3586b81543bdb7f",
+      "publish": "792d73b80c47731c56b6bab53787add5046b74ecece2d3aaf3586b81543bdb7f"
+    },
+    "investigate_unchanged": true,
+    "modify_test_changed": true,
+    "publish_unchanged": true
+  },
+  "evidence": {
+    "first.junit.xml": {
+      "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/narrow-cache-service/first.junit.xml",
+      "sha256": "bb49fd25adac83441ca4ad1515f93fd2e50b548227a135566e8503755dfd7f13"
+    },
+    "first.log": {
+      "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/narrow-cache-service/first.log",
+      "sha256": "d051c34f638b469edae7ca192e22e6a491e11d937d2d6e30c116953fcaf0425c"
+    },
+    "local-service-result.json": {
+      "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/narrow-cache-service/local-service-result.json",
+      "sha256": "97b1fb415ff4abd80932eb2de69a3eaebd48c324c449de6ed17eb78d965f1a2e"
+    }
+  },
+  "files": {
+    "src/mgar_v3/harness/broker.py": "34d926a576ee707ae7ed65c8a36a260251f804c207f09fcf88dfb34acd05621f",
+    "tests/test_h12_narrow_pytest_cache_service.py": "358bbe6b52c0d1f97dce9c15b0e425d1321c7e7054423fbf2ca42d415879549f"
+  },
+  "new_test": {
+    "checks": [
+      "warnings treated as errors",
+      "autouse fixture asserts actual /scratch/pytest-cache without configuring it",
+      "baseline and final each complete one-test pass with no cache warning",
+      "public probe original red then candidate green",
+      "five controlled adapter calls and six tool calls",
+      "no workspace .pytest_cache or cache temporary directories"
+    ],
+    "failed": 0,
+    "independent_gate": "NOT_RUN: engineering candidate completed; local result remains blocked/independent_judge_not_passed.",
+    "passed": 1,
+    "path": "tests/test_h12_narrow_pytest_cache_service.py",
+    "regression_argv": [
+      "python3",
+      "-B",
+      "-m",
+      "pytest",
+      "-q",
+      "test_smoke.py"
+    ],
+    "scope": "real disposable PG and Docker HarnessCodingService; controlled model only",
+    "scratch_mb": 256,
+    "skipped": 0,
+    "write_paths": [
+      "calc.py"
+    ]
+  },
+  "next_gate": "Parent retains earlier 12/12 readonly full and 4/4 subset preparation as historical source facts, then runs final-source complete 12+4 after this freeze.",
+  "old_suites": "Prior 74/128 suites and earlier passing cache-option tests were not rerun.",
+  "paid_model_calls": 0,
+  "quality_status": "NOT_RUN",
+  "schema": "h12-narrow-cache-service-review-v1",
+  "source_freeze": true,
+  "status": "ENGINEERING_PASS",
+  "validation": {
+    "broker_mypy": "PASS",
+    "diff_check": "PASS",
+    "new_test_format": "PASS",
+    "ruff": "PASS"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "_public_export": {
+    "original_record_sha256": "a9ca1255dea5db8bb2f4e66f700b2ebd8237329b163989655e455af4573bdb55",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "schema": "h12-full-public-dev-acceptance-v1",
+  "implementation_commit": "1e68aef",
+  "source_sha256": "494ad6d3c0114ecea8e2d8c47900bd34803f364de9cbb37b6f7d40c7c59f94d0",
+  "branch": "h12-runtime-repair-20261113",
+  "engineering": {
+    "unique_new_cases": 75,
+    "final_registered_aggregate": "NOT_RUN",
+    "lint": "PASS",
+    "mypy": "PASS",
+    "diff_check": "PASS"
+  },
+  "status_field_occurrences": {
+    "PASS": 1
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "_public_export": {
+    "original_record_sha256": "0a0cff3033ca66a1af9695ab38ba9732573f80418133c7ce05a86b5cc30533e2",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "schema": "h12-public-probe-repair-incremental-v1",
+  "recorded_at_utc": "2026-11-13T11:19:27.652535+00:00",
+  "branch": "h12-runtime-repair-20261113",
+  "base_commit": "cdc510a5faa283e3515b8f826519157c576d6cc3",
+  "source_sha256": "01b5bf353834ca165ae43e0ac877c6a5339ec76da300832abb9c7099cd329f6c",
+  "status_field_occurrences": {
+    "PASS": 3
+  }
+}

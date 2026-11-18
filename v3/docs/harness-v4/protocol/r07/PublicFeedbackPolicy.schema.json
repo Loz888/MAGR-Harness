@@ -1,0 +1,20 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "harness-public-feedback-v1",
+      "default": "harness-public-feedback-v1",
+      "title": "Version",
+      "type": "string"
+    },
+    "stagnant_batches": {
+      "default": 3,
+      "maximum": 6,
+      "minimum": 2,
+      "title": "Stagnant Batches",
+      "type": "integer"
+    }
+  },
+  "title": "PublicFeedbackPolicy",
+  "type": "object"
+}

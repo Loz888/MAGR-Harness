@@ -1,0 +1,19 @@
+{
+  "_public_export": {
+    "original_record_sha256": "35ca1f58add1a4cb529105fd0cde89c5c8c75734830e92515d2bc52f31d3d43a",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "card": "HV4-H10",
+  "status": "FAIL",
+  "source_commit": "5707785a840677d2a47589dcab0377f366f37204",
+  "source_sha256": "5529fbf59c60f40eb6346446f46807809c03ea700d4836c3741c122da48bae33",
+  "source_stable": true,
+  "engineering_gate": "FAIL",
+  "security_gate": "FAIL",
+  "live_model_gate": "NOT_RUN",
+  "live_agent_gate": "NOT_RUN",
+  "live_publication_gate": "NOT_RUN",
+  "status_field_occurrences": {
+    "FAIL": 1
+  }
+}

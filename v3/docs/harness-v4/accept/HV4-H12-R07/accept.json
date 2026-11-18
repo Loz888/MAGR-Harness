@@ -1,0 +1,51 @@
+{
+  "_public_export": {
+    "original_record_sha256": "f56cc8a84aaffebf7d0312d8f4c9c4872ca77aee3d89fcc78df6f0dca5be9af9",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "card": "HV4-H12-R07",
+  "status": "PASS",
+  "scope": "LOCAL_PUBLIC_FEEDBACK_PROGRESS_BOUNDARY_ENGINEERING_ONLY",
+  "recorded_at": "2026-11-16T09:21:21.551382+00:00",
+  "branch": "hv4-h12-r07-20261116",
+  "baseline_commit": "22153a194e308f0540c0c04e4508677193728aa9",
+  "implementation_commit": "528712e72a807bfc68d28fa210854ad8d1f375ac",
+  "source_commit": "7f19289dcf92618ac5298e0a9b2c4bd119dd2921",
+  "source_sha256": "73d871033444376e23283f00ede50abefbc393dedf1cbb46cdbcd18c1fc23346",
+  "frozen_at": "2026-11-16T09:00:02.667386+00:00",
+  "base_commit": "22153a194e308f0540c0c04e4508677193728aa9",
+  "mode": "controlled-free-fixture",
+  "expected_tests": 785,
+  "new_tests": 56,
+  "later_cards_started": false,
+  "engineering_gate": "PASS",
+  "live_model_gate": "NOT_RUN",
+  "live_agent_gate": "NOT_RUN",
+  "live_publication_gate": "NOT_RUN",
+  "h12_quality": "FAIL",
+  "mvp": "NOT_RELEASED",
+  "stop_after": "R07",
+  "counts": {
+    "tests": 785,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "registered_test_files": 51,
+  "mypy_source_files": 279,
+  "new_paid_calls": 0,
+  "new_paid_cost_micros": 0,
+  "historical_scores_unchanged": true,
+  "trace_counts": {
+    "public-tool": 73,
+    "independent": 8,
+    "runtime": 8,
+    "worker-io": 31,
+    "pg": 11,
+    "verified_cas_file_copies": 1413,
+    "capture_errors": 0
+  },
+  "status_field_occurrences": {
+    "PASS": 11
+  }
+}

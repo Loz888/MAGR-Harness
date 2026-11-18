@@ -1,0 +1,74 @@
+{
+  "card": "HV4-H12-R05",
+  "status": "LOCAL_ENGINEERING_PASS",
+  "source_commit": "08cb1e28fac1c5e2e27117f7de62fbd3c20d0ac2",
+  "source_sha256": "8bee95a622e4fd6c504654e31dbce8ebf6880efec7277bd7ab87c629839cb56b",
+  "h12_quality": "FAIL",
+  "mvp": "NOT_RELEASED",
+  "next_cards_started": false,
+  "paid_calls": 0,
+  "merge_push_deploy": false,
+  "delivery_commit": "See local git history and untracked evidence delivery-seal.json; this manifest does not hash itself",
+  "files": [
+    {
+      "path": "docs/harness-v4/CODEX_CLI_H12_R05_TASK.md",
+      "sha256": "983924b3b579abe815699df337dd72b3b1cdc82c72bb424c234397d3a51cd22b",
+      "bytes": 3146
+    },
+    {
+      "path": "docs/harness-v4/H12_R05_INDEPENDENT_REGRESSION_20261116.md",
+      "sha256": "364f8434d2885617402f108b105db7d86f59bae798e8dcdcb24540459a3c1b64",
+      "bytes": 9389
+    },
+    {
+      "path": "docs/harness-v4/H12_R05_REGRESSION_PROTOCOL.md",
+      "sha256": "614bf696a6e69e47bac37f3b1e28f6437f82ddc7ca6970fe52b230e93afaee5c",
+      "bytes": 5979
+    },
+    {
+      "path": "docs/harness-v4/accept/HV4-H12-R05/accept.json",
+      "sha256": "d7db66dcea1d44fd8a4affac3c04b508569466ceddc2bc727b6635ba39e6c1f4",
+      "bytes": 6895
+    },
+    {
+      "path": "docs/harness-v4/accept/HV4-H12-R05/cases.json",
+      "sha256": "6b9d3c424ce0957799879421711c1a545a485510d82ced3b74be4b4159bf2b08",
+      "bytes": 24868
+    },
+    {
+      "path": "docs/harness-v4/protocol/r05/DimensionReceipt.schema.json",
+      "sha256": "4bf56aa06a17a6b2f9d8e23782a0f86c563f8e29a6724530bd7b2f6151d54f90",
+      "bytes": 1215
+    },
+    {
+      "path": "docs/harness-v4/protocol/r05/IndependentComparison.schema.json",
+      "sha256": "dfd9cc18bf21ee1cc4bce585ee6c9a45f299ef024bb78c36cc18e2cc7933cd0c",
+      "bytes": 2607
+    },
+    {
+      "path": "docs/harness-v4/protocol/r05/IndependentEvaluationEvidence.schema.json",
+      "sha256": "84653f9438276e7366f5ee3ec77a1d1ff37e9c1492de4998b1166cf5cc974429",
+      "bytes": 2071
+    },
+    {
+      "path": "docs/harness-v4/protocol/r05/IndependentRegressionReport.schema.json",
+      "sha256": "490c515b27e701a3e86742899702ae69ad6206cf8a5147a7ccf8bc0e6ecc94bf",
+      "bytes": 3311
+    },
+    {
+      "path": "docs/harness-v4/protocol/r05/IndependentTestReceipt.schema.json",
+      "sha256": "6bbc8df80052afc8e5c217b572636f491e1ca02e3693ccf7a2199ea0625c2347",
+      "bytes": 7361
+    },
+    {
+      "path": "docs/harness-v4/protocol/r05/JudgeAttestation.schema.json",
+      "sha256": "1e8e740ccc3f598f6d46196cd3a583cbe577cb2edcf61446ec2bc5780731bb52",
+      "bytes": 2096
+    },
+    {
+      "path": "docs/harness-v4/protocol/r05/RegressionPlan.schema.json",
+      "sha256": "9de8161868ad71c4fbec21f0f83a4d729369c89bb2c22c0bcd36179c0c9dbd9b",
+      "bytes": 3575
+    }
+  ]
+}

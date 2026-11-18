@@ -1,0 +1,148 @@
+{
+  "schema": "h12-quality-environment-and-context-engineering-v1",
+  "source_sha256": "2e8bc6b0725a41b40de1c9ad3dcc97ea391a703d9aa4db9c704a33beab3aa193",
+  "engineering_gate": "PASS",
+  "live_gate": "NOT_RUN_FOR_V8",
+  "tests": 532,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "runs": [
+    {
+      "path": "evidence/HV4-H12-QUALITY-REPAIR/20261114T114351Z-6b8ce9fc/result.json",
+      "sha256": "c300722e6c947605804f1832e8e37020158b04b5ad302452de07c8427568abbc",
+      "counts": {
+        "tests": 354,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "log": {
+        "path": "evidence/HV4-H12-QUALITY-REPAIR/20261114T114351Z-6b8ce9fc/command.log",
+        "sha256": "d2bb65fcea6b7c0a4020fc1d38fcec7969da3cb3dffd2b1ff73b9e3e61345639"
+      }
+    },
+    {
+      "path": "evidence/HV4-H12-FULL-DEV/20261114T114630Z-aa20c69d/result.json",
+      "sha256": "f60da2e7365df20b25c7e2e98921cdd2e4cc286c79f6738a13cdb76a086f031a",
+      "counts": {
+        "tests": 98,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "log": {
+        "path": "evidence/HV4-H12-FULL-DEV/20261114T114630Z-aa20c69d/command.log",
+        "sha256": "7690b24cb489135d167c4c8226ac779d3ef6b054f04cf700f25ba06b40372ee4"
+      }
+    },
+    {
+      "path": "evidence/HV4-H10/20261114T114835Z-9ab8e328/result.json",
+      "sha256": "d80dc90e3557816daeb7c250f6651526489310f31c5eb2b3bc8095b0e6450cc0",
+      "counts": {
+        "tests": 80,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "log": {
+        "path": "evidence/HV4-H10/20261114T114835Z-9ab8e328/command.log",
+        "sha256": "8060685fcc8f7fb705985e334c96c71278994e3bd0dcd82598d963689d705709"
+      }
+    }
+  ],
+  "lint": {
+    "path": ".local/h12/quality-repair-20261114/engineering-v8-ruff.log",
+    "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "status": "PASS"
+  },
+  "mypy": {
+    "path": ".local/h12/quality-repair-20261114/engineering-v8-mypy.log",
+    "sha256": "714f52c6d46fd75dd9756d1cff1a9a63dc15eb156878baa112ffb12ad665adb4",
+    "status": "PASS",
+    "source_files": 251
+  },
+  "got_controls": {
+    "path": ".local/h12/quality-repair-20261114/got-judge-controls-v6/report.json",
+    "sha256": "4692326df2f9a85fa59c0348cbdc6bd620d9c44ab7319407c32663e559be391a",
+    "positive_same_frozen_model_tree": "PASS",
+    "negative_behavior": "FAIL",
+    "model_workspace_modified": false,
+    "new_model_calls": 0
+  },
+  "judge_component": {
+    "path": "src/mgar_v3/quality_eval/h12_judge.py",
+    "sha256": "c11695a54fe2e6636680c9cae496f4dfe295f70f7c8764bbded6f66f7bcc66ec"
+  },
+  "retained_failed_engineering": [
+    {
+      "path": "evidence/HV4-H12-FULL-DEV/20261114T110153Z-c528fea4/result.json",
+      "sha256": "6363ed7c2a027872704238b7fbcad4a96216e3c82ce1586fd8b486c581924798",
+      "explanation": "v6 runner used a non-/tmp basetemp; corrected runner only, original assertion retained"
+    },
+    {
+      "path": "evidence/HV4-H10/20261114T111200Z-f9b4122b/result.json",
+      "sha256": "76a04fe6e4e1c5f900a8ea2bb88d6d3365182165deafb4118854ba2c0239d903",
+      "explanation": "v7 identical text at different offsets falsely stalled; small context could not recover original pages"
+    },
+    {
+      "path": "evidence/HV4-H12-QUALITY-REPAIR/20261114T113943Z-a740c334/result.json",
+      "sha256": "86782706f6c1712318c758bcc3449bb8bd900db336a48248df5f35885a725598",
+      "explanation": "v8 initial run: two old context test runtimes lacked the current inbox store contract; fixtures updated, production unchanged"
+    }
+  ],
+  "context_diagnostics": [
+    {
+      "path": ".local/h12/quality-repair-20261114/context-v8-dedupe-initial.xml",
+      "sha256": "958178e4db8ddd34e3a4f67cafc23f1619c77bd2970eb1353277774a91a61d6e"
+    },
+    {
+      "path": ".local/h12/quality-repair-20261114/context-v8-dedupe-r2.xml",
+      "sha256": "224a42410f2debccc82c1319b03b2ce5341effe5c5b0a68232daf1838f990959"
+    },
+    {
+      "path": ".local/h12/quality-repair-20261114/context-v8-accounting-initial.xml",
+      "sha256": "ec5815e3bff42bac1d6c7bce3a4ef29bea7942e9bf1a293206f11373a50b254f"
+    },
+    {
+      "path": ".local/h12/quality-repair-20261114/context-v8-accounting-r2.xml",
+      "sha256": "3c47363b8d650d8cdba6e0818fcb15cada643ebaca00eb6d4f17632cdd19145f"
+    },
+    {
+      "path": ".local/h12/quality-repair-20261114/context-v8-fixture-recheck.xml",
+      "sha256": "26a76b5a0555833cd22be6eeec3bcdc954b9c79bcf4304bde3709e6d38dbe880"
+    }
+  ],
+  "runtime_changes": [
+    "Current generic coding guidance survives compaction; hypothesis and verification advisories at remaining calls 70% and 50%, with frozen limits unchanged",
+    "Valid artifact page offsets contribute to progress identity; repeated same pages remain stalled",
+    "Keep protected failures/actions/questions once in exact working state; audit source descriptions stay in persisted records",
+    "Safe short window measures actual metadata and omits optional accounting/detail envelopes while preserving every protected reference and newest complete tool exchange",
+    "Direct AVA Judge and appended TypeScript compiler use the original frozen dependency/configuration paths"
+  ],
+  "unsealed_attempts": {
+    "v6": "Full readiness rejected changed source; no live sampling",
+    "v7": "Full readiness rejected changed source; no live sampling"
+  },
+  "first_sample_policy": "Click help-name, pflag unknown-flag, Got header-value, then remaining development tasks in frozen order; independently held-out scoring only after same-candidate development gate. No best-of or reuse of earlier PASS.",
+  "shared_budget_before_live": {
+    "budget": {
+      "limit_micros": 12000000,
+      "reserved_micros": 0,
+      "settled_micros": 1880075,
+      "used_calls": 421,
+      "call_limit": 1536
+    },
+    "unknown_calls": 0,
+    "audit": "read_only_original_pg",
+    "new_model_calls": 0
+  },
+  "historical_v5": {
+    "dev_pass": 4,
+    "dev_fail": 3,
+    "dev_not_run": 5,
+    "holdout_not_run": 12,
+    "status": "FAIL_UNCHANGED"
+  },
+  "h13": "NOT_STARTED"
+}

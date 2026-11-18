@@ -1,0 +1,492 @@
+{
+  "card": "HV4-H12-R05",
+  "status": "PASS",
+  "source_commit": "08cb1e28fac1c5e2e27117f7de62fbd3c20d0ac2",
+  "source_sha256": "8bee95a622e4fd6c504654e31dbce8ebf6880efec7277bd7ab87c629839cb56b",
+  "cases": [
+    {
+      "node_id": "tests/test_h12_r05_runner.py::test_actual_target_green_cannot_hide_light_imports_full_regression",
+      "status": "PASS",
+      "seconds": "3.124",
+      "pass_condition": "目标实际通过，但全套test_light_imports失败；新增数为1且回归FAIL。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": [
+        "traces/0001-independent-daf9c9c480/trace.json",
+        "traces/0002-independent-daf9c9c480/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r05_runner.py::test_unverified_or_tampered_receipts_cannot_claim_zero[missing-before]",
+      "status": "PASS",
+      "seconds": "0.006",
+      "pass_condition": "源码、Run/epoch、argv、日志、manifest、回执或计数缺失/篡改不能产生PASS或已核实的0。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r05_runner.py::test_unverified_or_tampered_receipts_cannot_claim_zero[missing-after]",
+      "status": "PASS",
+      "seconds": "0.005",
+      "pass_condition": "源码、Run/epoch、argv、日志、manifest、回执或计数缺失/篡改不能产生PASS或已核实的0。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r05_runner.py::test_unverified_or_tampered_receipts_cannot_claim_zero[source-tree]",
+      "status": "PASS",
+      "seconds": "0.006",
+      "pass_condition": "源码、Run/epoch、argv、日志、manifest、回执或计数缺失/篡改不能产生PASS或已核实的0。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r05_runner.py::test_unverified_or_tampered_receipts_cannot_claim_zero[run]",
+      "status": "PASS",
+      "seconds": "0.005",
+      "pass_condition": "源码、Run/epoch、argv、日志、manifest、回执或计数缺失/篡改不能产生PASS或已核实的0。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r05_runner.py::test_unverified_or_tampered_receipts_cannot_claim_zero[epoch]",
+      "status": "PASS",
+      "seconds": "0.005",
+      "pass_condition": "源码、Run/epoch、argv、日志、manifest、回执或计数缺失/篡改不能产生PASS或已核实的0。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r05_runner.py::test_unverified_or_tampered_receipts_cannot_claim_zero[log-missing]",
+      "status": "PASS",
+      "seconds": "0.006",
+      "pass_condition": "源码、Run/epoch、argv、日志、manifest、回执或计数缺失/篡改不能产生PASS或已核实的0。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r05_runner.py::test_unverified_or_tampered_receipts_cannot_claim_zero[log-tamper]",
+      "status": "PASS",
+      "seconds": "0.006",
+      "pass_condition": "源码、Run/epoch、argv、日志、manifest、回执或计数缺失/篡改不能产生PASS或已核实的0。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r05_runner.py::test_unverified_or_tampered_receipts_cannot_claim_zero[receipt-count]",
+      "status": "PASS",
+      "seconds": "0.013",
+      "pass_condition": "源码、Run/epoch、argv、日志、manifest、回执或计数缺失/篡改不能产生PASS或已核实的0。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r05_runner.py::test_unverified_or_tampered_receipts_cannot_claim_zero[scope-argv]",
+      "status": "PASS",
+      "seconds": "0.018",
+      "pass_condition": "源码、Run/epoch、argv、日志、manifest、回执或计数缺失/篡改不能产生PASS或已核实的0。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r05_runner.py::test_unverified_or_tampered_receipts_cannot_claim_zero[fake-count]",
+      "status": "PASS",
+      "seconds": "0.019",
+      "pass_condition": "源码、Run/epoch、argv、日志、manifest、回执或计数缺失/篡改不能产生PASS或已核实的0。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r05_runner.py::test_unverified_or_tampered_receipts_cannot_claim_zero[skipped]",
+      "status": "PASS",
+      "seconds": "0.018",
+      "pass_condition": "源码、Run/epoch、argv、日志、manifest、回执或计数缺失/篡改不能产生PASS或已核实的0。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r05_runner.py::test_unverified_or_tampered_receipts_cannot_claim_zero[manifest-tree]",
+      "status": "PASS",
+      "seconds": "0.013",
+      "pass_condition": "源码、Run/epoch、argv、日志、manifest、回执或计数缺失/篡改不能产生PASS或已核实的0。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r05_runner.py::test_unverified_or_tampered_receipts_cannot_claim_zero[foreign-producer]",
+      "status": "PASS",
+      "seconds": "0.012",
+      "pass_condition": "源码、Run/epoch、argv、日志、manifest、回执或计数缺失/篡改不能产生PASS或已核实的0。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r05_runner.py::test_repeated_scoring_is_identical_and_does_not_mutate_evidence",
+      "status": "PASS",
+      "seconds": "0.003",
+      "pass_condition": "同一独立回执重复重算结果一致，证据字节不变。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r05_runner.py::test_known_independent_report_is_reused_without_relaunch",
+      "status": "PASS",
+      "seconds": "0.007",
+      "pass_condition": "已知回执核验复用；未确认派发阻断；未封存最终树不执行；均不重复派发。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": [
+        "traces/0003-independent-dc984f9f2f/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r05_runner.py::test_unconfirmed_dispatch_is_not_retried",
+      "status": "PASS",
+      "seconds": "0.013",
+      "pass_condition": "已知回执核验复用；未确认派发阻断；未封存最终树不执行；均不重复派发。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": [
+        "traces/0004-independent-bdf848c572/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r05_runner.py::test_baseline_failure_is_not_new_but_remaining_final_failure_still_fails",
+      "status": "PASS",
+      "seconds": "3.044",
+      "pass_condition": "相同既有失败可得到新增0，但最终回归及总状态仍必须FAIL。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": [
+        "traces/0005-independent-e2407d00a0/trace.json",
+        "traces/0006-independent-e2407d00a0/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r05_runner.py::test_full_green_scopes_comparable_zero",
+      "status": "PASS",
+      "seconds": "3.091",
+      "pass_condition": "仅基线与最终完整、范围匹配且可比较时允许已核实0和回归PASS。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": [
+        "traces/0007-independent-7737be9278/trace.json",
+        "traces/0008-independent-7737be9278/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r05_runner.py::test_partial_skip_does_not_prove_full_regression",
+      "status": "PASS",
+      "seconds": "3.112",
+      "pass_condition": "实际跳过断言后不能证明完整范围，新增回归数为null。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": [
+        "traces/0009-independent-e7a4abf093/trace.json",
+        "traces/0010-independent-e7a4abf093/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r05_runner.py::test_every_frozen_command_runs_even_after_test_failure",
+      "status": "PASS",
+      "seconds": "6.125",
+      "pass_condition": "第一条实际断言失败不能阻止第二条冻结套件执行和留证。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": [
+        "traces/0011-independent-049dc335a7/trace.json",
+        "traces/0012-independent-049dc335a7/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r05_runner.py::test_no_seal_never_executes_or_claims_final_pass",
+      "status": "PASS",
+      "seconds": "0.016",
+      "pass_condition": "已知回执核验复用；未确认派发阻断；未封存最终树不执行；均不重复派发。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": [
+        "traces/0013-independent-b0036f8e9e/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r05_runner.py::test_actual_equal_failure_counts_compare_identities_not_subtraction",
+      "status": "PASS",
+      "seconds": "3.039",
+      "pass_condition": "两阶段实际失败数相同但失败身份不同，必须识别1项新增失败。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": [
+        "traces/0014-independent-6da5a2b8c7/trace.json",
+        "traces/0015-independent-6da5a2b8c7/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r05_runner.py::test_actual_dynamic_collection_change_makes_scopes_incomparable",
+      "status": "PASS",
+      "seconds": "3.076",
+      "pass_condition": "两阶段即使都绿，实际测试身份集合不同也必须不可比，新增数为null且状态BLOCKED。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": [
+        "traces/0016-independent-a4e632d9e8/trace.json",
+        "traces/0017-independent-a4e632d9e8/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r05_runner.py::test_actual_timeout_keeps_other_frozen_suites_and_unknown_counts",
+      "status": "PASS",
+      "seconds": "11.005",
+      "pass_condition": "真实超时保留未知计数；后续冻结套件仍实际执行并独立保存。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": [
+        "traces/0018-independent-b3a8355080/trace.json",
+        "traces/0019-independent-b3a8355080/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r05_reporters.py::test_actual_fixed_reporter_observes_every_test_and_failure[unittest]",
+      "status": "PASS",
+      "seconds": "1.002",
+      "pass_condition": "固定真实容器实际执行2项、失败1项；完整测试身份、计数、退出码及原始日志CAS一致。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": [
+        "traces/0020-independent-de34763a8d/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r05_reporters.py::test_actual_fixed_reporter_observes_every_test_and_failure[go]",
+      "status": "PASS",
+      "seconds": "12.779",
+      "pass_condition": "固定真实容器实际执行2项、失败1项；完整测试身份、计数、退出码及原始日志CAS一致。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": [
+        "traces/0021-independent-0265928569/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r05_reporters.py::test_actual_fixed_reporter_observes_every_test_and_failure[node]",
+      "status": "PASS",
+      "seconds": "1.055",
+      "pass_condition": "固定真实容器实际执行2项、失败1项；完整测试身份、计数、退出码及原始日志CAS一致。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": [
+        "traces/0022-independent-b5576477de/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r05_reporters.py::test_actual_fixed_reporter_observes_every_test_and_failure[mocha]",
+      "status": "PASS",
+      "seconds": "1.697",
+      "pass_condition": "固定真实容器实际执行2项、失败1项；完整测试身份、计数、退出码及原始日志CAS一致。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": [
+        "traces/0023-independent-3aed46eab2/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r05_reporters.py::test_actual_fixed_reporter_observes_every_test_and_failure[ava]",
+      "status": "PASS",
+      "seconds": "1.599",
+      "pass_condition": "固定真实容器实际执行2项、失败1项；完整测试身份、计数、退出码及原始日志CAS一致。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": [
+        "traces/0024-independent-c4149d4f5d/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r05_reporters.py::test_incomplete_or_excluded_pytest_cannot_be_complete_pass[summary-only]",
+      "status": "PASS",
+      "seconds": "0.001",
+      "pass_condition": "不完整、无效、部分执行或存在额外运行器错误的报告不能证明完整PASS或已核实的0。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r05_reporters.py::test_incomplete_or_excluded_pytest_cannot_be_complete_pass[collected-more]",
+      "status": "PASS",
+      "seconds": "0.000",
+      "pass_condition": "不完整、无效、部分执行或存在额外运行器错误的报告不能证明完整PASS或已核实的0。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r05_reporters.py::test_incomplete_or_excluded_pytest_cannot_be_complete_pass[missing-identity]",
+      "status": "PASS",
+      "seconds": "0.000",
+      "pass_condition": "不完整、无效、部分执行或存在额外运行器错误的报告不能证明完整PASS或已核实的0。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r05_reporters.py::test_incomplete_or_excluded_pytest_cannot_be_complete_pass[duplicate-identity]",
+      "status": "PASS",
+      "seconds": "0.000",
+      "pass_condition": "不完整、无效、部分执行或存在额外运行器错误的报告不能证明完整PASS或已核实的0。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r05_reporters.py::test_incomplete_or_excluded_pytest_cannot_be_complete_pass[skipped]",
+      "status": "PASS",
+      "seconds": "0.000",
+      "pass_condition": "不完整、无效、部分执行或存在额外运行器错误的报告不能证明完整PASS或已核实的0。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r05_reporters.py::test_incomplete_or_excluded_pytest_cannot_be_complete_pass[fake-counter]",
+      "status": "PASS",
+      "seconds": "0.000",
+      "pass_condition": "不完整、无效、部分执行或存在额外运行器错误的报告不能证明完整PASS或已核实的0。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r05_reporters.py::test_incomplete_or_excluded_pytest_cannot_be_complete_pass[truncated]",
+      "status": "PASS",
+      "seconds": "0.000",
+      "pass_condition": "不完整、无效、部分执行或存在额外运行器错误的报告不能证明完整PASS或已核实的0。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r05_reporters.py::test_incomplete_or_excluded_pytest_cannot_be_complete_pass[wrong-exit]",
+      "status": "PASS",
+      "seconds": "0.000",
+      "pass_condition": "不完整、无效、部分执行或存在额外运行器错误的报告不能证明完整PASS或已核实的0。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r05_reporters.py::test_incomplete_or_excluded_pytest_cannot_be_complete_pass[undeclared-deselection]",
+      "status": "PASS",
+      "seconds": "0.000",
+      "pass_condition": "不完整、无效、部分执行或存在额外运行器错误的报告不能证明完整PASS或已核实的0。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r05_reporters.py::test_public_scripts_are_frozen_and_new_script_can_be_added",
+      "status": "PASS",
+      "seconds": "0.000",
+      "pass_condition": "此具名用例断言冻结reporter、脚本、选择条件及完整测试身份保持契约。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r05_reporters.py::test_unconfigured_script_reporter_stays_explicitly_unverified",
+      "status": "PASS",
+      "seconds": "0.000",
+      "pass_condition": "此具名用例断言冻结reporter、脚本、选择条件及完整测试身份保持契约。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r05_reporters.py::test_explicit_go_repeat_count_is_not_silently_weakened",
+      "status": "PASS",
+      "seconds": "0.000",
+      "pass_condition": "此具名用例断言冻结reporter、脚本、选择条件及完整测试身份保持契约。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r05_reporters.py::test_complete_pytest_failure_has_ids_not_only_counts[]",
+      "status": "PASS",
+      "seconds": "0.000",
+      "pass_condition": "此具名用例断言冻结reporter、脚本、选择条件及完整测试身份保持契约。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r05_reporters.py::test_complete_pytest_failure_has_ids_not_only_counts[collecting ... ]",
+      "status": "PASS",
+      "seconds": "0.000",
+      "pass_condition": "此具名用例断言冻结reporter、脚本、选择条件及完整测试身份保持契约。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r05_reporters.py::test_ava_extra_runner_error_cannot_be_mistaken_for_finished_assertions",
+      "status": "PASS",
+      "seconds": "0.000",
+      "pass_condition": "不完整、无效、部分执行或存在额外运行器错误的报告不能证明完整PASS或已核实的0。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r05_reporters.py::test_new_summary_requires_independent_dimensions_and_never_totals_unknown_as_zero[valid]",
+      "status": "PASS",
+      "seconds": "0.001",
+      "pass_condition": "五项维度与必需证据齐全才可通过；缺失或null计数不能聚合为0；输入记录保持原样。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r05_reporters.py::test_new_summary_requires_independent_dimensions_and_never_totals_unknown_as_zero[dimensions-missing]",
+      "status": "PASS",
+      "seconds": "0.001",
+      "pass_condition": "五项维度与必需证据齐全才可通过；缺失或null计数不能聚合为0；输入记录保持原样。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r05_reporters.py::test_new_summary_requires_independent_dimensions_and_never_totals_unknown_as_zero[seal]",
+      "status": "PASS",
+      "seconds": "0.001",
+      "pass_condition": "五项维度与必需证据齐全才可通过；缺失或null计数不能聚合为0；输入记录保持原样。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r05_reporters.py::test_new_summary_requires_independent_dimensions_and_never_totals_unknown_as_zero[tree]",
+      "status": "PASS",
+      "seconds": "0.001",
+      "pass_condition": "五项维度与必需证据齐全才可通过；缺失或null计数不能聚合为0；输入记录保持原样。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r05_reporters.py::test_new_summary_requires_independent_dimensions_and_never_totals_unknown_as_zero[required]",
+      "status": "PASS",
+      "seconds": "0.001",
+      "pass_condition": "五项维度与必需证据齐全才可通过；缺失或null计数不能聚合为0；输入记录保持原样。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r05_reporters.py::test_new_summary_requires_independent_dimensions_and_never_totals_unknown_as_zero[count-missing]",
+      "status": "PASS",
+      "seconds": "0.001",
+      "pass_condition": "五项维度与必需证据齐全才可通过；缺失或null计数不能聚合为0；输入记录保持原样。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r05_reporters.py::test_new_summary_requires_independent_dimensions_and_never_totals_unknown_as_zero[null]",
+      "status": "PASS",
+      "seconds": "0.001",
+      "pass_condition": "五项维度与必需证据齐全才可通过；缺失或null计数不能聚合为0；输入记录保持原样。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r05_service.py::test_pg_sealed_target_and_judge_green_require_full_public_regression[False]",
+      "status": "PASS",
+      "seconds": "22.188",
+      "pass_condition": "绑定原PG/CAS封存；目标和窄Judge通过时，完整回归仍区分保留或破坏旧导入。正例同时核对非法引用、篡改、缺证据、追加审计和Engine重建后零重复派发。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": [
+        "traces/0025-independent-6e5f652b35/trace.json",
+        "traces/0026-independent-6e5f652b35/trace.json",
+        "traces/0027-independent-6e5f652b35/trace.json",
+        "traces/0028-pg-create_task-6e5f652b35/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r05_service.py::test_pg_sealed_target_and_judge_green_require_full_public_regression[True]",
+      "status": "PASS",
+      "seconds": "21.868",
+      "pass_condition": "绑定原PG/CAS封存；目标和窄Judge通过时，完整回归仍区分保留或破坏旧导入。正例同时核对非法引用、篡改、缺证据、追加审计和Engine重建后零重复派发。",
+      "junit": "evidence/HV4-H12-R05/20261116T044644Z-3f49f008/junit.xml",
+      "trace_refs": [
+        "traces/0029-independent-005b2c60a9/trace.json",
+        "traces/0030-independent-005b2c60a9/trace.json",
+        "traces/0031-independent-005b2c60a9/trace.json",
+        "traces/0032-pg-create_task-005b2c60a9/trace.json",
+        "traces/0033-audit-005b2c60a9/trace.json",
+        "traces/0034-pg-recover_task-005b2c60a9/trace.json"
+      ]
+    }
+  ]
+}

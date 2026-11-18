@@ -1,0 +1,334 @@
+{
+  "schema": "h12-benchmark-v2-public-dev-v1",
+  "phase": "FROZEN",
+  "revision": "h12-benchmark-v2",
+  "scope": "dev",
+  "thresholds": {
+    "dev": 10,
+    "holdout": 9,
+    "denominator_each": 12
+  },
+  "public_runtime_policy": {
+    "revision": "h12-public-runtime-v1",
+    "scratch_mb": 256,
+    "readonly_pytest_cache": "/scratch/pytest-cache"
+  },
+  "shared_budget_micros": 12000000,
+  "old_h00_hashes": {
+    "status": "PASS",
+    "baseline_valid": true,
+    "files": [
+      {
+        "file": "experiments/harness-v4/scoring-v1.json",
+        "expected": "6bdf1229c78f0ed73c8d4775d43e1deb4e65c12d371573c2ff652bc99dc19f81",
+        "actual": "6bdf1229c78f0ed73c8d4775d43e1deb4e65c12d371573c2ff652bc99dc19f81",
+        "matches": true
+      },
+      {
+        "file": "experiments/harness-v4/task-types.json",
+        "expected": "66cc1e59bf74922b0b6e80379f14434d54cb67550311525972b19b96348f3d1a",
+        "actual": "66cc1e59bf74922b0b6e80379f14434d54cb67550311525972b19b96348f3d1a",
+        "matches": true
+      },
+      {
+        "file": "experiments/harness-v4/tasks/dev.jsonl",
+        "expected": "43c47739bbc2ca9370619067f359545c8d0e9652e0011187dca327283e3cad30",
+        "actual": "43c47739bbc2ca9370619067f359545c8d0e9652e0011187dca327283e3cad30",
+        "matches": true
+      },
+      {
+        "file": "experiments/harness-v4/tasks/holdout.jsonl",
+        "expected": "c8b98abb3d528a1c5e87390105fc75bc84eedb4bbfcfa8469ff33399d946745b",
+        "actual": "c8b98abb3d528a1c5e87390105fc75bc84eedb4bbfcfa8469ff33399d946745b",
+        "matches": true
+      }
+    ]
+  },
+  "benchmark_anchor": {
+    "path": ".local/h12/benchmark-v2/freeze-manifest-d8ee974.json",
+    "sha256": "d62b707b5039b5ab68aea21363386b55da09501b2f630d129f05dfb416f3cc3e"
+  },
+  "candidate_source_sha256": "494ad6d3c0114ecea8e2d8c47900bd34803f364de9cbb37b6f7d40c7c59f94d0",
+  "dev_catalog": {
+    "path": "experiments/harness-v4/benchmark-v2/dev.jsonl",
+    "sha256": "b5006b3a60a9b2bc1eda5fa4774a573475b6ac5da262a92bef4838e3b0d7df41"
+  },
+  "dev_judges": {
+    "path": "experiments/harness-v4/benchmark-v2/judges/dev/manifest.json",
+    "sha256": "ec0ee13aa2ea25e390dac20a5b341c1d9b6c24bb8a6d323231ca970f0e537cb8"
+  },
+  "dev_image_map": {
+    "path": ".local/h12/public-dev-20261113/image-map.json",
+    "sha256": "02c79242f1c57d5b486a08470d005a1c40ae69b8ec8fdc3b7c9e2bc112fbbd05"
+  },
+  "public_amendments": {
+    "path": "experiments/harness-v4/benchmark-v2/got-public-amendments.json",
+    "sha256": "b792f594b8b97efd5c255f210cf706b6c0384233157a6bad556d4088d6ced5bf"
+  },
+  "proposal": {
+    "path": "experiments/harness-v4/benchmark-v2/proposal.json",
+    "sha256": "524e15cfa4179ed07e5d8d08866559c1ce75997d2780732085301af0d94abf20"
+  },
+  "image_locks": {
+    "expressjs/express@8368dc178af16b91b576c4c1d135f701a0007e5d": {
+      "path": ".local/h12/public-dev-20261113/image-locks/6a754a7a9d71962cde57a8ba44725833144422e1cea1b28f9d5688a597efc5cc.json",
+      "sha256": "6a754a7a9d71962cde57a8ba44725833144422e1cea1b28f9d5688a597efc5cc"
+    },
+    "pallets/click@6d5bac5c712195cbfa9666ba0ecbf0573cdea356": {
+      "path": ".local/h12/public-dev-20261113/image-locks/7700ab7076401f3255192ffda510e01a11b3211e558be42e04c9b9b4f84d700c.json",
+      "sha256": "7700ab7076401f3255192ffda510e01a11b3211e558be42e04c9b9b4f84d700c"
+    },
+    "pallets/click@8c1a0a7abbc1c36f70d1f65f3604acc46c5ce6ab": {
+      "path": ".local/h12/public-dev-20261113/image-locks/514f3cffb7bbfc9ad9627f1c59bd792ed9c6e5bca95544cfb1a4755cd88ac042.json",
+      "sha256": "514f3cffb7bbfc9ad9627f1c59bd792ed9c6e5bca95544cfb1a4755cd88ac042"
+    },
+    "pallets/click@bb695aaecdef95832d167fc1d508921745aa824e": {
+      "path": ".local/h12/public-dev-20261113/image-locks/53bc2f6a107771203f09979f4ec563c1b22f3c477f878fba7473ec973eb49a43.json",
+      "sha256": "53bc2f6a107771203f09979f4ec563c1b22f3c477f878fba7473ec973eb49a43"
+    },
+    "psf/requests@1b40fdd004bfc8ba5301bcf8a6908264e9b6b877": {
+      "path": ".local/h12/public-dev-20261113/image-locks/918ac8d4a3d52c0f94d69637c0a6930c0485e342b8c59647e7c20ba263ce22e6.json",
+      "sha256": "918ac8d4a3d52c0f94d69637c0a6930c0485e342b8c59647e7c20ba263ce22e6"
+    },
+    "psf/requests@661970d171d9c3e12e4c789c4768db647d8c4da0": {
+      "path": ".local/h12/public-dev-20261113/image-locks/c3bb7038f8d003b89407b13f5266bec1840a3ca5fb93c72d0a5afd2c75c15e6b.json",
+      "sha256": "c3bb7038f8d003b89407b13f5266bec1840a3ca5fb93c72d0a5afd2c75c15e6b"
+    },
+    "psf/requests@bc7dd0fc4d56e808bcdd85ac2d797b3107c89259": {
+      "path": ".local/h12/public-dev-20261113/image-locks/d6ca6f5c2b98d22d3475064899a3a6a9918b46e0289241f71c88a22563cf40de.json",
+      "sha256": "d6ca6f5c2b98d22d3475064899a3a6a9918b46e0289241f71c88a22563cf40de"
+    },
+    "sindresorhus/got@de19b463b1875847f955a53d2f5b0a539ed0ded3": {
+      "path": ".local/h12/public-dev-20261113/image-locks/57126aa0ed4d1e27759bf522d50f76ee87bcc8738cbdad642c366ea5ad18ab46.json",
+      "sha256": "57126aa0ed4d1e27759bf522d50f76ee87bcc8738cbdad642c366ea5ad18ab46"
+    },
+    "spf13/pflag@f8a990678a6d44385313e9b19e40737f889f9b14": {
+      "path": ".local/h12/public-dev-20261113/image-locks/d10bb9e463736f4217d60638037d0e12820c9fd2efdeaf9347e9d4b02785a765.json",
+      "sha256": "d10bb9e463736f4217d60638037d0e12820c9fd2efdeaf9347e9d4b02785a765"
+    }
+  },
+  "environment_manifest": {
+    "path": "experiments/harness-v4/h12-dev-environment-v4.json",
+    "sha256": "845e003e864fc35f98dc16d2e0a22d5681092bb9c55063177f3a76de5f35de73"
+  },
+  "public_probe_root": "experiments/harness-v4/public-plans-v1/assets",
+  "public_plan_refs": {
+    "hv4-dev-click-help-name": {
+      "path": "experiments/harness-v4/public-plans-v1/manifests/hv4-dev-click-help-name-snapshot-v2.json",
+      "sha256": "7dfefaca8c71246df2cba8b56b4947cf9f5602512711dc089b6029c3ad4829f5"
+    },
+    "hv4-dev-requests-http-url-helper": {
+      "path": "experiments/harness-v4/public-plans-v1/manifests/hv4-dev-requests-http-url-helper.json",
+      "sha256": "90e1c376527b739faabd4f35b6638fb1fc2f65cc3f30450f554abc03070720f7"
+    },
+    "hv4-v2-dev-requests-quoted-content-type": {
+      "path": "experiments/harness-v4/public-plans-v1/manifests/hv4-v2-dev-requests-quoted-content-type.json",
+      "sha256": "25033d0c9a0b3ad49bbdcaaa1a7813f89e49b62c23ed27007907d691ea57dc11"
+    },
+    "hv4-dev-pflag-unknown-flag": {
+      "path": "experiments/harness-v4/public-plans-v1/manifests/hv4-dev-pflag-unknown-flag.json",
+      "sha256": "c57b535b6b88c8f9448bec15a0bc3bf69b0b5b4909151b1e383c29a6e92fd44d"
+    }
+  },
+  "public_plans": {
+    "hv4-dev-click-help-name": {
+      "schema": "h12-public-plan-v1",
+      "manifest_sha256": "7dfefaca8c71246df2cba8b56b4947cf9f5602512711dc089b6029c3ad4829f5",
+      "task_id": "hv4-dev-click-help-name",
+      "repository": "pallets/click",
+      "base_commit": "8c1a0a7abbc1c36f70d1f65f3604acc46c5ce6ab",
+      "public_goal_sha256": "45b10c3ad8634b040b7dbecf13c9a2a178e860193434bb9f218de100ca50f631",
+      "resources_sha256": "d784b79980f61df462ecc4ef8c47bc67c0851a2d99af7d9997688278314b7595",
+      "original_tree_sha256": "93dccdf5c2c42051e54016a728503612f3c3299994576c132bdf5b5d37f8a70a",
+      "public_probe": {
+        "schema_version": "harness-public-probe-plan-v1",
+        "plan_id": "h12-public-click-help-name-v1",
+        "asset_sha256": "e7bfde07ae8f12c20c7fd1e788c9da67dc2458b65bb093fa3d86f80e260f86e5",
+        "runner": "python-json-v1",
+        "case_ids": [
+          "argument-retains-value",
+          "automatic-help-option",
+          "help-after-positional"
+        ]
+      },
+      "plan_hash": "8838b464997def38ca612b157af52f1e8835603f8c7357d7d48379d6cb4837a6",
+      "regression_argv": [
+        "python3",
+        "-B",
+        "-m",
+        "pytest",
+        "tests/test_help_name_public.py"
+      ],
+      "roles": {
+        "reproduction": "same_public_probe_assertion_failure_on_original",
+        "behavior": "same_public_probe_all_cases_pass_on_final",
+        "regression": "original_public_regression_on_final"
+      },
+      "public_basis": [
+        {
+          "path": "src/click/core.py",
+          "sha256": "6ce6ad79d4f89e700cbd3b2dff2eb98a0526978bdda25f6cde551f10c152e662"
+        },
+        {
+          "path": "tests/test_help_name_public.py",
+          "sha256": "31cc493fa58517af0250bc3ff54d9ea46f90196b3f84254c060dd767f537d493"
+        }
+      ]
+    },
+    "hv4-v2-dev-requests-quoted-content-type": {
+      "schema": "h12-public-plan-v1",
+      "manifest_sha256": "25033d0c9a0b3ad49bbdcaaa1a7813f89e49b62c23ed27007907d691ea57dc11",
+      "task_id": "hv4-v2-dev-requests-quoted-content-type",
+      "repository": "psf/requests",
+      "base_commit": "bc7dd0fc4d56e808bcdd85ac2d797b3107c89259",
+      "public_goal_sha256": "6ab6dc90048bad9fdc4449a68c6df512125781463c9c0ba61877863a60fbc278",
+      "resources_sha256": "d784b79980f61df462ecc4ef8c47bc67c0851a2d99af7d9997688278314b7595",
+      "original_tree_sha256": "0f0a284dec45e4ef471a82632420c6ee7834817e54423c82d11eb6d845800dcf",
+      "public_probe": {
+        "schema_version": "harness-public-probe-plan-v1",
+        "plan_id": "h12-public-requests-quoted-content-type-v1",
+        "asset_sha256": "70b557db561e2b6dee8998b7ccc1150d725cf9abb65f9834deebc71fe43af7ad",
+        "runner": "python-json-v1",
+        "case_ids": [
+          "quoted-semicolon-equals",
+          "independent-quoted-parameters",
+          "unquoted-separators",
+          "media-type-and-name-case",
+          "quote-removal",
+          "no-parameters"
+        ]
+      },
+      "plan_hash": "2b404801cfd1006a5dbbe51f28d0f6c4fb5fa39c83f2f24c8c1a19c0365b2542",
+      "regression_argv": [
+        "python3",
+        "-B",
+        "-m",
+        "pytest",
+        "tests/"
+      ],
+      "roles": {
+        "reproduction": "same_public_probe_assertion_failure_on_original",
+        "behavior": "same_public_probe_all_cases_pass_on_final",
+        "regression": "original_public_regression_on_final"
+      },
+      "public_basis": [
+        {
+          "path": "src/requests/utils.py",
+          "sha256": "c433154e14f78de6d50ea7fe753825b8bbb3c9459468dee052f8b68edc2572dc"
+        },
+        {
+          "path": "tests/test_utils.py",
+          "sha256": "da6e0498a5053d7c4d558dd7602ee6738fcc4146eb82006b056199725f8d3627"
+        }
+      ]
+    },
+    "hv4-dev-pflag-unknown-flag": {
+      "schema": "h12-public-plan-v1",
+      "manifest_sha256": "c57b535b6b88c8f9448bec15a0bc3bf69b0b5b4909151b1e383c29a6e92fd44d",
+      "task_id": "hv4-dev-pflag-unknown-flag",
+      "repository": "spf13/pflag",
+      "base_commit": "f8a990678a6d44385313e9b19e40737f889f9b14",
+      "public_goal_sha256": "c9559a544887502103c201dbc6b565b461b1f02dc905abaf386994bc984980db",
+      "resources_sha256": "d784b79980f61df462ecc4ef8c47bc67c0851a2d99af7d9997688278314b7595",
+      "original_tree_sha256": "0a3ab97cab67289541029fe9e12aee57d328ab59c4df23373efc7ad84e3f9443",
+      "public_probe": {
+        "schema_version": "harness-public-probe-plan-v1",
+        "plan_id": "public-pflag-stop-unknown-v1",
+        "asset_sha256": "8e7382b7852ce1b9247110b9e0742f1415349a7c20da955f6a6a64233170a62b",
+        "runner": "python-json-v1",
+        "case_ids": [
+          "unknown-before-known",
+          "known-prefix-before-unknown",
+          "unknown-before-value",
+          "interspersed-control"
+        ]
+      },
+      "plan_hash": "375d9e59e84b3b70692cc876197ac2fa57c6cd0c85f6041593517a5690a75e51",
+      "regression_argv": [
+        "go",
+        "test",
+        "-p",
+        "1",
+        "-v",
+        "./..."
+      ],
+      "roles": {
+        "reproduction": "same_public_probe_assertion_failure_on_original",
+        "behavior": "same_public_probe_all_cases_pass_on_final",
+        "regression": "original_public_regression_on_final"
+      },
+      "public_basis": [
+        {
+          "path": "flag.go",
+          "sha256": "6048deeba753a157f4c2ae55c9df828880d5d26a43bec3517fa4d8db7776bee3"
+        },
+        {
+          "path": "go.mod",
+          "sha256": "16c6dfc0eb58eb3c9113ce197d460c6725c647e4688ac26d31c8ed69f1ebbc68"
+        }
+      ]
+    },
+    "hv4-dev-requests-http-url-helper": {
+      "schema": "h12-public-plan-v1",
+      "manifest_sha256": "90e1c376527b739faabd4f35b6638fb1fc2f65cc3f30450f554abc03070720f7",
+      "task_id": "hv4-dev-requests-http-url-helper",
+      "repository": "psf/requests",
+      "base_commit": "661970d171d9c3e12e4c789c4768db647d8c4da0",
+      "public_goal_sha256": "7a879d89f6fd12995f4bf84e11f312ebd6e1543622d387dceb1a70d605779fe7",
+      "resources_sha256": "8fb18da2bdc25111a29d5e8005e70de98b04db23d0ddc9fe2580e979f349ce34",
+      "original_tree_sha256": "5a8bee3cbc91cde5b8f240c938a78cc1eb17197639b895943d76b23b934d0b94",
+      "public_probe": {
+        "schema_version": "harness-public-probe-plan-v1",
+        "plan_id": "h12-public-requests-http-url-v1",
+        "asset_sha256": "399d2dbd650ae7832c460da535cc7c69dd3a5687e2731171ca45d141422275e6",
+        "runner": "python-json-v1",
+        "case_ids": [
+          "plain-http",
+          "https-port-path",
+          "ipv6-authority",
+          "userinfo-host",
+          "scheme-case",
+          "relative-references",
+          "other-schemes",
+          "whitespace",
+          "non-strings",
+          "missing-host",
+          "invalid-port",
+          "malformed-ipv6"
+        ]
+      },
+      "plan_hash": "18391f23819fb7c8b19fa2d5f3cf49a47bbab32bb7f33e0544cff1e0dbef6c5e",
+      "regression_argv": [
+        "python3",
+        "-B",
+        "-m",
+        "pytest",
+        "tests/test_utils.py"
+      ],
+      "roles": {
+        "reproduction": "same_public_probe_assertion_failure_on_original",
+        "behavior": "same_public_probe_all_cases_pass_on_final",
+        "regression": "original_public_regression_on_final"
+      },
+      "public_basis": [
+        {
+          "path": "src/requests/utils.py",
+          "sha256": "b879cb3f671cf1c28e8ff9b2b02151bcdb8974b4820a514cfdd1f5a038443cd2"
+        },
+        {
+          "path": "tests/test_utils.py",
+          "sha256": "00d027432443a1aa9539c00a09550de9439cdd696d2e6acf2dc997de3a416946"
+        }
+      ]
+    }
+  },
+  "profiles_sha256": "64e500787746a86921125983952b116b3f6614121bf2e2ebbf7ecf75a627bff8",
+  "public_subset_readiness": {
+    "path": ".local/h12/public-dev-20261113/subset-v4/report.json",
+    "sha256": "e1aaf26442b170478e99d48537c8a1fc7b4f2122452fd4d93379696b070ea54a"
+  },
+  "full_dev_readiness": {
+    "path": ".local/h12/public-dev-20261113/full-dev-v3/report.json",
+    "sha256": "21c08d8f97df967630fce6a8b3230f33699180fd4ee60823e2db16ab564c346a"
+  }
+}

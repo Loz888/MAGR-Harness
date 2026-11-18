@@ -1,0 +1,21 @@
+{
+  "_public_export": {
+    "original_record_sha256": "3d9a8acb06684d0a2f126f491193595c0d680901350e93e78e3eb0f79facf640",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "card": "HV4-H12-FIRST-MODEL-RECOVERY",
+  "recorded_at": "2026-11-15T07:36:32.458402+00:00",
+  "status": "PASS",
+  "source_sha256": "14379894ecc51a06c005d3244052f11e2f1d58ceb575182bec7accf4563591e4",
+  "counts": {
+    "tests": 246,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "mypy_source_files": 256,
+  "paid_model_calls": 0,
+  "status_field_occurrences": {
+    "PASS": 1
+  }
+}

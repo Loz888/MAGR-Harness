@@ -1,0 +1,11 @@
+{
+  "_public_export": {
+    "original_record_sha256": "9f22c889c020d4d65d8ca1f99116206e15b358027b76285f8d5b16f22d95e165",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "schema": "analysis-response-cache-acceptance-v1",
+  "engineering_gate": "PASS",
+  "status_field_occurrences": {
+    "PASS": 1
+  }
+}

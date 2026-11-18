@@ -1,0 +1,11 @@
+{
+  "_public_export": {
+    "original_record_sha256": "c2bca7d3d2fa6c7d8dcf9403f04ce04fc36d5958d8074442273f62b5603e9902",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "schema": "h12-first-model-recovery-final-closure-v1",
+  "recorded_at": "2026-11-15T08:18:17.794811+00:00",
+  "status": "CLOSED",
+  "mvp": "NOT_RELEASED",
+  "h13": "NOT_STARTED"
+}

@@ -1,0 +1,612 @@
+{
+  "card": "HV4-H12-R07",
+  "status": "PASS",
+  "source_commit": "7f19289dcf92618ac5298e0a9b2c4bd119dd2921",
+  "source_sha256": "73d871033444376e23283f00ede50abefbc393dedf1cbb46cdbcd18c1fc23346",
+  "cases": [
+    {
+      "node_id": "tests/test_h12_r07_feedback.py::test_public_reporters_expose_real_failure_identity_and_difference[pytest]",
+      "status": "PASS",
+      "seconds": "0.002",
+      "pass_condition": "五类真实输出格式暴露失败身份及断言差异，不根据任务类型猜运行器。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r07_feedback.py::test_public_reporters_expose_real_failure_identity_and_difference[unittest]",
+      "status": "PASS",
+      "seconds": "0.001",
+      "pass_condition": "五类真实输出格式暴露失败身份及断言差异，不根据任务类型猜运行器。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r07_feedback.py::test_public_reporters_expose_real_failure_identity_and_difference[go-json]",
+      "status": "PASS",
+      "seconds": "0.000",
+      "pass_condition": "五类真实输出格式暴露失败身份及断言差异，不根据任务类型猜运行器。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r07_feedback.py::test_public_reporters_expose_real_failure_identity_and_difference[mocha-json]",
+      "status": "PASS",
+      "seconds": "0.000",
+      "pass_condition": "五类真实输出格式暴露失败身份及断言差异，不根据任务类型猜运行器。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r07_feedback.py::test_public_reporters_expose_real_failure_identity_and_difference[node-tap]",
+      "status": "PASS",
+      "seconds": "0.000",
+      "pass_condition": "五类真实输出格式暴露失败身份及断言差异，不根据任务类型猜运行器。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r07_feedback.py::test_feedback_is_bound_to_public_receipt_tree_log_and_contract",
+      "status": "PASS",
+      "seconds": "0.044",
+      "pass_condition": "反馈绑定真实回执、tree/log/hash、任务/Run/workspace及公开要求；没有新权限。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r07_feedback.py::test_incomplete_stale_unknown_or_empty_public_execution_cannot_claim_green[truncated]",
+      "status": "PASS",
+      "seconds": "0.039",
+      "pass_condition": "残缺日志、旧树、错误hash、超时/未知和零测试不能报绿或已核实0。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r07_feedback.py::test_incomplete_stale_unknown_or_empty_public_execution_cannot_claim_green[tree]",
+      "status": "PASS",
+      "seconds": "0.033",
+      "pass_condition": "残缺日志、旧树、错误hash、超时/未知和零测试不能报绿或已核实0。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r07_feedback.py::test_incomplete_stale_unknown_or_empty_public_execution_cannot_claim_green[hash]",
+      "status": "PASS",
+      "seconds": "0.037",
+      "pass_condition": "残缺日志、旧树、错误hash、超时/未知和零测试不能报绿或已核实0。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r07_feedback.py::test_incomplete_stale_unknown_or_empty_public_execution_cannot_claim_green[unknown]",
+      "status": "PASS",
+      "seconds": "0.039",
+      "pass_condition": "残缺日志、旧树、错误hash、超时/未知和零测试不能报绿或已核实0。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r07_feedback.py::test_incomplete_stale_unknown_or_empty_public_execution_cannot_claim_green[no-tests]",
+      "status": "PASS",
+      "seconds": "0.042",
+      "pass_condition": "残缺日志、旧树、错误hash、超时/未知和零测试不能报绿或已核实0。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r07_feedback.py::test_stable_failure_signature_ignores_receipt_uuid_address_and_runner_timing",
+      "status": "PASS",
+      "seconds": "0.038",
+      "pass_condition": "同一失败剔除地址/耗时/回执ID后签名一致；新失败身份或实质差异仍可识别。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r07_feedback.py::test_failure_context_is_bounded_and_raw_log_identity_retained",
+      "status": "PASS",
+      "seconds": "0.049",
+      "pass_condition": "模型反馈有界，完整日志hash保留，原文从作用域CAS读取。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r07_feedback.py::test_stagnation_threshold_is_explicit_frozen_and_bounded[1]",
+      "status": "PASS",
+      "seconds": "0.000",
+      "pass_condition": "停滞阈值冻结在2至6，越界配置拒绝。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r07_feedback.py::test_stagnation_threshold_is_explicit_frozen_and_bounded[7]",
+      "status": "PASS",
+      "seconds": "0.000",
+      "pass_condition": "停滞阈值冻结在2至6，越界配置拒绝。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r07_feedback.py::test_stagnation_threshold_is_explicit_frozen_and_bounded[0]",
+      "status": "PASS",
+      "seconds": "0.000",
+      "pass_condition": "停滞阈值冻结在2至6，越界配置拒绝。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r07_feedback.py::test_stagnation_threshold_is_explicit_frozen_and_bounded[-1]",
+      "status": "PASS",
+      "seconds": "0.000",
+      "pass_condition": "停滞阈值冻结在2至6，越界配置拒绝。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r07_feedback.py::test_skips_keep_their_real_count_and_cannot_be_presented_as_complete_green",
+      "status": "PASS",
+      "seconds": "0.037",
+      "pass_condition": "保留真实跳过数；跳过不能显示为完整绿。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r07_feedback.py::test_final_summary_cannot_display_old_tree_green_as_new_patch_evidence",
+      "status": "PASS",
+      "seconds": "0.035",
+      "pass_condition": "最终摘要核对结果树，旧树绿不能代表新补丁。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r07_feedback.py::test_very_long_or_many_failure_names_are_bounded_with_explicit_truncation",
+      "status": "PASS",
+      "seconds": "0.041",
+      "pass_condition": "长/多失败名称有界并标记截断，稳定内容hash可区分原名称。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r07_feedback.py::test_unittest_interleaved_output_keeps_identity_but_incomplete_outcomes_stay_blocked[interleaved]",
+      "status": "PASS",
+      "seconds": "0.001",
+      "pass_condition": "unittest插入stdout/stderr仍保留测试身份；孤立/未完成/数量矛盾继续阻断。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r07_feedback.py::test_unittest_interleaved_output_keeps_identity_but_incomplete_outcomes_stay_blocked[orphan]",
+      "status": "PASS",
+      "seconds": "0.000",
+      "pass_condition": "unittest插入stdout/stderr仍保留测试身份；孤立/未完成/数量矛盾继续阻断。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r07_feedback.py::test_unittest_interleaved_output_keeps_identity_but_incomplete_outcomes_stay_blocked[unfinished]",
+      "status": "PASS",
+      "seconds": "0.000",
+      "pass_condition": "unittest插入stdout/stderr仍保留测试身份；孤立/未完成/数量矛盾继续阻断。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r07_feedback.py::test_unittest_interleaved_output_keeps_identity_but_incomplete_outcomes_stay_blocked[wrong-count]",
+      "status": "PASS",
+      "seconds": "0.000",
+      "pass_condition": "unittest插入stdout/stderr仍保留测试身份；孤立/未完成/数量矛盾继续阻断。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r07_policy.py::test_opt_in_public_feedback_rejects_unbound_or_ungranted_plan[no-contract]",
+      "status": "PASS",
+      "seconds": "0.001",
+      "pass_condition": "没有公开契约/探针，或计划未配置/错误cwd/新增执行器，冻结即拒绝。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r07_policy.py::test_opt_in_public_feedback_rejects_unbound_or_ungranted_plan[no-probe]",
+      "status": "PASS",
+      "seconds": "0.000",
+      "pass_condition": "没有公开契约/探针，或计划未配置/错误cwd/新增执行器，冻结即拒绝。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r07_policy.py::test_opt_in_public_feedback_rejects_unbound_or_ungranted_plan[unconfigured]",
+      "status": "PASS",
+      "seconds": "0.000",
+      "pass_condition": "没有公开契约/探针，或计划未配置/错误cwd/新增执行器，冻结即拒绝。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r07_policy.py::test_opt_in_public_feedback_rejects_unbound_or_ungranted_plan[cwd]",
+      "status": "PASS",
+      "seconds": "0.000",
+      "pass_condition": "没有公开契约/探针，或计划未配置/错误cwd/新增执行器，冻结即拒绝。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r07_policy.py::test_opt_in_public_feedback_rejects_unbound_or_ungranted_plan[executable]",
+      "status": "PASS",
+      "seconds": "0.000",
+      "pass_condition": "没有公开契约/探针，或计划未配置/错误cwd/新增执行器，冻结即拒绝。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r07_policy.py::test_command_ids_resolve_exact_frozen_regression_without_accepting_arbitrary_argv",
+      "status": "PASS",
+      "seconds": "0.000",
+      "pass_condition": "只接受冻结回归ID，任意argv或未知ID不得扩权执行。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r07_policy.py::test_old_profile_serialization_and_unsigned_task_plan_do_not_silently_enable_r07",
+      "status": "PASS",
+      "seconds": "0.004",
+      "pass_condition": "旧profile/计划不默启用R07；替换冻结策略在派发前拒绝。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": []
+    },
+    {
+      "node_id": "tests/test_h12_r07_reporters.py::test_actual_public_tool_preserves_reporter_ids_counts_exit_and_raw_log[unittest]",
+      "status": "PASS",
+      "seconds": "1.057",
+      "pass_condition": "固定镜像真实工具实际2项/1失败；ID、数量、退出码和CAS一致；未签发私有hash被拒绝。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": [
+        "traces/0001-public-tool-166ec8161b/trace.json",
+        "traces/0002-public-tool-166ec8161b/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r07_reporters.py::test_actual_public_tool_preserves_reporter_ids_counts_exit_and_raw_log[go-json]",
+      "status": "PASS",
+      "seconds": "14.437",
+      "pass_condition": "固定镜像真实工具实际2项/1失败；ID、数量、退出码和CAS一致；未签发私有hash被拒绝。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": [
+        "traces/0003-public-tool-01fbcba601/trace.json",
+        "traces/0004-public-tool-01fbcba601/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r07_reporters.py::test_actual_public_tool_preserves_reporter_ids_counts_exit_and_raw_log[node-tap]",
+      "status": "PASS",
+      "seconds": "1.253",
+      "pass_condition": "固定镜像真实工具实际2项/1失败；ID、数量、退出码和CAS一致；未签发私有hash被拒绝。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": [
+        "traces/0005-public-tool-1730a904cd/trace.json",
+        "traces/0006-public-tool-1730a904cd/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r07_reporters.py::test_actual_public_tool_preserves_reporter_ids_counts_exit_and_raw_log[mocha-json]",
+      "status": "PASS",
+      "seconds": "1.742",
+      "pass_condition": "固定镜像真实工具实际2项/1失败；ID、数量、退出码和CAS一致；未签发私有hash被拒绝。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": [
+        "traces/0007-public-tool-2773de623e/trace.json",
+        "traces/0008-public-tool-2773de623e/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r07_boundaries.py::test_public_cross_project_language_boundary_is_executed[negative-unknown_argv]",
+      "status": "PASS",
+      "seconds": "1.342",
+      "pass_condition": "真实Python/Node/Go边界正反例；缺导出编译阻塞保留null，不能虚报绿。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": [
+        "traces/0009-independent-aa8f1a1467/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r07_boundaries.py::test_public_cross_project_language_boundary_is_executed[negative-quoted_delimiter]",
+      "status": "PASS",
+      "seconds": "1.100",
+      "pass_condition": "真实Python/Node/Go边界正反例；缺导出编译阻塞保留null，不能虚报绿。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": [
+        "traces/0010-independent-b6bcf8990a/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r07_boundaries.py::test_public_cross_project_language_boundary_is_executed[negative-module_import]",
+      "status": "PASS",
+      "seconds": "1.161",
+      "pass_condition": "真实Python/Node/Go边界正反例；缺导出编译阻塞保留null，不能虚报绿。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": [
+        "traces/0011-independent-7d564f9930/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r07_boundaries.py::test_public_cross_project_language_boundary_is_executed[negative-light_import]",
+      "status": "PASS",
+      "seconds": "13.928",
+      "pass_condition": "真实Python/Node/Go边界正反例；缺导出编译阻塞保留null，不能虚报绿。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": [
+        "traces/0012-independent-dfcd88a1ab/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r07_boundaries.py::test_public_cross_project_language_boundary_is_executed[positive-unknown_argv]",
+      "status": "PASS",
+      "seconds": "1.255",
+      "pass_condition": "真实Python/Node/Go边界正反例；缺导出编译阻塞保留null，不能虚报绿。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": [
+        "traces/0013-independent-0723d52175/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r07_boundaries.py::test_public_cross_project_language_boundary_is_executed[positive-quoted_delimiter]",
+      "status": "PASS",
+      "seconds": "1.104",
+      "pass_condition": "真实Python/Node/Go边界正反例；缺导出编译阻塞保留null，不能虚报绿。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": [
+        "traces/0014-independent-c3a1f8a17b/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r07_boundaries.py::test_public_cross_project_language_boundary_is_executed[positive-module_import]",
+      "status": "PASS",
+      "seconds": "1.095",
+      "pass_condition": "真实Python/Node/Go边界正反例；缺导出编译阻塞保留null，不能虚报绿。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": [
+        "traces/0015-independent-0ee37851eb/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r07_boundaries.py::test_public_cross_project_language_boundary_is_executed[positive-light_import]",
+      "status": "PASS",
+      "seconds": "13.071",
+      "pass_condition": "真实Python/Node/Go边界正反例；缺导出编译阻塞保留null，不能虚报绿。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": [
+        "traces/0016-independent-9e1d2eee71/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r07_boundaries.py::test_public_node_readiness_and_cleanup_boundaries_use_real_processes[negative-readiness]",
+      "status": "PASS",
+      "seconds": "5.168",
+      "pass_condition": "真实动态端口、HTTP、进程及清理观察；缺READY/忽略SIGTERM不能满足公开要求，兜底清理仍完成。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": [
+        "traces/0017-runtime-cleanup-5ee26846a5/trace.json",
+        "traces/0018-runtime-application-5ee26846a5/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r07_boundaries.py::test_public_node_readiness_and_cleanup_boundaries_use_real_processes[negative-cleanup]",
+      "status": "PASS",
+      "seconds": "4.257",
+      "pass_condition": "真实动态端口、HTTP、进程及清理观察；缺READY/忽略SIGTERM不能满足公开要求，兜底清理仍完成。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": [
+        "traces/0019-runtime-application-e488bdd129/trace.json",
+        "traces/0020-runtime-cleanup-e488bdd129/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r07_boundaries.py::test_public_node_readiness_and_cleanup_boundaries_use_real_processes[positive-readiness]",
+      "status": "PASS",
+      "seconds": "3.424",
+      "pass_condition": "真实动态端口、HTTP、进程及清理观察；缺READY/忽略SIGTERM不能满足公开要求，兜底清理仍完成。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": [
+        "traces/0021-runtime-application-032cdfdfbf/trace.json",
+        "traces/0022-runtime-cleanup-032cdfdfbf/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r07_boundaries.py::test_public_node_readiness_and_cleanup_boundaries_use_real_processes[positive-cleanup]",
+      "status": "PASS",
+      "seconds": "3.203",
+      "pass_condition": "真实动态端口、HTTP、进程及清理观察；缺READY/忽略SIGTERM不能满足公开要求，兜底清理仍完成。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": [
+        "traces/0023-runtime-application-544669d63a/trace.json",
+        "traces/0024-runtime-cleanup-544669d63a/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r07_service.py::test_pg_each_patch_runs_static_target_and_full_public_checks_before_next_model[target-red]",
+      "status": "PASS",
+      "seconds": "26.528",
+      "pass_condition": "每次修改后真实静态/目标/探针/完整回归先反馈；新树重跑；模型据真实失败修复，未配置独立Judge仍NOT_RUN。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": [
+        "traces/0025-public-tool-03ed72cac8/trace.json",
+        "traces/0026-public-tool-03ed72cac8/trace.json",
+        "traces/0027-worker-io-03ed72cac8/trace.json",
+        "traces/0028-worker-io-03ed72cac8/trace.json",
+        "traces/0029-public-tool-03ed72cac8/trace.json",
+        "traces/0030-public-tool-03ed72cac8/trace.json",
+        "traces/0031-public-tool-03ed72cac8/trace.json",
+        "traces/0032-public-tool-03ed72cac8/trace.json",
+        "traces/0033-worker-io-03ed72cac8/trace.json",
+        "traces/0034-public-tool-03ed72cac8/trace.json",
+        "traces/0035-public-tool-03ed72cac8/trace.json",
+        "traces/0036-public-tool-03ed72cac8/trace.json",
+        "traces/0037-public-tool-03ed72cac8/trace.json",
+        "traces/0038-worker-io-03ed72cac8/trace.json",
+        "traces/0039-pg-create_task-03ed72cac8/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r07_service.py::test_pg_each_patch_runs_static_target_and_full_public_checks_before_next_model[import-regression]",
+      "status": "PASS",
+      "seconds": "23.518",
+      "pass_condition": "每次修改后真实静态/目标/探针/完整回归先反馈；新树重跑；模型据真实失败修复，未配置独立Judge仍NOT_RUN。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": [
+        "traces/0040-public-tool-d6e7c7ee40/trace.json",
+        "traces/0041-public-tool-d6e7c7ee40/trace.json",
+        "traces/0042-worker-io-d6e7c7ee40/trace.json",
+        "traces/0043-worker-io-d6e7c7ee40/trace.json",
+        "traces/0044-public-tool-d6e7c7ee40/trace.json",
+        "traces/0045-public-tool-d6e7c7ee40/trace.json",
+        "traces/0046-public-tool-d6e7c7ee40/trace.json",
+        "traces/0047-public-tool-d6e7c7ee40/trace.json",
+        "traces/0048-worker-io-d6e7c7ee40/trace.json",
+        "traces/0049-public-tool-d6e7c7ee40/trace.json",
+        "traces/0050-public-tool-d6e7c7ee40/trace.json",
+        "traces/0051-public-tool-d6e7c7ee40/trace.json",
+        "traces/0052-public-tool-d6e7c7ee40/trace.json",
+        "traces/0053-worker-io-d6e7c7ee40/trace.json",
+        "traces/0054-pg-create_task-d6e7c7ee40/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r07_service.py::test_pg_automatic_checks_cannot_bypass_original_tool_budget",
+      "status": "PASS",
+      "seconds": "6.762",
+      "pass_condition": "自动检查计入原Run工具预算，额度耗尽即停，不另开免费额度。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": [
+        "traces/0055-public-tool-7198ed093e/trace.json",
+        "traces/0056-public-tool-7198ed093e/trace.json",
+        "traces/0057-worker-io-7198ed093e/trace.json",
+        "traces/0058-worker-io-7198ed093e/trace.json",
+        "traces/0059-pg-create_task-7198ed093e/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r07_service.py::test_pg_stable_repeated_failures_stop_within_frozen_stagnation_bound",
+      "status": "PASS",
+      "seconds": "22.837",
+      "pass_condition": "相同树/命令/失败不因新回执或耗时重置进展，按冻结阈值有界停止。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": [
+        "traces/0060-public-tool-30fb612437/trace.json",
+        "traces/0061-public-tool-30fb612437/trace.json",
+        "traces/0062-worker-io-30fb612437/trace.json",
+        "traces/0063-worker-io-30fb612437/trace.json",
+        "traces/0064-public-tool-30fb612437/trace.json",
+        "traces/0065-public-tool-30fb612437/trace.json",
+        "traces/0066-public-tool-30fb612437/trace.json",
+        "traces/0067-public-tool-30fb612437/trace.json",
+        "traces/0068-worker-io-30fb612437/trace.json",
+        "traces/0069-public-tool-30fb612437/trace.json",
+        "traces/0070-worker-io-30fb612437/trace.json",
+        "traces/0071-public-tool-30fb612437/trace.json",
+        "traces/0072-worker-io-30fb612437/trace.json",
+        "traces/0073-public-tool-30fb612437/trace.json",
+        "traces/0074-pg-create_task-30fb612437/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r07_service.py::test_pg_known_automatic_check_survives_engine_restart_without_redispatch[outer-known]",
+      "status": "PASS",
+      "seconds": "17.885",
+      "pass_condition": "原PG/Engine重建后复用已知工具或进程，不重派发；来源epoch与原命令provenance一致，原调用/预算保留。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": [
+        "traces/0075-public-tool-7e28b0ecb3/trace.json",
+        "traces/0076-public-tool-7e28b0ecb3/trace.json",
+        "traces/0077-worker-io-7e28b0ecb3/trace.json",
+        "traces/0078-worker-io-7e28b0ecb3/trace.json",
+        "traces/0079-public-tool-7e28b0ecb3/trace.json",
+        "traces/0080-public-tool-7e28b0ecb3/trace.json",
+        "traces/0081-public-tool-7e28b0ecb3/trace.json",
+        "traces/0082-public-tool-7e28b0ecb3/trace.json",
+        "traces/0083-pg-create_task-7e28b0ecb3/trace.json",
+        "traces/0084-worker-io-7e28b0ecb3/trace.json",
+        "traces/0085-pg-recover_task-7e28b0ecb3/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r07_service.py::test_pg_known_automatic_check_survives_engine_restart_without_redispatch[process-known]",
+      "status": "PASS",
+      "seconds": "18.008",
+      "pass_condition": "原PG/Engine重建后复用已知工具或进程，不重派发；来源epoch与原命令provenance一致，原调用/预算保留。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": [
+        "traces/0086-public-tool-5002f36d30/trace.json",
+        "traces/0087-public-tool-5002f36d30/trace.json",
+        "traces/0088-worker-io-5002f36d30/trace.json",
+        "traces/0089-worker-io-5002f36d30/trace.json",
+        "traces/0090-public-tool-5002f36d30/trace.json",
+        "traces/0091-public-tool-5002f36d30/trace.json",
+        "traces/0092-public-tool-5002f36d30/trace.json",
+        "traces/0093-public-tool-5002f36d30/trace.json",
+        "traces/0094-pg-create_task-5002f36d30/trace.json",
+        "traces/0095-worker-io-5002f36d30/trace.json",
+        "traces/0096-pg-recover_task-5002f36d30/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r07_service.py::test_pg_private_final_judge_never_enters_worker_feedback",
+      "status": "PASS",
+      "seconds": "15.642",
+      "pass_condition": "最终私有Judge结果不进入后续Worker请求；真实Agent门不因公开绿而变PASS。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": [
+        "traces/0097-public-tool-0de41146e5/trace.json",
+        "traces/0098-public-tool-0de41146e5/trace.json",
+        "traces/0099-worker-io-0de41146e5/trace.json",
+        "traces/0100-worker-io-0de41146e5/trace.json",
+        "traces/0101-public-tool-0de41146e5/trace.json",
+        "traces/0102-public-tool-0de41146e5/trace.json",
+        "traces/0103-public-tool-0de41146e5/trace.json",
+        "traces/0104-public-tool-0de41146e5/trace.json",
+        "traces/0105-worker-io-0de41146e5/trace.json",
+        "traces/0106-pg-create_task-0de41146e5/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r07_service.py::test_pg_multiple_edits_in_one_model_batch_each_run_checks_without_breaking_tool_protocol",
+      "status": "PASS",
+      "seconds": "24.135",
+      "pass_condition": "单个模型批次两次编辑分别留四项实跑回执，工具消息配对完整且下一请求固定当前树反馈。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": [
+        "traces/0107-public-tool-75d5ddfea6/trace.json",
+        "traces/0108-public-tool-75d5ddfea6/trace.json",
+        "traces/0109-worker-io-75d5ddfea6/trace.json",
+        "traces/0110-worker-io-75d5ddfea6/trace.json",
+        "traces/0111-public-tool-75d5ddfea6/trace.json",
+        "traces/0112-public-tool-75d5ddfea6/trace.json",
+        "traces/0113-public-tool-75d5ddfea6/trace.json",
+        "traces/0114-public-tool-75d5ddfea6/trace.json",
+        "traces/0115-public-tool-75d5ddfea6/trace.json",
+        "traces/0116-public-tool-75d5ddfea6/trace.json",
+        "traces/0117-public-tool-75d5ddfea6/trace.json",
+        "traces/0118-public-tool-75d5ddfea6/trace.json",
+        "traces/0119-worker-io-75d5ddfea6/trace.json",
+        "traces/0120-pg-create_task-75d5ddfea6/trace.json"
+      ]
+    },
+    {
+      "node_id": "tests/test_h12_r07_service.py::test_pg_public_clarification_waits_then_continues_same_run_and_grant",
+      "status": "PASS",
+      "seconds": "17.642",
+      "pass_condition": "等待公开澄清后沿用同一Run/权限/冻结配置及剩余额度，后台自有线程结束。",
+      "junit": "evidence/HV4-H12-R07/20261116T090002Z-4dd0a062/junit.xml",
+      "trace_refs": [
+        "traces/0121-public-tool-3957dc96e8/trace.json",
+        "traces/0122-public-tool-3957dc96e8/trace.json",
+        "traces/0123-worker-io-3957dc96e8/trace.json",
+        "traces/0124-worker-io-3957dc96e8/trace.json",
+        "traces/0125-worker-io-3957dc96e8/trace.json",
+        "traces/0126-public-tool-3957dc96e8/trace.json",
+        "traces/0127-public-tool-3957dc96e8/trace.json",
+        "traces/0128-public-tool-3957dc96e8/trace.json",
+        "traces/0129-public-tool-3957dc96e8/trace.json",
+        "traces/0130-worker-io-3957dc96e8/trace.json",
+        "traces/0131-pg-_run-3957dc96e8/trace.json"
+      ]
+    }
+  ]
+}

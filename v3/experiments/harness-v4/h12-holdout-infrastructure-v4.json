@@ -1,0 +1,21 @@
+{
+  "schema": "h12-independent-environment-binding-v1",
+  "revision": "h12-holdout-infrastructure-v4",
+  "scope": "Explicitly frozen independent v2 holdout only",
+  "runtime_profile": "profile_for(task, HOLDOUT_INFRA_V4) with public-runtime-v1",
+  "infrastructure": "Pinned project images, offline fixtures, language parsers and resource settings already shared with dev-environment-v4",
+  "public_runtime_policy": {
+    "revision": "h12-public-runtime-v1",
+    "scratch_mb": 256,
+    "readonly_pytest_cache": "/scratch/pytest-cache",
+    "standalone_node_public_tests": "Use node --test for exact immutable public asset scripts; real TAP counts, unchanged script bytes",
+    "declared_red_baselines": "Exact frozen pytest, Go and Node TAP test paths; feature-only missing exports in editable project modules or frozen Go test compile sites",
+    "refactor_regression": "Original declared acceptance command",
+    "build_gate": "Independent fixed compile command when declared"
+  },
+  "identity": "Quality freeze binds every actual profile, image lock, source tree, dependency input and independent public asset",
+  "readiness": "Twelve fresh zero-model Broker executions with complete immutable receipts and logs on the current source",
+  "quality_gate": "Same frozen candidate, complete dev scores at least10/12 plus zero new regressions and known usage, then holdout at least9/12",
+  "budget": "Original shared PostgreSQL USD12 authorization; original per-task model/tool/cost/context/deadline bounds",
+  "historical_results": "Original catalogs, private judges, previous attempts and scoring remain unchanged"
+}

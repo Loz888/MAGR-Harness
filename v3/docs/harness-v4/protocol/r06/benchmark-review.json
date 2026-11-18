@@ -1,0 +1,265 @@
+{
+  "_public_export": {
+    "original_record_sha256": "cca584721354d13f4df45c32fe9571dca75b751b0232c283cfb74ab3042eba54",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "schema": "harness-r06-benchmark-review-v1",
+  "card": "HV4-H12-R06",
+  "status": "REVIEW_COMPLETE_WITH_REQUIRED_REVISIONS",
+  "source_commit": "88be4949c712e0e1c5fc8256a08325adf0339cc6",
+  "source_sha256": "514e99fea7f55287bb857a240e75b60ea8ab00a07c4b985021c728f27f6cb21d",
+  "case_count": 24,
+  "development": [
+    {
+      "case": "dev-01",
+      "task_id": "hv4-v3-dev-click-help-name",
+      "type": "bugfix",
+      "public_goal": "Repair click so a command that declares an argument named \"help\" keeps its value; the automatic help option must still render and parse --help.",
+      "public_requirements": [
+        {
+          "description": "argument named help receives its value",
+          "acceptance_requirement_id": "public.6cebabcaa90fd01d"
+        },
+        {
+          "description": "--help still renders",
+          "acceptance_requirement_id": "public.f76a0416cb514fa4"
+        }
+      ],
+      "historical_status": "PASS",
+      "task_type_rule": "原目标实际断言红；最终目标绿、完整旧回归无新增失败；逐断言映射。",
+      "r06_opt_in_status": "NOT_APPLIED_TO_HISTORICAL_EXPERIMENT"
+    },
+    {
+      "case": "dev-02",
+      "task_id": "hv4-dev-click-short-help",
+      "type": "bugfix",
+      "public_goal": "Fix default short-help truncation so sentence boundaries followed by abbreviations (for example \"vs.\") do not drop later words or produce a misleading cut.",
+      "public_requirements": [
+        {
+          "description": "abbreviation mid-sentence keeps later words",
+          "acceptance_requirement_id": "public.cabeec8a05a813ed"
+        }
+      ],
+      "historical_status": "FAIL",
+      "task_type_rule": "原目标实际断言红；最终目标绿、完整旧回归无新增失败；逐断言映射。",
+      "r06_opt_in_status": "NOT_APPLIED_TO_HISTORICAL_EXPERIMENT"
+    },
+    {
+      "case": "dev-03",
+      "task_id": "hv4-v2-dev-requests-quoted-content-type",
+      "type": "bugfix",
+      "public_goal": "Fix requests.utils._parse_content_type_header so semicolons and equals signs inside double-quoted parameter values are preserved as data, while unquoted semicolons still separate parameters. Keep the media type, lower-cased parameter names, quote removal, and existing bare-token=True behavior unchanged.",
+      "public_requirements": [
+        {
+          "description": "Quoted values containing semicolons and equals signs are preserved.",
+          "acceptance_requirement_id": "public.f548a2546a9dd022"
+        },
+        {
+          "description": "Multiple quoted parameters are parsed independently.",
+          "acceptance_requirement_id": "public.f04d3ef232a3a0c9"
+        },
+        {
+          "description": "Existing charset, media type and bare-token behavior is preserved.",
+          "acceptance_requirement_id": "public.0f207e80d3fd4324"
+        }
+      ],
+      "historical_status": "PASS",
+      "task_type_rule": "原目标实际断言红；最终目标绿、完整旧回归无新增失败；逐断言映射。",
+      "r06_opt_in_status": "NOT_APPLIED_TO_HISTORICAL_EXPERIMENT"
+    },
+    {
+      "case": "dev-04",
+      "task_id": "hv4-dev-pflag-unknown-flag",
+      "type": "bugfix",
+      "public_goal": "With interspersed parsing disabled, stop parsing at the first unknown short flag and leave the remaining arguments unconsumed so the caller can distinguish them.",
+      "public_requirements": [
+        {
+          "description": "parse stops at the unknown flag",
+          "acceptance_requirement_id": "public.c07830e8853b29c7"
+        },
+        {
+          "description": "Args() keeps the remainder",
+          "acceptance_requirement_id": "public.b28657b84f47e447"
+        }
+      ],
+      "historical_status": "FAIL",
+      "task_type_rule": "原目标实际断言红；最终目标绿、完整旧回归无新增失败；逐断言映射。",
+      "r06_opt_in_status": "NOT_APPLIED_TO_HISTORICAL_EXPERIMENT"
+    },
+    {
+      "case": "dev-05",
+      "task_id": "hv4-dev-requests-http-url-helper",
+      "type": "feature",
+      "public_goal": "Add requests.utils.is_http_url(value) -> bool. It returns True only for absolute http/https URLs with a non-empty host and no whitespace; it returns False for non-strings, relative references, other schemes and malformed authorities. It never raises.",
+      "public_requirements": [
+        {
+          "description": "http://example.com and https://example.com:8443/path are True",
+          "acceptance_requirement_id": "public.09e4f4c426f0ff6c"
+        },
+        {
+          "description": "//example.com, example.com, ftp://example.com, mailto:a@b and \" http://x\" are False",
+          "acceptance_requirement_id": "public.674500be346924e8"
+        },
+        {
+          "description": "non-string inputs and invalid ports return False without raising",
+          "acceptance_requirement_id": "public.7c74ad016b3def0f"
+        }
+      ],
+      "historical_status": "PASS",
+      "task_type_rule": "原既有行为绿；声明目标缺失可预期红，其他错误阻断；最终目标必须实际执行绿。",
+      "r06_opt_in_status": "NOT_APPLIED_TO_HISTORICAL_EXPERIMENT"
+    },
+    {
+      "case": "dev-06",
+      "task_id": "hv4-dev-express-healthz",
+      "type": "feature",
+      "public_goal": "Add examples/healthz.js exporting an express app with GET /healthz returning 200 application/json {\"status\":\"ok\"} and GET /ready returning 503 while app.locals.ready is false and 204 when true. The file must listen on PORT (default 3000) only when run directly.",
+      "public_requirements": [
+        {
+          "description": "GET /healthz returns 200 and JSON status ok",
+          "acceptance_requirement_id": "public.c95202d1e83b3c6d"
+        },
+        {
+          "description": "GET /ready returns 503 before readiness and 204 after",
+          "acceptance_requirement_id": "public.f94b7b4914c63425"
+        },
+        {
+          "description": "module export is testable without binding a port",
+          "acceptance_requirement_id": "public.3274761b312930ed"
+        }
+      ],
+      "historical_status": "FAIL",
+      "task_type_rule": "原既有行为绿；声明目标缺失可预期红，其他错误阻断；最终目标必须实际执行绿。",
+      "r06_opt_in_status": "NOT_APPLIED_TO_HISTORICAL_EXPERIMENT"
+    },
+    {
+      "case": "dev-07",
+      "task_id": "hv4-dev-got-header-value",
+      "type": "feature",
+      "public_goal": "Add source/core/header-value.ts exporting isValidHeaderValue(value: string): boolean and re-export it from source/index.ts. It rejects CR, LF, NUL and other C0 controls except horizontal tab; it accepts printable ASCII and obs-text (0x80-0xFF); empty strings are valid.",
+      "public_requirements": [
+        {
+          "description": "CR/LF/NUL/0x01 are rejected",
+          "acceptance_requirement_id": "public.1b80f2beb618ab3a"
+        },
+        {
+          "description": "tab, visible ASCII and 0x80-0xFF are accepted",
+          "acceptance_requirement_id": "public.17c5dbe8e184fa4f"
+        },
+        {
+          "description": "exported symbol is usable from source/index.ts",
+          "acceptance_requirement_id": "public.078e12b0a8894f95"
+        }
+      ],
+      "historical_status": "PASS",
+      "task_type_rule": "原既有行为绿；声明目标缺失可预期红，其他错误阻断；最终目标必须实际执行绿。",
+      "r06_opt_in_status": "NOT_APPLIED_TO_HISTORICAL_EXPERIMENT"
+    },
+    {
+      "case": "dev-08",
+      "task_id": "hv4-dev-requests-encoding-refactor",
+      "type": "refactor",
+      "public_goal": "Extract the Content-Type encoding decision from requests.utils.get_encoding_from_headers into a private helper without changing any public function signature or returned encoding for existing and malformed headers.",
+      "public_requirements": [
+        {
+          "description": "public signature of get_encoding_from_headers is unchanged",
+          "acceptance_requirement_id": "public.cdd5826b359b98cb"
+        },
+        {
+          "description": "encoding decisions match the baseline corpus for 40 header variants",
+          "acceptance_requirement_id": "public.85034630c6e916aa"
+        }
+      ],
+      "historical_status": "PASS",
+      "task_type_rule": "原树只检查旧公开行为；最终检查公开结构及行为等价；不强制未公开名称。",
+      "r06_opt_in_status": "NOT_APPLIED_TO_HISTORICAL_EXPERIMENT"
+    },
+    {
+      "case": "dev-09",
+      "task_id": "hv4-dev-click-style-refactor",
+      "type": "refactor",
+      "public_goal": "Extract the ANSI sequence assembly inside click.style into a private helper while keeping click.style output byte-identical for the frozen parameter matrix (fg/bg/bold/dim/underline/overline/italic/blink/reverse/strikethrough/reset combinations).",
+      "public_requirements": [
+        {
+          "description": "outputs are byte-identical to the baseline matrix",
+          "acceptance_requirement_id": "public.0496ed8309f06ba9"
+        },
+        {
+          "description": "public click.style signature is unchanged",
+          "acceptance_requirement_id": "public.cffcd619c1969bac"
+        }
+      ],
+      "historical_status": "PASS",
+      "task_type_rule": "原树只检查旧公开行为；最终检查公开结构及行为等价；不强制未公开名称。",
+      "r06_opt_in_status": "NOT_APPLIED_TO_HISTORICAL_EXPERIMENT"
+    },
+    {
+      "case": "dev-10",
+      "task_id": "hv4-dev-express-server-lifecycle",
+      "type": "run_app",
+      "public_goal": "Add examples/server.js that starts an express app on PORT (default 3000) with GET / returning \"ok\" and GET /healthz returning JSON {\"status\":\"ok\"}. It must log a single ready line with the bound port and exit cleanly on SIGTERM.",
+      "public_requirements": [
+        {
+          "description": "process becomes ready within 10 seconds on the assigned port",
+          "acceptance_requirement_id": "public.8b5a263f3918cc25"
+        },
+        {
+          "description": "both routes answer while the process runs",
+          "acceptance_requirement_id": "public.6e5b8f1404a57b58"
+        },
+        {
+          "description": "SIGTERM stops the process and releases the port within 5 seconds",
+          "acceptance_requirement_id": "public.ef40747bbae96dbc"
+        }
+      ],
+      "historical_status": "FAIL",
+      "task_type_rule": "原树不启动新服务；最终检查R04入口、Ready、HTTP及清理；逐断言映射。",
+      "r06_opt_in_status": "NOT_APPLIED_TO_HISTORICAL_EXPERIMENT"
+    },
+    {
+      "case": "dev-11",
+      "task_id": "hv4-dev-got-local-roundtrip",
+      "type": "run_app",
+      "public_goal": "Add scripts/selfcheck.mjs and an npm script selfcheck. The script starts a local HTTP server on an ephemeral port, performs a got GET, asserts the status and body, closes the server and exits 0; any failure exits non-zero and still closes the server.",
+      "public_requirements": [
+        {
+          "description": "selfcheck completes with exit 0 and prints the observed status",
+          "acceptance_requirement_id": "public.a40cdd0da1f53057"
+        },
+        {
+          "description": "the local server is closed and no handle keeps the process alive",
+          "acceptance_requirement_id": "public.784f3209edad3413"
+        },
+        {
+          "description": "failure path exits non-zero without leaking the server",
+          "acceptance_requirement_id": "public.5504845437ebdbfc"
+        }
+      ],
+      "historical_status": "FAIL",
+      "task_type_rule": "原树不启动新服务；最终检查R04入口、Ready、HTTP及清理；逐断言映射。",
+      "r06_opt_in_status": "NOT_APPLIED_TO_HISTORICAL_EXPERIMENT"
+    },
+    {
+      "case": "dev-12",
+      "task_id": "hv4-dev-click-multifile-placeholder",
+      "type": "feature",
+      "public_goal": "Add a configurable short-help placeholder used by Command.get_short_help_str across utils and formatting so a custom placeholder is applied consistently without changing the default \"...\" behavior.",
+      "public_requirements": [
+        {
+          "description": "custom placeholder is honored",
+          "acceptance_requirement_id": "public.6b67ef6e4785cdf0"
+        },
+        {
+          "description": "default behavior is unchanged",
+          "acceptance_requirement_id": "public.55bc966c6fc17235"
+        }
+      ],
+      "historical_status": "FAIL",
+      "task_type_rule": "原既有行为绿；声明目标缺失可预期红，其他错误阻断；最终目标必须实际执行绿。",
+      "r06_opt_in_status": "NOT_APPLIED_TO_HISTORICAL_EXPERIMENT"
+    }
+  ],
+  "holdout_aggregate": {
+    "count": 12
+  }
+}

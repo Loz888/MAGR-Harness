@@ -1,0 +1,19 @@
+{
+  "_public_export": {
+    "original_record_sha256": "5d01563a5ea236865552d03686738c3f377f2fd42d0fb73f1e995d49ef387c7b",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "schema": "h12-complete-matrix-engineering-v1",
+  "status": "PASS",
+  "counts": {
+    "tests": 112,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "source_sha256": "b7dfff2c71320db22c3f5e541b4ba72e878475041a22d3c54ceb034ff1f84629",
+  "new_paid_calls": 0,
+  "status_field_occurrences": {
+    "PASS": 3
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "_public_export": {
+    "original_record_sha256": "39aa49dcc39898466981b07cf06cdddfc15e3c63415e0200bc3a5a0db502024a",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "schema": "h12-r08-remaining-reassessment-v3",
+  "at": "2026-11-18T02:07:40.510787+00:00",
+  "status": "FAIL",
+  "scope": "three_previous_development_failures_only",
+  "development_counts": {
+    "PASS": 2,
+    "FAIL": 1
+  },
+  "source_commit": "e86f0246768e1f335fd037d507c9a373b672cd89",
+  "source_sha256": "05cce41ce87200c281e00b18996b1de698d98deb2f18902f290201cb982fee5c",
+  "model": "deepseek-flash",
+  "first_sample_only": true,
+  "serial_dispatch": true,
+  "new_physical_calls": 16,
+  "new_upper_cost_micros": 79862,
+  "original_scores_verified": 128,
+  "old_passes_combined": false,
+  "engineering": {
+    "collected_only": 895,
+    "full_suite_run": false
+  },
+  "thresholds": {
+    "dev": 10,
+    "holdout": 9,
+    "denominator_each": 12
+  },
+  "remaining_development": 9,
+  "remaining_development_status": "NOT_RUN_BY_USER_SCOPE",
+  "formal_same_source_development": "NOT_FULLY_EVALUATED",
+  "formal_h12_pass": false,
+  "mvp_released": false,
+  "heldout_aggregate": {
+    "status": "NOT_RUN_NOT_ADMITTED",
+    "count": 12
+  },
+  "development": [
+    {
+      "task_id": "r08-dev-03-requests-quoted-content-type",
+      "status": "PASS",
+      "reason": "verified",
+      "candidate_status": "completed",
+      "split": "dev",
+      "model_calls": 7,
+      "tool_calls": 14,
+      "input_tokens": 113993,
+      "output_tokens": 4816,
+      "wall_seconds": 485.2160596950562,
+      "compaction_count": 0,
+      "independent_judge_status": "PASS",
+      "independent_public_regression_status": "PASS",
+      "new_regression_failures": 0,
+      "regression_evidence_known": true,
+      "acceptance_integrity_status": "PASS",
+      "output_integrity_status": "PASS",
+      "lifecycle_integrity_status": "PASS"
+    },
+    {
+      "task_id": "r08-dev-05-requests-http-url-helper",
+      "status": "FAIL",
+      "reason": "model_output_continuation_limit",
+      "candidate_status": "incomplete",
+      "split": "dev",
+      "model_calls": 4,
+      "tool_calls": 5,
+      "input_tokens": 44880,
+      "output_tokens": 1215,
+      "wall_seconds": 280.48969839001074,
+      "compaction_count": 0,
+      "independent_judge_status": "FAIL",
+      "independent_public_regression_status": "PASS",
+      "new_regression_failures": 0,
+      "regression_evidence_known": true,
+      "acceptance_integrity_status": "FAIL",
+      "output_integrity_status": "PASS",
+      "lifecycle_integrity_status": "FAIL"
+    },
+    {
+      "task_id": "r08-dev-08-requests-encoding-refactor",
+      "status": "PASS",
+      "reason": "verified",
+      "candidate_status": "completed",
+      "split": "dev",
+      "model_calls": 5,
+      "tool_calls": 12,
+      "input_tokens": 65433,
+      "output_tokens": 4438,
+      "wall_seconds": 475.93557786400197,
+      "compaction_count": 2,
+      "independent_judge_status": "PASS",
+      "independent_public_regression_status": "PASS",
+      "new_regression_failures": 0,
+      "regression_evidence_known": true,
+      "acceptance_integrity_status": "PASS",
+      "output_integrity_status": "PASS",
+      "lifecycle_integrity_status": "PASS"
+    }
+  ],
+  "status_field_occurrences": {
+    "FAIL": 2,
+    "PASS": 6
+  }
+}

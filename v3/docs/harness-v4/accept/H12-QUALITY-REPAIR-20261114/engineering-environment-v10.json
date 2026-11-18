@@ -1,0 +1,148 @@
+{
+  "schema": "h12-quality-environment-discovery-engineering-v1",
+  "source_sha256": "84e41245c86571eaaa2bb4dac56b33aba0599b125ee62a236943de72f346fe32",
+  "engineering_gate": "PASS",
+  "live_gate": "NOT_RUN_FOR_V10",
+  "checks": 996,
+  "counts_overlap_between_registered_groups": true,
+  "runs": [
+    {
+      "path": "evidence/HV4-H12-FULL-DEV/20261114T142142Z-c3e133b3/result.json",
+      "sha256": "6db064338a23d3fb87e6b9ed731a53d1541675d8aeabd3bcf9baccebf2277e9e",
+      "counts": {
+        "tests": 98,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "log": {
+        "path": "evidence/HV4-H12-FULL-DEV/20261114T142142Z-c3e133b3/command.log",
+        "sha256": "b911d35a3c1c8bd0d95557200acba5ab7466fd04748ec716d01f412efe83f677"
+      }
+    },
+    {
+      "path": "evidence/HV4-H12-QUALITY-REPAIR/20261114T142339Z-01ee36e0/result.json",
+      "sha256": "afdaae9dcc4af0e3a8debd3d618807d0c28489205050f6844dec975e4fa384d8",
+      "counts": {
+        "tests": 375,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "log": {
+        "path": "evidence/HV4-H12-QUALITY-REPAIR/20261114T142339Z-01ee36e0/command.log",
+        "sha256": "4598da8bd5098ba9edb89a6e0a7e455988fe288b8664fd3d24d93e9d132fc701"
+      }
+    },
+    {
+      "path": "evidence/HV4-H10/20261114T142618Z-bcf147b5/result.json",
+      "sha256": "400f98a698d1106b26a07dd12421433c8c634703636c968d170452b12dde511f",
+      "counts": {
+        "tests": 80,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "log": {
+        "path": "evidence/HV4-H10/20261114T142618Z-bcf147b5/command.log",
+        "sha256": "2ca527606fb96ef82494d50624c08404a5148abb24d7166d0e5a52e131ef53c4"
+      }
+    },
+    {
+      "path": "evidence/HV4-H12/20261114T142720Z-faedaab2/result.json",
+      "sha256": "d2a5887e32086af1079f6095771f908cb8a1707796dac858da7605307cfbc76d",
+      "counts": {
+        "tests": 443,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "log": {
+        "path": "evidence/HV4-H12/20261114T142720Z-faedaab2/command.log",
+        "sha256": "a3dbb9783d5bd6976a99aff540e2132b4a2acb0d50a6c20fe9a17c7073ead654"
+      }
+    }
+  ],
+  "ruff": {
+    "path": ".local/h12/quality-repair-20261114/engineering-v10-results-r2-ruff.log",
+    "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+  },
+  "mypy": {
+    "path": ".local/h12/quality-repair-20261114/engineering-v10-results-r2-mypy.log",
+    "sha256": "714f52c6d46fd75dd9756d1cff1a9a63dc15eb156878baa112ffb12ad665adb4"
+  },
+  "targeted": [
+    {
+      "path": ".local/h12/quality-repair-20261114/environment-discovery-v10-r2.xml",
+      "sha256": "abc16e48614f9f1b6348546103313cabae06656982233082858308e0dc6de2cc"
+    },
+    {
+      "path": ".local/h12/quality-repair-20261114/verifier-preflight-v10.xml",
+      "sha256": "ffda9db89da64c5af0df55375c721446fdebb80008fd12f284d0fea2349af4d1"
+    },
+    {
+      "path": ".local/h12/quality-repair-20261114/context-judge-v10-recheck.xml",
+      "sha256": "94a43cd3de703da7e76ba9bf74bdae1206e8ff29bab4871d70e4c5c6f8e3c595"
+    }
+  ],
+  "retained_failed_engineering": [
+    {
+      "path": ".local/h12/quality-repair-20261114/pytest-cache-v10-before.xml",
+      "sha256": "6e11691c492682eb2e4873538fcfd305590c8e7c4aa737ad88836e2f89e18f8c"
+    },
+    {
+      "path": ".local/h12/quality-repair-20261114/environment-discovery-v10-after.xml",
+      "sha256": "30e0fb7dc3714c8e13cc3590271775b0516556a8b057a0952b45413d4fa2258d"
+    },
+    {
+      "path": ".local/h12/quality-repair-20261114/environment-discovery-v10-recheck.xml",
+      "sha256": "2dc1088c19ea4a15805b5b69659ba943b9714bcebc009ed029a2227d5f79c50b"
+    },
+    {
+      "path": ".local/h12/quality-repair-20261114/verifier-preflight-v10.xml",
+      "sha256": "ffda9db89da64c5af0df55375c721446fdebb80008fd12f284d0fea2349af4d1"
+    },
+    {
+      "path": ".local/h12/quality-repair-20261114/directory-context-v10.xml",
+      "sha256": "3a7e6df6b24130130d82ef82a177e5c5447805e2803d966d8c26fe0b91ad8eb0"
+    },
+    {
+      "path": ".local/h12/quality-repair-20261114/engineering-v10-results.json",
+      "sha256": "37290519f5598aa4bb9d70bfef5e784178c3e0a562a3c373577814b643ea34bc"
+    }
+  ],
+  "changes": [
+    "Use existing Broker scratch cache in every pytest verifier phase; retain selectors, real assertion failures and warning-as-error policy",
+    "Public readiness executes the same normalized public regression command as independent verification without reading private Judge assets",
+    "Public standalone Node tests use the same TAP entrypoint; declared assertion red is preparation only and dependencies remain blocked",
+    "Directory discovery authorizes requested and canonical child paths; protected/inaccessible entries are omitted while direct accesses remain denied",
+    "Reject revocation and lease changes during directory enumeration; completed PG result recovery adds no model calls",
+    "Compact repeated tool-scope descriptions; keep original 8192-token recovery and all authority fields"
+  ],
+  "first_sample_policy": "Got local-roundtrip, Click style-refactor, pflag unknown-flag, remaining development in frozen order; full same-candidate development gate before original unseen holdout. No repeated first sample, reused PASS, unknown resend or holdout feedback tuning.",
+  "shared_budget_before_live": {
+    "used_calls": 547,
+    "settled_micros": 2436049,
+    "reserved_micros": 0,
+    "unknown_calls": 0,
+    "limit_micros": 12000000
+  },
+  "historical_v9": "8 PASS / 2 FAIL / 2 NOT_RUN retained; holdout 12 NOT_RUN",
+  "paid_model_calls_in_engineering": 0,
+  "h13": "NOT_STARTED",
+  "recovery": {
+    "path": "evidence/HV4-H11/20261114T142812Z-08bf69c1/result.json",
+    "sha256": "5b6fd6be9a90dd23f0c6325693654895bfeb8b1d5c2b72540597256ea79b3d3d",
+    "counts": {
+      "tests": 68,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "historical_acceptance_pointer_restored": true,
+    "restore_log": {
+      "path": ".local/h12/quality-repair-20261114/engineering-v10-recovery-driver.log",
+      "sha256": "4981acc8711bc5bcd6979a4ea1bf007c671cf0bef71947c95225e1b8013ad91c"
+    }
+  }
+}

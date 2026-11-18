@@ -1,0 +1,45 @@
+{
+  "schema": "h12-public-plan-v1",
+  "status": "FROZEN",
+  "task_id": "hv4-dev-pflag-unknown-flag",
+  "repository": "spf13/pflag",
+  "base_commit": "f8a990678a6d44385313e9b19e40737f889f9b14",
+  "public_goal_sha256": "c9559a544887502103c201dbc6b565b461b1f02dc905abaf386994bc984980db",
+  "resources_sha256": "d784b79980f61df462ecc4ef8c47bc67c0851a2d99af7d9997688278314b7595",
+  "original_tree_sha256": "0a3ab97cab67289541029fe9e12aee57d328ab59c4df23373efc7ad84e3f9443",
+  "roles": {
+    "reproduction": "same_public_probe_assertion_failure_on_original",
+    "behavior": "same_public_probe_all_cases_pass_on_final",
+    "regression": "original_public_regression_on_final"
+  },
+  "regression_argv": [
+    "go",
+    "test",
+    "-p",
+    "1",
+    "-v",
+    "./..."
+  ],
+  "public_basis": [
+    {
+      "path": "flag.go",
+      "sha256": "6048deeba753a157f4c2ae55c9df828880d5d26a43bec3517fa4d8db7776bee3"
+    },
+    {
+      "path": "go.mod",
+      "sha256": "16c6dfc0eb58eb3c9113ce197d460c6725c647e4688ac26d31c8ed69f1ebbc68"
+    }
+  ],
+  "probe": {
+    "schema_version": "harness-public-probe-plan-v1",
+    "plan_id": "public-pflag-stop-unknown-v1",
+    "asset_sha256": "8e7382b7852ce1b9247110b9e0742f1415349a7c20da955f6a6a64233170a62b",
+    "runner": "python-json-v1",
+    "case_ids": [
+      "unknown-before-known",
+      "known-prefix-before-unknown",
+      "unknown-before-value",
+      "interspersed-control"
+    ]
+  }
+}

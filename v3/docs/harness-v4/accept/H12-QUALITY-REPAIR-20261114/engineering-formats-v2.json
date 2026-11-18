@@ -1,0 +1,62 @@
+{
+  "schema": "h12-quality-formats-engineering-v1",
+  "engineering_gate": "PASS",
+  "live_gate": "NOT_RUN",
+  "historical_h12_quality": "FAIL",
+  "source_sha256": "afb37899bef354d4622e0d2788d170e7e02eef5e603dc11512e36576b3f92ab5",
+  "tests": 244,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "lint": "PASS",
+  "mypy": "PASS",
+  "mypy_source_files": 248,
+  "runs": [
+    {
+      "path": "evidence/HV4-H12-QUALITY-REPAIR/20261114T084423Z-e0198d37/result.json",
+      "sha256": "6ad0dc25907e0b3bd5d7b9c6c620e379a1e24ba295afda7ff2ed4e8aec9bfa0a",
+      "counts": {
+        "tests": 146,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "path": "evidence/HV4-H12-FULL-DEV/20261114T084516Z-c3de8dab/result.json",
+      "sha256": "e7524bf5a9cc71a4a15ee4e54e95bd072bda38e8380a7dae33476e009fab627f",
+      "counts": {
+        "tests": 98,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    }
+  ],
+  "preserved_preparation_failure": {
+    "path": ".local/h12/quality-repair-20261114/holdout-v1/report.json",
+    "sha256": "a527b5f66ddadfbc88de4b3629d99e76901aab6708c0d2203d0a6a732c6eb556",
+    "ready_count": 6,
+    "denominator": 12,
+    "candidate_before": "b1373336d7850336c195eaf48e6ad06bfe263c6893134b4457d35fc3c95cf7df",
+    "candidate_after": "b1373336d7850336c195eaf48e6ad06bfe263c6893134b4457d35fc3c95cf7df",
+    "quality_status": "NOT_RUN",
+    "diagnosis_scope": "Public log formats, runtime identity and compiler phase only; no private Judge content or held-out model feedback"
+  },
+  "fixes": [
+    "Node native TAP runner only for exact immutable public asset scripts",
+    "Exact frozen Go/Python/Node failure attribution",
+    "Feature missing target compiler/import baseline remains distinct from passing tests",
+    "Held-out pinned Express Node18 runtime follows explicit infrastructure revision",
+    "Complete final green regression is zero failures even when the original new-feature compiler baseline had no runnable tests",
+    "Zero-model dev/holdout preparation may run concurrently; paid sealing still requires all current proofs"
+  ],
+  "new_paid_calls": 0,
+  "shared_before_paid": {
+    "calls": 333,
+    "settled_micros": 1483486,
+    "reserved_micros": 0,
+    "unknown_calls": 0,
+    "limit_micros": 12000000
+  }
+}

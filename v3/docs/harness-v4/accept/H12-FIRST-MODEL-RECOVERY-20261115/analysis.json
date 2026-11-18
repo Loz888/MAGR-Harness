@@ -1,0 +1,10 @@
+{
+  "_public_export": {
+    "original_record_sha256": "36f67dd05006e71b42ebc3e3aa0bf5d955713252f0f00b062b497cc8d0ab200f",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "schema": "h12-first-model-recovery-offline-audit-v1",
+  "recorded_at": "2026-11-15T08:13:27.913629+00:00",
+  "mvp": "NOT_RELEASED",
+  "paid_model_calls": 0
+}

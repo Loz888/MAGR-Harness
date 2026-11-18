@@ -1,0 +1,101 @@
+{
+  "schema": "h12-quality-acceptance-refresh-engineering-v1",
+  "source_sha256": "ba4cbb0fa7fe389234405a32a8ab941ae9ae14e5a2e8ba57eb4c85b0239b3925",
+  "engineering_gate": "PASS",
+  "live_gate": "NOT_RUN_FOR_V9",
+  "tests": 540,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "runs": [
+    {
+      "path": "evidence/HV4-H12-QUALITY-REPAIR/20261114T124609Z-8dc84767/result.json",
+      "sha256": "ed934b40d36f530dee6d1cf535c20464feac97a377d46d9937739c3bd0da2fad",
+      "counts": {
+        "tests": 362,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "log": {
+        "path": "evidence/HV4-H12-QUALITY-REPAIR/20261114T124609Z-8dc84767/command.log",
+        "sha256": "15e4d70cfe065446b1db47dbd24168109838f9521b65d203381d479a48dd2457"
+      }
+    },
+    {
+      "path": "evidence/HV4-H12-FULL-DEV/20261114T124859Z-4fda649b/result.json",
+      "sha256": "c6a42e8964df6b4c9ba3644495ee20f6a97d92fbd8afe6a6a7d2ad59044daa7b",
+      "counts": {
+        "tests": 98,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "log": {
+        "path": "evidence/HV4-H12-FULL-DEV/20261114T124859Z-4fda649b/command.log",
+        "sha256": "f94674c6cd8adcd6a194ee18b91b53cecc24af8237c21d403fdc75a8430aa9a6"
+      }
+    },
+    {
+      "path": "evidence/HV4-H10/20261114T125141Z-faf225b3/result.json",
+      "sha256": "562e102c8b6ba0be41a41b6883f7576438dd9b19cb300ebed2befb589dc0ea5c",
+      "counts": {
+        "tests": 80,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "log": {
+        "path": "evidence/HV4-H10/20261114T125141Z-faf225b3/command.log",
+        "sha256": "926641bba7694529aa79b372ef1684de2ffa8f698e38f94925df7c1a3df3f786"
+      }
+    }
+  ],
+  "ruff": {
+    "path": ".local/h12/quality-repair-20261114/engineering-v9-results-ruff.log",
+    "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+  },
+  "mypy": {
+    "path": ".local/h12/quality-repair-20261114/engineering-v9-results-mypy.log",
+    "sha256": "714f52c6d46fd75dd9756d1cff1a9a63dc15eb156878baa112ffb12ad665adb4"
+  },
+  "targeted": {
+    "path": ".local/h12/quality-repair-20261114/acceptance-refresh-v9-r2.xml",
+    "sha256": "ce39f856cf14781770f03079adffa986cf4b4210e4e28581dd8775f99d3c9f02"
+  },
+  "retained_failed_engineering": [
+    {
+      "path": ".local/h12/quality-repair-20261114/acceptance-refresh-v9-before.xml",
+      "sha256": "7d783c719d7723a8c6e8a15c4b535ad7055b3b6c0c1aa920e95f1dbb9dc6e6a1"
+    },
+    {
+      "path": ".local/h12/quality-repair-20261114/acceptance-refresh-v9-after.xml",
+      "sha256": "178975abea74945679d0a7433ffb459e3fa5339e455df8c393fd0d4c2d0e74a5"
+    },
+    {
+      "path": ".local/h12/quality-repair-20261114/acceptance-refresh-v9-recheck.xml",
+      "sha256": "850a9631d8d96ddb4d02d1ca33f827c9563d6c5a05bacebd97fb1b31643cd592"
+    }
+  ],
+  "shared_budget_before_live": {
+    "budget": {
+      "limit_micros": 12000000,
+      "reserved_micros": 0,
+      "settled_micros": 2076047,
+      "used_calls": 462,
+      "call_limit": 1536
+    },
+    "unknown_calls": 0,
+    "audit": "read_only_original_pg",
+    "new_model_calls": 0
+  },
+  "changes": [
+    "Refresh exact-tree acceptance from current command receipts after each tool batch, including same-tree new builds",
+    "Refreshes never certify final completion or start an application; actual final answer and independent gate remain required",
+    "Current checklist and last final verification stay distinct across interruption and recovery",
+    "Reuse current task fields inside the pinned working state instead of a duplicate escaped plan copy; preserve complete source and log paging at the original 8192-token bound"
+  ],
+  "first_sample_policy": "Click help-name, pflag unknown-flag, Got header-value, then remaining development tasks in frozen order; original independent holdout only after this candidate meets the full development gate. No repeated first sample or reused PASS.",
+  "historical_v8": "0 PASS / 3 FAIL / 9 NOT_RUN retained; no heldout model samples",
+  "additional_registered_checks": "HV4-H12 and HV4-H11 will be recorded separately before paid dispatch"
+}

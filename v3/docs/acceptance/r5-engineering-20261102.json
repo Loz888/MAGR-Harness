@@ -1,0 +1,15 @@
+{
+  "_public_export": {
+    "original_record_sha256": "fca745625e854f10fddb98b8027e629f94820c4b9951de2c42e8ec483f10029c",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "schema": "r5-controlled-engineering-acceptance-v1",
+  "date": "2026-11-02T22:03:35.479139+08:00",
+  "engineering_gate": "PASS",
+  "counts": {
+    "tests": 229,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}

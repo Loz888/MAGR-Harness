@@ -1,0 +1,16 @@
+{
+  "_public_export": {
+    "original_record_sha256": "f87f070df559fb0dc776c29978929fd5c55612e27dd7dee85de31a0c64a23481",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "card": "HV4-H12-R00",
+  "h13": "NOT_STARTED",
+  "mvp": "NOT_RELEASED",
+  "new_paid_calls": 0,
+  "recorded_at": "2026-11-15T09:56:06.265578+00:00",
+  "schema": "h12-r00-baseline-v1",
+  "status": "PASS",
+  "status_field_occurrences": {
+    "PASS": 2
+  }
+}

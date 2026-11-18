@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <meta name="reposage-ui-contract" content="reposage-ui-v2" />
+    <title>RepoSage · 项目助手</title>
+    <link rel="icon" href="/static/agent-icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/static/agent.css" />
+    <script src="/static/agent.js" defer></script>
+    <script src="/static/agent-product.js" defer></script>
+  </head>
+  <body>
+    <section id="auth-screen" class="auth-screen">
+      <div class="auth-intro">
+        <a class="brand" href="/"><span class="brand-icon">R</span>RepoSage</a>
+        <p class="eyebrow">FROM AN IDEA TO WORKING CODE.</p>
+        <h1>说出你的需求，<br />一起把项目做好。</h1>
+        <p>
+          理解项目、修改代码、运行验证。<br />从第一个问题到最后一次调整，在同一处继续。
+        </p>
+        <div class="auth-features">
+          <span>自然语言需求</span><span>持续协作</span><span>可审查的变更</span>
+        </div>
+      </div>
+      <div class="auth-card">
+        <p class="eyebrow" id="auth-eyebrow">欢迎回来</p>
+        <h2 id="auth-title">登录 RepoSage</h2>
+        <p class="field-help" id="auth-description">
+          使用你的账户，继续分析项目。
+        </p>
+        <form id="login-form">
+          <label for="username">用户名</label
+          ><input
+            id="username"
+            name="username"
+            autocomplete="username"
+            minlength="3"
+            maxlength="80"
+            pattern="[A-Za-z0-9_.@\-]{3,80}"
+            required
+            placeholder="输入用户名"
+          />
+          <label for="password">密码</label
+          ><input
+            id="password"
+            name="password"
+            type="password"
+            autocomplete="current-password"
+            maxlength="128"
+            required
+            placeholder="输入密码"
+          />
+          <div id="confirm-password-row" hidden>
+            <label for="confirm-password">确认密码</label
+            ><input
+              id="confirm-password"
+              type="password"
+              autocomplete="new-password"
+              maxlength="128"
+              placeholder="再次输入密码"
+            />
+          </div>
+          <p id="login-error" class="error-text" role="alert"></p>
+          <button type="submit" id="login-submit" class="primary-button">
+            登录
+          </button>
+        </form>
+        <p class="auth-footnote" id="auth-footnote">
+          登录状态仅保存在当前服务的安全会话中。
+        </p>
+      </div>
+    </section>
+    <div id="app-shell" class="app-shell" hidden>
+      <aside class="sidebar" id="sidebar">
+        <button type="button" id="close-sidebar" class="icon-button mobile-only" aria-label="关闭侧栏">×</button>
+        <a class="brand" href="/" aria-label="RepoSage 首页"
+          ><span class="brand-icon">R</span>RepoSage<span class="brand-tag"
+            >AGENT</span
+          ></a
+        >
+        <button class="new-chat" id="new-chat">
+          <span aria-hidden="true">＋</span> 新建对话
+        </button>
+        <div class="sidebar-label">
+          最近的对话
+          <button
+            id="refresh-history"
+            class="icon-button"
+            aria-label="刷新历史"
+          >
+            ↻
+          </button>
+        </div>
+        <nav id="history" aria-label="对话历史">
+          <p class="sidebar-empty">登录后继续你的项目</p>
+        </nav>
+        <div class="sidebar-bottom">
+          <span class="private-note">理解 · 执行 · 验证 · 交付</span>
+          <button id="open-settings" class="settings-button">
+            <span class="status-dot" id="connection-dot"></span
+            ><span id="connection-label">连接服务</span
+            ><span class="settings-icon" aria-hidden="true">⚙</span>
+          </button>
+        </div>
+      </aside>
+      <main class="main">
+        <header class="topbar">
+          <button
+            id="toggle-sidebar"
+            class="icon-button mobile-only"
+            aria-label="切换侧栏"
+            aria-controls="sidebar"
+            aria-expanded="false"
+          >
+            ☰
+          </button>
+          <div class="topbar-title">
+            <span id="page-title">新的项目对话</span
+            ><span class="topbar-subtitle" id="model-label"
+              >REPOSITORY AGENT</span
+            >
+          </div>
+          <div class="mode-switch" role="group" aria-label="工作模式">
+            <button type="button" id="mode-coding" class="mode-option is-active">
+              项目助手
+            </button>
+            <button type="button" id="mode-analysis" class="mode-option">
+              GitHub 分析
+            </button>
+          </div>
+        <span class="mode-badge visually-hidden" id="mode-badge">项目助手</span>
+        </header>
+        <div class="notice" id="notice" role="status" hidden></div>
+        <section id="product-panel" class="product-panel" aria-label="项目助手">
+          <div class="product-workspace-bar">
+            <span class="workspace-symbol" aria-hidden="true">▱</span>
+            <label class="visually-hidden" for="product-project">当前项目</label>
+            <select id="product-project" aria-label="当前项目"><option value="">选择项目</option></select>
+            <button type="button" id="product-add-project" class="ghost-button">打开项目</button>
+            <button type="button" id="product-project-settings" class="product-text-button">项目权限</button>
+          </div>
+          <div id="product-setup" class="product-setup" hidden role="status">
+            <div><strong id="product-setup-title">准备你的项目助手</strong><p id="product-setup-description"></p></div>
+            <button type="button" id="product-setup-action" class="ghost-button">开始设置</button>
+          </div>
+          <div class="product-stage" id="product-stage">
+            <div id="product-welcome" class="product-welcome">
+              <span class="product-mark" aria-hidden="true">⌘</span>
+              <p class="eyebrow">YOUR PROJECT, MOVING FORWARD.</p>
+              <h1>你想完成什么？</h1>
+              <p>描述一个需求，贴入报错，或者从一个问题开始。<br />助手会阅读项目、安排步骤，并验证修改。</p>
+              <div class="product-suggestions">
+                <button type="button" data-agent-prompt="先阅读这个项目，说明整体架构和运行方式。"><span>◈</span><strong>了解这个项目</strong><small>从结构和入口开始</small></button>
+                <button type="button" data-agent-prompt="检查项目中的测试失败，定位原因并修复，补充回归测试。"><span>⌕</span><strong>排查并修复问题</strong><small>找到原因，验证修改</small></button>
+                <button type="button" data-agent-prompt="检查如何运行这个项目，准备环境并启动应用。"><span>↗</span><strong>运行起来</strong><small>准备环境与启动预览</small></button>
+              </div>
+            </div>
+            <div id="product-conversation" class="product-conversation" aria-label="项目对话" aria-live="polite"></div>
+          </div>
+          <div id="product-question" class="product-question" hidden>
+            <strong>需要你补充一点信息</strong><p id="product-question-text"></p>
+            <div class="coding-inline"><textarea id="product-answer" rows="2" placeholder="输入你的回答，进度会保留。"></textarea><button type="button" id="product-answer-send" class="ghost-button">回复</button></div>
+          </div>
+          <form id="product-composer" class="product-composer">
+            <label class="visually-hidden" for="product-input">需求或补充要求</label>
+            <textarea id="product-input" rows="3" maxlength="4000" placeholder="描述你的需求，也可以粘贴报错或文件位置…" required></textarea>
+            <div class="product-composer-footer">
+              <span id="product-composer-hint">选择项目后，直接描述你想完成的事。</span>
+              <div class="product-composer-actions">
+                <button type="button" id="product-pause" class="product-text-button" hidden>暂停</button>
+                <button type="button" id="product-resume" class="product-text-button" hidden>继续执行</button>
+                <button type="button" id="product-cancel" class="product-text-button" hidden>停止</button>
+                <button type="submit" id="product-send" class="send-button"><span id="product-send-label">发送需求</span><span aria-hidden="true">↑</span></button>
+              </div>
+            </div>
+          </form>
+          <p id="product-error" class="product-error error-text" role="alert"></p>
+          <p class="product-footer-note">Enter 发送 · Shift+Enter 换行 · 文件在隔离副本中修改，审查后可应用到项目。</p>
+        </section>
+        <section class="welcome" id="welcome" hidden>
+          <span class="welcome-mark" aria-hidden="true">⌘</span>
+          <p class="eyebrow">从一个问题，读懂整个项目</p>
+          <h1>把仓库交给我，<br />从你的问题开始。</h1>
+          <p class="welcome-description">
+            提供 GitHub 地址和你想了解的问题。Agent 会搜索代码、阅读源码，<br
+              class="desktop-only"
+            />把执行过程和带来源的结论留在这次对话里。
+          </p>
+          <div class="suggestions" aria-label="问题示例">
+            <button
+              data-prompt="梳理项目的整体架构，说明入口文件、核心模块和主要调用链。"
+            >
+              <span aria-hidden="true">◈</span><strong>理解项目架构</strong
+              ><span>从入口到关键模块</span>
+            </button>
+            <button
+              data-prompt="调查项目中可能导致错误的边界条件，给出具体源码证据和可行的验证方法。"
+            >
+              <span aria-hidden="true">⌕</span><strong>排查潜在问题</strong
+              ><span>沿着证据定位原因</span>
+            </button>
+            <button
+              data-prompt="说明项目如何启动和运行测试，列出必需依赖，并根据源码核对文档中的步骤。"
+            >
+              <span aria-hidden="true">↗</span><strong>快速上手项目</strong
+              ><span>运行、依赖与测试</span>
+            </button>
+          </div>
+        </section>
+        <section class="coding-panel" id="coding-panel" hidden aria-label="编码任务">
+          <header class="coding-head">
+            <p class="eyebrow">LOCAL WORKSPACE · H06 CONTAINER</p>
+            <h1>在隔离工作区里完成一次编码任务。</h1>
+            <p class="welcome-description">
+              选择已注册的本地项目，描述目标。Agent 会在受限容器里运行测试，
+              并在同页展示命令、完整 Diff 与可下载补丁。
+            </p>
+          </header>
+          <div class="coding-grid">
+            <form class="coding-form" id="coding-form">
+              <label for="coding-project">项目</label>
+              <div class="coding-inline">
+                <select id="coding-project" aria-label="选择项目"></select>
+                <button type="button" id="coding-refresh" class="ghost-button">
+                  刷新
+                </button>
+              </div>
+              <div class="coding-empty" id="coding-no-project" hidden>
+                <p>还没有注册项目。输入这台机器上的项目绝对路径。</p>
+                <input id="coding-path" placeholder="/home/me/project" />
+                <button type="button" id="coding-register" class="ghost-button">
+                  注册项目
+                </button>
+              </div>
+              <label for="coding-kind">任务类型</label>
+              <select id="coding-kind">
+                <option value="bugfix">修复缺陷</option>
+                <option value="feature">新增行为</option>
+                <option value="refactor">重构</option>
+                <option value="inspect">只读调查</option>
+              </select>
+              <label for="coding-objective">目标</label>
+              <textarea
+                id="coding-objective"
+                rows="3"
+                maxlength="4000"
+                placeholder="例如：修复 add() 的返回值，并运行单元测试确认。"
+              ></textarea>
+              <details class="advanced-limits" id="coding-advanced">
+                <summary>受控适配器参数（阶段一）</summary>
+                <label for="coding-test">测试命令（留空自动探测）</label>
+                <input
+                  id="coding-test"
+                  placeholder="python3 -B -m unittest discover -v"
+                />
+                <label for="coding-target">目标文件</label>
+                <input id="coding-target" placeholder="calc.py" />
+                <label for="coding-old">替换前文本</label>
+                <textarea id="coding-old" rows="2"></textarea>
+                <label for="coding-new">替换后文本</label>
+                <textarea id="coding-new" rows="2"></textarea>
+                <label class="checkbox-label">
+                  <input id="coding-live" type="checkbox" />
+                  使用真实付费模型（需已授权凭据与预算）
+                </label>
+              </details>
+              <label class="checkbox-label consent">
+                <input id="coding-approve" type="checkbox" />
+                我确认在隔离工作区中修改文件并运行测试
+              </label>
+              <p class="error-text" id="coding-error" role="alert"></p>
+              <button type="submit" class="primary-button" id="coding-submit">
+                开始编码任务
+              </button>
+            </form>
+            <section class="coding-result" id="coding-result" hidden aria-live="polite">
+              <div class="coding-result-head">
+                <h2 id="coding-result-title">运行结果</h2>
+                <span class="mode-badge" id="coding-result-badge"></span>
+              </div>
+              <section class="coding-live" id="coding-live" hidden aria-live="polite">
+                <div class="coding-live-head">
+                  <span id="coding-live-status">queued</span>
+                  <span class="field-help" id="coding-live-cursor">cursor 0</span>
+                </div>
+                <ol class="coding-log" id="coding-live-log"></ol>
+                <div class="coding-controls">
+                  <button type="button" class="ghost-button" id="coding-pause">暂停</button>
+                  <button type="button" class="ghost-button" id="coding-resume">继续</button>
+                  <button type="button" class="ghost-button" id="coding-cancel">取消</button>
+                </div>
+                <p class="field-help" id="coding-cancel-receipt"></p>
+                <div class="coding-question" id="coding-question" hidden>
+                  <p id="coding-question-text"></p>
+                  <textarea id="coding-answer" rows="2" placeholder="回答这个问题，工作进度会保留。"></textarea>
+                  <button type="button" class="ghost-button" id="coding-answer-send">提交回答</button>
+                </div>
+                <label for="coding-message">运行中补充指示（输入不会被禁用）</label>
+                <div class="coding-inline">
+                  <textarea id="coding-message" rows="2" placeholder="例如：同时补一个回归测试。"></textarea>
+                  <button type="button" class="ghost-button" id="coding-send">发送</button>
+                </div>
+                <ul class="coding-list" id="coding-messages"></ul>
+              </section>
+              <dl class="coding-stats" id="coding-stats"></dl>
+              <h3>变更文件</h3>
+              <ul class="coding-list" id="coding-files"></ul>
+              <h3>命令与测试</h3>
+              <ul class="coding-list" id="coding-commands"></ul>
+              <h3>完整 Diff</h3>
+              <pre class="coding-diff" id="coding-diff"></pre>
+              <p class="field-help" id="coding-protocol"></p>
+              <a class="primary-button" id="coding-patch" hidden>
+                下载补丁
+              </a>
+            </section>
+          </div>
+        </section>
+        <section
+          id="conversation"
+          class="conversation"
+          aria-label="分析对话"
+          hidden
+        ></section>
+        <div class="composer-wrap" hidden>
+          <form class="composer" id="composer">
+            <div class="repo-row">
+              <label for="repository-url" class="repo-label">仓库</label>
+              <input
+                id="repository-url"
+                type="url"
+                placeholder="https://github.com/owner/repository"
+                aria-label="GitHub 仓库 URL"
+                required
+                autocomplete="url"
+              />
+              <details class="ref-options">
+                <summary aria-label="选择分支或提交">分支 / 提交</summary>
+                <label for="repository-ref">分支、Tag 或 40 位 Commit</label
+                ><input
+                  id="repository-ref"
+                  placeholder="默认分支"
+                  maxlength="200"
+                />
+              </details>
+            </div>
+            <label class="visually-hidden" for="question">问题或追问</label>
+            <textarea
+              id="question"
+              rows="3"
+              maxlength="8000"
+              required
+            ></textarea>
+            <div class="composer-footer">
+              <button type="submit" class="send-button" id="send">
+                <span id="send-label">开始分析</span
+                ><span id="send-icon" aria-hidden="true">↑</span>
+              </button>
+            </div>
+          </form>
+          <p class="footer-note">
+            分析固定在同一份代码版本上。关键结论附来源，仍需结合实际业务判断。
+          </p>
+        </div>
+      </main>
+    </div>
+    <dialog id="product-project-dialog" aria-labelledby="product-project-title" class="product-dialog">
+      <div class="dialog-heading"><div><p class="eyebrow">WORKSPACE</p><h2 id="product-project-title">打开项目</h2></div><button type="button" class="icon-button" id="product-project-close" aria-label="关闭">×</button></div>
+      <p class="field-help">输入运行 Harness 的这台电脑上的项目目录。WSL 中请使用 Linux 路径。</p>
+      <form id="product-project-form"><label for="product-project-path">项目目录</label><input id="product-project-path" placeholder="/home/me/my-project" required maxlength="4096" /><p id="product-project-error" class="error-text" role="alert"></p><button type="submit" id="product-project-save" class="primary-button">打开项目</button></form>
+    </dialog>
+    <dialog id="product-permission-dialog" aria-labelledby="product-permission-title" class="product-dialog">
+      <div class="dialog-heading"><div><p class="eyebrow">PROJECT ACCESS</p><h2 id="product-permission-title">设置项目权限</h2></div><button type="button" class="icon-button" id="product-permission-close" aria-label="关闭">×</button></div>
+      <p id="product-permission-project" class="field-help"></p>
+      <p>授权后，助手可以在此项目的隔离副本中阅读、修改文件并运行获准命令。普通操作自动执行，超出范围时会暂停。</p>
+      <p>这同时允许使用已配置的模型处理项目内容。本次授权的费用与模型调用总量由项目内各轮共享，用尽后需重新授权。原项目仅在你审查并点击“应用变更”时写回。</p>
+      <form id="product-permission-form"><label for="product-permission-cost">本次项目授权总预算（美元）</label><input id="product-permission-cost" type="number" min="0.01" max="10" step="0.01" value="0.25" required /><p class="field-help">本次授权最多允许 64 次模型调用，跨对话共享。</p><label class="checkbox-label"><input id="product-permission-github" type="checkbox" /><span>启用此仓库固定提交的 GitHub 只读文件工具，不允许发布。</span></label><p id="product-permission-error" class="error-text" role="alert"></p><button type="submit" id="product-permission-save" class="primary-button">授权此项目并保存</button></form>
+      <details class="product-runtime-settings"><summary>项目运行环境</summary><p class="field-help">可复用已准备好的受信运行环境。输入 Harness 机器上的运行环境锁定文件路径，仅对此项目生效。</p><form id="product-runtime-form"><label for="product-runtime-lock">运行环境锁定文件</label><input id="product-runtime-lock" placeholder="/home/me/prepared-runtime/image-lock.json" maxlength="4096" required /><label for="product-runtime-wheelhouse">离线 Python 依赖目录（可选）</label><input id="product-runtime-wheelhouse" placeholder="/home/me/prepared-wheels" maxlength="4096" /><p class="field-help">仅使用受控目录中通过哈希校验的 wheel；不会联网安装依赖。</p><p id="product-runtime-error" class="error-text" role="alert"></p><button type="submit" id="product-runtime-save" class="ghost-button">保存项目运行环境</button></form></details>
+    </dialog>
+    <dialog id="settings-dialog" aria-labelledby="settings-title">
+      <div class="dialog-heading">
+        <div>
+          <p class="eyebrow">准备好你的项目助手</p>
+          <h2 id="settings-title">模型与使用设置</h2>
+        </div>
+        <button
+          type="button"
+          class="icon-button"
+          id="close-settings"
+          aria-label="关闭设置"
+        >
+          ×
+        </button>
+      </div>
+      <div class="account-row">
+        <span id="account-name"></span
+        ><button id="logout" type="button">退出登录</button>
+      </div>
+      <form id="model-settings-form">
+        <label for="model-id">模型</label
+        ><input
+          id="model-id"
+          value="deepseek-flash"
+          list="product-model-options"
+          maxlength="100"
+          required
+          placeholder="deepseek-flash / deepseek-v4-pro"
+        />
+        <datalist id="product-model-options"><option value="deepseek-flash">DeepSeek Flash</option><option value="deepseek-v4-pro">DeepSeek V4 Pro</option></datalist>
+        <p id="product-model-notice" class="product-verification-note" hidden></p>
+        <details class="advanced-limits" id="context-settings">
+          <summary>上下文窗口与压缩</summary>
+          <p class="field-help" id="context-capability">根据模型API能力预留输出和工具空间。累计Token预算在下方单独设置。</p>
+          <label for="context-mode">上下文窗口</label>
+          <select id="context-mode"><option value="auto">自动：跟随模型API能力</option><option value="manual">自定义：限制本轮窗口</option></select>
+          <label for="context-window">窗口大小（Token）</label>
+          <input id="context-window" type="number" min="4096" max="1048576" step="1" value="131072" disabled />
+          <div class="settings-grid">
+            <div><label for="context-prepare">开始压缩（%）</label><input id="context-prepare" type="number" min="11" max="90" value="65" required /></div>
+            <div><label for="context-force">强制压缩（%）</label><input id="context-force" type="number" min="21" max="95" value="85" required /></div>
+            <div><label for="context-target">压缩后目标（%）</label><input id="context-target" type="number" min="10" max="80" value="50" required /></div>
+          </div>
+          <p class="field-help">百分比按本轮可用输入空间计算，同时受剩余累计额度限制。保留目标、权限、未完成事项和证据引用；必要信息过多时，压缩后可能高于目标。压缩不会恢复已用额度。</p>
+        </details>
+        <div class="settings-grid">
+          <div>
+            <label for="model-key">DeepSeek API Key</label
+            ><input
+              id="model-key"
+              type="password"
+              autocomplete="off"
+              maxlength="4096"
+              placeholder="粘贴 API Key"
+            />
+            <p id="model-key-help" class="field-help">
+              填写后加密保存在运行此服务的电脑上。
+            </p>
+          </div>
+          <div>
+            <label for="github-key">GitHub 只读 Token</label
+            ><input
+              id="github-key"
+              type="password"
+              autocomplete="off"
+              maxlength="4096"
+              placeholder="粘贴 GitHub Token"
+            />
+            <p id="github-key-help" class="field-help">
+              GitHub 分析需要只读权限。本地项目可留空。
+            </p>
+          </div>
+        </div>
+        <h3>模型使用范围与预算</h3>
+        <label class="checkbox-label"
+          ><input
+            id="all-repositories"
+            type="checkbox"
+            checked
+          />允许分析任意公开的 GitHub 仓库</label
+        >
+        <div id="repository-scope-row" hidden>
+          <label for="repository-scope">允许的仓库（每行一个）</label
+          ><textarea
+            id="repository-scope"
+            rows="3"
+            placeholder="owner/repository"
+          ></textarea>
+        </div>
+        <div class="settings-grid">
+          <div>
+            <label for="cost-limit">GitHub 分析费用上限（美元）</label
+            ><input
+              id="cost-limit"
+              type="number"
+              min="0.01"
+              max="10"
+              step="0.01"
+              value="0.50"
+              required
+            />
+          </div>
+          <div>
+            <label for="authorization-days">使用许可有效期</label
+            ><select id="authorization-days">
+              <option value="7">7 天</option>
+              <option value="30" selected>30 天</option>
+              <option value="90">90 天</option>
+            </select>
+          </div>
+        </div>
+        <label for="token-budget-mode">GitHub 分析的累计用量限制</label>
+        <select id="token-budget-mode">
+          <option value="cost">按美元费用上限运行</option>
+          <option value="manual">同时设置独立 Token 上限</option>
+        </select>
+        <p class="field-help" id="token-budget-help">费用和 Token 是两个独立限额；新设置只对后续分析生效。</p>
+        <div class="automatic-policy">
+          <span>自动执行与进展保护</span>
+          <p>
+            Agent
+            会在已授权范围内安排调查与验证，达到要求后完成。项目编辑权限在项目中单独设置。
+          </p>
+        </div>
+        <details class="advanced-limits" id="token-budget-settings">
+          <summary>Token 预算</summary>
+          <label for="token-limit">每次分析的 Token 总预算（输入与输出）</label
+          ><input
+            id="token-limit"
+            type="number"
+            min="4096"
+            max="10000000"
+            step="1"
+            value="500000"
+            required
+          />
+          <p class="field-help">
+            在
+            Token、费用和执行时间预算内持续工作。重复无进展时由系统停止并说明需要补充的信息。
+          </p>
+        </details>
+        <label class="checkbox-label consent"
+          ><input id="allow-paid" type="checkbox" /><span
+            >我允许按上述 Token 和费用预算调用模型。项目文件操作由项目权限设置决定。</span
+          ></label
+        >
+        <p class="field-help">
+          保存即记录本次使用许可，立即生效。已有密钥不会回显；留空可保留原配置。
+        </p>
+        <p id="settings-error" class="error-text" role="alert"></p>
+        <button id="save-model-settings" type="submit" class="primary-button">
+          保存设置
+        </button>
+      </form>
+      <section id="readiness" hidden>
+        <ul id="checklist" class="checklist"></ul>
+        <div id="setup-help"></div>
+        <p id="profile-summary" class="field-help"></p>
+      </section>
+      <details class="developer-settings">
+        <summary>开发与离线验证</summary>
+        <label class="checkbox-label"
+          ><input id="demo-mode" type="checkbox" />使用合成样例演示</label
+        >
+        <p class="field-help">演示不会读取所填仓库，也不会调用模型。</p>
+        <div class="legacy-links">
+          <a href="/legacy">旧版业务工作台</a
+          ><a href="/legacy/workbench">修复与审批工作台</a>
+        </div>
+      </details>
+    </dialog>
+  </body>
+</html>

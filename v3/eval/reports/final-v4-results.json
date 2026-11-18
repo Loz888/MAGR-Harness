@@ -1,0 +1,10 @@
+{
+  "_public_export": {
+    "original_record_sha256": "0abb2522881114853207af87ad6bcd1d762fcc694e63cf504bb6a41d739c03dd",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "status_field_occurrences": {
+    "PASS": 74,
+    "FAIL": 16
+  }
+}

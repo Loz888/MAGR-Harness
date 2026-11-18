@@ -1,0 +1,1 @@
+{"kind":"ready_missing","visibility":"public_synthetic","observation":{"stdout":"Ready\n","http_status":200,"bound_port":31337,"required_ready_pattern":"Ready.*31337"}}

@@ -1,0 +1,127 @@
+{
+  "schema": "h12-dev-environment-amendment-v1",
+  "revision": "h12-dev-environment-v4",
+  "scope": "Original public H00 dev split only; historical holdout quality gate remains quarantined",
+  "parent_revision": "h12-dev-environment-v3",
+  "parent_manifest_sha256": "c876c6590a84d9126f242ef3bf90d39716292c0937f528bf0eeab6aac2dfbeba",
+  "catalog_changed": false,
+  "judge_objects_changed": false,
+  "thresholds_changed": false,
+  "frozen_task_model_budgets_changed": false,
+  "sandbox_resource_limits_changed": true,
+  "changes": [
+    {
+      "field": "Express Node/npm/V8",
+      "original": "Node20.20.2 / original dependency lock",
+      "candidate": "Node18.10.0 / npm8.19.2 / same dependency lock",
+      "reason": "Pinned project CI supports Node18.10. Node20 JSON.parse message text conflicts with body-parser1.20.1 assertions. Node18 executes 1261 passing tests; Node20 executes 1264 because http.METHODS includes QUERY, adding 3 dynamically generated cases. Original test bytes and command retained; effective runtime branch/count differs."
+    },
+    {
+      "field": "Requests offline network",
+      "original": "network=none, non-loopback connect immediately ENETUNREACH",
+      "candidate": "connect-timeout-v1: per-command namespace without an external interface and only 10.255.255.1/32 loopback timeout route",
+      "reason": "Original 4 TestTimeout assertions need real connection timeout, not immediate routing failure. No host/default route or external network."
+    },
+    {
+      "field": "Got offline protocol fixture",
+      "original": "DNS and original public TLS/HTTP2 prerequisites unavailable",
+      "candidate": "got-network-v1; source-bound config/h12-network-fixture-v1.json",
+      "reason": "An isolated non-internal dummy IPv4 /32 makes original dns.ADDRCONFIG behavior meaningful. Exact localhost/example.com/www.google.com DNS and real TLS/ALPN/HTTP2 endpoints, GET / only, explicit isolated test CA and fixed15ms response latency; blackhole routes preserve real timeout behavior. This replaces external protocol preconditions with versioned offline fixtures, not real remote websites."
+    },
+    {
+      "field": "Got sandbox_memory_mb",
+      "original": 1024,
+      "candidate": 2048,
+      "reason": "Original test allocates and transfers a 512MiB body. Real1GiB cgroup OOMKilled confirmed;2GiB targeted complete test passed at approx1.77GB peak with no OOM."
+    },
+    {
+      "field": "Got public command",
+      "original": [
+        "npm",
+        "test",
+        "--",
+        "--no-cache"
+      ],
+      "candidate": [
+        "npm",
+        "test",
+        "--",
+        "--config=/opt/h12/ava-config.mjs"
+      ],
+      "reason": "Installed AVA5.3.1 ignores no-cache CLI flag. Trusted official config factory preserves original package.ava and only sets cache=false/concurrency=1; project test files and selection retained."
+    },
+    {
+      "field": "Got image environment",
+      "candidate": {
+        "UV_THREADPOOL_SIZE": "1",
+        "CI": "true",
+        "AVA_FORCE_CI": "1",
+        "GOMAXPROCS": "1",
+        "NODE_EXTRA_CA_CERTS": "pinned public offline fixture CA"
+      },
+      "reason": "Limit Node worker/OpenSSL process pressure and trust only explicit fixture CA in addition to normal roots. Existing CI mode selects original200ms timeout margin instead of100ms; effective timing conditions differ."
+    },
+    {
+      "field": "Inherited dev-v3 preparation",
+      "candidate": {
+        "sandbox_nofile": 1024,
+        "sandbox_log_bytes": 1048576,
+        "requests_official_wheels": "per-pin requirements constraints and explicit httpbin plugin"
+      },
+      "reason": "Parent revision retained; complete output, nonroot, readonly root, project1CPU/64PID and original write scope remain enforced."
+    },
+    {
+      "field": "Go compiler heap and memory",
+      "original": {
+        "sandbox_memory_mb": 256
+      },
+      "candidate": {
+        "sandbox_memory_mb": 512,
+        "GOMEMLIMIT": "96MiB",
+        "GOGC": "50"
+      },
+      "reason": "The original dev pflag full command reached confirmed cgroup OOM at256MiB. Same Go1.22.12 with low heap +512MiB passes195 public tests and reproduces the defect baseline. This combination is verified;512MiB is not claimed as the proven minimum."
+    },
+    {
+      "field": "Public npm oneshot plan",
+      "candidate": "Unique public npm run <script>, with explicit package.json scope, can be an AWAITING_IMPLEMENTATION oneshot entry",
+      "reason": "The frozen Got roundtrip goal requires a new npm selfcheck; requiring an already-existing direct node file command incorrectly blocks its public execution plan."
+    }
+  ],
+  "fixture_controller_resources": {
+    "memory_mb": 128,
+    "cpus": 0.25,
+    "pids": 32,
+    "namespace": "per command, isolated dummy IPv4 /32, no external peer/default route",
+    "workspace_mounts": [],
+    "setup_capabilities": "NET_ADMIN/SETUID/SETGID, plus NET_BIND_SERVICE for TLS/DNS; dropped before readiness"
+  },
+  "unchanged_authority": [
+    "no external egress",
+    "project zero capabilities",
+    "non-root project UID",
+    "read-only root",
+    "command allowlist",
+    "workspace read/write/protected scope",
+    "cumulative USD12 original PG authorization",
+    "single-task model/tool/cost/deadline/context budgets"
+  ],
+  "readiness": {
+    "metadata_success": "SOURCE_READY",
+    "execution_success": "READY only after all12 dev prerequisites and required original baselines execute through Broker/CommandSession",
+    "model_calls": 0
+  },
+  "historical_results": "All previous failed attempts, original v2/v3 locks and scores retained. READY establishes prerequisites only; no new model/Agent score.",
+  "known_benchmark_limitations": [
+    {
+      "scope": "Requests content-type dev task",
+      "status": "OPEN",
+      "reason": "Unmodified exact frozen source already passes its frozen private defect probe; baseline not reproduced. No source/judge edits allowed."
+    },
+    {
+      "scope": "Got original invalid key passphrase public test",
+      "status": "OPEN_FLAKY_ASSERTION",
+      "reason": "Same Node20.20.2 rejects every wrong password but OpenSSL3 can return BAD_DECRYPT or UNSUPPORTED. Frozen assertion accepts only one. Existing failure preserved; no retries selected to hide it and no assertion/provider/random-source changes."
+    }
+  ]
+}

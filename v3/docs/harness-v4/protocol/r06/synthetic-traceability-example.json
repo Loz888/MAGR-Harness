@@ -1,0 +1,28 @@
+{
+  "version": "harness-judge-traceability-v1",
+  "task_id": "r06-refactor",
+  "benchmark_revision": "r06-public-revision-2",
+  "public_acceptance_hash": "ac8bfa0d137f97f0c15e84b089a7fd74770154e253f9906a819886788be0db43",
+  "files": {
+    "tests/hidden/r06_reviewed_judge.py": "7792f0bc00468a92793f215e5169cbd44b540ff1434fd6a2a5cadd3bc3cf0b26"
+  },
+  "assertions": [
+    {
+      "assertion_id": "88ca9b431a3c6a5b672e93655d1de4c746f2cef734922f69b2bbf3f50f3efa48",
+      "acceptance_requirement_id": "public.21236bd226247b1b",
+      "file": "tests/hidden/r06_reviewed_judge.py",
+      "line": 4,
+      "column": 1,
+      "expression_hash": "e7dec2071c019845a44fedd36bbf4160f4d8b899891c5dd0e047610a50ee1d75"
+    },
+    {
+      "assertion_id": "88ea738ed2032fc7d4f4fd9b768c293650ae5ee651861058340c037cfd833e85",
+      "acceptance_requirement_id": "public.8624cc7aef7f2ac2",
+      "file": "tests/hidden/r06_reviewed_judge.py",
+      "line": 6,
+      "column": 1,
+      "expression_hash": "144f6edeff98c1aba72d7b4df5ceefba3b8ffc8b968b7aea2dca0959a00be157"
+    }
+  ],
+  "command_hash": "8d1fe88e4923e7fd700a63a093fe3b8edc3924ac54d100da5555e2468282c41c"
+}

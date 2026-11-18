@@ -1,0 +1,373 @@
+{
+  "author_scope": "Three public development objectives only; no private judge, holdout, gold or candidate fix implementation was opened.",
+  "cost_micros": 0,
+  "execution_boundary": {
+    "argv": "PublicProbePlan fixed python3 -B asset path; original public regression argv unchanged",
+    "asset": "one frozen outside-workspace file mounted read-only at SHA-addressed target",
+    "broker": "IsolatedExecutionBroker + CommandSession",
+    "credentials": [],
+    "model_calls": 0,
+    "no_source_changes": true,
+    "workspace": "formal pinned materialization including V35 public assets and v2 public amendments, read-only"
+  },
+  "files": {
+    "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/asset-tests.junit.xml": "d8210c64cc73e05d93ddf991cd13e6b1bcd79212b6fd1d7211de73fbe98d91f0",
+    "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/asset-tests.log": "2a7ba02877de0176650ad234700a8b8053eb616a99ea08b43944c4098ea777db",
+    "experiments/harness-v4/public-plans-v1/public-basis/hv4-dev-click-help-name.json": "0cdb154720e3d95542a7d1b43a4159e3589e5bfbc71bf0a8ba8d0588f6a66d2b",
+    "experiments/harness-v4/public-plans-v1/public-basis/hv4-dev-requests-http-url-helper.json": "7347264d8358a17293aed14aba5f0f577a3e06f2e0b5971ae85415fa7d54b715",
+    "experiments/harness-v4/public-plans-v1/public-basis/hv4-v2-dev-requests-quoted-content-type.json": "7477d8103bc96a8081f5409d7712fa299f13c804a01ad034844f4f42cc5dfe07",
+    "experiments/harness-v4/public-plans-v1/sources/click-help-name.py": "e7bfde07ae8f12c20c7fd1e788c9da67dc2458b65bb093fa3d86f80e260f86e5",
+    "experiments/harness-v4/public-plans-v1/sources/requests-http-url.py": "399d2dbd650ae7832c460da535cc7c69dd3a5687e2731171ca45d141422275e6",
+    "experiments/harness-v4/public-plans-v1/sources/requests-quoted-content-type.py": "70b557db561e2b6dee8998b7ccc1150d725cf9abb65f9834deebc71fe43af7ad",
+    "tests/test_h12_formal_public_probe_assets.py": "b0167e1383da543bd7b473f1b3c9d5c1099c1de0915d3a846e49036884ef3168"
+  },
+  "historical_quality_status_unchanged": true,
+  "limits": [
+    "These are public engineering signals; no new candidate, quality pass or independent judge result is asserted.",
+    "Click public regression attempt is NOT_RUN because pytest cache writes on read-only workspace produced warning-as-error, not a complete assertion failure report.",
+    "No live model or holdout execution is authorized by asset readiness.",
+    "New scripts test specified double-quoted values; unspecified escaped-quote or malformed-header policies are deliberately not invented."
+  ],
+  "new_unit_tests": {
+    "failed": 0,
+    "junit": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/asset-tests.junit.xml",
+    "log": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/asset-tests.log",
+    "passed": 15,
+    "skipped": 0,
+    "warnings": "84 pytest cleanup warnings refer to prior temporary fixture directories; original log retained."
+  },
+  "paid_model_calls": 0,
+  "private_scoring_status": "NOT_RUN",
+  "schema": "h12-formal-public-python-probe-review-v1",
+  "status": "ASSETS_FROZEN_ORIGINAL_EVIDENCE_PARTIAL_READY",
+  "tasks": {
+    "hv4-dev-click-help-name": {
+      "asset_sha256": "e7bfde07ae8f12c20c7fd1e788c9da67dc2458b65bb093fa3d86f80e260f86e5",
+      "case_ids": [
+        "argument-retains-value",
+        "automatic-help-option",
+        "help-after-positional"
+      ],
+      "evidence": {
+        "attempt.json": {
+          "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/broker-originals/hv4-dev-click-help-name/attempt.json",
+          "sha256": "5fee852f6843231e2d4b96e14a25637eda865593c94dad4f5504dc6a0ec3dfaf"
+        },
+        "probe-receipt.json": {
+          "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/broker-originals/hv4-dev-click-help-name/probe-receipt.json",
+          "sha256": "008f018a48a44acf2325438958fa1f37dcc89c36778456c2db0b493761622d95"
+        },
+        "probe.log": {
+          "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/broker-originals/hv4-dev-click-help-name/probe.log",
+          "sha256": "be86a8c327c2d207be6555e10973f2481d5771a8fdcef463508403b16d73d7f5"
+        },
+        "regression-receipt.json": {
+          "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/broker-originals/hv4-dev-click-help-name/regression-receipt.json",
+          "sha256": "845a8173030fb6a28d40c4c2bf14284c83fd49094dcd3ff87f5a80bbef88d4f3"
+        },
+        "regression.log": {
+          "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/broker-originals/hv4-dev-click-help-name/regression.log",
+          "sha256": "5a8b7154c40ca060fc5083ece348b37d5034bf2787056452c086cd0f477014a2"
+        },
+        "result.json": {
+          "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/broker-originals/hv4-dev-click-help-name/result.json",
+          "sha256": "68e70dda89354316e914146f187d2b9a73cf13b3c32dce56e8133f9dd692e174"
+        }
+      },
+      "manifest": {
+        "path": "experiments/harness-v4/public-plans-v1/manifests/hv4-dev-click-help-name.json",
+        "sha256": "cc0f99757e61cff25b80992efa17730e6432c1aa84f4bfdf0c050635542caecf"
+      },
+      "manifest_sha256": "cc0f99757e61cff25b80992efa17730e6432c1aa84f4bfdf0c050635542caecf",
+      "original_facts": {
+        "blockers": [
+          "ORIGINAL_PUBLIC_REGRESSION_NOT_GREEN"
+        ],
+        "probe_outcome": "red",
+        "probe_reason": "",
+        "regression_failed": 0,
+        "regression_skipped": 0,
+        "regression_status": "unverified",
+        "regression_tests": 0,
+        "status": "NOT_RUN"
+      },
+      "original_tree_sha256": "f4f0c1a5988ccc66a606fafefe2d24492fb8420b273335b40e9e06ff61f22f21",
+      "plan_hash": "8838b464997def38ca612b157af52f1e8835603f8c7357d7d48379d6cb4837a6",
+      "probe_cases": [
+        {
+          "detail": "declared argument must parse successfully",
+          "id": "argument-retains-value",
+          "status": "assertion_failed"
+        },
+        {
+          "detail": "automatic --help must exit successfully",
+          "id": "automatic-help-option",
+          "status": "assertion_failed"
+        },
+        {
+          "detail": "--help must still be eager",
+          "id": "help-after-positional",
+          "status": "assertion_failed"
+        }
+      ],
+      "public_basis": [
+        {
+          "path": "src/click/core.py",
+          "sha256": "6ce6ad79d4f89e700cbd3b2dff2eb98a0526978bdda25f6cde551f10c152e662"
+        },
+        {
+          "path": "tests/test_help_name_public.py",
+          "sha256": "31cc493fa58517af0250bc3ff54d9ea46f90196b3f84254c060dd767f537d493"
+        }
+      ],
+      "public_task_projection_sha256": "0cdb154720e3d95542a7d1b43a4159e3589e5bfbc71bf0a8ba8d0588f6a66d2b",
+      "regression_argv": [
+        "python3",
+        "-B",
+        "-m",
+        "pytest",
+        "tests/test_help_name_public.py"
+      ]
+    },
+    "hv4-dev-requests-http-url-helper": {
+      "asset_sha256": "399d2dbd650ae7832c460da535cc7c69dd3a5687e2731171ca45d141422275e6",
+      "case_ids": [
+        "plain-http",
+        "https-port-path",
+        "ipv6-authority",
+        "userinfo-host",
+        "scheme-case",
+        "relative-references",
+        "other-schemes",
+        "whitespace",
+        "non-strings",
+        "missing-host",
+        "invalid-port",
+        "malformed-ipv6"
+      ],
+      "evidence": {
+        "attempt.json": {
+          "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/broker-originals/hv4-dev-requests-http-url-helper/attempt.json",
+          "sha256": "6a28587d6ddb252e068bb5302987393ce012ae5215db485d0f399c40f6f6b13d"
+        },
+        "probe-receipt.json": {
+          "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/broker-originals/hv4-dev-requests-http-url-helper/probe-receipt.json",
+          "sha256": "bd5d2d88190bd8890f9a657e682c116c0a82e0e27d33c256ebacdf0d031fe844"
+        },
+        "probe.log": {
+          "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/broker-originals/hv4-dev-requests-http-url-helper/probe.log",
+          "sha256": "8d311c7acae36128e0b5b51f0f5a0787fbc1020109efba2a6051efa4dc18e038"
+        },
+        "regression-receipt.json": {
+          "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/broker-originals/hv4-dev-requests-http-url-helper/regression-receipt.json",
+          "sha256": "19617d5f37df9ed51ecac0819a83a2439b4b2f9ad8855e0393e6315b4008262b"
+        },
+        "regression.log": {
+          "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/broker-originals/hv4-dev-requests-http-url-helper/regression.log",
+          "sha256": "4ed6ea308b46ab0210309cf6cf9bfc0c2243c84e4d988331cbd8c1a6cb83833c"
+        },
+        "result.json": {
+          "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/broker-originals/hv4-dev-requests-http-url-helper/result.json",
+          "sha256": "efd55977f921da1252c5a454857f1418c9787b68bac3bcd339c1a3f90b9b13a4"
+        }
+      },
+      "manifest": {
+        "path": "experiments/harness-v4/public-plans-v1/manifests/hv4-dev-requests-http-url-helper.json",
+        "sha256": "90e1c376527b739faabd4f35b6638fb1fc2f65cc3f30450f554abc03070720f7"
+      },
+      "manifest_sha256": "90e1c376527b739faabd4f35b6638fb1fc2f65cc3f30450f554abc03070720f7",
+      "original_facts": {
+        "blockers": [],
+        "probe_outcome": "red",
+        "probe_reason": "",
+        "regression_failed": 0,
+        "regression_skipped": 13,
+        "regression_status": "passed",
+        "regression_tests": 229,
+        "status": "READY"
+      },
+      "original_tree_sha256": "5a8bee3cbc91cde5b8f240c938a78cc1eb17197639b895943d76b23b934d0b94",
+      "plan_hash": "18391f23819fb7c8b19fa2d5f3cf49a47bbab32bb7f33e0544cff1e0dbef6c5e",
+      "probe_cases": [
+        {
+          "detail": "the publicly requested is_http_url API must exist",
+          "id": "plain-http",
+          "status": "assertion_failed"
+        },
+        {
+          "detail": "the publicly requested is_http_url API must exist",
+          "id": "https-port-path",
+          "status": "assertion_failed"
+        },
+        {
+          "detail": "the publicly requested is_http_url API must exist",
+          "id": "ipv6-authority",
+          "status": "assertion_failed"
+        },
+        {
+          "detail": "the publicly requested is_http_url API must exist",
+          "id": "userinfo-host",
+          "status": "assertion_failed"
+        },
+        {
+          "detail": "the publicly requested is_http_url API must exist",
+          "id": "scheme-case",
+          "status": "assertion_failed"
+        },
+        {
+          "detail": "the publicly requested is_http_url API must exist",
+          "id": "relative-references",
+          "status": "assertion_failed"
+        },
+        {
+          "detail": "the publicly requested is_http_url API must exist",
+          "id": "other-schemes",
+          "status": "assertion_failed"
+        },
+        {
+          "detail": "the publicly requested is_http_url API must exist",
+          "id": "whitespace",
+          "status": "assertion_failed"
+        },
+        {
+          "detail": "the publicly requested is_http_url API must exist",
+          "id": "non-strings",
+          "status": "assertion_failed"
+        },
+        {
+          "detail": "the publicly requested is_http_url API must exist",
+          "id": "missing-host",
+          "status": "assertion_failed"
+        },
+        {
+          "detail": "the publicly requested is_http_url API must exist",
+          "id": "invalid-port",
+          "status": "assertion_failed"
+        },
+        {
+          "detail": "the publicly requested is_http_url API must exist",
+          "id": "malformed-ipv6",
+          "status": "assertion_failed"
+        }
+      ],
+      "public_basis": [
+        {
+          "path": "src/requests/utils.py",
+          "sha256": "b879cb3f671cf1c28e8ff9b2b02151bcdb8974b4820a514cfdd1f5a038443cd2"
+        },
+        {
+          "path": "tests/test_utils.py",
+          "sha256": "00d027432443a1aa9539c00a09550de9439cdd696d2e6acf2dc997de3a416946"
+        }
+      ],
+      "public_task_projection_sha256": "7347264d8358a17293aed14aba5f0f577a3e06f2e0b5971ae85415fa7d54b715",
+      "regression_argv": [
+        "python3",
+        "-B",
+        "-m",
+        "pytest",
+        "tests/test_utils.py"
+      ]
+    },
+    "hv4-v2-dev-requests-quoted-content-type": {
+      "asset_sha256": "70b557db561e2b6dee8998b7ccc1150d725cf9abb65f9834deebc71fe43af7ad",
+      "case_ids": [
+        "quoted-semicolon-equals",
+        "independent-quoted-parameters",
+        "unquoted-separators",
+        "media-type-and-name-case",
+        "quote-removal",
+        "no-parameters"
+      ],
+      "evidence": {
+        "attempt.json": {
+          "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/broker-originals/hv4-v2-dev-requests-quoted-content-type/attempt.json",
+          "sha256": "93895f6560f90ad4ce096329577ad00e00f13b0258d79e206767b341a07f7ae5"
+        },
+        "probe-receipt.json": {
+          "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/broker-originals/hv4-v2-dev-requests-quoted-content-type/probe-receipt.json",
+          "sha256": "4896d5bb89b0a42ee67d1eb948df40cfae3fbce230500b4d55b4939a68ca2d7d"
+        },
+        "probe.log": {
+          "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/broker-originals/hv4-v2-dev-requests-quoted-content-type/probe.log",
+          "sha256": "f2cdcf3bc041b7c06e0b95d8f057780c6321358c02a5df7da1629f903a3684f2"
+        },
+        "regression-receipt.json": {
+          "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/broker-originals/hv4-v2-dev-requests-quoted-content-type/regression-receipt.json",
+          "sha256": "8d4adb62e4252e3eff5e765df75c3696292e066121bea2d1a9d0a50ce8889f9c"
+        },
+        "regression.log": {
+          "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/broker-originals/hv4-v2-dev-requests-quoted-content-type/regression.log",
+          "sha256": "3d88f7f73313b7b9b830d21201d68a96843a285958ac9d0243c59e44298681b4"
+        },
+        "result.json": {
+          "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/broker-originals/hv4-v2-dev-requests-quoted-content-type/result.json",
+          "sha256": "c2e277941765c53ddc2cee39d6b07b0e322676a4e1879f892f99440d2613e769"
+        }
+      },
+      "manifest": {
+        "path": "experiments/harness-v4/public-plans-v1/manifests/hv4-v2-dev-requests-quoted-content-type.json",
+        "sha256": "25033d0c9a0b3ad49bbdcaaa1a7813f89e49b62c23ed27007907d691ea57dc11"
+      },
+      "manifest_sha256": "25033d0c9a0b3ad49bbdcaaa1a7813f89e49b62c23ed27007907d691ea57dc11",
+      "original_facts": {
+        "blockers": [],
+        "probe_outcome": "red",
+        "probe_reason": "",
+        "regression_failed": 0,
+        "regression_skipped": 16,
+        "regression_status": "passed",
+        "regression_tests": 617,
+        "status": "READY"
+      },
+      "original_tree_sha256": "0f0a284dec45e4ef471a82632420c6ee7834817e54423c82d11eb6d845800dcf",
+      "plan_hash": "2b404801cfd1006a5dbbe51f28d0f6c4fb5fa39c83f2f24c8c1a19c0365b2542",
+      "probe_cases": [
+        {
+          "detail": "header parsing differs from the public parameter contract",
+          "id": "quoted-semicolon-equals",
+          "status": "assertion_failed"
+        },
+        {
+          "detail": "header parsing differs from the public parameter contract",
+          "id": "independent-quoted-parameters",
+          "status": "assertion_failed"
+        },
+        {
+          "id": "unquoted-separators",
+          "status": "passed"
+        },
+        {
+          "id": "media-type-and-name-case",
+          "status": "passed"
+        },
+        {
+          "id": "quote-removal",
+          "status": "passed"
+        },
+        {
+          "id": "no-parameters",
+          "status": "passed"
+        }
+      ],
+      "public_basis": [
+        {
+          "path": "src/requests/utils.py",
+          "sha256": "c433154e14f78de6d50ea7fe753825b8bbb3c9459468dee052f8b68edc2572dc"
+        },
+        {
+          "path": "tests/test_utils.py",
+          "sha256": "da6e0498a5053d7c4d558dd7602ee6738fcc4146eb82006b056199725f8d3627"
+        }
+      ],
+      "public_task_projection_sha256": "7477d8103bc96a8081f5409d7712fa299f13c804a01ad034844f4f42cc5dfe07",
+      "regression_argv": [
+        "python3",
+        "-B",
+        "-m",
+        "pytest",
+        "tests/"
+      ]
+    }
+  }
+}

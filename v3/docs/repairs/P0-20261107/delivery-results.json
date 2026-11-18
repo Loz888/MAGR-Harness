@@ -1,0 +1,14 @@
+{
+  "_public_export": {
+    "original_record_sha256": "94c60d97f64db745a0934217fd06b76c16cafb9344ada18ee78ec1ba9a5e5238",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "schema": "p0-exact-proposal-delivery-v1",
+  "case_count": 3,
+  "case_status_counts": {
+    "PASS": 3
+  },
+  "status_field_occurrences": {
+    "PASS": 3
+  }
+}

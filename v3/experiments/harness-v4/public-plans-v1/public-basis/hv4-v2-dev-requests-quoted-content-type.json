@@ -1,0 +1,33 @@
+{
+  "acceptance": {
+    "baseline": [
+      "Exact original source incorrectly splits a semicolon inside a quoted value; the new quoted-parameter pytest regression must fail."
+    ],
+    "regression": [
+      "python -m pytest tests/"
+    ],
+    "required": [
+      "Quoted values containing semicolons and equals signs are preserved.",
+      "Multiple quoted parameters are parsed independently.",
+      "Existing charset, media type and bare-token behavior is preserved."
+    ]
+  },
+  "base_commit": "bc7dd0fc4d56e808bcdd85ac2d797b3107c89259",
+  "goal": "Fix requests.utils._parse_content_type_header so semicolons and equals signs inside double-quoted parameter values are preserved as data, while unquoted semicolons still separate parameters. Keep the media type, lower-cased parameter names, quote removal, and existing bare-token=True behavior unchanged.",
+  "language": "python",
+  "repository": "psf/requests",
+  "resources": {
+    "deadline_seconds": 1800,
+    "max_context_tokens": 200000,
+    "max_cost_micros": 6000000,
+    "max_model_calls": 20,
+    "max_repair_rounds": 8,
+    "max_tool_calls": 120
+  },
+  "scope": [
+    "src/requests/utils.py"
+  ],
+  "split": "dev",
+  "task_id": "hv4-v2-dev-requests-quoted-content-type",
+  "type": "bugfix"
+}

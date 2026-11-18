@@ -1,0 +1,95 @@
+{
+  "task": "AGENT-COLLABORATION",
+  "recorded_utc": "2026-11-13T07:51:13.461785+00:00",
+  "status": "ENGINEERING_PASS",
+  "live_model": "NOT_RUN",
+  "live_github_publication": "NOT_RUN",
+  "paid_model_calls": 0,
+  "real_github_mutations": 0,
+  "source_sha256": "4f4489bc6f5f219134cdc8f5bd008904abb2a1d67efbdce039042c713b8ad20f",
+  "registered_candidate_sha256": "7723839d959db69fec0a257e1d15405dcd92c06bb57d409056e55402757864ba",
+  "registered_gate": {
+    "status": "PASS",
+    "counts": {
+      "tests": 52,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "path": "evidence/AGENT-COLLABORATION/20261113T073928Z-bad7c60c/result.json"
+  },
+  "compatibility": {
+    "first_registered_attempt": "evidence/AGENT-UI/20261113T073928Z-96ee7579/result.json",
+    "first_counts": {
+      "tests": 110,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0
+    },
+    "first_status": "FAIL",
+    "repair_target": "tests/test_analysis_budget_policy.py::test_long_original_constraint_survives_repeated_stop_and_serialized_context_bound",
+    "repair_passed": 1,
+    "repair_junit": "evidence/harness-v4/ANALYSIS-INTERACTION-20261113/final-ui-repair.xml",
+    "coverage_passed": 110,
+    "remaining_failed": 0,
+    "retention": "Original 109 passing cases retained; only the failed test was rerun. Its setup now starts the real Run before reading active-epoch protected input. All original assertions and application guards remain. No application source changed after registered gates.",
+    "source_delta_proof": "evidence/harness-v4/ANALYSIS-INTERACTION-20261113/source-repair-proof.json"
+  },
+  "distinct_engineering_cases_covered": 162,
+  "browser": {
+    "passed": 57,
+    "attempts": [
+      {
+        "path": "evidence/harness-v4/ANALYSIS-INTERACTIVE-20261113/ui/analysis-wait-cancel-final/summary.json",
+        "passed": 16
+      },
+      {
+        "path": "evidence/harness-v4/ANALYSIS-INTERACTIVE-20261113/ui/product-final/summary.json",
+        "passed": 20
+      },
+      {
+        "path": "evidence/harness-v4/ANALYSIS-INTERACTIVE-20261113/ui/assets-attempt-2/summary.json",
+        "passed": 8
+      },
+      {
+        "path": "evidence/harness-v4/ANALYSIS-INTERACTIVE-20261113/ui/delivery-dispatch-final/summary.json",
+        "passed": 13
+      }
+    ],
+    "note": "Controlled APIs; previous failed attempts and screenshots retained. Only affected browser scripts rerun after final fixes."
+  },
+  "static_checks": {
+    "lint": "PASS",
+    "typecheck": "PASS (238 source files)",
+    "diff_check": "PASS",
+    "logs": [
+      "evidence/harness-v4/ANALYSIS-INTERACTION-20261113/final-lint.log",
+      "evidence/harness-v4/ANALYSIS-INTERACTION-20261113/final-typecheck.log"
+    ]
+  },
+  "deployment": {
+    "status": "PASS",
+    "url": "http://127.0.0.1:18080",
+    "migration": "0045_harness_github_delivery.sql",
+    "sa0044_installed": false,
+    "historical_migrations_and_usage_unchanged": true,
+    "github_writer_available": false,
+    "evidence": "evidence/harness-v4/ANALYSIS-INTERACTION-20261113/deployment-smoke.json"
+  },
+  "coordination": {
+    "sa12_confirmation_commit": "298d4c5c5123a5c26c34a9673d676516d1503f84",
+    "file": "docs/harness-v4/SUPER_AGENT_HANDOFF.md",
+    "section": 37,
+    "proposal": "d63e43777fb802cc788668b086df586b061fa5ae"
+  },
+  "historical_failures_retained": [
+    "evidence/harness-v4/ANALYSIS-INTERACTION-20261113/search-before.xml",
+    "evidence/harness-v4/ANALYSIS-INTERACTION-20261113/interaction-first.xml",
+    "evidence/harness-v4/ANALYSIS-INTERACTION-20261113/interaction-second.xml",
+    "evidence/harness-v4/ANALYSIS-INTERACTION-20261113/replan-first.log",
+    "evidence/AGENT-UI/20261113T073928Z-96ee7579/result.json",
+    "evidence/harness-v4/ANALYSIS-INTERACTION-20261113/github-delivery/candidate-01-failed-excerpt.log",
+    "evidence/harness-v4/ANALYSIS-INTERACTION-20261113/deployment-smoke-attempt-1.json"
+  ],
+  "limits": "Engineering uses real isolated PostgreSQL and Docker with controlled model/GitHub transports. Actual PR publication/merge requires independent deployment write credentials, PG project authority and exact proposal approval. Only bounded regular text additions/modifications are directly publishable. Remote head is atomically pinned; base cannot be pinned atomically by GitHub REST and must be rechecked/reconciled. Historical H12 and global release state remain unchanged."
+}

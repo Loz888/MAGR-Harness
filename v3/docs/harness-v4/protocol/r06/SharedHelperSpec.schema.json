@@ -1,0 +1,64 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "acceptance_requirement_id": {
+      "title": "Acceptance Requirement Id",
+      "type": "string"
+    },
+    "path": {
+      "title": "Path",
+      "type": "string"
+    },
+    "language": {
+      "default": "python",
+      "enum": [
+        "python",
+        "go"
+      ],
+      "title": "Language",
+      "type": "string"
+    },
+    "owner_class": {
+      "anyOf": [
+        {
+          "pattern": "^[A-Za-z_][A-Za-z_0-9]*$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Owner Class"
+    },
+    "callers": {
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 16,
+      "minItems": 2,
+      "title": "Callers",
+      "type": "array"
+    },
+    "required_name": {
+      "anyOf": [
+        {
+          "pattern": "^[A-Za-z_][A-Za-z_0-9]*$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Required Name"
+    }
+  },
+  "required": [
+    "acceptance_requirement_id",
+    "path",
+    "callers"
+  ],
+  "title": "SharedHelperSpec",
+  "type": "object"
+}

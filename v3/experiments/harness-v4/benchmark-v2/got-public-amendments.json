@@ -1,0 +1,38 @@
+{
+  "schema": "h12-public-test-amendment-v1",
+  "revision": "h12-benchmark-v2",
+  "status": "DRAFT_UNTIL_VALIDATED",
+  "repository": "sindresorhus/got",
+  "base_commit": "de19b463b1875847f955a53d2f5b0a539ed0ded3",
+  "files": [
+    {
+      "path": "test/retry.ts",
+      "before_sha256": "8900be6690c4b26af2787321d87b541eaae6e4cea8bd235714935f4f238861a5",
+      "after_sha256": "c2bc69c633875070ec6dbce404bc07c6a3d96b17df9bb836535753b9ba3e0932",
+      "replacements": [
+        {
+          "before": "test('respects backoffLimit', withServer, async (t, server, got) => {\n\tlet count = 0;\n\tlet timestamp = Date.now();\n\tconst data: number[] = [];\n\n\tserver.get('/', (_request, response) => {\n\t\tcount++;\n\n\t\tconst now = Date.now();\n\t\tdata.push(now - timestamp);\n\t\ttimestamp = now;\n\n\t\tif (count === 3) {\n\t\t\tresponse.end(JSON.stringify(data));\n\t\t} else {\n\t\t\tresponse.statusCode = 408;\n\t\t\tresponse.end();\n\t\t}\n\t});\n\n\tconst body = await got('', {\n\t\tretry: {\n\t\t\tbackoffLimit: 0,\n\t\t},\n\t}).json<number[]>();\n\n\tt.is(body.length, 3);\n\tt.true(body[0]! < 400);\n\tt.true(body[1]! < 400);\n\tt.true(body[2]! < 400);\n});\n",
+          "after": "test('respects backoffLimit', withServer, async (t, server, got) => {\n\tlet count = 0;\n\tconst computedDelays: number[] = [];\n\tserver.get('/', (_request, response) => {\n\t\tcount++;\n\t\tif (count === 3) {\n\t\t\tresponse.end('ok');\n\t\t} else {\n\t\t\tresponse.statusCode = 408;\n\t\t\tresponse.end();\n\t\t}\n\t});\n\n\tconst body = await got('', {\n\t\tretry: {\n\t\t\tbackoffLimit: 0,\n\t\t\tcalculateDelay({computedValue}) {\n\t\t\t\tcomputedDelays.push(computedValue);\n\t\t\t\tt.true(computedValue >= 0 && computedValue <= 100);\n\t\t\t\treturn computedValue;\n\t\t\t},\n\t\t},\n\t}).text();\n\n\tt.is(body, 'ok');\n\tt.is(count, 3);\n\tt.is(computedDelays.length, 2);\n});\n"
+        }
+      ]
+    },
+    {
+      "path": "test/https.ts",
+      "before_sha256": "40ace2d118c08b9141bc4bfdef14a19bd83e25413cf68fdd0651cf584c253f57",
+      "after_sha256": "87ba09b2170ea0ab984d78e38b07ff8bae76efbf5271f39be95d0f481bcaa8e3",
+      "replacements": [
+        {
+          "before": "\tconst {code}: NodeJS.ErrnoException = (await t.throwsAsync(request))!;\n\tt.true(code === 'ERR_OSSL_BAD_DECRYPT' || code === 'ERR_OSSL_EVP_BAD_DECRYPT', code);",
+          "after": "\tt.notThrows(() => tls.createSecureContext({\n\t\tkey: clientKey,\n\t\tpassphrase: 'randomPassword',\n\t\tcert: clientCert,\n\t}));\n\tconst {code}: NodeJS.ErrnoException = (await t.throwsAsync(request))!;\n\tt.true(code === 'ERR_OSSL_BAD_DECRYPT' || code === 'ERR_OSSL_EVP_BAD_DECRYPT' || code === 'ERR_OSSL_UNSUPPORTED', code);"
+        }
+      ]
+    }
+  ],
+  "rationale": [
+    "Validate the actual calculated backoff and three HTTP attempts, without treating OS scheduling latency as a backoff value. The original noise and real timers remain.",
+    "Require the same generated key/cert to parse with the correct password and reject the wrong password; preserve BAD_DECRYPT and accept the independently observed decoder rejection code."
+  ],
+  "original_tests_preserved_in_frozen_source": true,
+  "source_logic_changes": false,
+  "timing_reference": "https://nodejs.org/api/timers.html#settimeoutcallback-delay-args"
+}

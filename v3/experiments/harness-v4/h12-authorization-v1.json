@@ -1,0 +1,16 @@
+{
+  "schema": "harness-h12-user-authorization-v1",
+  "card": "HV4-H12",
+  "approved_at_date": "2026-11-11",
+  "authorization_source": "User explicitly requested H12 after scoped H11 independent PASS and answered 12 USD for the total real-call budget.",
+  "allow_paid": true,
+  "provider": "deepseek",
+  "model_id": "deepseek-flash",
+  "max_cost_micros": 12000000,
+  "max_physical_calls": 1536,
+  "budget_scope": "All H12 dev, holdout, control arms, retries and candidates share the same Engine authorization budget; an experiment id or restart never resets it.",
+  "unknown_policy": "Retain reservation, stop further paid dispatch, reconcile before any retry.",
+  "external_publication_authorized": false,
+  "push_authorized": false,
+  "h13_authorized": false
+}

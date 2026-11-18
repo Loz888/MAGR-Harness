@@ -1,0 +1,16 @@
+{
+  "_public_export": {
+    "original_record_sha256": "0eb3f2a4b33731f1e9bab91b690cb3d60294c3a059fef246525ac9f610e0debd",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "schema": "harness-product-acceptance-v1",
+  "recorded_at": "2026-11-12T14:17:02.542848+00:00",
+  "status": "ENGINEERING_PASS",
+  "engineering_gate": "PASS",
+  "implementation_commit": "b13d17e1f61c2c65b551d660c13372e346da83c4",
+  "source_sha256": "8714c836be31b82e27277f9d55ddbf3b823e25bbfd92373592bd04b9bc0e069d",
+  "status_field_occurrences": {
+    "PASS": 4,
+    "FAIL": 2
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema": "h12-full-quality-readiness-v1",
+  "source_commit": "99f6944",
+  "source_sha256": "893b3cfef5ab4d5ce87570dccc18d183fd9579f390c884c402a2f7fdf9405735",
+  "reports": [
+    {
+      "scope": "subset-v4",
+      "path": ".local/h12/quality-repair-20261114/subset-v4/report.json",
+      "sha256": "74d8e28916814378945349f510dbcb17a663a946d399a925f7a20dfa6c933e61",
+      "status": "PUBLIC_SUBSET_READY",
+      "ready": 4,
+      "paid_model_calls": 0
+    },
+    {
+      "scope": "full-dev-v4",
+      "path": ".local/h12/quality-repair-20261114/full-dev-v4/report.json",
+      "sha256": "df4c9049d61dc02bbe3357694e04721ef2f61ab507c4cdfeb2191bcf6e6e7daf",
+      "status": "FULL_DEV_READY",
+      "ready": 12,
+      "paid_model_calls": 0
+    },
+    {
+      "scope": "holdout-v4",
+      "path": ".local/h12/quality-repair-20261114/holdout-v4/report.json",
+      "sha256": "281d446a46172c0f9b477bfcec86c0b823d331a15dd7fc08b16a7663824e684c",
+      "status": "FULL_HOLDOUT_READY",
+      "ready": 12,
+      "paid_model_calls": 0
+    }
+  ],
+  "freezes": [
+    {
+      "path": ".local/h12/quality-repair-20261114/public-dev-frozen-v4.json",
+      "sha256": "4c83cbbddf02b3c4ffe4e3b2c35a00c33f80dd6d93958f6e84230cbf1c822259"
+    },
+    {
+      "path": ".local/h12/quality-repair-20261114/quality-frozen-v4.json",
+      "sha256": "d2399ae1857902fe0cf472f6a624e30b22309f56ad35d6b8166d4705412327a7"
+    }
+  ],
+  "physical_validation": "PASS",
+  "validation_log": ".local/h12/quality-repair-20261114/seal-quality-v4.log",
+  "quality_status": "NOT_RUN_AT_SEALING",
+  "thresholds": {
+    "dev": 10,
+    "holdout": 9,
+    "denominator_each": 12
+  },
+  "shared_budget_before_live": {
+    "before_live_shared_budget": {
+      "limit_micros": 12000000,
+      "reserved_micros": 0,
+      "settled_micros": 1483486,
+      "used_calls": 333,
+      "call_limit": 1536
+    },
+    "unknown_calls": 0,
+    "new_paid_calls_this_turn": 0,
+    "prior_transport_probe": ".local/h12/quality-repair-20261114/before-live-v3.json"
+  },
+  "experiment_id": "hv4-h12-quality-readiness-v4-20261114",
+  "model_scores": ".local/h12/quality-repair-20261114/live-v4",
+  "first_sample_policy": "First three prior failed development identities, then remaining dev; holdout only after same candidate dev gate. No best-of, unknown resend or held-out feedback tuning."
+}

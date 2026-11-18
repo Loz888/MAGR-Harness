@@ -1,0 +1,14 @@
+{
+  "_public_export": {
+    "original_record_sha256": "a88e74f65a6f01d10d0b4eedc282d8e80d0e008fc52d10cfc00d96d1a606ea22",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "schema": "h12-complete-matrix-dispatch-plan-v1",
+  "source_commit": "d272a01c577a9f7e3dcc826c569eaad28e3adb6d",
+  "source_sha256": "b7dfff2c71320db22c3f5e541b4ba72e878475041a22d3c54ceb034ff1f84629",
+  "thresholds": {
+    "dev": 10,
+    "holdout": 9,
+    "denominator_each": 12
+  }
+}

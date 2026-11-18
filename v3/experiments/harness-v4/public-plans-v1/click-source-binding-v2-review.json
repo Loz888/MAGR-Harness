@@ -1,0 +1,13 @@
+{
+  "status": "NEW_PUBLIC_MANIFEST_BOUND_TO_EXISTING_SELECTED_FROZEN_SNAPSHOT",
+  "old_manifest_sha256": "cc0f99757e61cff25b80992efa17730e6432c1aa84f4bfdf0c050635542caecf",
+  "new_manifest_sha256": "7dfefaca8c71246df2cba8b56b4947cf9f5602512711dc089b6029c3ad4829f5",
+  "old_manifest_preserved": true,
+  "selected_source": "experiments/v34-audit-repair/snapshots/click/8c1a0a7abbc1c36f70d1f65f3604acc46c5ce6ab",
+  "old_tree": "f4f0c1a5988ccc66a606fafefe2d24492fb8420b273335b40e9e06ff61f22f21",
+  "new_tree": "93dccdf5c2c42051e54016a728503612f3c3299994576c132bdf5b5d37f8a70a",
+  "all_public_basis_bytes_identical": true,
+  "actual_model_calls": 0,
+  "source_selection_algorithm_changed": false,
+  "reason": "Use existing EvaluationRunner._source selection, which prefers the authorized frozen V35 snapshot for reference tasks, then materialize public tests. Git-object plan retained as history; no implementation/test/goal/resource edits."
+}

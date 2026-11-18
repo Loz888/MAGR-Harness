@@ -1,0 +1,418 @@
+{
+  "$defs": {
+    "ExecutionProvenance": {
+      "additionalProperties": false,
+      "description": "Immutable provenance captured by the Broker's actual authorization.\n\nThis identifies the grant that generated output; it cannot restore that\ngrant or authorize reads after the current authority changes.",
+      "properties": {
+        "schema_version": {
+          "const": "harness-execution-provenance-v1",
+          "default": "harness-execution-provenance-v1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "operation_id": {
+          "title": "Operation Id",
+          "type": "string"
+        },
+        "lease_id": {
+          "title": "Lease Id",
+          "type": "string"
+        },
+        "lease_hash": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Lease Hash",
+          "type": "string"
+        },
+        "actor": {
+          "title": "Actor",
+          "type": "string"
+        },
+        "workspace_id": {
+          "title": "Workspace Id",
+          "type": "string"
+        },
+        "repository": {
+          "title": "Repository",
+          "type": "string"
+        },
+        "execution_epoch": {
+          "minimum": 1,
+          "title": "Execution Epoch",
+          "type": "integer"
+        },
+        "read_paths": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Read Paths",
+          "type": "array"
+        },
+        "write_paths": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Write Paths",
+          "type": "array"
+        },
+        "protected_paths": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Protected Paths",
+          "type": "array"
+        },
+        "grant_hash": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Grant Hash",
+          "type": "string"
+        }
+      },
+      "required": [
+        "operation_id",
+        "lease_id",
+        "lease_hash",
+        "actor",
+        "workspace_id",
+        "repository",
+        "execution_epoch",
+        "read_paths",
+        "write_paths",
+        "protected_paths",
+        "grant_hash"
+      ],
+      "title": "ExecutionProvenance",
+      "type": "object"
+    },
+    "PublicTestFeedback": {
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "const": "harness-public-test-feedback-v1",
+          "default": "harness-public-test-feedback-v1",
+          "title": "Version",
+          "type": "string"
+        },
+        "source": {
+          "const": "public-command",
+          "default": "public-command",
+          "title": "Source",
+          "type": "string"
+        },
+        "task_id": {
+          "title": "Task Id",
+          "type": "string"
+        },
+        "run_id": {
+          "title": "Run Id",
+          "type": "string"
+        },
+        "workspace_id": {
+          "title": "Workspace Id",
+          "type": "string"
+        },
+        "execution_epoch": {
+          "minimum": 1,
+          "title": "Execution Epoch",
+          "type": "integer"
+        },
+        "acceptance_revision": {
+          "title": "Acceptance Revision",
+          "type": "string"
+        },
+        "requirements_hash": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Requirements Hash",
+          "type": "string"
+        },
+        "task_semantics_hash": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Task Semantics Hash",
+          "type": "string"
+        },
+        "command_id": {
+          "title": "Command Id",
+          "type": "string"
+        },
+        "argv": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Argv",
+          "type": "array"
+        },
+        "receipt_id": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Receipt Id",
+          "type": "string"
+        },
+        "tree_hash": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Tree Hash",
+          "type": "string"
+        },
+        "log_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Log Sha256",
+          "type": "string"
+        },
+        "artifact_hash": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Artifact Hash",
+          "type": "string"
+        },
+        "exit_code": {
+          "title": "Exit Code",
+          "type": "integer"
+        },
+        "outcome": {
+          "enum": [
+            "passed",
+            "failed",
+            "unverified"
+          ],
+          "title": "Outcome",
+          "type": "string"
+        },
+        "category": {
+          "enum": [
+            "PUBLIC_GREEN",
+            "PUBLIC_ASSERTION",
+            "PUBLIC_CHECK_ERROR",
+            "UNVERIFIED"
+          ],
+          "title": "Category",
+          "type": "string"
+        },
+        "log_complete": {
+          "title": "Log Complete",
+          "type": "boolean"
+        },
+        "tests_run": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tests Run"
+        },
+        "tests_failed": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tests Failed"
+        },
+        "tests_skipped": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tests Skipped"
+        },
+        "failure_ids": {
+          "default": [],
+          "items": {
+            "maxLength": 256,
+            "type": "string"
+          },
+          "maxItems": 16,
+          "title": "Failure Ids",
+          "type": "array"
+        },
+        "failure_ids_truncated": {
+          "default": false,
+          "title": "Failure Ids Truncated",
+          "type": "boolean"
+        },
+        "assertion_excerpt": {
+          "default": "",
+          "maxLength": 4000,
+          "title": "Assertion Excerpt",
+          "type": "string"
+        },
+        "failure_signature": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Failure Signature",
+          "type": "string"
+        }
+      },
+      "required": [
+        "task_id",
+        "run_id",
+        "workspace_id",
+        "execution_epoch",
+        "acceptance_revision",
+        "requirements_hash",
+        "task_semantics_hash",
+        "command_id",
+        "argv",
+        "receipt_id",
+        "tree_hash",
+        "log_sha256",
+        "artifact_hash",
+        "exit_code",
+        "outcome",
+        "category",
+        "log_complete",
+        "failure_signature"
+      ],
+      "title": "PublicTestFeedback",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "receipt_id": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Receipt Id",
+      "type": "string"
+    },
+    "operation_id": {
+      "title": "Operation Id",
+      "type": "string"
+    },
+    "purpose": {
+      "enum": [
+        "test",
+        "build",
+        "command"
+      ],
+      "title": "Purpose",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "passed",
+        "failed",
+        "timeout",
+        "denied",
+        "error"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "argv": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Argv",
+      "type": "array"
+    },
+    "cwd": {
+      "title": "Cwd",
+      "type": "string"
+    },
+    "exit_code": {
+      "title": "Exit Code",
+      "type": "integer"
+    },
+    "stdout": {
+      "title": "Stdout",
+      "type": "string"
+    },
+    "stderr": {
+      "title": "Stderr",
+      "type": "string"
+    },
+    "duration_seconds": {
+      "title": "Duration Seconds",
+      "type": "number"
+    },
+    "tree_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Tree Hash",
+      "type": "string"
+    },
+    "log_sha256": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Log Sha256",
+      "type": "string"
+    },
+    "environment_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Environment Hash",
+      "type": "string"
+    },
+    "tests_run": {
+      "default": 0,
+      "minimum": 0,
+      "title": "Tests Run",
+      "type": "integer"
+    },
+    "tests_failed": {
+      "default": 0,
+      "minimum": 0,
+      "title": "Tests Failed",
+      "type": "integer"
+    },
+    "provenance": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ExecutionProvenance"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "public_probe": {
+      "anyOf": [
+        {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Public Probe"
+    },
+    "public_feedback": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PublicTestFeedback"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    }
+  },
+  "required": [
+    "receipt_id",
+    "operation_id",
+    "purpose",
+    "status",
+    "argv",
+    "cwd",
+    "exit_code",
+    "stdout",
+    "stderr",
+    "duration_seconds",
+    "tree_hash",
+    "log_sha256",
+    "environment_hash"
+  ],
+  "title": "ExecutionReceipt",
+  "type": "object"
+}

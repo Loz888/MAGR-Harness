@@ -1,0 +1,32 @@
+ARG BASE_IMAGE
+FROM ${BASE_IMAGE}
+USER root
+COPY python /opt/h12/python
+COPY node /opt/h12/node
+COPY go /opt/h12/go
+COPY probe /opt/h12/probe
+RUN mkdir -p /usr/local/bin \
+    && ln -sf /opt/h12/python/bin/python3.12 /usr/local/bin/python \
+    && ln -sf /opt/h12/python/bin/python3.12 /usr/local/bin/python3 \
+    && ln -sf /opt/h12/python/bin/python3.12 /usr/local/bin/python3.12 \
+    && ln -sf /opt/h12/python/bin/pytest /usr/local/bin/pytest \
+    && rm -rf /usr/local/go \
+    && for tool in node npm npx go; do \
+         printf '#!/bin/sh\necho "H12 toolchain NOT_RUN: not prepared" >&2\nexit 127\n' > /usr/local/bin/$tool; \
+         chmod 755 /usr/local/bin/$tool; \
+       done \
+    && if [ -f /opt/h12/node/bin/node ]; then \
+         ln -sf /opt/h12/node/bin/node /usr/local/bin/node; \
+         ln -sf /opt/h12/node/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm; \
+         ln -sf /opt/h12/node/lib/node_modules/npm/bin/npx-cli.js /usr/local/bin/npx; \
+       fi \
+    && if [ -f /opt/h12/go/bin/go ]; then \
+         ln -s /opt/h12/go /usr/local/go; \
+         ln -sf /opt/h12/go/bin/go /usr/local/bin/go; \
+       fi
+ENV PATH=/usr/local/bin:/usr/local/go/bin:/usr/bin:/bin \
+    GOROOT=/usr/local/go GOTOOLCHAIN=local GOPROXY=off GOSUMDB=off \
+    PYTHONDONTWRITEBYTECODE=1 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+WORKDIR /workspace
+USER 65532:65532
+ENTRYPOINT ["/usr/local/bin/python3", "/opt/mgar/bootstrap.py", "--"]

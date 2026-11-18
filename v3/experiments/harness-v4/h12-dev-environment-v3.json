@@ -1,0 +1,56 @@
+{
+  "schema": "h12-dev-environment-amendment-v1",
+  "revision": "h12-dev-environment-v3",
+  "scope": "public frozen H00 dev split only; historical holdout quarantined",
+  "catalog_changed": false,
+  "judge_objects_changed": false,
+  "thresholds_changed": false,
+  "original_resource_limits_changed": false,
+  "changes": [
+    {
+      "field": "sandbox_nofile",
+      "original": 128,
+      "candidate": 1024,
+      "reason": "The offline Node20 ESM/XO dependency graph exceeds 128 descriptors. Reproduced EMFILE can surface as misleading ERR_MODULE_NOT_FOUND; actual complete public commands are mandatory."
+    },
+    {
+      "field": "sandbox_log_bytes",
+      "original": 65536,
+      "candidate": 1048576,
+      "reason": "Keep complete original public test output; overflow remains explicit and never establishes PASS. Model feedback stays bounded and points to original CAS logs."
+    },
+    {
+      "field": "sandbox_memory_mb",
+      "scope": "sindresorhus/got dev tasks",
+      "original": 256,
+      "candidate": 1024,
+      "reason": "Original 256MB process killed; 768MB reproduces explicit V8 heap exhaustion. 1024MB executes original XO and TypeScript stages. CPU/PID/network authority unchanged."
+    },
+    {
+      "field": "Got original public command normalization",
+      "original": ["npm", "test"],
+      "candidate": ["npm", "test", "--", "--no-cache"],
+      "reason": "Official AVA --no-cache allocates temporary data under existing TMPDIR=/scratch; original test bytes and file selection are retained. Only this trusted dev revision can add the fixed flag."
+    },
+    {
+      "field": "Got trusted image environment",
+      "candidate": {"CI": "true", "AVA_FORCE_CI": "1", "GOMAXPROCS": "1"},
+      "reason": "Official AVA CI behavior limits concurrency to two and esbuild Go uses one scheduler processor while retaining the original 64 PID and one CPU limits. Original test bytes/selection are retained; CI=true selects the original timeout.ts timing margin branch of 200ms rather than 100ms, so effective timing assertion parameters differ from the non-CI baseline."
+    },
+    {
+      "field": "Requests public test dependencies",
+      "source": "Each original pinned requirements-dev.txt, including its pytest version constraint",
+      "candidate": "Official PyPI SHA256-bound CPython3.12 wheels compatible with Debian bookworm glibc; explicit pytest_httpbin.plugin while plugin autoload stays disabled",
+      "reason": "Original images lacked httpbin fixtures and used pytest9 despite two pins declaring pytest<9; each source receives its own original project metadata and empty image workspace. No sdist or host project hook execution."
+    }
+  ],
+  "unchanged_authority": ["network disabled", "non-root UID", "read-only root", "CPU limit", "PID limit", "command allowlist", "workspace write scope", "cumulative USD 12 authorization"],
+  "readiness": {
+    "metadata_success": "SOURCE_READY",
+    "image_preparation_success": "PASS_PREPARED",
+    "execution_success": "READY only after all 12 original dev public prerequisites and required baselines execute through Broker/CommandSession. Unrelated red original regressions block readiness. A frozen declaration of a missing/failing public-reference baseline may be red only with exact frozen public asset hashes and an independent real replay whose executed failure paths are limited to those assets, regardless of task type.",
+    "model_calls": 0,
+    "command": "python scripts/h12_preflight.py --split dev --execute-readiness --image-map <private-v3-map> --evidence <new-private-directory>"
+  },
+  "historical_results": "All prior FAIL, NOT_RUN, environment images, receipts, profiles and frozen thresholds remain unchanged; this amendment does not establish model or Agent success."
+}

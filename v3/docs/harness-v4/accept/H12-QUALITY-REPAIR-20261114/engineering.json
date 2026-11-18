@@ -1,0 +1,59 @@
+{
+  "schema": "h12-quality-repair-engineering-v1",
+  "status": "PASS",
+  "live_quality": "NOT_RUN_CURRENT_CANDIDATE",
+  "historical_quality": "FAIL",
+  "source_sha256": "b1373336d7850336c195eaf48e6ad06bfe263c6893134b4457d35fc3c95cf7df",
+  "tests": 219,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "lint": "PASS",
+  "mypy": "PASS",
+  "mypy_source_files": 248,
+  "runs": [
+    {
+      "path": "evidence/HV4-H12-QUALITY-REPAIR/20261114T080611Z-73a6638e/result.json",
+      "sha256": "8077548eb800bcd1740cd4ecf01e46c4afddb64a0e17ee32080f37b51cdf5dbb",
+      "counts": {
+        "tests": 144,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "path": "evidence/HV4-H12-FULL-DEV/20261114T080657Z-7bd4836e/result.json",
+      "sha256": "ab04cc134db3806f0ca754e8ca042582e7a4e61b7b7cd7becb164d2448849c02",
+      "counts": {
+        "tests": 75,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    }
+  ],
+  "historical_regression_correction": {
+    "task_id": "hv4-v2-dev-requests-quoted-content-type",
+    "original_score_unchanged": true,
+    "original_score_sha256": "57e068749f5eecd2962d4d93e124ea0db68bac82a7ec94b180e2134309c4e6bd",
+    "raw_result_sha256": "bea2163f57f34c20bbebddb237a466b6d9ff0f980496050a11d1a38cec28b391",
+    "original_new_regression_failures": 0,
+    "recomputed": {
+      "new_regression_failures": 4,
+      "regression_evidence_known": true,
+      "regression_evidence_status": "measured",
+      "regression_baseline_receipt": "50f801b61081db1f4d9054cab278ee150998f396299d51b4bdf7bfcd65ebd058",
+      "regression_final_receipt": "782f407749470885d80546019c2fed459892978898dbfba8722837714401bfac",
+      "regression_final_tree": "8e6c80919a444cd801055c19337a5e588b0b41911e38eb7d4f69332c92645a69"
+    }
+  },
+  "before_paid_budget": {
+    "calls": 333,
+    "settled_micros": 1483486,
+    "reserved_micros": 0,
+    "unknown_calls": 0,
+    "limit_micros": 12000000
+  },
+  "new_paid_model_calls_at_engineering_acceptance": 0
+}

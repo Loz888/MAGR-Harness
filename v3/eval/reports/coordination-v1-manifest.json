@@ -1,0 +1,10 @@
+{
+  "_public_export": {
+    "original_record_sha256": "a09a018470f4b390ffe7ea62a4d62041616455a1f24bbc7b7a449c973012feef",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "schema": "coordination-comparison-v1",
+  "status_field_occurrences": {
+    "PASS": 1
+  }
+}

@@ -1,0 +1,325 @@
+{
+  "source_commit": "24cce0b3b2341b1c6172559398c019a07c74ed13",
+  "source_sha256": "0c729bdc2fb1b1a05b2471995e60eea5b3103b0d57662266b8c89b761be8e16a",
+  "scope": "FREE_CONTROLLED_ENGINEERING_TESTS_ONLY",
+  "cases": [
+    {
+      "id": "tests.test_h12_r04_contracts::test_entry_loader_paths_are_explicit_relative_files[.-python]",
+      "status": "PASS",
+      "seconds": 0.0,
+      "condition": "非法或不匹配的入口路径须在执行前拒绝。"
+    },
+    {
+      "id": "tests.test_h12_r04_contracts::test_entry_loader_paths_are_explicit_relative_files[../app.py-python]",
+      "status": "PASS",
+      "seconds": 0.0,
+      "condition": "非法或不匹配的入口路径须在执行前拒绝。"
+    },
+    {
+      "id": "tests.test_h12_r04_contracts::test_entry_loader_paths_are_explicit_relative_files[/etc/passwd-python]",
+      "status": "PASS",
+      "seconds": 0.0,
+      "condition": "非法或不匹配的入口路径须在执行前拒绝。"
+    },
+    {
+      "id": "tests.test_h12_r04_contracts::test_entry_loader_paths_are_explicit_relative_files[app.js-python]",
+      "status": "PASS",
+      "seconds": 0.0,
+      "condition": "非法或不匹配的入口路径须在执行前拒绝。"
+    },
+    {
+      "id": "tests.test_h12_r04_contracts::test_entry_loader_paths_are_explicit_relative_files[app.py-node]",
+      "status": "PASS",
+      "seconds": 0.0,
+      "condition": "非法或不匹配的入口路径须在执行前拒绝。"
+    },
+    {
+      "id": "tests.test_h12_r04_contracts::test_runtime_control_shape_and_frozen_asset_binding",
+      "status": "PASS",
+      "seconds": 0.001,
+      "condition": "固定控制模式与入口配对；资产绑定和JSON恢复后配置一致。"
+    },
+    {
+      "id": "tests.test_h12_r04_contracts::test_route_contract_comes_from_explicit_public_goal[GET / returning \"ok\".-/-200-None-ok-None]",
+      "status": "PASS",
+      "seconds": 0.001,
+      "condition": "仅按明确公开GET契约生成路径、状态、类型和响应体期望。"
+    },
+    {
+      "id": "tests.test_h12_r04_contracts::test_route_contract_comes_from_explicit_public_goal[GET `/healthz` returning JSON {\"status\":\"ok\"}.-/healthz-200-application/json-None-json_body1]",
+      "status": "PASS",
+      "seconds": 0.0,
+      "condition": "仅按明确公开GET契约生成路径、状态、类型和响应体期望。"
+    },
+    {
+      "id": "tests.test_h12_r04_contracts::test_route_contract_comes_from_explicit_public_goal[GET /ready returning 204 text/plain \"\".-/ready-204-text/plain--None]",
+      "status": "PASS",
+      "seconds": 0.0,
+      "condition": "仅按明确公开GET契约生成路径、状态、类型和响应体期望。"
+    },
+    {
+      "id": "tests.test_h12_r04_contracts::test_route_contract_comes_from_explicit_public_goal[GET / returning `\"ok\"`.-/-200-None-ok-None]",
+      "status": "PASS",
+      "seconds": 0.0,
+      "condition": "仅按明确公开GET契约生成路径、状态、类型和响应体期望。"
+    },
+    {
+      "id": "tests.test_h12_r04_contracts::test_real_workspace_inventory_includes_package_scripts_new_and_modified_entries[package]",
+      "status": "PASS",
+      "seconds": 0.035,
+      "condition": "真实工作区中package entry、npm脚本、src、新增、修改或缺失入口须进入清单。"
+    },
+    {
+      "id": "tests.test_h12_r04_contracts::test_real_workspace_inventory_includes_package_scripts_new_and_modified_entries[npm]",
+      "status": "PASS",
+      "seconds": 0.032,
+      "condition": "真实工作区中package entry、npm脚本、src、新增、修改或缺失入口须进入清单。"
+    },
+    {
+      "id": "tests.test_h12_r04_contracts::test_real_workspace_inventory_includes_package_scripts_new_and_modified_entries[src]",
+      "status": "PASS",
+      "seconds": 0.034,
+      "condition": "真实工作区中package entry、npm脚本、src、新增、修改或缺失入口须进入清单。"
+    },
+    {
+      "id": "tests.test_h12_r04_contracts::test_real_workspace_inventory_includes_package_scripts_new_and_modified_entries[modified]",
+      "status": "PASS",
+      "seconds": 0.029,
+      "condition": "真实工作区中package entry、npm脚本、src、新增、修改或缺失入口须进入清单。"
+    },
+    {
+      "id": "tests.test_h12_r04_contracts::test_real_workspace_inventory_includes_package_scripts_new_and_modified_entries[missing]",
+      "status": "PASS",
+      "seconds": 0.031,
+      "condition": "真实工作区中package entry、npm脚本、src、新增、修改或缺失入口须进入清单。"
+    },
+    {
+      "id": "tests.test_h12_r04_runtime::test_python_http_dynamic_port_bound_routes_and_graceful_release",
+      "status": "PASS",
+      "seconds": 3.484,
+      "condition": "实测动态端口、两条公开路由及SIGTERM后PID退出/端口复用均成立。"
+    },
+    {
+      "id": "tests.test_h12_r04_runtime::test_http_negative_readiness_or_sigterm_never_passes[missing_ready]",
+      "status": "PASS",
+      "seconds": 3.901,
+      "condition": "Ready日志/实际监听/响应不匹配或超时须失败；忽略SIGTERM不得算优雅退出。"
+    },
+    {
+      "id": "tests.test_h12_r04_runtime::test_http_negative_readiness_or_sigterm_never_passes[missing_port]",
+      "status": "PASS",
+      "seconds": 3.971,
+      "condition": "Ready日志/实际监听/响应不匹配或超时须失败；忽略SIGTERM不得算优雅退出。"
+    },
+    {
+      "id": "tests.test_h12_r04_runtime::test_http_negative_readiness_or_sigterm_never_passes[body]",
+      "status": "PASS",
+      "seconds": 4.047,
+      "condition": "Ready日志/实际监听/响应不匹配或超时须失败；忽略SIGTERM不得算优雅退出。"
+    },
+    {
+      "id": "tests.test_h12_r04_runtime::test_http_negative_readiness_or_sigterm_never_passes[sigterm]",
+      "status": "PASS",
+      "seconds": 3.886,
+      "condition": "Ready日志/实际监听/响应不匹配或超时须失败；忽略SIGTERM不得算优雅退出。"
+    },
+    {
+      "id": "tests.test_h12_r04_runtime::test_http_negative_readiness_or_sigterm_never_passes[status]",
+      "status": "PASS",
+      "seconds": 3.967,
+      "condition": "Ready日志/实际监听/响应不匹配或超时须失败；忽略SIGTERM不得算优雅退出。"
+    },
+    {
+      "id": "tests.test_h12_r04_runtime::test_http_negative_readiness_or_sigterm_never_passes[type]",
+      "status": "PASS",
+      "seconds": 4.176,
+      "condition": "Ready日志/实际监听/响应不匹配或超时须失败；忽略SIGTERM不得算优雅退出。"
+    },
+    {
+      "id": "tests.test_h12_r04_runtime::test_http_negative_readiness_or_sigterm_never_passes[route]",
+      "status": "PASS",
+      "seconds": 4.146,
+      "condition": "Ready日志/实际监听/响应不匹配或超时须失败；忽略SIGTERM不得算优雅退出。"
+    },
+    {
+      "id": "tests.test_h12_r04_runtime::test_http_negative_readiness_or_sigterm_never_passes[port]",
+      "status": "PASS",
+      "seconds": 4.098,
+      "condition": "Ready日志/实际监听/响应不匹配或超时须失败；忽略SIGTERM不得算优雅退出。"
+    },
+    {
+      "id": "tests.test_h12_r04_runtime::test_http_negative_readiness_or_sigterm_never_passes[stderr_ready]",
+      "status": "PASS",
+      "seconds": 3.914,
+      "condition": "Ready日志/实际监听/响应不匹配或超时须失败；忽略SIGTERM不得算优雅退出。"
+    },
+    {
+      "id": "tests.test_h12_r04_runtime::test_http_negative_readiness_or_sigterm_never_passes[late_probe]",
+      "status": "PASS",
+      "seconds": 5.121,
+      "condition": "Ready日志/实际监听/响应不匹配或超时须失败；忽略SIGTERM不得算优雅退出。"
+    },
+    {
+      "id": "tests.test_h12_r04_runtime::test_detached_orphan_holding_port_requires_forced_cleanup_and_never_graceful",
+      "status": "PASS",
+      "seconds": 2.964,
+      "condition": "脱离进程组的子进程持有端口须被识别；强杀后清理成功但优雅退出仍失败。"
+    },
+    {
+      "id": "tests.test_h12_r04_runtime::test_cancellation_waiting_for_ready_still_observes_exit_and_port_reuse",
+      "status": "PASS",
+      "seconds": 3.124,
+      "condition": "等待Ready时取消须保留取消状态并清理已启动进程及端口。"
+    },
+    {
+      "id": "tests.test_h12_r04_runtime::test_entry_src_cwd_missing_module_esm_and_import_binding[src/pkg/entry.py-python-files0-src-roots0-PASS]",
+      "status": "PASS",
+      "seconds": 2.075,
+      "condition": "src/cwd/ESM加载可核验；缺模块或违反导入不绑定端口要求须失败。"
+    },
+    {
+      "id": "tests.test_h12_r04_runtime::test_entry_src_cwd_missing_module_esm_and_import_binding[missing.py-python-files1-.-roots1-FAIL]",
+      "status": "PASS",
+      "seconds": 2.04,
+      "condition": "src/cwd/ESM加载可核验；缺模块或违反导入不绑定端口要求须失败。"
+    },
+    {
+      "id": "tests.test_h12_r04_runtime::test_entry_src_cwd_missing_module_esm_and_import_binding[app.py-python-files2-.-roots2-FAIL]",
+      "status": "PASS",
+      "seconds": 2.073,
+      "condition": "src/cwd/ESM加载可核验；缺模块或违反导入不绑定端口要求须失败。"
+    },
+    {
+      "id": "tests.test_h12_r04_runtime::test_entry_src_cwd_missing_module_esm_and_import_binding[entry.mjs-node-files3-.-roots3-PASS]",
+      "status": "PASS",
+      "seconds": 2.239,
+      "condition": "src/cwd/ESM加载可核验；缺模块或违反导入不绑定端口要求须失败。"
+    },
+    {
+      "id": "tests.test_h12_r04_runtime::test_entry_src_cwd_missing_module_esm_and_import_binding[entry.cjs-node-files4-.-roots4-FAIL]",
+      "status": "PASS",
+      "seconds": 2.267,
+      "condition": "src/cwd/ESM加载可核验；缺模块或违反导入不绑定端口要求须失败。"
+    },
+    {
+      "id": "tests.test_h12_r04_runtime::test_controlled_entry_does_not_bypass_original_lease_grant_or_frozen_assets",
+      "status": "PASS",
+      "seconds": 0.004,
+      "condition": "原Lease/Grant拒绝和固定资产不匹配不可绕过；拒绝不得留下容器记录或挂载FD。"
+    },
+    {
+      "id": "tests.test_h12_r04_runtime::test_revoked_lease_removes_owned_container_without_manufacturing_cleanup_proof",
+      "status": "PASS",
+      "seconds": 1.811,
+      "condition": "撤权后停止原归属容器；不可把缺少PID/端口观察补成成功。"
+    },
+    {
+      "id": "tests.test_h12_r04_runtime::test_python_selfcheck_observed_response_stdout_and_failure_cleanup[ok]",
+      "status": "PASS",
+      "seconds": 3.296,
+      "condition": "独立实测HTTP与stdout状态匹配且退出0才Ready；缺输出/错误输出/stderr或异常退出失败。"
+    },
+    {
+      "id": "tests.test_h12_r04_runtime::test_python_selfcheck_observed_response_stdout_and_failure_cleanup[no_status]",
+      "status": "PASS",
+      "seconds": 3.338,
+      "condition": "独立实测HTTP与stdout状态匹配且退出0才Ready；缺输出/错误输出/stderr或异常退出失败。"
+    },
+    {
+      "id": "tests.test_h12_r04_runtime::test_python_selfcheck_observed_response_stdout_and_failure_cleanup[wrong_status]",
+      "status": "PASS",
+      "seconds": 3.295,
+      "condition": "独立实测HTTP与stdout状态匹配且退出0才Ready；缺输出/错误输出/stderr或异常退出失败。"
+    },
+    {
+      "id": "tests.test_h12_r04_runtime::test_python_selfcheck_observed_response_stdout_and_failure_cleanup[error]",
+      "status": "PASS",
+      "seconds": 3.306,
+      "condition": "独立实测HTTP与stdout状态匹配且退出0才Ready；缺输出/错误输出/stderr或异常退出失败。"
+    },
+    {
+      "id": "tests.test_h12_r04_runtime::test_python_selfcheck_observed_response_stdout_and_failure_cleanup[stderr_status]",
+      "status": "PASS",
+      "seconds": 3.256,
+      "condition": "独立实测HTTP与stdout状态匹配且退出0才Ready；缺输出/错误输出/stderr或异常退出失败。"
+    },
+    {
+      "id": "tests.test_h12_r04_runtime::test_independent_entry_import_and_load[pkg/entry.py-from .missing import nope\\n-FAIL]",
+      "status": "PASS",
+      "seconds": 2.06,
+      "condition": "实际Python/Node加载：错误相对导入、缺模块失败，合法模块成功。"
+    },
+    {
+      "id": "tests.test_h12_r04_runtime::test_independent_entry_import_and_load[examples/entry.cjs-module.exports=require('../../missing')\\n-FAIL]",
+      "status": "PASS",
+      "seconds": 2.276,
+      "condition": "实际Python/Node加载：错误相对导入、缺模块失败，合法模块成功。"
+    },
+    {
+      "id": "tests.test_h12_r04_runtime::test_independent_entry_import_and_load[pkg/entry.py-from .other import VALUE\\n-PASS]",
+      "status": "PASS",
+      "seconds": 2.095,
+      "condition": "实际Python/Node加载：错误相对导入、缺模块失败，合法模块成功。"
+    },
+    {
+      "id": "tests.test_h12_r04_runtime::test_independent_entry_import_and_load[examples/entry.cjs-module.exports={value:7}\\n-PASS]",
+      "status": "PASS",
+      "seconds": 2.297,
+      "condition": "实际Python/Node加载：错误相对导入、缺模块失败，合法模块成功。"
+    },
+    {
+      "id": "tests.test_h12_r04_runtime::test_npm_selfcheck_observes_actual_http_and_ignores_npm_banner[True]",
+      "status": "PASS",
+      "seconds": 4.224,
+      "condition": "客户端实测状态须由该PID在stdout打印；npm版本横幅不算状态，完成后端口释放。"
+    },
+    {
+      "id": "tests.test_h12_r04_runtime::test_npm_selfcheck_observes_actual_http_and_ignores_npm_banner[False]",
+      "status": "PASS",
+      "seconds": 4.239,
+      "condition": "客户端实测状态须由该PID在stdout打印；npm版本横幅不算状态，完成后端口释放。"
+    },
+    {
+      "id": "tests.test_h12_r04_service::test_pg_old_suite_cannot_replace_new_module_load[False]",
+      "status": "PASS",
+      "seconds": 12.156,
+      "condition": "旧套件通过不替代新增模块加载；入口加载结论、原PG操作和CAS绑定最终树。"
+    },
+    {
+      "id": "tests.test_h12_r04_service::test_pg_old_suite_cannot_replace_new_module_load[True]",
+      "status": "PASS",
+      "seconds": 10.037,
+      "condition": "旧套件通过不替代新增模块加载；入口加载结论、原PG操作和CAS绑定最终树。"
+    },
+    {
+      "id": "tests.test_h12_r04_service::test_pg_ready_and_cleanup_are_independent_final_tree_requirements[False]",
+      "status": "PASS",
+      "seconds": 13.972,
+      "condition": "真实PG闭环分别验证Ready与优雅清理；忽略TERM必须阻断，独立质量始终NOT_RUN。"
+    },
+    {
+      "id": "tests.test_h12_r04_service::test_pg_ready_and_cleanup_are_independent_final_tree_requirements[True]",
+      "status": "PASS",
+      "seconds": 15.387,
+      "condition": "真实PG闭环分别验证Ready与优雅清理；忽略TERM必须阻断，独立质量始终NOT_RUN。"
+    },
+    {
+      "id": "tests.test_h12_r04_service::test_pg_known_entry_probe_survives_restart_without_duplicate_execution",
+      "status": "PASS",
+      "seconds": 11.616,
+      "condition": "恢复复用已知入口和模型结果；无重复执行，原账本计数不丢失。"
+    },
+    {
+      "id": "tests.test_h12_r04_service::test_pg_known_lifecycle_cleanup_survives_restart_without_duplicate_start",
+      "status": "PASS",
+      "seconds": 15.874,
+      "condition": "恢复复用已知启停和清理事实；不再次启动，候选工程完成不等于独立质量通过。"
+    },
+    {
+      "id": "tests.test_h12_r04_service::test_pg_unknown_lifecycle_is_reconciled_without_retry_or_graceful_claim",
+      "status": "PASS",
+      "seconds": 12.08,
+      "condition": "已启动但结果未知时按原归属核对，外层仍unknown；不盲重启或补造Ready/优雅退出。"
+    }
+  ]
+}

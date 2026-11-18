@@ -1,0 +1,132 @@
+{
+  "schema": "h12-independent-real-quality-verdict-v1",
+  "recorded_at": "2026-11-14T07:19:30.672447+00:00",
+  "experiment_id": "hv4-h12-public-1e68aef",
+  "source_commit": "1e68aef",
+  "candidate_source_sha256": "494ad6d3c0114ecea8e2d8c47900bd34803f364de9cbb37b6f7d40c7c59f94d0",
+  "quality_gate": "FAIL",
+  "release_status": "MVP_NOT_RELEASED",
+  "decision_reason": "DEV_THRESHOLD_MATHEMATICALLY_UNREACHABLE",
+  "dev_accounting_view": {
+    "pass": 0,
+    "fail": 3,
+    "not_run": 9,
+    "denominator": 12,
+    "maximum_possible_passes": 9,
+    "threshold": 10
+  },
+  "raw_score_archive": {
+    "pass": 0,
+    "fail": 2,
+    "unknown": 1,
+    "not_run": 9
+  },
+  "response_loss_view": {
+    "path": "evidence/harness-v4/H12-INDEPENDENT-LIVE-20261114/response-loss-classification.json",
+    "sha256": "2750c143764a5baed63eccf5b6e68e80bcc155ffdd3b99798bb51ea1281e409a"
+  },
+  "confirmed_samples": [
+    {
+      "task_id": "hv4-dev-requests-http-url-helper",
+      "independent_status": "CONFIRMED",
+      "original_score_sha256": "270dddbcd9f077ad54778fd4c53ffb3e814a14c4f8b78f9ca192f4767d9f2a03",
+      "original_status": "FAIL",
+      "reason": "no_progress",
+      "candidate_status": "blocked",
+      "judge_status": "FAIL",
+      "independent_rejudge_status": "FAIL",
+      "final_tree": "686d4b687207588e4733b9166e12c9229a42c22aa7bfca6e1df7d39a8d779476",
+      "tree_unchanged_after_rejudge": true,
+      "model_calls_verified": 7,
+      "tool_calls_verified": 11,
+      "provider_physical_attempts_each": 1,
+      "supplier_model": "deepseek-flash",
+      "input_tokens": 83775,
+      "output_tokens": 881,
+      "settled_micros": 26193,
+      "read_only_pg_checks": true,
+      "source_sha256": "494ad6d3c0114ecea8e2d8c47900bd34803f364de9cbb37b6f7d40c7c59f94d0",
+      "source_unchanged": true,
+      "new_model_calls_by_reviewer": 0,
+      "vendor_billing_access": false,
+      "private_judge_source_read_by_reviewer": false,
+      "rejudge_result_path": "evidence/harness-v4/H12-INDEPENDENT-LIVE-20261114/hv4-dev-requests-http-url-helper/rejudge/judge-result.json",
+      "rejudge_result_sha256": "7e97abc10357dddebaa7128d410d98b05ecb5d35ce567921b0f3a5557291ebfb",
+      "recorded_at": "2026-11-14T07:11:20.754186+00:00"
+    },
+    {
+      "task_id": "hv4-v2-dev-requests-quoted-content-type",
+      "independent_status": "CONFIRMED",
+      "original_score_sha256": "57e068749f5eecd2962d4d93e124ea0db68bac82a7ec94b180e2134309c4e6bd",
+      "original_status": "FAIL",
+      "reason": "budget_model_calls",
+      "candidate_status": "budget_exhausted",
+      "judge_status": "FAIL",
+      "independent_rejudge_status": "FAIL",
+      "final_tree": "8e6c80919a444cd801055c19337a5e588b0b41911e38eb7d4f69332c92645a69",
+      "tree_unchanged_after_rejudge": true,
+      "model_calls_verified": 20,
+      "tool_calls_verified": 28,
+      "provider_physical_attempts_each": 1,
+      "supplier_model": "deepseek-flash",
+      "input_tokens": 452482,
+      "output_tokens": 3799,
+      "settled_micros": 140312,
+      "read_only_pg_checks": true,
+      "source_sha256": "494ad6d3c0114ecea8e2d8c47900bd34803f364de9cbb37b6f7d40c7c59f94d0",
+      "source_unchanged": true,
+      "new_model_calls_by_reviewer": 0,
+      "vendor_billing_access": false,
+      "private_judge_source_read_by_reviewer": false,
+      "rejudge_result_path": "evidence/harness-v4/H12-INDEPENDENT-LIVE-20261114/hv4-v2-dev-requests-quoted-content-type/rejudge/judge-result.json",
+      "rejudge_result_sha256": "72d5034cc1f2bae4dd6287e29934252776ada2c023d3f2d78776f563eb1961f6",
+      "recorded_at": "2026-11-14T07:17:14.367507+00:00"
+    }
+  ],
+  "holdout": {
+    "model_scoring": "NOT_RUN",
+    "count": 12,
+    "threshold": 9
+  },
+  "shared_budget_read_only_snapshot": {
+    "limit_micros": 12000000,
+    "reserved_micros": 0,
+    "settled_micros": 1483486,
+    "used_calls": 333,
+    "call_limit": 1536,
+    "unknown_calls": 0
+  },
+  "real_continuation_calls_by_cli": 27,
+  "real_continuation_cost_micros": 166505,
+  "new_model_calls_by_reviewer": 0,
+  "independent_final_judge_reruns": 2,
+  "billing_reconciliation_or_provider_access_by_reviewer": false,
+  "db_mutations_by_reviewer": false,
+  "candidate_or_harness_source_edited_by_reviewer": false,
+  "private_judge_or_holdout_implementation_read": false,
+  "active_experiment_runs_at_snapshot": 0,
+  "findings": [
+    {
+      "id": "H12-QUALITY-RECHECK-REGRESSION-COUNT",
+      "priority": "P2",
+      "file": "src/mgar_v3/quality_eval/h12_runner.py",
+      "line": 1248,
+      "problem": "new_regression_failures is set from candidate completed status rather than actual final-tree regression receipts.",
+      "observed_score": 0,
+      "observed_final_public_regression_failures": 4,
+      "effect": "Underreports regressions on an incomplete/budget-exhausted candidate; overall FAIL is still correct.",
+      "recommended_fix": "Derive final-tree regression failures from matching complete regression receipts independently of candidate completion; keep missing/unverified distinct from zero. Preserve old score and append a corrected view.",
+      "score": {
+        "path": ".local/h12/public-dev-20261113/live-v1/candidate/dev/hv4-v2-dev-requests-quoted-content-type/score.json",
+        "sha256": "57e068749f5eecd2962d4d93e124ea0db68bac82a7ec94b180e2134309c4e6bd"
+      },
+      "runtime": {
+        "path": ".local/h12/public-dev-20261113/live-v1/candidate/dev/hv4-v2-dev-requests-quoted-content-type/runtime-result.json",
+        "sha256": "bea2163f57f34c20bbebddb237a466b6d9ff0f980496050a11d1a38cec28b391"
+      }
+    }
+  ],
+  "history_preserved": true,
+  "pushed": false,
+  "h13_started": false
+}

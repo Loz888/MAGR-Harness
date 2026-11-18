@@ -1,0 +1,343 @@
+{
+  "card": "HV4-H08",
+  "title": "大文件增量编辑与首页编码入口",
+  "status": "ACCEPTED",
+  "review_status": "PASS_AFTER_INDEPENDENT_RECHECK",
+  "commit": "fadea5d93d0b6a54bf855eb24eed4a382e6e3125",
+  "parent_commit": "0376a4607bb78683dde68b6da3dddcfe2fcae5a7",
+  "depends_on": ["HV4-H04", "HV4-H05", "HV4-H06", "HV4-H07"],
+  "commit_note": "把模型写工具接到 H05 增量替换；新增 harness/service.py（HarnessCodingService、WorkspaceBoundBroker、CodingToolRegistry、确定性适配器）；接通 /api/v3/harness/* 与首页编码模式；read_file 附带预像摘要注记、old_sha256 可选；补迁移说明。未新增执行入口，沙箱仍为 H06 IsolatedExecutionBroker + CommandSession。复验修复：changes[].before_sha256 改为直接上报基线摘要（此前被二次哈希）；task_id 在拼接路径前强制 ^h08-[0-9a-f]{12}$；补四类哈希断言与畸形 ID 负例。",
+  "environment": {
+    "os": "Ubuntu-24.04 (WSL2)",
+    "python": "3.12",
+    "sandbox": "H06 docker container runtime (uid 65532)",
+    "live": "CONTROLLED_SINGLE_CALL_DONE; H12 paid-model acceptance gate remains NOT_RUN"
+  },
+  "commands": [
+    {
+      "name": "h08-tests",
+      "argv": ["uv", "run", "--frozen", "pytest", "-q", "tests/test_harness_v4_h08.py"],
+      "exit_code": 0,
+      "counts": {"tests": 19, "failures": 0, "errors": 0, "skipped": 0},
+      "purpose": "增量语义、PATCH_* 错误码、大文件小改受限输出、服务层真实容器 bugfix/inspect、before/after 哈希（修改/新增/删除/未修改）、版本化 API 注册/提交/审批/实时门/畸形 task_id 拒绝",
+      "log": "evidence/HV4-H08/fix-20261111T0531Z/h08.log",
+      "junit": "evidence/HV4-H08/fix-20261111T0531Z/h08-junit.xml",
+      "status": "PASS"
+    },
+    {
+      "name": "h04-h08-regression",
+      "argv": ["uv", "run", "--frozen", "pytest", "-q", "tests/test_harness_v4_h04.py", "tests/test_harness_v4_h05.py", "tests/test_harness_v4_h06.py", "tests/test_harness_v4_h07.py", "tests/test_harness_v4_h08.py"],
+      "exit_code": 0,
+      "counts": {"tests": 114, "failures": 0, "errors": 0, "skipped": 0},
+      "log": "evidence/HV4-H08/fix-20261111T0531Z/h04-h08.log",
+      "status": "PASS"
+    },
+    {
+      "name": "h00-h08-regression",
+      "argv": ["uv", "run", "--frozen", "pytest", "-q", "tests/test_harness_v4_h00.py", "tests/test_harness_v4_h01.py", "tests/test_harness_v4_h02.py", "tests/test_harness_v4_h03.py", "tests/test_harness_v4_h04.py", "tests/test_harness_v4_h05.py", "tests/test_harness_v4_h06.py", "tests/test_harness_v4_h07.py", "tests/test_harness_v4_h08.py"],
+      "exit_code": 0,
+      "counts": {"tests": 197, "failures": 0, "errors": 0, "skipped": 0},
+      "log": "evidence/HV4-H08/fix-20261111T0531Z/h00-h08.log",
+      "status": "PASS"
+    },
+    {
+      "name": "ruff",
+      "argv": ["uv", "run", "--frozen", "ruff", "check", "src", "tests", "scripts"],
+      "exit_code": 0,
+      "log": "evidence/HV4-H08/fix-20261111T0531Z/ruff.log",
+      "status": "PASS"
+    },
+    {
+      "name": "mypy",
+      "argv": ["uv", "run", "--frozen", "mypy"],
+      "exit_code": 0,
+      "counts": {"files": 204, "errors": 0},
+      "log": "evidence/HV4-H08/fix-20261111T0531Z/mypy.log",
+      "status": "PASS"
+    },
+    {
+      "name": "engineering-verify",
+      "argv": ["make", "verify", "TASK=HV4-H08"],
+      "exit_code": 0,
+      "counts": {"tests": 19, "failures": 0, "errors": 0, "skipped": 0},
+      "git_commit": "fadea5d93d0b6a54bf855eb24eed4a382e6e3125",
+      "source_sha256": "ecc39caf08cd6858ffe629cda929bb15be9ad6709313173e779138b0a463b65b",
+      "finished_source_sha256": "ecc39caf08cd6858ffe629cda929bb15be9ad6709313173e779138b0a463b65b",
+      "attempt": "evidence/HV4-H08/20261111T053541Z-4c679e05/",
+      "log": "evidence/HV4-H08/20261111T053541Z-4c679e05/command.log",
+      "status": "PASS",
+      "note": "验证目标本身从不发起付费调用，live_gate 记为 NOT_RUN；docker/network/postgres/redis 均 not_used。"
+    },
+    {
+      "name": "browser-e2e",
+      "argv": ["browser", "http://127.0.0.1:18081/"],
+      "exit_code": 0,
+      "counts": {"checks": 15, "passed": 15, "failed": 0, "blocked": 0},
+      "purpose": "一次性数据库 + 临时 harness 根目录 + H06 容器 + 确定性适配器：登录、切换编码、选项目、bugfix、提交、查看 Diff/命令/补丁",
+      "evidence": "一次性实例 /tmp/h08_e2e_harness/runs/h08-0c078108bf5c/result.json；截图 c:\\Users\\imini\\AppData\\Local\\Temp\\trae\\screenshots\\h08-result.jpg",
+      "result": {
+        "status": "completed",
+        "model": "local-deterministic-h08",
+        "diff": ["-    return a - b", "+    return a + b"],
+        "commands": ["python3 -B -m unittest -v -> failed (exit 1)", "python3 -B -m unittest -v -> passed (exit 0)"],
+        "patch_link": "visible"
+      },
+      "checks": [
+        {"id": "login", "result": "PASS", "detail": "owner 登录后进入主界面"},
+        {"id": "mode", "result": "PASS", "detail": "切换到编码任务模式"},
+        {"id": "project", "result": "PASS", "detail": "选中 local/h08_e2e_project · /tmp/h08_e2e_project"},
+        {"id": "kind", "result": "PASS", "detail": "任务类型=修复缺陷(bugfix)"},
+        {"id": "objective", "result": "PASS", "detail": "目标=Fix add"},
+        {"id": "advanced", "result": "PASS", "detail": "展开受控适配器参数"},
+        {"id": "test-command", "result": "PASS", "detail": "python3 -m unittest -v"},
+        {"id": "target", "result": "PASS", "detail": "calc.py"},
+        {"id": "old-text", "result": "PASS", "detail": "    return a - b"},
+        {"id": "new-text", "result": "PASS", "detail": "    return a + b"},
+        {"id": "approval", "result": "PASS", "detail": "批准已勾选，live 未勾选"},
+        {"id": "submit", "result": "PASS", "detail": "提交后徽标=完成 · 确定性适配器，status=completed"},
+        {"id": "diff", "result": "PASS", "detail": "Diff 显示 -    return a - b / +    return a + b"},
+        {"id": "commands", "result": "PASS", "detail": "python3 -B -m unittest -v 先 failed(exit 1) 后 passed(exit 0)"},
+        {"id": "patch", "result": "PASS", "detail": "下载补丁链接可见"}
+      ],
+      "evidence_strength": "逐项明细来自浏览器代理检查回报与页面文本；除最终截图外没有逐步截图，属代理自述 + 最终截图 + 服务端 result.json 三方交叉证据。",
+      "status": "PASS"
+    },
+    {
+      "name": "controlled-live-model",
+      "argv": ["uv", "run", "--frozen", "python", "/tmp/h08_live_probe.py"],
+      "exit_code": 0,
+      "counts": {"checks": 1, "passed": 1, "failed": 0},
+      "purpose": "真实 deepseek-chat 在 H06 容器内对 34,178 字节 big.py 做一次单行修复（大文件小改）",
+      "result": {
+        "status": "completed",
+        "reason": "verified",
+        "model_calls": 6,
+        "tool_calls": 8,
+        "model_output_bytes": 922,
+        "cost_micros": 17182,
+        "tests": {"runs": 3, "first": "failed", "final": "passed"},
+        "changes": ["M big.py"],
+        "diff": "single-line hunk @@ -2703,4 +2703,4 @@",
+        "patch_limit_or_truncated": "not_observed",
+        "protocol": "live:deepseek-chat"
+      },
+      "evidence": "/tmp/h08_live_harness/runs/h08-6cf24155349a/result.json（一次性临时目录，未入库）",
+      "status": "PASS"
+    }
+  ],
+  "engineering_gate": "PASS",
+  "security_gate": "PASS",
+  "security_gate_note": "未新增执行入口：写、读、命令执行仍由 H04 Broker 的 lease/grant/epoch/预算/scope/allowlist 与 H06 CommandSession 决定；WorkspaceBoundBroker 只重绑回执树摘要，不放宽授权。API 全部沿用既有认证；实时模式要求 allow_paid 且有凭据，否则 409 HARNESS_LIVE_MODEL_UNAVAILABLE。task_id 在拼接文件路径前用 ^h08-[0-9a-f]{12}$ 严格校验，非法 id 一律 404（含编码点段与斜杠）。凭据不落盘、不进日志、不回传前端。需独立复验方确认无绕过。",
+  "security_gate_recheck": {
+    "reviewer": "independent-readonly-recheck (child session of 6ae84d7c)",
+    "reviewed_at": "2026-11-11T14:30Z",
+    "verdict": "PASS",
+    "covered": {
+      "implementation_commit": "fadea5d93d0b6a54bf855eb24eed4a382e6e3125",
+      "accept_record_commit": "d9b3f12d38e8aed4ca3e151e37d2de828cddcd32",
+      "head_at_review": "d9b3f12d38e8aed4ca3e151e37d2de828cddcd32",
+      "worktree_clean": true,
+      "source_sha256": "ecc39caf08cd6858ffe629cda929bb15be9ad6709313173e779138b0a463b65b",
+      "source_sha256_note": "fadea5d 与 d9b3f12（仅改 accept.json）源哈希一致，无源码漂移。"
+    },
+    "gates": {
+      "h08": "19 passed / 0 failed / 0 skipped",
+      "h04_h08": "114 passed / 0 skipped",
+      "h00_h08": "197 passed / 0 skipped / 0 xfail",
+      "ruff": "PASS",
+      "mypy": "PASS（204 files）",
+      "make_verify": "PASS，attempt evidence/HV4-H08/20261111T062730Z-5992e67d/，git_commit=d9b3f12，source_sha256 一致，live=NOT_RUN",
+      "test_inventory": "原有 17 个用例全部保留，新增 test_structured_diff_reports_baseline_digests 与 test_web_api_rejects_malformed_task_ids；无新增 skip/xfail。",
+      "scope_note": "tests/ 全目录含 1110 个历史用例（V3x 等与本卡无关），本卡门禁口径为 H00–H08 九个模块共 197 个；历史模块本轮未做归因。"
+    },
+    "probes": [
+      "R-01 PASS 真实容器任务（确定性适配器）：result.json 与 GET /tasks/{id} 的 before_sha256 == sha256(磁盘前像)，且 != sha256(sha256(前像))；after_sha256 == 磁盘后像 == FIXED_CALC；same.py 未出现；tree_after == 重新扫描摘要；diff 仅单行 ±；基线 failed → 修复后 passed。",
+      "R-02 PASS 结构化 diff 四类语义（modified / added / deleted / unchanged）与 tree_after 均符合契约。",
+      "R-03 PASS 省略 old_sha256 + 磁盘被外部改动 → PATCH_STALE。",
+      "R-04 PASS 显式错误 old_sha256 → PATCH_HASH_MISMATCH，文件未被改动。",
+      "R-05 PASS read_file 注记由 harness 生成；文件内伪造的 <<mgar-read-file …>> 保持字面内容并整体参与哈希；伪造摘要作 old_sha256 被 PATCH_HASH_MISMATCH 拒绝；用真实注记哈希的合法编辑成功。",
+      "R-06 PASS 伪造 run_tests argv（sh -c / 追加参数 / 前缀 / 绝对路径）均为 HARNESS_COMMAND_DENIED，session 未被触碰。",
+      "R-07 PASS 增量替换删除断言仍被 H07 弱化守卫拦住（status != completed）。",
+      "R-08 PASS 65,536 字节接受，65,537 字节 PATCH_LIMIT。",
+      "R-09 PASS 多文件批量中一处前像过期 → 整批回滚。",
+      "R-12 PASS 服务层 get_task 对 ..、../..、../result、h08-../../result、./../result、/etc/passwd 全部 HARNESS_TASK_UNKNOWN，harness 根下诱饵 result.json 不可读。",
+      "API-01 PASS 真实 HTTP（真实 app + 真实认证）：13 种畸形 id（%2e%2e、%2E%2E、编码斜杠、双重编码、点段、空白、短/长、非十六进制、大写、%00、未知合法 id）在 /tasks/{id}、/patch、/artifacts 均 404，诱饵内容未泄露。",
+      "R-10 GAP（残余）变更集中出现非 UTF-8 文件时 CodingWorkspace.diff 抛 WORKSPACE_BINARY（修复前静默跳过该文件）；容器内测试对工作区只读（R-11 实测 PermissionError），写路径仅文本，当前无法由 H08 执行面触发；属失败关闭而非绕过。",
+      "R-11 观察 真实容器任务里测试尝试写文件失败（只读挂载），任务 blocked/no_progress，不属于 H08 缺陷。"
+    ],
+    "findings": {
+      "F1_before_sha256": "已闭合。修复前基线 e1a894… 被上报为 78375a…（= sha256('e1a894…')）；修复后真实容器任务上报 e1a894…，与磁盘前像一致，after 与磁盘后像一致；新增用例覆盖四类。",
+      "F2_task_id_traversal": "已闭合。get_task/patch_path 共用 ^h08-[0-9a-f]{12}$ 全匹配；服务层与 HTTP 层（/tasks、/patch、/artifacts）畸形 id 全部 404，未读到 harness 根 result.json。",
+      "F3_browser_evidence": "已闭合。counts 15/15 与 checks 15 项逐项 PASS、must_pass 文案 15/15 一致；evidence_strength 如实标注只有最终截图、无逐步截图；h08-result.jpg / h08-home.jpg 存在且为真实 UI。"
+    },
+    "boundaries": {
+      "real": [
+        "H06 真实容器内的确定性适配器任务（R-01、R-07、R-11）",
+        "真实 FastAPI app + 真实认证 + 真实 HTTP 路由（API-01）",
+        "此前受控 6 次 deepseek-chat 调用与 17,182 micros 费用记录（本轮未新增付费调用）"
+      ],
+      "synthetic": [
+        "PATCH_LIMIT / PATCH_TRUNCATED 的触发条件",
+        "H07 弱化检测在增量替换上的脚本化覆盖"
+      ],
+      "not_run": [
+        "H12 付费模型冻结任务集",
+        "H08 三个 live 门",
+        "非 Python 测试的真实执行",
+        "SSE 事件流与运行中交互"
+      ]
+    },
+    "paid_calls": "本轮复验未发起任何真实模型调用；沿用的 2 次 / 851 micros 是上轮复验误触发，已在 recheck 段如实记录；修复轮无新增付费调用（make verify live=NOT_RUN）。",
+    "evidence_path": "evidence/harness-v4/HV4-H08/independent-recheck-20261111T1400Z/"
+  },
+  "live_model_gate": "NOT_RUN",
+  "live_agent_gate": "NOT_RUN",
+  "live_publication_gate": "NOT_RUN",
+  "live_gate_note": "H08 卡片的 live 门与 H12 的付费模型验收仍未完成，记 NOT_RUN。本卡额外做了一次受控真实调用（见 controlled-live-model），只作为增量写路径的真实性证据，不代表 H12 的冻结任务集验收，也不改变三个 live 门的 NOT_RUN 状态。",
+  "evidence_split": {
+    "real": [
+      "H08 测试中的 bugfix/inspect 走真实 H06 容器与真实 python unittest（确定性适配器），非 mock 命令。",
+      "浏览器端到端：真实 FastAPI 服务、真实登录、真实容器、真实 Diff/补丁下载。",
+      "受控真实模型：真实 deepseek-chat 网络调用 6 次，在真实容器内完成 34 KB 文件的单行修改并通过测试；费用 17,182 micros。"
+    ],
+    "synthetic": [
+      "PATCH_LIMIT/PATCH_TRUNCATED 的产生条件与大文件输出上限仍由脚本化 provider 驱动：受限 2,048 字节输出下整文件重写被截断、增量替换通过。",
+      "H07 弱化检测对增量替换的覆盖为脚本化模型用例，未在真实模型上重跑。"
+    ],
+    "not_run": [
+      "H12 冻结任务集的付费模型验收",
+      "真实模型下的整文件重写规模验证",
+      "pytest/node 非 Python 测试的真实执行",
+      "SSE 事件流与运行中交互（H09）"
+    ]
+  },
+  "recheck": {
+    "verdict_received": "FAIL",
+    "received_at": "2026-11-11",
+    "blocking": {
+      "id": "F1",
+      "title": "changes[].before_sha256 was a double hash",
+      "detail": "CodingWorkspace.diff() passed the baseline path->sha256 map entry through sha256_text() again, so every modified file reported sha256(baseline digest) instead of the baseline digest.",
+      "reproduced": "calc.py baseline e1a894022d1a082987b87adecb623438c9e386d86b2b621cff4a5fe7fdf7edc8 reported as 78375a61cbb532340246f6f0dfd1aa63ef04ffc76073b36d63f6a0b60201abcf, matching sha256(\"e1a894...\") exactly.",
+      "fix": "CodingWorkspace.diff() now reports the baseline digest string verbatim; deletions report sha256(\"\") and added files report before_sha256=null, matching the H07 LocalWorkspace reference. Changed files are enumerated from TaskWorkspace.status() over the baseline/scan union.",
+      "mutation_check": "Read-only reproduction: sha256_text('def add(a, b):\\n    return a - b\\n') = e1a894...; the old expression sha256_text(<digest>) = 78375a...; both fixed assertions (before_sha256 == baseline digest, before_sha256 != sha256(digest)) fail under the old expression.",
+      "tests": [
+        "tests/test_harness_v4_h08.py::test_structured_diff_reports_baseline_digests (modified / added / deleted / unchanged)",
+        "tests/test_harness_v4_h08.py::test_web_service_runs_a_bugfix_in_the_h06_container (service-layer result changes)"
+      ]
+    },
+    "hardening": {
+      "id": "F2",
+      "title": "task_id was not validated",
+      "detail": "GET /api/v3/harness/tasks/%2e%2e decoded to '..' and resolved <harness_root>/result.json with 200.",
+      "fix": "HarnessCodingService.get_task() now requires fullmatch of ^h08-[0-9a-f]{12}$ before touching the filesystem; any other id raises HARNESS_TASK_UNKNOWN (404). patch_path() goes through get_task() and is covered by the same guard.",
+      "tests": "tests/test_harness_v4_h08.py::test_web_api_rejects_malformed_task_ids covers encoded dots, encoded slashes, empty/short/long ids, non-hex and uppercase ids, NUL, and an unknown-but-well-formed id; both /tasks/{id} and /tasks/{id}/patch must 404."
+    },
+    "evidence_correction": {
+      "issue": "accept.json must_pass claimed browser E2E 16/16 while commands.browser-e2e recorded 15/15 and only carried counts.",
+      "handling": "Count aligned to 15/15 and the 15 per-check details are now in commands.browser-e2e.checks, with an evidence_strength note (agent self-report + final screenshot + server result.json; no step-by-step screenshots). No claim exceeds the collected evidence."
+    },
+    "rechecker_accidental_paid_call": {
+      "model_calls": 2,
+      "cost_micros": 851,
+      "outcome": "denied (missing target)",
+      "handling": "Recorded here verbatim as a cost incurred during independent recheck. The paid gate logic was not changed, and H08 made no additional paid calls for this fix: F1/F2 were verified with the deterministic adapter and a read-only hash reproduction."
+    },
+    "must_not_regress": [
+      "omitted old_sha256 + on-disk change still returns PATCH_STALE",
+      "explicitly wrong hash is rejected",
+      "forged read_file trailer is treated as literal content only",
+      "forged run_tests argv is rejected before entering the session",
+      "incremental assertions cannot be deleted (H07 weakening detection blocks it)",
+      "65,536 / 65,537 output-byte boundary stays correct",
+      "multi-file stale preimage rolls the whole batch back"
+    ]
+  },
+  "must_pass": [
+    {
+      "item": "模型用增量替换完成大文件小改，输出受字节上限约束",
+      "result": "PASS",
+      "evidence": "合成受限模型在同一上限内完成；受控真实模型对 34,178 字节文件仅输出 922 字节并 verified。"
+    },
+    {
+      "item": "PATCH_STALE/HASH_MISMATCH/AMBIGUOUS/LIMIT 语义与 H05 一致",
+      "result": "PASS",
+      "evidence": "harness/incremental.py 直接委托 H05 apply_text_replacements；H08 测试覆盖四类错误码。"
+    },
+    {
+      "item": "整文件 content 路径保持既有行为",
+      "result": "PASS",
+      "evidence": "H04–H08 全量回归 114 passed；H08 兼容性用例通过。"
+    },
+    {
+      "item": "首页与版本化 API 可提交真实任务并查看 Diff/产物",
+      "result": "PASS",
+      "evidence": "浏览器端到端 15/15（逐项明细见 commands.browser-e2e.checks，证据强度见 evidence_strength）；API 测试覆盖项目注册、任务提交、审批与实时门拒绝。"
+    },
+    {
+      "item": "CodingResult / API result.json 的 changes[].before_sha256 可直接用于校验",
+      "result": "PASS",
+      "evidence": "before_sha256 直接取 baseline.json 记录的摘要字符串；H08 单元用例覆盖修改/新增/删除/未修改四类，服务层容器用例与磁盘后像对齐。旧的双重哈希写法会让这些断言失败（只读变异复现 e1a894… -> 78375a…）。"
+    },
+    {
+      "item": "任务 ID 严格校验，拒绝路径穿越与畸形输入",
+      "result": "PASS",
+      "evidence": "get_task/patch_path 在访问文件系统前 fullmatch ^h08-[0-9a-f]{12}$，非法返回 404 HARNESS_TASK_UNKNOWN；负例覆盖 %2e%2e、编码斜杠、空/短/长、非十六进制、大写与未知合法 ID。"
+    },
+    {
+      "item": "沙箱不绕过 lease/epoch/预算",
+      "result": "PASS",
+      "evidence": "唯一执行路径为 WorkspaceBoundBroker -> IsolatedExecutionBroker.execute -> CommandSession；run_tests 先校验 argv 与 authority scope。"
+    },
+    {
+      "item": "不弱化既有测试、不启动 H09",
+      "result": "PASS",
+      "evidence": "H00–H08 197 passed、0 skipped；H09 未改动。"
+    }
+  ],
+  "deviations": [
+    {
+      "issue": "read_file 输出格式增加摘要注记",
+      "handling": "注记只在 H08 的 CodingToolRegistry 结果末尾追加，H04/H05 原工具结果不变；确定性适配器读取时剥离，两种适配器行为一致。真实模型无法自行计算 sha256，这是可用所必需。"
+    },
+    {
+      "issue": "old_sha256 变为可选",
+      "handling": "缺省时由 harness 固定为 sha256(old_text)，精确 old_text 匹配仍是最强约束；显式传入错误哈希仍抛 PATCH_HASH_MISMATCH，既有测试语义未变。"
+    },
+    {
+      "issue": "受控真实调用使用一次性数据库与临时目录",
+      "handling": "浏览器端到端与真实模型探针都未触碰生产数据库或仓库状态；临时目录位于 /tmp，未入库。"
+    }
+  ],
+  "residual_limits": [
+    "H08 的写路径只能编辑已存在的文件（apply 拒绝不存在的目标）；新增/删除只可能来自命令副作用或外部变更，diff 按 H07 LocalWorkspace 既有语义上报（删除=modified + after_sha256=sha256(\"\")，重命名呈现为一次新增加一次删除）。",
+    "受控真实调用只覆盖 deepseek-chat、34 KB 文件、单行修改；不构成 H12 的冻结任务集验收。",
+    "整文件重写路径在真实模型下未做规模验证（输出 token 上限仍可能截断）。",
+    "PATCH_LIMIT/PATCH_TRUNCATED 的真实触发仍无证据，只有合成触发。",
+    "浏览器端到端使用一次性数据库与确定性适配器，未用真实模型驱动 UI。",
+    "pytest/node 真实执行、SSE 事件流、运行中交互、GitHub 发布仍不在本卡范围。",
+    "承接 H05/H06/H07 既有残余限制（软链 TOCTOU、占位残留、弱化检测启发式等）。",
+    "增量 diff 在变更集包含非 UTF-8 文件时会以 WORKSPACE_BINARY 失败关闭（修复前静默跳过该文件）；当前 H06 命令对工作区只读、写路径仅文本，暂不可由 H08 执行面触发，但外部变更或未来开放可写挂载会阻断结果生成。",
+    "H08 仍是单操作者本地模型：持有本地令牌的任一操作者可读取本 harness 根下所有任务，无按用户隔离，与既有本地设计一致。"
+  ],
+  "artifacts": {
+    "contract": "docs/harness-v4/CODING_LOOP.md",
+    "service": "src/mgar_v3/harness/service.py",
+    "api": "src/mgar_v3/api.py",
+    "web": ["web/agent.html", "web/agent.css", "web/agent.js"],
+    "settings": "src/mgar_v3/settings.py",
+    "tests": "tests/test_harness_v4_h08.py",
+    "verify_attempt": "evidence/HV4-H08/20261111T053541Z-4c679e05/",
+    "recheck_verify_attempt": "evidence/HV4-H08/20261111T062730Z-5992e67d/",
+    "recheck_evidence": "evidence/harness-v4/HV4-H08/independent-recheck-20261111T1400Z/",
+    "round_logs": "evidence/HV4-H08/round-20261111T0515Z/",
+    "handoff": "docs/harness-v4/SUPER_AGENT_HANDOFF.md"
+  },
+  "next_card": "HV4-H09",
+  "next_card_status": "NOT_STARTED_PENDING_INDEPENDENT_RECHECK",
+  "record_reconciliation_20261111": {
+    "record": "docs/harness-v4/RECORD_RECONCILIATION_20261111.json",
+    "section": "h08_record_audit",
+    "note": "Browser 15 checks/counts are consistent; historical 114/197 retained. The old next_card_status is a historical handoff, not current H09 state."
+  }
+}

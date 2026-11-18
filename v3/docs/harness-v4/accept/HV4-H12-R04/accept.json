@@ -1,0 +1,44 @@
+{
+  "_public_export": {
+    "original_record_sha256": "d69e0337b1a5591b47546cce923a93725686ec1688200d373a87066fcd745727",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "card": "HV4-H12-R04",
+  "status": "PASS",
+  "scope": "LOCAL_ENTRY_READINESS_LIFECYCLE_ENGINEERING_ONLY",
+  "recorded_at": "2026-11-15T17:03:28.133988+00:00",
+  "branch": "hv4-h12-r04-20261115",
+  "source_commit": "24cce0b3b2341b1c6172559398c019a07c74ed13",
+  "implementation_commit": "9a6d56b6886de766d3f3595f5871c5e6ce858c66",
+  "source_sha256": "0c729bdc2fb1b1a05b2471995e60eea5b3103b0d57662266b8c89b761be8e16a",
+  "baseline_commit": "44e966826ee62f146187b8dcb9ae4ad852125745",
+  "engineering_gate": "PASS",
+  "live_model_gate": "NOT_RUN",
+  "live_agent_gate": "NOT_RUN",
+  "live_publication_gate": "NOT_RUN",
+  "h12_quality": "FAIL",
+  "mvp": "NOT_RELEASED",
+  "h13": "NOT_STARTED",
+  "counts": {
+    "tests": 548,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "registered_test_files": 34,
+  "mypy_source_files": 267,
+  "new_paid_calls": 0,
+  "new_paid_cost_micros": 0,
+  "historical_scores_unchanged": true,
+  "trace_counts": {
+    "runtime": 60,
+    "pg": 10,
+    "capture_errors": 0,
+    "verified_cas_file_copies": 838,
+    "verified_raw_logs": 60
+  },
+  "stop_after": "R04",
+  "status_field_occurrences": {
+    "PASS": 8
+  }
+}

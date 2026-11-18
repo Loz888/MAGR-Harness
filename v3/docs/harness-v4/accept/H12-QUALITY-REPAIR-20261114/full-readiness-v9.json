@@ -1,0 +1,79 @@
+{
+  "schema": "h12-full-quality-readiness-v1",
+  "source_commit": "5451b809184ce641da1c78b9115e10a4adbefb80",
+  "source_sha256": "ba4cbb0fa7fe389234405a32a8ab941ae9ae14e5a2e8ba57eb4c85b0239b3925",
+  "recorded_at": "2026-11-14T13:06:44.705772+00:00",
+  "reports": [
+    {
+      "path": ".local/h12/quality-repair-20261114/subset-v9/report.json",
+      "sha256": "2a82ee71fcc234ae65b02f6945084956cfe84d2e3225c0be8ffc6f4e5ba50fce",
+      "scope": "subset-v9",
+      "status": "PUBLIC_SUBSET_READY",
+      "ready": 4,
+      "paid_model_calls": 0
+    },
+    {
+      "path": ".local/h12/quality-repair-20261114/full-dev-v9/report.json",
+      "sha256": "f1422b2fc164dee30809b296bf6a76dbda2e05fcfb256270a8380816e7916774",
+      "scope": "full-dev-v9",
+      "status": "FULL_DEV_READY",
+      "ready": 12,
+      "paid_model_calls": 0
+    },
+    {
+      "path": ".local/h12/quality-repair-20261114/holdout-v9/report.json",
+      "sha256": "5ffcbde04256085f6b2cf90c1f10023f808d6ca6c22a6bc9e0aac4165eeb2211",
+      "scope": "holdout-v9",
+      "status": "FULL_HOLDOUT_READY",
+      "ready": 12,
+      "paid_model_calls": 0
+    }
+  ],
+  "freezes": [
+    {
+      "path": ".local/h12/quality-repair-20261114/public-dev-frozen-v9.json",
+      "sha256": "08739f358993dabfe64e90cd65613bee45aebec3eb00e0c81b0ab04af2ff86ce"
+    },
+    {
+      "path": ".local/h12/quality-repair-20261114/quality-frozen-v9.json",
+      "sha256": "9843698dafee357d901fcf6a4a2ff8ab545122a125b67d206ca6e2175f49ced0"
+    }
+  ],
+  "physical_validation": "PASS",
+  "validation_log": {
+    "path": ".local/h12/quality-repair-20261114/seal-quality-v9.log",
+    "sha256": "895e7da6e55e852c2a5714765459b2c9a2af2253c08db4687e11ad360831fc65"
+  },
+  "quality_status": "NOT_RUN_AT_SEALING",
+  "thresholds": {
+    "dev": 10,
+    "holdout": 9,
+    "denominator_each": 12
+  },
+  "shared_budget_before_live": {
+    "budget": {
+      "limit_micros": 12000000,
+      "reserved_micros": 0,
+      "settled_micros": 2076047,
+      "used_calls": 462,
+      "call_limit": 1536
+    },
+    "unknown_calls": 0,
+    "new_v9_model_calls": 0
+  },
+  "experiment_id": "hv4-h12-quality-amended-v9-20261114",
+  "model_scores": ".local/h12/quality-repair-20261114/live-v9",
+  "first_sample_policy": "Click help-name, pflag unknown-flag, Got header-value, then remaining dev in frozen order. Same-candidate dev gate precedes independent holdout. No best-of, reused PASS, unknown resend or holdout feedback tuning.",
+  "first_sample_driver": {
+    "path": ".local/h12/quality-repair-20261114/run_quality_v9.py",
+    "sha256": "0a1a2a4fc6dc0c815bff307f978c313ebaf9fb5017baa208ac7e718bb6321cc4"
+  },
+  "development_amendment": {
+    "path": ".local/h12/quality-repair-20261114/click-amendment-v2/amendment.json",
+    "sha256": "9c7fe148f1a8af1dab94fb811be86279fb8f9a39d02428ed1ce8f3014b94057b"
+  },
+  "engineering_completed_before_dispatch": {
+    "path": "docs/harness-v4/accept/H12-QUALITY-REPAIR-20261114/card-recovery-v9.json",
+    "sha256": "ef9a58ee57b8663e1b9db186c16245efcaf3e7d42362d5fa47f06c7fd9f2dd72"
+  }
+}

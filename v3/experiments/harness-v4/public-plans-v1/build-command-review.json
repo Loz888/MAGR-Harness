@@ -1,0 +1,100 @@
+{
+  "controlled_final_gate": "NOT_RUN: engineering candidate completed, then service correctly returned blocked/independent_judge_not_passed. Saved local payload is not relabelled as quality PASS.",
+  "cost_micros": 0,
+  "evidence": {
+    "first.junit.xml": {
+      "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/build-command/first.junit.xml",
+      "sha256": "b6ed2550d5666796cfbfe7d651b3b90bfffccc5bb02cd06dca758f16dbaa59e9"
+    },
+    "first.log": {
+      "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/build-command/first.log",
+      "sha256": "f20d6c85db08f2c620979052c48f85932e8f2a66c7e1f837a3b75610d7526048"
+    },
+    "targeted-second.junit.xml": {
+      "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/build-command/targeted-second.junit.xml",
+      "sha256": "f590feb691d16acf50b6f475586a02bccb873c99c236d1f9b35563df23aeae6b"
+    },
+    "targeted-second.log": {
+      "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/build-command/targeted-second.log",
+      "sha256": "ed2e859ee1c4b8d8bbb99c0f2fd7cda98834a693dbf0984f615a43164eb09bcf"
+    },
+    "test_known_build_recovers_with0-first-failed-result.json": {
+      "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/build-command/test_known_build_recovers_with0-first-failed-result.json",
+      "sha256": "3f15da348f58d2722ac0ad14e0991fa1cf665970e95e69a1b6a0edf0f57c0300"
+    },
+    "test_known_build_recovers_with0-result.json": {
+      "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/build-command/test_known_build_recovers_with0-result.json",
+      "sha256": "610ff1e10ef3a05fb2ab083ddec8210b64954dc7229f439c61bc1e1e78395530"
+    },
+    "test_real_pg_and_docker_requir0-first-failed-result.json": {
+      "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/build-command/test_real_pg_and_docker_requir0-first-failed-result.json",
+      "sha256": "c83bfc3e22fd207cf4435fbc4e31dbd23fddddd7dff9430dc8b4584696174386"
+    },
+    "test_real_pg_and_docker_requir0-result.json": {
+      "path": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/build-command/test_real_pg_and_docker_requir0-result.json",
+      "sha256": "1e5cf213e51fa0d87b9aeac7f9310f22ebabdd2679b10a9590357fca435020b3"
+    }
+  },
+  "files": {
+    "src/mgar_v3/harness/contracts.py": "8c0a760c55f168b3e864ea936789640589a42ac81d1dff724370ab799b244c3a",
+    "src/mgar_v3/harness/service.py": "83c8122e088908e6b91b404c40fa5f0a8b26eebfd9d1ed929a1123706927b2a5",
+    "src/mgar_v3/harness/store.py": "8453c3ee3a403343f93c4cc7a661b5eac1805e88cd639432de8a5b5bee51a242",
+    "tests/test_h12_build_command.py": "4d7fb16e22bd96cfe4911e1a51acd07d86f2328bef3129d2d7328a1f5c8b94f8"
+  },
+  "legacy_serialization": "Empty public_build_argv does not appear in model_dump and roundtrip canonical hash remains identical. Existing default None fields remain omitted.",
+  "limitations": [
+    "No new paid model or real benchmark candidate was run here.",
+    "The synthetic Node fixture tests compiler/test separation, not the actual Got solution.",
+    "Parent owns coding_loop acceptance and v2 profile selection; their separate evidence is not counted as these seven tests."
+  ],
+  "paid_model_calls": 0,
+  "quality_status": "NOT_RUN",
+  "schema": "h12-fixed-build-command-review-v1",
+  "scope": {
+    "execution": "existing same Broker lease, CommandSession, RecoveryIO, budget and tree binding",
+    "profile": "public_build_argv fixed tuple default empty omitted; bounded argv validation",
+    "receipt": "purpose build; complete exit0 means compilation passed and tests_run/tests_failed both zero",
+    "recovery": "known original build purpose/provenance retained; no relaunch or pytest parse of compile output",
+    "summary": "skip build receipts and report most recent genuine test; build alone is not_run",
+    "tool": "run_tests command_id=build only; no arbitrary build argv, shell, environment or new permissions",
+    "verification": "separate exact build requirement and exact real test requirement; build cannot substitute for tests; legacy requirements without exact argv retain old matching"
+  },
+  "status": "ENGINEERING_PASS",
+  "tests": {
+    "covered_cases": 7,
+    "current_source_sha256": "4d7fb16e22bd96cfe4911e1a51acd07d86f2328bef3129d2d7328a1f5c8b94f8",
+    "file": "tests/test_h12_build_command.py",
+    "first": {
+      "errors": 0,
+      "failed": 2,
+      "failure_reason": "Integration fixture chose an old Python-only R03 image; node exit127 correctly failed build. No production relaxation. The fixture now uses an existing pinned multi-language image; corrected payload key and preserved raw baseline test count.",
+      "junit": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/build-command/first.junit.xml",
+      "log": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/build-command/first.log",
+      "passed": 5,
+      "skipped": 0
+    },
+    "known_history_tests": "Original 128/15/17/14 passed suites were not rerun.",
+    "real_execution": [
+      "disposable PostgreSQL matrix bound to frozen test and build commands",
+      "actual source edit and Node syntax compile plus real unittest on the same final tree",
+      "grant and persisted request/profile include only fixed Python/Node programs and build argv",
+      "crash after known raw build before outer tool receipt; new Engine epoch restores known receipt",
+      "exact launch counts: original test1, final test1, compile1; recovered compile keeps generating epoch/purpose and no tests"
+    ],
+    "targeted_second": {
+      "deselected": 5,
+      "errors": 0,
+      "failed": 0,
+      "junit": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/build-command/targeted-second.junit.xml",
+      "log": "evidence/harness-v4/H12-FORMAL-PUBLIC-PLANS-V1/build-command/targeted-second.log",
+      "passed": 2,
+      "scope": "Only the two previously failing integration cases; passing pure cases were not rerun.",
+      "skipped": 0
+    }
+  },
+  "validation": {
+    "diff_check": "PASS",
+    "target_mypy_three_production_files": "PASS",
+    "target_ruff": "PASS"
+  }
+}

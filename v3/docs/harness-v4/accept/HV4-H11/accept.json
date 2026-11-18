@@ -1,0 +1,25 @@
+{
+  "_public_export": {
+    "original_record_sha256": "eb7e32fa2a30bb504ebd54b802f12dd387594c702c2d4e427e114474393dc45f",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "card": "HV4-H11",
+  "status": "PENDING_INDEPENDENT_RECHECK",
+  "engineering_gate": "PASS",
+  "security_gate": "PASS_IMPLEMENTATION_TEST_SCOPE",
+  "source_commit": "d3f3457b3d9dfab68bc73a40add299e4e633fbeb",
+  "source_sha256": "a0cc8fac7467f7a99866df01c8ebea9f611f9844c0001c2d4130190fd9676cf2",
+  "recorded_at": "2026-11-11T13:23:42.267897+00:00",
+  "counts": {
+    "registered": 68,
+    "aggregate_H00_H11": 349,
+    "legacy_context": 15,
+    "existing_engine_recovery": 9
+  },
+  "paid_model_calls": 0,
+  "live_model_gate": "NOT_RUN",
+  "live_agent_gate": "NOT_RUN",
+  "status_field_occurrences": {
+    "PASS": 3
+  }
+}

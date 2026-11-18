@@ -1,0 +1,11 @@
+{
+  "_public_export": {
+    "original_record_sha256": "4d4e3135999a4c72186a86dcf62e708e7cbc4adac773fd33ace5f76d1b4bd17d",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "status": "PASS",
+  "scope": "isolated_QEMU_Linux_systemd_test_node",
+  "status_field_occurrences": {
+    "PASS": 11
+  }
+}

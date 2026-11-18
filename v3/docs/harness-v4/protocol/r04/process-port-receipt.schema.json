@@ -1,0 +1,249 @@
+{
+  "$defs": {
+    "ProcessObservation": {
+      "additionalProperties": false,
+      "properties": {
+        "pid": {
+          "title": "Pid",
+          "type": "integer"
+        },
+        "parent_pid": {
+          "title": "Parent Pid",
+          "type": "integer"
+        },
+        "group_id": {
+          "title": "Group Id",
+          "type": "integer"
+        },
+        "session_id": {
+          "title": "Session Id",
+          "type": "integer"
+        },
+        "start_ticks": {
+          "title": "Start Ticks",
+          "type": "integer"
+        },
+        "state": {
+          "title": "State",
+          "type": "string"
+        },
+        "exit_code": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Exit Code"
+        }
+      },
+      "required": [
+        "pid",
+        "parent_pid",
+        "group_id",
+        "session_id",
+        "start_ticks",
+        "state"
+      ],
+      "title": "ProcessObservation",
+      "type": "object"
+    },
+    "RuntimeSnapshot": {
+      "additionalProperties": false,
+      "properties": {
+        "observed_at": {
+          "title": "Observed At",
+          "type": "string"
+        },
+        "monotonic": {
+          "title": "Monotonic",
+          "type": "number"
+        },
+        "supervisor": {
+          "$ref": "#/$defs/ProcessObservation"
+        },
+        "processes": {
+          "items": {
+            "$ref": "#/$defs/ProcessObservation"
+          },
+          "title": "Processes",
+          "type": "array"
+        },
+        "listeners": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Listeners",
+          "type": "array"
+        },
+        "bind_available": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Bind Available"
+        }
+      },
+      "required": [
+        "observed_at",
+        "monotonic",
+        "supervisor",
+        "processes",
+        "listeners"
+      ],
+      "title": "RuntimeSnapshot",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "receipt_id": {
+      "title": "Receipt Id",
+      "type": "string"
+    },
+    "observed_at": {
+      "title": "Observed At",
+      "type": "string"
+    },
+    "command_id": {
+      "title": "Command Id",
+      "type": "string"
+    },
+    "tree_hash": {
+      "title": "Tree Hash",
+      "type": "string"
+    },
+    "signal": {
+      "title": "Signal",
+      "type": "string"
+    },
+    "graceful": {
+      "title": "Graceful",
+      "type": "boolean"
+    },
+    "forced": {
+      "title": "Forced",
+      "type": "boolean"
+    },
+    "processes_exited": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Processes Exited"
+    },
+    "port_released": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Port Released"
+    },
+    "container_removed": {
+      "title": "Container Removed",
+      "type": "boolean"
+    },
+    "orphan_pids": {
+      "default": [],
+      "items": {
+        "type": "integer"
+      },
+      "title": "Orphan Pids",
+      "type": "array"
+    },
+    "before": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/RuntimeSnapshot"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "after": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/RuntimeSnapshot"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "detail": {
+      "default": "",
+      "title": "Detail",
+      "type": "string"
+    },
+    "signal_sent_at": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Signal Sent At"
+    },
+    "grace_seconds": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Grace Seconds"
+    },
+    "duration_seconds": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Duration Seconds"
+    }
+  },
+  "required": [
+    "receipt_id",
+    "observed_at",
+    "command_id",
+    "tree_hash",
+    "signal",
+    "graceful",
+    "forced",
+    "processes_exited",
+    "port_released",
+    "container_removed"
+  ],
+  "title": "ProcessPortReceipt",
+  "type": "object"
+}

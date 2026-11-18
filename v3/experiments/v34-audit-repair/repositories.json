@@ -1,0 +1,222 @@
+{
+  "capture": "pinned public commit tarball, files copied verbatim",
+  "experiment_id": "v34-audit-repair",
+  "repositories": [
+    {
+      "language": "python",
+      "license": "BSD-3-Clause",
+      "license_file": "LICENSE.txt",
+      "repo_id": "click",
+      "snapshots": [
+        {
+          "commit": "3cbcf9b11546f4cf10b36d3e2e531733ba6fe001",
+          "dir": "snapshots/click/3cbcf9b11546f4cf10b36d3e2e531733ba6fe001",
+          "files": {
+            "LICENSE.txt": "9a8ad106a394e853bfe21f42f4e72d592819a22805d991b5f3275029292b658d",
+            "src/click/__init__.py": "5abfc54d37d47cc788b7e7a05e9514787f8c5a0b7db429d0f24d748ac89964ca",
+            "src/click/__pycache__/__init__.cpython-312.pyc": "e73141f1f1cf7f5ed2a5e744b17eca9220d3301faffea86d59cef8331b114de9",
+            "src/click/__pycache__/_compat.cpython-312.pyc": "39f51861ea7f5f6459314bccfb572a869935e42e20c8ef21e5ea10a95bace99c",
+            "src/click/__pycache__/_utils.cpython-312.pyc": "379fc419d1972d30bfae1bb3300645cfe954d58e9b4ef9a148428fb7b184de3f",
+            "src/click/__pycache__/core.cpython-312.pyc": "b0ec27856bea7ba97675730eea70bec0ff45325b8bafdf0c1bd7e9c3ea98dc50",
+            "src/click/__pycache__/decorators.cpython-312.pyc": "c81b2fbc2b698d6bba1d1ab1af0ae03053bb960390a5c737d210272013935298",
+            "src/click/__pycache__/exceptions.cpython-312.pyc": "f1b3d981d1bc5a8bfcf9b5e66801bfb26c6fca49ed7effcb5ee6c3b2f0b5f4ac",
+            "src/click/__pycache__/formatting.cpython-312.pyc": "bdf2529aafefab7fa553aa0f4ebfd4e72cd2bc747f2b8ce863429a3fdefa227e",
+            "src/click/__pycache__/globals.cpython-312.pyc": "76583c9a67adfe8071170267080318e23df5d938223eb173a7553a947efe42f2",
+            "src/click/__pycache__/parser.cpython-312.pyc": "77db54d22d3cfd606dc7bb9fa67f14173fb4a96c2967b775f9ac5bed55cb1348",
+            "src/click/__pycache__/termui.cpython-312.pyc": "8be585475b497cd5ab0b986b6a19fe119838f7a9cc8d59895df7f74f0d253796",
+            "src/click/__pycache__/types.cpython-312.pyc": "9faba36b9ed96f99d2bfa5d6c54cade2e674620f25c2cae5c5385b75e6dabdb7",
+            "src/click/__pycache__/utils.cpython-312.pyc": "1bb8e6a4bda1d65a0fd6b06b20ecb27604d7d604733333a783456427acefbb4b",
+            "src/click/_compat.py": "8db1da2965cf3e5dc66c6c53833cbc613ea1cd2440b9d0eb6aa8360eb46d4913",
+            "src/click/_termui_impl.py": "88b97d9b7a5b947b10a16d8ab269837bc84c7e55c28ba72ea5f2fb339112336a",
+            "src/click/_textwrap.py": "ed9d0ded59a7fbae933524d4c29e8e5c96dc5174666044fd87d736b9c0fca104",
+            "src/click/_utils.py": "782642b7026db180f941892435627c318ffc001223cbc31cce030cc95637dab4",
+            "src/click/_winconsole.py": "292c5f35b3256116ba18e26e08b82c8363dbddd56480934fa8b24f69ef8f6b5d",
+            "src/click/core.py": "4c65a613c1c407dce907a4e123b12cec5fe0f62088a8b9f86fabd4b60c4b6d78",
+            "src/click/decorators.py": "16069357615691fcdfc9c794bb515f6009eb35aad6f7a76c017bdce06dae8d55",
+            "src/click/exceptions.py": "1ef498df81b86ae8ff6d8451f3e4fc094f09c2aff5f8e72c454e1ecdfa337849",
+            "src/click/formatting.py": "f125b628692f8dfcfd43535b7a88cc1ee64137471f9d0243b389aa0cfea85e6b",
+            "src/click/globals.py": "80cf8d87a0383341c1fd2824685e4ce2770618c0c773f7e51d7bbdfe88781845",
+            "src/click/parser.py": "a09f9f53fde6bf1ba022e36d1da0804d9e7a9601261d18208c9892a84818ae30",
+            "src/click/py.typed": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "src/click/shell_completion.py": "18522f75ddffe655e943978d1953255c447842867d3fd67fbdc1543d3df7da09",
+            "src/click/termui.py": "16f6546b36d647d191788fc912e32d93e8b64289517f004e6d9604f4896ad1ca",
+            "src/click/testing.py": "76f4e649bc53000d667c8c0deff1591970fa034b0f085a207165839b2301019a",
+            "src/click/types.py": "1e988904a7a7f68abad630c7fb9c038a4345fa2e6701c976a6e51f10bdfb52dd",
+            "src/click/utils.py": "f43d5743dc07240e612feefa0a69d2b1697b6900149f8f809ffcd97ecb482dbf"
+          }
+        },
+        {
+          "commit": "6d5bac5c712195cbfa9666ba0ecbf0573cdea356",
+          "dir": "snapshots/click/6d5bac5c712195cbfa9666ba0ecbf0573cdea356",
+          "files": {
+            "LICENSE.txt": "9a8ad106a394e853bfe21f42f4e72d592819a22805d991b5f3275029292b658d",
+            "src/click/__init__.py": "5abfc54d37d47cc788b7e7a05e9514787f8c5a0b7db429d0f24d748ac89964ca",
+            "src/click/__pycache__/__init__.cpython-312.pyc": "faa7f1a6011a45d334387b27d93e837bab19edab5f98aa16658d606beb2f2b3a",
+            "src/click/__pycache__/_compat.cpython-312.pyc": "02a063db37a2efe37c1e64796d64f4c37706036d736c22f88f7056dd5104fcb1",
+            "src/click/__pycache__/_utils.cpython-312.pyc": "65808e5085038bb9f4babbb8bfbd936f4aeaa1df37f41f323acbd7c7f15f37d6",
+            "src/click/__pycache__/core.cpython-312.pyc": "3b58411cac8a4bb3267e720b3ada10798b06d2feaa0433372e6b0593f87bc151",
+            "src/click/__pycache__/decorators.cpython-312.pyc": "f253e766655f098b93e1c2069e649c31b85f3cac34bf17837c92ebd69a9f8851",
+            "src/click/__pycache__/exceptions.cpython-312.pyc": "56177acfced843ebd922cf7a7be608ba20f948148ed2e53e8820c12fae59132f",
+            "src/click/__pycache__/formatting.cpython-312.pyc": "7389150b392fcf043b418ba25a0006ccc0851fa7ffda47e772d005695aa71e5a",
+            "src/click/__pycache__/globals.cpython-312.pyc": "8ef732728eb31fcd11695c707d09265bb5328269e6efe26c14d5875f740dd3e7",
+            "src/click/__pycache__/parser.cpython-312.pyc": "f41e1dbe5cc0a999d95b6005f5e09244145a48e8fab9a271d6e1c8ac0219a30b",
+            "src/click/__pycache__/termui.cpython-312.pyc": "7ad1e97152f4e9d9bc61d944ba6ab4e650ba08a8127736af1053b5d3aece7b3f",
+            "src/click/__pycache__/types.cpython-312.pyc": "a53bd6bf9620b82b1c95c4417fc41a60ae4a8a5bf1f9edab6a76c4bcd26bea87",
+            "src/click/__pycache__/utils.cpython-312.pyc": "eeb517a34bc03a02342482d4ff94e92afc9069159942ab755fa68ad54739122f",
+            "src/click/_compat.py": "8db1da2965cf3e5dc66c6c53833cbc613ea1cd2440b9d0eb6aa8360eb46d4913",
+            "src/click/_termui_impl.py": "88b97d9b7a5b947b10a16d8ab269837bc84c7e55c28ba72ea5f2fb339112336a",
+            "src/click/_textwrap.py": "ed9d0ded59a7fbae933524d4c29e8e5c96dc5174666044fd87d736b9c0fca104",
+            "src/click/_utils.py": "c7a62c70514253d091cbca49917fe16281556db1aa83bb389532180c47dc1233",
+            "src/click/_winconsole.py": "a6f0d49ef0be806a9730bd64a2e5b373a95d49de91fd7728595ff31d773f2db7",
+            "src/click/core.py": "4baef87235bce4fffd4dcb79257072b470bdde33dee225f905178da1b409f05f",
+            "src/click/decorators.py": "16069357615691fcdfc9c794bb515f6009eb35aad6f7a76c017bdce06dae8d55",
+            "src/click/exceptions.py": "1ef498df81b86ae8ff6d8451f3e4fc094f09c2aff5f8e72c454e1ecdfa337849",
+            "src/click/formatting.py": "f125b628692f8dfcfd43535b7a88cc1ee64137471f9d0243b389aa0cfea85e6b",
+            "src/click/globals.py": "80cf8d87a0383341c1fd2824685e4ce2770618c0c773f7e51d7bbdfe88781845",
+            "src/click/parser.py": "a09f9f53fde6bf1ba022e36d1da0804d9e7a9601261d18208c9892a84818ae30",
+            "src/click/py.typed": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "src/click/shell_completion.py": "18522f75ddffe655e943978d1953255c447842867d3fd67fbdc1543d3df7da09",
+            "src/click/termui.py": "16f6546b36d647d191788fc912e32d93e8b64289517f004e6d9604f4896ad1ca",
+            "src/click/testing.py": "76f4e649bc53000d667c8c0deff1591970fa034b0f085a207165839b2301019a",
+            "src/click/types.py": "30a39185da37bbd98ef47153f7bfd310b04eac44bd9b9b2fe15998406337757e",
+            "src/click/utils.py": "f43d5743dc07240e612feefa0a69d2b1697b6900149f8f809ffcd97ecb482dbf"
+          }
+        },
+        {
+          "commit": "8c1a0a7abbc1c36f70d1f65f3604acc46c5ce6ab",
+          "dir": "snapshots/click/8c1a0a7abbc1c36f70d1f65f3604acc46c5ce6ab",
+          "files": {
+            "LICENSE.txt": "9a8ad106a394e853bfe21f42f4e72d592819a22805d991b5f3275029292b658d",
+            "src/click/__init__.py": "4455f99fa47aca1a60c3e8e072cf91a07cb55a83caa5d556ea4dc98a819698c6",
+            "src/click/__pycache__/__init__.cpython-312.pyc": "77cf7a1e4fffbf68ebd43bb81270134d91c3e75abbcf910ba00294ed8160b6e2",
+            "src/click/__pycache__/_compat.cpython-312.pyc": "bc9c406d0d79222766cd2f07e3b15550ab0647457d86eac6974d8575b4e5075f",
+            "src/click/__pycache__/_textwrap.cpython-312.pyc": "b9f746e157bf5a1485994a83ec5b381da70b3ea0559e56bc0b196666947e88a8",
+            "src/click/__pycache__/_utils.cpython-312.pyc": "8c9ecb7f1801a3e6f6cd0049e6dec360de37d3981b72daba75ad928a3f545fee",
+            "src/click/__pycache__/core.cpython-312.pyc": "cc9955eb25e2fef4f89fdec89419240f675778d1716827713b74b8b391d82daa",
+            "src/click/__pycache__/decorators.cpython-312.pyc": "734a30940b748ca7e4d83a7345dc397f086856e93c08d634da6a0c40c829f7f8",
+            "src/click/__pycache__/exceptions.cpython-312.pyc": "42e85d13da605b49119bfdbc15e41918563a8882215438640352585177b2d7c4",
+            "src/click/__pycache__/formatting.cpython-312.pyc": "0ac5ceb978ac24f140ec3577a1cc609f32ca1487c834a6b7c91a4ca0f19eee99",
+            "src/click/__pycache__/globals.cpython-312.pyc": "76fea87b48a614434c1baeefdfd96eb58f36c2100f19766e921c066bd884ab5d",
+            "src/click/__pycache__/parser.cpython-312.pyc": "1d8e563d929192676d222a2e221cdf861a60c05a0136e0b9a7811131c010f145",
+            "src/click/__pycache__/termui.cpython-312.pyc": "320dd89de8c6ae972a22cc9fdbef1afeb1c3080b1cdd2ba003134a72c3265d02",
+            "src/click/__pycache__/testing.cpython-312.pyc": "b6a1cc7b42f2c572573e0c3580c6857854b25f1d5643a877b9bafd541b246bfd",
+            "src/click/__pycache__/types.cpython-312.pyc": "ca001caa06d17c5679721736f4404bf5f50806e425fb48502075df34b6f32529",
+            "src/click/__pycache__/utils.cpython-312.pyc": "bef1617cda443e36a1a7b5514654c4ab73ab7b18e5ac66719ce98ae9c40bb898",
+            "src/click/_compat.py": "cfec2310907334594ff205725e44a712783c096c322d5b8c0201a327fbf5f08c",
+            "src/click/_termui_impl.py": "086760db801e5e28de192cdbbb467bc7773869a6a15458d506911b6e3850e4ae",
+            "src/click/_textwrap.py": "ed9d0ded59a7fbae933524d4c29e8e5c96dc5174666044fd87d736b9c0fca104",
+            "src/click/_utils.py": "782642b7026db180f941892435627c318ffc001223cbc31cce030cc95637dab4",
+            "src/click/_winconsole.py": "292c5f35b3256116ba18e26e08b82c8363dbddd56480934fa8b24f69ef8f6b5d",
+            "src/click/core.py": "6ce6ad79d4f89e700cbd3b2dff2eb98a0526978bdda25f6cde551f10c152e662",
+            "src/click/decorators.py": "16069357615691fcdfc9c794bb515f6009eb35aad6f7a76c017bdce06dae8d55",
+            "src/click/exceptions.py": "1ef498df81b86ae8ff6d8451f3e4fc094f09c2aff5f8e72c454e1ecdfa337849",
+            "src/click/formatting.py": "f125b628692f8dfcfd43535b7a88cc1ee64137471f9d0243b389aa0cfea85e6b",
+            "src/click/globals.py": "80cf8d87a0383341c1fd2824685e4ce2770618c0c773f7e51d7bbdfe88781845",
+            "src/click/parser.py": "a09f9f53fde6bf1ba022e36d1da0804d9e7a9601261d18208c9892a84818ae30",
+            "src/click/py.typed": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "src/click/shell_completion.py": "41c352c33254e53d938864c9129867fa7252d599bb423d7dc450f8334e6517b6",
+            "src/click/termui.py": "c0b4ef4f752163308e65aa7c4e688a8ca2f50efe94c950ed969d8824a500bf5d",
+            "src/click/testing.py": "4bd23ea6ca409491f746f6495834282576fe3349eb0042735dc533ad55ec4f7e",
+            "src/click/types.py": "d47837f5fe6839d0527524419a7128cfa0db417794171e454e3e9f71d6febba3",
+            "src/click/utils.py": "a0ecf3298a515efdd687d4c5af4eed348c271c49b0bcb7a2d9ec7d09aaa6e138"
+          }
+        },
+        {
+          "commit": "bb695aaecdef95832d167fc1d508921745aa824e",
+          "dir": "snapshots/click/bb695aaecdef95832d167fc1d508921745aa824e",
+          "files": {
+            "LICENSE.txt": "9a8ad106a394e853bfe21f42f4e72d592819a22805d991b5f3275029292b658d",
+            "src/click/core.py": "2d6eaa280cc69b34f6570471620aa2bec47c439b99847486a74c54d0cb550310"
+          }
+        },
+        {
+          "commit": "8abb77a8432e03ed14a95f972b44f905279415a7",
+          "dir": "snapshots/click/8abb77a8432e03ed14a95f972b44f905279415a7",
+          "files": {
+            "LICENSE.txt": "9a8ad106a394e853bfe21f42f4e72d592819a22805d991b5f3275029292b658d",
+            "src/click/core.py": "2f875ed5e331828e48df459732de8551376cd48e706164b285d3afe9e5626287"
+          }
+        }
+      ],
+      "url": "https://github.com/pallets/click"
+    },
+    {
+      "language": "python",
+      "license": "Apache-2.0",
+      "license_file": "LICENSE",
+      "repo_id": "requests",
+      "snapshots": [
+        {
+          "commit": "bc7dd0fc4d56e808bcdd85ac2d797b3107c89259",
+          "dir": "snapshots/requests/bc7dd0fc4d56e808bcdd85ac2d797b3107c89259",
+          "files": {
+            "LICENSE": "09e8a9bcec8067104652c168685ab0931e7868f9c8284b66f5ae6edae5f1130b",
+            "src/requests/utils.py": "c433154e14f78de6d50ea7fe753825b8bbb3c9459468dee052f8b68edc2572dc"
+          }
+        },
+        {
+          "commit": "1b40fdd004bfc8ba5301bcf8a6908264e9b6b877",
+          "dir": "snapshots/requests/1b40fdd004bfc8ba5301bcf8a6908264e9b6b877",
+          "files": {
+            "LICENSE": "09e8a9bcec8067104652c168685ab0931e7868f9c8284b66f5ae6edae5f1130b",
+            "src/requests/utils.py": "ba580f898f3a98dfaae9161b4f30da3e929d8a9340837a6df74a9ef08632e59c"
+          }
+        }
+      ],
+      "url": "https://github.com/psf/requests"
+    },
+    {
+      "language": "go",
+      "license": "BSD-3-Clause",
+      "license_file": "LICENSE",
+      "repo_id": "pflag",
+      "snapshots": [
+        {
+          "commit": "f8a990678a6d44385313e9b19e40737f889f9b14",
+          "dir": "snapshots/pflag/f8a990678a6d44385313e9b19e40737f889f9b14",
+          "files": {
+            "LICENSE": "b8514c577c1c4b46cee454d5a882b15fa411e72c5bd7f801f241591789fce61a",
+            "flag.go": "6048deeba753a157f4c2ae55c9df828880d5d26a43bec3517fa4d8db7776bee3",
+            "string.go": "15ca4dc0ddf5f2c508be07bf5a67effaea35f6e763dfce63a98105340c939612"
+          }
+        },
+        {
+          "commit": "d26a4dcd30a3c17923a2083b48bd6233aada9d47",
+          "dir": "snapshots/pflag/d26a4dcd30a3c17923a2083b48bd6233aada9d47",
+          "files": {
+            "LICENSE": "b8514c577c1c4b46cee454d5a882b15fa411e72c5bd7f801f241591789fce61a",
+            "count.go": "1b80ac030add1d69b2a426199c17f081dd7b7007196d58226f2c07e97f78109f"
+          }
+        },
+        {
+          "commit": "2084408437188b1fbf46984a53a56136a5f30f99",
+          "dir": "snapshots/pflag/2084408437188b1fbf46984a53a56136a5f30f99",
+          "files": {
+            "LICENSE": "b8514c577c1c4b46cee454d5a882b15fa411e72c5bd7f801f241591789fce61a",
+            "int.go": "d00ebabd888c063d657b0f591bdabcea4a85a33b2d7f2094a47d657f962360c9",
+            "uint.go": "8dfb51e7544c70efa8fd397baf61ada90ecdbd4eb0582204d4c08ba6fa4aca37"
+          }
+        }
+      ],
+      "url": "https://github.com/spf13/pflag"
+    },
+    {
+      "language": "go",
+      "license": "BSD-3-Clause",
+      "license_file": "LICENSE",
+      "repo_id": "goexample",
+      "snapshots": [
+        {
+          "commit": "7a4eec550fb2aaa1904ddcbc4eeaa9f4d995791f",
+          "dir": "snapshots/goexample/7a4eec550fb2aaa1904ddcbc4eeaa9f4d995791f",
+          "files": {
+            "LICENSE": "911f8f5782931320f5b8d1160a76365b83aea6447ee6c04fa6d5591467db9dad",
+            "internal/cmd/weave/weave.go": "3ecf329e0596fb8d04dcae7d640b5a689ad0d06a185f224d48e00d4a0889ad2f"
+          }
+        }
+      ],
+      "url": "https://github.com/golang/example"
+    }
+  ],
+  "schema": "mgar-v34-repositories-v1"
+}

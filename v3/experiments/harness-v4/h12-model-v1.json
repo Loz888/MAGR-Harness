@@ -1,0 +1,18 @@
+{
+  "schema": "harness-h12-model-observation-v1",
+  "observed_on": "2026-11-11",
+  "source": "https://api-docs.deepseek.com/quick_start/pricing/",
+  "endpoint": "https://api.deepseek.com/v1/chat/completions",
+  "provider": "deepseek",
+  "model_id": "deepseek-flash",
+  "documented_model_version": "DeepSeek-V4.1-Flash-1017",
+  "thinking": "disabled",
+  "provider_context_tokens": 1048576,
+  "harness_output_token_cap": 8192,
+  "price_version": "DeepSeek-V4.1-Flash-1017-peak-20261111",
+  "input_micros_per_million": 300000,
+  "output_micros_per_million": 1200000,
+  "cost_basis": "Conservative peak cache-miss bound, including during off-peak. Not independently verified invoice deduction.",
+  "http_attempts_per_reservation": 1,
+  "raw_receipts": "Supplier id, returned model, raw usage counters and normalized cost are retained without credentials or reasoning content."
+}

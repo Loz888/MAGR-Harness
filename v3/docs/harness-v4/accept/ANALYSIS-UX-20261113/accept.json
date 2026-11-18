@@ -1,0 +1,8 @@
+{
+  "_public_export": {
+    "original_record_sha256": "b6aa4dec9c70222820322c7beb544056d85d81338ec607d060eb784f369d6a8a",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "schema": "analysis-budget-composer-acceptance-v1",
+  "engineering_gate": "PASS"
+}

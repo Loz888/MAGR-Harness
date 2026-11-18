@@ -1,0 +1,10 @@
+{
+  "_public_export": {
+    "original_record_sha256": "6da67b8e3371a6a3cc17299a8ce5e17d70eb8f7737576f75c6b5395ff43ed041",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "schema": "r6-repair-freeze-v1",
+  "frozen_at": "2026-11-05T02:49:59.509612+00:00",
+  "source_commit": "1db078fbdaa85999f26e49d6796508cef1ade749",
+  "baseline_source_sha256": "ad65f7921dbf4fc13a457cfae0e8eff1afe927ffc318211be4426ad6bebbb680"
+}

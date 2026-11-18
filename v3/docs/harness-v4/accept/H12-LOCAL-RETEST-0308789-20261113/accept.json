@@ -1,0 +1,82 @@
+{
+  "schema": "h12-independent-local-retest-v1",
+  "recorded_at": "2026-11-13T11:29:46.038320+00:00",
+  "reviewed_commit": "03087897742e582f34db55cafeddb19d1e6bdbbd",
+  "candidate_source_sha256": "01b5bf353834ca165ae43e0ac877c6a5339ec76da300832abb9c7099cd329f6c",
+  "scope": "Independent recheck of the final public-probe repair source; no implementation edits.",
+  "engineering_status": "PASS",
+  "registered": {
+    "path": "evidence/HV4-H12-PUBLIC-PROBE/20261113T112534Z-27ec952b/result.json",
+    "sha256": "cbd43a4b085b0269ef7fef15ef162b8516eb54a02c6c244bbc751cd28c00b250",
+    "counts": {
+      "tests": 128,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "junit": {
+      "path": "evidence/HV4-H12-PUBLIC-PROBE/20261113T112534Z-27ec952b/junit.xml",
+      "sha256": "69d5b4a18dc53dc5ae148cda61e3dcd145b5b0eb1e1cc2cfdef944ceea678a16"
+    },
+    "log": {
+      "path": "evidence/HV4-H12-PUBLIC-PROBE/20261113T112534Z-27ec952b/command.log",
+      "sha256": "7ee74a9deb7821081112f75089f92aaad7af8b08bd96ae89ffbc12dadac87d56"
+    }
+  },
+  "lint": {
+    "status": "PASS",
+    "path": "evidence/harness-v4/H12-LOCAL-RETEST-0308789-20261113/lint.log",
+    "sha256": "a220b562d6bdb3655673add818cabd1dbd6857a7efc7d06ff8178f9e0e2501e2"
+  },
+  "typecheck": {
+    "status": "PASS",
+    "source_files": 243,
+    "path": "evidence/harness-v4/H12-LOCAL-RETEST-0308789-20261113/typecheck.log",
+    "sha256": "180f7ea851de93492dbe9404892c65689902a3b7ff591078a33e19889bfa6439"
+  },
+  "quality_retest_status": "BLOCKED_NOT_RUN",
+  "quality_blocker": "PUBLIC_PROTOCOL_FULL_DEV_CONTROLLER_NOT_IMPLEMENTED",
+  "preflight": {
+    "path": "evidence/harness-v4/H12-LOCAL-RETEST-0308789-20261113/preflight.json",
+    "sha256": "b096f540e88798072174692c898fc64a6d7aba31a8406a8bc1fdb75865d0e75a"
+  },
+  "executed_blocking_gate_test": "test_generic_runner_prepares_subset_without_model_or_private_judge_and_paid_stays_blocked",
+  "remaining_prerequisites": [
+    "Author and review hash-bound official public probes and plans from public goals only.",
+    "Implement and execute a complete twelve-development-task readiness gate for the new protocols.",
+    "Bind public plans, readiness refs and protocols in BenchmarkV2Runner profiles and immutable experiment config.",
+    "Freeze a new candidate before retesting the three original failures and the required untested development tasks."
+  ],
+  "shared_budget_read_only": {
+    "limit_micros": 12000000,
+    "reserved_micros": 0,
+    "settled_micros": 1316981,
+    "used_calls": 305,
+    "call_limit": 1536,
+    "unknown_model_calls": 0
+  },
+  "new_paid_calls": 0,
+  "historical_dev": {
+    "pass": 0,
+    "fail": 3,
+    "not_run": 9
+  },
+  "holdout_model": {
+    "status": "NOT_RUN",
+    "count": 12
+  },
+  "thresholds": {
+    "dev": 10,
+    "holdout": 9,
+    "denominator_each": 12
+  },
+  "quality_status": "FAIL",
+  "mvp_status": "NOT_RELEASED",
+  "old_scores_and_failed_attempts_preserved": true,
+  "main_worktree_modified": false,
+  "sa13_sql_or_patches_applied": false,
+  "private_judge_or_holdout_content_read": false,
+  "full_aggregate_rerun": false,
+  "pushed": false,
+  "h13_started": false
+}

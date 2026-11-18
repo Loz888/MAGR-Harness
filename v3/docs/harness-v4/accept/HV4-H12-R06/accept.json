@@ -1,0 +1,49 @@
+{
+  "_public_export": {
+    "original_record_sha256": "e3fe66899c206eaac9522bf651df7fa6d4a38c369e18b55b9372db3ab5fc66f4",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "card": "HV4-H12-R06",
+  "status": "PASS",
+  "scope": "LOCAL_TASK_BASELINE_JUDGE_TRACEABILITY_ENGINEERING_ONLY",
+  "recorded_at": "2026-11-16T06:56:10.856868+00:00",
+  "branch": "hv4-h12-r06-20261116",
+  "baseline_commit": "8d5052cfb0f043d1c0c4be965d6666367c2a8fbd",
+  "source_commit": "88be4949c712e0e1c5fc8256a08325adf0339cc6",
+  "source_sha256": "514e99fea7f55287bb857a240e75b60ea8ab00a07c4b985021c728f27f6cb21d",
+  "frozen_at": "2026-11-16T06:40:54.660646+00:00",
+  "base_commit": "8d5052cfb0f043d1c0c4be965d6666367c2a8fbd",
+  "mode": "controlled-free-fixture",
+  "expected_tests": 729,
+  "later_cards_started": false,
+  "engineering_gate": "PASS",
+  "live_model_gate": "NOT_RUN",
+  "live_agent_gate": "NOT_RUN",
+  "live_publication_gate": "NOT_RUN",
+  "h12_quality": "FAIL",
+  "mvp": "NOT_RELEASED",
+  "stop_after": "R06",
+  "counts": {
+    "tests": 729,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "registered_test_files": 46,
+  "mypy_source_files": 278,
+  "new_paid_calls": 0,
+  "new_paid_cost_micros": 0,
+  "historical_scores_unchanged": true,
+  "trace_counts": {
+    "pre-freeze-review": 19,
+    "independent": 38,
+    "baseline-policy": 14,
+    "reviewed-judge": 6,
+    "pg": 4,
+    "verified_cas_file_copies": 1104,
+    "capture_errors": 0
+  },
+  "status_field_occurrences": {
+    "PASS": 10
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "schema": "h12-public-original-environment-repair-v2",
+  "utc": "2026-11-13T12:48:49.559639+00:00",
+  "source_before": "e3e2d7b779674a4a5cedce07d5ff4bc30c351d5bbbabd8550443938391c29759",
+  "source_after": "93336b13ef749d18d356451e78b97cc3f2eb382e687df952b775322d758a7aa0",
+  "first_full": {
+    "report": ".local/h12/public-dev-20261113/full-dev-v1/report.json",
+    "sha256": "3ced1fe43a5728e4f446390aeddcb62f059fbd7917b70e7dea99fe3eb847addb",
+    "ready": 8,
+    "not_run": 4,
+    "denominator": 12,
+    "paid_calls": 0
+  },
+  "repairs": [
+    "empty readonly protected directories may be traversed without revealing real contents; protected files remain000",
+    "new refactor profiles choose the original declared full regression suite rather than obsolete verify selector",
+    "original feature red is permitted only for precise frozen public defect inventory/hash/test-failure/exit1; final tests remain all green"
+  ],
+  "new_unique_engineering_cases": 4,
+  "cumulative_new_unique_engineering_cases": 74,
+  "retesting": "Only new/failing engineering nodes; old70/128 not rerun. Shared Broker mount behavior changed, so complete12 real environment preparation must be rerun on final source; first8 facts not presented as final-source executions.",
+  "static": {
+    "lint": "PASS",
+    "mypy": "PASS",
+    "mypy_source_files": 245
+  },
+  "model_calls": 0,
+  "quality": "NOT_RUN_NEW_CANDIDATE_HISTORY_FAIL",
+  "mvp": false
+}

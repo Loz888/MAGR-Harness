@@ -1,0 +1,359 @@
+{
+  "$defs": {
+    "TestCaseObservation": {
+      "additionalProperties": false,
+      "properties": {
+        "test_id": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Test Id",
+          "type": "string"
+        },
+        "outcome": {
+          "enum": [
+            "passed",
+            "failed",
+            "skipped"
+          ],
+          "title": "Outcome",
+          "type": "string"
+        }
+      },
+      "required": [
+        "test_id",
+        "outcome"
+      ],
+      "title": "TestCaseObservation",
+      "type": "object"
+    },
+    "TestResult": {
+      "additionalProperties": false,
+      "properties": {
+        "parser_version": {
+          "const": "harness-test-results-v1",
+          "default": "harness-test-results-v1",
+          "title": "Parser Version",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "NOT_RUN",
+            "BLOCKED"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "parsed": {
+          "title": "Parsed",
+          "type": "boolean"
+        },
+        "complete": {
+          "title": "Complete",
+          "type": "boolean"
+        },
+        "tests_run": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tests Run"
+        },
+        "tests_failed": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tests Failed"
+        },
+        "tests_skipped": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tests Skipped"
+        },
+        "cases": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/TestCaseObservation"
+          },
+          "title": "Cases",
+          "type": "array"
+        },
+        "failure_ids": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Failure Ids"
+        },
+        "detail": {
+          "title": "Detail",
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "parsed",
+        "complete",
+        "detail"
+      ],
+      "title": "TestResult",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "harness-independent-test-v1",
+      "default": "harness-independent-test-v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "receipt_id": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Receipt Id",
+      "type": "string"
+    },
+    "producer": {
+      "const": "independent-runner",
+      "default": "independent-runner",
+      "title": "Producer",
+      "type": "string"
+    },
+    "task_id": {
+      "title": "Task Id",
+      "type": "string"
+    },
+    "experiment_id": {
+      "title": "Experiment Id",
+      "type": "string"
+    },
+    "execution_task_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Execution Task Id"
+    },
+    "run_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Run Id"
+    },
+    "execution_epoch": {
+      "anyOf": [
+        {
+          "minimum": 1,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Execution Epoch"
+    },
+    "phase": {
+      "enum": [
+        "baseline",
+        "final"
+      ],
+      "title": "Phase",
+      "type": "string"
+    },
+    "role": {
+      "default": "public_regression",
+      "enum": [
+        "public_regression",
+        "target_behavior"
+      ],
+      "title": "Role",
+      "type": "string"
+    },
+    "suite_id": {
+      "title": "Suite Id",
+      "type": "string"
+    },
+    "plan_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Plan Hash",
+      "type": "string"
+    },
+    "tree_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Tree Hash",
+      "type": "string"
+    },
+    "verifier_tree_before": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Verifier Tree Before",
+      "type": "string"
+    },
+    "verifier_tree_after": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Verifier Tree After",
+      "type": "string"
+    },
+    "public_tests_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Public Tests Hash",
+      "type": "string"
+    },
+    "public_argv": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Public Argv",
+      "type": "array"
+    },
+    "argv": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Argv",
+      "type": "array"
+    },
+    "cwd": {
+      "title": "Cwd",
+      "type": "string"
+    },
+    "environment_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Environment Hash",
+      "type": "string"
+    },
+    "environment_spec_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Environment Spec Hash",
+      "type": "string"
+    },
+    "image_id": {
+      "title": "Image Id",
+      "type": "string"
+    },
+    "command_id": {
+      "title": "Command Id",
+      "type": "string"
+    },
+    "handle_id": {
+      "title": "Handle Id",
+      "type": "string"
+    },
+    "state": {
+      "title": "State",
+      "type": "string"
+    },
+    "exit_code": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Exit Code"
+    },
+    "started_at": {
+      "title": "Started At",
+      "type": "string"
+    },
+    "finished_at": {
+      "title": "Finished At",
+      "type": "string"
+    },
+    "log_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Log Hash",
+      "type": "string"
+    },
+    "log_bytes": {
+      "minimum": 0,
+      "title": "Log Bytes",
+      "type": "integer"
+    },
+    "log_complete": {
+      "title": "Log Complete",
+      "type": "boolean"
+    },
+    "log_truncated": {
+      "title": "Log Truncated",
+      "type": "boolean"
+    },
+    "result": {
+      "$ref": "#/$defs/TestResult"
+    }
+  },
+  "required": [
+    "receipt_id",
+    "task_id",
+    "experiment_id",
+    "phase",
+    "suite_id",
+    "plan_hash",
+    "tree_hash",
+    "verifier_tree_before",
+    "verifier_tree_after",
+    "public_tests_hash",
+    "public_argv",
+    "argv",
+    "cwd",
+    "environment_hash",
+    "environment_spec_hash",
+    "image_id",
+    "command_id",
+    "handle_id",
+    "state",
+    "exit_code",
+    "started_at",
+    "finished_at",
+    "log_hash",
+    "log_bytes",
+    "log_complete",
+    "log_truncated",
+    "result"
+  ],
+  "title": "IndependentTestReceipt",
+  "type": "object"
+}

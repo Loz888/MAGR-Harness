@@ -1,0 +1,52 @@
+{
+  "base_commit": "661970d171d9c3e12e4c789c4768db647d8c4da0",
+  "original_tree_sha256": "5a8bee3cbc91cde5b8f240c938a78cc1eb17197639b895943d76b23b934d0b94",
+  "probe": {
+    "asset_sha256": "399d2dbd650ae7832c460da535cc7c69dd3a5687e2731171ca45d141422275e6",
+    "case_ids": [
+      "plain-http",
+      "https-port-path",
+      "ipv6-authority",
+      "userinfo-host",
+      "scheme-case",
+      "relative-references",
+      "other-schemes",
+      "whitespace",
+      "non-strings",
+      "missing-host",
+      "invalid-port",
+      "malformed-ipv6"
+    ],
+    "plan_id": "h12-public-requests-http-url-v1",
+    "runner": "python-json-v1",
+    "schema_version": "harness-public-probe-plan-v1"
+  },
+  "public_basis": [
+    {
+      "path": "src/requests/utils.py",
+      "sha256": "b879cb3f671cf1c28e8ff9b2b02151bcdb8974b4820a514cfdd1f5a038443cd2"
+    },
+    {
+      "path": "tests/test_utils.py",
+      "sha256": "00d027432443a1aa9539c00a09550de9439cdd696d2e6acf2dc997de3a416946"
+    }
+  ],
+  "public_goal_sha256": "7a879d89f6fd12995f4bf84e11f312ebd6e1543622d387dceb1a70d605779fe7",
+  "regression_argv": [
+    "python3",
+    "-B",
+    "-m",
+    "pytest",
+    "tests/test_utils.py"
+  ],
+  "repository": "psf/requests",
+  "resources_sha256": "8fb18da2bdc25111a29d5e8005e70de98b04db23d0ddc9fe2580e979f349ce34",
+  "roles": {
+    "behavior": "same_public_probe_all_cases_pass_on_final",
+    "regression": "original_public_regression_on_final",
+    "reproduction": "same_public_probe_assertion_failure_on_original"
+  },
+  "schema": "h12-public-plan-v1",
+  "status": "FROZEN",
+  "task_id": "hv4-dev-requests-http-url-helper"
+}

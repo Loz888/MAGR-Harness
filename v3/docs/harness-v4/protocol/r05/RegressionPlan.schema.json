@@ -1,0 +1,154 @@
+{
+  "$defs": {
+    "PublicProbePlan": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "harness-public-probe-plan-v1",
+          "default": "harness-public-probe-plan-v1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "plan_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Plan Id",
+          "type": "string"
+        },
+        "asset_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Asset Sha256",
+          "type": "string"
+        },
+        "runner": {
+          "const": "python-json-v1",
+          "default": "python-json-v1",
+          "title": "Runner",
+          "type": "string"
+        },
+        "case_ids": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 128,
+          "minItems": 1,
+          "title": "Case Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "plan_id",
+        "asset_sha256",
+        "case_ids"
+      ],
+      "title": "PublicProbePlan",
+      "type": "object"
+    },
+    "RegressionCommand": {
+      "additionalProperties": false,
+      "properties": {
+        "suite_id": {
+          "pattern": "^[a-zA-Z0-9_.:-]{1,100}$",
+          "title": "Suite Id",
+          "type": "string"
+        },
+        "public_argv": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 128,
+          "minItems": 1,
+          "title": "Public Argv",
+          "type": "array"
+        },
+        "argv": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 144,
+          "minItems": 1,
+          "title": "Argv",
+          "type": "array"
+        },
+        "cwd": {
+          "default": ".",
+          "title": "Cwd",
+          "type": "string"
+        },
+        "framework": {
+          "enum": [
+            "pytest",
+            "unittest",
+            "go-json",
+            "mocha-json",
+            "tap",
+            "public-probe",
+            "unconfigured"
+          ],
+          "title": "Framework",
+          "type": "string"
+        },
+        "public_probe": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PublicProbePlan"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "suite_id",
+        "public_argv",
+        "argv",
+        "framework"
+      ],
+      "title": "RegressionCommand",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "harness-independent-regression-v1",
+      "default": "harness-independent-regression-v1",
+      "title": "Version",
+      "type": "string"
+    },
+    "parser_version": {
+      "const": "harness-test-results-v1",
+      "default": "harness-test-results-v1",
+      "title": "Parser Version",
+      "type": "string"
+    },
+    "commands": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/RegressionCommand"
+      },
+      "maxItems": 32,
+      "title": "Commands",
+      "type": "array"
+    },
+    "timeout_seconds": {
+      "default": 300,
+      "exclusiveMinimum": 0,
+      "maximum": 600,
+      "title": "Timeout Seconds",
+      "type": "number"
+    },
+    "package_scripts": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "title": "Package Scripts",
+      "type": "object"
+    }
+  },
+  "title": "RegressionPlan",
+  "type": "object"
+}

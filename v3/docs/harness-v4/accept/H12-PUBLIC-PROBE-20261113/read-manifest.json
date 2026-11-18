@@ -1,0 +1,46 @@
+{
+  "read_at_utc": "2026-11-13T11:15:42.882005+00:00",
+  "files": [
+    {
+      "path": "../AGENTS.md",
+      "sha256": "ac60b9218459e5b834a44c1cfef50ac7453b764715f818bcf9ed0ca9228e0025"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "f0d77defada751cb4cfeeb2db1727741876ac9f648d1f4b184f5ee8460c45d1e"
+    },
+    {
+      "path": "../v31-upgrade/TASK_QUEUE.md",
+      "sha256": "a469d6d2d5ba81efc92917e6801f2e12af9ad4051e440ee4ca453c8e74af1dc7"
+    },
+    {
+      "path": "docs/adr/0001-v31-boundaries.md",
+      "sha256": "ca0d326e5f9ab745223171b7edb10302e791dafa09b42f7c7c7de6dc2a59397f"
+    },
+    {
+      "path": "docs/harness-v4/TASKS.md",
+      "sha256": "a631b4d726662340a343405b6d05ba033fbfff0faa9599cd91e8dc37d9f7ec2d"
+    },
+    {
+      "path": "docs/harness-v4/CODEX_CLI_H12_TASK.md",
+      "sha256": "c5de3a3abba598afc57c7de3496ec88b8efcf72a12862a1ee34437fc026535d0"
+    },
+    {
+      "path": "docs/harness-v4/SCORING_PROTOCOL.md",
+      "sha256": "b0ce9dd0189b8be5127c2bc84c912340356889d404d84d667ae18f5f9842c943"
+    },
+    {
+      "path": "docs/harness-v4/ACCEPTANCE.md",
+      "sha256": "1a81a4ebfbcd4e792de7e337e8d7ad944af78c38027c7e5dc3d1506f686e4145"
+    },
+    {
+      "path": "docs/harness-v4/H12_RUNTIME_REPAIR_20261113.md",
+      "sha256": "c2a0e39d677c1cf46ef522d8dd20910b624da88583bb3df2cfd4e0c3f8d1a137"
+    },
+    {
+      "path": "docs/harness-v4/H12_PUBLIC_PROBE_REPAIR_20261113.md",
+      "sha256": "18706f08ec949dbf1ca1a561e88b99efa0fe586dd57178ebe7ccc6d88277f3af"
+    }
+  ],
+  "note": "Continuation manifest for current public-probe implementation. Root/v3 instructions and H12 protocol were read before implementation; current task/report links reread after phase update. Private Judge and holdout implementation not read."
+}

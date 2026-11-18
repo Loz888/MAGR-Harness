@@ -1,0 +1,91 @@
+{
+  "_public_export": {
+    "original_record_sha256": "dcb33dfddfe58c38b2eddba82a2d9c7a1bffabd27f6f961a18788faaf3977628",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "schema": "mgar-hv4-h12-delivery-v1",
+  "card": "HV4-H12",
+  "recorded_at": "2026-11-12T06:11:56.695061+00:00",
+  "status": "IMPLEMENTED",
+  "source_commit": "ce338bfdf1294a446ec2aafd58eebcb6af2f8626",
+  "source_sha256": "84ad1b9af3e998f77af01075866044f34c98cc933fae622ede57e3900e09c7d2",
+  "engineering_gate": "PASS",
+  "security_gate": "PASS",
+  "live_model_gate": "PASS",
+  "live_agent_gate": "FAIL",
+  "live_publication_gate": "NOT_RUN",
+  "results": {
+    "dev": {
+      "split": "dev",
+      "denominator": 12,
+      "pass_count": 0,
+      "fail_count": 7,
+      "not_run_count": 5,
+      "unknown_count": 0,
+      "eligible_count": 7,
+      "pass_rate": 0.0,
+      "minimum_passes": 10,
+      "threshold_met": false,
+      "gate_status": "FAIL",
+      "false_completions": 0,
+      "unknown_blind_retries": 0,
+      "new_regression_failures": 0,
+      "has_unknown_usage": false,
+      "may_send_paid_calls": true,
+      "by_type": {
+        "bugfix": {
+          "FAIL": 3,
+          "NOT_RUN": 1
+        },
+        "feature": {
+          "NOT_RUN": 2,
+          "FAIL": 2
+        },
+        "run_app": {
+          "FAIL": 1,
+          "NOT_RUN": 1
+        }
+      },
+      "median_wall_seconds": 16.197473253000226,
+      "max_wall_seconds": 270.2207523770003
+    },
+    "holdout": {
+      "split": "holdout",
+      "denominator": 12,
+      "pass_count": 0,
+      "fail_count": 5,
+      "not_run_count": 7,
+      "unknown_count": 0,
+      "eligible_count": 5,
+      "pass_rate": 0.0,
+      "minimum_passes": 9,
+      "threshold_met": false,
+      "gate_status": "FAIL",
+      "false_completions": 0,
+      "unknown_blind_retries": 0,
+      "new_regression_failures": 0,
+      "has_unknown_usage": false,
+      "may_send_paid_calls": true,
+      "by_type": {
+        "bugfix": {
+          "NOT_RUN": 3,
+          "FAIL": 1
+        },
+        "feature": {
+          "FAIL": 3,
+          "NOT_RUN": 1
+        },
+        "run_app": {
+          "NOT_RUN": 2
+        }
+      },
+      "median_wall_seconds": 8.0925585494997,
+      "max_wall_seconds": 242.665885548
+    }
+  },
+  "status_field_occurrences": {
+    "PASS": 7,
+    "FAIL": 12,
+    "NOT_RUN": 12
+  }
+}

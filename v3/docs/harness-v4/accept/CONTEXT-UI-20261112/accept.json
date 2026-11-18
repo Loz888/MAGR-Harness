@@ -1,0 +1,8 @@
+{
+  "_public_export": {
+    "original_record_sha256": "45fcdf5184c2a019d0dbf47bbc2b5c0af9dc94c6305c9803ade82aa50a6d86c5",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "schema": "harness-context-ui-repair-acceptance-v1",
+  "engineering_gate": "PASS"
+}

@@ -1,0 +1,144 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "receipt_id": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Receipt Id",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "NOT_RUN",
+        "BLOCKED"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "comparable": {
+      "title": "Comparable",
+      "type": "boolean"
+    },
+    "new_regression_failures": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "New Regression Failures"
+    },
+    "baseline_failures": {
+      "anyOf": [
+        {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Baseline Failures"
+    },
+    "final_failures": {
+      "anyOf": [
+        {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Final Failures"
+    },
+    "introduced_failures": {
+      "anyOf": [
+        {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Introduced Failures"
+    },
+    "final_regression_status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "NOT_RUN",
+        "BLOCKED"
+      ],
+      "title": "Final Regression Status",
+      "type": "string"
+    },
+    "baseline_ref": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Baseline Ref"
+    },
+    "final_ref": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Final Ref"
+    },
+    "baseline_tree": {
+      "title": "Baseline Tree",
+      "type": "string"
+    },
+    "final_tree": {
+      "title": "Final Tree",
+      "type": "string"
+    },
+    "plan_hash": {
+      "title": "Plan Hash",
+      "type": "string"
+    },
+    "detail": {
+      "title": "Detail",
+      "type": "string"
+    }
+  },
+  "required": [
+    "receipt_id",
+    "status",
+    "comparable",
+    "final_regression_status",
+    "baseline_ref",
+    "final_ref",
+    "baseline_tree",
+    "final_tree",
+    "plan_hash",
+    "detail"
+  ],
+  "title": "IndependentComparison",
+  "type": "object"
+}

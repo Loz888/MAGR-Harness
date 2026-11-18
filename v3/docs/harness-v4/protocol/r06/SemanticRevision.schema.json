@@ -1,0 +1,420 @@
+{
+  "$defs": {
+    "MissingTargetSymbol": {
+      "additionalProperties": false,
+      "properties": {
+        "acceptance_requirement_id": {
+          "title": "Acceptance Requirement Id",
+          "type": "string"
+        },
+        "name": {
+          "pattern": "^[A-Za-z_][A-Za-z_0-9]*$",
+          "title": "Name",
+          "type": "string"
+        },
+        "receiver": {
+          "anyOf": [
+            {
+              "pattern": "^[A-Za-z_][A-Za-z_0-9]*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Receiver"
+        },
+        "reference_paths": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "title": "Reference Paths",
+          "type": "array"
+        }
+      },
+      "required": [
+        "acceptance_requirement_id",
+        "name",
+        "reference_paths"
+      ],
+      "title": "MissingTargetSymbol",
+      "type": "object"
+    },
+    "PublicProbePlan": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "harness-public-probe-plan-v1",
+          "default": "harness-public-probe-plan-v1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "plan_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Plan Id",
+          "type": "string"
+        },
+        "asset_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Asset Sha256",
+          "type": "string"
+        },
+        "runner": {
+          "const": "python-json-v1",
+          "default": "python-json-v1",
+          "title": "Runner",
+          "type": "string"
+        },
+        "case_ids": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 128,
+          "minItems": 1,
+          "title": "Case Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "plan_id",
+        "asset_sha256",
+        "case_ids"
+      ],
+      "title": "PublicProbePlan",
+      "type": "object"
+    },
+    "RegressionCommand": {
+      "additionalProperties": false,
+      "properties": {
+        "suite_id": {
+          "pattern": "^[a-zA-Z0-9_.:-]{1,100}$",
+          "title": "Suite Id",
+          "type": "string"
+        },
+        "public_argv": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 128,
+          "minItems": 1,
+          "title": "Public Argv",
+          "type": "array"
+        },
+        "argv": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 144,
+          "minItems": 1,
+          "title": "Argv",
+          "type": "array"
+        },
+        "cwd": {
+          "default": ".",
+          "title": "Cwd",
+          "type": "string"
+        },
+        "framework": {
+          "enum": [
+            "pytest",
+            "unittest",
+            "go-json",
+            "mocha-json",
+            "tap",
+            "public-probe",
+            "unconfigured"
+          ],
+          "title": "Framework",
+          "type": "string"
+        },
+        "public_probe": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PublicProbePlan"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "suite_id",
+        "public_argv",
+        "argv",
+        "framework"
+      ],
+      "title": "RegressionCommand",
+      "type": "object"
+    },
+    "RegressionPlan": {
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "const": "harness-independent-regression-v1",
+          "default": "harness-independent-regression-v1",
+          "title": "Version",
+          "type": "string"
+        },
+        "parser_version": {
+          "const": "harness-test-results-v1",
+          "default": "harness-test-results-v1",
+          "title": "Parser Version",
+          "type": "string"
+        },
+        "commands": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/RegressionCommand"
+          },
+          "maxItems": 32,
+          "title": "Commands",
+          "type": "array"
+        },
+        "timeout_seconds": {
+          "default": 300,
+          "exclusiveMinimum": 0,
+          "maximum": 600,
+          "title": "Timeout Seconds",
+          "type": "number"
+        },
+        "package_scripts": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Package Scripts",
+          "type": "object"
+        }
+      },
+      "title": "RegressionPlan",
+      "type": "object"
+    },
+    "SemanticRequirement": {
+      "additionalProperties": false,
+      "properties": {
+        "acceptance_requirement_id": {
+          "pattern": "^public\\.[a-f0-9]{16}$",
+          "title": "Acceptance Requirement Id",
+          "type": "string"
+        },
+        "description": {
+          "maxLength": 8192,
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "behavior",
+            "target",
+            "structure",
+            "lifecycle"
+          ],
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "acceptance_requirement_id",
+        "description",
+        "kind"
+      ],
+      "title": "SemanticRequirement",
+      "type": "object"
+    },
+    "SharedHelperSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "acceptance_requirement_id": {
+          "title": "Acceptance Requirement Id",
+          "type": "string"
+        },
+        "path": {
+          "title": "Path",
+          "type": "string"
+        },
+        "language": {
+          "default": "python",
+          "enum": [
+            "python",
+            "go"
+          ],
+          "title": "Language",
+          "type": "string"
+        },
+        "owner_class": {
+          "anyOf": [
+            {
+              "pattern": "^[A-Za-z_][A-Za-z_0-9]*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Owner Class"
+        },
+        "callers": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 16,
+          "minItems": 2,
+          "title": "Callers",
+          "type": "array"
+        },
+        "required_name": {
+          "anyOf": [
+            {
+              "pattern": "^[A-Za-z_][A-Za-z_0-9]*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Required Name"
+        }
+      },
+      "required": [
+        "acceptance_requirement_id",
+        "path",
+        "callers"
+      ],
+      "title": "SharedHelperSpec",
+      "type": "object"
+    },
+    "TaskBaselinePolicy": {
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "const": "harness-task-baseline-v1",
+          "default": "harness-task-baseline-v1",
+          "title": "Version",
+          "type": "string"
+        },
+        "benchmark_revision": {
+          "maxLength": 100,
+          "minLength": 1,
+          "title": "Benchmark Revision",
+          "type": "string"
+        },
+        "task_kind": {
+          "enum": [
+            "bugfix",
+            "feature",
+            "refactor",
+            "run_app"
+          ],
+          "title": "Task Kind",
+          "type": "string"
+        },
+        "requirements": {
+          "items": {
+            "$ref": "#/$defs/SemanticRequirement"
+          },
+          "maxItems": 64,
+          "minItems": 1,
+          "title": "Requirements",
+          "type": "array"
+        },
+        "behavior_plan": {
+          "$ref": "#/$defs/RegressionPlan"
+        },
+        "target_plan": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RegressionPlan"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "missing_targets": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/MissingTargetSymbol"
+          },
+          "maxItems": 32,
+          "title": "Missing Targets",
+          "type": "array"
+        },
+        "shared_helper": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SharedHelperSpec"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "benchmark_revision",
+        "task_kind",
+        "requirements",
+        "behavior_plan"
+      ],
+      "title": "TaskBaselinePolicy",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "policy": {
+      "$ref": "#/$defs/TaskBaselinePolicy"
+    },
+    "traceability_path": {
+      "format": "path",
+      "title": "Traceability Path",
+      "type": "string"
+    },
+    "traceability_sha256": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Traceability Sha256",
+      "type": "string"
+    },
+    "registry_path": {
+      "format": "path",
+      "title": "Registry Path",
+      "type": "string"
+    },
+    "registry_sha256": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Registry Sha256",
+      "type": "string"
+    },
+    "structural_probe": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PublicProbePlan"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    }
+  },
+  "required": [
+    "policy",
+    "traceability_path",
+    "traceability_sha256",
+    "registry_path",
+    "registry_sha256"
+  ],
+  "title": "SemanticRevision",
+  "type": "object"
+}

@@ -1,0 +1,302 @@
+{
+  "card": "HV4-H06",
+  "title": "命令、依赖、测试及应用进程",
+  "status": "ACCEPTED",
+  "review_status": "PASS_AFTER_INDEPENDENT_RECHECK",
+  "commit": "e52347fc326d36efdaa9b608e274aa2fce6fda33",
+  "result_commit": "e52347fc326d36efdaa9b608e274aa2fce6fda33",
+  "parent_commit": "d3ec3883b8b6824ef584574754156408d2faa9ec",
+  "base_commit": "d3ec3883b8b6824ef584574754156408d2faa9ec",
+  "commit_note": "新增 CommandSession（run/poll/read_log/wait/cancel/close）与 ServiceLaunch；所有容器经 H04 IsolatedExecutionBroker.launch 创建并复用 lease/epoch/预算/scope/allowlist；日志按 page_bytes 分页、缓冲超限丢弃最旧字节并报告 dropped_bytes；deadline/cancel 均 docker rm -f 整个容器；就绪探测在容器网络命名空间内执行；新增 Python（pytest/unittest）、Node、Go 适配与 TestReceipt/BuildReceipt；依赖只走 H04 依赖端口并返回可操作等待状态。第一次复验后修复挂载（F1/F2）：scope 只 bind 一次、保护路径单独掩码、文件掩码改为 000 空文件、只读父下缺失不掩码、可写父下由 broker 预建 0700 占位并随容器删除，并补齐截断上报、租约撤销/过期/换 epoch 终止命令、run_tests 的 waiting_approval 门控。第二次复验后修复 F3：保留 broker 返回的真实总字节，LogPage.total_bytes 与 CommandHandle.log_bytes 不再由 dropped+len 推算。",
+  "fixed_at": "2026-11-11T02:39:07Z",
+  "depends_on": ["HV4-H04", "HV4-H05"],
+  "environment": {
+    "os": "Ubuntu-24.04 (WSL2)",
+    "python": "3.12",
+    "sandbox_image": "mgar-v3-sandbox-r03:local (golang:1.27.1-bookworm, Python 3.11.2)",
+    "model": "scripted_offline_provider",
+    "live": "NOT_RUN"
+  },
+  "recheck_findings": [
+    {
+      "id": "F1",
+      "finding": "读根 + 窄写 + 已存在 .env 时 docker create 报 Duplicate mount point: /workspace/.env，容器无法启动；H06 自带挂载用例不含保护路径，结构上覆盖不到。",
+      "root_cause": "旧实现把只读根展开成逐子项 bind，又对 .env 追加 /dev/null 掩码，同一 target 挂载两次；缺失路径的掩码还会迫使 runc 在只读父挂载内创建挂载点。",
+      "fix": "声明的 scope 只 bind 一次（读根 /workspace 只读 + 写子集一次可写 bind），保护路径单独掩码，target 不再重复。真实 Docker 已确认只读父下已存在的可写子目录可以正常挂载。",
+      "tests": [
+        "test_read_root_with_narrow_write_starts_with_existing_protected_paths",
+        "test_read_root_with_narrow_write_leaves_no_placeholder_for_missing_paths"
+      ],
+      "status": "FIXED"
+    },
+    {
+      "id": "F2",
+      "finding": "可写根 + 保护路径缺失时，docker start 在宿主工作区创建 root:root 0755 的 .git/.mgar/.env 目录，随后 git init 报 Permission denied。tmpfs 掩码并未避免宿主占位。",
+      "root_cause": "tmpfs 的挂载 target 必须存在；target 位于宿主 bind 内，于是 docker start 以 root 身份在宿主创建了占位目录。0 字节文件被换成了 root 属主目录，宿主仍被挂载层改写。",
+      "fix": "只读 scope 下缺失的保护路径不再掩码（只读父挂载本身使路径不可创建、不可读）；可写 scope 下由 broker 以工作区用户身份预建 0700 空目录作为 tmpfs target，正常退出、超时、取消、close 删除容器时一并 rmdir，Docker 不再写入任何 root 属主对象。已存在文件改用 broker 自建 mode 000 空普通文件只读 bind（/dev/null 只读 bind 仍接受写入）。",
+      "tests": [
+        "test_writable_root_keeps_protected_paths_denied_and_host_pristine",
+        "test_read_root_with_narrow_write_starts_with_existing_protected_paths"
+      ],
+      "status": "FIXED"
+    },
+    {
+      "id": "N1",
+      "finding": "超 max_output_bytes 时静默截断且 dropped_bytes=0。",
+      "classification": "H06 契约内（日志分页与背压）。",
+      "fix": "command_logs 流式读完并返回 (保留字节, 实际总字节)；被 lease 削掉尾部时 LogPage.truncated 与 CommandHandle.log_truncated 置真，dropped_bytes 只表示内存缓冲溢出。",
+      "tests": ["test_output_clipped_by_the_lease_is_reported_not_silent"],
+      "status": "FIXED"
+    },
+    {
+      "id": "F3",
+      "finding": "第二次复验：截断只报布尔，LogPage.total_bytes 由 dropped + 保留长度推算，削尾时仍报 max_output_bytes（20001/2048 → 2048；200000/65536 → 65536），调用方无法区分削尾与本来就这么短；新增用例还把 2048 固化成期望值。",
+      "classification": "H06 契约内（日志分页、总字节与截断语义）。",
+      "root_cause": "broker 已返回真实 total，但 _pull_logs 只用它置 truncated，随后丢弃；read_log 用 dropped + len(buffer) 重算总量。",
+      "fix": "_Record.total_bytes 保存 broker 返回的真实总量（取最大值）；LogPage.total_bytes 与 CommandHandle.log_bytes 直接使用它；eof 表示保留字节已全部交付，削尾时 total_bytes 可大于 next_offset 并由 truncated 说明差额；修正原断言为 20001，新增精确等长（2048/2048）用例证明不误报截断。",
+      "tests": [
+        "test_output_clipped_by_the_lease_is_reported_not_silent",
+        "test_exact_length_log_is_not_reported_as_truncated"
+      ],
+      "status": "FIXED"
+    },
+    {
+      "id": "N2",
+      "finding": "租约撤销/过期/换 epoch 不终止在跑命令。",
+      "classification": "H06 契约内（超时/取消/清理与租约归属）。",
+      "fix": "monitor 与 poll 每轮用 authority.peek()（不消耗预算）检查 lease/epoch；丢失时状态 revoked、退出码 137 并 docker rm -f 整个容器。",
+      "tests": [
+        "test_lease_revocation_stops_a_running_command",
+        "test_lease_expiry_stops_a_running_command",
+        "test_epoch_replacement_stops_a_running_command"
+      ],
+      "status": "FIXED"
+    },
+    {
+      "id": "N3",
+      "finding": "run_tests 不查依赖，pytest 项目落成 unverified 而非 waiting_approval。",
+      "classification": "H06 契约内（缺依赖有真实失败回执，不能伪造测试数）。",
+      "fix": "run_tests 在 launch 前探测运行时：pytest 用 python3 -c import pytest，Node 用 node --version；缺失直接返回 waiting_approval 的 TestReceipt（missing/action，tests_run=0），不再启动必然失败的命令。",
+      "tests": ["test_pytest_run_waits_for_approval_instead_of_reporting_unverified"],
+      "status": "FIXED"
+    }
+  ],
+  "commands": [
+    {
+      "name": "h06-tests",
+      "argv": ["uv", "run", "--frozen", "pytest", "-q", "tests/test_harness_v4_h06.py"],
+      "exit_code": 0,
+      "counts": {"tests": 25, "failures": 0, "errors": 0, "skipped": 0},
+      "purpose": "run/poll/cancel 句柄、真实超时与清理、后台服务就绪、大日志分页与背压、lease/epoch/scope/allowlist 每次 launch 校验、跨 session 句柄拒绝、读根+窄写在保护路径存在/缺失两种形态下可启动且宿主不变、可写根不留 root 占位、租约撤销/过期/换 epoch 终止命令、lease 截断显式上报且总字节为真实输出（含精确等长不误报）、Python unittest 真实计数、全跳过/无测试/不可解析不判通过、pytest 与 Node 等待状态、Go 真实构建与测试、服务启动/停止、close 全量清理",
+      "log": "evidence/HV4-H06/20261111T023907Z-3fbf5c73/command.log",
+      "junit": "evidence/HV4-H06/20261111T023907Z-3fbf5c73/junit.xml",
+      "status": "PASS"
+    },
+    {
+      "name": "h04-h05-h06-tests",
+      "argv": ["uv", "run", "--frozen", "pytest", "-q", "tests/test_harness_v4_h04.py", "tests/test_harness_v4_h05.py", "tests/test_harness_v4_h06.py"],
+      "exit_code": 0,
+      "counts": {"tests": 66, "failures": 0, "errors": 0, "skipped": 0},
+      "log": "evidence/HV4-H06/20261111T-fix-rerun/h04-h05-h06-f3.log",
+      "status": "PASS"
+    },
+    {
+      "name": "h00-h05-regression",
+      "argv": ["uv", "run", "--frozen", "pytest", "-q", "tests/test_harness_v4_h00.py", "tests/test_harness_v4_h01.py", "tests/test_harness_v4_h02.py", "tests/test_harness_v4_h03.py", "tests/test_harness_v4_h04.py", "tests/test_harness_v4_h05.py"],
+      "exit_code": 0,
+      "counts": {"tests": 124, "failures": 0, "errors": 0, "skipped": 0},
+      "log": "evidence/HV4-H06/20261111T-fix-rerun/h00-h05-regression-f3.log",
+      "status": "PASS"
+    },
+    {
+      "name": "ruff",
+      "argv": ["uv", "run", "--frozen", "ruff", "check", "src", "tests", "scripts"],
+      "exit_code": 0,
+      "log": "evidence/HV4-H06/20261111T-fix-rerun/ruff-f3.log",
+      "status": "PASS"
+    },
+    {
+      "name": "mypy",
+      "argv": ["uv", "run", "--frozen", "mypy"],
+      "exit_code": 0,
+      "counts": {"files": 201, "errors": 0},
+      "log": "evidence/HV4-H06/20261111T-fix-rerun/mypy-f3.log",
+      "status": "PASS"
+    },
+    {
+      "name": "engineering-verify",
+      "argv": ["make", "verify", "TASK=HV4-H06"],
+      "exit_code": 0,
+      "counts": {"tests": 25, "failures": 0, "errors": 0, "skipped": 0},
+      "git_commit": "e52347fc326d36efdaa9b608e274aa2fce6fda33",
+      "source_sha256": "82209b97ac3c5308bbf66cea79e07536befd0a816e91cb16b6b2010a8bb766bb",
+      "finished_source_sha256": "82209b97ac3c5308bbf66cea79e07536befd0a816e91cb16b6b2010a8bb766bb",
+      "attempt": "evidence/HV4-H06/20261111T023907Z-3fbf5c73/",
+      "log": "evidence/HV4-H06/20261111T023907Z-3fbf5c73/command.log",
+      "status": "PASS"
+    },
+    {
+      "name": "independent-security-recheck",
+      "argv": ["uv", "run", "--frozen", "python", "/tmp/r3.py"],
+      "exit_code": 0,
+      "counts": {"checks": 11, "passed": 11, "failed": 0, "informational": 0},
+      "purpose": "独立复验方自写探针：F3 重放（20001/2048、200000/65536）、精确等长不误报、未削尾与削尾两种分页的 total_bytes 稳定性与 eof/offset 自洽、缓冲溢出与 dropped_bytes 分离、租约上限仍生效",
+      "log": "evidence/HV4-H06/independent-recheck3-20261111T1100Z/r3.log",
+      "status": "PASS"
+    }
+  ],
+  "engineering_gate": "PASS",
+  "security_gate": "PASS",
+  "live_model_gate": "NOT_RUN",
+  "live_agent_gate": "NOT_RUN",
+  "live_publication_gate": "NOT_RUN",
+  "security_gate_note": "H06 新增的唯一执行入口是受控命令句柄，全部经 H04 Broker 的 launch 授权（lease/grant 交集、epoch、cwd、allowlist、execute、预算）后才创建容器；日志读取、探测和停止只能作用于本 session 持有的句柄；服务不发布端口。本轮只修挂载规划、日志截断上报、租约活性与测试就绪门控，未放宽任何既有隔离。仍需独立复验方用自写对抗探针确认无绕过。",
+  "security_gate_recheck": {
+    "reviewer": "independent recheck (TraeCode sub-session, read-only), round 3",
+    "reviewed_at": "2026-11-11T02:46:01Z",
+    "head_commit": "1dcf99fe72e477dee9656319a943b96e52129186",
+    "implementation_commit": "e52347fc326d36efdaa9b608e274aa2fce6fda33",
+    "worktree_clean": true,
+    "source_sha256": "82209b97ac3c5308bbf66cea79e07536befd0a816e91cb16b6b2010a8bb766bb",
+    "verdict": "PASS",
+    "gates": {
+      "make_verify": {"argv": "make verify TASK=HV4-H06", "tests": 25, "failures": 0, "errors": 0, "skipped": 0, "attempt": "evidence/HV4-H06/20261111T024601Z-75137576/"},
+      "h06_pytest": {"tests": 25, "failures": 0, "errors": 0, "skipped": 0},
+      "h04_h05_h06_pytest": {"tests": 66, "failures": 0, "errors": 0, "skipped": 0},
+      "h00_h05_regression": {"tests": 124, "failures": 0, "errors": 0, "skipped": 0},
+      "ruff": "All checks passed",
+      "mypy": {"files": 201, "errors": 0}
+    },
+    "f3_recheck": {
+      "replay_20001_2048": "total_bytes=20001、保留 2048、truncated=True、eof=True、log_bytes=20001、log_truncated=True",
+      "replay_200000_65536": "total_bytes=200000、4 页交付 65536、truncated=True、eof=True、log_bytes=200000",
+      "exact_2048_2048": "total_bytes=2048、保留 2048、truncated=False、eof=True、log_bytes=2048",
+      "paging_unclipped": "190001 字节分 47 页，total_bytes 恒为 190001，最后一页 eof，dropped=0",
+      "paging_clipped": "20001/2048 按 1024 分页，2 页到 eof，total_bytes 恒为 20001，offset 单调不重叠，无死循环",
+      "buffer_overflow": "dropped_bytes=41809、total_bytes=50001、保留尾精确、log_bytes=50001、log_truncated=True",
+      "no_false_truncation": "1000 字节输出未误报 truncated/log_truncated",
+      "offset_past_end": "空数据、eof、不虚构字节"
+    },
+    "test_discrimination": {
+      "method": "在 /tmp 副本中把实现改回旧写法后运行 H06 的两个用例（仓库文件未改，PYTHONPATH 指向副本，已确认模块来自副本）",
+      "mutation_total_back_to_retained": "FAILED test_output_clipped_by_the_lease_is_reported_not_silent：assert 2048 == 20001（第 756 行）",
+      "mutation_log_bytes_back_to_buffer_len": "FAILED 同一用例：assert 2048 == 20001（第 760 行）",
+      "note": "test_exact_length_log_is_not_reported_as_truncated 是防误报的补充用例，单独不能区分新旧实现，须与 clipped 用例配合；两种变异均被 clipped 用例捕获。"
+    },
+    "regression_replay": {
+      "f1": "R1-01..R1-06 全 PASS：读根+窄写+已存在 .env/.git/.mgar 正常启动，保护路径不可读不可写，宿主清单（类型/mode/uid/sha256）不变，容器清理干净",
+      "f2": "R2-01、R2-03..R2-07 PASS：宿主无占位残留、git init 可用、占位仅在容器运行期存在、cancel 清除、SIGKILL 残留可复现",
+      "f2_followup": "R2-02 为上一轮探针断言缺陷（把 EISDIR=2 写成 1），修正版 M-03 PASS：读 .env/写 .env/mkdir .mgar/读 .git 四条路径全部 DENIED",
+      "lease": "R4-01..R4-04 PASS：撤销/过期/换 epoch 均为 revoked + 137 + 容器删除",
+      "waiting_approval": "R5-01 PASS：pytest/node 缺失返回 waiting_approval",
+      "budget": "R6-01 为探针断言过时，修正版 M-04 PASS：构造不扣预算，预算 1 下第二次启动 HARNESS_BUDGET_EXHAUSTED"
+    },
+    "contract_checks": {
+      "lease_cap_still_enforced": "交付 65536 == max_output_bytes，未因上报真实总量而放宽读取上限",
+      "log_bytes_semantics": "CommandHandle.log_bytes 改为真实总字节并已在契约文档写明；project_commands 的 receipt.log_bytes 仍为自身输出长度，未被混淆",
+      "no_new_bypass": "broker.py 与 project_commands.py 自 d3ec388 起零改动；读根单次只读 bind + 写子集单次可写 bind + 保护路径单独掩码的规划未回退"
+    },
+    "adversarial_probes": {"checks": 11, "passed": 11, "failed": 0, "informational": 0},
+    "residual_limits": [
+      "harness 被 SIGKILL 时容器与 broker 预建的 0700 空占位目录同时残留（docker rm -f 不删除宿主目录）；正常退出/超时/取消/close 均清理，残留目录可 rmdir、不含内容、属主非 root。",
+      "pytest 与 node/npm 真实执行仍 NOT_RUN（R03 镜像缺运行时），只验证 waiting_approval 路径；Python unittest 与 Go 为真实运行。",
+      "CommandHandle.log_bytes 语义由“保留字节”改为“真实总字节”；若调用方曾用它估算保留缓冲大小，应改看 dropped_bytes 或保留长度。",
+      "total_bytes 取 broker 多次返回的最大值，依赖 docker logs 的单调计数；日志若被 docker 轮转/清理，历史总量不可重建（当前固定镜像与短命令未触发）。",
+      "exec_probe 接受任意容器名（内部 API 面）；allowlist 仅比对 argv[0] basename；仓库内代码可伪造测试摘要；占位目录并发/竞态未测。",
+      "live_model_gate / live_agent_gate / live_publication_gate 仍为 NOT_RUN。"
+    ],
+    "evidence": "evidence/HV4-H06/independent-recheck3-20261111T1100Z/"
+  },
+  "live_gate_note": "本卡使用脚本化离线 provider、真实 Docker 容器与真实工具链，无网络、无付费，费用 0。未调用真实模型，live_model_gate 保持 NOT_RUN。",
+  "must_pass": [
+    {
+      "item": "命令句柄记录 argv、cwd、环境摘要、退出码、stdout/stderr、超时和产物",
+      "result": "PASS",
+      "evidence": "CommandHandle 含 argv/cwd/state/exit_code/started_at/deadline/tree_hash/environment_hash/log_bytes/log_sha256；test_run_poll_and_logs_record_the_real_command。"
+    },
+    {
+      "item": "非交互命令与受控后台服务",
+      "result": "PASS",
+      "evidence": "test_run_poll_and_logs_record_the_real_command、test_service_readiness_is_container_local_and_stop_releases_it、test_python_service_start_readiness_and_stop。"
+    },
+    {
+      "item": "公开测试真实运行",
+      "result": "PASS",
+      "evidence": "Python unittest 2 项与 Go 1 项在真实容器内运行并按真实计数生成 receipt；test_python_unittest_project_runs_and_reports_real_counts、test_go_project_builds_and_tests_with_the_real_toolchain。"
+    },
+    {
+      "item": "无测试、全部跳过或退出 0 但不冒充通过",
+      "result": "PASS",
+      "evidence": "判定要求 tests_run>0、tests_failed=0 且非全部跳过；test_all_skipped_and_missing_tests_are_never_a_pass 直接覆盖 Ran 0、pytest exit 5、collected 0 三种情况；缺运行时改由 waiting_approval 承接，不再落成 unverified（test_pytest_run_waits_for_approval_instead_of_reporting_unverified）。"
+    },
+    {
+      "item": "大日志可分页、流式有背压",
+      "result": "PASS",
+      "evidence": "test_large_log_is_paged_with_bounded_pages（190KB、每页 ≤4096、总字节一致）、test_log_buffer_backpressure_drops_only_the_oldest_bytes（8192 缓冲、dropped_bytes 明确）、test_output_clipped_by_the_lease_is_reported_not_silent（20001 字节 / 2048 上限：total_bytes=20001、保留 2048、truncated）、test_exact_length_log_is_not_reported_as_truncated（2048/2048 不误报）。"
+    },
+    {
+      "item": "超时杀死进程组",
+      "result": "PASS",
+      "evidence": "monitor 线程到期后 docker rm -f 整个容器（--init，PID 1 及子进程随容器销毁）；test_timeout_kills_the_container_and_reports_timed_out、test_cancel_stops_a_running_command；租约撤销/过期/换 epoch 同路径终止并置 revoked（三项测试）。"
+    },
+    {
+      "item": "Python/JS 项目分别完成准备、测试、构建/启动及停止",
+      "result": "PARTIAL",
+      "evidence": "Python 与 Go 完成真实构建/测试/启动/停止；R03 镜像无 pytest 与 node，pytest 与 Node 在 launch 前探测运行时并返回可操作 waiting_approval，真实运行标 NOT_RUN，未伪造测试数。"
+    },
+    {
+      "item": "依赖不可满足返回等待状态、终端与编辑同一版本",
+      "result": "PASS",
+      "evidence": "prepare_dependencies 只调用 H04 端口，当前返回 HARNESS_DEPENDENCY_SOURCE_DENIED 并转成 waiting_approval；句柄与 receipt 绑定启动时 tree_hash；test_pytest_without_the_package_waits_instead_of_faking_install、test_node_project_is_detected_and_missing_runtime_is_actionable、test_pytest_run_waits_for_approval_instead_of_reporting_unverified。"
+    }
+  ],
+  "deviations": [
+    {
+      "issue": "R03 镜像缺少 pytest 与 Node 运行时",
+      "handling": "pytest 与 Node 适配真实存在，run_tests 先探测运行时并返回可操作 waiting_approval；真实测试运行标 NOT_RUN。未在容器内执行 pip/npm 安装，也未开启网络。"
+    },
+    {
+      "issue": "依赖准备端口当前一律拒绝包源",
+      "handling": "H06 不自行实现第二条安装通道；所有安装请求走 H04 prepare_dependencies，并把拒绝转成带 missing/action 的等待状态。"
+    },
+    {
+      "issue": "服务地址无法从宿主访问",
+      "handling": "容器 --network=none 且不发布端口，返回 127.0.0.1:<port> 并显式标记 host_reachable=false；需要宿主访问时必须另行批准端口发布与网络。"
+    },
+    {
+      "issue": "新增 /scratch 可执行 tmpfs",
+      "handling": "仅为 Go 与测试二进制提供可执行临时空间，大小由 lease scratch_mb（默认 64，最大 2048）限制，容器销毁即消失；命令入口仍受 allowlist 约束。"
+    },
+    {
+      "issue": "进程崩溃不会自动删除已启动容器",
+      "handling": "正常退出、超时、取消和 close 都清理；docker create 不支持 --rm，崩溃残留可通过 docker ps --filter name=mgar-h06- 发现，未实现跨进程自动清扫。"
+    },
+    {
+      "issue": "可写 scope 下缺失保护路径需要宿主挂载 target",
+      "handling": "容器运行期间宿主存在 broker 以工作区用户身份预建的 0700 空目录（容器内被 tmpfs 000 掩码覆盖），随容器删除 rmdir；进程被强杀时可能残留这类空目录，但不含内容、属主不是 root，可 rmdir 清理。这是为避免 Docker 创建 root 属主占位所必需的取舍。"
+    },
+    {
+      "issue": "文件掩码改用宿主临时文件",
+      "handling": "已存在普通文件用 tempfile.mkdtemp 下 mode 000 的空文件只读 bind（进程内复用），不在工作区内；不再使用 /dev/null，因为只读 bind 的 /dev/null 仍接受写入。"
+    },
+    {
+      "issue": "挂载规划变化改变了 H04 的实现细节",
+      "handling": "读根+写子集不再展开只读祖先，改为单次 bind + 保护路径掩码；挂载集合仍严格等于 read ∪ write，隔离行为未放宽。H00–H05 124 项回归、H04/H05/H06 65 项与 lint/typecheck 全部通过。"
+    },
+    {
+      "issue": "承接 H05 复验记录的限制",
+      "handling": "输出预算不约束模型回复整体体积（live_model_gate NOT_RUN）；revert_patch 不检测外部改动；一次性落盘非文件系统事务；重命名不计 max_deleted_files；软链 TOCTOU；混合换行仅精确匹配。H06 不涉及编辑路径，未改变这些行为。"
+    }
+  ],
+  "artifacts": {
+    "contract": "docs/harness-v4/COMMAND_EXECUTION.md",
+    "commands": "src/mgar_v3/harness/commands.py",
+    "adapters": "src/mgar_v3/harness/project_commands.py",
+    "tests": "tests/test_harness_v4_h06.py",
+    "verify_attempt": "evidence/HV4-H06/20261111T023907Z-3fbf5c73/",
+    "independent_recheck": "evidence/HV4-H06/independent-recheck3-20261111T1100Z/",
+    "independent_recheck_prev": "evidence/HV4-H06/independent-recheck-20261111T1000Z/"
+  },
+  "next_card": "HV4-H07",
+  "next_card_prerequisites": "H06 需独立复验；在复验方落 security_gate=PASS 之前不启动 H07。"
+}

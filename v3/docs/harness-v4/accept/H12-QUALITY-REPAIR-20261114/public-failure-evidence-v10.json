@@ -1,0 +1,10 @@
+{
+  "_public_export": {
+    "original_record_sha256": "563bdffe359c061b4a8a8c6eb93c075513760ead9e836d2f6bd451af502ee9ec",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "schema": "h12-public-failure-diagnosis-v1",
+  "recorded_at": "2026-11-14T15:07:41.210975+00:00",
+  "source_sha256": "84e41245c86571eaaa2bb4dac56b33aba0599b125ee62a236943de72f346fe32",
+  "historical_scores_unchanged": true
+}

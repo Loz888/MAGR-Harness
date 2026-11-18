@@ -1,0 +1,10 @@
+{
+  "_public_export": {
+    "original_record_sha256": "1339c62b7c8971ef93b051d77d668c889ea5149f39acdf7971225ee7e8b8c84c",
+    "scope": "Public protocol, aggregate outcomes and public development results."
+  },
+  "schema": "h12-offline-runtime-repair-v1",
+  "status": "OFFLINE_REPAIRS_VALIDATED",
+  "branch": "h12-runtime-repair-20261113",
+  "source_sha256": "06e26d872aaf0d651677f59e082dfc5d2e163e41cccb0ba4e0ca5fb4a4b22a2b"
+}
