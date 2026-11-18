@@ -768,6 +768,19 @@ class HarnessStore:
             return envelope.model_copy(update={"cursor": event["event_id"],
                                                "occurred_at": event["created_at"]})
 
+    def record_stream_disconnect(self, task_id: str, request_id: str, cursor: int) -> None:
+        # Observation only. The stream already passed the caller's task authorization.
+        with self.engine.transaction() as conn:
+            conn.execute("SET LOCAL lock_timeout='400ms'")
+            match = conn.execute(
+                "SELECT run_id FROM app.harness_tasks WHERE task_id=%s", (task_id,),
+            ).fetchone()
+            if match is not None:
+                self.engine._event(
+                    conn, match["run_id"], "harness_stream_disconnected",
+                    stream_request_id=request_id, cursor=cursor,
+                )
+
     def events(
         self, task_id: str, after_cursor: int = 0, *, limit: int | None = None,
     ) -> tuple[EventEnvelope, ...]:
@@ -1017,6 +1030,7 @@ class HarnessStore:
 
     def save_model_result(
         self, task_id: str, epoch: int, operation_id: str, response: ModelResponse,
+        *, provider_ms: int | None = None,
     ) -> None:
         with self.engine.transaction() as conn:
             row = self._guard(conn, task_id, epoch)
@@ -1051,6 +1065,12 @@ class HarnessStore:
                 "WHERE reservation_id=%s",
                 (state, op["reserved_units"] if state == "known" else 0, op["reservation_id"]),
             )
+            if provider_ms is not None:
+                self.engine._event(
+                    conn, row["run_id"], "harness_provider_completed",
+                    operation_id=operation_id, status=response.finish_reason,
+                    code=response.error_code, duration_ms=provider_ms,
+                )
 
     def seal_evaluation(self, task_id: str, epoch: int, tree_hash: str) -> Row:
         """Fence model/tool activity before mounting any independent judge."""

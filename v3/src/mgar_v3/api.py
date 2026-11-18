@@ -1148,11 +1148,36 @@ def create_app(
             raise DomainError("INVALID_CURSOR", "事件游标无效。", 400) from exc
         await asyncio.to_thread(service.event_page, task_id, cursor, 1)
 
+        request_id = uuid4().hex
+
+        async def record_disconnect() -> None:
+            if service.store is None:
+                return
+            store = service.store
+
+            def collect() -> None:
+                try:
+                    store.record_stream_disconnect(task_id, request_id, cursor)
+                except psycopg.Error:
+                    logging.getLogger("mgar_v3.ops").warning(
+                        "harness_stream_disconnected request_id=%s task_id=%s cursor=%d",
+                        request_id, task_id, cursor,
+                    )
+
+            # Schedule the bounded observation even when the stream's cancellation
+            # scope is already active. The operation never changes Run state.
+            pending = asyncio.get_running_loop().run_in_executor(None, collect)
+            try:
+                await asyncio.wait_for(asyncio.shield(pending), timeout=1)
+            except TimeoutError:
+                pass
+
         async def updates() -> AsyncIterator[str]:
             nonlocal cursor
             last_check = asyncio.get_running_loop().time()
             while True:
                 if await request.is_disconnected():
+                    await record_disconnect()
                     return
                 try:
                     await asyncio.to_thread(task_access, request)
@@ -1188,12 +1213,21 @@ def create_app(
                     return
                 await asyncio.sleep(0.15)
 
+        async def instrumented_updates() -> AsyncIterator[str]:
+            try:
+                async for event in updates():
+                    yield event
+            except asyncio.CancelledError:
+                await record_disconnect()
+                raise
+
         return StreamingResponse(
-            updates(),
+            instrumented_updates(),
             media_type="text/event-stream",
             headers={
                 "Cache-Control": "no-store",
                 "X-Accel-Buffering": "no",
+                "X-MGAR-Request-ID": request_id,
             },
         )
 

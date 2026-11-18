@@ -1,5 +1,4 @@
 import argparse
-import hashlib
 import json
 import sys
 from pathlib import Path
@@ -7,43 +6,12 @@ from urllib.parse import urlsplit
 from uuid import uuid4
 
 import httpx
-import psycopg
-from redis import Redis
-from redis.exceptions import RedisError
+from pydantic import ValidationError
 
 from mgar_v3.harness import headless, runner_cli
+from mgar_v3.ops import cli as ops_cli
 from mgar_v3.preflight import preflight
-from mgar_v3.settings import ROOT, Settings
-
-
-def doctor(settings: Settings) -> int:
-    result = {"postgres": "NOT_RUN", "redis": "NOT_RUN", "live": "NOT_RUN"}
-    try:
-        with psycopg.connect(settings.database_url.get_secret_value(), connect_timeout=3) as conn:
-            applied: dict[str, str] = dict(
-                conn.execute("SELECT name,sha256 FROM app.schema_migrations").fetchall()
-            )
-            required = list((ROOT / "migrations").glob("*.sql"))
-            result["postgres"] = (
-                "PASS"
-                if required
-                and all(
-                    applied.get(p.name) == hashlib.sha256(p.read_bytes()).hexdigest()
-                    for p in required
-                )
-                else "FAIL"
-            )
-    except psycopg.Error:
-        result["postgres"] = "FAIL"
-    try:
-        with Redis.from_url(
-            settings.redis_url.get_secret_value(), socket_connect_timeout=3
-        ) as cache:
-            result["redis"] = "PASS" if cache.ping() else "FAIL"
-    except (OSError, RedisError):
-        result["redis"] = "FAIL"
-    print(json.dumps(result))
-    return 0 if result["postgres"] == result["redis"] == "PASS" else 2
+from mgar_v3.settings import Settings
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -52,7 +20,10 @@ def main(argv: list[str] | None = None) -> int:
     commands = parser.add_subparsers(dest="command", required=True)
     headless.register_commands(commands.add_parser("harness", help="Harness sessions and tasks"))
     runner_cli.register_commands(commands.add_parser("runner", help="Pair and run a local device"))
-    commands.add_parser("doctor")
+    ops_cli.register(commands.add_parser("ops", help="Harness release and recovery operations"))
+    doctor = commands.add_parser("doctor")
+    doctor.add_argument("--project", type=Path)
+    doctor.add_argument("--network-url", help="Optional credential-free HTTPS HEAD probe")
     commands.add_parser("commerce-setup")
     commands.add_parser("commerce-list")
     commerce = commands.add_parser("commerce-create")
@@ -209,9 +180,27 @@ def main(argv: list[str] | None = None) -> int:
         return headless.run(args)
     if args.command == "runner":
         return runner_cli.run(args)
-    settings = Settings()
+    if args.command == "ops":
+        return ops_cli.run(args)
     if args.command == "doctor":
-        return doctor(settings)
+        from mgar_v3.ops.doctor import diagnose
+
+        try:
+            settings = Settings()
+        except ValidationError as exc:
+            print(json.dumps({
+                "postgres": "NOT_RUN", "redis": "NOT_RUN", "live": "NOT_RUN",
+                "diagnostics": {"configuration": {
+                    "code": "CONFIGURATION_INVALID",
+                    "fields": sorted({"MGAR_V3_" + str(e["loc"][0]).upper()
+                                      for e in exc.errors(include_input=False) if e["loc"]}),
+                }},
+            }))
+            return 2
+        result, status = diagnose(settings, project=args.project, network_url=args.network_url)
+        print(json.dumps(result))
+        return status
+    settings = Settings()
     if args.command == "commerce-setup":
         from mgar_v3.commerce.setup import setup
         from mgar_v3.coordination.engine import Engine

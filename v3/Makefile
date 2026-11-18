@@ -1,7 +1,8 @@
 UV ?= uv
 export UV_CACHE_DIR ?= $(CURDIR)/.local/uv-cache
 export UV_PYTHON_DOWNLOADS = never
-COMPOSE = docker compose --project-name mgar-v3 --env-file .env -f deploy/compose.yaml -f deploy/compose.local.yaml
+COMPOSE_PROJECT ?= mgar-v3
+COMPOSE = docker compose --project-name $(COMPOSE_PROJECT) --env-file .env -f deploy/compose.yaml -f deploy/compose.local.yaml
 
 .PHONY: setup deps-up deps-stop migrate doctor verify lint typecheck test dev live-preflight install-github-mcp
 setup:
@@ -15,6 +16,10 @@ migrate:
 	$(UV) run --frozen python -m mgar_v3.store.migrate
 doctor:
 	$(UV) run --frozen mgar doctor
+RELEASE_OUTPUT ?= $(CURDIR)/.local/releases/magr-harness.tar.gz
+.PHONY: release
+release:
+	$(UV) run --frozen python scripts/build_harness_release.py --output "$(RELEASE_OUTPUT)"
 install-github-mcp:
 	$(UV) run --frozen python scripts/install_github_mcp.py
 live-preflight:

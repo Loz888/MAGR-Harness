@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import json
 import threading
+import time
 from hashlib import sha256
 from typing import Any, Literal, cast
 from uuid import UUID
@@ -204,6 +205,7 @@ class DurableModel:
             from mgar_v3.harness.delegation import EXPERT_OPERATION
 
             observer(None if EXPERT_OPERATION in request.operation_id else capture)
+        started = time.monotonic()
         try:
             response = self.inner.complete(request, cancellation)
         except BaseException:
@@ -215,7 +217,10 @@ class DurableModel:
             )
             raise
         self.fault("model_before_settlement", {"operation_id": request.operation_id})
-        self.store.save_model_result(self.task_id, self.epoch, request.operation_id, response)
+        self.store.save_model_result(
+            self.task_id, self.epoch, request.operation_id, response,
+            provider_ms=round((time.monotonic() - started) * 1000),
+        )
         self.fault("model_after_settlement", {"operation_id": request.operation_id})
         return cast(ModelResponse, response)
 

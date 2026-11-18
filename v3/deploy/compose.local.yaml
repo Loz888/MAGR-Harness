@@ -1,6 +1,6 @@
 # Explicit development override. The base deployment publishes no database ports.
 services:
   postgres:
-    ports: ["127.0.0.1:55433:5432"]
+    ports: ["127.0.0.1:${MGAR_V3_DB_HOST_PORT:-55433}:5432"]
   redis:
-    ports: ["127.0.0.1:56379:6379"]
+    ports: ["127.0.0.1:${MGAR_V3_REDIS_HOST_PORT:-56379}:6379"]

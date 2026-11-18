@@ -1858,6 +1858,7 @@ class CodingLoop:
                 state.revision,
                 {
                     "finish_reason": response.finish_reason,
+                    "operation_id": operation_id, "code": response.error_code,
                     "tool_calls": len(response.tool_calls),
                     "cost_micros": response.usage.cost_micros,
                 },
@@ -2031,7 +2032,9 @@ class CodingLoop:
             history.append(ModelMessage(role="assistant", content=response.text,
                                         provider_context=response.provider_context))
             checklist = plan.checklist
+            verification_started = time.monotonic()
             evaluation = self._evaluate(state, response.text)
+            verification_ms = round((time.monotonic() - verification_started) * 1000)
             state.evaluation = evaluation
             last_evaluation = evaluation
             if state.token.cancelled:
@@ -2064,6 +2067,7 @@ class CodingLoop:
                 state.revision,
                 {
                     "status": evaluation.verification.status,
+                    "operation_id": operation_id, "duration_ms": verification_ms,
                     "checks": [check.model_dump(mode="json") for check in evaluation.checks],
                     "tree": evaluation.tree,
                 },
@@ -2265,6 +2269,7 @@ class CodingLoop:
                 "status": receipt.status,
                 "exit_code": receipt.exit_code,
                 "receipt_id": receipt.receipt_id,
+                "duration_ms": round(receipt.duration_seconds * 1000),
             },
         )
         return None
@@ -2425,6 +2430,7 @@ class CodingLoop:
                 task=state.task, grant=state.grant, operation_id=operation_id,
                 workspace_tree=self.workspace.snapshot().tree_hash,
             )
+            tool_started = time.monotonic()
             if self.tool_error_policy is not None:
                 result = self._invoke_guarded_tool(state, call, spec, tool_context)
             elif call.name == "ask_user":
@@ -2465,6 +2471,7 @@ class CodingLoop:
                     "name": call.name,
                     "status": result.status,
                     "code": result.code,
+                    "duration_ms": round((time.monotonic() - tool_started) * 1000),
                 },
             )
             payload = result.data if isinstance(result.data, dict) else {}
@@ -2609,6 +2616,7 @@ class CodingLoop:
                         "status": receipt.status,
                         "receipt_id": receipt.receipt_id,
                         "duration_seconds": receipt.duration_seconds,
+                        "duration_ms": round(receipt.duration_seconds * 1000),
                     },
                 )
             empty = self._empty_read(state, call, result)

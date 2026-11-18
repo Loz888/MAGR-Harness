@@ -1389,6 +1389,20 @@
     ],
     "timeout_seconds": 320
   },
+  "HV4-H18": {
+    "components": {
+      "release": "reproducible Git source archive with locked dependency and file hashes",
+      "doctor": "configuration, PostgreSQL authentication and schema, Docker lock, Redis, denied HTTPS",
+      "restore": "isolated PostgreSQL dump, DB/CAS integrity, account and encryption key recovery",
+      "upgrade": "0056 restore and 0057 forward upgrade with repeat migration",
+      "metrics": "redacted original ledger, real test and stream disconnect correlation",
+      "live": "NOT_RUN_no_paid_model_or_production"
+    },
+    "tests": [
+      "tests/test_harness_h18.py"
+    ],
+    "timeout_seconds": 400
+  },
   "HV4-H12": {
     "components": {
       "frozen_catalog": "H00 byte hashes, original judge objects, fixed twelve-case denominator and resource limits",
