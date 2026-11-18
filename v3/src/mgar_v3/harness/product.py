@@ -602,6 +602,8 @@ class HarnessProductService:
         source = self.harness.registry._source_root(
             self.harness.registry.load(project_id), Path(project["path"])
         )
+        if previous_id and self._failed_before_harness_work(project_id, previous_id):
+            previous_id = None
         if previous_id:
             previous = self._verified_workspace(project_id, previous_id)
             source = previous.root
@@ -663,6 +665,28 @@ class HarnessProductService:
             ).model_dump(mode="json"),
         )
         self.harness.submit_task(request)
+
+    def _failed_before_harness_work(self, project_id: str, task_id: str) -> bool:
+        """Recognize a legacy scheduler rejection before this task touched its workspace."""
+        assert self.harness.store is not None
+        with self.engine.transaction() as conn:
+            prior = self.harness.store.get(task_id)
+            if (
+                prior["workspace_id"] != project_id
+                or prior["status"] != "failed"
+                or prior["reason_code"] != "LIVE_PROFILE_REQUIRED"
+                or any(prior[key] for key in (
+                    "tree_hash", "manifest_hash", "checkpoint_hash", "result_hash",
+                ))
+            ):
+                return False
+            effects = conn.execute(
+                "SELECT EXISTS (SELECT 1 FROM app.harness_operations WHERE run_id=%s) "
+                "OR EXISTS (SELECT 1 FROM app.usage_calls WHERE run_id=%s) AS has_effects",
+                (prior["run_id"], prior["run_id"]),
+            ).fetchone()
+            assert effects is not None
+            return not bool(effects["has_effects"])
 
     def apply(self, session_id: str, task_id: str, expected_tree: str) -> dict[str, Any]:
         with self._lock:

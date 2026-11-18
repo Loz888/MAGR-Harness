@@ -53,6 +53,8 @@ uv run --frozen mgar harness export SESSION_ID > session.json
 
 本地 CLI 中断只结束客户端读流。任务中止通过 `cancel TASK_ID` 向服务提交。
 
+服务重启后，`resume TASK_ID` 按已保存回执恢复原 Run，暂停和取消仍使用相同接口。早期版本中被通用调度器以 `LIVE_PROFILE_REQUIRED` 拒绝的任务会显示原失败。已确认该轮没有执行记录、费用或工作区变更的会话，收到带新 `client_id` 的消息后可从登记的项目继续。
+
 ## SDK 与兼容策略
 
 ```python

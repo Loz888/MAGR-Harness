@@ -27,6 +27,7 @@ from mgar_v3.evidence.artifacts import ArtifactStore
 from mgar_v3.graph.live_investigator import LiveInvestigator
 from mgar_v3.graph.runner import Runner
 from mgar_v3.harness.service import CodingTaskRequest, HarnessCodingService
+from mgar_v3.harness.store import GRAPH_VERSION as HARNESS_GRAPH_VERSION
 from mgar_v3.knowledge.api import register
 from mgar_v3.live import load_permit
 from mgar_v3.mcp.r4 import server
@@ -276,6 +277,7 @@ def create_app(
                 for run in authority.list_runs():
                     if (
                         run["status"] != "queued"
+                        or run["graph_version"] == HARNESS_GRAPH_VERSION
                         or run["run_id"] in workers
                         or len(workers) >= configuration.max_concurrent_runs
                     ):

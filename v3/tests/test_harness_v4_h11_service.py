@@ -8,6 +8,8 @@ without launching project commands or calling a remote provider.
 from __future__ import annotations
 
 import json
+import threading
+import time
 
 import pytest
 
@@ -74,7 +76,18 @@ def test_service_uses_real_run_identity_and_existing_usage_ledger(engine, settin
 
 
 def test_service_reconstructs_same_run_and_reuses_known_model_result(engine, settings, tmp_path):
-    model = _CountingModel()
+    entered = threading.Event()
+    release = threading.Event()
+
+    class GatedModel(_CountingModel):
+        def complete(self, request, cancellation):
+            response = super().complete(request, cancellation)
+            if len(self.requests) == 2:
+                entered.set()
+                assert release.wait(15)
+            return response
+
+    model = GatedModel()
 
     def crash(point, payload):
         if point == "model_after_settlement":
@@ -89,7 +102,22 @@ def test_service_reconstructs_same_run_and_reuses_known_model_result(engine, set
     replacement = Engine(settings, ArtifactStore(settings.artifact_root))
     try:
         replacement.recover()
-        resumed = _service(replacement, settings, model).recover_task(before["task_id"])
+        service = _service(replacement, settings, model)
+        task_id = before["task_id"]
+        service.resume_task(task_id)
+        try:
+            assert entered.wait(10)
+            service.pause_task(task_id)
+            release.set()
+            deadline = time.monotonic() + 5
+            while service.get_task(task_id)["status"] == "running" and time.monotonic() < deadline:
+                time.sleep(0.02)
+            assert service.get_task(task_id)["status"] == "paused"
+        finally:
+            release.set()
+            if service.get_task(task_id)["status"] in {"running", "paused"}:
+                service.resume_task(task_id)
+            resumed = service.join_task(task_id, timeout=15)
         after = replacement.harness.get(before["task_id"])
         assert resumed["status"] == "completed"
         assert after["run_id"] == before["run_id"]

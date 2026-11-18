@@ -69,7 +69,7 @@ if __name__ == '__main__':
 
 
 @pytest.fixture
-def api_env(settings, engine, tmp_path, monkeypatch):
+def api_env(settings, engine, tmp_path, monkeypatch, request):
     settings.deepseek_api_key = None
     settings.allow_paid = False
     settings.local_token = SecretStr(OPERATOR_TOKEN)
@@ -84,7 +84,7 @@ def api_env(settings, engine, tmp_path, monkeypatch):
         "    def test_add(self): self.assertEqual(add(2,3),5)\n"
     )
     captured = []
-    app = create_app(settings, engine, run_background=False)
+    app = create_app(settings, engine, run_background=getattr(request, "param", False))
     with TestClient(app, base_url=ORIGIN, headers={"Origin": ORIGIN},
                     client=("127.0.0.1", 54321)) as client:
         setup = client.post("/api/v3/auth/setup", json={
@@ -390,6 +390,91 @@ def test_h13_replay_of_preparing_turn_returns_incomplete(api_env, headless_gatew
     assert view["submission"]["state"] == "preparing"
     assert view["submission"]["status"] == "preparing" and view["submission"]["task_id"] is None
     assert len(api_env.captured) == 1
+
+
+@pytest.mark.parametrize("api_env", [True], indirect=True)
+def test_h13_background_supervisor_leaves_harness_run_for_its_worker(
+    api_env, headless_gateway, monkeypatch
+):
+    env = api_env
+    env.configure()
+    actual_run = env.harness._run
+    actual_list = env.engine.list_runs
+    observed_queue = threading.Event()
+    next_tick = threading.Event()
+    release = threading.Event()
+
+    def observe_queue():
+        rows = actual_list()
+        if observed_queue.is_set():
+            next_tick.set()
+        if any(row["graph_version"] == "harness-v4-v1" and row["status"] == "queued"
+               for row in rows):
+            observed_queue.set()
+        return rows
+
+    def held_worker(runtime):
+        # Hold the ordinary Harness worker after its queued Run is committed.
+        assert release.wait(30)
+        if env.harness.store.get(runtime.task_id)["status"] == "queued":
+            return actual_run(runtime)
+
+    monkeypatch.setattr(env.engine, "list_runs", observe_queue)
+    monkeypatch.setattr(env.harness, "_run", held_worker)
+    monkeypatch.setattr(
+        env.harness, "submit_task", HarnessCodingService.submit_task.__get__(env.harness)
+    )
+    with HarnessClient(OPERATOR_TOKEN, api=headless_gateway) as sdk:
+        submitted = sdk.submit(env.project_id, "修复加法函数的错误", client_id="h13-owner")
+        task_id = submitted["submission"]["task_id"]
+        try:
+            assert next_tick.wait(10), "The production supervisor did not inspect the queued Run"
+            row = env.harness.store.get(task_id)
+            assert row["status"] == "queued", row["reason_code"]
+        finally:
+            release.set()
+            result = env.harness.join_task(task_id, timeout=30)
+        assert result["status"] == "completed"
+        assert result["run_id"] == str(row["run_id"])
+        assert sdk.task(task_id) == env.client.get(f"/api/v3/harness/tasks/{task_id}").json()
+        assert len(env.captured) == 1
+
+
+def test_h13_legacy_scheduler_failure_is_visible_and_a_new_turn_can_continue(
+    api_env, headless_gateway, monkeypatch
+):
+    env = api_env
+    env.configure()
+    run_now = env.harness.submit_task
+
+    def prepare_only(request):
+        runtime = env.harness._prepare(request)
+        return env.harness.get_task(runtime.task_id)
+
+    monkeypatch.setattr(env.harness, "submit_task", prepare_only)
+    with HarnessClient(OPERATOR_TOKEN, api=headless_gateway) as sdk:
+        original = sdk.submit(env.project_id, "修复加法函数的错误", client_id="h13-old")
+        task_id = original["submission"]["task_id"]
+        row = env.harness.store.get(task_id)
+        env.engine.fail_run(row["run_id"], "LIVE_PROFILE_REQUIRED")
+        stale = env.harness.store.get(task_id)
+        assert stale["public_status"] == "queued" and stale["status"] == "failed"
+        failed = _headless(headless_gateway, "task", task_id)
+        assert failed.returncode == 1
+        failed_task = json.loads(failed.stdout)
+        assert failed_task["status"] == "failed"
+        assert failed_task["reason"] == "LIVE_PROFILE_REQUIRED"
+        assert sdk.event_page(task_id)["terminal"]
+
+        monkeypatch.setattr(env.harness, "submit_task", run_now)
+        next_turn = sdk.send(
+            original["session_id"], "修复加法函数的错误", client_id="h13-continue-legacy"
+        )
+        new_task = next_turn["submission"]["task_id"]
+        assert next_turn["status"] == "completed" and new_task != task_id
+        assert next_turn["turns"][0]["status"] == "failed"
+        assert env.harness.store.get(new_task)["thread_id"] == row["thread_id"]
+        assert len(env.captured) == 1
 
 
 def test_h13_authentication_and_dependency_exit_codes(api_env, headless_gateway, monkeypatch):
