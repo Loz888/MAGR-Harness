@@ -1,0 +1,222 @@
+{
+  "schema_version": "harness-h16-acceptance-v1",
+  "task": "HV4-H16",
+  "engineering_gate": "PASS",
+  "live_gate": "NOT_RUN",
+  "git_commit": "ec02dbf8f89eee05b25b86bb0c402e8ed4bc2c97",
+  "source_sha256": "fea038e15235b7b8d995d6715207a15c2289f62db05413300444946a87c8d602",
+  "integrated_predecessors": {
+    "HV4-H14": "23282ac71c2769860daee540718d71c50ff23d6d",
+    "HV4-H15": "08f27295ac7dc4a9fa3dbaa203e06a4f897eceff",
+    "merge": "646430f"
+  },
+  "migration": {
+    "schema": "H15 then 0057; repeated migration applied no files",
+    "evidence": {
+      "path": "migrations/0057_harness_tenants.sql",
+      "sha256": "19b32f3bd5ac0654b6e09737134e47b48e356242cb67deb4a28d935c6ffdae5e"
+    }
+  },
+  "checks": {
+    "HV4-H16": {
+      "command": "make verify TASK=HV4-H16",
+      "status": "PASS",
+      "counts": {
+        "tests": 13,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "started_at": "2026-11-18T12:56:27.076721+00:00",
+      "finished_at": "2026-11-18T12:58:35.114248+00:00",
+      "duration_seconds": 127.994,
+      "git_commit": "ec02dbf8f89eee05b25b86bb0c402e8ed4bc2c97",
+      "source_sha256": "fea038e15235b7b8d995d6715207a15c2289f62db05413300444946a87c8d602",
+      "evidence": {
+        "result.json": {
+          "path": "evidence/HV4-H16/20261118T125627Z-81282b34/result.json",
+          "sha256": "821d1fac9d18ce4b819445a2694fdfe15326f79ed9e4748e0697bd7ef5344d59"
+        },
+        "command.log": {
+          "path": "evidence/HV4-H16/20261118T125627Z-81282b34/command.log",
+          "sha256": "a4cd0a72d3fa9c14adfc26ea97ac882e505bd4f2f494764a5284a7e6c8820bef"
+        },
+        "junit.xml": {
+          "path": "evidence/HV4-H16/20261118T125627Z-81282b34/junit.xml",
+          "sha256": "082e8d5fe562bb884429fa0ebb6eda0fae7f799cfac82b9e6b8e750d31f09d66"
+        }
+      }
+    },
+    "HV4-H15": {
+      "command": "make verify TASK=HV4-H15",
+      "status": "PASS",
+      "counts": {
+        "tests": 19,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "started_at": "2026-11-18T12:56:27.070082+00:00",
+      "finished_at": "2026-11-18T12:58:33.002719+00:00",
+      "duration_seconds": 125.897,
+      "git_commit": "ec02dbf8f89eee05b25b86bb0c402e8ed4bc2c97",
+      "source_sha256": "fea038e15235b7b8d995d6715207a15c2289f62db05413300444946a87c8d602",
+      "evidence": {
+        "result.json": {
+          "path": "evidence/HV4-H15/20261118T125627Z-db62bf81/result.json",
+          "sha256": "148078b75e7d16199f6e6b63f5615f31fda825d5640376aa135b41c80f1a2db5"
+        },
+        "command.log": {
+          "path": "evidence/HV4-H15/20261118T125627Z-db62bf81/command.log",
+          "sha256": "aa284c6ee56410ebc08d4df19207aef65e72af77e582d5475939e5125ff8d116"
+        },
+        "junit.xml": {
+          "path": "evidence/HV4-H15/20261118T125627Z-db62bf81/junit.xml",
+          "sha256": "01d946691be9b79b7d256027a6f9d3db591002de58f51329763a9d6e1eaea1fc"
+        }
+      }
+    },
+    "HV4-H14": {
+      "command": "make verify TASK=HV4-H14",
+      "status": "PASS",
+      "counts": {
+        "tests": 181,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "started_at": "2026-11-18T12:56:27.062335+00:00",
+      "finished_at": "2026-11-18T13:01:21.914005+00:00",
+      "duration_seconds": 294.809,
+      "git_commit": "ec02dbf8f89eee05b25b86bb0c402e8ed4bc2c97",
+      "source_sha256": "fea038e15235b7b8d995d6715207a15c2289f62db05413300444946a87c8d602",
+      "evidence": {
+        "result.json": {
+          "path": "evidence/HV4-H14/20261118T125627Z-8e72114a/result.json",
+          "sha256": "8bda1af3fa5f03ec65ced535d13f1cf7930124f23a45fb07638999367d1a3194"
+        },
+        "command.log": {
+          "path": "evidence/HV4-H14/20261118T125627Z-8e72114a/command.log",
+          "sha256": "dc63818de6d8cf0d6cf80e57fd3a0963356050610e4c504ada8f20e36523a800"
+        },
+        "junit.xml": {
+          "path": "evidence/HV4-H14/20261118T125627Z-8e72114a/junit.xml",
+          "sha256": "e0a32ad4ebfcb85951216189abe467b9b4c641d372e92c6e674ad11b17832f36"
+        }
+      }
+    },
+    "HV4-H13": {
+      "command": "make verify TASK=HV4-H13",
+      "status": "PASS",
+      "counts": {
+        "tests": 42,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "started_at": "2026-11-18T12:56:27.072874+00:00",
+      "finished_at": "2026-11-18T13:03:29.221473+00:00",
+      "duration_seconds": 422.107,
+      "git_commit": "ec02dbf8f89eee05b25b86bb0c402e8ed4bc2c97",
+      "source_sha256": "fea038e15235b7b8d995d6715207a15c2289f62db05413300444946a87c8d602",
+      "evidence": {
+        "result.json": {
+          "path": "evidence/HV4-H13/20261118T125627Z-33dd8d38/result.json",
+          "sha256": "bc11997f0082b632c72230e6d55c816a1f8349fa06a80a4dda7e2f37775add11"
+        },
+        "command.log": {
+          "path": "evidence/HV4-H13/20261118T125627Z-33dd8d38/command.log",
+          "sha256": "9fb079f3a9ae2d21fa8779fa04fbcb15000dd880922b287e67fe2ec596383a74"
+        },
+        "junit.xml": {
+          "path": "evidence/HV4-H13/20261118T125627Z-33dd8d38/junit.xml",
+          "sha256": "9b484a12c53d1aeb0a9c124b1fb268f6b52e5c219b5e4727f065ab2a50cd1e37"
+        }
+      }
+    },
+    "lint": {
+      "status": "PASS",
+      "command": "make lint",
+      "evidence": {
+        "path": ".local/h16/final-lint.log",
+        "sha256": "a220b562d6bdb3655673add818cabd1dbd6857a7efc7d06ff8178f9e0e2501e2"
+      }
+    },
+    "typecheck": {
+      "status": "PASS",
+      "command": "make typecheck",
+      "evidence": {
+        "path": ".local/h16/final-typecheck.log",
+        "sha256": "b9823e16f7c78fb6f2a74a1f269a13b887f208008eaeeffc43746854ceef3d04"
+      }
+    },
+    "browser_assets": {
+      "status": "PASS",
+      "command": "node --check web/agent.js and agent-product.js",
+      "evidence": {
+        "path": ".local/h16/final-js.log",
+        "sha256": "329c82b3394503eef25e9497fad14e35a9223f579f684e09a4c280cb2563e57a"
+      }
+    }
+  },
+  "nested_workspace_boundary": {
+    "previous_source": "0881b83bb36835b1d8f30b63e37cd970701b8899",
+    "failed_baseline": {
+      "counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0
+      },
+      "evidence": {
+        "junit": {
+          "path": ".local/h16/overlap-baseline.xml",
+          "sha256": "6728ffc7718c55db5cab468e2c913893a0b7a7a202b77a1a995dca00dc58edb9"
+        },
+        "log": {
+          "path": ".local/h16/overlap-baseline.log",
+          "sha256": "11ba73057b6dd281fc58cc8807f6c653f74f4fd532a9fcfb9fe36a0cb6e693ed"
+        }
+      }
+    },
+    "fixed_targeted_probe": {
+      "counts": {
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "evidence": {
+        "junit": {
+          "path": ".local/h16/overlap-fixed.xml",
+          "sha256": "a6d57c17724802b88be0d7eb281222f648185ccdc31c5f4e5e5f375a4e6b6495"
+        },
+        "log": {
+          "path": ".local/h16/overlap-fixed.log",
+          "sha256": "4f510db3af1fada0c9c0cd66553e7fe6b5ddb3d75d8e5ce86df74283a656046b"
+        }
+      }
+    },
+    "final_gate": "PASS in HV4-H16"
+  },
+  "local_burst": {
+    "projects": 2,
+    "jobs": 6,
+    "simultaneous_workers": 2,
+    "project_parallel_limit": 1,
+    "initial_waiting_jobs": 4,
+    "dispatch_wait_ms": [
+      127,
+      173,
+      5572,
+      6576,
+      8208,
+      9133
+    ],
+    "median_wait_ms": 6074,
+    "burst_duration_ms": 19397
+  },
+  "real_provider_calls": 0,
+  "external_writes": 0,
+  "production_multi_machine": "NOT_RUN"
+}
