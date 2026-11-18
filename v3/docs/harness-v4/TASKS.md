@@ -554,7 +554,10 @@ R00本地验收已PASS：40项、lint/mypy通过，原输入字节与账本不�
 
 ## HV4-H14：项目指令、Skills、MCP 与插件接口
 
-现有实现、分支起点、权限边界及验收命令见 [H14 开发交接](H14_HANDOFF.md)。
+2026-11-18，H14 本地工程验收 181 项、H13 同源码回归 42 项全部通过。已交付
+项目规则首写门、固定版本回放、Skills、扩展 SDK、GitHub／知识／数据 MCP。
+实站验收记为 `NOT_RUN`。[验收报告](H14_ACCEPTANCE_20261118.md) ·
+[操作者使用说明](PROJECT_GUIDANCE_AND_PLUGINS.md) · [原开发交接](H14_HANDOFF.md)
 
 - **工作**：明确系统/操作者策略、用户要求、项目 AGENTS.md、子目录指令与 Skill 的
   加载规则。增加带版本、能力声明和生命周期的插件注册；已有 GitHub/知识/数据 MCP

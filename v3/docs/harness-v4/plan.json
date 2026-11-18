@@ -371,7 +371,7 @@
     {
       "id": "HV4-H14",
       "title": "项目指令、Skills、MCP 与插件接口",
-      "status": "PLANNED",
+      "status": "IMPLEMENTED",
       "priority": "P1",
       "milestone": "M3",
       "depends_on": [
@@ -385,7 +385,10 @@
       },
       "optional": false,
       "card": "TASKS.md#hv4-h14",
-      "verification_target_on_implementation": "HV4-H14"
+      "verification_target_on_implementation": "HV4-H14",
+      "engineering_gate": "PASS",
+      "live_model_gate": "NOT_RUN",
+      "accept_record": "accept/HV4-H14/accept.json"
     },
     {
       "id": "HV4-H15",

@@ -1,5 +1,9 @@
 # HV4-H14 开发交接
 
+2026-11-18，H14 本地工程验收已完成。当前安装说明、源码与机器验收记录见
+[H14 验收报告](H14_ACCEPTANCE_20261118.md)和[项目规则与插件说明](PROJECT_GUIDANCE_AND_PLUGINS.md)。
+以下为开发开始时的历史交接。
+
 下一位 Agent 的任务是完成 **HV4-H14 项目指令、Skills、MCP 与插件接口**。请先阅读根目录和 `v3/` 的 `AGENTS.md`、V3.1 队列与 H14 任务卡，再以卡片为验收依据继续开发。[H14 任务卡](TASKS.md#hv4-h14) · [V3.1 队列](../../../v31-upgrade/TASK_QUEUE.md) · [权威边界 ADR](../adr/0001-v31-boundaries.md)
 
 ## 从哪里开始
