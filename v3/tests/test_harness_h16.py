@@ -781,3 +781,56 @@ def test_forward_migration_preserves_legacy_owner_session_and_migration_hashes(s
             management.execute(
                 sql.SQL("DROP DATABASE {} WITH (FORCE)").format(sql.Identifier(database))
             )
+
+
+def test_overlapping_registered_roots_and_runtime_state_cannot_be_shared(tenants):
+    env = tenants
+    setup_tenants(env)
+    parent = env.tmp_path / "alpha"
+    child = parent / "nested-project"
+    child.mkdir()
+    (child / "README.md").write_text("Private nested project fixture.\n")
+    project = expect(
+        env.operator.post(
+            "/api/v3/harness/projects",
+            headers=ADMIN,
+            json={"path": str(child)},
+        ),
+        201,
+    )["project_id"]
+    quota = {"max_parallel": 1, "max_queued": 2}
+    denied = expect(
+        env.operator.put(
+            f"/api/v3/agent/projects/{project}/quota",
+            headers=ADMIN,
+            json=quota,
+        ),
+        409,
+    )
+    assert denied["code"] == "HARNESS_WORKSPACE_OVERLAP"
+
+    alice = client(env)
+    headers = member(alice, "alice")
+    failed = submit(alice, headers, env.projects["alpha"], "解释项目", "overlap", status=409)
+    assert failed["code"] == "HARNESS_WORKSPACE_OVERLAP"
+    assert not env.requests
+
+    state_path = env.settings.harness_root / "runtime-control-files"
+    state_path.mkdir()
+    protected = expect(
+        env.operator.post(
+            "/api/v3/harness/projects",
+            headers=ADMIN,
+            json={"path": str(state_path)},
+        ),
+        201,
+    )["project_id"]
+    result = expect(
+        env.operator.put(
+            f"/api/v3/agent/projects/{protected}/quota",
+            headers=ADMIN,
+            json=quota,
+        ),
+        409,
+    )
+    assert result["code"] == "HARNESS_WORKSPACE_PROTECTED"

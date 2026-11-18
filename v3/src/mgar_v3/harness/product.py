@@ -90,7 +90,9 @@ class HarnessProductService:
         self._previews: dict[str, Any] = {}
         self._preview_tokens: dict[str, str] = {}
         self._preview_urls: dict[str, str] = {}
-        self.tenancy = HarnessTenancy(self.engine, harness.registry, settings)
+        self.tenancy = HarnessTenancy(
+            self.engine, harness.registry, settings, harness.list_projects,
+        )
         self.plugins = plugins or default_catalog(self.engine.settings.harness_plugin_lock)
         harness.product_model_resolver = self.resolve_model
         harness.product_adapter_factory = self._plugin_adapter

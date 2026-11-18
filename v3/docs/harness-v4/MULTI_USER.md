@@ -13,6 +13,8 @@
 | 授予生产执行预算 | `POST /api/v3/agent/projects/{id}/authorization` 复用现有工作区权限、累计金额和模型次数。 |
 | 分配和撤销成员 | `PUT /api/v3/agent/projects/{id}/members/{user_id}` 分配 `reader` 或 `contributor`。对相同地址执行 `DELETE` 撤销。 |
 
+受管理项目使用独立的登记目录。目录与其他项目或 Harness 服务数据重叠时，项目配置和当前访问会被拒绝。
+
 先在本机使用管理员身份登记项目，再设置该项目的配额、凭据和累计预算，最后分配成员。成员登录同一页面后进入项目助手，选择已分配项目并输入需求。`reader` 可以发起只读调查。`contributor` 在项目允许时也可修改隔离工作树，执行固定验证命令并下载补丁。宿主目录注册、改回源目录、预览、发布、Runner 设备配对和全局设置由管理员处理。
 
 每个成员授权生成自己的绑定。同一项目中的不同成员各自持有会话和任务，幂等请求标识也在绑定内使用。撤销后会话、任务、事件流和日志的访问立即失效。再次授权建立新绑定，原会话继续保留在管理员可复核的记录中。成员可以从自己任务的 `/artifacts` 响应取得命令日志地址。每个地址同时验证任务归属及日志在该任务中的回执。全局 CAS 入口仅提供给管理员。
@@ -55,6 +57,6 @@ uv run --frozen uvicorn mgar_v3.harness.gateway:create_app --factory \
   --host 127.0.0.1 --port 18080 --no-proxy-headers
 ```
 
-前台只需 socket 地址。控制器凭据与数据库配置留在控制器进程。前台保留来自受信入口的请求协议，并转发 Cookie、CSRF 校验和 SSE；每个浏览器的 Cookie 独立使用。控制器 socket 放在操作者私有目录。对外提供服务时按实际 HTTPS 域名设置 `MGAR_V3_WEB_ALLOWED_HOSTS` 和 `MGAR_V3_WEB_ALLOWED_ORIGINS`，并在受信的 HTTPS 入口终止 TLS。H15 Runner 按原设备流程接入此入口。[Runner 使用说明](RUNNER.md)
+前台只需 socket 地址。控制器凭据与数据库配置留在控制器进程。前台保留来自受信入口的请求协议，并转发 Cookie、CSRF 校验和 SSE；每个浏览器的 Cookie 独立使用。控制器 socket 放在操作者私有目录。对外提供服务时按实际 HTTPS 域名设置 `MGAR_V3_WEB_ALLOWED_HOSTS` 和 `MGAR_V3_WEB_ALLOWED_ORIGINS`，并在受信的 HTTPS 入口终止 TLS。由前置代理终止 TLS 时，只让 HTTP 前台接收该代理的转发协议头。H15 Runner 按原设备流程接入此入口。[Runner 使用说明](RUNNER.md)
 
 实例部署使用一个有权写入的控制器。控制器停止期间，前台返回服务暂不可用。测试报告记录排队时延、隔离、续跑和正向迁移的本机实测结果。[H16 任务卡](TASKS.md#hv4-h16)

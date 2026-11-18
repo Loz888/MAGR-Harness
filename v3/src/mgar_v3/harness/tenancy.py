@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import json
+from collections.abc import Callable, Sequence
+from pathlib import Path
 from typing import TYPE_CHECKING
 from uuid import UUID, uuid4
 
@@ -15,7 +17,7 @@ from mgar_v3.settings import Settings
 
 if TYPE_CHECKING:
     from mgar_v3.coordination.engine import Connection, Engine, Row
-    from mgar_v3.harness.workspace import WorkspaceRegistry
+    from mgar_v3.harness.workspace import Registration, WorkspaceRegistry
     from mgar_v3.web_access import WebAnalysisSettings
 
 
@@ -25,8 +27,49 @@ class HarnessTenancy:
         engine: Engine,
         registry: WorkspaceRegistry,
         settings: WebAnalysisSettings,
+        registered_projects: Callable[[], Sequence[Row]],
     ) -> None:
         self.engine, self.registry, self.settings = engine, registry, settings
+        self.registered_projects = registered_projects
+
+    def _validate_workspace(self, registration: Registration) -> None:
+        entries = self.registered_projects()
+        path = next(
+            (item["path"] for item in entries if item["project_id"] == registration.workspace_id),
+            None,
+        )
+        if not path:
+            raise DomainError("HARNESS_PROJECT_UNKNOWN", "项目不存在。", 404)
+        root = Path(path).resolve()
+        if registration.kind == "local":
+            self.registry._source_root(registration, Path(path))
+        protected = [
+            self.engine.settings.artifact_root,
+            self.registry.root,
+            self.settings.key_path.parent,
+            self.engine.settings.data_profile_path,
+        ]
+        if registration.kind == "local":
+            protected.append(self.registry.root.parent)
+        if any(
+            root.is_relative_to(directory.resolve()) or directory.resolve().is_relative_to(root)
+            for directory in protected
+        ):
+            raise DomainError(
+                "HARNESS_WORKSPACE_PROTECTED",
+                "项目目录与服务数据范围重叠。",
+                409,
+            )
+        for other in entries:
+            if other["project_id"] == registration.workspace_id or not other["path"]:
+                continue
+            other_root = Path(other["path"]).resolve()
+            if root.is_relative_to(other_root) or other_root.is_relative_to(root):
+                raise DomainError(
+                    "HARNESS_WORKSPACE_OVERLAP",
+                    "项目目录与已登记的工作区范围重叠。",
+                    409,
+                )
 
     def managed(self, project_id: str) -> Row | None:
         with self.engine.transaction() as conn:
@@ -34,17 +77,18 @@ class HarnessTenancy:
                 "SELECT * FROM app.harness_managed_projects WHERE workspace_id=%s",
                 (project_id,),
             ).fetchone()
-        if (
-            row is not None
-            and self.registry.load(project_id).registration_hash != (row["registration_hash"])
-        ):
-            raise DomainError(
-                "HARNESS_PROJECT_BINDING_CHANGED", "Workspace registration changed", 409
-            )
+        if row is not None:
+            registration = self.registry.load(project_id)
+            if registration.registration_hash != row["registration_hash"]:
+                raise DomainError(
+                    "HARNESS_PROJECT_BINDING_CHANGED", "Workspace registration changed", 409
+                )
+            self._validate_workspace(registration)
         return row
 
     def configure(self, project_id: str, max_parallel: int, max_queued: int) -> Row:
         registration = self.registry.load(project_id)
+        self._validate_workspace(registration)
         with self.engine.transaction() as conn:
             row = conn.execute(
                 "INSERT INTO app.harness_managed_projects "
