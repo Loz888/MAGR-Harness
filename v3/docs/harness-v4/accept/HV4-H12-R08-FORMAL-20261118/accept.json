@@ -1,0 +1,711 @@
+{
+  "schema": "h12-r08-formal-public-quality-v1",
+  "status": "PASS",
+  "experiment_id": "hv4-h12-r08-20261118-formal-v5",
+  "candidate_sha256": "b953a102be5bf5f030a004e727a336a84d6bd97bf48b7f9c023a02b7190a1d99",
+  "worker_source_commit": "33e39a4c18043613965d4490fd4001b3b5da5524",
+  "worker_source_sha256": "387a6577c3cb9c7b82a568bbc1d4c5f188489df9c51b27066d47d8537c746165",
+  "sampling": "first-sample-no-selection-v1",
+  "samples_per_case": 1,
+  "thresholds": {
+    "dev": 10,
+    "holdout": 9,
+    "denominator_each": 12
+  },
+  "development": {
+    "pass": 11,
+    "fail": 1,
+    "not_run": 0
+  },
+  "holdout": {
+    "pass": 11,
+    "fail": 1,
+    "not_run": 0
+  },
+  "total_pass": 22,
+  "rows": [
+    {
+      "split": "dev",
+      "index": 1,
+      "status": "PASS",
+      "reason": "verified",
+      "model_calls": 11,
+      "tool_calls": 44,
+      "input_tokens": 336413,
+      "output_tokens": 11260,
+      "wall_seconds": 127.90754183300305,
+      "settled_upper_micros": 114442,
+      "independent_judge_status": "PASS",
+      "independent_public_regression_status": "PASS",
+      "new_regression_failures": 0,
+      "acceptance_integrity_status": "PASS",
+      "output_integrity_status": "PASS",
+      "lifecycle_integrity_status": "PASS",
+      "score_sha256": "7f1f92f0c78d77bfb596a4fe9d69ccf93cc5a5b8705fecf89a88743a2d56e1ab",
+      "task_id": "r08-dev-01-click-help-name",
+      "public_goal": "Repair click so a command that declares an argument named \"help\" keeps its value; the automatic help option must still render and parse --help.",
+      "public_acceptance": {
+        "baseline": [
+          "public test test_help_name_public.py fails on the pinned snapshot"
+        ],
+        "regression": [
+          "python -m pytest tests/"
+        ],
+        "required": [
+          "Repair click so a command that declares an argument named \"help\" keeps its value; the automatic help option must still render and parse --help. Required: argument named help receives its value; --help still renders"
+        ]
+      }
+    },
+    {
+      "split": "dev",
+      "index": 2,
+      "status": "PASS",
+      "reason": "verified",
+      "model_calls": 10,
+      "tool_calls": 24,
+      "input_tokens": 237254,
+      "output_tokens": 27341,
+      "wall_seconds": 218.49142938299337,
+      "settled_upper_micros": 103990,
+      "independent_judge_status": "PASS",
+      "independent_public_regression_status": "PASS",
+      "new_regression_failures": 0,
+      "acceptance_integrity_status": "PASS",
+      "output_integrity_status": "PASS",
+      "lifecycle_integrity_status": "PASS",
+      "score_sha256": "d1f9c6585fbee4241b7d756d65037a168e97462aaa3842547aadf3734ac1b9f4",
+      "task_id": "r08-dev-02-click-short-help",
+      "public_goal": "Fix default short-help truncation so sentence boundaries followed by abbreviations (for example \"vs.\") do not drop later words or produce a misleading cut.",
+      "public_acceptance": {
+        "baseline": [
+          "public abbreviation test fails on the pinned snapshot"
+        ],
+        "regression": [
+          "python -m pytest tests/"
+        ],
+        "required": [
+          "Fix default short-help truncation so sentence boundaries followed by abbreviations (for example \"vs.\") do not drop later words or produce a misleading cut. Required: abbreviation mid-sentence keeps later words"
+        ]
+      }
+    },
+    {
+      "split": "dev",
+      "index": 3,
+      "status": "PASS",
+      "reason": "verified",
+      "model_calls": 6,
+      "tool_calls": 13,
+      "input_tokens": 87362,
+      "output_tokens": 3233,
+      "wall_seconds": 477.29441118298564,
+      "settled_upper_micros": 30090,
+      "independent_judge_status": "PASS",
+      "independent_public_regression_status": "PASS",
+      "new_regression_failures": 0,
+      "acceptance_integrity_status": "PASS",
+      "output_integrity_status": "PASS",
+      "lifecycle_integrity_status": "PASS",
+      "score_sha256": "5bfdd0f65a75f9d1a9623bfab810cfa091a662a1de2a76cddff8aa82ed080d35",
+      "task_id": "r08-dev-03-requests-quoted-content-type",
+      "public_goal": "Fix requests.utils._parse_content_type_header so semicolons and equals signs inside double-quoted parameter values are preserved as data, while unquoted semicolons still separate parameters. Keep the media type, lower-cased parameter names, quote removal, and existing bare-token=True behavior unchanged.",
+      "public_acceptance": {
+        "baseline": [
+          "Exact original source incorrectly splits a semicolon inside a quoted value; the new quoted-parameter pytest regression must fail."
+        ],
+        "regression": [
+          "python -m pytest tests/"
+        ],
+        "required": [
+          "Fix requests.utils._parse_content_type_header so semicolons and equals signs inside double-quoted parameter values are preserved as data, while unquoted semicolons still separate parameters. Keep the media type, lower-cased parameter names, quote removal, and existing bare-token=True behavior unchanged. Required: Quoted values containing semicolons and equals signs are preserved.; Multiple quoted parameters are parsed independently.; Existing charset, media type and bare-token behavior is preserved."
+        ]
+      }
+    },
+    {
+      "split": "dev",
+      "index": 4,
+      "status": "PASS",
+      "reason": "verified",
+      "model_calls": 10,
+      "tool_calls": 21,
+      "input_tokens": 206117,
+      "output_tokens": 7399,
+      "wall_seconds": 282.5725399189978,
+      "settled_upper_micros": 70718,
+      "independent_judge_status": "PASS",
+      "independent_public_regression_status": "PASS",
+      "new_regression_failures": 0,
+      "acceptance_integrity_status": "PASS",
+      "output_integrity_status": "PASS",
+      "lifecycle_integrity_status": "PASS",
+      "score_sha256": "9cf967eb4780572216bcddf528be1240892db9730f43f745d07fa15945f5d66f",
+      "task_id": "r08-dev-04-pflag-unknown-flag",
+      "public_goal": "With interspersed parsing disabled, stop parsing at the first unknown short flag and leave the remaining arguments unconsumed so the caller can distinguish them.",
+      "public_acceptance": {
+        "baseline": [
+          "hidden test observes the unknown flag consuming later arguments"
+        ],
+        "regression": [
+          "go test ./..."
+        ],
+        "required": [
+          "With interspersed parsing disabled, stop parsing at the first unknown short flag and leave the remaining arguments unconsumed so the caller can distinguish them. Required: parse stops at the unknown flag; Args() keeps the remainder"
+        ]
+      }
+    },
+    {
+      "split": "dev",
+      "index": 5,
+      "status": "PASS",
+      "reason": "verified",
+      "model_calls": 12,
+      "tool_calls": 21,
+      "input_tokens": 271211,
+      "output_tokens": 18409,
+      "wall_seconds": 576.5180515139946,
+      "settled_upper_micros": 103459,
+      "independent_judge_status": "PASS",
+      "independent_public_regression_status": "PASS",
+      "new_regression_failures": 0,
+      "acceptance_integrity_status": "PASS",
+      "output_integrity_status": "PASS",
+      "lifecycle_integrity_status": "PASS",
+      "score_sha256": "d3e7081833f442f061b50403a1f4f941da3a4a6f5c81f662ae3b1b9761ee986b",
+      "task_id": "r08-dev-05-requests-http-url-helper",
+      "public_goal": "Add requests.utils.is_http_url(value) -> bool. It returns True only for absolute http/https URLs with a non-empty host and no whitespace; it returns False for non-strings, relative references, other schemes and malformed authorities. It never raises.",
+      "public_acceptance": {
+        "baseline": [
+          "function is absent on the pinned snapshot"
+        ],
+        "regression": [
+          "python -m pytest tests/"
+        ],
+        "required": [
+          "Add requests.utils.is_http_url(value) -> bool. It returns True only for absolute http/https URLs with a non-empty host and no whitespace; it returns False for non-strings, relative references, other schemes and malformed authorities. It never raises. Required: http://example.com and https://example.com:8443/path are True; //example.com, example.com, ftp://example.com, mailto:a@b and \" http://x\" are False; non-string inputs and invalid ports return False without raising"
+        ]
+      }
+    },
+    {
+      "split": "dev",
+      "index": 6,
+      "status": "PASS",
+      "reason": "verified",
+      "model_calls": 8,
+      "tool_calls": 18,
+      "input_tokens": 155220,
+      "output_tokens": 5710,
+      "wall_seconds": 183.29728281701682,
+      "settled_upper_micros": 53423,
+      "independent_judge_status": "PASS",
+      "independent_public_regression_status": "PASS",
+      "new_regression_failures": 0,
+      "acceptance_integrity_status": "PASS",
+      "output_integrity_status": "PASS",
+      "lifecycle_integrity_status": "PASS",
+      "score_sha256": "760d0ce74e488b88736aa2767ee792808eba9806575a7d4b624e7b709f4825fe",
+      "task_id": "r08-dev-06-express-healthz",
+      "public_goal": "Add examples/healthz.js exporting an express app with GET /healthz returning 200 application/json {\"status\":\"ok\"} and GET /ready returning 503 while app.locals.ready is false and 204 when true. The file must listen on PORT (default 3000) only when run directly.",
+      "public_acceptance": {
+        "baseline": [
+          "examples/healthz.js does not exist"
+        ],
+        "regression": [
+          "npx mocha --require test/support/env test/ test/acceptance/"
+        ],
+        "required": [
+          "Add examples/healthz.js exporting an express app with GET /healthz returning 200 application/json {\"status\":\"ok\"} and GET /ready returning 503 while app.locals.ready is false and 204 when true. The file must listen on PORT (default 3000) only when run directly. Required: GET /healthz returns 200 and JSON status ok; GET /ready returns 503 before readiness and 204 after; module export is testable without binding a port"
+        ]
+      }
+    },
+    {
+      "split": "dev",
+      "index": 7,
+      "status": "PASS",
+      "reason": "verified",
+      "model_calls": 7,
+      "tool_calls": 15,
+      "input_tokens": 127848,
+      "output_tokens": 3586,
+      "wall_seconds": 824.1105780510115,
+      "settled_upper_micros": 42661,
+      "independent_judge_status": "PASS",
+      "independent_public_regression_status": "PASS",
+      "new_regression_failures": 0,
+      "acceptance_integrity_status": "PASS",
+      "output_integrity_status": "PASS",
+      "lifecycle_integrity_status": "PASS",
+      "score_sha256": "d003c71ce4ce4bd3050f9848756d3c327737607d3af468c51bc825bf72472724",
+      "task_id": "r08-dev-07-got-header-value",
+      "public_goal": "Add source/core/header-value.ts exporting isValidHeaderValue(value: string): boolean and re-export it from source/index.ts. It rejects CR, LF, NUL and other C0 controls except horizontal tab; it accepts printable ASCII and obs-text (0x80-0xFF); empty strings are valid.",
+      "public_acceptance": {
+        "baseline": [
+          "the helper and export do not exist"
+        ],
+        "regression": [
+          "npm test"
+        ],
+        "required": [
+          "Add source/core/header-value.ts exporting isValidHeaderValue(value: string): boolean and re-export it from source/index.ts. It rejects CR, LF, NUL and other C0 controls except horizontal tab; it accepts printable ASCII and obs-text (0x80-0xFF); empty strings are valid. Required: CR/LF/NUL/0x01 are rejected; tab, visible ASCII and 0x80-0xFF are accepted; exported symbol is usable from source/index.ts"
+        ]
+      }
+    },
+    {
+      "split": "dev",
+      "index": 8,
+      "status": "PASS",
+      "reason": "verified",
+      "model_calls": 10,
+      "tool_calls": 17,
+      "input_tokens": 259424,
+      "output_tokens": 8964,
+      "wall_seconds": 513.2251464890433,
+      "settled_upper_micros": 88589,
+      "independent_judge_status": "PASS",
+      "independent_public_regression_status": "PASS",
+      "new_regression_failures": 0,
+      "acceptance_integrity_status": "PASS",
+      "output_integrity_status": "PASS",
+      "lifecycle_integrity_status": "PASS",
+      "score_sha256": "7c86513f6f0df42328a03f9d5c95c8283e8e82d863cfd86f517838b98e783200",
+      "task_id": "r08-dev-08-requests-encoding-refactor",
+      "public_goal": "Extract the Content-Type encoding decision from requests.utils.get_encoding_from_headers into a private helper without changing any public function signature or returned encoding for existing and malformed headers.",
+      "public_acceptance": {
+        "baseline": [
+          "behavior corpus is recorded on the pinned snapshot"
+        ],
+        "regression": [
+          "python -m pytest tests/"
+        ],
+        "required": [
+          "Extract the Content-Type encoding decision from requests.utils.get_encoding_from_headers into a private helper without changing any public function signature or returned encoding for existing and malformed headers.",
+          "public signature of get_encoding_from_headers is unchanged; encoding decisions match the baseline corpus for 40 header variants"
+        ]
+      }
+    },
+    {
+      "split": "dev",
+      "index": 9,
+      "status": "PASS",
+      "reason": "verified",
+      "model_calls": 11,
+      "tool_calls": 22,
+      "input_tokens": 353895,
+      "output_tokens": 15511,
+      "wall_seconds": 181.73699207702884,
+      "settled_upper_micros": 124788,
+      "independent_judge_status": "PASS",
+      "independent_public_regression_status": "PASS",
+      "new_regression_failures": 0,
+      "acceptance_integrity_status": "PASS",
+      "output_integrity_status": "PASS",
+      "lifecycle_integrity_status": "PASS",
+      "score_sha256": "771b5e9ee38cbad96b3c28734a07984d36aaecb8f35589fc21790c11c2d0509b",
+      "task_id": "r08-dev-09-click-style-refactor",
+      "public_goal": "Extract the ANSI sequence assembly inside click.style into a private helper while keeping click.style output byte-identical for the frozen parameter matrix (fg/bg/bold/dim/underline/overline/italic/blink/reverse/strikethrough/reset combinations).",
+      "public_acceptance": {
+        "baseline": [
+          "style outputs are recorded for the frozen parameter matrix"
+        ],
+        "regression": [
+          "python -m pytest tests/ -m \"not stress\""
+        ],
+        "required": [
+          "Extract the ANSI sequence assembly inside click.style into a private helper while keeping click.style output byte-identical for the frozen parameter matrix (fg/bg/bold/dim/underline/overline/italic/blink/reverse/strikethrough/reset combinations).",
+          "outputs are byte-identical to the baseline matrix; public click.style signature is unchanged"
+        ]
+      }
+    },
+    {
+      "split": "dev",
+      "index": 10,
+      "status": "PASS",
+      "reason": "verified",
+      "model_calls": 6,
+      "tool_calls": 17,
+      "input_tokens": 102890,
+      "output_tokens": 6728,
+      "wall_seconds": 151.66273152496433,
+      "settled_upper_micros": 38943,
+      "independent_judge_status": "PASS",
+      "independent_public_regression_status": "PASS",
+      "new_regression_failures": 0,
+      "acceptance_integrity_status": "PASS",
+      "output_integrity_status": "PASS",
+      "lifecycle_integrity_status": "PASS",
+      "score_sha256": "c50e65996feee35eec38a3ae733053b72cfaff0753f9ca365547dc299b73978f",
+      "task_id": "r08-dev-10-express-server-lifecycle",
+      "public_goal": "Add examples/server.js that starts an express app on PORT (default 3000) with GET / returning \"ok\" and GET /healthz returning JSON {\"status\":\"ok\"}. It must log a single ready line with the bound port and exit cleanly on SIGTERM.",
+      "public_acceptance": {
+        "baseline": [
+          "examples/server.js does not exist"
+        ],
+        "regression": [
+          "npx mocha --require test/support/env test/ test/acceptance/"
+        ],
+        "required": [
+          "Add examples/server.js that starts an express app on PORT (default 3000) with GET / returning \"ok\" and GET /healthz returning JSON {\"status\":\"ok\"}. It must log a single ready line with the bound port and exit cleanly on SIGTERM. Required: process becomes ready within 10 seconds on the assigned port; both routes answer while the process runs; SIGTERM stops the process and releases the port within 5 seconds"
+        ]
+      }
+    },
+    {
+      "split": "dev",
+      "index": 11,
+      "status": "FAIL",
+      "reason": "model_output_continuation_limit",
+      "model_calls": 7,
+      "tool_calls": 11,
+      "input_tokens": 175365,
+      "output_tokens": 36545,
+      "wall_seconds": 682.2828044019989,
+      "settled_upper_micros": 96466,
+      "independent_judge_status": "FAIL",
+      "independent_public_regression_status": "PASS",
+      "new_regression_failures": 0,
+      "acceptance_integrity_status": "FAIL",
+      "output_integrity_status": "PASS",
+      "lifecycle_integrity_status": "FAIL",
+      "score_sha256": "056c5f76405dcf62d75f833f66483e6c763b0c60c6c78f9711bb1177abe934bc",
+      "task_id": "r08-dev-11-got-local-roundtrip",
+      "public_goal": "Add scripts/selfcheck.mjs and an npm script selfcheck. The script starts a local HTTP server on an ephemeral port, performs a got GET, asserts the status and body, closes the server and exits 0; any failure exits non-zero and still closes the server.",
+      "public_acceptance": {
+        "baseline": [
+          "scripts/selfcheck.mjs and the npm script do not exist"
+        ],
+        "regression": [
+          "npm test"
+        ],
+        "required": [
+          "Add scripts/selfcheck.mjs and an npm script selfcheck. The script starts a local HTTP server on an ephemeral port, performs a got GET, asserts the status and body, closes the server and exits 0; any failure exits non-zero and still closes the server. Required: selfcheck completes with exit 0 and prints the observed status; the local server is closed and no handle keeps the process alive; failure path exits non-zero without leaking the server"
+        ]
+      },
+      "failure_analysis": "7 次模型调用中的最后三次均因输出达到上限而截断。两次续写仍未形成源码修改。最终树的公开回归通过，独立行为判定失败。"
+    },
+    {
+      "split": "dev",
+      "index": 12,
+      "status": "PASS",
+      "reason": "verified",
+      "model_calls": 12,
+      "tool_calls": 33,
+      "input_tokens": 285461,
+      "output_tokens": 10390,
+      "wall_seconds": 122.6651500990265,
+      "settled_upper_micros": 98111,
+      "independent_judge_status": "PASS",
+      "independent_public_regression_status": "PASS",
+      "new_regression_failures": 0,
+      "acceptance_integrity_status": "PASS",
+      "output_integrity_status": "PASS",
+      "lifecycle_integrity_status": "PASS",
+      "score_sha256": "475d3c2af2e34062e0d764e61775032abc09ec4da549e0b1dd49f5f4e30d243a",
+      "task_id": "r08-dev-12-click-multifile-placeholder",
+      "public_goal": "Add a configurable short-help placeholder used by Command.get_short_help_str across utils and formatting so a custom placeholder is applied consistently without changing the default \"...\" behavior.",
+      "public_acceptance": {
+        "baseline": [
+          "placeholder parameter does not exist"
+        ],
+        "regression": [
+          "python -m pytest tests/ -k \"not test_custom_placeholder_is_used_when_shortening\""
+        ],
+        "required": [
+          "Add a configurable short-help placeholder used by Command.get_short_help_str across utils and formatting so a custom placeholder is applied consistently without changing the default \"...\" behavior. Required: custom placeholder is honored; default behavior is unchanged"
+        ]
+      }
+    },
+    {
+      "split": "holdout",
+      "index": 1,
+      "status": "PASS",
+      "reason": "verified",
+      "model_calls": 4,
+      "tool_calls": 12,
+      "input_tokens": 54800,
+      "output_tokens": 1462,
+      "wall_seconds": 416.3144755010144,
+      "settled_upper_micros": 18197,
+      "independent_judge_status": "PASS",
+      "independent_public_regression_status": "PASS",
+      "new_regression_failures": 0,
+      "acceptance_integrity_status": "PASS",
+      "output_integrity_status": "PASS",
+      "lifecycle_integrity_status": "PASS",
+      "score_sha256": "0123f5f5425a45d0dfc739d377ed0b67e851d1234fd1044939cb7492a40a01b8"
+    },
+    {
+      "split": "holdout",
+      "index": 2,
+      "status": "PASS",
+      "reason": "verified",
+      "model_calls": 6,
+      "tool_calls": 13,
+      "input_tokens": 100753,
+      "output_tokens": 3058,
+      "wall_seconds": 455.3818011460244,
+      "settled_upper_micros": 33899,
+      "independent_judge_status": "PASS",
+      "independent_public_regression_status": "PASS",
+      "new_regression_failures": 0,
+      "acceptance_integrity_status": "PASS",
+      "output_integrity_status": "PASS",
+      "lifecycle_integrity_status": "PASS",
+      "score_sha256": "06ca4b3cfe2af39502c6cab3447ea56edb1ed2d11c740a26e0825c1490b05374"
+    },
+    {
+      "split": "holdout",
+      "index": 3,
+      "status": "PASS",
+      "reason": "verified",
+      "model_calls": 5,
+      "tool_calls": 17,
+      "input_tokens": 86238,
+      "output_tokens": 2901,
+      "wall_seconds": 131.3539367110352,
+      "settled_upper_micros": 29354,
+      "independent_judge_status": "PASS",
+      "independent_public_regression_status": "PASS",
+      "new_regression_failures": 0,
+      "acceptance_integrity_status": "PASS",
+      "output_integrity_status": "PASS",
+      "lifecycle_integrity_status": "PASS",
+      "score_sha256": "b6684ab69b6844ad61df510856f91258487b0593780a46ad1c53d371ef4202e0"
+    },
+    {
+      "split": "holdout",
+      "index": 4,
+      "status": "PASS",
+      "reason": "verified",
+      "model_calls": 6,
+      "tool_calls": 13,
+      "input_tokens": 114649,
+      "output_tokens": 2089,
+      "wall_seconds": 330.3760902149952,
+      "settled_upper_micros": 36904,
+      "independent_judge_status": "PASS",
+      "independent_public_regression_status": "PASS",
+      "new_regression_failures": 0,
+      "acceptance_integrity_status": "PASS",
+      "output_integrity_status": "PASS",
+      "lifecycle_integrity_status": "PASS",
+      "score_sha256": "da09aab02acfdee1f843719551b70b9b84205da5e631c08dbd26c018bc44ab3a"
+    },
+    {
+      "split": "holdout",
+      "index": 5,
+      "status": "PASS",
+      "reason": "verified",
+      "model_calls": 16,
+      "tool_calls": 28,
+      "input_tokens": 489091,
+      "output_tokens": 11882,
+      "wall_seconds": 1245.2695683580241,
+      "settled_upper_micros": 160994,
+      "independent_judge_status": "PASS",
+      "independent_public_regression_status": "PASS",
+      "new_regression_failures": 0,
+      "acceptance_integrity_status": "PASS",
+      "output_integrity_status": "PASS",
+      "lifecycle_integrity_status": "PASS",
+      "score_sha256": "9101a6a7bb211b9f15a9714f701180b969ed48b565be1250ad0f44796957287a"
+    },
+    {
+      "split": "holdout",
+      "index": 6,
+      "status": "PASS",
+      "reason": "verified",
+      "model_calls": 9,
+      "tool_calls": 23,
+      "input_tokens": 199717,
+      "output_tokens": 5715,
+      "wall_seconds": 356.7346767759882,
+      "settled_upper_micros": 66777,
+      "independent_judge_status": "PASS",
+      "independent_public_regression_status": "PASS",
+      "new_regression_failures": 0,
+      "acceptance_integrity_status": "PASS",
+      "output_integrity_status": "PASS",
+      "lifecycle_integrity_status": "PASS",
+      "score_sha256": "ef57cd6c90a43d72ff9a433e7715880ff38d009b99435d10f3b2a631af8bbd95"
+    },
+    {
+      "split": "holdout",
+      "index": 7,
+      "status": "PASS",
+      "reason": "verified",
+      "model_calls": 8,
+      "tool_calls": 16,
+      "input_tokens": 160108,
+      "output_tokens": 27040,
+      "wall_seconds": 582.1359026539722,
+      "settled_upper_micros": 80483,
+      "independent_judge_status": "PASS",
+      "independent_public_regression_status": "PASS",
+      "new_regression_failures": 0,
+      "acceptance_integrity_status": "PASS",
+      "output_integrity_status": "PASS",
+      "lifecycle_integrity_status": "PASS",
+      "score_sha256": "a61a90b37d14c06c41409305ea82ccfd56b316fb879f9c5470a57ab179a55f0e"
+    },
+    {
+      "split": "holdout",
+      "index": 8,
+      "status": "PASS",
+      "reason": "verified",
+      "model_calls": 10,
+      "tool_calls": 23,
+      "input_tokens": 301809,
+      "output_tokens": 10689,
+      "wall_seconds": 542.6014656309853,
+      "settled_upper_micros": 103373,
+      "independent_judge_status": "PASS",
+      "independent_public_regression_status": "PASS",
+      "new_regression_failures": 0,
+      "acceptance_integrity_status": "PASS",
+      "output_integrity_status": "PASS",
+      "lifecycle_integrity_status": "PASS",
+      "score_sha256": "4c8e6b26f26b0064caf20b69818b054c1337c6446cd84af829a589e81be1d65d"
+    },
+    {
+      "split": "holdout",
+      "index": 9,
+      "status": "PASS",
+      "reason": "verified",
+      "model_calls": 7,
+      "tool_calls": 15,
+      "input_tokens": 134670,
+      "output_tokens": 5499,
+      "wall_seconds": 467.95923314394895,
+      "settled_upper_micros": 47002,
+      "independent_judge_status": "PASS",
+      "independent_public_regression_status": "PASS",
+      "new_regression_failures": 0,
+      "acceptance_integrity_status": "PASS",
+      "output_integrity_status": "PASS",
+      "lifecycle_integrity_status": "PASS",
+      "score_sha256": "08443e511d317885944857cd5d33fa800bf04c6177b97dba30151b5983c40018"
+    },
+    {
+      "split": "holdout",
+      "index": 10,
+      "status": "PASS",
+      "reason": "verified",
+      "model_calls": 5,
+      "tool_calls": 13,
+      "input_tokens": 79379,
+      "output_tokens": 2067,
+      "wall_seconds": 113.6824366330402,
+      "settled_upper_micros": 26296,
+      "independent_judge_status": "PASS",
+      "independent_public_regression_status": "PASS",
+      "new_regression_failures": 0,
+      "acceptance_integrity_status": "PASS",
+      "output_integrity_status": "PASS",
+      "lifecycle_integrity_status": "PASS",
+      "score_sha256": "e49769020a471bb59d17ed787c40fbe44a0ef745ac7618705fc13e3a61818270"
+    },
+    {
+      "split": "holdout",
+      "index": 11,
+      "status": "PASS",
+      "reason": "verified",
+      "model_calls": 11,
+      "tool_calls": 25,
+      "input_tokens": 289250,
+      "output_tokens": 11239,
+      "wall_seconds": 323.03421541606076,
+      "settled_upper_micros": 100268,
+      "independent_judge_status": "PASS",
+      "independent_public_regression_status": "PASS",
+      "new_regression_failures": 0,
+      "acceptance_integrity_status": "PASS",
+      "output_integrity_status": "PASS",
+      "lifecycle_integrity_status": "PASS",
+      "score_sha256": "2cc9de664c9fed52a5baeba636c647640f796ed0a374434aad526cee1621ec05"
+    },
+    {
+      "split": "holdout",
+      "index": 12,
+      "status": "FAIL",
+      "reason": "PUBLIC_PROBE_BASELINE_INVALID",
+      "model_calls": 0,
+      "tool_calls": 2,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "wall_seconds": 193.13558577594813,
+      "settled_upper_micros": 0,
+      "independent_judge_status": "NOT_RUN",
+      "independent_public_regression_status": "PASS",
+      "new_regression_failures": null,
+      "acceptance_integrity_status": "FAIL",
+      "output_integrity_status": "FAIL",
+      "lifecycle_integrity_status": "FAIL",
+      "score_sha256": "4b4c5502f789f561fc6b11ac9d50869687e570a398bc9fda3c836703cef558fa",
+      "failure_analysis": "冻结的项目快照中缺少公开测试导入的本地 examples 包，公开资产清单也未补入该包。预检的目标观察为 NOT_RUN。真实 Worker 的两条公开命令均在导入阶段以退出码 2 结束，探针没有形成可判定的断言。Harness 在首个模型请求前阻塞，本题耗用 0 次模型、2 次工具调用，独立行为判定未运行。后续修订应补齐探针的项目内依赖，并在准入前用 Worker 的同一工作区、镜像和命令实际运行这两条基线。"
+    }
+  ],
+  "scored_cases": 24,
+  "cases_with_model_requests": 23,
+  "cases_blocked_before_first_model_request": 1,
+  "model": "deepseek-flash",
+  "thinking": "enabled",
+  "reasoning_effort": "max",
+  "new_physical_calls": 197,
+  "new_upper_cost_micros": 1669227,
+  "ledger_before": {
+    "used_calls": 1025,
+    "settled_micros": 6237248,
+    "reserved_micros": 0,
+    "limit_micros": 12000000,
+    "call_limit": 1536,
+    "unknown_calls": 0
+  },
+  "ledger_after": {
+    "used_calls": 1222,
+    "settled_micros": 7906475,
+    "reserved_micros": 0,
+    "limit_micros": 12000000,
+    "call_limit": 1536,
+    "unknown_calls": 0
+  },
+  "historical_scores_verified": [
+    128,
+    12,
+    5,
+    3,
+    1
+  ],
+  "worker_engineering_checks": 67,
+  "independent_clock_engineering_checks": 24,
+  "public_readiness": {
+    "dev": 12,
+    "holdout": 12
+  },
+  "timing_amendment": {
+    "original_refusal_sha256": "ccad97d02541b8aeb72ce148aa5884b0470df8fbc93acf5104ac07ef536abdf7",
+    "evaluator_commit": "832fcf119451d196c3d9eab7e5efaec6c78eb874",
+    "evaluator_sha256": "7cd0a3b6d0b6679d390b47eb8c6d25e254adcbc845ef762ffd339ec73f778571",
+    "proposal_sha256": "a01b3b9266b876371220d6deb75dc2b69ae17b88c92b825d8edffaa72e26978d",
+    "review_commit": "20c5bdb78cecd65799fb520f734b442ea1e3957e",
+    "review_sha256": "5cef7b3c68c8dc284e5c19bd8db461ca51098398a7495ea282780ca4706df8e8",
+    "review_report_sha256": "cdd72787120f27e799a609f5c6f463a25b6b792103e6c29c25ba62fbf5f13fb5",
+    "amendment_sha256": "beb458f17296682b70a06e32ac7d67dae514b5060b151ea423ded46ea2ed5448",
+    "barrier_sha256": "88e2e4a24ebd2801e6101a0560e9ab91f8ce21c066d8c45260211d2d7af8d0b3",
+    "development_rows_carried": 12,
+    "development_resends": 0
+  },
+  "local_evidence_audit_sha256": "7b86cf112d377bcad9d9d62a20a2c673b190c1b2732afc8875220c51e58bfd3b",
+  "quality_scored_at": "2026-11-18T06:09:07.005342+00:00",
+  "independent_release_review": "PENDING",
+  "mvp_released": false,
+  "runtime_publication": "NOT_RUN",
+  "independent_quality_review": {
+    "status": "PASS",
+    "scope": "formal_r08_quality_gate",
+    "report": "H12_R08_INDEPENDENT_MATRIX_REVIEW_20261118.md",
+    "report_sha256": "3f63a21182a9985faf6b5dbeb05d6d5f6f9c8723c9f18efbf26fb2ad1ec13e9b",
+    "receipt": "independent-review.json",
+    "receipt_sha256": "4adeecff1f4e13649effd6d1edbe0f641b39674cc998a52f4c014842160108bd",
+    "archive_commit": "bd2ab544718c5ffc34a6a46b4b0693848d5c0c60",
+    "original_matrix_sha256": "f833b005d4240bcdceecfb9f2e1c0ff0be6ab94895e7aa8375871595c4c95b71",
+    "review_model_calls": 0
+  },
+  "product_release_status": "NOT_RELEASED"
+}

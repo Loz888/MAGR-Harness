@@ -7,10 +7,7 @@
 分析默认按 Token 和费用预算自动推进，无需设置调用轮数；未满足验收要求时继续补查，
 并实时流式显示报告草稿。后台处理限流、重复读取和无进展循环，刷新后可恢复执行视图。
 
-[Harness 升级任务书与路线](v3/docs/harness-v4/README.md)：基于当前代码和官方 Codex、
-Claude Code、DeepSeek Harness 资料，列出 19 张升级卡、依赖和验收标准。当前已推进到
-[H12 R08 正式开发集](v3/docs/harness-v4/H12_R08_DEVELOPMENT_20261118.md)，12 题首样本通过 11 题。
-独立复核已批准修订后的耗时核验，持出评分已启动，门槛为 9/12。
+**H12 R08 正式质量门已通过独立复核。** 冻结 Worker `33e39a4` 的开发集与独立持出各通过 11/12，合计 22/24。24 题均已计分，其中 23 题实际调用模型。产品发布状态为 `NOT_RELEASED`。[正式成绩](v3/docs/harness-v4/H12_R08_FORMAL_REAL_MODEL_20261118.md) · [独立验收报告](v3/docs/harness-v4/H12_R08_INDEPENDENT_MATRIX_REVIEW_20261118.md) · [Harness 升级路线](v3/docs/harness-v4/README.md)
 
 面向 GitHub 工单的事件驱动研发 Agent 原型，支持持续调查、跨知识库／SQL／代码取证、受限函数修复，以及经过人工审批的可恢复交付。
 

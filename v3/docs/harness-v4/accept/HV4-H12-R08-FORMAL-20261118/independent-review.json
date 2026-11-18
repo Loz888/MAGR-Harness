@@ -1,0 +1,253 @@
+{
+  "schema": "h12-r08-independent-full-matrix-review-v1",
+  "status": "PASS",
+  "scope": "formal_r08_quality_gate",
+  "reviewer": "01a1eccd-7b0f-7492-9bbf-2ef2346ab1aa",
+  "experiment_id": "hv4-h12-r08-20261118-formal-v5",
+  "candidate_sha256": "b953a102be5bf5f030a004e727a336a84d6bd97bf48b7f9c023a02b7190a1d99",
+  "timing_amendment_sha256": "beb458f17296682b70a06e32ac7d67dae514b5060b151ea423ded46ea2ed5448",
+  "timing_review_sha256": "5cef7b3c68c8dc284e5c19bd8db461ca51098398a7495ea282780ca4706df8e8",
+  "original_refusal_sha256": "ccad97d02541b8aeb72ce148aa5884b0470df8fbc93acf5104ac07ef536abdf7",
+  "original_matrix_sha256": "f833b005d4240bcdceecfb9f2e1c0ff0be6ab94895e7aa8375871595c4c95b71",
+  "primary_audit_sha256": "7b86cf112d377bcad9d9d62a20a2c673b190c1b2732afc8875220c51e58bfd3b",
+  "verified_first_samples": 24,
+  "matrix": {
+    "dev": {
+      "threshold": 10,
+      "denominator": 12,
+      "PASS": 11,
+      "FAIL": 1,
+      "NOT_RUN": 0,
+      "physical_model_calls": 110,
+      "upper_cost_micros": 965680,
+      "samples": [
+        {
+          "case": "dev-01",
+          "status": "PASS",
+          "model_calls": 11,
+          "upper_micros": 114442,
+          "score_sha256": "7f1f92f0c78d77bfb596a4fe9d69ccf93cc5a5b8705fecf89a88743a2d56e1ab"
+        },
+        {
+          "case": "dev-02",
+          "status": "PASS",
+          "model_calls": 10,
+          "upper_micros": 103990,
+          "score_sha256": "d1f9c6585fbee4241b7d756d65037a168e97462aaa3842547aadf3734ac1b9f4"
+        },
+        {
+          "case": "dev-03",
+          "status": "PASS",
+          "model_calls": 6,
+          "upper_micros": 30090,
+          "score_sha256": "5bfdd0f65a75f9d1a9623bfab810cfa091a662a1de2a76cddff8aa82ed080d35"
+        },
+        {
+          "case": "dev-04",
+          "status": "PASS",
+          "model_calls": 10,
+          "upper_micros": 70718,
+          "score_sha256": "9cf967eb4780572216bcddf528be1240892db9730f43f745d07fa15945f5d66f"
+        },
+        {
+          "case": "dev-05",
+          "status": "PASS",
+          "model_calls": 12,
+          "upper_micros": 103459,
+          "score_sha256": "d3e7081833f442f061b50403a1f4f941da3a4a6f5c81f662ae3b1b9761ee986b"
+        },
+        {
+          "case": "dev-06",
+          "status": "PASS",
+          "model_calls": 8,
+          "upper_micros": 53423,
+          "score_sha256": "760d0ce74e488b88736aa2767ee792808eba9806575a7d4b624e7b709f4825fe"
+        },
+        {
+          "case": "dev-07",
+          "status": "PASS",
+          "model_calls": 7,
+          "upper_micros": 42661,
+          "score_sha256": "d003c71ce4ce4bd3050f9848756d3c327737607d3af468c51bc825bf72472724"
+        },
+        {
+          "case": "dev-08",
+          "status": "PASS",
+          "model_calls": 10,
+          "upper_micros": 88589,
+          "score_sha256": "7c86513f6f0df42328a03f9d5c95c8283e8e82d863cfd86f517838b98e783200"
+        },
+        {
+          "case": "dev-09",
+          "status": "PASS",
+          "model_calls": 11,
+          "upper_micros": 124788,
+          "score_sha256": "771b5e9ee38cbad96b3c28734a07984d36aaecb8f35589fc21790c11c2d0509b"
+        },
+        {
+          "case": "dev-10",
+          "status": "PASS",
+          "model_calls": 6,
+          "upper_micros": 38943,
+          "score_sha256": "c50e65996feee35eec38a3ae733053b72cfaff0753f9ca365547dc299b73978f"
+        },
+        {
+          "case": "dev-11",
+          "status": "FAIL",
+          "model_calls": 7,
+          "upper_micros": 96466,
+          "score_sha256": "056c5f76405dcf62d75f833f66483e6c763b0c60c6c78f9711bb1177abe934bc"
+        },
+        {
+          "case": "dev-12",
+          "status": "PASS",
+          "model_calls": 12,
+          "upper_micros": 98111,
+          "score_sha256": "475d3c2af2e34062e0d764e61775032abc09ec4da549e0b1dd49f5f4e30d243a"
+        }
+      ]
+    },
+    "holdout": {
+      "threshold": 9,
+      "denominator": 12,
+      "PASS": 11,
+      "FAIL": 1,
+      "NOT_RUN": 0,
+      "physical_model_calls": 87,
+      "upper_cost_micros": 703547,
+      "samples": [
+        {
+          "case": "holdout-01",
+          "status": "PASS",
+          "model_calls": 4,
+          "upper_micros": 18197,
+          "score_sha256": "0123f5f5425a45d0dfc739d377ed0b67e851d1234fd1044939cb7492a40a01b8"
+        },
+        {
+          "case": "holdout-02",
+          "status": "PASS",
+          "model_calls": 6,
+          "upper_micros": 33899,
+          "score_sha256": "06ca4b3cfe2af39502c6cab3447ea56edb1ed2d11c740a26e0825c1490b05374"
+        },
+        {
+          "case": "holdout-03",
+          "status": "PASS",
+          "model_calls": 5,
+          "upper_micros": 29354,
+          "score_sha256": "b6684ab69b6844ad61df510856f91258487b0593780a46ad1c53d371ef4202e0"
+        },
+        {
+          "case": "holdout-04",
+          "status": "PASS",
+          "model_calls": 6,
+          "upper_micros": 36904,
+          "score_sha256": "da09aab02acfdee1f843719551b70b9b84205da5e631c08dbd26c018bc44ab3a"
+        },
+        {
+          "case": "holdout-05",
+          "status": "PASS",
+          "model_calls": 16,
+          "upper_micros": 160994,
+          "score_sha256": "9101a6a7bb211b9f15a9714f701180b969ed48b565be1250ad0f44796957287a"
+        },
+        {
+          "case": "holdout-06",
+          "status": "PASS",
+          "model_calls": 9,
+          "upper_micros": 66777,
+          "score_sha256": "ef57cd6c90a43d72ff9a433e7715880ff38d009b99435d10f3b2a631af8bbd95"
+        },
+        {
+          "case": "holdout-07",
+          "status": "PASS",
+          "model_calls": 8,
+          "upper_micros": 80483,
+          "score_sha256": "a61a90b37d14c06c41409305ea82ccfd56b316fb879f9c5470a57ab179a55f0e"
+        },
+        {
+          "case": "holdout-08",
+          "status": "PASS",
+          "model_calls": 10,
+          "upper_micros": 103373,
+          "score_sha256": "4c8e6b26f26b0064caf20b69818b054c1337c6446cd84af829a589e81be1d65d"
+        },
+        {
+          "case": "holdout-09",
+          "status": "PASS",
+          "model_calls": 7,
+          "upper_micros": 47002,
+          "score_sha256": "08443e511d317885944857cd5d33fa800bf04c6177b97dba30151b5983c40018"
+        },
+        {
+          "case": "holdout-10",
+          "status": "PASS",
+          "model_calls": 5,
+          "upper_micros": 26296,
+          "score_sha256": "e49769020a471bb59d17ed787c40fbe44a0ef745ac7618705fc13e3a61818270"
+        },
+        {
+          "case": "holdout-11",
+          "status": "PASS",
+          "model_calls": 11,
+          "upper_micros": 100268,
+          "score_sha256": "2cc9de664c9fed52a5baeba636c647640f796ed0a374434aad526cee1621ec05"
+        },
+        {
+          "case": "holdout-12",
+          "status": "FAIL",
+          "model_calls": 0,
+          "upper_micros": 0,
+          "score_sha256": "4b4c5502f789f561fc6b11ac9d50869687e570a398bc9fda3c836703cef558fa"
+        }
+      ]
+    }
+  },
+  "zero_model_samples": [
+    {
+      "case": "holdout-12",
+      "status": "FAIL",
+      "stage": "public_baseline_blocked",
+      "tool_calls": 2,
+      "model_calls": 0,
+      "upper_cost_micros": 0,
+      "independent_judge_status": "NOT_RUN",
+      "pg_task_seconds": 92.449646,
+      "monotonic_seconds": 193.13558577594813,
+      "controller_utc_seconds": 195.307199
+    }
+  ],
+  "model_policy": {
+    "model": "deepseek-flash",
+    "thinking": "enabled",
+    "reasoning_effort": "max"
+  },
+  "ledger_before": {
+    "used_calls": 1025,
+    "settled_micros": 6237248,
+    "reserved_micros": 0,
+    "limit_micros": 12000000,
+    "call_limit": 1536,
+    "unknown_calls": 0
+  },
+  "ledger_after": {
+    "used_calls": 1222,
+    "settled_micros": 7906475,
+    "reserved_micros": 0,
+    "limit_micros": 12000000,
+    "call_limit": 1536,
+    "unknown_calls": 0
+  },
+  "new_physical_calls": 197,
+  "new_upper_cost_micros": 1669227,
+  "model_calls_for_review": 0,
+  "original_dev_hashes_verified": 531,
+  "cas_objects_verified": 501,
+  "referenced_files_rechecked": 651,
+  "non_timing_fields_recomputed": {
+    "dev": 745,
+    "holdout": 730
+  },
+  "holdout_original_public_commands_evidence": "hash_bound_archival_projection",
+  "preserved_original_refusal": true
+}

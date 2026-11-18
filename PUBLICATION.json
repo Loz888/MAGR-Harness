@@ -1,15 +1,75 @@
 {
   "release": "Magr-Harness public source snapshot",
   "source_as_of": "2026-11-18",
+  "current_formal_quality": {
+    "reviewed_project_commit": "66dd504048d3d0c53f9cc81103f1ee8f8b7680a0",
+    "matrix_project_commit": "9182faec82e2a84c7ca89db35f4047770a485959",
+    "experiment_id": "hv4-h12-r08-20261118-formal-v5",
+    "frozen_worker_commit": "33e39a4c18043613965d4490fd4001b3b5da5524",
+    "frozen_worker_source_sha256": "387a6577c3cb9c7b82a568bbc1d4c5f188489df9c51b27066d47d8537c746165",
+    "candidate_sha256": "b953a102be5bf5f030a004e727a336a84d6bd97bf48b7f9c023a02b7190a1d99",
+    "public_engineering_validation_commit": "2fab3577a802a75b8ecfe2b466b43d45eb2cf0b0",
+    "independent_formal_quality_gate": "PASS",
+    "product_release_status": "NOT_RELEASED",
+    "independent_product_release_review": "PENDING",
+    "runtime_publication": "NOT_RUN",
+    "development": {
+      "pass": 11,
+      "fail": 1,
+      "not_run": 0,
+      "denominator": 12,
+      "threshold_passes": 10
+    },
+    "holdout": {
+      "pass": 11,
+      "fail": 1,
+      "not_run": 0,
+      "denominator": 12,
+      "threshold_passes": 9
+    },
+    "total_pass": 22,
+    "total_scored": 24,
+    "cases_with_model_requests": 23,
+    "public_baseline_blocked_before_first_model_request": 1,
+    "new_physical_calls": 197,
+    "new_upper_cost_micros_usd": 1669227,
+    "cumulative_upper_cost_micros_usd": 7906475,
+    "shared_limit_micros_usd": 12000000,
+    "unsettled_calls": 0,
+    "reserved_micros_usd": 0,
+    "independently_verified_first_samples": 24,
+    "cas_objects_verified": 501,
+    "referenced_files_rechecked": 651,
+    "additional_model_calls_for_independent_review": 0,
+    "public_documents": {
+      "v3/docs/harness-v4/H12_R08_DEVELOPMENT_20261118.md": {
+        "sha256": "08e516d6e77fa89a065fa0fb73b4172e19d16c86af9e6fbf9392c2531ae1f562"
+      },
+      "v3/docs/harness-v4/H12_R08_FORMAL_REAL_MODEL_20261118.md": {
+        "sha256": "d8f7eb25f93b008d434dd2ca622cd4c560ecb25f122956d93283182aab675989"
+      },
+      "v3/docs/harness-v4/H12_R08_INDEPENDENT_MATRIX_REVIEW_20261118.md": {
+        "sha256": "3f63a21182a9985faf6b5dbeb05d6d5f6f9c8723c9f18efbf26fb2ad1ec13e9b"
+      },
+      "v3/docs/harness-v4/accept/HV4-H12-R08-FORMAL-20261118/accept.json": {
+        "sha256": "a5dc862c75f37592b634e7029d7bc3116789df93d2aad7cda3ea0b864d215227"
+      },
+      "v3/docs/harness-v4/accept/HV4-H12-R08-FORMAL-20261118/independent-review.json": {
+        "sha256": "4adeecff1f4e13649effd6d1edbe0f641b39674cc998a52f4c014842160108bd"
+      }
+    }
+  },
   "historical_source_commits": {
-    "formal_h12_and_public_reports": "67996236de302d61c2014ce3de2cfc1c97f34ce1",
+    "formal_h12_and_public_reports": "66dd504048d3d0c53f9cc81103f1ee8f8b7680a0",
     "product_ui_and_handoff": "d7f8f1484a05f1a0300ff80b33429838633b10de",
     "entry_observer_evidence": "806e69d1e728e036c3e7d06a56c043e8f1a23e7f",
-    "timing_evaluator": "832fcf119451d196c3d9eab7e5efaec6c78eb874"
+    "timing_evaluator": "832fcf119451d196c3d9eab7e5efaec6c78eb874",
+    "formal_quality_matrix": "9182faec82e2a84c7ca89db35f4047770a485959",
+    "initial_public_snapshot_source": "67996236de302d61c2014ce3de2cfc1c97f34ce1"
   },
-  "candidate_source_path_count": 3641,
-  "exported_source_paths": 1472,
-  "byte_identical_source_paths": 1240,
+  "candidate_source_path_count": 3645,
+  "exported_source_paths": 1476,
+  "byte_identical_source_paths": 1244,
   "omitted_source_paths": 2169,
   "public_index_files": [
     "PUBLICATION.md",
@@ -41,8 +101,8 @@
       "omitted": 15
     },
     "harness_protocol_and_acceptance": {
-      "candidate_source_paths": 275,
-      "byte_identical": 162,
+      "candidate_source_paths": 279,
+      "byte_identical": 166,
       "public_editions": 106,
       "omitted": 7
     },
@@ -126,9 +186,9 @@
       "tracked_file_count": 86
     },
     "v3/docs/harness-v4": {
-      "git_tree_oid": "f6320d5945d081789662b72ba2364869acd67353",
-      "recursive_original_entry_listing_sha256": "1b3a8d61da0e6e3e8bd6778dbaa70c2eba04b65ec6dff040915c9c9625278310",
-      "tracked_file_count": 270
+      "git_tree_oid": "dc5527758b9004733da5fac335f839e4b0840e90",
+      "recursive_original_entry_listing_sha256": "3d2ef503dc30b75c14c708415afabb3a40915711b899f6e2cae751a16bb4ee5c",
+      "tracked_file_count": 274
     },
     "v3/experiments/harness-v4": {
       "git_tree_oid": "fc622172d0e8b04db0056add81a2ae5269eafa3a",
@@ -221,7 +281,8 @@
       "project-pinned R03 sandbox image",
       "public development image map",
       "temporary PostgreSQL 16 with pgvector 0.8.1"
-    ]
+    ],
+    "public_source_commit": "2fab3577a802a75b8ecfe2b466b43d45eb2cf0b0"
   },
   "historical_document_editions": [
     {
@@ -232,7 +293,7 @@
     {
       "path": "README.md",
       "source_bytes_sha256": "e909ac6c4ef318ac3ce4737c5e60a5209b2076429dc48e504201c35c94514df2",
-      "public_bytes_sha256": "4b8b2e820646c1481c0c6fe3967440133f547f40d57735ca71385341419eff20"
+      "public_bytes_sha256": "ff0dc2b5ccf872a5aee88287c513b831f7a09cf6a238d5df41456bb3ad3b7831"
     },
     {
       "path": "v3/README.md",
@@ -457,7 +518,7 @@
     {
       "path": "v3/docs/harness-v4/README.md",
       "source_bytes_sha256": "3b3613c2c2b3552a66bf0813c2c14d65827e69a358a58e61d1d68f4a19e8e5cf",
-      "public_bytes_sha256": "fc2ed4503c64bedd1b1aa79899581ed3b99e43250389cacf01fd40338421d467"
+      "public_bytes_sha256": "6153972bb5798aeb6fb56a9cdbf5f1b50d1cbc21d527e0a3fbeed47840d3906d"
     },
     {
       "path": "v3/docs/harness-v4/RECORD_RECONCILIATION_20261111.json",
@@ -471,8 +532,8 @@
     },
     {
       "path": "v3/docs/harness-v4/TASKS.md",
-      "source_bytes_sha256": "427a58effbb23f6936f192d87d8cf0773997fe2938ecc9bfcd5bfc0ea61f7057",
-      "public_bytes_sha256": "2b823cf571c7210336b966968a3bff0338a889c53040b2fdf5d6e0518179a0f8"
+      "source_bytes_sha256": "46f6973f9046fcc035bf843a558dd3880a06d257ee9c4c37b4dc34c8f3f7f1fd",
+      "public_bytes_sha256": "612afb23c9c035a121409e58ff22179bd36b2116ab14e6a137cc2b20e7ab4e9b"
     },
     {
       "path": "v3/docs/harness-v4/accept/AGENT-COLLABORATION/github-delivery/engineering-summary.json",
@@ -1381,8 +1442,8 @@
     },
     {
       "path": "v31-upgrade/TASK_QUEUE.md",
-      "source_bytes_sha256": "5307397283d8657692b5d57cd58b5680e12079185f9aa2c6e629d4ea9d20a403",
-      "public_bytes_sha256": "f23e3441f1517703b0849fd1dee4d91d5bccca5652170b3d3655b95e9bacba70"
+      "source_bytes_sha256": "1b385db50ac69c2676f6dd5b8d500fdc9696ed12e7c82a4861ec7ef2efbe13e0",
+      "public_bytes_sha256": "21392db8a2d66e3c91f248dd954268f7d63e6f5be92ac77c97fb1a24b17e3023"
     }
   ]
 }

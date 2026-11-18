@@ -1,5 +1,7 @@
 # MAGR Harness 升级任务书与规划
 
+2026 年 11 月 18 日，H12 R08 的开发集、独立持出集均通过 11/12，合计 22/24。独立复核确认正式质量门 PASS。产品发布状态为 `NOT_RELEASED`。[正式成绩](H12_R08_FORMAL_REAL_MODEL_20261118.md) · [独立验收报告](H12_R08_INDEPENDENT_MATRIX_REVIEW_20261118.md) · [匿名复核回执](accept/HV4-H12-R08-FORMAL-20261118/independent-review.json)
+
 [H12 R08 正式实验开发集成绩](H12_R08_DEVELOPMENT_20261118.md)记录 2026 年 11 月 18 日冻结候选的 12 道开发首样本。[独立耗时复核](H12_R08_TIMING_INDEPENDENT_20261118.md)记录了持出准入结论。
 
 2026-11-18，R08 上轮剩余三题均已取得真实模型端到端 PASS。03、08 通过于 `e86f024`，05 首次复测仍失败，修复读取参数反馈后通过于 `33e39a4`。本次共 23 次模型调用。完整同版本开发门和独立持出仍待验收。[定向报告](H12_R08_TARGETED_REPAIRS_20261118.md) · [机器记录](accept/HV4-H12-R08-READ-SIZE/accept.json)

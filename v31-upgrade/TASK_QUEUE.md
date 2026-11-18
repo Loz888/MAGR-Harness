@@ -1,5 +1,7 @@
 # V3.1 增量任务队列
 
+2026-11-18，H12 R08 正式候选完成 24 题评分。开发 11/12、独立持出 11/12，合计 22/24。独立复核确认正式质量门 PASS。23 题实际调用模型，持出第 12 题在公开基线阶段阻塞。产品放行另行记录。[逐题成绩与核账](../v3/docs/harness-v4/H12_R08_FORMAL_REAL_MODEL_20261118.md)
+
 2026-11-17 的 [R08 入口观察器修复](../v3/docs/harness-v4/H12_R08_ENTRY_OBSERVER_REPAIR_20261117.md)记录了 9 项真实隔离进程检查。[精确测试标识](../v3/docs/harness-v4/accept/HV4-H12-R08-ENTRY-REPAIR/cases-exact-nodeids.json)
 
 2026-11-17：[R08原失败5题真实定向复测](../v3/docs/harness-v4/H12_R08_FAILED_ONLY_20261117.md)

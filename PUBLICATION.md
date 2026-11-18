@@ -1,10 +1,12 @@
 # 公开快照与验证
 
-本仓库收录 MAGR Harness 的运行时、Web 工作台、数据库迁移、通用独立判定器、公开测试、工程工具与研发记录。2026 年 11 月 18 日的 H12 正式开发首样本为 11/12，开发门槛为 10/12。独立复核已批准耗时核验修订并启动持出评分，门槛为 9/12。[开发集成绩](v3/docs/harness-v4/H12_R08_DEVELOPMENT_20261118.md) · [准入复核](v3/docs/harness-v4/H12_R08_TIMING_INDEPENDENT_20261118.md)
+H12 R08 正式质量门通过独立复核。开发集 11/12，门槛 10/12。独立持出 11/12，门槛 9/12。24 题合计通过 22 题，23 题实际调用模型；持出第 12 题在公开基线阶段因缺少项目内依赖而阻塞，正式计 FAIL。197 次模型请求的保守费用合计 US$1.669227，共享账本累计 US$7.906475 / US$12。产品发布状态为 `NOT_RELEASED`。[正式成绩](v3/docs/harness-v4/H12_R08_FORMAL_REAL_MODEL_20261118.md) · [独立验收报告](v3/docs/harness-v4/H12_R08_INDEPENDENT_MATRIX_REVIEW_20261118.md) · [匿名回执](v3/docs/harness-v4/accept/HV4-H12-R08-FORMAL-20261118/independent-review.json)
 
 ## 来源与工程范围
 
-公开树合并了 H12 正式分支、产品主分支截至 SA22 的接口交接、入口观察器分支的复核记录以及 H10 独立复验记录。共核对 3,641 条项目路径，公开 1,472 条，另有本说明与机器索引两份新文件。原始实现哈希、各目录历史 Git 树标识、责任范围及公开摘录的原始与发布版 SHA256 可在索引中查验。历史报告中的提交号和得分按原实验冻结来源理解。[机器索引](PUBLICATION.json) · [Harness 路线](v3/docs/harness-v4/README.md) · [产品接口交接](v3/docs/harness-v4/SUPER_AGENT_HANDOFF.md)
+公开树合并了 H12 正式分支、产品主分支截至 SA22 的接口交接、入口观察器分支的复核记录以及 H10 独立复验记录。共核对 3,645 条项目路径，公开 1,476 条，另有本说明与机器索引两份新文件。原始实现哈希、各目录历史 Git 树标识、责任范围及公开摘录的原始与发布版 SHA256 可在索引中查验。历史报告中的提交号和得分按原实验冻结来源理解。[机器索引](PUBLICATION.json) · [Harness 路线](v3/docs/harness-v4/README.md) · [产品接口交接](v3/docs/harness-v4/SUPER_AGENT_HANDOFF.md)
+
+真实模型成绩对应原实验的冻结 Worker `33e39a4c18043613965d4490fd4001b3b5da5524`。公开整合树的工程验收对应初始公开提交 `2fab3577a802a75b8ecfe2b466b43d45eb2cf0b0`。本次成绩与独立复核文档归档于原项目提交 `66dd504048d3d0c53f9cc81103f1ee8f8b7680a0`。复核核对了 24 个首样本、501 个 CAS 对象和 651 个引用文件，复核新增模型调用数为 0。[机器验收记录](v3/docs/harness-v4/accept/HV4-H12-R08-FORMAL-20261118/accept.json)
 
 ## 本地验证
 

@@ -1,5 +1,7 @@
 # Harness V4 逐项任务书
 
+2026-11-18，H12 R08 正式候选完成 24 题评分。开发 11/12、独立持出 11/12，合计 22/24。独立复核确认正式质量门 PASS。23 题实际调用模型，持出第 12 题在公开基线阶段阻塞。产品放行另行记录。[逐题成绩与核账](H12_R08_FORMAL_REAL_MODEL_20261118.md)
+
 2026-11-18，R08 剩余失败题的定向复测已完成。03、08 在入口修复后通过。05 保留首次复测的 FAIL，在读取参数纠错修复后通过。编码 MVP 仍待正式放行。[逐题报告](H12_R08_TARGETED_REPAIRS_20261118.md) · [机器记录](accept/HV4-H12-R08-READ-SIZE/accept.json)
 
 2026-11-17 的 [R08 入口观察器修复](H12_R08_ENTRY_OBSERVER_REPAIR_20261117.md)记录了 9 项真实隔离进程检查。[精确测试标识](accept/HV4-H12-R08-ENTRY-REPAIR/cases-exact-nodeids.json)
