@@ -7,22 +7,30 @@ request shapes, preview isolation and restart cleanup use production routes.
 from __future__ import annotations
 
 import json
+import os
+import socket
 import subprocess
+import sys
+import threading
 import time
+from contextlib import closing
 from datetime import UTC, datetime, timedelta
+from hashlib import sha256
 from pathlib import Path
 from types import SimpleNamespace
 
 import pytest
+import uvicorn
 from fastapi.testclient import TestClient
 from pydantic import SecretStr
 
 from mgar_v3.api import create_app
 from mgar_v3.harness import broker as broker_module
 from mgar_v3.harness.broker import CommandIdentity, IsolatedExecutionBroker
+from mgar_v3.harness.client import HarnessAPIError, HarnessClient
 from mgar_v3.harness.contracts import ModelResponse, ModelUsage
 from mgar_v3.harness.product import HarnessProductService
-from mgar_v3.harness.service import DeterministicCodingModel
+from mgar_v3.harness.service import DeterministicCodingModel, HarnessCodingService
 
 ROOT = Path(__file__).resolve().parents[1]
 IMAGE_LOCK = ROOT / ".local/r03/sandbox-lock.json"
@@ -259,6 +267,186 @@ def test_public_known_blocked_turn_can_continue_without_reviving_its_old_run(api
     assert stale.status_code in {403, 409}, stale.text
     with env.engine.transaction() as conn:
         assert conn.execute("SELECT count(*) AS n FROM app.usage_calls").fetchone()["n"] == before
+
+
+@pytest.fixture
+def headless_gateway(api_env):
+    with socket.create_server(("127.0.0.1", 0)) as listener:
+        server = uvicorn.Server(uvicorn.Config(
+            api_env.app, lifespan="off", access_log=False, log_level="error", ws="none"
+        ))
+        thread = threading.Thread(target=server.run, kwargs={"sockets": [listener]}, daemon=True)
+        thread.start()
+        try:
+            deadline = time.monotonic() + 10
+            while not server.started and thread.is_alive() and time.monotonic() < deadline:
+                time.sleep(0.01)
+            assert server.started
+            yield f"http://127.0.0.1:{listener.getsockname()[1]}"
+        finally:
+            server.should_exit = True
+            thread.join(10)
+            assert not thread.is_alive()
+
+
+def _headless(api, *argv, payload=None, token=OPERATOR_TOKEN):
+    environ = dict(os.environ, MGAR_V3_LOCAL_TOKEN=token)
+    environ.pop("MGAR_V3_DATABASE_URL", None)
+    return subprocess.run(
+        [sys.executable, "-m", "mgar_v3.cli", "--api", api, "harness", *argv],
+        input=json.dumps(payload) if payload is not None else None,
+        capture_output=True,
+        text=True,
+        timeout=30,
+        check=False,
+        env=environ,
+    )
+
+
+def test_h13_web_sdk_and_headless_share_the_authoritative_result(
+    api_env, headless_gateway, tmp_path
+):
+    env, api = api_env, headless_gateway
+    env.configure()
+    payload = {"project_id": env.project_id, "text": "修复加法函数的错误", "client_id": "h13-first"}
+    cli = _headless(api, "submit", "--input", "-", payload=payload)
+    assert cli.returncode == 0, cli.stderr
+    submitted = json.loads(cli.stdout)
+    session_id, task_id = submitted["session_id"], submitted["task_id"]
+    with HarnessClient(OPERATOR_TOKEN, api=api) as sdk:
+        duplicate = sdk.submit(**payload)
+        assert duplicate["duplicate"] and duplicate["task_id"] == task_id
+        assert len(env.captured) == 1
+        session_path = f"/api/v3/agent/sessions/{session_id}"
+        assert sdk.session(session_id) == env.client.get(session_path).json()
+        task_path = f"/api/v3/harness/tasks/{task_id}"
+        web_task = env.client.get(task_path).json()
+        cli_task = _headless(api, "task", task_id)
+        assert cli_task.returncode == 0
+        assert sdk.task(task_id) == json.loads(cli_task.stdout) == web_task
+        assert web_task["tree_before"] != web_task["tree_after"]
+        assert web_task["settled_cost_micros"] > 0 and web_task["usage_known"]
+        assert sdk.diff(task_id) == web_task["diff"]
+        assert sdk.artifacts(task_id) == env.client.get(task_path + "/artifacts").json()
+        output = tmp_path / "headless.patch"
+        patch = _headless(api, "patch", task_id, "--output", str(output))
+        assert patch.returncode == 0, patch.stderr
+        assert output.read_bytes() == sdk.patch(task_id)
+        assert sha256(output.read_bytes()).hexdigest() == web_task["patch_sha256"]
+
+        web_export = env.client.get(session_path + "/export")
+        assert web_export.headers["cache-control"] == "no-store"
+        assert sdk.export_session(session_id) == web_export.json()
+        assert web_export.json()["schema_version"] == "mgar.harness.session.v1"
+        assert web_export.json()["latest_task"]["tree_after"] == web_task["tree_after"]
+        assert "workspace_path" not in web_export.json()["latest_task"]
+        assert MODEL_KEY not in web_export.text and OPERATOR_TOKEN not in web_export.text
+
+        with closing(sdk.events(task_id, follow=True)) as stream:
+            first = next(stream)
+        replay = _headless(api, "events", task_id, "--after", str(first["cursor"]))
+        assert replay.returncode == 0, replay.stderr
+        resumed = [json.loads(row) for row in replay.stdout.splitlines()]
+        page = sdk.event_page(task_id, after=first["cursor"])
+        assert resumed[-1]["event"] == "done"
+        assert [item["data"] for item in resumed[:-1]] == page["events"]
+        assert resumed[-1]["cursor"] == page["next_cursor"]
+
+        continued = sdk.send(session_id, "再次调整加法函数写法", client_id="h13-followup")
+        assert continued["status"] == "completed" and len(continued["turns"]) == 2
+        assert continued["task_id"] != task_id
+        exported = _headless(api, "export", session_id)
+        assert exported.returncode == 0
+        assert json.loads(exported.stdout) == sdk.export_session(session_id)
+
+
+def test_h13_authentication_and_dependency_exit_codes(api_env, headless_gateway, monkeypatch):
+    env, api = api_env, headless_gateway
+    unauthorized = _headless(api, "sessions", token="unauthorized")
+    assert unauthorized.returncode == 1
+    assert json.loads(unauthorized.stderr)["code"] == "AUTH_REQUIRED"
+    with HarnessClient("unauthorized", api=api) as sdk:
+        with pytest.raises(HarnessAPIError, match="登录") as error:
+            list(sdk.events("h08-000000000000"))
+        assert error.value.status_code == 401
+    env.configure()
+    monkeypatch.setattr(env.harness, "image_lock", env.source / "missing-lock.json")
+    readiness = _headless(api, "readiness", env.project_id)
+    assert readiness.returncode == 3, readiness.stderr
+    assert json.loads(readiness.stdout)["environment"]["status"] == "waiting_environment"
+    blocked = _headless(api, "submit", payload={
+        "project_id": env.project_id, "text": "修复加法", "client_id": "h13-blocked",
+    })
+    assert blocked.returncode == 3
+    assert json.loads(blocked.stderr)["code"] == "HARNESS_ENVIRONMENT_REQUIRED"
+    assert not env.captured
+
+
+def test_h13_pause_resume_cancel_and_incomplete_exit_use_the_same_run(
+    api_env, headless_gateway, monkeypatch
+):
+    env, api = api_env, headless_gateway
+    env.configure()
+    fixture_model = env.harness.model_factory
+    arrived = [threading.Event(), threading.Event()]
+    release = [threading.Event(), threading.Event()]
+
+    class GatedModel:
+        def __init__(self, request):
+            self.model = fixture_model(request)
+            self.calls = 0
+
+        def complete(self, request, cancellation):
+            response = self.model.complete(request, cancellation)
+            index = self.calls
+            self.calls += 1
+            if index < len(arrived):
+                arrived[index].set()
+                assert release[index].wait(30)
+            return response
+
+    monkeypatch.setattr(env.harness, "model_factory", GatedModel)
+    monkeypatch.setattr(
+        env.harness, "submit_task", HarnessCodingService.submit_task.__get__(env.harness)
+    )
+    with HarnessClient(OPERATOR_TOKEN, api=api) as sdk:
+        task = sdk.submit(env.project_id, "修复加法错误", client_id="h13-control")["task_id"]
+
+        def await_pause():
+            deadline = time.monotonic() + 20
+            while time.monotonic() < deadline and sdk.task(task)["status"] == "running":
+                time.sleep(0.02)
+            assert sdk.task(task)["status"] == "paused"
+
+        try:
+            assert arrived[0].wait(20)
+            running = _headless(api, "task", task)
+            assert running.returncode == 2, running.stderr
+            run_id = json.loads(running.stdout)["run_id"]
+            assert sdk.pause(task)["task_id"] == task
+            release[0].set()
+            await_pause()
+            assert env.harness.store.get(task)["public_status"] == "paused"
+            resumed = _headless(api, "resume", task)
+            assert resumed.returncode == 0, resumed.stderr
+            assert arrived[1].wait(20)
+            assert sdk.task(task)["status"] == "running"
+            sdk.pause(task)
+            release[1].set()
+            await_pause()
+            cancelled = _headless(api, "cancel", task, "--reason", "H13 fixture cancellation")
+            assert cancelled.returncode == 0, cancelled.stderr
+            assert json.loads(cancelled.stdout)["status"] == "cancelled"
+        finally:
+            for gate in release:
+                gate.set()
+            result = env.harness.join_task(task, timeout=30)
+        assert result["status"] == "cancelled" and result["run_id"] == run_id
+        assert env.harness.store.get(task)["public_status"] == "cancelled"
+        terminal = _headless(api, "task", task)
+        assert terminal.returncode == 1
+        assert json.loads(terminal.stdout)["status"] == "cancelled"
+        assert sdk.task(task) == env.client.get(f"/api/v3/harness/tasks/{task}").json()
 
 
 def test_real_preview_mime_sandbox_no_cookie_forwarding_and_control_api_boundary(api_env):

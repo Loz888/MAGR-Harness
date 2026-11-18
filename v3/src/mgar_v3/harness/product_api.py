@@ -109,6 +109,12 @@ def register_product_routes(app: FastAPI, authenticated: Callable[[Request], Non
     def session(session_id: str, request: Request) -> Response:
         return public(service(request).get(session_id))
 
+    @app.get(
+        "/api/v3/agent/sessions/{session_id}/export", dependencies=[Depends(authenticated)]
+    )
+    def export_session(session_id: str, request: Request) -> Response:
+        return public(service(request).export(session_id))
+
     @app.post("/api/v3/agent/sessions/{session_id}/messages", dependencies=[Depends(authenticated)])
     async def send(session_id: str, body: ProductMessageInput, request: Request) -> Response:
         return public(

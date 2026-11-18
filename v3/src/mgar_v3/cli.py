@@ -11,6 +11,7 @@ import psycopg
 from redis import Redis
 from redis.exceptions import RedisError
 
+from mgar_v3.harness import headless
 from mgar_v3.preflight import preflight
 from mgar_v3.settings import ROOT, Settings
 
@@ -49,6 +50,7 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="mgar")
     parser.add_argument("--api", default="http://127.0.0.1:18080")
     commands = parser.add_subparsers(dest="command", required=True)
+    headless.register_commands(commands.add_parser("harness", help="Harness sessions and tasks"))
     commands.add_parser("doctor")
     commands.add_parser("commerce-setup")
     commands.add_parser("commerce-list")
@@ -202,6 +204,8 @@ def main(argv: list[str] | None = None) -> int:
         if name == "revise":
             command.add_argument("--diff-file", type=Path, required=True)
     args = parser.parse_args(argv)
+    if args.command == "harness":
+        return headless.run(args)
     settings = Settings()
     if args.command == "doctor":
         return doctor(settings)

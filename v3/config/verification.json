@@ -1303,6 +1303,23 @@
     ],
     "timeout_seconds": 600
   },
+  "HV4-H13": {
+    "components": {
+      "contract": "Web cookie, operator CLI and Python SDK, shared PostgreSQL Run and persisted task artifacts",
+      "control": "same-Run pause, resume and cancel, bounded cursor replay and authenticated event streaming",
+      "automation": "JSON stdin and output, NDJSON events, versioned export, missing dependency and incomplete exit codes",
+      "live": "controlled model fixtures, real PostgreSQL, Docker and HTTP"
+    },
+    "pytest_node_selectors": true,
+    "tests": [
+      "tests/test_harness_headless.py",
+      "tests/test_harness_product_api.py",
+      "tests/test_harness_v4_h09.py::test_web_h09_stream_page_messages_and_task_id_validation",
+      "tests/test_harness_v4_h11_service.py",
+      "tests/test_cli.py"
+    ],
+    "timeout_seconds": 750
+  },
   "HV4-H12": {
     "components": {
       "frozen_catalog": "H00 byte hashes, original judge objects, fixed twelve-case denominator and resource limits",

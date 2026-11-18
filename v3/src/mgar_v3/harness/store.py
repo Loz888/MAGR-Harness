@@ -415,6 +415,15 @@ class HarnessStore:
         with self.engine.transaction() as conn:
             return self._guard(conn, task_id, epoch)
 
+    def record_live_pause(self, task_id: str, epoch: int, *, paused: bool) -> None:
+        """Record the worker's safe point while it still owns the same Run and epoch."""
+        with self.engine.transaction() as conn:
+            self._guard(conn, task_id, epoch)
+            conn.execute(
+                "UPDATE app.harness_tasks SET public_status=%s,updated_at=now() WHERE task_id=%s",
+                ("paused" if paused else "running", task_id),
+            )
+
     def begin(self, task_id: str) -> Row:
         with self.engine.transaction() as conn:
             row = self._row(conn, task_id)

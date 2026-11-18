@@ -1075,7 +1075,6 @@ def create_app(
         service: Annotated[HarnessCodingService, Depends(harness_service)],
         follow: bool = True,
     ) -> StreamingResponse:
-        initial = service.event_page(task_id, after=0, limit=1)
         try:
             cursor = int(
                 request.headers.get("Last-Event-ID")
@@ -1085,14 +1084,22 @@ def create_app(
                 raise ValueError("Negative cursor")
         except ValueError as exc:
             raise DomainError("INVALID_CURSOR", "事件游标无效。", 400) from exc
-        terminal = bool(initial["terminal"])
+        await asyncio.to_thread(service.event_page, task_id, cursor, 1)
 
         async def updates() -> AsyncIterator[str]:
-            nonlocal cursor, terminal
+            nonlocal cursor
             last_check = asyncio.get_running_loop().time()
             while True:
                 if await request.is_disconnected():
                     return
+                if asyncio.get_running_loop().time() - last_check >= 5:
+                    try:
+                        await asyncio.to_thread(authenticated, request)
+                    except DomainError:
+                        yield "event: auth_required\ndata: {}\n\n"
+                        return
+                    yield ": keepalive\n\n"
+                    last_check = asyncio.get_running_loop().time()
                 page = await asyncio.to_thread(
                     service.event_page, task_id, cursor, 200
                 )
@@ -1103,24 +1110,15 @@ def create_app(
                         f"id: {cursor}\nevent: update\n"
                         f"data: {json.dumps(record, ensure_ascii=False)}\n\n"
                     )
-                terminal = bool(page["terminal"])
                 if records:
                     continue
-                if not follow or terminal:
+                if not follow or page["terminal"]:
                     done = json.dumps(
                         {"status": page["status"], "cursor": cursor},
                         ensure_ascii=False,
                     )
                     yield f"event: done\ndata: {done}\n\n"
                     return
-                if asyncio.get_running_loop().time() - last_check >= 5:
-                    try:
-                        await asyncio.to_thread(authenticated, request)
-                    except DomainError:
-                        yield "event: auth_required\ndata: {}\n\n"
-                        return
-                    yield ": keepalive\n\n"
-                    last_check = asyncio.get_running_loop().time()
                 await asyncio.sleep(0.15)
 
         return StreamingResponse(

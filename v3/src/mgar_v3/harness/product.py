@@ -409,15 +409,26 @@ class HarnessProductService:
         return [self.get(row["session_id"]) for row in rows]
 
     def get(self, session_id: str) -> dict[str, Any]:
+        session, _ = self._session_view(session_id)
+        return session
+
+    def _session_view(
+        self, session_id: str
+    ) -> tuple[dict[str, Any], dict[str, Any] | None]:
         session = self._session(session_id)
         with self.engine.transaction() as conn:
             turns = conn.execute(
                 "SELECT * FROM app.harness_session_turns WHERE session_id=%s ORDER BY turn_id",
                 (session_id,),
             ).fetchall()
+        task_ids = {turn["task_id"] for turn in turns if turn["task_id"]}
+        latest = session["latest_task_id"]
+        if latest:
+            task_ids.add(latest)
+        tasks = {task_id: self.harness.get_task(task_id) for task_id in task_ids}
         public = []
         for turn in turns:
-            task = self.harness.get_task(turn["task_id"]) if turn["task_id"] else {}
+            task = tasks.get(turn["task_id"], {})
             public.append(
                 {
                     **turn,
@@ -426,15 +437,48 @@ class HarnessProductService:
                     "error_code": turn["error_code"],
                 }
             )
-        current = (
-            self.harness.get_task(session["latest_task_id"]) if session["latest_task_id"] else {}
-        )
+        current = tasks.get(latest)
         return {
             **session,
             "turns": public,
-            "task_id": session["latest_task_id"],
-            "status": current.get("status", "idle"),
+            "task_id": latest,
+            "status": current.get("status", "idle") if current is not None else "idle",
+            "reason": current.get("reason") if current is not None else None,
             "repository": self._project(session["project_id"])["repository"],
+        }, current
+
+    def export(self, session_id: str) -> dict[str, Any]:
+        """Export the public conversation and a snapshot of its latest task."""
+        with self._lock:
+            session, task = self._session_view(session_id)
+        fields = (
+            "task_id", "status", "reason", "summary", "tree_before", "tree_after", "diff",
+            "changes", "commands", "tests", "checklist", "patch_sha256", "patch_url",
+            "input_tokens", "output_tokens", "model_calls", "tool_calls", "settled_cost_micros",
+            "reserved_micros", "usage_known", "events_cursor", "stream_version",
+        )
+        return {
+            "schema_version": "mgar.harness.session.v1",
+            "session": {
+                "session_id": session_id,
+                "project_id": session["project_id"],
+                "repository": session["repository"],
+                "title": session["title"],
+                "status": session["status"],
+                "latest_task_id": session["task_id"],
+                "created_at": session["created_at"],
+                "updated_at": session["updated_at"],
+            },
+            "turns": [
+                {key: turn[key] for key in (
+                    "turn_id", "text", "task_id", "status", "summary", "error_code",
+                )}
+                for turn in session["turns"]
+            ],
+            "latest_task": (
+                {name: task[name] for name in fields if name in task}
+                if task is not None else None
+            ),
         }
 
     def create(self, project_id: str, text: str, client_id: str = "") -> dict[str, Any]:

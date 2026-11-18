@@ -1219,12 +1219,12 @@ class TaskControl:
                     self.on_paused()
                 while self.pause_requested and not self.cancel_requested_at:
                     self._condition.wait(0.2)
-                if self.on_resumed is not None:
-                    self.on_resumed()
                 if self.cancel_requested_at:
                     if self.on_cancel_observed is not None:
                         self.on_cancel_observed()
                     self.token.ensure_active()
+                if self.on_resumed is not None:
+                    self.on_resumed()
         self.token.ensure_active()
         return SafePoint()
 
@@ -2821,6 +2821,10 @@ class HarnessCodingService:
             if runtime.paused_event:
                 return
             runtime.paused_event = True
+            if self.store is not None and runtime.task is not None:
+                self.store.record_live_pause(
+                    runtime.task_id, runtime.task.execution_epoch, paused=True
+                )
             self._emit(
                 runtime,
                 "paused",
@@ -2834,6 +2838,11 @@ class HarnessCodingService:
             return
         if kind == "resumed":
             runtime.paused_event = False
+            runtime.pause_event_emitted = False
+            if self.store is not None and runtime.task is not None:
+                self.store.record_live_pause(
+                    runtime.task_id, runtime.task.execution_epoch, paused=False
+                )
             self._emit(
                 runtime,
                 "resumed",
