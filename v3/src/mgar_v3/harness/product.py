@@ -30,6 +30,7 @@ from mgar_v3.harness.product_models import DEFAULT_PRODUCT_MODEL, product_model_
 from mgar_v3.harness.product_runtime import product_readiness, validate_product_image_lock
 from mgar_v3.harness.recovery_io import workspace_lock
 from mgar_v3.harness.service import _TERMINAL, CodingTaskRequest, HarnessCodingService
+from mgar_v3.harness.tenancy import HarnessTenancy, active_membership
 from mgar_v3.harness.workspace import TaskWorkspace
 from mgar_v3.mcp.factory import verified_github_binary
 from mgar_v3.web_access import WebAnalysisSettings
@@ -89,6 +90,7 @@ class HarnessProductService:
         self._previews: dict[str, Any] = {}
         self._preview_tokens: dict[str, str] = {}
         self._preview_urls: dict[str, str] = {}
+        self.tenancy = HarnessTenancy(self.engine, harness.registry, settings)
         self.plugins = plugins or default_catalog(self.engine.settings.harness_plugin_lock)
         harness.product_model_resolver = self.resolve_model
         harness.product_adapter_factory = self._plugin_adapter
@@ -119,9 +121,16 @@ class HarnessProductService:
             self.settings._cipher().decrypt(row["encrypted_payload"].encode())
         )
 
-    def model_status(self, *, plugin: ModelPlugin | None = None) -> dict[str, Any]:
-        revision, payload = self._model_snapshot()
-        effective = self.settings.effective(payload)
+    def model_status(
+        self, *, plugin: ModelPlugin | None = None, managed_project: str = "",
+    ) -> dict[str, Any]:
+        payload: dict[str, Any] | None
+        if managed_project:
+            revision, payload = self.tenancy.model_snapshot(managed_project)
+            effective = self.tenancy.model_settings(payload)
+        else:
+            revision, payload = self._model_snapshot()
+            effective = self.settings.effective(payload)
         authorization = payload.get("authorization", {}) if payload else {}
         expires = authorization.get("expires_at")
         valid = not expires or datetime.fromisoformat(expires) > datetime.now(UTC)
@@ -334,10 +343,14 @@ class HarnessProductService:
             raise DomainError("HARNESS_AUTHORIZATION_REVOKED", "本轮授权已被撤销或替换。", 403)
         if request.task_kind != "inspect" and not grant["allow_write"]:
             raise DomainError("HARNESS_WRITE_DENIED", "当前项目仅允许只读操作。", 403)
-        if not self.model_status()["allow_paid"]:
+        if request.product_managed:
+            self.tenancy.require_binding(
+                request.project_id, request.product_membership_id,
+                write=request.task_kind != "inspect",
+            )
+        elif not self.model_status()["allow_paid"]:
             raise DomainError("HARNESS_LIVE_MODEL_UNAVAILABLE", "模型使用许可已关闭或过期。", 403)
-        _, payload = self._model_snapshot(request.product_model_revision)
-        effective = self.settings.effective(payload)
+        effective, payload = self._request_model_settings(request)
         key = effective.deepseek_api_key
         if not key or not key.get_secret_value() or not effective.allow_paid:
             raise DomainError("HARNESS_LIVE_MODEL_UNAVAILABLE", "请先配置并授权真实模型。", 409)
@@ -366,25 +379,68 @@ class HarnessProductService:
             )
         return key.get_secret_value(), capabilities
 
-    def profile(self) -> dict[str, Any]:
+    def _request_model_settings(
+        self, request: CodingTaskRequest,
+    ) -> tuple[Any, dict[str, Any] | None]:
+        payload: dict[str, Any] | None
+        if request.product_managed:
+            _, payload = self.tenancy.model_snapshot(
+                request.project_id, request.product_model_revision,
+            )
+            return self.tenancy.model_settings(payload), payload
+        _, payload = self._model_snapshot(request.product_model_revision)
+        return self.settings.effective(payload), payload
+
+    def projects(self, user_id: UUID | None = None) -> list[dict[str, Any]]:
+        projects = self.harness.list_projects()
+        if user_id is None:
+            return projects
+        allowed = self.tenancy.projects(user_id)
+        return [
+            {key: item[key] for key in ("project_id", "repository", "kind", "base_commit")
+             if key in item}
+            for item in projects if item["project_id"] in allowed
+        ]
+
+    def profile(self, user_id: UUID | None = None) -> dict[str, Any]:
         return {
-            "model": self.model_status(),
-            "projects": self.harness.list_projects(),
+            "model": self.model_status() if user_id is None else {"scope": "project"},
+            "projects": self.projects(user_id),
             "execution": "isolated",
             "budget_scope": "project_authorization",
             "extensions": [],
             "schema_version": "harness-product-v1",
         }
 
-    def readiness(self, project_id: str) -> dict[str, Any]:
+    def readiness(self, project_id: str, user_id: UUID | None = None) -> dict[str, Any]:
+        member = self.tenancy.require_project(project_id, user_id) if user_id else None
         project = self._project(project_id)
         environment = product_readiness(Path(project["path"]), self.image_lock(project_id))
         authorization = self.authorization(project_id)
         pins = self._select_plugins(project_id, authorization) if authorization["valid"] else {}
+        managed = self.tenancy.managed(project_id)
+        if member is not None:
+            authorization = {
+                name: authorization.get(name)
+                for name in ("valid", "allow_paid", "allow_write", "max_cost_micros",
+                             "max_model_calls", "settled_micros", "reserved_micros", "used_calls")
+            }
+            authorization["allow_write"] = bool(
+                authorization["allow_write"] and member["role"] == "contributor"
+            )
+            environment = {
+                "status": environment["status"],
+                "verification_scope": environment["verification_scope"],
+                "blockers": [{"code": item["code"]} for item in environment["blockers"]],
+            }
+            assert user_id is not None
+            self.tenancy.require_project(project_id, user_id)
         return {
             "project_id": project_id,
             "authorization": authorization,
-            "model": self.model_status(plugin=self._model_plugin(pins)),
+            "model": self.model_status(
+                plugin=self._model_plugin(pins), managed_project=project_id if managed else "",
+            ),
             "extensions": [
                 {
                     "plugin_id": pin.plugin_id, "version": pin.version, "kind": pin.kind,
@@ -470,8 +526,7 @@ class HarnessProductService:
             task.repository.startswith("local/") or task.base_commit == "0" * 40
         ):
             raise DomainError("EXTENSION_CONFIG_DENIED", "GitHub 工具需要固定仓库提交。", 409)
-        _, payload = self._model_snapshot(request.product_model_revision)
-        effective = self.settings.effective(payload)
+        effective, _ = self._request_model_settings(request)
         mcp = {role: tool_pins[role] for role in ("knowledge", "data") if role in tool_pins}
         if mcp:
             self.engine.tools.bind_harness_mcp(
@@ -540,35 +595,43 @@ class HarnessProductService:
                     asyncio.run(extension.close())
             raise
 
-    def _session(self, session_id: str) -> dict[str, Any]:
+    def _session(self, session_id: str, user_id: UUID | None = None) -> dict[str, Any]:
         if not _SESSION.fullmatch(session_id):
             raise DomainError("HARNESS_SESSION_UNKNOWN", "会话不存在。", 404)
         with self.engine.transaction() as conn:
             row = conn.execute(
-                "SELECT * FROM app.harness_sessions WHERE session_id=%s AND actor=%s",
-                (session_id, self.harness.actor),
+                "SELECT s.* FROM app.harness_sessions s LEFT JOIN "
+                "app.harness_project_memberships m USING (membership_id) "
+                "WHERE s.session_id=%s AND s.actor=%s "
+                "AND (%s::uuid IS NULL OR (m.user_id=%s AND m.revoked_at IS NULL))",
+                (session_id, self.harness.actor, user_id, user_id),
             ).fetchone()
         if row is None:
             raise DomainError("HARNESS_SESSION_UNKNOWN", "会话不存在。", 404)
+        if user_id is not None:
+            self.tenancy.require_project(row["project_id"], user_id)
         return dict(row)
 
-    def sessions(self) -> list[dict[str, Any]]:
+    def sessions(self, user_id: UUID | None = None) -> list[dict[str, Any]]:
         with self.engine.transaction() as conn:
             rows = conn.execute(
-                "SELECT * FROM app.harness_sessions WHERE actor=%s "
-                "ORDER BY updated_at DESC LIMIT 200",
-                (self.harness.actor,),
+                "SELECT s.session_id FROM app.harness_sessions s LEFT JOIN "
+                "app.harness_project_memberships m USING (membership_id) "
+                "WHERE s.actor=%s AND "
+                "(%s::uuid IS NULL OR (m.user_id=%s AND m.revoked_at IS NULL)) "
+                "ORDER BY s.updated_at DESC LIMIT 200",
+                (self.harness.actor, user_id, user_id),
             ).fetchall()
-        return [self.get(row["session_id"]) for row in rows]
+        return [self.get(row["session_id"], user_id) for row in rows]
 
-    def get(self, session_id: str) -> dict[str, Any]:
-        session, _ = self._session_view(session_id)
+    def get(self, session_id: str, user_id: UUID | None = None) -> dict[str, Any]:
+        session, _ = self._session_view(session_id, user_id)
         return session
 
     def _session_view(
-        self, session_id: str
+        self, session_id: str, user_id: UUID | None = None,
     ) -> tuple[dict[str, Any], dict[str, Any] | None]:
-        session = self._session(session_id)
+        session = self._session(session_id, user_id)
         with self.engine.transaction() as conn:
             turns = conn.execute(
                 "SELECT * FROM app.harness_session_turns WHERE session_id=%s ORDER BY turn_id",
@@ -592,6 +655,8 @@ class HarnessProductService:
                 }
             )
         current = tasks.get(latest)
+        if user_id is not None:
+            self._session(session_id, user_id)
         return {
             **session,
             "turns": public,
@@ -601,10 +666,10 @@ class HarnessProductService:
             "repository": self._project(session["project_id"])["repository"],
         }, current
 
-    def export(self, session_id: str) -> dict[str, Any]:
+    def export(self, session_id: str, user_id: UUID | None = None) -> dict[str, Any]:
         """Export the public conversation and a snapshot of its latest task."""
         with self._lock:
-            session, task = self._session_view(session_id)
+            session, task = self._session_view(session_id, user_id)
         fields = (
             "task_id", "status", "reason", "summary", "tree_before", "tree_after", "diff",
             "changes", "commands", "tests", "checklist", "patch_sha256", "patch_url",
@@ -635,16 +700,26 @@ class HarnessProductService:
             ),
         }
 
-    def create(self, project_id: str, text: str, client_id: str = "") -> dict[str, Any]:
+    def create(
+        self, project_id: str, text: str, client_id: str = "", *,
+        user_id: UUID | None = None,
+    ) -> dict[str, Any]:
+        if user_id is not None:
+            self.tenancy.require_project(project_id, user_id)
         self._project(project_id)
         self.authorization(project_id, required=True)
         if not text.strip():
             raise DomainError("HARNESS_OBJECTIVE_REQUIRED", "请输入需求。", 422)
         client_id = client_id or uuid4().hex
         with self._lock, self.engine.transaction() as conn:
+            member = active_membership(conn, project_id, user_id=user_id) if user_id else None
+            if user_id is not None and member is None:
+                raise DomainError("HARNESS_PROJECT_UNKNOWN", "项目不存在。", 404)
+            membership_id = member["membership_id"] if member else None
             row = conn.execute(
-                "SELECT * FROM app.harness_sessions WHERE actor=%s AND initial_client_id=%s",
-                (self.harness.actor, client_id),
+                "SELECT * FROM app.harness_sessions WHERE actor=%s AND initial_client_id=%s "
+                "AND membership_id IS NOT DISTINCT FROM %s::uuid",
+                (self.harness.actor, client_id, membership_id),
             ).fetchone()
             if row is not None:
                 if row["project_id"] != project_id:
@@ -654,18 +729,21 @@ class HarnessProductService:
                 session_id = "hs-" + uuid4().hex[:24]
                 conn.execute(
                     "INSERT INTO app.harness_sessions(session_id,project_id,actor,title,"
-                    "initial_client_id) VALUES (%s,%s,%s,%s,%s)",
-                    (session_id, project_id, self.harness.actor, text.strip()[:100], client_id),
+                    "initial_client_id,membership_id) VALUES (%s,%s,%s,%s,%s,%s)",
+                    (session_id, project_id, self.harness.actor, text.strip()[:100],
+                     client_id, membership_id),
                 )
-        return self.send(session_id, text, client_id)
+        return self.send(session_id, text, client_id, user_id=user_id)
 
-    def send(self, session_id: str, text: str, client_id: str = "") -> dict[str, Any]:
+    def send(
+        self, session_id: str, text: str, client_id: str = "", *, user_id: UUID | None = None,
+    ) -> dict[str, Any]:
         text = text.strip()
         if not text or len(text) > 20_000:
             raise DomainError("HARNESS_OBJECTIVE_REQUIRED", "需求须为 1–20000 字符。", 422)
         client_id = client_id or uuid4().hex
         with self._lock:
-            session = self._session(session_id)
+            session = self._session(session_id, user_id)
             with self.engine.transaction() as conn:
                 previous = conn.execute(
                     "SELECT * FROM app.harness_session_turns WHERE session_id=%s AND client_id=%s",
@@ -680,7 +758,8 @@ class HarnessProductService:
                         "此前请求未进入执行；处理配置或环境问题后请重新发送。",
                         409,
                     )
-                return {**self._submission(session_id, previous["turn_id"]), "duplicate": True}
+                submission = self._submission(session_id, previous["turn_id"], user_id)
+                return {**submission, "duplicate": True}
             authorization = self.authorization(session["project_id"], required=True)
             current_id = session["latest_task_id"]
             current = self.harness.get_task(current_id) if current_id else {}
@@ -716,10 +795,12 @@ class HarnessProductService:
                         (exc.code, turn),
                     )
                 raise
-            return self._submission(session_id, turn)
+            return self._submission(session_id, turn, user_id)
 
-    def _submission(self, session_id: str, turn_id: int) -> dict[str, Any]:
-        session = self.get(session_id)
+    def _submission(
+        self, session_id: str, turn_id: int, user_id: UUID | None = None,
+    ) -> dict[str, Any]:
+        session = self.get(session_id, user_id)
         turn = next(row for row in session["turns"] if row["turn_id"] == turn_id)
         return {
             **session,
@@ -740,6 +821,12 @@ class HarnessProductService:
         project_id = session["project_id"]
         self.stop_preview(session["session_id"])
         project = self._project(project_id)
+        managed = self.tenancy.managed(project_id)
+        membership_id = str(session["membership_id"] or "")
+        intent = infer_intent(text)
+        kind = "feature" if intent == "bugfix" else intent
+        if managed:
+            self.tenancy.require_binding(project_id, membership_id, write=kind != "inspect")
         with self.engine.transaction() as conn:
             unknown = conn.execute(
                 "SELECT 1 FROM app.usage_calls WHERE profile_hash=%s AND status='unknown' LIMIT 1",
@@ -749,7 +836,9 @@ class HarnessProductService:
             raise DomainError("RECOVERY_BLOCKED", "存在结果未知的模型调用，请先对账恢复。", 409)
         pins = self._select_plugins(project_id, authorization)
         plugin = self._model_plugin(pins)
-        status = self.model_status(plugin=plugin)
+        status = self.model_status(
+            plugin=plugin, managed_project=project_id if managed else "",
+        )
         if not status["available"]:
             raise DomainError(
                 "HARNESS_LIVE_MODEL_UNAVAILABLE", "请先在模型设置中配置并授权模型。", 409
@@ -766,10 +855,6 @@ class HarnessProductService:
         plan = environment["plan"]
         if hasattr(plan, "model_dump"):
             plan = plan.model_dump(mode="json")
-        intent = infer_intent(text)
-        # General turns may add a regression for an untested bug on a green
-        # baseline. Frozen evaluation/legacy bugfix retains strict reproduction.
-        kind = "feature" if intent == "bugfix" else intent
         if kind != "inspect" and not authorization["allow_write"]:
             raise DomainError("HARNESS_WRITE_DENIED", "当前项目仅获准调查，请先授予修改权限。", 403)
         if kind != "inspect" and environment["status"] != "ready":
@@ -783,6 +868,8 @@ class HarnessProductService:
             approved=bool(authorization["allow_write"]),
             mode="live",
             product_session_id=session["session_id"],
+            product_managed=managed is not None,
+            product_membership_id=membership_id,
             product_intent=intent,
             product_turn_id=turn,
             product_model_revision=status["revision"],
@@ -822,7 +909,10 @@ class HarnessProductService:
                 max_seconds=1200,
             ).model_dump(mode="json"),
         )
-        self.harness.submit_task(request)
+        if request.product_managed:
+            self.harness.enqueue_product_task(request)
+        else:
+            self.harness.submit_task(request)
 
     def _failed_before_harness_work(self, project_id: str, task_id: str) -> bool:
         """Recognize a legacy scheduler rejection before this task touched its workspace."""

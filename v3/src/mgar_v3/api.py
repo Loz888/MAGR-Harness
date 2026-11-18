@@ -185,8 +185,10 @@ def create_app(
         if provided is None:
             app.state.harness.runners.recover()
         from mgar_v3.harness.product import HarnessProductService
+        from mgar_v3.harness.scheduler import HarnessScheduler
 
         app.state.product = HarnessProductService(app.state.harness, repo_service.web_settings)
+        managed_scheduler = HarnessScheduler(app.state.harness, configuration.max_concurrent_runs)
         if (
             selected_draft is None
             and live_repair_permit is not None
@@ -254,6 +256,7 @@ def create_app(
             runner_store = app.state.harness.runners
             next_runner_sweep = 0.0
             while not stopped.is_set():
+                await asyncio.to_thread(managed_scheduler.tick)
                 now = asyncio.get_running_loop().time()
                 if runner_store is not None and now >= next_runner_sweep:
                     await asyncio.to_thread(runner_store.sweep)
@@ -330,9 +333,11 @@ def create_app(
                 yield
         finally:
             stopped.set()
-            app.state.product.close()
             if task is not None:
                 await task
+            await asyncio.to_thread(managed_scheduler.close)
+            app.state.product.close()
+            if task is not None:
                 for run_id in workers:
                     run = authority.get_run(run_id)
                     if run["graph_version"] in DUPLEX_VERSIONS and run["status"] == "running":
@@ -353,7 +358,7 @@ def create_app(
         app.mount("/mcp/" + role, mcp_server.streamable_http_app())
     app.mount("/static", StaticFiles(directory=ROOT / "web"), name="static")
     app.add_middleware(BodyLimitMiddleware, max_bytes=configuration.max_body_bytes)
-    app.add_middleware(TrustedHostMiddleware, allowed_hosts=["127.0.0.1", "localhost", "[::1]"])
+    app.add_middleware(TrustedHostMiddleware, allowed_hosts=list(configuration.web_allowed_hosts))
 
     @app.exception_handler(DomainError)
     async def domain_error(request: Request, exc: DomainError) -> JSONResponse:
@@ -405,18 +410,11 @@ def create_app(
         if request.headers.get("sec-fetch-site") == "cross-site":
             raise DomainError("ORIGIN_DENIED", "Origin is not allowed", 403)
         if (required and not origin) or (
-            origin
-            and origin
-            not in {
-                "http://127.0.0.1:18080",
-                "http://localhost:18080",
-                "http://127.0.0.1:18081",
-                "http://localhost:18081",
-            }
+            origin and origin not in configuration.web_allowed_origins
         ):
             raise DomainError("ORIGIN_DENIED", "Origin is not allowed", 403)
 
-    def browser_user(request: Request) -> BrowserSession:
+    def account_user(request: Request) -> BrowserSession:
         token = request.cookies.get(SESSION_COOKIE, "")
         if not token:
             raise DomainError("AUTH_REQUIRED", "请登录后继续。", 401)
@@ -430,20 +428,37 @@ def create_app(
                 raise DomainError("CSRF_REQUIRED", "登录状态校验失败，请刷新页面。", 403)
         return user
 
-    def authenticated(request: Request) -> None:
+    def browser_user(request: Request) -> BrowserSession:
+        user = account_user(request)
+        if not user.is_owner:
+            raise DomainError("OPERATOR_REQUIRED", "此操作仅限实例管理员。", 403)
+        return user
+
+    def member_user(request: Request) -> UUID | None:
         supplied = request.headers.get("X-MGAR-Token", "")
         if supplied and hmac.compare_digest(
             supplied.encode(), configuration.local_token.get_secret_value().encode()
         ):
             check_origin(request)
-            return  # Existing CLI and operator integrations retain their token contract.
-        browser_user(request)
+            return None
+        user = account_user(request)
         check_origin(request)
+        return None if user.is_owner else user.user_id
+
+    def authenticated(request: Request) -> None:
+        if member_user(request) is not None:
+            raise DomainError("OPERATOR_REQUIRED", "此操作仅限实例管理员。", 403)
+
+    def task_access(request: Request) -> UUID | None:
+        user_id = member_user(request)
+        if user_id is not None:
+            request.app.state.product.tenancy.require_task(request.path_params["task_id"], user_id)
+        return user_id
 
     from mgar_v3.harness.product_api import register_product_routes
     from mgar_v3.harness.runner_api import register_runner_routes
 
-    register_product_routes(app, authenticated)
+    register_product_routes(app, authenticated, member_user)
     register_runner_routes(app, authenticated)
 
     @app.get("/api/v3/auth/session")
@@ -455,6 +470,7 @@ def create_app(
                 "authenticated": user is not None,
                 "setup_required": not accounts.initialized(),
                 "username": user.username if user else None,
+                "is_owner": user.is_owner if user else False,
                 "csrf_token": user.csrf_token if user else None,
             },
             headers={"Cache-Control": "no-store"},
@@ -466,7 +482,8 @@ def create_app(
         user = accounts.session(token)
         assert user is not None
         response = JSONResponse(
-            {"authenticated": True, "username": user.username, "csrf_token": user.csrf_token},
+            {"authenticated": True, "username": user.username, "is_owner": user.is_owner,
+             "csrf_token": user.csrf_token},
             headers={"Cache-Control": "no-store"},
         )
         response.set_cookie(
@@ -501,7 +518,7 @@ def create_app(
 
     @app.post("/api/v3/auth/logout")
     def logout(
-        request: Request, user: Annotated[BrowserSession, Depends(browser_user)]
+        request: Request, user: Annotated[BrowserSession, Depends(account_user)]
     ) -> Response:
         accounts: WebAccounts = request.app.state.web_accounts
         accounts.revoke(request.cookies.get(SESSION_COOKIE, ""))
@@ -956,11 +973,9 @@ def create_app(
             }
         )
 
-    @app.get("/api/v3/harness/projects", dependencies=[Depends(authenticated)])
-    def harness_projects(
-        service: Annotated[HarnessCodingService, Depends(harness_service)],
-    ) -> Any:
-        return jsonable_encoder(service.list_projects())
+    @app.get("/api/v3/harness/projects", dependencies=[Depends(member_user)])
+    def harness_projects(request: Request) -> Any:
+        return jsonable_encoder(request.app.state.product.projects(member_user(request)))
 
     @app.post(
         "/api/v3/harness/projects",
@@ -973,11 +988,20 @@ def create_app(
     ) -> Any:
         return jsonable_encoder(service.register_project(body.path))
 
-    @app.get("/api/v3/harness/tasks", dependencies=[Depends(authenticated)])
+    @app.get("/api/v3/harness/tasks")
     def harness_tasks(
+        request: Request,
         service: Annotated[HarnessCodingService, Depends(harness_service)],
+        user_id: Annotated[UUID | None, Depends(member_user)],
     ) -> Any:
-        return jsonable_encoder(service.list_tasks())
+        if user_id is None:
+            return jsonable_encoder(service.list_tasks())
+        task_ids = request.app.state.product.tenancy.task_ids(user_id)
+        return jsonable_encoder([
+            {key: value for key, value in service.get_task(task_id).items()
+             if key in {"task_id", "status", "reason", "task_kind", "summary", "created_at"}}
+            for task_id in sorted(task_ids)
+        ])
 
     @app.post(
         "/api/v3/harness/tasks",
@@ -1006,14 +1030,19 @@ def create_app(
             result = await asyncio.to_thread(service.create_task, request)
         return jsonable_encoder(result)
 
-    @app.get("/api/v3/harness/tasks/{task_id}", dependencies=[Depends(authenticated)])
+    @app.get("/api/v3/harness/tasks/{task_id}", dependencies=[Depends(task_access)])
     def harness_task(
         task_id: str,
+        request: Request,
         service: Annotated[HarnessCodingService, Depends(harness_service)],
     ) -> Any:
-        return jsonable_encoder(service.get_task(task_id))
+        result = service.get_task(task_id)
+        if task_access(request) is not None:
+            result = {key: value for key, value in result.items()
+                      if key not in {"workspace_path", "patch_path", "product_plan"}}
+        return jsonable_encoder(result)
 
-    @app.get("/api/v3/harness/tasks/{task_id}/diff", dependencies=[Depends(authenticated)])
+    @app.get("/api/v3/harness/tasks/{task_id}/diff", dependencies=[Depends(task_access)])
     def harness_task_diff(
         task_id: str,
         service: Annotated[HarnessCodingService, Depends(harness_service)],
@@ -1026,7 +1055,7 @@ def create_app(
 
     @app.get(
         "/api/v3/harness/tasks/{task_id}/patch",
-        dependencies=[Depends(authenticated)],
+        dependencies=[Depends(task_access)],
     )
     def harness_task_patch(
         task_id: str,
@@ -1040,19 +1069,23 @@ def create_app(
 
     @app.get(
         "/api/v3/harness/tasks/{task_id}/artifacts",
-        dependencies=[Depends(authenticated)],
+        dependencies=[Depends(task_access)],
     )
     def harness_task_artifacts(
         task_id: str,
+        request: Request,
         service: Annotated[HarnessCodingService, Depends(harness_service)],
     ) -> Any:
         result = service.get_task(task_id)
+        logs = service.command_logs(task_id)
+        task_access(request)
         return jsonable_encoder(
             {
                 "task_id": result.get("task_id"),
                 "status": result.get("status"),
                 "changes": result.get("changes", []),
                 "commands": result.get("commands", []),
+                "logs": logs,
                 "tests": result.get("tests", {}),
                 "output_bytes": result.get("output_bytes", 0),
                 "input_bytes": result.get("input_bytes", 0),
@@ -1064,8 +1097,25 @@ def create_app(
         )
 
     @app.get(
+        "/api/v3/harness/tasks/{task_id}/logs/{content_hash}",
+        dependencies=[Depends(task_access)],
+    )
+    def harness_task_log(
+        task_id: str,
+        content_hash: str,
+        request: Request,
+        service: Annotated[HarnessCodingService, Depends(harness_service)],
+    ) -> Response:
+        content = service.command_log(task_id, content_hash)
+        task_access(request)
+        return Response(
+            content, media_type="text/plain",
+            headers={"Cache-Control": "no-store", "X-Content-Type-Options": "nosniff"},
+        )
+
+    @app.get(
         "/api/v3/harness/tasks/{task_id}/events/page",
-        dependencies=[Depends(authenticated)],
+        dependencies=[Depends(task_access)],
     )
     def harness_task_event_page(
         task_id: str,
@@ -1079,7 +1129,7 @@ def create_app(
 
     @app.get(
         "/api/v3/harness/tasks/{task_id}/events",
-        dependencies=[Depends(authenticated)],
+        dependencies=[Depends(task_access)],
     )
     async def harness_task_events(
         task_id: str,
@@ -1104,12 +1154,12 @@ def create_app(
             while True:
                 if await request.is_disconnected():
                     return
+                try:
+                    await asyncio.to_thread(task_access, request)
+                except DomainError:
+                    yield "event: auth_required\ndata: {}\n\n"
+                    return
                 if asyncio.get_running_loop().time() - last_check >= 5:
-                    try:
-                        await asyncio.to_thread(authenticated, request)
-                    except DomainError:
-                        yield "event: auth_required\ndata: {}\n\n"
-                        return
                     yield ": keepalive\n\n"
                     last_check = asyncio.get_running_loop().time()
                 page = await asyncio.to_thread(
@@ -1117,6 +1167,11 @@ def create_app(
                 )
                 records = page["events"]
                 for record in records:
+                    try:
+                        await asyncio.to_thread(task_access, request)
+                    except DomainError:
+                        yield "event: auth_required\ndata: {}\n\n"
+                        return
                     cursor = int(record.get("cursor", cursor))
                     yield (
                         f"id: {cursor}\nevent: update\n"
@@ -1144,7 +1199,7 @@ def create_app(
 
     @app.get(
         "/api/v3/harness/tasks/{task_id}/messages",
-        dependencies=[Depends(authenticated)],
+        dependencies=[Depends(task_access)],
     )
     def harness_task_messages(
         task_id: str,
@@ -1155,7 +1210,7 @@ def create_app(
     @app.post(
         "/api/v3/harness/tasks/{task_id}/messages",
         status_code=202,
-        dependencies=[Depends(authenticated)],
+        dependencies=[Depends(task_access)],
     )
     def harness_post_message(
         task_id: str,
@@ -1176,7 +1231,7 @@ def create_app(
     @app.post(
         "/api/v3/harness/tasks/{task_id}/cancel",
         status_code=202,
-        dependencies=[Depends(authenticated)],
+        dependencies=[Depends(task_access)],
     )
     def harness_cancel_task(
         task_id: str,
@@ -1188,7 +1243,7 @@ def create_app(
     @app.post(
         "/api/v3/harness/tasks/{task_id}/pause",
         status_code=202,
-        dependencies=[Depends(authenticated)],
+        dependencies=[Depends(task_access)],
     )
     def harness_pause_task(
         task_id: str,
@@ -1199,7 +1254,7 @@ def create_app(
     @app.post(
         "/api/v3/harness/tasks/{task_id}/resume",
         status_code=202,
-        dependencies=[Depends(authenticated)],
+        dependencies=[Depends(task_access)],
     )
     def harness_resume_task(
         task_id: str,

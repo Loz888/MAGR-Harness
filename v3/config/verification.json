@@ -1361,6 +1361,21 @@
     ],
     "timeout_seconds": 320
   },
+  "HV4-H16": {
+    "components": {
+      "isolation": "real PostgreSQL, cross-user workspace/session/Run checks, scoped raw log CAS and active SSE revocation",
+      "credentials": "per-project encrypted snapshots, independent cost ledgers and known unspent release",
+      "dispatch": "bounded per-project and global queue, independent controller lock, same Run and known-model recovery",
+      "topology": "HTTP gateway subprocess, private Unix controller socket, existing separately paired Runner API",
+      "load": "controlled six-job burst and durable queue wait metrics",
+      "live": "controlled model fixtures and local HTTP/Docker; no production use"
+    },
+    "tests": [
+      "tests/test_harness_h16.py",
+      "tests/test_agent_assets.py"
+    ],
+    "timeout_seconds": 450
+  },
   "HV4-H12": {
     "components": {
       "frozen_catalog": "H00 byte hashes, original judge objects, fixed twelve-case denominator and resource limits",

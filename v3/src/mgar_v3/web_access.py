@@ -113,6 +113,7 @@ class BrowserSession:
     user_id: UUID
     username: str
     csrf_token: str
+    is_owner: bool = True
 
 
 class WebAccounts:
@@ -121,9 +122,23 @@ class WebAccounts:
 
     def initialized(self) -> bool:
         with self.engine.transaction() as conn:
-            return conn.execute("SELECT 1 FROM app.web_accounts").fetchone() is not None
+            owner = conn.execute("SELECT 1 FROM app.web_accounts WHERE is_owner").fetchone()
+            return owner is not None
 
     def create_owner(self, request: LoginInput) -> UUID:
+        return self._create_account(request, is_owner=True)
+
+    def create_member(self, request: LoginInput) -> UUID:
+        return self._create_account(request, is_owner=False)
+
+    def list_members(self) -> list[dict[str, Any]]:
+        with self.engine.transaction() as conn:
+            return list(conn.execute(
+                "SELECT user_id,username,created_at FROM app.web_accounts "
+                "WHERE NOT is_owner ORDER BY created_at,user_id LIMIT 200"
+            ).fetchall())
+
+    def _create_account(self, request: LoginInput, *, is_owner: bool) -> UUID:
         password = request.password.get_secret_value()
         if not 10 <= len(password) <= 128:
             raise DomainError("PASSWORD_TOO_SHORT", "密码应为 10 至 128 个字符。", 400)
@@ -132,14 +147,12 @@ class WebAccounts:
         try:
             with self.engine.transaction() as conn:
                 conn.execute(
-                    "INSERT INTO app.web_accounts(user_id,username,password_hash) "
-                    "VALUES (%s,%s,%s)",
-                    (user_id, request.username, encoded),
+                    "INSERT INTO app.web_accounts(user_id,username,password_hash,is_owner) "
+                    "VALUES (%s,%s,%s,%s)",
+                    (user_id, request.username, encoded, is_owner),
                 )
         except psycopg.errors.UniqueViolation as exc:
-            raise DomainError(
-                "ACCOUNT_ALREADY_EXISTS", "管理员账户已创建，请直接登录。", 409
-            ) from exc
+            raise DomainError("ACCOUNT_ALREADY_EXISTS", "账户已存在，请直接登录。", 409) from exc
         return user_id
 
     def login(self, request: LoginInput, client: str) -> UUID:
@@ -192,7 +205,7 @@ class WebAccounts:
             return None
         with self.engine.transaction() as conn:
             row = conn.execute(
-                "SELECT u.user_id,u.username,s.csrf_token FROM app.web_sessions s "
+                "SELECT u.user_id,u.username,u.is_owner,s.csrf_token FROM app.web_sessions s "
                 "JOIN app.web_accounts u USING(user_id) WHERE token_hash=%s AND expires_at>now()",
                 (hashlib.sha256(token.encode()).hexdigest(),),
             ).fetchone()

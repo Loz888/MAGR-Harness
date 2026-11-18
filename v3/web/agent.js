@@ -119,6 +119,7 @@ function save(key, value) {
 const state = {
   csrf: "",
   username: "",
+  isOwner: true,
   setupRequired: false,
   revision: 0,
   pendingSubmit: false,
@@ -231,11 +232,15 @@ function configureLogin(setup) {
   $("confirm-password-row").hidden = !setup;
   $("confirm-password").required = setup;
   $("auth-footnote").textContent = setup
-    ? "首次创建后，仅此管理员账户可登录和修改模型设置。"
+    ? "管理员可配置模型并为项目添加成员。"
     : "登录后可直接提交问题，配置会保留在本机服务中。";
 }
 async function showSettings() {
   if (!state.connected) return;
+  if (!state.isOwner) {
+    $("logout").click();
+    return;
+  }
   if (!$("settings-dialog").open) $("settings-dialog").showModal();
   $("settings-error").textContent = "";
   try {
@@ -343,6 +348,7 @@ async function loadSettings() {
 async function enterApp(session) {
   configureLogin(false);
   state.username = session.username;
+  state.isOwner = session.is_owner !== false;
   state.csrf = session.csrf_token;
   state.connected = true;
   $("auth-screen").hidden = true;
@@ -350,6 +356,16 @@ async function enterApp(session) {
   $("login-error").textContent = "";
   $("password").value = "";
   $("confirm-password").value = "";
+  $("mode-analysis").hidden = !state.isOwner;
+  $("product-add-project").hidden = !state.isOwner;
+  $("product-project-settings").hidden = !state.isOwner;
+  $("open-settings").querySelector(".settings-icon").hidden = !state.isOwner;
+  if (!state.isOwner) {
+    $("connection-label").textContent = state.username + " · 退出登录";
+    setCodingMode("coding");
+    await window.ProductAgent?.enter();
+    return;
+  }
   await loadSettings();
   if (CODING.mode === "coding" && window.ProductAgent) {
     setCodingMode("coding");
@@ -1477,6 +1493,7 @@ function bindAgentUI() {
   });
 }
 function setCodingMode(mode) {
+  if (!state.isOwner && mode !== "coding") return;
   const coding = mode === "coding";
   document.body.classList.toggle("product-mode", coding);
   CODING.mode = mode;

@@ -28,6 +28,7 @@ from mgar_v3.harness.contracts import (
 )
 from mgar_v3.harness.events import _public
 from mgar_v3.harness.result_artifacts import load_result
+from mgar_v3.harness.tenancy import require_membership
 
 if TYPE_CHECKING:
     from mgar_v3.coordination.engine import Connection, Engine
@@ -210,6 +211,113 @@ class HarnessStore:
                 raise DomainError("HARNESS_AUTHORIZATION_REVOKED", "Project grant was revoked", 403)
         return row
 
+    def _managed_scope(self, conn: Connection, row: Row) -> Row:
+        workspace_id = row["workspace_id"]
+        managed = conn.execute(
+            "SELECT * FROM app.harness_managed_projects WHERE workspace_id=%s",
+            (workspace_id,),
+        ).fetchone()
+        registration_hash = row["registration"]["registration_hash"]
+        if managed is None or managed["registration_hash"] != registration_hash:
+            raise DomainError("HARNESS_PROJECT_BINDING_CHANGED", "Workspace binding changed", 409)
+        request = row["request"]
+        membership = request.get("product_membership_id", "")
+        if membership:
+            require_membership(
+                conn, workspace_id, membership, write=bool(row["grant_scope"]["write_paths"]),
+            )
+        return managed
+
+    def _managed_model_authority(self, conn: Connection, row: Row) -> None:
+        self._managed_scope(conn, row)
+        approval = conn.execute(
+            "SELECT profile_hash,allow_paid,expires_at,revoked_at FROM "
+            "app.harness_project_authorizations WHERE project_id=%s "
+            "ORDER BY revision DESC LIMIT 1", (row["workspace_id"],),
+        ).fetchone()
+        if (
+            approval is None or approval["profile_hash"] != row["profile_hash"]
+            or not approval["allow_paid"] or approval["revoked_at"] is not None
+            or approval["expires_at"] <= datetime.now(UTC)
+        ):
+            raise DomainError("HARNESS_AUTHORIZATION_REVOKED", "项目执行授权已变更。", 403)
+        credential = conn.execute(
+            "SELECT max(revision) AS revision FROM app.harness_project_credentials "
+            "WHERE workspace_id=%s", (row["workspace_id"],),
+        ).fetchone()
+        if credential is None or credential["revision"] != row["request"]["product_model_revision"]:
+            raise DomainError("HARNESS_PROJECT_MODEL_CHANGED", "项目模型凭据已更新。", 409)
+
+    def _managed_capacity(self, conn: Connection, row: Row, *, ready: bool) -> None:
+        project = self._managed_scope(conn, row)
+        statuses = ["running"] if ready else ["queued", "paused"]
+        usage = conn.execute(
+            "SELECT count(*) AS total,count(*) FILTER(WHERE t.workspace_id=%s) AS project "
+            "FROM app.harness_tasks t JOIN app.runs r USING (run_id) "
+            "WHERE t.managed_workspace_id IS NOT NULL AND r.status=ANY(%s)",
+            (row["workspace_id"], statuses),
+        ).fetchone()
+        assert usage is not None
+        limit = self.engine.settings.max_concurrent_runs if ready else (
+            self.engine.settings.harness_queue_limit
+        )
+        project_limit = project["max_parallel" if ready else "max_queued"]
+        if usage["total"] >= limit or usage["project"] >= project_limit:
+            code = "HARNESS_CAPACITY_BUSY" if ready else "HARNESS_QUEUE_FULL"
+            raise DomainError(code, "运行槽已满，请等待现有任务释放额度。", 429)
+
+    def check_managed_admission(self, registration: Row, request: Row) -> None:
+        with self.engine.transaction() as conn:
+            self._managed_capacity(conn, {
+                "workspace_id": registration["workspace_id"], "registration": registration,
+                "request": request, "grant_scope": {
+                    "write_paths": request.get("task_kind") != "inspect",
+                },
+            }, ready=False)
+
+    def scheduled(self) -> list[Row]:
+        with self.engine.transaction() as conn:
+            return list(conn.execute(
+                "SELECT t.task_id,t.workspace_id,p.max_parallel,r.status "
+                "FROM app.harness_tasks t JOIN app.runs r USING (run_id) "
+                "JOIN app.harness_managed_projects p ON p.workspace_id=t.managed_workspace_id "
+                "WHERE r.status='queued' OR (r.status='paused' "
+                "AND t.resume_requested_at IS NOT NULL) "
+                "ORDER BY coalesce(t.resume_requested_at,t.created_at),t.task_id "
+                "LIMIT %s", (self.engine.settings.harness_queue_limit,),
+            ).fetchall())
+
+    def schedule_resume(self, task_id: str) -> Row:
+        with self.engine.transaction() as conn:
+            row = self._row(conn, task_id)
+            if row["managed_workspace_id"] is None or row["status"] != "paused":
+                raise DomainError("NOT_RESUMABLE", "Harness task is not paused", 409)
+            self._managed_scope(conn, row)
+            # Reads and effects with an uncertain outcome are still handled by
+            # the original H11 reconciliation, under the worker's workspace lock.
+            conn.execute(
+                "UPDATE app.harness_tasks SET resume_requested_at="
+                "coalesce(resume_requested_at,now()) WHERE task_id=%s",
+                (task_id,),
+            )
+            return self._row(conn, task_id)
+
+    def dispatch_failed(self, task_id: str, code: str) -> None:
+        with self.engine.transaction() as conn:
+            row = self._row(conn, task_id)
+            if row["status"] == "paused":
+                conn.execute(
+                    "UPDATE app.harness_tasks SET resume_requested_at=NULL WHERE task_id=%s",
+                    (task_id,),
+                )
+                self.engine._event(conn, row["run_id"], "harness_resume_blocked", reason_code=code)
+            elif row["status"] in {"queued", "running"}:
+                self.engine.fail_run(row["run_id"], code, row["execution_epoch"])
+                conn.execute(
+                    "UPDATE app.harness_tasks SET public_status='failed',resume_requested_at=NULL "
+                    "WHERE task_id=%s", (task_id,),
+                )
+
     def create(
         self,
         task_id: str,
@@ -310,6 +418,7 @@ class HarnessStore:
                     raise DomainError("IDEMPOTENCY_CONFLICT", "Task id has another scope", 409)
                 return self._row(conn, task_id)
             product_session = None
+            managed_workspace_id = None
             if request.get("product_session_id"):
                 product_session = conn.execute(
                     "SELECT * FROM app.harness_sessions WHERE session_id=%s AND actor=%s "
@@ -318,6 +427,18 @@ class HarnessStore:
                 ).fetchone()
                 if product_session is None:
                     raise DomainError("HARNESS_CONTINUATION_SCOPE", "Session differs", 409)
+                if str(product_session["membership_id"] or "") != request.get(
+                    "product_membership_id", "",
+                ):
+                    raise DomainError("HARNESS_CONTINUATION_SCOPE", "Member binding differs", 403)
+                if request.get("product_managed"):
+                    managed_workspace_id = workspace_id
+                    self._managed_capacity(conn, {
+                        "workspace_id": workspace_id, "request": request,
+                        "registration": registration, "grant_scope": grant,
+                    }, ready=False)
+                elif product_session["membership_id"] is not None:
+                    raise DomainError("HARNESS_CONTINUATION_SCOPE", "Managed binding required", 403)
                 if product_session["thread_id"]:
                     thread_id = product_session["thread_id"]
                 previous_id = request.get("product_previous_task_id")
@@ -372,13 +493,16 @@ class HarnessStore:
             conn.execute(
                 "INSERT INTO app.harness_tasks(task_id,run_id,actor,workspace_id,repository,"
                 "registration,request,grant_scope,limits,identity_hash,profile_hash,deadline_at,"
-                "experiment_id,evaluation_profile) "
-                "VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
+                "experiment_id,evaluation_profile,managed_workspace_id,tree_hash,manifest_hash) "
+                "VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
                 (task_id, run_id, actor, workspace_id, repository, Jsonb(registration),
                  Jsonb(request), Jsonb(grant), Jsonb(limits.model_dump(mode="json")), identity,
                  profile, datetime.now(UTC) + timedelta(seconds=limits.max_seconds),
                  evaluation_profile.experiment_id if evaluation_profile else None,
-                 Jsonb(evaluation_profile.model_dump(mode="json")) if evaluation_profile else None),
+                 Jsonb(evaluation_profile.model_dump(mode="json")) if evaluation_profile else None,
+                 managed_workspace_id,
+                 request["workspace_manifest"]["tree_hash"] if managed_workspace_id else None,
+                 request["workspace_manifest"]["manifest_hash"] if managed_workspace_id else None),
             )
             conn.execute(
                 "INSERT INTO app.subscriptions(thread_id,run_id,role) VALUES (%s,%s,'primary')",
@@ -431,7 +555,15 @@ class HarnessStore:
                 raise DomainError("NOT_RUNNABLE", "Task is not queued", 409)
             if datetime.now(UTC) >= row["deadline_at"]:
                 raise DomainError("DEADLINE_EXCEEDED", "Harness deadline has been reached", 403)
+            if row["managed_workspace_id"] is not None:
+                self._managed_capacity(conn, row, ready=True)
             self.engine.begin_run(row["run_id"])
+            if row["managed_workspace_id"] is not None:
+                elapsed = datetime.now(UTC) - row["created_at"]
+                self.engine._event(
+                    conn, row["run_id"], "harness_dispatch_started",
+                    queued_ms=max(0, int(elapsed.total_seconds() * 1000)),
+                )
             conn.execute(
                 "UPDATE app.harness_tasks SET public_status='running',updated_at=now() "
                 "WHERE task_id=%s", (task_id,),
@@ -494,6 +626,8 @@ class HarnessStore:
                     "NOT_RESUMABLE", "Independent evaluation has sealed this tree", 409
                 )
             self._resolved(conn, row["run_id"], allow_prepared=True)
+            if row["managed_workspace_id"] is not None:
+                self._managed_capacity(conn, row, ready=True)
             if datetime.now(UTC) >= row["deadline_at"]:
                 raise DomainError("DEADLINE_EXCEEDED", "Harness deadline has been reached", 403)
             conn.execute(
@@ -503,7 +637,7 @@ class HarnessStore:
             )
             conn.execute(
                 "UPDATE app.harness_tasks SET public_status='running',result_hash=NULL,"
-                "updated_at=now() "
+                "resume_requested_at=NULL,updated_at=now() "
                 "WHERE task_id=%s", (task_id,),
             )
             self.engine._event(conn, row["run_id"], "harness_recovery_claimed")
@@ -724,6 +858,8 @@ class HarnessStore:
             if not op or op["state"] != "prepared":
                 raise DomainError("RECOVERY_BLOCKED", "Operation is not safely dispatchable", 409)
             if op["budget_kind"] == "model":
+                if row["managed_workspace_id"] is not None:
+                    self._managed_model_authority(conn, row)
                 self._group_known(conn, row)
             result = conn.execute(
                 "UPDATE app.harness_operations SET state='dispatched',intent=%s,"

@@ -1193,6 +1193,8 @@ class CodingTaskRequest:
     # Product metadata is constructed by the authenticated orchestration service,
     # never accepted by the historical task/fixture API. No credentials live here.
     product_session_id: str = ""
+    product_managed: bool = False
+    product_membership_id: str = ""
     product_turn_id: int = 0
     product_model_revision: int = 0
     product_model_capabilities: dict[str, Any] = field(default_factory=dict)
@@ -1786,7 +1788,70 @@ class HarnessCodingService:
         thread.start()
         return self._project_status(runtime.task_id)
 
-    def _prepare(self, request: CodingTaskRequest) -> _TaskRuntime:
+    def enqueue_product_task(self, request: CodingTaskRequest) -> dict[str, Any]:
+        if self.store is None or not request.product_managed or not request.product_session_id:
+            raise DomainError("HARNESS_QUEUE_UNAVAILABLE", "Managed dispatch is unavailable", 409)
+        registration = self.registry.load(request.project_id)
+        self.store.check_managed_admission(
+            registration.model_dump(mode="json"), asdict(request),
+        )
+        runtime = self._prepare(request, queue_only=True)
+        return self._project_status(runtime.task_id)
+
+    def run_scheduled(self, task_id: str, stopping: threading.Event) -> None:
+        assert self.store is not None
+        row = self.store.get(task_id)
+        if stopping.is_set():
+            return
+        try:
+            if row["status"] == "paused" and row["resume_requested_at"]:
+                self.recover_task(task_id, stopping=stopping)
+                return
+            if row["status"] != "queued" or row["managed_workspace_id"] is None:
+                return
+            request = CodingTaskRequest(**{
+                key: value for key, value in row["request"].items()
+                if key in CodingTaskRequest.__dataclass_fields__
+            })
+            registration = Registration.model_validate(row["registration"])
+            with self.store.workspace_lock(row):
+                workspace = self.registry.open_task_workspace(registration, task_id)
+                frozen_manifest = row["request"]["workspace_manifest"]
+                if (workspace.manifest.model_dump(mode="json") != frozen_manifest
+                        or workspace.snapshot().tree_hash != row["tree_hash"]):
+                    raise DomainError("RECOVERY_TREE_CONFLICT", "Queued workspace changed", 409)
+                if stopping.is_set():
+                    return
+                row = self.store.begin(task_id)
+            runtime = _TaskRuntime(
+                task_id=task_id, workspace=workspace, registration=registration, request=request,
+                control=TaskControl(), durable_row=row,
+                inbox=EngineInbox(self.store, task_id, epoch=row["execution_epoch"]),
+                events=EngineEvents(self.store, task_id, row["execution_epoch"]),
+            )
+            self._register_runtime(runtime)
+            if stopping.is_set():
+                self.store.pause(task_id)
+                return
+            self._background(runtime)
+        except DomainError as exc:
+            if exc.code not in {"HARNESS_CAPACITY_BUSY", "NOT_RUNNABLE", "FENCED", "STALE_EPOCH"}:
+                self.store.dispatch_failed(task_id, exc.code)
+        except Exception:
+            self.store.dispatch_failed(task_id, "HARNESS_DISPATCH_FAILED")
+        finally:
+            with self._runtime_lock:
+                self._runtimes.pop(task_id, None)
+
+    def suspend_scheduled(self, task_id: str) -> None:
+        assert self.store is not None
+        if self.store.get(task_id)["status"] == "running":
+            self.store.pause(task_id)
+            runtime = self._runtimes.get(task_id)
+            if runtime is not None:
+                runtime.control.request_cancel("Controller stopping")
+
+    def _prepare(self, request: CodingTaskRequest, *, queue_only: bool = False) -> _TaskRuntime:
         kind = request.task_kind
         profile = self.evaluation_profile
         if kind not in {"inspect", "bugfix", "feature", "refactor"} and not (
@@ -1915,6 +1980,8 @@ class HarnessCodingService:
             )
             runtime.inbox = EngineInbox(self.store, task_id)
             runtime.events = EngineEvents(self.store, task_id, 0)
+        if queue_only:
+            return runtime
         self._register_runtime(runtime)
         self._status(
             runtime,
@@ -1936,7 +2003,9 @@ class HarnessCodingService:
         with self._runtime_lock:
             self._runtimes[runtime.task_id] = runtime
 
-    def recover_task(self, task_id: str, *, background: bool = False) -> dict[str, Any]:
+    def recover_task(
+        self, task_id: str, *, background: bool = False, stopping: threading.Event | None = None,
+    ) -> dict[str, Any]:
         if self.store is None:
             raise DomainError("HARNESS_RECOVERY_UNAVAILABLE", "Engine is required", 409)
         if not TASK_ID_PATTERN.fullmatch(task_id):
@@ -2328,6 +2397,8 @@ class HarnessCodingService:
                     )
             if reconciliation_errors:
                 raise reconciliation_errors[0]
+            if stopping is not None and stopping.is_set():
+                return self._project_status(task_id)
             row = self.store.claim(task_id)
             if workspace.snapshot().tree_hash != row["tree_hash"]:
                 # Reconciled edits carry the only authorized tree transition.
@@ -2365,6 +2436,9 @@ class HarnessCodingService:
             durable_row=row,
         )
         self._register_runtime(runtime)
+        if stopping is not None and stopping.is_set():
+            self.store.pause(task_id)
+            return self._project_status(task_id)
         if background:
             thread = threading.Thread(target=self._background, args=(runtime,), daemon=True)
             runtime.thread = thread
@@ -2513,6 +2587,33 @@ class HarnessCodingService:
             )
         finally:
             self._sweep(runtime.workspace)
+
+    def command_logs(self, task_id: str) -> list[dict[str, Any]]:
+        if self.store is None:
+            return []
+        result = []
+        for operation in self.store.operations(task_id):
+            receipt = operation["receipt"]
+            if operation["kind"] != "command" or operation["state"] != "known" or not receipt:
+                continue
+            content_hash = receipt.get("raw_log_hash")
+            if not isinstance(content_hash, str) or not re.fullmatch(r"[0-9a-f]{64}", content_hash):
+                continue
+            result.append({
+                "operation_id": operation["operation_id"],
+                "sha256": content_hash,
+                "truncated": bool(receipt.get("dropped_bytes")
+                                  or receipt.get("handle", {}).get("log_truncated")),
+                "url": f"/api/v3/harness/tasks/{task_id}/logs/{content_hash}",
+            })
+        return result
+
+    def command_log(self, task_id: str, content_hash: str) -> bytes:
+        if self.engine is None or not any(
+            item["sha256"] == content_hash for item in self.command_logs(task_id)
+        ):
+            raise DomainError("HARNESS_LOG_UNKNOWN", "命令日志不存在。", 404)
+        return cast(bytes, self.engine.artifacts.read(content_hash))
 
     def get_task(self, task_id: str) -> dict[str, Any]:
         if not TASK_ID_PATTERN.fullmatch(task_id):
@@ -2786,6 +2887,9 @@ class HarnessCodingService:
         if not self._task_exists(task_id):
             raise DomainError("HARNESS_TASK_UNKNOWN", "Task is unavailable", 404)
         if self.store is not None and task_id not in self._runtimes:
+            if self.store.get(task_id)["managed_workspace_id"] is not None:
+                self.store.schedule_resume(task_id)
+                return {"task_id": task_id, "status": "queued"}
             return self.recover_task(task_id, background=True)
         status = self._current_status(task_id)
         if status in _TERMINAL:
@@ -3385,7 +3489,10 @@ class HarnessCodingService:
                     self, model_request: ModelRequest, cancellation: CancellationToken
                 ) -> ModelResponse:
                     assert resolver is not None
-                    resolver(request)
+                    if not request.product_managed:
+                        resolver(request)
+                    # Managed requests are admitted while their prepared
+                    # operation moves to dispatched on the Engine connection.
                     from mgar_v3.harness.product_models import product_request_reservation
 
                     if model_request.reservation_micros < product_request_reservation(

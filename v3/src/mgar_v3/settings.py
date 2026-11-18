@@ -56,6 +56,12 @@ class Settings(BaseSettings):
     harness_root: Path = ROOT / ".local/harness-v4"
     harness_image_lock: Path = ROOT / ".local/r03/sandbox-lock.json"
     harness_plugin_lock: Path | None = None
+    harness_queue_limit: int = Field(default=32, ge=1, le=256)
+    web_allowed_hosts: tuple[str, ...] = ("127.0.0.1", "localhost", "[::1]")
+    web_allowed_origins: tuple[str, ...] = (
+        "http://127.0.0.1:18080", "http://localhost:18080",
+        "http://127.0.0.1:18081", "http://localhost:18081",
+    )
 
     @field_validator("r4_tool_base_url")
     @classmethod

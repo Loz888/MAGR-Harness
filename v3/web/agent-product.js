@@ -284,13 +284,14 @@
   function title() {
     if (CODING.mode !== "coding") return;
     $("page-title").textContent = data.session?.title || project()?.repository || "新的项目对话";
-    $("model-label").textContent = data.profile?.model?.model_id || "PROJECT AGENT";
-    $("connection-dot").className = "status-dot " + (data.profile?.model?.available ? "ready" : "error");
+    const model = data.readiness?.model || data.profile?.model;
+    $("model-label").textContent = model?.model_id || "PROJECT AGENT";
+    $("connection-dot").className = "status-dot " + (model?.available ? "ready" : "error");
     $("mode-badge").textContent = statusLabels[data.status] || "项目助手";
     $("new-chat").disabled = false;
     $("product-project").disabled = !data.projects.length;
     $("product-project-settings").disabled = !data.projectId;
-    $("product-send").disabled = data.sending;
+    $("product-send").disabled = data.sending || (!data.projectId && !state.isOwner);
     const hasText = Boolean($("product-input").value.trim());
     const stopping = active() && data.status !== "paused" && !hasText;
     $("product-send").type = active() ? "button" : "submit";
@@ -337,8 +338,16 @@
   function renderSetup(readiness) {
     const banner = $("product-setup");
     let heading = "", description = "", action = "";
-    const model = data.profile?.model || {};
-    if (!data.projects.length) {
+    const model = readiness?.model || data.profile?.model || {};
+    if (!state.isOwner && !data.projects.length) {
+      heading = "暂无可用项目";
+      description = "请管理员为你的账户分配项目。";
+      data.setupAction = null;
+    } else if (!state.isOwner && (!model.available || !readiness?.authorization?.valid)) {
+      heading = "项目尚未获得执行配置";
+      description = "请管理员核对项目凭据与预算。";
+      data.setupAction = null;
+    } else if (!data.projects.length) {
       heading = "从打开一个项目开始";
       description = "选择 Harness 所在电脑上的项目目录，后续可以随时切换项目。";
       action = "打开项目";
@@ -370,6 +379,7 @@
     $("product-setup-title").textContent = heading;
     $("product-setup-description").textContent = description;
     $("product-setup-action").textContent = action;
+    $("product-setup-action").hidden = !action;
   }
   async function refreshReadiness() {
     if (!data.projectId) { renderSetup(null); return; }
@@ -377,6 +387,7 @@
     if (readiness.project_id && readiness.project_id !== data.projectId) return;
     data.readiness = readiness;
     renderSetup(readiness);
+    title();
   }
   async function prepareModelSettings() {
     if (!state.connected) return;
@@ -416,7 +427,8 @@
       if (!data.projects.some((item) => item.project_id === data.projectId)) data.projectId = data.projects.find((item) => item.project_id === saved("mgar-agent-project"))?.project_id || data.projects[0].project_id;
       for (const item of data.projects) {
         const location = item.execution_site?.kind === "server_sandbox" ? item.execution_site.name : item.path;
-        const option = node("option", "", item.repository + " · " + location); option.value = item.project_id; select.append(option);
+        const label = location ? item.repository + " · " + location : item.repository;
+        const option = node("option", "", label); option.value = item.project_id; select.append(option);
       }
       select.value = data.projectId;
       save("mgar-agent-project", data.projectId);
@@ -432,7 +444,7 @@
       await refresh();
       if (CODING.mode !== "coding" || !state.connected) return;
       const previous = data.session?.session_id || saved("mgar-agent-session");
-      if (previous) {
+      if (previous && data.sessions.some((item) => item.session_id === previous)) {
         try { await selectSession(previous); } catch (error) { save("mgar-agent-session", ""); fail(error); }
       }
       title();
@@ -501,7 +513,7 @@
     if (result.patch_url?.startsWith("/api/v3/harness/tasks/")) {
       const download = node("a", "ghost-button", "下载补丁"); download.href = result.patch_url; actions.append(download);
     }
-    if (result.changes?.length && result.tree_after && terminal.has(result.status)) {
+    if (state.isOwner && result.changes?.length && result.tree_after && terminal.has(result.status)) {
       const apply = node("button", "ghost-button", "应用变更到项目"); apply.type = "button";
       apply.disabled = active() || taskId !== data.taskId || result.status !== "completed";
       const receipt = node("span", "field-help", "");
@@ -522,7 +534,7 @@
         actions.append(github);
       }
     }
-    if (result.status === "completed" && taskId === data.taskId) {
+    if (state.isOwner && result.status === "completed" && taskId === data.taskId) {
       const start = node("button", "ghost-button", "启动应用预览"); start.type = "button"; start.disabled = active();
       const previewHost = node("div", "product-preview-host");
       const previewStatus = node("span", "field-help", "");
@@ -546,7 +558,7 @@
     }
     if (actions.childElementCount) content.append(actions);
     const previewUrl = result.preview_url || result.preview?.url;
-    if (previewUrl?.startsWith("/api/v3/agent/") && !previewUrl.includes("..")) {
+    if (state.isOwner && previewUrl?.startsWith("/api/v3/agent/") && !previewUrl.includes("..")) {
       const preview = node("details", "product-details"); preview.append(node("summary", "", "应用预览"));
       const frame = node("iframe", "product-preview"); frame.title = "应用预览"; frame.setAttribute("sandbox", "allow-scripts allow-forms"); frame.src = previewUrl;
       preview.append(frame); content.append(preview);
