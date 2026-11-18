@@ -525,6 +525,8 @@ class HarnessStore:
     def recover(self) -> dict[str, int]:
         counts = {"paused_harness_runs": 0, "unknown_harness_operations": 0}
         for task in self.tasks():
+            if task["task_id"].startswith("h15-"):
+                continue  # Runner recovery must first reconcile the delivery ticket.
             if task["status"] not in {"running", "paused"}:
                 continue
             with self.workspace_lock(task), self.engine.transaction() as conn:

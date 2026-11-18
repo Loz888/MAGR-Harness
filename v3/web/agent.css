@@ -1402,6 +1402,11 @@ dialog textarea {
 .product-dialog input { border: 1px solid var(--line); border-radius: 8px; padding: 11px; width: 100%; }
 .product-dialog .checkbox-label input { width: auto; flex: 0 0 auto; }
 .product-dialog .primary-button { align-self: flex-start; }
+.product-runner-list { list-style: none; padding: 0; margin: 12px 0; }
+.product-runner-list li { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 6px 0; }
+#product-runner-code { margin: 10px 0; }
+#product-runner-code code { overflow-wrap: anywhere; }
+#product-runner-result pre { white-space: pre-wrap; overflow-wrap: anywhere; }
 .product-preview { width: 100%; height: 420px; background: #fff; border: 0; border-top: 1px solid var(--line); }
 .product-preview-host:empty { display: none; }
 .product-preview-host { margin-top: 14px; }

@@ -415,7 +415,8 @@
     } else {
       if (!data.projects.some((item) => item.project_id === data.projectId)) data.projectId = data.projects.find((item) => item.project_id === saved("mgar-agent-project"))?.project_id || data.projects[0].project_id;
       for (const item of data.projects) {
-        const option = node("option", "", item.repository + " · " + item.path); option.value = item.project_id; select.append(option);
+        const location = item.execution_site?.kind === "server_sandbox" ? item.execution_site.name : item.path;
+        const option = node("option", "", item.repository + " · " + location); option.value = item.project_id; select.append(option);
       }
       select.value = data.projectId;
       save("mgar-agent-project", data.projectId);
@@ -711,6 +712,130 @@
     if (!$("product-project-dialog").open) $("product-project-dialog").showModal();
     $("product-project-path").focus();
   }
+  const runnerBase = "/api/v3/runner";
+  const runnerDialog = $("product-runner-dialog");
+  const runnerSelect = $("product-runner-workspace");
+  let runnerTimer = null;
+  let runnerRefreshing = false;
+  let runnerSubmitting = false;
+  let runnerPending = null;
+  let pairExpires = 0;
+  const runnerError = (error) => { $("product-runner-error").textContent = error ? errorText(error) : ""; };
+  const runnerButton = (label, action) => {
+    const button = node("button", "ghost-button", label);
+    button.type = "button";
+    button.addEventListener("click", async () => {
+      button.disabled = true;
+      try { runnerError(); await action(); }
+      catch (error) { runnerError(error); }
+      finally { button.disabled = false; }
+    });
+    return button;
+  };
+  async function showRunnerResult(task) {
+    const result = await call("GET", "/api/v3/harness/tasks/" + encodeURIComponent(task.task_id));
+    const panel = $("product-runner-result");
+    panel.replaceChildren(
+      node("h3", "", task.workspace_name),
+      node("p", "", result.summary || result.reason || statusLabels[result.status] || ""),
+    );
+    if (result.output) panel.append(node("pre", "", result.output));
+  }
+  async function refreshRunners() {
+    if (runnerRefreshing || !runnerDialog.open) return;
+    runnerRefreshing = true;
+    try {
+      const [devices, workspaces, jobs] = await Promise.all(
+        ["/devices", "/workspaces", "/jobs"].map((path) => call("GET", runnerBase + path)),
+      );
+      if (!runnerDialog.open) return;
+      if (pairExpires && Date.now() >= pairExpires) {
+        $("product-runner-code").hidden = true;
+        $("product-runner-code").replaceChildren();
+        pairExpires = 0;
+      }
+      $("product-runner-devices").replaceChildren(...devices.map((device) => {
+        const status = device.revoked_at ? "已撤销" : device.online ? "在线" : "离线";
+        const item = node("li", "", device.name + " · " + status);
+        if (!device.revoked_at) item.append(runnerButton("撤销", async () => {
+          if (!window.confirm("撤销此设备并停止它的任务？")) return;
+          await call("DELETE", runnerBase + "/devices/" + encodeURIComponent(device.device_id));
+          await refreshRunners();
+        }));
+        return item;
+      }));
+      const selected = runnerSelect.value;
+      runnerSelect.replaceChildren(...workspaces.map((workspace) => {
+        const label = workspace.name + " · " + workspace.device_name + (workspace.online ? "" : "（离线）");
+        const option = node("option", "", label);
+        option.value = workspace.workspace_id;
+        return option;
+      }));
+      if (workspaces.some((workspace) => workspace.workspace_id === selected)) runnerSelect.value = selected;
+      $("product-runner-submit").disabled = runnerSubmitting || !workspaces.length;
+      $("product-runner-jobs").replaceChildren(...jobs.map((job) => {
+        const status = job.waiting_for_device && !job.device_online
+          ? "等待设备上线" : statusLabels[job.status] || job.status;
+        const item = node("li", "", job.workspace_name + " · " + job.execution_site.name + " · " + status);
+        item.append(runnerButton("查看结果", () => showRunnerResult(job)));
+        if (["queued", "running", "paused", "unknown"].includes(job.status)) {
+          item.append(runnerButton("停止", async () => {
+            await call("POST", "/api/v3/harness/tasks/" + encodeURIComponent(job.task_id) + "/cancel");
+            await refreshRunners();
+          }));
+        }
+        return item;
+      }));
+    } catch (error) { runnerError(error); }
+    finally { runnerRefreshing = false; }
+  }
+  $("product-runner-open").addEventListener("click", () => {
+    $("product-project-dialog").close();
+    runnerError();
+    runnerDialog.showModal();
+    refreshRunners();
+    runnerTimer = setInterval(refreshRunners, 2500);
+  });
+  $("product-runner-close").addEventListener("click", () => runnerDialog.close());
+  runnerDialog.addEventListener("close", () => {
+    clearInterval(runnerTimer);
+    $("product-runner-code").hidden = true;
+    $("product-runner-code").replaceChildren();
+    $("product-runner-result").replaceChildren();
+    pairExpires = 0;
+  });
+  $("product-runner-pair").addEventListener("click", async (event) => {
+    event.currentTarget.disabled = true;
+    try {
+      runnerError();
+      const issued = await call("POST", runnerBase + "/pairings");
+      if (!runnerDialog.open) return;
+      pairExpires = Date.parse(issued.expires_at);
+      const code = $("product-runner-code");
+      code.replaceChildren(node("p", "", "在目标设备运行 mgar runner pair，输入下面的配对码。"),
+        node("code", "", issued.code));
+      code.hidden = false;
+    } catch (error) { runnerError(error); }
+    finally { $("product-runner-pair").disabled = false; }
+  });
+  $("product-runner-form").addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const workspace = runnerSelect.value;
+    if (!workspace || runnerSubmitting) return;
+    runnerSubmitting = true;
+    const submit = $("product-runner-submit");
+    submit.disabled = true;
+    try {
+      runnerError();
+      if (runnerPending?.workspace_id !== workspace) {
+        runnerPending = {workspace_id: workspace, client_id: crypto.randomUUID()};
+      }
+      await call("POST", runnerBase + "/jobs", runnerPending);
+      runnerPending = null;
+      await refreshRunners();
+    } catch (error) { runnerError(error); }
+    finally { runnerSubmitting = false; submit.disabled = !runnerSelect.value; }
+  });
   function openPermission() {
     if (!data.projectId) { openProject(); return; }
     $("product-permission-error").textContent = "";
