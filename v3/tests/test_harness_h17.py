@@ -444,3 +444,27 @@ def test_managed_project_expert_inherits_project_credential_and_authorization(te
     child = [op for op in operations_for_run if EXPERT_OPERATION in op["operation_id"]]
     assert len(child) == 1 and child[0]["state"] == "known"
     assert child[0]["run_id"] == operations_for_run[0]["run_id"]
+
+
+
+def test_status_and_result_use_the_same_run_snapshot(product_env, monkeypatch):
+    env = product_env
+    install(env, consultations=(consult(),))
+    session = env.product.create(env.project_id, "解释项目", "terminal-publication")
+    task_id = session["task_id"]
+    original = env.engine.harness.get
+    finished = original(task_id)
+    assert finished["result_hash"]
+    states = iter([{
+        **finished, "status": "running", "public_status": "running", "result_hash": None,
+    }])
+
+    def crossed_finish(selected):
+        assert selected == task_id
+        return next(states, finished)
+
+    monkeypatch.setattr(env.engine.harness, "get", crossed_finish)
+    pending = env.harness.get_task(task_id)
+    assert pending["status"] == "running" and "model_calls" not in pending
+    terminal = env.harness.get_task(task_id)
+    assert terminal["status"] == "completed" and terminal["model_calls"] == 4

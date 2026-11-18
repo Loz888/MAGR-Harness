@@ -2639,7 +2639,9 @@ class HarnessCodingService:
                     self.engine.artifacts, self.engine.artifacts.read(row["result_hash"]),
                     task_id, str(row["run_id"]),
                 )
-            return self._project_status(task_id)
+            # Project the same snapshot used for the result lookup. A later
+            # snapshot could mark the request completed without its result.
+            return self._project_status(task_id, row=row)
         path = self.runs / task_id / "result.json"
         if path.is_file():
             return cast(dict[str, Any], json.loads(path.read_text(encoding="utf-8")))
@@ -3011,7 +3013,9 @@ class HarnessCodingService:
                 return "unknown"
         return "unknown"
 
-    def _project_status(self, task_id: str) -> dict[str, Any]:
+    def _project_status(
+        self, task_id: str, *, row: dict[str, Any] | None = None,
+    ) -> dict[str, Any]:
         status_path = self.runs / task_id / "status.json"
         payload: dict[str, Any] = {}
         if status_path.is_file():
@@ -3020,7 +3024,8 @@ class HarnessCodingService:
             except (OSError, ValueError):
                 payload = {}
         if self.store is not None:
-            row = self.store.get(task_id)
+            if row is None:
+                row = self.store.get(task_id)
             status = self._task_public_status(row)
             payload.update(
                 status=status,
