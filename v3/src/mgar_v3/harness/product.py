@@ -11,23 +11,27 @@ import json
 import re
 import secrets
 import threading
+from contextlib import suppress
 from dataclasses import asdict
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any, cast
-from uuid import uuid4
+from uuid import UUID, uuid4
 
 from psycopg.types.json import Jsonb
 
 from mgar_v3.context.policy import ContextPolicy
 from mgar_v3.domain import DomainError, digest
-from mgar_v3.harness.contracts import BudgetLimits
+from mgar_v3.harness.contracts import BudgetLimits, ModelAdapter
+from mgar_v3.harness.extension_adapters import default_catalog
 from mgar_v3.harness.model import ModelCapabilities
+from mgar_v3.harness.plugins import ModelPlugin, PluginCatalog, PluginPin, ToolMount, ToolPlugin
 from mgar_v3.harness.product_models import DEFAULT_PRODUCT_MODEL, product_model_capabilities
 from mgar_v3.harness.product_runtime import product_readiness, validate_product_image_lock
 from mgar_v3.harness.recovery_io import workspace_lock
 from mgar_v3.harness.service import _TERMINAL, CodingTaskRequest, HarnessCodingService
 from mgar_v3.harness.workspace import TaskWorkspace
+from mgar_v3.mcp.factory import verified_github_binary
 from mgar_v3.web_access import WebAnalysisSettings
 
 _SESSION = re.compile(r"hs-[a-f0-9]{24}")
@@ -73,7 +77,10 @@ def infer_intent(text: str) -> str:
 
 
 class HarnessProductService:
-    def __init__(self, harness: HarnessCodingService, settings: WebAnalysisSettings) -> None:
+    def __init__(
+        self, harness: HarnessCodingService, settings: WebAnalysisSettings,
+        *, plugins: PluginCatalog | None = None,
+    ) -> None:
         self.harness, self.settings = harness, settings
         self.engine = harness.engine
         if self.engine is None:
@@ -82,7 +89,9 @@ class HarnessProductService:
         self._previews: dict[str, Any] = {}
         self._preview_tokens: dict[str, str] = {}
         self._preview_urls: dict[str, str] = {}
+        self.plugins = plugins or default_catalog(self.engine.settings.harness_plugin_lock)
         harness.product_model_resolver = self.resolve_model
+        harness.product_adapter_factory = self._plugin_adapter
         harness.product_extension_factory = self.extensions
         self._cleanup_previews()
 
@@ -110,7 +119,7 @@ class HarnessProductService:
             self.settings._cipher().decrypt(row["encrypted_payload"].encode())
         )
 
-    def model_status(self) -> dict[str, Any]:
+    def model_status(self, *, plugin: ModelPlugin | None = None) -> dict[str, Any]:
         revision, payload = self._model_snapshot()
         effective = self.settings.effective(payload)
         authorization = payload.get("authorization", {}) if payload else {}
@@ -123,7 +132,7 @@ class HarnessProductService:
         )
         reason = ""
         try:
-            capabilities = product_model_capabilities(configured)
+            capabilities = plugin.capabilities if plugin else product_model_capabilities(configured)
             policy.window(capabilities.context_tokens, capabilities.max_output_tokens)
         except DomainError as exc:
             reason = exc.code
@@ -131,7 +140,7 @@ class HarnessProductService:
         return {
             "revision": revision,
             "model_id": capabilities.model_id if capabilities else configured,
-            "configured_model_id": configured,
+            "configured_model_id": plugin.plugin_id if plugin else configured,
             "recommended_model_id": DEFAULT_PRODUCT_MODEL,
             "catalog": [
                 product_model_capabilities(name).model_dump(mode="json")
@@ -242,6 +251,83 @@ class HarnessProductService:
             )
         return self.authorization(project_id)
 
+    def _check_plugin_lock_location(self) -> None:
+        lock = self.plugins.path
+        if lock is not None:
+            location = lock.resolve()
+            if any(
+                item["path"] and location.is_relative_to(Path(item["path"]).resolve())
+                for item in self.harness.list_projects()
+            ):
+                raise DomainError(
+                    "PLUGIN_LOCK_SCOPE", "Plugin lock must be outside project roots", 403
+                )
+
+    def _select_plugins(
+        self, project_id: str, authorization: dict[str, Any],
+    ) -> dict[str, PluginPin]:
+        self._check_plugin_lock_location()
+        return self.plugins.selected(
+            project_id, github=bool(authorization.get("allow_github_read"))
+        )
+
+    def _knowledge_scopes(self, pins: dict[str, PluginPin]) -> dict[str, str]:
+        if "knowledge" not in pins:
+            return {}
+        return {
+            snapshot: self.engine.knowledge.eligible(UUID(snapshot), self.harness.actor)[2]
+            for snapshot in pins["knowledge"].knowledge_snapshots
+        }
+
+    def _mcp_endpoint_hash(self, pins: dict[str, PluginPin]) -> str:
+        if pins.keys().isdisjoint({"knowledge", "data"}):
+            return ""
+        return digest(self.engine.settings.r4_tool_base_url or "")
+
+    def _bound_plugins(
+        self, request: CodingTaskRequest, authorization: dict[str, Any],
+    ) -> dict[str, PluginPin]:
+        if request.product_plugin_bindings:
+            self._check_plugin_lock_location()
+        pins = self.plugins.resolve(
+            request.project_id, request.product_plugin_bindings,
+            github=bool(authorization.get("allow_github_read")),
+        )
+        if self._knowledge_scopes(pins) != request.product_knowledge_scopes:
+            raise DomainError("KNOWLEDGE_SCOPE_CHANGED", "Approved knowledge access changed", 403)
+        if self._mcp_endpoint_hash(pins) != request.product_mcp_endpoint_hash:
+            raise DomainError("MCP_ENDPOINT_CHANGED", "Bound MCP endpoint changed", 403)
+        if "data" in pins:
+            self.engine.tools.harness_data_profile(
+                self.harness.actor, pins["data"].sql_profile_sha256,
+            )
+        return pins
+
+    def _model_plugin(self, pins: dict[str, PluginPin]) -> ModelPlugin | None:
+        models = [pin for pin in pins.values() if pin.kind == "model"]
+        if len(models) > 1:
+            raise DomainError(
+                "PLUGIN_MODEL_CONFLICT", "Only one model may be selected per project", 409
+            )
+        if not models:
+            return None
+        model = self.plugins.definition(models[0])
+        assert isinstance(model, ModelPlugin)
+        if model.capabilities.provider != "deepseek" or not model.capabilities.supports_tools:
+            raise DomainError(
+                "PLUGIN_MODEL_UNSUPPORTED", "The configured provider requires tool support", 409,
+            )
+        return model
+
+    def _plugin_adapter(
+        self, request: CodingTaskRequest, key: str, capabilities: ModelCapabilities,
+    ) -> ModelAdapter | None:
+        if not request.product_plugin_bindings:
+            return None
+        grant = self.authorization(request.project_id, required=True)
+        model = self._model_plugin(self._bound_plugins(request, grant))
+        return model.create(key, capabilities, self.engine.artifacts) if model else None
+
     def resolve_model(self, request: CodingTaskRequest) -> tuple[str, ModelCapabilities]:
         grant = self.authorization(request.project_id, required=True)
         if grant["revision"] != request.product_authorization_revision or not grant["allow_paid"]:
@@ -263,7 +349,15 @@ class HarnessProductService:
             raise DomainError(
                 "HARNESS_CONTEXT_POLICY_CHANGED", "本轮上下文配置与冻结版本不同。", 409
             )
-        capabilities = product_model_capabilities(config.get("model_id", DEFAULT_PRODUCT_MODEL))
+        pins = self._bound_plugins(request, grant)
+        binary = effective.github_mcp_binary
+        if "github" in pins and binary is not None:
+            verified_github_binary(binary)
+        plugin = self._model_plugin(pins)
+        capabilities = (
+            plugin.capabilities if plugin else
+            product_model_capabilities(config.get("model_id", DEFAULT_PRODUCT_MODEL))
+        )
         if request.product_model_capabilities and capabilities.model_dump(mode="json") != (
             request.product_model_capabilities
         ):
@@ -285,10 +379,19 @@ class HarnessProductService:
     def readiness(self, project_id: str) -> dict[str, Any]:
         project = self._project(project_id)
         environment = product_readiness(Path(project["path"]), self.image_lock(project_id))
+        authorization = self.authorization(project_id)
+        pins = self._select_plugins(project_id, authorization) if authorization["valid"] else {}
         return {
             "project_id": project_id,
-            "authorization": self.authorization(project_id),
-            "model": self.model_status(),
+            "authorization": authorization,
+            "model": self.model_status(plugin=self._model_plugin(pins)),
+            "extensions": [
+                {
+                    "plugin_id": pin.plugin_id, "version": pin.version, "kind": pin.kind,
+                    "tools": [f"{pin.plugin_id}__{name}" for name in pin.tools],
+                }
+                for pin in pins.values()
+            ],
             "environment": environment,
         }
 
@@ -347,45 +450,95 @@ class HarnessProductService:
         from mgar_v3.harness.extensions import (
             ExtensionAccess,
             ProductExtensionRegistry,
-            configured_github_extension,
+            TrustedExtension,
         )
 
         request = runtime.request
         authorization = self.authorization(request.project_id, required=True)
-        if not authorization.get("allow_github_read"):
+        pins = self._bound_plugins(request, authorization)
+        if (
+            not pins and not request.product_guidance and self.plugins.path is None
+            and authorization.get("allow_github_read")
+        ):
+            pins = self._select_plugins(request.project_id, authorization)
+        tool_pins = {name: pin for name, pin in pins.items() if pin.kind == "tool"}
+        if not tool_pins:
             return tools
         assert runtime.task is not None
         task = runtime.task
-        if task.repository.startswith("local/") or task.base_commit == "0" * 40:
-            raise DomainError("EXTENSION_CONFIG_DENIED", "GitHub 工具需要固定远程仓库提交。", 409)
+        if "github" in tool_pins and (
+            task.repository.startswith("local/") or task.base_commit == "0" * 40
+        ):
+            raise DomainError("EXTENSION_CONFIG_DENIED", "GitHub 工具需要固定仓库提交。", 409)
         _, payload = self._model_snapshot(request.product_model_revision)
         effective = self.settings.effective(payload)
-        access = ExtensionAccess(
-            actor=task.actor,
-            workspace_id=task.workspace_id,
-            repository=task.repository,
-            execution_epoch=task.execution_epoch,
-            authorization_ref=authorization["profile_hash"],
-            read_paths=("",),
-            allowed_tools=("read_file",),
-            network_hosts=("api.githubcopilot.com",),
-        )
+        mcp = {role: tool_pins[role] for role in ("knowledge", "data") if role in tool_pins}
+        if mcp:
+            self.engine.tools.bind_harness_mcp(
+                task.task_id, task.execution_epoch,
+                snapshots=mcp["knowledge"].knowledge_snapshots if "knowledge" in mcp else (),
+                knowledge_scopes=request.product_knowledge_scopes,
+                sql_profile_sha256=mcp["data"].sql_profile_sha256 if "data" in mcp else None,
+                role_tools={role: pin.tools for role, pin in mcp.items()},
+                authorization_ref=authorization["profile_hash"],
+            )
+        extensions: list[TrustedExtension] = []
+        try:
+            for name, pin in tool_pins.items():
+                definition = self.plugins.definition(pin)
+                assert isinstance(definition, ToolPlugin)
+                access = ExtensionAccess(
+                    actor=task.actor, workspace_id=task.workspace_id, repository=task.repository,
+                    execution_epoch=task.execution_epoch,
+                    authorization_ref=authorization["profile_hash"], read_paths=pin.read_paths,
+                    allowed_tools=pin.tools,
+                    network_hosts=("api.githubcopilot.com",) if name == "github" else (),
+                    mode=(
+                        "network" if name == "github" else "scoped_mcp" if name in mcp else "local"
+                    ),
+                    timeout_seconds=pin.timeout_seconds, max_result_bytes=pin.max_result_bytes,
+                )
+                extension = definition.create(ToolMount(
+                    self.engine, effective, task, runtime.workspace, access, pin,
+                    Path(request.product_plan.get("image_lock") or self.harness.image_lock),
+                    tools.recovery_io,
+                ))
+                extensions.append(extension)
+                if (
+                    (extension.namespace, extension.version, extension.access)
+                    != (name, pin.version, access)
+                    or {spec.name for spec in extension.specs()} != set(pin.tools)
+                ):
+                    raise DomainError(
+                        "PLUGIN_SCOPE_DENIED", "Mounted plugin differs from its lock", 403,
+                    )
 
-        def current_authority(context: ToolContext, paths: tuple[str, ...]) -> None:
-            self.resolve_model(request)
+            def current_authority(context: ToolContext, paths: tuple[str, ...]) -> None:
+                tools.broker.authority.check_scope(
+                    actor=context.task.actor, workspace_id=context.task.workspace_id,
+                    repository=context.task.repository,
+                    execution_epoch=context.task.execution_epoch,
+                    paths=paths, write=False,
+                )
 
-        return ProductExtensionRegistry(
-            tools,
-            extensions=(configured_github_extension(effective, access=access),),
-            authority_check=current_authority,
-            network_grant=CapabilityGrant(
-                actor=task.actor,
-                workspace_id=task.workspace_id,
-                repository=task.repository,
-                read_paths=("",),
-                network=True,
-            ),
-        )
+            return ProductExtensionRegistry(
+                tools,
+                extensions=extensions,
+                authority_check=current_authority,
+                timeout_seconds=max(pin.timeout_seconds for pin in tool_pins.values()),
+                max_result_bytes=max(pin.max_result_bytes for pin in tool_pins.values()),
+                network_grant=CapabilityGrant(
+                    actor=task.actor, workspace_id=task.workspace_id, repository=task.repository,
+                    read_paths=("",), network=True,
+                ) if "github" in tool_pins else None,
+            )
+        except BaseException:
+            import asyncio
+
+            for extension in extensions:
+                with suppress(Exception):
+                    asyncio.run(extension.close())
+            raise
 
     def _session(self, session_id: str) -> dict[str, Any]:
         if not _SESSION.fullmatch(session_id):
@@ -594,7 +747,9 @@ class HarnessProductService:
             ).fetchone()
         if unknown:
             raise DomainError("RECOVERY_BLOCKED", "存在结果未知的模型调用，请先对账恢复。", 409)
-        status = self.model_status()
+        pins = self._select_plugins(project_id, authorization)
+        plugin = self._model_plugin(pins)
+        status = self.model_status(plugin=plugin)
         if not status["available"]:
             raise DomainError(
                 "HARNESS_LIVE_MODEL_UNAVAILABLE", "请先在模型设置中配置并授权模型。", 409
@@ -632,9 +787,12 @@ class HarnessProductService:
             product_turn_id=turn,
             product_model_revision=status["revision"],
             product_context_policy=status["context_policy"],
-            product_model_capabilities=product_model_capabilities(status["model_id"]).model_dump(
-                mode="json"
-            ),
+            product_model_capabilities=(
+                plugin.capabilities if plugin else product_model_capabilities(status["model_id"])
+            ).model_dump(mode="json"),
+            product_plugin_bindings={name: pin.identity() for name, pin in pins.items()},
+            product_knowledge_scopes=self._knowledge_scopes(pins),
+            product_mcp_endpoint_hash=self._mcp_endpoint_hash(pins),
             product_authorization_revision=authorization["revision"],
             product_previous_task_id=previous_id or "",
             product_plan=plan,

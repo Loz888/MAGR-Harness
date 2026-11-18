@@ -116,6 +116,74 @@ class ToolAuthority:
             assert row is not None
             return row
 
+    def bind_harness_mcp(
+        self, task_id: str, epoch: int, *, snapshots: tuple[str, ...],
+        knowledge_scopes: dict[str, str], sql_profile_sha256: str | None,
+        role_tools: dict[str, tuple[str, ...]], authorization_ref: str,
+    ) -> None:
+        """Freeze explicit MCP source grants in the existing R4 context ledger."""
+        if not role_tools or any(
+            role not in {"knowledge", "data"} or not names or not set(names) <= TOOLS[role]
+            or "recall_memory" in names for role, names in role_tools.items()
+        ):
+            raise DomainError("TOOL_ROLE_DENIED", "Unsupported Harness MCP authority", 403)
+        task = self.engine.harness.guard(task_id, epoch)
+        actor = task["actor"]
+        self.engine.knowledge.actor(actor)
+        versions = []
+        for value in snapshots:
+            snapshot, _, scope = self.engine.knowledge.eligible(UUID(value), actor)
+            if scope != knowledge_scopes.get(value):
+                raise DomainError("KNOWLEDGE_SCOPE_CHANGED", "Approved access changed", 403)
+            versions.append(snapshot["config"])
+        data = None
+        if "data" in role_tools:
+            data = self.harness_data_profile(actor, sql_profile_sha256)
+        profile = {
+            "actor": actor, "harness_task_id": task_id, "harness_tools": {
+                role: list(names) for role, names in role_tools.items()
+            },
+            "deadline": task["deadline_at"].isoformat(), "max_tool_calls": 24,
+            "knowledge_modes": versions, "sql_profile": data,
+            "harness_authorization_ref": authorization_ref,
+            "harness_knowledge_scopes": knowledge_scopes,
+            "harness_sql_identity": sql_profile_sha256,
+        }
+        with self.engine.transaction() as conn:
+            self.engine.harness.guard(task_id, epoch)
+            existing = conn.execute(
+                "SELECT profile_hash,knowledge_snapshot_ids FROM app.r4_context "
+                "WHERE run_id=%s AND input_revision=1", (task["run_id"],),
+            ).fetchone()
+            fingerprint = digest(profile)
+            if existing is None:
+                conn.execute(
+                    "INSERT INTO app.r4_context(run_id,input_revision,knowledge_snapshot_ids,"
+                    "profile,profile_hash) VALUES(%s,1,%s,%s,%s)",
+                    (task["run_id"], Jsonb(list(snapshots)), Jsonb(profile), fingerprint),
+                )
+            elif (
+                existing["profile_hash"] != fingerprint
+                or existing["knowledge_snapshot_ids"] != list(snapshots)
+            ):
+                raise DomainError("TOOL_SCOPE_DENIED", "Harness MCP source grant changed", 403)
+
+    def harness_data_identity(self, actor: str) -> str:
+        return digest(self.reader(actor).profile)
+
+    def harness_data_profile(self, actor: str, expected: str | None) -> dict[str, Any]:
+        profile = self.reader(actor).profile
+        if expected is None or digest(profile) != expected:
+            raise DomainError("DATA_SOURCE_CHANGED", "Frozen SQL profile differs", 403)
+        return {k: v for k, v in profile.items() if k != "database_url"}
+
+    def revoke_token(self, token: str) -> None:
+        with self.engine.transaction() as conn:
+            conn.execute(
+                "UPDATE app.tool_grants SET expires_at=least(expires_at,now()) WHERE token_hash=%s",
+                (hashlib.sha256(token.encode()).hexdigest(),),
+            )
+
     def issue(self, run_id: UUID, epoch: int, task_id: str, role: str, revision: int) -> str:
         if role not in TOOLS:
             raise DomainError("TOOL_ROLE_DENIED", "Expert role has no tool capability", 403)
@@ -142,6 +210,17 @@ class ToolAuthority:
                 "input_revision": revision,
                 "profile_hash": context["profile_hash"],
             }
+            if harness_task := context["profile"].get("harness_task_id"):
+                permitted = context["profile"]["harness_tools"].get(role)
+                if not permitted or task_id != harness_task + ":" + role:
+                    raise DomainError("TOOL_ROLE_DENIED", "Unbound Harness role", 403)
+                self.engine.harness.guard(harness_task, epoch)
+                scope.update(
+                    harness_task_id=harness_task, allowed_tools=permitted,
+                    authorization_ref=context["profile"]["harness_authorization_ref"],
+                    knowledge_scopes=context["profile"]["harness_knowledge_scopes"],
+                    sql_identity=context["profile"]["harness_sql_identity"],
+                )
             conn.execute(
                 (
                     "INSERT INTO "
@@ -186,6 +265,23 @@ class ToolAuthority:
                 expected_role is not None and expected_role != grant["role"]
             ):
                 raise DomainError("TOOL_ROLE_DENIED", "Expert cannot use this tool", 403)
+            if harness_task := grant["scope"].get("harness_task_id"):
+                row = self.engine.harness.guard(harness_task, grant["execution_epoch"])
+                if (row["run_id"] != grant["run_id"] or row["actor"] != grant["actor"]
+                        or tool not in grant["scope"]["allowed_tools"]):
+                    raise DomainError("TOOL_ROLE_DENIED", "Harness MCP scope differs", 403)
+                approval = conn.execute(
+                    "SELECT profile_hash,revoked_at,expires_at FROM "
+                    "app.harness_project_authorizations WHERE project_id=%s AND actor=%s "
+                    "ORDER BY revision DESC LIMIT 1", (row["workspace_id"], row["actor"]),
+                ).fetchone()
+                if (
+                    approval is None
+                    or approval["profile_hash"] != grant["scope"]["authorization_ref"]
+                    or approval["revoked_at"] is not None
+                    or approval["expires_at"] <= datetime.now(UTC)
+                ):
+                    raise DomainError("TOOL_GRANT_EXPIRED", "Project authority changed", 403)
             if charge:
                 budget = conn.execute(
                     (
@@ -260,6 +356,7 @@ class ToolAuthority:
         self, token: str, tool: str, arguments: dict[str, Any], expected_role: str | None = None
     ) -> dict[str, Any]:
         grant = self._grant(token, tool, expected_role)
+        knowledge_scopes = grant["scope"].get("knowledge_scopes", {})
         if tool == "recall_memory":
             if arguments:
                 raise DomainError("TOOL_ARGUMENTS", "Memory recall accepts no source identity")
@@ -274,7 +371,14 @@ class ToolAuthority:
                 raise DomainError(
                     "TOOL_SNAPSHOT_DENIED", "Search snapshot is not in the fixed task scope", 403
                 )
-            return self.engine.knowledge.search(request, grant["actor"], grant["run_id"])
+            result = self.engine.knowledge.search(request, grant["actor"], grant["run_id"])
+            if knowledge_scopes:
+                assert request.snapshot_id is not None
+                _, _, scope = self.engine.knowledge.eligible(request.snapshot_id, grant["actor"])
+                if scope != knowledge_scopes.get(str(request.snapshot_id)):
+                    raise DomainError("KNOWLEDGE_SCOPE_CHANGED", "Approved access changed", 403)
+                self._grant(token, tool, expected_role, charge=False)
+            return result
         if tool == "read_knowledge":
             if set(arguments) != {"chunk_id", "snapshot_id"}:
                 raise DomainError("TOOL_ARGUMENTS", "Knowledge read arguments are invalid")
@@ -283,6 +387,11 @@ class ToolAuthority:
             if str(snapshot_id) not in grant["scope"]["snapshot_ids"]:
                 raise DomainError("TOOL_SNAPSHOT_DENIED", "Read snapshot is outside this task", 403)
             chunk = self.engine.knowledge.read(chunk_id, snapshot_id, grant["actor"])
+            if knowledge_scopes:
+                _, _, scope = self.engine.knowledge.eligible(snapshot_id, grant["actor"])
+                if scope != knowledge_scopes.get(str(snapshot_id)):
+                    raise DomainError("KNOWLEDGE_SCOPE_CHANGED", "Approved access changed", 403)
+                self._grant(token, tool, expected_role, charge=False)
             result = self.record(
                 grant,
                 chunk["text"].encode(),
@@ -298,15 +407,18 @@ class ToolAuthority:
                     "raw_hash": chunk["raw_hash"],
                 },
             )
-            self.engine.context.add_edge(
-                "run",
-                grant["run_id"],
-                "evidence",
-                UUID(result["evidence_id"]),
-                "cites",
-                grant["actor"],
-                grant["run_id"],
-            )
+            # Harness uses its own Run journal, without the routed ticket's
+            # context graph. Both callers still record the Engine evidence row.
+            if not grant["scope"].get("harness_task_id"):
+                self.engine.context.add_edge(
+                    "run",
+                    grant["run_id"],
+                    "evidence",
+                    UUID(result["evidence_id"]),
+                    "cites",
+                    grant["actor"],
+                    grant["run_id"],
+                )
             return result
         if tool == "read_repository":
             if self.engine.commerce.binding(grant["run_id"]):
@@ -364,6 +476,10 @@ class ToolAuthority:
                 (grant["run_id"], grant["scope"]["input_revision"]),
             ).fetchone()
         assert fixed is not None
+        if grant["scope"].get("harness_task_id") and (
+            grant["scope"]["sql_identity"] != digest(reader.profile)
+        ):
+            raise DomainError("DATA_SOURCE_CHANGED", "Frozen SQL profile differs", 403)
         if fixed["profile"]["sql_profile"] != {
             k: v for k, v in reader.profile.items() if k != "database_url"
         }:
@@ -377,6 +493,8 @@ class ToolAuthority:
         if set(arguments) != {"sql", "parameters"} or not isinstance(arguments["parameters"], list):
             raise DomainError("TOOL_ARGUMENTS", "Readonly query requires SQL and a parameter array")
         result = reader.query(arguments["sql"], arguments["parameters"])
+        if grant["scope"].get("harness_task_id"):
+            self._grant(token, tool, expected_role, charge=False)
         content = json.dumps(
             result, ensure_ascii=False, sort_keys=True, separators=(",", ":")
         ).encode()

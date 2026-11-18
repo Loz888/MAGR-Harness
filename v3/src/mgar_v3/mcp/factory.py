@@ -1,11 +1,26 @@
 import hashlib
 import json
 import os
+from pathlib import Path
 from typing import Literal
 
 from mgar_v3.domain import DomainError
 from mgar_v3.mcp.client import ReadOnlyGitHubMCP
 from mgar_v3.settings import ROOT, Settings
+
+
+def verified_github_binary(path: Path) -> Path:
+    try:
+        binary = path.resolve(strict=True)
+        lock = json.loads((ROOT / "config/github-mcp-lock.json").read_text())
+        if binary.is_file() and os.access(binary, os.X_OK):
+            with binary.open("rb") as stream:
+                actual = hashlib.file_digest(stream, "sha256").hexdigest()
+            if actual == lock["binary_sha256"]:
+                return binary
+    except (OSError, ValueError, KeyError, RuntimeError):
+        pass
+    raise DomainError("MCP_BINARY_UNVERIFIED", "Official MCP server is missing or changed", 503)
 
 
 def github_client(
@@ -28,16 +43,7 @@ def github_client(
             repository, token=token, max_bytes=max_bytes, redis_url=settings.redis_url
         )
     else:
-        binary = settings.github_mcp_binary.resolve()
-        lock = json.loads((ROOT / "config/github-mcp-lock.json").read_text())
-        if (
-            not binary.is_file()
-            or not os.access(binary, os.X_OK)
-            or hashlib.sha256(binary.read_bytes()).hexdigest() != lock["binary_sha256"]
-        ):
-            raise DomainError(
-                "MCP_BINARY_UNVERIFIED", "Official MCP server is missing or changed", 503
-            )
+        binary = verified_github_binary(settings.github_mcp_binary)
         tools = "issue_read,get_file_contents" if readonly else "add_issue_comment"
         if tool_group == "r5_read":
             tools = "get_commit,list_pull_requests,pull_request_read"

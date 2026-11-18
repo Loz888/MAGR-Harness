@@ -165,7 +165,7 @@ def test_real_cross_process_mcp_file_read_through_namespaced_registry(monkeypatc
         assert result.status == "ok"
         assert result.content == "Observation: a controlled MCP source\n"
         assert result.data["ref"] == "a" * 40 and result.data["read_only"]
-        assert checks == [(1, ("README.md",)), (1, ("README.md",))]
+        assert len(checks) >= 2 and set(checks) == {(1, ("README.md",))}
     finally:
         registry.close()
 

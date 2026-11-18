@@ -550,10 +550,14 @@ class LongContextManager:
         *,
         overhead_tokens: int = 0,
         overhead_bytes: int = 0,
+        pinned_messages: Sequence[ModelMessage] = (),
     ) -> ContextView:
+        pinned_names = {message.name for message in pinned_messages}
         stage, target = "normal", self.max_tokens
         if self.policy is not None:
-            clean = [m for m in history if m.name != _PROJECTION_NAME]
+            clean = [*pinned_messages, *(
+                m for m in history if m.name != _PROJECTION_NAME and m.name not in pinned_names
+            )]
             observed = (_message_tokens(clean) + overhead_tokens
                         + estimate_tokens(self._request(working_state, []).model_dump(mode="json")))
             stage, target = self.policy.pressure(observed, self.max_tokens)
@@ -561,6 +565,7 @@ class LongContextManager:
             return self._prepare(
                 task, events, history, working_state, overhead_tokens=overhead_tokens,
                 overhead_bytes=overhead_bytes, target_tokens=target, policy_stage=stage,
+                pinned_messages=pinned_messages,
             )
         except DomainError as exc:
             if target == self.max_tokens or exc.code not in {
@@ -572,6 +577,7 @@ class LongContextManager:
             return self._prepare(
                 task, events, history, working_state, overhead_tokens=overhead_tokens,
                 overhead_bytes=overhead_bytes, target_tokens=self.max_tokens, policy_stage=stage,
+                pinned_messages=pinned_messages,
             )
 
     def _prepare(
@@ -585,6 +591,7 @@ class LongContextManager:
         overhead_bytes: int,
         target_tokens: int,
         policy_stage: str,
+        pinned_messages: Sequence[ModelMessage],
     ) -> ContextView:
         working_state.assert_task(task)
         self._assert_version(working_state)
@@ -595,11 +602,12 @@ class LongContextManager:
         if message_budget < 768:
             raise DomainError("CONTEXT_BUDGET_EXCEEDED", "Model envelope exhausts context", 413)
         # Remove our previous projection; the new one is built from authorities.
+        excluded = {_PROJECTION_NAME, *(message.name for message in pinned_messages)}
         clean = [
             message.model_copy(update={"role": "user", "content": "Historical instructions: "
                                        + message.content})
             if message.role == "system" else message
-            for message in history if message.name != _PROJECTION_NAME
+            for message in history if message.name not in excluded
         ]
         original_groups = _groups(clean)
         groups, changed_groups = self._bounded_groups(original_groups, working_state)
@@ -611,7 +619,8 @@ class LongContextManager:
         tail = groups[tail_start:]
         tail_messages = [message for group in tail for message in group]
         tail_tokens = _message_tokens(tail_messages) if tail_messages else 0
-        builder_budget = message_budget - tail_tokens - 256
+        pinned_tokens = _message_tokens(pinned_messages) if pinned_messages else 0
+        builder_budget = message_budget - tail_tokens - pinned_tokens - 256
         if builder_budget < 512:
             raise DomainError(
                 "CONTEXT_BUDGET_EXCEEDED", "Latest complete tool exchange exceeds context", 413
@@ -645,7 +654,7 @@ class LongContextManager:
                 ModelMessage(role="user", content=_encoded(bundle.to_payload()),
                              name=_PROJECTION_NAME),
             )
-            mandatory = (projection[0], *tail_messages, projection[1])
+            mandatory = (projection[0], *pinned_messages, *tail_messages, projection[1])
             overflow = _message_tokens(mandatory) - message_budget
             if overflow <= 0:
                 break
@@ -659,14 +668,15 @@ class LongContextManager:
             raise DomainError(
                 "CONTEXT_BUDGET_EXCEEDED", "Context wire representation cannot fit budget", 413
             )
-        original = (projection[0], *(message for group in original_groups for message in group),
-                    projection[1])
+        original = (projection[0], *pinned_messages,
+                    *(message for group in original_groups for message in group), projection[1])
         kept = list(groups)
-        messages = (projection[0], *(message for group in kept for message in group), projection[1])
+        messages = (projection[0], *pinned_messages,
+                    *(message for group in kept for message in group), projection[1])
         while _message_tokens(messages) > message_budget and len(kept) > len(tail):
             kept.pop(0)
-            messages = (projection[0], *(message for group in kept for message in group),
-                        projection[1])
+            messages = (projection[0], *pinned_messages,
+                        *(message for group in kept for message in group), projection[1])
         if _message_tokens(messages) > message_budget:
             raise DomainError(
                 "CONTEXT_BUDGET_EXCEEDED", "Pinned coding context exceeds its budget", 413

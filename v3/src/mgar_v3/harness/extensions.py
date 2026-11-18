@@ -15,7 +15,7 @@ import time
 from collections.abc import Callable, Sequence
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
-from typing import Any, Protocol
+from typing import Any, Literal, Protocol, cast
 
 from mgar_v3.domain import DomainError
 from mgar_v3.harness.contracts import (
@@ -31,7 +31,7 @@ from mgar_v3.harness.contracts import (
 )
 from mgar_v3.harness.project_context import _safe_path
 from mgar_v3.mcp.client import ReadOnlyGitHubMCP
-from mgar_v3.mcp.factory import github_client
+from mgar_v3.mcp.factory import github_client, verified_github_binary
 from mgar_v3.settings import Settings
 
 EXTENSION_VERSION = "harness-product-extension-v1"
@@ -52,6 +52,9 @@ class ExtensionAccess:
     read_paths: tuple[str, ...]
     allowed_tools: tuple[str, ...]
     network_hosts: tuple[str, ...] = ()
+    mode: Literal["network", "local", "scoped_mcp"] = "network"
+    max_result_bytes: int = 65536
+    timeout_seconds: float = 30
 
 
 class TrustedExtension(Protocol):
@@ -208,8 +211,9 @@ class ProductExtensionRegistry:
     def _authorize(self, mounted: _Mounted, context: ToolContext, paths: tuple[str, ...]) -> None:
         access, task, grant = mounted.access, context.task, context.grant
         network_grant = self.network_grant or grant
-        if self._closed or mounted not in self._mounted.values():
-            raise DomainError("EXTENSION_UNLOADED", "Extension is no longer active", 409)
+        with self._lock:
+            if self._closed or self._mounted.get(mounted.extension.namespace) is not mounted:
+                raise DomainError("EXTENSION_UNLOADED", "Extension is no longer active", 409)
         if (
             (access.actor, access.workspace_id, access.repository, access.execution_epoch)
             != (task.actor, task.workspace_id, task.repository, task.execution_epoch)
@@ -217,25 +221,28 @@ class ProductExtensionRegistry:
             != (task.actor, task.workspace_id, task.repository)
             or (network_grant.actor, network_grant.workspace_id, network_grant.repository)
             != (task.actor, task.workspace_id, task.repository)
-            or not access.network_hosts
-            or not network_grant.network
         ):
             raise DomainError(
                 "EXTENSION_SCOPE_DENIED", "Extension is outside current authority", 403
             )
-        if not paths:
-            raise DomainError("EXTENSION_SCOPE_DENIED", "Extension requires a read scope", 403)
-        for path in paths:
-            if path and _safe_path(path) is None:
-                raise DomainError("EXTENSION_SCOPE_DENIED", "Protected extension source path", 403)
-            if (
-                not grant.can_read(path)
-                or not network_grant.can_read(path)
-                or not _within(path, access.read_paths)
+        if access.mode == "scoped_mcp":
+            if paths or access.network_hosts or self.authority_check is None:
+                raise DomainError("EXTENSION_SCOPE_DENIED", "MCP requires its role grant", 403)
+        else:
+            if not paths or access.mode == "network" and (
+                not access.network_hosts or not network_grant.network
             ):
-                raise DomainError(
-                    "EXTENSION_SCOPE_DENIED", "Source is outside current read scope", 403
-                )
+                raise DomainError("EXTENSION_SCOPE_DENIED", "Extension requires a read scope", 403)
+            for path in paths:
+                if path and _safe_path(path) is None:
+                    raise DomainError(
+                        "EXTENSION_SCOPE_DENIED", "Protected extension source path", 403
+                    )
+                if (not grant.can_read(path) or not _within(path, access.read_paths)
+                        or (access.mode == "network" and not network_grant.can_read(path))):
+                    raise DomainError(
+                        "EXTENSION_SCOPE_DENIED", "Source is outside current read scope", 403
+                    )
         if self.authority_check is not None:
             self.authority_check(context, paths)
 
@@ -248,12 +255,13 @@ class ProductExtensionRegistry:
         paths: tuple[str, ...],
     ) -> HarnessToolResult:
         pending = asyncio.create_task(mounted.extension.invoke(call, context, cancellation))
-        deadline = time.monotonic() + min(self.timeout_seconds, context.grant.max_seconds)
+        deadline = time.monotonic() + min(
+            mounted.access.timeout_seconds, self.timeout_seconds, context.grant.max_seconds,
+        )
         try:
             while True:
                 cancellation.ensure_active()
-                if self._closed or mounted not in self._mounted.values():
-                    raise DomainError("EXTENSION_UNLOADED", "Extension was unloaded", 409)
+                self._authorize(mounted, context, paths)
                 remaining = deadline - time.monotonic()
                 if remaining <= 0:
                     raise DomainError("EXTENSION_TIMEOUT", "Read-only extension timed out", 504)
@@ -266,11 +274,18 @@ class ProductExtensionRegistry:
                         raise DomainError(
                             "EXTENSION_RESULT_DENIED", "Extension call identity changed", 403
                         )
-                    if len(result.model_dump_json().encode()) > self.max_result_bytes:
+                    if len(result.model_dump_json().encode()) > min(
+                        self.max_result_bytes, mounted.access.max_result_bytes,
+                    ):
                         raise DomainError(
                             "EXTENSION_RESULT_TOO_LARGE", "Extension result exceeds limit", 413
                         )
-                    return result
+                    # Plugin metadata cannot impersonate a receipt, budget,
+                    # tool policy, workspace artifact, or a patch.
+                    metadata = {key: value for key, value in result.data.items()
+                                if key in {"uri", "version", "sha256", "ref", "evidence_id",
+                                           "read_only"}}
+                    return result.model_copy(update={"data": metadata})
         finally:
             if not pending.done():
                 pending.cancel()
@@ -319,6 +334,42 @@ class ProductExtensionRegistry:
                 content="Read-only extension failed",
             )
 
+    def is_scoped_read(self, name: str) -> bool:
+        with self._lock:
+            return name in self._tools
+
+    def invoke_guarded(
+        self, call: HarnessToolCall, context: ToolContext, cancellation: CancellationToken,
+        check: Callable[[], HarnessToolResult | None],
+        transform: Callable[[HarnessToolResult], HarnessToolResult],
+        interaction: Callable[[], HarnessToolResult] | None = None,
+    ) -> HarnessToolResult:
+        guarded = getattr(self.inner, "invoke_guarded", None)
+        if not callable(guarded):
+            denial = check()
+            return transform(
+                denial if denial is not None else self.invoke(call, context, cancellation)
+            )
+        with self._lock:
+            builtin = call.name in {spec.name for spec in self.inner.specs()}
+        if builtin:
+            return cast(HarnessToolResult, guarded(call, context, cancellation, check, transform,
+                                                   interaction))
+
+        def revalidate(_: HarnessToolResult) -> None:
+            with self._lock:
+                namespace = self._tools.get(call.name)
+                mounted = self._mounted.get(namespace) if namespace is not None else None
+                if namespace is None or mounted is None:
+                    raise DomainError("EXTENSION_UNLOADED", "Extension is no longer active", 409)
+                local = call.model_copy(update={"name": call.name[len(namespace) + 2:]})
+                self._authorize(mounted, context, mounted.extension.paths(local))
+
+        return cast(HarnessToolResult, guarded(
+            call, context, cancellation, check, transform, interaction,
+            dispatch=lambda: self.invoke(call, context, cancellation), validate_known=revalidate,
+        ))
+
     def unload(self, namespace: str) -> None:
         with self._lock:
             mounted = self._mounted.pop(namespace, None)
@@ -338,18 +389,27 @@ class ProductExtensionRegistry:
                 return
             self._closed = True
             namespaces = tuple(self._mounted)
+        errors: list[Exception] = []
         try:
             for namespace in namespaces:
-                self.unload(namespace)
+                try:
+                    self.unload(namespace)
+                except Exception as exc:
+                    errors.append(exc)
         finally:
             self._executor.shutdown(wait=True, cancel_futures=True)
+        if errors:
+            raise DomainError("EXTENSION_CLOSE_FAILED", "An extension could not be closed", 409)
 
 
 class GitHubReadExtension:
     namespace = "github"
     version = "1.0.0"
 
-    def __init__(self, client: ReadOnlyGitHubMCP, *, access: ExtensionAccess) -> None:
+    def __init__(
+        self, client: ReadOnlyGitHubMCP, *, access: ExtensionAccess,
+        integrity_check: Callable[[], None] | None = None,
+    ) -> None:
         if (
             client.readonly is not True
             or client.repository != access.repository
@@ -359,6 +419,11 @@ class GitHubReadExtension:
         self.client, self.access = client, access
         self._client_config = self._configuration()
         self._closed = False
+        self._integrity_check = integrity_check
+
+    def verify(self) -> None:
+        if self._integrity_check is not None:
+            self._integrity_check()
 
     def _configuration(self) -> tuple[object, ...]:
         return (
@@ -409,8 +474,10 @@ class GitHubReadExtension:
             raise DomainError("EXTENSION_CONFIG_DENIED", "GitHub client changed or closed", 403)
         path = self.paths(call)[0]
         cancellation.ensure_active()
+        self.verify()
         source = await self.client.read_file(path, context.task.base_commit)
         cancellation.ensure_active()
+        self.verify()
         if self._configuration() != self._client_config:
             raise DomainError("EXTENSION_CONFIG_DENIED", "GitHub client config changed", 403)
         try:
@@ -449,6 +516,11 @@ def configured_github_extension(
         raise DomainError(
             "EXTENSION_CONFIG_DENIED", "An explicit GitHub read grant is required", 403
         )
-    return GitHubReadExtension(
-        github_client(settings, access.repository, readonly=True, max_bytes=32768), access=access
-    )
+    client = github_client(settings, access.repository, readonly=True, max_bytes=32768)
+    configured = settings.github_mcp_binary
+
+    def verify() -> None:
+        if configured is not None and str(verified_github_binary(configured)) != client.command:
+            raise DomainError("MCP_BINARY_UNVERIFIED", "Official MCP server path changed", 503)
+
+    return GitHubReadExtension(client, access=access, integrity_check=verify)

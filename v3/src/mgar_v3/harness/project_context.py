@@ -237,12 +237,17 @@ def authorize_project_sources(
 def _read_source(
     workspace: TaskWorkspace, path: str, authorize: Callable[[str], None],
     prefix_bytes: int | None = None,
+    *, required_rule: bool = False,
 ) -> str | None:
     try:
         authorize(path)
         return workspace.read(path, authorize=authorize, follow_symlinks=False,
                               prefix_bytes=prefix_bytes)
     except DomainError as exc:
+        if required_rule and exc.code in {"WORKSPACE_BINARY", "WORKSPACE_LIMIT"}:
+            raise DomainError(
+                "PROJECT_GUIDANCE_INVALID", "An applicable rule could not be delivered", 409
+            ) from exc
         if exc.code not in {
             "HARNESS_READ_DENIED", "HARNESS_PROTECTED_PATH_DENIED", "WORKSPACE_PATH_DENIED",
             "WORKSPACE_FILE_NOT_FOUND", "WORKSPACE_BINARY", "WORKSPACE_SYMLINK_DENIED",
@@ -302,7 +307,7 @@ def load_edit_guidance(
     candidates = (f"{scope}/AGENTS.md" if scope else "AGENTS.md" for scope in scopes)
     return _build_context(
         {path: None for path in candidates if path not in known_paths and _safe_path(path)},
-        lambda path, prefix: _read_source(workspace, path, authorize, prefix),
+        lambda path, prefix: _read_source(workspace, path, authorize, prefix, required_rule=True),
         "", paths=(), tree_hash=workspace.manifest.tree_hash, rules_only=True,
     )
 

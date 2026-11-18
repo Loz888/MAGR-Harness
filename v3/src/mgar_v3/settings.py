@@ -55,6 +55,7 @@ class Settings(BaseSettings):
     r4_sql_ttl_seconds: int = Field(default=300, ge=1, le=3600)
     harness_root: Path = ROOT / ".local/harness-v4"
     harness_image_lock: Path = ROOT / ".local/r03/sandbox-lock.json"
+    harness_plugin_lock: Path | None = None
 
     @field_validator("r4_tool_base_url")
     @classmethod

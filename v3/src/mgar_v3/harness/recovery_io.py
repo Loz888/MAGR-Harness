@@ -40,6 +40,8 @@ class RecoveryStore(Protocol):
 
     def operation(self, task_id: str, operation_id: str) -> dict[str, Any] | None: ...
 
+    def operations(self, task_id: str) -> list[dict[str, Any]]: ...
+
     def start_operation(
         self,
         task_id: str,
@@ -473,7 +475,9 @@ class RecoveryIO:
         broker.remove_owned_command(launched.identity)
         return receipt
 
-    def recovered_execution_receipt(self, process_operation_id: str) -> ExecutionReceipt:
+    def recovered_execution_receipt(
+        self, process_operation_id: str, *, pre_command_tree: bool = False,
+    ) -> ExecutionReceipt:
         """Rebuild a known command result without issuing a replacement lease.
 
         This is historical evidence.  The service must validate its exact
@@ -507,7 +511,9 @@ class RecoveryIO:
             stdout=text,
             stderr="",
             duration_seconds=0.0,
-            tree_hash=receipt.get("tree_hash", launched.tree_hash),
+            tree_hash=launched.tree_hash if pre_command_tree else receipt.get(
+                "tree_hash", launched.tree_hash
+            ),
             log_sha256=sha256_text(text),
             environment_hash=launched.environment_hash,
             provenance=launched.provenance,
@@ -571,6 +577,7 @@ class RecoveryIO:
         encode: Callable[[T], dict[str, Any]],
         decode: Callable[[dict[str, Any]], T],
         read_only: bool = False,
+        validate_known: Callable[[T], None] | None = None,
     ) -> T:
         """Reuse known results; never resend a dispatched/unknown side effect."""
         fingerprint = digest(request)
@@ -585,7 +592,10 @@ class RecoveryIO:
                 intent=request,
             )
             if operation["state"] == "known":
-                return decode(self._verified_receipt(operation))
+                value = decode(self._verified_receipt(operation))
+                if validate_known is not None:
+                    validate_known(value)
+                return value
             if operation["state"] in {"unknown", "dispatched"} and not read_only:
                 raise DomainError("RECOVERY_BLOCKED", "Operation requires reconciliation", 409)
             self.store.dispatch_operation(self.task_id, self.execution_epoch, operation_id)

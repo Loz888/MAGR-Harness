@@ -541,6 +541,57 @@ def product_readiness(path: Path, image_lock: Path) -> dict[str, Any]:
     }
 
 
+def recovered_product_command(
+    plan: ProductRuntimePlan,
+    call: HarnessToolCall,
+    receipt: ExecutionReceipt,
+    process: dict[str, Any],
+    *,
+    operation_id: str,
+    task_kind: str,
+) -> HarnessToolResult:
+    from mgar_v3.harness.service import _resolve_test_command, _test_status
+
+    command_id = (
+        "tests" if call.name == "run_tests" and _resolve_test_command(
+            call.arguments, plan.test_argv,
+        ) == plan.test_argv else
+        call.arguments.get("command_id") if call.name == "run_command"
+        and set(call.arguments) == {"command_id"} else None
+    )
+    command = plan.commands.get(command_id) if isinstance(command_id, str) else None
+    if (
+        command is None or receipt.operation_id != operation_id
+        or (receipt.argv, receipt.cwd, receipt.purpose) != (
+            command.argv, command.cwd, command.purpose,
+        )
+    ):
+        raise DomainError("RECOVERY_SCOPE_DENIED", "Saved product command differs", 403)
+
+    complete = not (process["handle"]["log_truncated"] or process["dropped_bytes"])
+    status: str = receipt.status
+    run, failed = 0, 0
+    if command.purpose == "test":
+        parsed, run, failed, _, _ = _test_status(
+            task_kind, receipt.stdout, receipt.exit_code, argv=command.argv,
+        )
+        if parsed != "passed":
+            status = "failed" if parsed == "failed" else "error"
+    if not complete:
+        status = "error"
+    receipt = receipt.model_copy(update={
+        "status": status, "tests_run": run, "tests_failed": failed,
+    })
+    return HarnessToolResult(
+        call_id=call.call_id, status="ok" if status == "passed" else "error",
+        content=_test_feedback(f"Command {command_id}: {status}", receipt.stdout),
+        data={
+            "receipt": receipt.model_dump(mode="json"), "command_id": command_id,
+            "recovered": True, "truncated": not complete, "raw_log_hash": process["raw_log_hash"],
+        },
+    )
+
+
 class ProductCodingToolRegistry(CodingToolRegistry):
     """Expose frozen project commands through the same lease and IO journal."""
 
@@ -583,26 +634,19 @@ class ProductCodingToolRegistry(CodingToolRegistry):
             return None
         return self.runtime_plan.commands.get(command_id)
 
-    def invoke(
+    def _invoke(
         self, call: HarnessToolCall, context: ToolContext, cancellation: CancellationToken
     ) -> HarnessToolResult:
         if call.name == "run_tests":
             command = self.runtime_plan.commands.get("tests")
             if command is not None and super().resolve_command(call) is not None:
-                return self.invoke(
+                return self._run_product_command(
                     call.model_copy(update={
                         "name": "run_command", "arguments": {"command_id": "tests"}
                     }), context, cancellation,
                 )
         if call.name != "run_command":
-            return super().invoke(call, context, cancellation)
-        if self.recovery_io is not None:
-            return self.recovery_io.invoke(
-                context.operation_id, "tool", call.model_dump(mode="json"),
-                lambda: self._run_product_command(call, context, cancellation),
-                encode=lambda result: result.model_dump(mode="json"),
-                decode=HarnessToolResult.model_validate, read_only=False,
-            )
+            return super()._invoke(call, context, cancellation)
         return self._run_product_command(call, context, cancellation)
 
     def _run_product_command(

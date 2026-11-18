@@ -1,4 +1,5 @@
 import os
+import sys
 
 from mcp.server.fastmcp import FastMCP
 
@@ -8,7 +9,8 @@ server = FastMCP("controlled-github-fixture")
 @server.tool()
 def get_file_contents(owner: str, repo: str, path: str, ref: str) -> dict:
     assert owner == "example" and repo == "mgar-test"
-    assert path == "README.md" and ref == "a" * 40
+    fixed_ref = sys.argv[1] if len(sys.argv) == 2 else "a" * 40
+    assert path == "README.md" and ref == fixed_ref
     assert "MGAR_V3_DEEPSEEK_API_KEY" not in os.environ
     assert "MGAR_V3_DATABASE_URL" not in os.environ
     return {

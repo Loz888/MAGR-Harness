@@ -423,10 +423,12 @@ class IsolatedExecutionBroker:
         budget_check: Callable[[], bool] | None = None,
         lock_path: Path = DEFAULT_IMAGE_LOCK,
         allow_internal_write_symlinks: bool = False,
+        allow_scoped_root_cwd: bool = False,
         public_probe: PublicProbePlan | None = None,
         public_probe_root: Path | None = None,
     ) -> None:
         self.root = Path(workspace_root).resolve()
+        self.allow_scoped_root_cwd = allow_scoped_root_cwd
         if self.root.is_symlink() or not self.root.is_dir():
             raise DomainError("HARNESS_WORKSPACE_DENIED", "Workspace root is unavailable", 409)
         if isinstance(lease, CapabilityAuthority):
@@ -1047,7 +1049,13 @@ class IsolatedExecutionBroker:
                 "Working directory is protected workspace metadata",
                 403,
             )
-        if not _within(cwd, allowed_paths):
+        # An operator's read-only adapter can start at /workspace while
+        # _mount_args still binds only its named source files underneath it.
+        scoped_root = (
+            self.allow_scoped_root_cwd and not cwd and lease.mode == "investigate"
+            and bool(read_paths) and not write_paths
+        )
+        if not _within(cwd, allowed_paths) and not scoped_root:
             raise DomainError("HARNESS_READ_DENIED", "Working directory is outside the scopes", 403)
         program = Path(request.argv[0]).name
         if program not in lease.allowed_commands:
@@ -1191,7 +1199,8 @@ class IsolatedExecutionBroker:
         mounted: list[str] = []
         for path, readonly in plan:
             source = self._scope_source(path)
-            if not source.is_dir():
+            file_mount = self.allow_scoped_root_cwd and readonly and source.is_file()
+            if not source.is_dir() and not file_mount:
                 continue
             if descriptors is not None:
                 # Retain the approved inode for the trusted container-entry

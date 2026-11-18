@@ -62,6 +62,7 @@ from mgar_v3.harness.contracts import (
     ExecutionRequest,
     HarnessToolCall,
     HarnessToolResult,
+    ModelAdapter,
     ModelRequest,
     ModelResponse,
     ModelUsage,
@@ -86,7 +87,12 @@ from mgar_v3.harness.lifecycle import LifecycleRunner, sealed
 from mgar_v3.harness.lifecycle_plan import public_routes
 from mgar_v3.harness.lifecycle_types import HTTPExpectation, LifecyclePolicy, ProcessPortReceipt
 from mgar_v3.harness.long_context import LongContextManager
-from mgar_v3.harness.model import DEEPSEEK_CHAT, DeepSeekChatAdapter, ModelCapabilities
+from mgar_v3.harness.model import (
+    DEEPSEEK_CHAT,
+    DeepSeekChatAdapter,
+    ModelCapabilities,
+    _price_usage,
+)
 from mgar_v3.harness.output_protocol import OutputPolicy
 from mgar_v3.harness.persistence import (
     DurableContinuation,
@@ -100,6 +106,12 @@ from mgar_v3.harness.project_commands import (
     infer_test_runner,
     parse_tests,
     test_project_kind,
+)
+from mgar_v3.harness.project_guidance import (
+    GUIDANCE_OPERATION,
+    GUIDANCE_REQUIRED,
+    GuidanceDeferral,
+    GuidanceDelivery,
 )
 from mgar_v3.harness.public_feedback import observe_public_command, render_public_feedback
 from mgar_v3.harness.public_probe import normalize_probe_receipt, read_asset
@@ -512,6 +524,7 @@ class CodingToolRegistry:
         self.recovery_io = recovery_io
         self.command_timeout_seconds = command_timeout_seconds
         self.feedback_plan = feedback_plan
+        self.guidance: GuidanceDelivery | None = None
         self.workspace_tools = WorkspaceToolRegistry(workspace)
         self.context_tools = ScopedContextTools(workspace, broker.authority)
         self._active_commands: set[str] = set()
@@ -623,6 +636,9 @@ class CodingToolRegistry:
         check: Callable[[], HarnessToolResult | None],
         transform: Callable[[HarnessToolResult], HarnessToolResult],
         interaction: Callable[[], HarnessToolResult] | None = None,
+        *,
+        dispatch: Callable[[], HarnessToolResult] | None = None,
+        validate_known: Callable[[HarnessToolResult], None] | None = None,
     ) -> HarnessToolResult:
         """Journal even a preflight denial with the original operation and CAS.
 
@@ -644,20 +660,32 @@ class CodingToolRegistry:
             denial = check()
             if denial is not None:
                 return transform(denial)
-            result = interaction() if interaction is not None else self._invoke(
-                call, context, cancellation
-            )
+            handler = interaction or dispatch
+            result = handler() if handler is not None else self._invoke(call, context, cancellation)
             return transform(result)
 
         if self.recovery_io is None:
             return invoke()
+
+        def verify(result: HarnessToolResult) -> None:
+            self._verify_known(result, cancellation)
+            if validate_known is not None:
+                validate_known(result)
+
         result = self.recovery_io.invoke(
             context.operation_id, "tool", call.model_dump(mode="json"), invoke,
             encode=lambda item: item.model_dump(mode="json"),
             decode=HarnessToolResult.model_validate,
-            read_only=call.name not in {"apply_edits", "run_tests", "ask_user"},
+            read_only=call.name not in {"apply_edits", "run_tests", "run_command", "ask_user"},
+            validate_known=verify,
         )
         return self._restored_feedback(result, call, context)
+
+    def _verify_known(self, result: HarnessToolResult, cancellation: CancellationToken) -> None:
+        cancellation.ensure_active()
+        self.broker.authority.peek()
+        if self.guidance is not None and result.code == GUIDANCE_REQUIRED:
+            self.guidance.authorize(*result.data["guidance_paths"])
 
     def _restored_feedback(
         self, result: HarnessToolResult, call: HarnessToolCall, context: ToolContext,
@@ -781,7 +809,8 @@ class CodingToolRegistry:
                 lambda: self._invoke(call, context, cancellation),
                 encode=lambda item: item.model_dump(mode="json"),
                 decode=HarnessToolResult.model_validate,
-                read_only=call.name not in {"apply_edits", "run_tests", "ask_user"},
+                read_only=call.name not in {"apply_edits", "run_tests", "run_command", "ask_user"},
+                validate_known=lambda result: self._verify_known(result, cancellation),
             )
             return self._restored_feedback(result, call, context)
         return self._invoke(call, context, cancellation)
@@ -862,11 +891,28 @@ class CodingToolRegistry:
                     for edit in edits:
                         if not context.grant.can_write(edit.path):
                             raise DomainError("HARNESS_WRITE_DENIED", "Write outside grant", 403)
-                    snapshot = self.recovery_io.edit(
-                        edits,
-                        expected_tree=expected_tree,
-                        operation_id=context.operation_id + ":edit",
-                    )
+                    with self.recovery_io.locked():
+                        targets = tuple(
+                            self.workspace.resolve_edit_path(edit.path) for edit in edits
+                        )
+                        self.broker.authority.check_scope(
+                            actor=context.task.actor, workspace_id=context.task.workspace_id,
+                            repository=context.task.repository,
+                            execution_epoch=context.task.execution_epoch, paths=targets, write=True,
+                        )
+                        if any(not context.grant.can_write(path) for path in targets):
+                            raise DomainError(
+                                "HARNESS_WRITE_DENIED", "Canonical write path denied", 403
+                            )
+                        if self.guidance is not None:
+                            deferred = self.guidance.guard_edit(context, targets)
+                            if deferred is not None:
+                                return deferred.result(call.call_id)
+                        snapshot = self.recovery_io.edit(
+                            edits,
+                            expected_tree=expected_tree,
+                            operation_id=context.operation_id + ":edit",
+                        )
                     return self._edit_result(call, edits, snapshot)
                 if call.name in {spec.name for spec in ARTIFACT_TOOLS}:
                     if self.recovery_io is not None:
@@ -1156,6 +1202,9 @@ class CodingTaskRequest:
     product_limits: dict[str, Any] = field(default_factory=dict)
     product_context: str = ""
     product_guidance: dict[str, Any] = field(default_factory=dict)
+    product_plugin_bindings: dict[str, str] = field(default_factory=dict)
+    product_knowledge_scopes: dict[str, str] = field(default_factory=dict)
+    product_mcp_endpoint_hash: str = ""
     product_intent: str = ""
 
 
@@ -1615,6 +1664,9 @@ class HarnessCodingService:
             Callable[[CodingTaskRequest], tuple[str, ModelCapabilities]] | None
         ) = None
         self.product_extension_factory: Callable[[Any, Any], Any] | None = None
+        self.product_adapter_factory: Callable[
+            [CodingTaskRequest, str, ModelCapabilities], ModelAdapter | None
+        ] | None = None
         self.fault_hook = fault_hook or (lambda point, payload: None)
         if evaluation_profile is not None and engine is None:
             raise DomainError(
@@ -1809,10 +1861,7 @@ class HarnessCodingService:
                 )
             assert self.product_model_resolver is not None
             self.product_model_resolver(request)
-            request = replace(
-                request, product_context=context.text + "\n" + request.product_context,
-                product_guidance={**context.public(), "paths": list(context.disclosed_paths)},
-            )
+            request = replace(request, product_guidance={**context.public(), "text": context.text})
             if request.approved and kind in _WRITABLE:
                 self._prepare_product_permissions(workspace)
         directory = self.runs / task_id
@@ -1906,6 +1955,9 @@ class HarnessCodingService:
                 if key in CodingTaskRequest.__dataclass_fields__
             }
         )
+        if request.product_session_id:
+            assert self.product_model_resolver is not None
+            self.product_model_resolver(request)
         with workspace_lock(Path(row["request"]["workspace_root"])):
             selected: dict[str, Any] = {}
             if row["checkpoint_hash"]:
@@ -1981,7 +2033,11 @@ class HarnessCodingService:
                         raise DomainError(
                             "RECOVERY_TREE_CONFLICT", "Edit is outside selected checkpoint", 409
                         )
+                    if request.product_session_id:
+                        assert self.product_model_resolver is not None
+                        self.product_model_resolver(request)
                     io.reconcile_edit_locked(operation["operation_id"])
+            product_command_tree: str | None = None
             for operation in self.store.operations(task_id):
                 if operation["kind"] not in {"baseline", "tool"} or operation["state"] not in {
                     "unknown",
@@ -1992,7 +2048,12 @@ class HarnessCodingService:
                 process = self.store.operation(task_id, process_id)
                 if process is None or process["state"] != "known":
                     continue
-                receipt = io.recovered_execution_receipt(process_id)
+                receipt = io.recovered_execution_receipt(
+                    process_id,
+                    pre_command_tree=bool(
+                        request.product_session_id and operation["kind"] == "tool"
+                    ),
+                )
                 origin = receipt.provenance
                 grant = CapabilityGrant.model_validate(row["grant_scope"])
                 if origin is None or origin.grant_hash != canonical_hash(
@@ -2001,6 +2062,40 @@ class HarnessCodingService:
                     raise DomainError(
                         "RECOVERY_SCOPE_DENIED", "Original command grant differs", 403
                     )
+                if (
+                    origin.actor != self.actor
+                    or origin.workspace_id != registration.workspace_id
+                    or origin.repository != registration.repository
+                ):
+                    raise DomainError("RECOVERY_SCOPE_DENIED", "Command owner differs", 403)
+                if request.product_session_id and operation["kind"] == "tool":
+                    from mgar_v3.harness.product_runtime import (
+                        ProductRuntimePlan,
+                        recovered_product_command,
+                    )
+
+                    assert self.product_model_resolver is not None
+                    self.product_model_resolver(request)
+                    call = HarnessToolCall.model_validate(operation["intent"])
+                    process_receipt = io._verified_receipt(process)
+                    preview = recovered_product_command(
+                        ProductRuntimePlan.model_validate(request.product_plan), call, receipt,
+                        process_receipt, operation_id=operation["operation_id"],
+                        task_kind=request.task_kind,
+                    )
+                    saved_receipt = preview.model_dump(mode="json")
+                    self.store.reconcile_operation(
+                        task_id, operation["operation_id"],
+                        result_hash=io._receipt_hash(saved_receipt), receipt=saved_receipt,
+                    )
+                    if (
+                        active_tool_prefix
+                        and operation["operation_id"].startswith(active_tool_prefix)
+                        and receipt.tree_hash == row["tree_hash"]
+                        and "reconciled_interruption" not in process_receipt
+                    ):
+                        product_command_tree = process_receipt["tree_hash"]
+                    continue
                 probe_plan = (
                     self.evaluation_profile.public_probe if self.evaluation_profile else None
                 )
@@ -2024,10 +2119,7 @@ class HarnessCodingService:
                 if feedback_plan:
                     allowed_argv.extend(command.argv for command in feedback_plan.commands)
                 if (
-                    origin.actor != self.actor
-                    or origin.workspace_id != registration.workspace_id
-                    or origin.repository != registration.repository
-                    or receipt.argv not in allowed_argv
+                    receipt.argv not in allowed_argv
                     or receipt.purpose != ("build" if receipt.argv == build_argv else "test")
                 ):
                     raise DomainError(
@@ -2170,7 +2262,7 @@ class HarnessCodingService:
                     result_hash=content_hash,
                     receipt=saved_receipt,
                 )
-            # Complete only an outer patch receipt whose inner edit was reconciled.
+            # Complete only an outer patch receipt with a proven edit or deferral.
             for operation in self.store.operations(task_id):
                 if operation["kind"] != "tool" or operation["state"] not in {
                     "unknown",
@@ -2179,6 +2271,25 @@ class HarnessCodingService:
                     continue
                 call = HarnessToolCall.model_validate(operation["intent"])
                 inner = self.store.operation(task_id, operation["operation_id"] + ":edit")
+                deferred = self.store.operation(task_id, operation["operation_id"] + ":guidance")
+                if (
+                    call.name == "apply_edits" and inner is None and deferred
+                    and deferred["kind"] == GUIDANCE_OPERATION and deferred["state"] == "known"
+                    and active_tool_prefix
+                    and operation["operation_id"].startswith(active_tool_prefix)
+                ):
+                    value = GuidanceDeferral.model_validate(io._verified_receipt(deferred))
+                    grant = CapabilityGrant.model_validate(row["grant_scope"])
+                    if any(not grant.can_read(path) for path in value.pending_paths):
+                        raise DomainError(
+                            "HARNESS_READ_DENIED", "Saved guidance scope differs", 403
+                        )
+                    deferred_result = value.result(call.call_id).model_dump(mode="json")
+                    self.store.reconcile_operation(
+                        task_id, operation["operation_id"],
+                        result_hash=io._receipt_hash(deferred_result), receipt=deferred_result,
+                    )
+                    continue
                 if call.name == "apply_edits" and inner and inner["state"] == "known":
                     edits = [WorkspaceEdit.model_validate(item) for item in call.arguments["edits"]]
                     snapshot = WorkspaceSnapshot.model_validate(inner["receipt"]["snapshot"])
@@ -2216,9 +2327,12 @@ class HarnessCodingService:
                     and active_tool_prefix
                     and op["operation_id"].startswith(active_tool_prefix)
                 ]
+                proven_tree = (
+                    known_edits[-1]["receipt"]["tree_hash"]
+                    if known_edits else product_command_tree
+                )
                 if (
-                    not known_edits
-                    or known_edits[-1]["receipt"]["tree_hash"] != workspace.snapshot().tree_hash
+                    proven_tree != workspace.snapshot().tree_hash
                 ):
                     self.store.pause(task_id)
                     raise DomainError(
@@ -3021,6 +3135,7 @@ class HarnessCodingService:
                     "HARNESS_PRODUCT_UNAVAILABLE", "Product authority is missing", 409
                 )
             live_key, capabilities = self.product_model_resolver(request)
+            max_output = min(max_output, capabilities.max_output_tokens)
         from mgar_v3.context.policy import ContextPolicy
 
         context_policy = (
@@ -3170,7 +3285,9 @@ class HarnessCodingService:
         )
         live = request.mode == "live"
         model: Any
+        registered_model: ModelAdapter | None = None
         if live:
+            assert live_key is not None
             adapter: Any = DeepSeekChatAdapter
             if request.product_session_id:
                 from mgar_v3.harness.product_models import ProductDeepSeekChatAdapter
@@ -3182,6 +3299,10 @@ class HarnessCodingService:
                 max_attempts=1 if profile else 2,
                 artifacts=self.engine.artifacts if self.engine is not None else None,
             )
+            if request.product_session_id and self.product_adapter_factory is not None:
+                registered_model = self.product_adapter_factory(request, live_key, capabilities)
+                if registered_model is not None:
+                    model = registered_model
             model_id = capabilities.model_id
             price_version = capabilities.price.version
             max_cost = (
@@ -3242,7 +3363,29 @@ class HarnessCodingService:
                 ) -> ModelResponse:
                     assert resolver is not None
                     resolver(request)
-                    return metered.complete(model_request, cancellation)
+                    from mgar_v3.harness.product_models import product_request_reservation
+
+                    if model_request.reservation_micros < product_request_reservation(
+                        model_request, capabilities,
+                    ):
+                        raise DomainError(
+                            "MODEL_RESERVATION_REQUIRED", "Model reservation is insufficient", 403,
+                        )
+                    result = metered.complete(model_request, cancellation)
+                    if registered_model is None or not result.usage.known:
+                        return result
+                    usage = result.usage
+                    priced = _price_usage(
+                        usage.input_tokens, usage.output_tokens, model_request, capabilities,
+                    )
+                    metered.cost_micros += priced.cost_micros - usage.cost_micros
+                    return result.model_copy(update={
+                        "provider": capabilities.provider, "model_id": capabilities.model_id,
+                        "price_version": capabilities.price.version,
+                        "usage": priced.model_copy(update={
+                            "reasoning_tokens": usage.reasoning_tokens,
+                        }),
+                    })
 
             guarded_model = ProductModelGuard()
         authority: CapabilityLease | CapabilityAuthority = lease
@@ -3305,9 +3448,13 @@ class HarnessCodingService:
             **({"feedback_plan": profile.independent_regression_plan}
                if profile and profile.public_feedback_policy else {}),
         )
+        guidance = None
+        if io is not None and request.product_session_id and request.product_guidance:
+            guidance = GuidanceDelivery(
+                workspace, io, broker.authority, task, grant, request.product_guidance,
+            )
+            tools.guidance = guidance
         broker.context_tools = tools.context_tools
-        if request.product_session_id and self.product_extension_factory is not None:
-            tools = self.product_extension_factory(runtime, tools)
         if io is not None:
             tools.context_tools.restore_known(
                 ToolContext(
@@ -3404,6 +3551,7 @@ class HarnessCodingService:
             continuation=continuation,
             application=application,
             project_context=request.product_context,
+            project_guidance=guidance,
             baseline_cwd=request.product_plan.get("root", ".")
             if request.product_session_id
             else ".",
@@ -3438,36 +3586,41 @@ class HarnessCodingService:
             runtime.task = task
         from mgar_v3.harness.coding_loop import TaskPlan
 
-        plan = (
-            TaskPlan.model_validate(saved["plan"])
-            if saved
-            else loop.plan(
-                task,
-                baseline_command=test_argv if kind in _WRITABLE else (),
-                service_plan=(
-                    ServicePlan(
-                        argv=profile.service_argv,
-                        mode=profile.service_mode,
-                        port=profile.service_port,
-                        path=profile.service_path,
-                        timeout_seconds=profile.service_timeout_seconds,
-                        routes=profile.lifecycle_routes,
-                    )
-                    if profile and profile.service_argv
-                    else ServicePlan(
-                        argv=tuple(request.product_plan["start_argv"]),
-                        port=request.product_plan["readiness"]["port"],
-                        path=request.product_plan["readiness"].get("path", "/"),
-                        routes=public_routes(task.objective),
-                    )
-                    if request.product_session_id
-                    and request.product_plan.get("start_argv")
-                    and request.product_plan.get("readiness")
-                    else None
-                ),
-            )
-        )
+        extensions = None
         try:
+            if request.product_session_id and self.product_extension_factory is not None:
+                extensions = self.product_extension_factory(runtime, tools)
+                loop.tools = extensions
+            tool_specs = tuple(loop.tools.specs())
+            plan = (
+                TaskPlan.model_validate(saved["plan"])
+                if saved
+                else loop.plan(
+                    task,
+                    baseline_command=test_argv if kind in _WRITABLE else (),
+                    service_plan=(
+                        ServicePlan(
+                            argv=profile.service_argv,
+                            mode=profile.service_mode,
+                            port=profile.service_port,
+                            path=profile.service_path,
+                            timeout_seconds=profile.service_timeout_seconds,
+                            routes=profile.lifecycle_routes,
+                        )
+                        if profile and profile.service_argv
+                        else ServicePlan(
+                            argv=tuple(request.product_plan["start_argv"]),
+                            port=request.product_plan["readiness"]["port"],
+                            path=request.product_plan["readiness"].get("path", "/"),
+                            routes=public_routes(task.objective),
+                        )
+                        if request.product_session_id
+                        and request.product_plan.get("start_argv")
+                        and request.product_plan.get("readiness")
+                        else None
+                    ),
+                )
+            )
             result = loop.run(
                 task,
                 grant,
@@ -3476,9 +3629,11 @@ class HarnessCodingService:
                 checkpoint=self._checkpoint(runtime),
             )
         finally:
-            session.close()
-            if request.product_session_id and hasattr(tools, "close"):
-                tools.close()
+            try:
+                if extensions is not None and hasattr(extensions, "close"):
+                    extensions.close()
+            finally:
+                session.close()
         runtime.finished_at = datetime.now(UTC).isoformat()
         candidate_status = result.status
         independent_gate: dict[str, Any] | None = None
@@ -3537,7 +3692,7 @@ class HarnessCodingService:
                                 "summary": "Candidate stopped; independent judge did not pass",
                             }
                         )
-                payload = self._persist(runtime, result, metered, tools)
+                payload = self._persist(runtime, result, metered, tool_specs)
                 if profile is not None:
                     payload.update(
                         candidate_status=candidate_status,
@@ -3565,14 +3720,14 @@ class HarnessCodingService:
                 self.store.finish(task_id, epoch, result.status, content_hash, result.tree_after)
                 self.fault_hook("result_after_commit", {"content_hash": content_hash})
                 return payload
-        return self._persist(runtime, result, metered, tools)
+        return self._persist(runtime, result, metered, tool_specs)
 
     def _persist(
         self,
         runtime: _TaskRuntime,
         result: CodingResult,
         metered: MeteredModel,
-        tools: CodingToolRegistry,
+        tool_specs: tuple[ToolSpec, ...],
     ) -> dict[str, Any]:
         task_id = runtime.task_id
         workspace = runtime.workspace
@@ -3662,7 +3817,7 @@ class HarnessCodingService:
             "approval_ref": f"web-approval-{task_id}",
             "workspace_path": str(workspace.root),
             "workspace_files": len(workspace.snapshot().files),
-            "tool_specs": [spec.model_dump(mode="json") for spec in tools.specs()],
+            "tool_specs": [spec.model_dump(mode="json") for spec in tool_specs],
             "context_state": result.context_state.model_dump(mode="json")
             if result.context_state is not None
             else None,

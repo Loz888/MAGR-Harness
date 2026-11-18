@@ -89,6 +89,7 @@ from mgar_v3.harness.output_protocol import (
     numeric_argument_feedback,
     validate_tool_calls,
 )
+from mgar_v3.harness.project_guidance import GUIDANCE_REQUIRED, GuidanceDelivery
 from mgar_v3.harness.public_feedback import PublicFeedbackPolicy, task_semantics_hash
 from mgar_v3.harness.resource_context import project_resources
 from mgar_v3.harness.tool_errors import (
@@ -928,6 +929,7 @@ class CodingLoop:
         max_context_tokens: int | None = None,
         command_timeout_seconds: float = 120,
         project_context: str = "",
+        project_guidance: GuidanceDelivery | None = None,
         baseline_cwd: str = ".",
         model_quote: Callable[[ModelRequest], int] | None = None,
         before_model_request: Callable[[ModelRequest], None] | None = None,
@@ -962,6 +964,7 @@ class CodingLoop:
         self.max_context_tokens = max_context_tokens
         self.command_timeout_seconds = min(1800.0, command_timeout_seconds)
         self.project_context = project_context
+        self.project_guidance = project_guidance
         self.baseline_cwd = baseline_cwd
         self.model_quote = model_quote
         self.before_model_request = before_model_request
@@ -1663,6 +1666,8 @@ class CodingLoop:
                             self._working_state(state),
                             overhead_tokens=estimate_tokens(overhead),
                             overhead_bytes=len(json.dumps(overhead, ensure_ascii=False).encode()),
+                            pinned_messages=self.project_guidance.messages()
+                            if self.project_guidance else (),
                         )
                         history = list(view.messages)
                         state.estimated_peak_input_tokens = max(
@@ -1746,13 +1751,14 @@ class CodingLoop:
             except DomainError as exc:
                 return self._finish(state, "blocked", exc.code, str(exc), last_evaluation,
                                     persist_context=False)
-            if self.before_model_request is not None:
-                try:
+            try:
+                if self.project_guidance is not None:
+                    self.project_guidance.verify_request(request)
+                if self.before_model_request is not None:
                     self.before_model_request(request)
-                except DomainError as exc:
-                    # Admission checks precede the original reservation and
-                    # durable dispatch. A refused request is never an unknown send.
-                    return self._finish(state, "blocked", exc.code, str(exc), last_evaluation)
+            except DomainError as exc:
+                # Admission checks precede the original reservation and durable dispatch.
+                return self._finish(state, "blocked", exc.code, str(exc), last_evaluation)
             try:
                 reservation = self.budgets.reserve(
                     task.task_id,
@@ -2700,7 +2706,8 @@ class CodingLoop:
 
         def transform(result: HarnessToolResult) -> HarnessToolResult:
             # Actual executed tests keep their real failure summary and raw-log reference.
-            if result.status not in {"error", "denied"} or result.data.get("receipt"):
+            if (result.status not in {"error", "denied"} or result.data.get("receipt")
+                    or (call.name == "apply_edits" and result.code == GUIDANCE_REQUIRED)):
                 return result
             assert self.tool_error_policy is not None
             hints = getattr(self.tools, "error_scope", None)
@@ -2805,6 +2812,9 @@ class CodingLoop:
                 return ("write path is outside the grant", "HARNESS_WRITE_DENIED")
             return None
         if spec.capability == "read":
+            scoped = getattr(self.tools, "is_scoped_read", None)
+            if callable(scoped) and scoped(call.name):
+                return None  # The registry enforces the extension's distinct read authority.
             # Tools without an explicit path (e.g. a search) read from the
             # workspace root, which the grant must still cover.
             paths = _path_arguments(call.arguments) or ["."]

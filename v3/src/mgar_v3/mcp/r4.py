@@ -65,34 +65,38 @@ def server(role: str, authority: Callable[[], Engine]) -> FastMCP:
 
 
 class TaskTools:
-    def __init__(self, engine: Engine, token: str, role: str):
+    def __init__(self, engine: Engine, token: str, role: str, *, base_url: str | None = None):
         self.engine, self.token, self.role = engine, token, role
+        self.base_url = base_url
+
+    def _endpoint(self) -> str | None:
+        return self.engine.settings.r4_tool_base_url if self.base_url is None else self.base_url
 
     def call(self, tool: str, arguments: dict[str, Any]) -> dict[str, Any]:
-        base = self.engine.settings.r4_tool_base_url
-        if base and self.role in {"knowledge", "data"}:
+        if self._endpoint() and self.role in {"knowledge", "data"}:
+            return asyncio.run(self.call_async(tool, arguments))
+        return self.engine.tools.call(self.token, tool, arguments, self.role)
 
-            async def request() -> dict[str, Any]:
-                async with httpx.AsyncClient(
-                    headers={"Authorization": "Bearer " + self.token}, trust_env=False
-                ) as http:
-                    return await exchange(http)
-
-            async def exchange(http: httpx.AsyncClient) -> dict[str, Any]:
+    async def call_async(self, tool: str, arguments: dict[str, Any]) -> dict[str, Any]:
+        base = self._endpoint()
+        if not base or self.role not in {"knowledge", "data"}:
+            return await asyncio.to_thread(
+                self.engine.tools.call, self.token, tool, arguments, self.role,
+            )
+        try:
+            async with httpx.AsyncClient(
+                headers={"Authorization": "Bearer " + self.token}, trust_env=False,
+            ) as http:
                 async with streamable_http_client(
                     base.rstrip("/") + "/mcp/" + self.role + "/", http_client=http
                 ) as (read, write, _):
                     async with ClientSession(read, write) as session:
                         await session.initialize()
                         result = await session.call_tool(tool, arguments)
-                        if result.isError or result.structuredContent is None:
-                            raise DomainError("MCP_TOOL_FAILED", "Readonly MCP operation failed")
-                        return dict(result.structuredContent)
-
-            try:
-                return asyncio.run(request())
-            except (ExceptionGroup, httpx.HTTPError) as exc:
-                raise DomainError(
-                    "MCP_TRANSPORT_FAILED", "Readonly MCP transport did not complete"
-                ) from exc
-        return self.engine.tools.call(self.token, tool, arguments, self.role)
+        except (ExceptionGroup, httpx.HTTPError) as exc:
+            raise DomainError(
+                "MCP_TRANSPORT_FAILED", "Readonly MCP transport did not complete"
+            ) from exc
+        if result.isError or result.structuredContent is None:
+            raise DomainError("MCP_TOOL_FAILED", "Readonly MCP operation failed")
+        return dict(result.structuredContent)

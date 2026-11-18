@@ -1321,6 +1321,29 @@
     ],
     "timeout_seconds": 750
   },
+  "HV4-H14": {
+    "components": {
+      "guidance": "canonical first-write gating, immutable replay and compaction, Skill selection and grant revocation",
+      "extensions": "operator lock, versioned model and tool SDK, namespaced dispatch, lifecycle and dependency validation",
+      "mcp": "real fixed-commit stdio fixture, loopback knowledge and SQL HTTP MCP, original R4 evidence",
+      "runtime": "same PostgreSQL Run, exact-command recovery and owned Docker sandbox receipts",
+      "live": "controlled models and local MCP transports; external live gate recorded separately"
+    },
+    "pytest_node_selectors": true,
+    "tests": [
+      "tests/test_harness_h14_guidance.py",
+      "tests/test_harness_h14_plugins.py",
+      "tests/test_harness_product_context.py",
+      "tests/test_harness_product_extensions.py",
+      "tests/test_harness_product_models.py",
+      "tests/test_harness_product_service.py",
+      "tests/test_harness_v4_h10_tools.py",
+      "tests/test_harness_v4_h11_io.py",
+      "tests/test_mcp.py",
+      "tests/test_r4_mcp.py"
+    ],
+    "timeout_seconds": 750
+  },
   "HV4-H12": {
     "components": {
       "frozen_catalog": "H00 byte hashes, original judge objects, fixed twelve-case denominator and resource limits",
