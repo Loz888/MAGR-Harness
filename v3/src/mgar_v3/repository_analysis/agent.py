@@ -51,6 +51,7 @@ PARTIAL_CODES = {
     "EVIDENCE_REJECTED",
     "INSUFFICIENT_EVIDENCE",
     "MODEL_INVALID_RESPONSE",
+    "MODEL_OUTPUT_TRUNCATED",
     "MODEL_CLIENT_UNAVAILABLE",
     "MODEL_RATE_LIMITED",
     "INPUT_TOKEN_BUDGET",
@@ -495,10 +496,10 @@ class RepoAnalysisAgent:
                 },
             }
         instruction = (
-            "Change the investigation strategy now. Empty or repeated searches do not establish "
-            "that the task is impossible. Inspect the discovered manifest, tests, entry points and "
-            "call sites; enumerate directories instead of repeating similar searches. Track a "
-            "concrete hypothesis and try to disprove it. Do not invent a defect. " + detail[:1000]
+            "If the evidence already answers the question, return a concise final answer now. "
+            "Otherwise identify the exact missing fact and inspect a different manifest, test, "
+            "entry point or call site that can resolve it. Repeated reads and empty searches "
+            "are not new evidence. Do not invent a defect. " + detail[:1000]
         )
         history = [
             *state.get("history", []),
@@ -889,6 +890,12 @@ class RepoAnalysisAgent:
                 "prior_report": prior,
                 "prior_evidence_id_map": spec.prior_evidence_map if prior else {},
                 "history": history,
+                "progress_instruction": (
+                    "Recent tool calls added no source evidence. Synthesize a concise final "
+                    "report if the existing excerpts answer the question. Otherwise request "
+                    "a genuinely new source or range for a specific missing fact."
+                    if state.get("no_progress_rounds") else ""
+                ),
                 "prior_experience": list(recall.get("plan_hints") or []),
                 "confirmed_facts": list(recall.get("confirmed_facts") or []),
                 "known_failures": list(state.get("known_failures") or []),
@@ -1038,7 +1045,6 @@ class RepoAnalysisAgent:
                             {**state, "history": history, "evidence": evidence},
                             exc.code,
                         )
-                    history.append(cached)
                     if not any(
                         item.get("evidence_id") == cached["evidence_id"] for item in evidence
                     ):
@@ -1049,20 +1055,12 @@ class RepoAnalysisAgent:
                     changed = _source_progress(cached, source_coverage, seen_results)
                     progress = progress or changed
                     if changed:
+                        history.append(cached)
                         observed.append(cached)
-                    else:
-                        history.append(
-                            {
-                                "tool": "verification",
-                                "reference": cached["reference"],
-                                "evidence_id": None,
-                                "truncated": False,
-                                "content": "These source lines were already read at this fixed "
-                                "version. Reuse the existing evidence and address the outstanding "
-                                "verification feedback; a changed range header is not new "
-                                "evidence.",
-                            }
-                        )
+                    elif not any(
+                        item.get("evidence_id") == cached["evidence_id"] for item in history
+                    ):
+                        history.append(cached)
                     recorder = getattr(self.runtime.store, "stream_event", None)
                     if callable(recorder):
                         recorder(
@@ -1076,18 +1074,6 @@ class RepoAnalysisAgent:
                         )
                     continue
             if spec.limits.automatic and argument_hash in seen_tools:
-                history.append(dict(seen_tools[argument_hash]))
-                history.append(
-                    {
-                        "tool": "verification",
-                        "reference": "",
-                        "evidence_id": None,
-                        "truncated": False,
-                        "content": "This exact read was already "
-                        "completed. Reuse its evidence and investigate a different "
-                        "symbol, file or line range instead of repeating the same read.",
-                    }
-                )
                 continue
             step_key = f"tool:r{decision_round}:{index}"
             try:
@@ -1470,6 +1456,7 @@ class RepoAnalysisAgent:
             "AGENT_STALLED": "连续调查未得到新的有效线索，需要补充文件位置或问题背景。",
             "EVIDENCE_REJECTED": "回答尚未通过源码或任务完整性核验，已保留现有证据。",
             "MODEL_INVALID_RESPONSE": "模型服务连续返回不可用的结构化内容，已停止自动重试。",
+            "MODEL_OUTPUT_TRUNCATED": "模型回复达到输出长度上限，已保留源码证据，可继续追问。",
             "MODEL_CLIENT_UNAVAILABLE": "无法连接模型服务，已保留调查进度。",
             "MODEL_RATE_LIMITED": "模型服务暂时限制了请求，已保留调查进度。",
         }.get(code, "可用 Token、费用、上下文或执行时间已达到上限。")

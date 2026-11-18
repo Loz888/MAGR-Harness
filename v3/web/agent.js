@@ -66,7 +66,9 @@ const ERRORS = {
   MODEL_PROVIDER_ERROR:
     "模型服务返回错误，请检查密钥、模型名称和供应商账户额度。",
   MODEL_INVALID_RESPONSE:
-    "模型输出没有通过结构校验，本次尝试已保留，请查看执行记录。",
+    "模型输出没有通过结构校验，源码证据已保留，可以继续追问。",
+  MODEL_OUTPUT_TRUNCATED:
+    "模型回复达到单次输出上限，源码证据已保留，可以继续追问。",
   EXECUTION_FAILED: "执行失败。请查看服务器日志，并保留本次运行记录以便排查。",
   REPORT_VERIFICATION_FAILED:
     "生成的报告没有通过源码引用核验，不能作为成功结论。",
@@ -803,7 +805,10 @@ function analysisProgressText(message) {
     case "analysis_waiting": return "正在等待模型服务响应";
     case "acceptance_started": return "正在核对源码引用与回答完整性";
     case "acceptance_passed": return "核验通过，正在整理报告";
-    case "draft_rejected": return "核验发现缺失，正在补充调查";
+    case "draft_rejected":
+      if (payload.reason === "MODEL_OUTPUT_TRUNCATED") return "回复达到输出上限，正在压缩后重试";
+      if (payload.reason?.startsWith("MODEL_INVALID")) return "回复格式有误，正在重新生成";
+      return "核验发现缺失，正在补充调查";
     case "analysis_user_message": return "补充要求已接收，等待安全点处理";
     case "analysis_input_applied": return "已处理补充要求，继续调查";
     case "analysis_replanned": return "已调整调查方向，继续搜索与核验";
@@ -1262,7 +1267,7 @@ function subscribeRun(id) {
       acceptance_started: "正在核对回答完整性",
       analysis_waiting: "正在等待模型服务",
       acceptance_passed: "核验通过",
-      draft_rejected: "正在补充调查",
+      draft_rejected: analysisProgressText(message),
     };
     const label = document.querySelector(
       '.turn[data-run-id="' + id + '"] .run-status',
