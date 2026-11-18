@@ -1,0 +1,290 @@
+{
+  "schema_version": "harness-h18-acceptance-v1",
+  "task": "HV4-H18",
+  "engineering_gate": "PASS",
+  "live_model_gate": "NOT_RUN",
+  "production_gate": "NOT_RUN",
+  "git_commit": "6bcf68594622e85662b1a5a5341ddb7e2a9af5c7",
+  "predecessor": "c66a9ea",
+  "source_sha256": "b8b4e5d7ab481a08e4d941bf75415e058e89c8bf274a865265f36d86d18f3676",
+  "release": {
+    "path": ".local/h18/releases/magr-harness-6bcf685.tar.gz",
+    "sha256": "47d385c36859844288c62c6734d02a59500a08092b25e29bc726c580bbbe3b51"
+  },
+  "real_model_calls": 0,
+  "checks": {
+    "HV4-H18": {
+      "status": "PASS",
+      "counts": {
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "git_commit": "6bcf68594622e85662b1a5a5341ddb7e2a9af5c7",
+      "source_sha256": "b8b4e5d7ab481a08e4d941bf75415e058e89c8bf274a865265f36d86d18f3676",
+      "duration_seconds": 80.271,
+      "started_at": "2026-11-18T14:13:28.945562+00:00",
+      "finished_at": "2026-11-18T14:14:49.265656+00:00",
+      "command": "make verify TASK=HV4-H18",
+      "evidence": {
+        "result.json": {
+          "path": "evidence/HV4-H18/20261118T141328Z-77bc4c78/result.json",
+          "sha256": "c1b7f37762430d7214e7faa6d3b63bb0c0e479e1c8d3dd8f0c57a74a39f168bd"
+        },
+        "junit.xml": {
+          "path": "evidence/HV4-H18/20261118T141328Z-77bc4c78/junit.xml",
+          "sha256": "f60f8671bc186c01b446346ee56ee58348746af76a3f64395bf4a1e31d15497c"
+        },
+        "command.log": {
+          "path": "evidence/HV4-H18/20261118T141328Z-77bc4c78/command.log",
+          "sha256": "d2563978a676874730b662bfa8ac9d0492c41a4fb36fa60d70d5b0fb14109a5e"
+        }
+      }
+    },
+    "HV4-H17": {
+      "status": "PASS",
+      "counts": {
+        "tests": 18,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "git_commit": "6bcf68594622e85662b1a5a5341ddb7e2a9af5c7",
+      "source_sha256": "b8b4e5d7ab481a08e4d941bf75415e058e89c8bf274a865265f36d86d18f3676",
+      "duration_seconds": 129.648,
+      "started_at": "2026-11-18T14:13:28.934154+00:00",
+      "finished_at": "2026-11-18T14:15:38.632483+00:00",
+      "command": "make verify TASK=HV4-H17",
+      "evidence": {
+        "result.json": {
+          "path": "evidence/HV4-H17/20261118T141328Z-251bf610/result.json",
+          "sha256": "f26119e47c7faac45f42542dab9aff874b56e7c192ec419e8ce8535871adbb9f"
+        },
+        "junit.xml": {
+          "path": "evidence/HV4-H17/20261118T141328Z-251bf610/junit.xml",
+          "sha256": "1ea12124209c7157197c746be7731b64a37e885b3ebc5da6d9b1ed7c0529d189"
+        },
+        "command.log": {
+          "path": "evidence/HV4-H17/20261118T141328Z-251bf610/command.log",
+          "sha256": "ae7e8b7d60ffc566403034478430be8d7b7d7922a5cc8053941dc7d0f3660467"
+        }
+      }
+    },
+    "HV4-H16": {
+      "status": "PASS",
+      "counts": {
+        "tests": 13,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "git_commit": "6bcf68594622e85662b1a5a5341ddb7e2a9af5c7",
+      "source_sha256": "b8b4e5d7ab481a08e4d941bf75415e058e89c8bf274a865265f36d86d18f3676",
+      "duration_seconds": 112.254,
+      "started_at": "2026-11-18T14:13:28.948206+00:00",
+      "finished_at": "2026-11-18T14:15:21.248484+00:00",
+      "command": "make verify TASK=HV4-H16",
+      "evidence": {
+        "result.json": {
+          "path": "evidence/HV4-H16/20261118T141328Z-649c7939/result.json",
+          "sha256": "effb78b58c59dcc464cf7109178e4769a39dc0cd74dfbe694a586a5d4aef6658"
+        },
+        "junit.xml": {
+          "path": "evidence/HV4-H16/20261118T141328Z-649c7939/junit.xml",
+          "sha256": "6e70cd7fec01e4feaab5eababf1d447b8b563468433205750d77d5fb89a87905"
+        },
+        "command.log": {
+          "path": "evidence/HV4-H16/20261118T141328Z-649c7939/command.log",
+          "sha256": "b7fec8f067f0c70395aa2fb860840fb60f310189b002ad8cd736c163ceba3f5e"
+        }
+      }
+    },
+    "HV4-H13": {
+      "status": "PASS",
+      "counts": {
+        "tests": 42,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "git_commit": "6bcf68594622e85662b1a5a5341ddb7e2a9af5c7",
+      "source_sha256": "b8b4e5d7ab481a08e4d941bf75415e058e89c8bf274a865265f36d86d18f3676",
+      "duration_seconds": 400.163,
+      "started_at": "2026-11-18T14:13:28.925646+00:00",
+      "finished_at": "2026-11-18T14:20:09.145836+00:00",
+      "command": "make verify TASK=HV4-H13",
+      "evidence": {
+        "result.json": {
+          "path": "evidence/HV4-H13/20261118T141328Z-65c5ef3f/result.json",
+          "sha256": "8dbe3822cfb543304423098bb416f54992210cda8e021c2c78d71d63fb224961"
+        },
+        "junit.xml": {
+          "path": "evidence/HV4-H13/20261118T141328Z-65c5ef3f/junit.xml",
+          "sha256": "1ef6350872485bc4e355868a0acd489098a47d5bdda9a72d04d348065ac63e56"
+        },
+        "command.log": {
+          "path": "evidence/HV4-H13/20261118T141328Z-65c5ef3f/command.log",
+          "sha256": "09cbf78aea5ee0fe5a37be31f543a83de72db4c347ef91e14ea33a00adb19f1e"
+        }
+      }
+    },
+    "HV4-H11": {
+      "status": "PASS",
+      "counts": {
+        "tests": 68,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "git_commit": "6bcf68594622e85662b1a5a5341ddb7e2a9af5c7",
+      "source_sha256": "b8b4e5d7ab481a08e4d941bf75415e058e89c8bf274a865265f36d86d18f3676",
+      "duration_seconds": 148.816,
+      "started_at": "2026-11-18T14:13:28.944232+00:00",
+      "finished_at": "2026-11-18T14:15:57.807070+00:00",
+      "command": "make verify TASK=HV4-H11",
+      "evidence": {
+        "result.json": {
+          "path": "evidence/HV4-H11/20261118T141328Z-5df8cf4e/result.json",
+          "sha256": "dccbe8263a9e70e322bfea27a2e01d38ec7501365223fde122b01b8d54fa0b0a"
+        },
+        "junit.xml": {
+          "path": "evidence/HV4-H11/20261118T141328Z-5df8cf4e/junit.xml",
+          "sha256": "2b827d64cd3b5b7ba7cefcb8efb38dd23a1ce4f777874abc8fc417d2a1aecac1"
+        },
+        "command.log": {
+          "path": "evidence/HV4-H11/20261118T141328Z-5df8cf4e/command.log",
+          "sha256": "c4cd7f8225fdd8bb435e7c52bd3858ef5bdf87c972709c29e2fc7bcdefd70567"
+        }
+      }
+    }
+  },
+  "source_checks": {
+    "lint": {
+      "status": "PASS",
+      "command": "make lint",
+      "path": ".local/h18/final-lint.log",
+      "sha256": "a220b562d6bdb3655673add818cabd1dbd6857a7efc7d06ff8178f9e0e2501e2"
+    },
+    "typecheck": {
+      "status": "PASS",
+      "command": "make typecheck",
+      "path": ".local/h18/final-typecheck.log",
+      "sha256": "2217d486a4cb8b894bdd7ab5db80ca0e2a87cee3e8fd896ccfe875137cf5c12e"
+    }
+  },
+  "platforms": {
+    "wsl2_ubuntu_24_04_x86_64": {
+      "status": "PASS",
+      "platform": "WSL2 Ubuntu 24.04 x86_64",
+      "source": "6bcf68594622e85662b1a5a5341ddb7e2a9af5c7",
+      "fresh_frozen_install": true,
+      "compose_start": true,
+      "doctor": {
+        "postgres": "PASS",
+        "redis": "PASS",
+        "sandbox": "PASS",
+        "live": "NOT_RUN",
+        "diagnostics": {
+          "postgres": {
+            "code": "OK",
+            "applied": 35,
+            "latest": "0057_harness_tenants.sql"
+          },
+          "redis": {
+            "code": "OK"
+          },
+          "sandbox": {
+            "code": "OK"
+          }
+        }
+      },
+      "repeat_migration_empty": true,
+      "web_setup": true,
+      "cookie_survived_restart": true,
+      "harness_page": true,
+      "paid_model_calls": 0,
+      "cache_reused": true,
+      "evidence": {
+        "path": ".local/h18/wsl-install-acceptance.json",
+        "sha256": "d5556477d0cd5ee91fc717556721261d6c8b60e1b8cbee2aaf4128b7bafed9d3"
+      },
+      "logs": [
+        {
+          "path": ".local/h18/wsl-setup.log",
+          "sha256": "4470eaa8a49a5e527b7291cac20f63659b7770557cd81c9468c9fe64836ece9d"
+        },
+        {
+          "path": ".local/h18/wsl-deps.log",
+          "sha256": "10811d7739b7570c17e87f57f0edefbbc8597681af27b215fdfc640f4a1110f3"
+        },
+        {
+          "path": ".local/h18/wsl-migrate.log",
+          "sha256": "7962d71b9a19035d824cc34955b98843b4c6688e078a3f4ab3fd01aa3878e65c"
+        },
+        {
+          "path": ".local/h18/wsl-migrate-repeat.log",
+          "sha256": "8155ffc09af2b7a2c063f86f1298feb7e4320f31216e57bb7bbed70d0ea74657"
+        },
+        {
+          "path": ".local/h18/wsl-doctor.log",
+          "sha256": "82b49a7a074e65c99f24bf4581ea7473bb412d88ad57a8e087e4c255e94b34a3"
+        },
+        {
+          "path": ".local/h18/wsl-web-initial.log",
+          "sha256": "ea2c73d7cd031fb7b7ef4677068d3cd5ac58680ffe0ad251815225552f000985"
+        },
+        {
+          "path": ".local/h18/wsl-web-restart.log",
+          "sha256": "b5c0586216dfd732dbf5e520239742d1c44a4fe151bff9efab92d0aa212ec80c"
+        },
+        {
+          "path": ".local/h18/wsl-cleanup.log",
+          "sha256": "c27e15cacd5e7cee25ba180260f58a7a3d44698f4eff9ffaec167162be23d021"
+        }
+      ]
+    },
+    "debian_12_container_x86_64": {
+      "status": "PASS",
+      "platform": "Debian 12 x86_64 container",
+      "fresh_frozen_install": true,
+      "postgres_migration": true,
+      "repeat_migration_empty": true,
+      "harness_page": true,
+      "source": "6bcf68594622e85662b1a5a5341ddb7e2a9af5c7",
+      "evidence": {
+        "path": ".local/h18/linux-runtime.log",
+        "sha256": "597ab16cdcfd7062f39bb552943cf9c5ac4d2044428ee35ab54617f3702984d4"
+      }
+    },
+    "native_linux_host": {
+      "status": "NOT_RUN"
+    },
+    "windows_native": {
+      "status": "NOT_RUN"
+    },
+    "macos": {
+      "status": "NOT_RUN"
+    },
+    "arm64": {
+      "status": "NOT_RUN"
+    }
+  },
+  "initial_negative_evidence": [
+    {
+      "condition": "custom web port without matching origin",
+      "path": ".local/h18/wsl-first-web.log",
+      "sha256": "1585ade8e68dc5538c45beea629752fe5431ea76a929c9873656351c18c0b3cf"
+    },
+    {
+      "condition": "smoke probe used a non-existent route",
+      "path": ".local/h18/wsl-second-web.log",
+      "sha256": "594d8b11e2c823830ffef9d259867986fdce8a11d83af5192c69406b131d3b5f"
+    },
+    {
+      "condition": "initial source subtree archive had non-reproducible tar timestamps",
+      "path": ".local/h18/probe.log",
+      "sha256": "33b184ecdb6916d7ceb522f6c258444b15d247c981a0006db6b5d85f002ebd34"
+    }
+  ]
+}

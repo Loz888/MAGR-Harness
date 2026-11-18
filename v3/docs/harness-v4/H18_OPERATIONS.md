@@ -13,7 +13,7 @@ make doctor
 make dev
 ```
 
-本地网页为 `http://127.0.0.1:18080`，首次安装从网页初始化管理员。首次安装需要下载固定依赖和镜像。已准备相同版本缓存的机器可复用依赖。启动独立测试实例时，在首次 `make setup` 前为 `MGAR_V3_DB_HOST_PORT` 和 `MGAR_V3_REDIS_HOST_PORT` 指定不同的空闲端口，并在所有 Compose 命令中用同一个 `COMPOSE_PROJECT`。
+本地网页为 `http://127.0.0.1:18080/static/agent.html`，首次安装从网页初始化管理员。使用自定义 Web 端口时，配套设置 `MGAR_V3_WEB_ALLOWED_ORIGINS` 为包含该浏览器 Origin 的 JSON 数组。首次安装需要下载固定依赖和镜像。已准备相同版本缓存的机器可复用依赖。启动独立测试实例时，在首次 `make setup` 前为 `MGAR_V3_DB_HOST_PORT` 和 `MGAR_V3_REDIS_HOST_PORT` 指定不同的空闲端口，并在所有 Compose 命令中用同一个 `COMPOSE_PROJECT`。
 
 ## 诊断
 
