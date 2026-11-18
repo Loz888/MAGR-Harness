@@ -370,6 +370,24 @@
       <div class="dialog-heading"><div><p class="eyebrow">WORKSPACE</p><h2 id="product-project-title">打开项目</h2></div><button type="button" class="icon-button" id="product-project-close" aria-label="关闭">×</button></div>
       <p class="field-help">输入运行 Harness 的这台电脑上的项目目录。WSL 中请使用 Linux 路径。</p>
       <form id="product-project-form"><label for="product-project-path">项目目录</label><input id="product-project-path" placeholder="/home/me/my-project" required maxlength="4096" /><p id="product-project-error" class="error-text" role="alert"></p><button type="submit" id="product-project-save" class="primary-button">打开项目</button></form>
+      <button type="button" id="product-runner-open" class="ghost-button">配对另一台设备</button>
+    </dialog>
+    <dialog id="product-runner-dialog" aria-labelledby="product-runner-title" class="product-dialog">
+      <div class="dialog-heading">
+        <h2 id="product-runner-title">Runner 设备</h2>
+        <button type="button" id="product-runner-close" class="icon-button" aria-label="关闭">×</button>
+      </div>
+      <button type="button" id="product-runner-pair" class="ghost-button">生成配对码</button>
+      <div id="product-runner-code" aria-live="polite" hidden></div>
+      <ul id="product-runner-devices" class="product-runner-list" aria-label="已配对设备"></ul>
+      <form id="product-runner-form">
+        <label for="product-runner-workspace">在设备上验证项目</label>
+        <select id="product-runner-workspace" required></select>
+        <button id="product-runner-submit" type="submit" class="primary-button">运行项目测试</button>
+      </form>
+      <p id="product-runner-error" class="error-text" role="alert"></p>
+      <ul id="product-runner-jobs" class="product-runner-list" aria-label="验证任务"></ul>
+      <div id="product-runner-result" aria-live="polite"></div>
     </dialog>
     <dialog id="product-permission-dialog" aria-labelledby="product-permission-title" class="product-dialog">
       <div class="dialog-heading"><div><p class="eyebrow">PROJECT ACCESS</p><h2 id="product-permission-title">设置项目权限</h2></div><button type="button" class="icon-button" id="product-permission-close" aria-label="关闭">×</button></div>

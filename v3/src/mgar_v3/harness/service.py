@@ -119,6 +119,7 @@ from mgar_v3.harness.public_probe_types import PublicProbePlan
 from mgar_v3.harness.recovery_io import RecoveryIO, workspace_lock
 from mgar_v3.harness.regression_types import RegressionCommand, RegressionPlan
 from mgar_v3.harness.result_artifacts import dump_result, load_result
+from mgar_v3.harness.runner_store import RunnerStore
 from mgar_v3.harness.test_results import parse_independent_test
 from mgar_v3.harness.tool_errors import ToolErrorPolicy, effective_roots
 from mgar_v3.harness.workspace import (
@@ -135,7 +136,7 @@ from mgar_v3.harness.workspace import (
 DETERMINISTIC_MODEL_ID = "local-deterministic-h08"
 DETERMINISTIC_PRICE_VERSION = "local-deterministic-v1"
 READ_FILE_MARKER = "\n\n<<mgar-read-file "
-TASK_ID_PATTERN = re.compile(r"h08-[0-9a-f]{12}")
+TASK_ID_PATTERN = re.compile(r"h(?:08|15)-[0-9a-f]{12}")
 
 
 def _strip_read_trailer(text: str) -> str:
@@ -1658,6 +1659,7 @@ class HarnessCodingService:
         self._allow_paid = allow_paid
         self.engine = engine
         self.store = engine.harness if engine is not None else None
+        self.runners = RunnerStore(engine) if engine is not None else None
         self.model_factory = model_factory
         self.before_model_request = before_model_request
         self.product_model_resolver: (
@@ -1725,16 +1727,23 @@ class HarnessCodingService:
                 "repository": entry.get("repository", ""),
                 "base_commit": entry.get("base_commit", ""),
                 "registered_at": entry.get("registered_at", ""),
+                "execution_site": self._execution_site(entry.get("path", "")),
             }
             for project_id, entry in sorted(projects.items())
         ]
 
+    def _execution_site(self, path: str) -> dict[str, str]:
+        if path and Path(path).is_relative_to(self.root / "github-sources"):
+            return {"kind": "server_sandbox", "name": "服务器隔离环境"}
+        return {"kind": "harness_host", "name": "Harness 所在主机"}
+
     def register_project(self, path: str) -> dict[str, Any]:
         registration = self.registry.register_local(path, actor=self.actor)
+        source_path = str(Path(path).resolve())
         with self._lock:
             projects = self._projects()
             projects[registration.workspace_id] = {
-                "path": str(Path(path).resolve()),
+                "path": source_path,
                 "repository": registration.repository,
                 "base_commit": registration.base_commit,
                 "registered_at": registration.registered_at,
@@ -1742,9 +1751,10 @@ class HarnessCodingService:
             self._write_json(self.projects_file, projects)
         return {
             "project_id": registration.workspace_id,
-            "path": str(Path(path).resolve()),
+            "path": source_path,
             "repository": registration.repository,
             "base_commit": registration.base_commit,
+            "execution_site": self._execution_site(source_path),
         }
 
     def live_model_status(self) -> dict[str, Any]:
@@ -1931,6 +1941,8 @@ class HarnessCodingService:
             raise DomainError("HARNESS_RECOVERY_UNAVAILABLE", "Engine is required", 409)
         if not TASK_ID_PATTERN.fullmatch(task_id):
             raise DomainError("HARNESS_TASK_ID_INVALID", "Invalid task id", 400)
+        if self.runners is not None and task_id.startswith("h15-"):
+            return self.runners.control(task_id, "resume")
         row = self.store.get(task_id)
         frozen_profile = row.get("evaluation_profile")
         if frozen_profile is not None and (
@@ -2572,6 +2584,10 @@ class HarnessCodingService:
             raise DomainError("HARNESS_TASK_ID_INVALID", "Invalid task id", 400)
         if not self._task_exists(task_id):
             raise DomainError("HARNESS_TASK_UNKNOWN", "Task is unavailable", 404)
+        if task_id.startswith("h15-"):
+            raise DomainError(
+                "RUNNER_FIXED_PLAN", "Runner verification uses a fixed local plan", 409,
+            )
         status = self._current_status(task_id)
         if status in _TERMINAL:
             raise DomainError(
@@ -2633,6 +2649,8 @@ class HarnessCodingService:
             raise DomainError("HARNESS_TASK_ID_INVALID", "Invalid task id", 400)
         if not self._task_exists(task_id):
             raise DomainError("HARNESS_TASK_UNKNOWN", "Task is unavailable", 404)
+        if self.runners is not None and task_id.startswith("h15-"):
+            return self.runners.control(task_id, "cancel")
         if self.store is not None:
             runtime = self._runtimes.get(task_id)
             if runtime is not None:
@@ -2736,6 +2754,8 @@ class HarnessCodingService:
             raise DomainError("HARNESS_TASK_ID_INVALID", "Invalid task id", 400)
         if not self._task_exists(task_id):
             raise DomainError("HARNESS_TASK_UNKNOWN", "Task is unavailable", 404)
+        if self.runners is not None and task_id.startswith("h15-"):
+            return self.runners.control(task_id, "pause")
         if self.store is not None and task_id not in self._runtimes:
             row = self.store.pause(task_id)
             return {"task_id": task_id, "status": row["public_status"]}
@@ -2890,7 +2910,10 @@ class HarnessCodingService:
                 execution_epoch=row["execution_epoch"],
                 recovery_required=row["status"] == "paused",
             )
-            if status in _TERMINAL and row["reason_code"]:
+            site = row["request"].get("execution_site")
+            if site is not None:
+                payload["execution_site"] = site
+            if (site is not None or status in _TERMINAL) and row["reason_code"]:
                 payload["reason"] = row["reason_code"]
             # The durable inbox can precede status.json. Project the question
             # from the same PG snapshot as waiting_input, never a missing or

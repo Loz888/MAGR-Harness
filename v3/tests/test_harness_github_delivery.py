@@ -692,6 +692,13 @@ def test_fixed_import_serializes_same_snapshot_and_never_persists_read_token(
     assert not failures and len(results) == 2 and peak == 1
     assert results[0]["project_id"] == results[1]["project_id"]
     assert all(result["source_complete"] for result in results)
+    site = {"kind": "server_sandbox", "name": "服务器隔离环境"}
+    assert all(result["execution_site"] == site for result in results)
+    project = next(
+        item for item in value.env.harness.list_projects()
+        if item["project_id"] == results[0]["project_id"]
+    )
+    assert project["execution_site"] == site
     assert all("GIT_CONFIG_VALUE_0" in environment for environment in observed)
     config = (
         value.env.harness.registry._sources[results[0]["project_id"]] / ".git/config"

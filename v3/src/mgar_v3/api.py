@@ -182,6 +182,8 @@ def create_app(
             ),
             allow_paid=configuration.allow_paid,
         )
+        if provided is None:
+            app.state.harness.runners.recover()
         from mgar_v3.harness.product import HarnessProductService
 
         app.state.product = HarnessProductService(app.state.harness, repo_service.web_settings)
@@ -249,7 +251,13 @@ def create_app(
 
         async def supervise() -> None:
             nonlocal effect, router_task, index_task
+            runner_store = app.state.harness.runners
+            next_runner_sweep = 0.0
             while not stopped.is_set():
+                now = asyncio.get_running_loop().time()
+                if runner_store is not None and now >= next_runner_sweep:
+                    await asyncio.to_thread(runner_store.sweep)
+                    next_runner_sweep = now + 1.0
                 for run_id, worker in list(workers.items()):
                     if worker.done():
                         worker.result()
@@ -433,8 +441,10 @@ def create_app(
         check_origin(request)
 
     from mgar_v3.harness.product_api import register_product_routes
+    from mgar_v3.harness.runner_api import register_runner_routes
 
     register_product_routes(app, authenticated)
+    register_runner_routes(app, authenticated)
 
     @app.get("/api/v3/auth/session")
     def browser_session(request: Request) -> JSONResponse:
@@ -1402,15 +1412,31 @@ def create_app(
         return jsonable_encoder(result)
 
     @app.post("/api/v3/runs/{run_id}/cancel", dependencies=[Depends(authenticated)])
-    def cancel(run_id: UUID, service: Annotated[Engine, Depends(authority)]) -> Any:
+    def cancel(
+        run_id: UUID, request: Request, service: Annotated[Engine, Depends(authority)],
+    ) -> Any:
+        runner_store = request.app.state.harness.runners
+        if runner_store is not None and (task_id := runner_store.task_for_run(run_id)):
+            return jsonable_encoder(runner_store.control(task_id, "cancel"))
         return jsonable_encoder(service.cancel(run_id))
 
     @app.post("/api/v3/runs/{run_id}/pause", dependencies=[Depends(authenticated)])
-    def pause(run_id: UUID, service: Annotated[Engine, Depends(authority)]) -> Any:
+    def pause(
+        run_id: UUID, request: Request, service: Annotated[Engine, Depends(authority)],
+    ) -> Any:
+        runner_store = request.app.state.harness.runners
+        if runner_store is not None and (task_id := runner_store.task_for_run(run_id)):
+            return jsonable_encoder(runner_store.control(task_id, "pause"))
         return jsonable_encoder(service.pause(run_id))
 
     @app.post("/api/v3/runs/{run_id}/resume", dependencies=[Depends(authenticated)])
-    def resume(run_id: UUID, service: Annotated[Engine, Depends(authority)]) -> dict[str, str]:
+    def resume(
+        run_id: UUID, request: Request, service: Annotated[Engine, Depends(authority)],
+    ) -> dict[str, str]:
+        runner_store = request.app.state.harness.runners
+        if runner_store is not None and (task_id := runner_store.task_for_run(run_id)):
+            runner_store.control(task_id, "resume")
+            return {"run_id": str(run_id)}
         return {"run_id": str(service.resume(run_id))}
 
     @app.post(

@@ -3,9 +3,10 @@
 当前首页提供自然语言项目 Agent。首次登录后配置模型、打开项目并设置一次工作区权限和
 累计预算；日常直接描述需求，在同一会话中继续调整、查看执行过程、预览和审查变更。
 无需填写任务类型、替换文本或逐条勾选执行许可。仓库分析模式与旧操作员接口继续保留。
-升级必须先执行 `make migrate`（包含 0040），再启动服务。
+升级必须先执行 `make migrate`（包含 0056），再启动服务。
 完整步骤见 [Agent 使用说明](docs/agent-ui.md) 和 [产品接线任务卡](docs/harness-v4/HARNESS_PRODUCT_TASK.md)。
 命令行和 Python SDK 可以使用同一套会话、任务、事件和补丁接口。[Headless 使用说明](docs/harness-v4/HEADLESS.md)
+可配对另一台设备，在设备上运行已登记项目的固定测试。[Runner 使用说明](docs/harness-v4/RUNNER.md)
 工程闭环使用受控模型验证，不代表 H12 的真实模型质量门已通过。
 
 [Harness 升级任务书与规划](docs/harness-v4/README.md)包含差距分析、19 张任务卡和

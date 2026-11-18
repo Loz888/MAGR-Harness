@@ -1344,6 +1344,23 @@
     ],
     "timeout_seconds": 750
   },
+  "HV4-H15": {
+    "components": {
+      "persistence": "real PostgreSQL, Engine-owned Run, hash-only credentials, and CAS receipts",
+      "device": "separate local Runner process with real loopback HTTP and certificate-verified HTTPS",
+      "isolation": "fixed test plan in a pinned offline Docker sandbox and an exact-owner local monitor",
+      "recovery": "parallel claims, expired tickets, restarted server, killed Runner, and revoked device",
+      "placement": "paired machine labels and fixed GitHub snapshot on the control host",
+      "model": "no model requests"
+    },
+    "pytest_node_selectors": true,
+    "tests": [
+      "tests/test_harness_runner.py",
+      "tests/test_harness_github_delivery.py::test_fixed_import_serializes_same_snapshot_and_never_persists_read_token",
+      "tests/test_agent_assets.py"
+    ],
+    "timeout_seconds": 320
+  },
   "HV4-H12": {
     "components": {
       "frozen_catalog": "H00 byte hashes, original judge objects, fixed twelve-case denominator and resource limits",

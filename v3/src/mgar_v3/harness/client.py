@@ -11,6 +11,8 @@ from urllib.parse import urlsplit
 
 import httpx
 
+from mgar_v3.harness.runner_contract import RUNNER_API
+
 JsonObject = dict[str, Any]
 DEFAULT_API = "http://127.0.0.1:18080"
 SESSION_EXPORT_VERSION = "mgar.harness.session.v1"
@@ -125,6 +127,31 @@ class HarnessClient:
 
     def projects(self) -> list[JsonObject]:
         return self._list(f"{_HARNESS}/projects")
+
+    def issue_runner_pairing(self) -> JsonObject:
+        return _object(self._json("POST", f"{RUNNER_API}/pairings"))
+
+    def runner_devices(self) -> list[JsonObject]:
+        return self._list(f"{RUNNER_API}/devices")
+
+    def revoke_runner(self, device_id: str) -> JsonObject:
+        return _object(self._json("DELETE", _resource(f"{RUNNER_API}/devices", device_id)))
+
+    def runner_workspaces(self) -> list[JsonObject]:
+        return self._list(f"{RUNNER_API}/workspaces")
+
+    def queue_runner_job(self, workspace_id: str, *, client_id: str) -> JsonObject:
+        return _object(self._json(
+            "POST",
+            f"{RUNNER_API}/jobs",
+            json={"workspace_id": workspace_id, "client_id": client_id},
+        ))
+
+    def runner_jobs(self) -> list[JsonObject]:
+        return self._list(f"{RUNNER_API}/jobs")
+
+    def runner_events(self, *, after: int = 0) -> list[JsonObject]:
+        return self._list(f"{RUNNER_API}/events?after={after}")
 
     def register_project(self, path: str) -> JsonObject:
         return _object(self._json("POST", f"{_HARNESS}/projects", json={"path": path}))
