@@ -190,6 +190,41 @@ def test_text_only_session_creates_real_run_and_idempotency_does_not_call_model_
     assert error.value.code == "IDEMPOTENCY_CONFLICT" and len(env.requests) == 1
 
 
+def test_initial_product_guidance_reads_only_authorized_applicable_rules(product_env, monkeypatch):
+    from mgar_v3.harness.workspace import TaskWorkspace
+
+    env = product_env
+    for directory in ("src", "docs", "private"):
+        (env.source / directory).mkdir()
+        (env.source / directory / "AGENTS.md").write_text(f"{directory} marker")
+    (env.source / "AGENTS.md").write_text("root marker")
+    (env.source / "src/task.py").write_text("pass\n")
+    env.project_id = env.harness.register_project(str(env.source))["project_id"]
+    original_grant, read = env.harness._grant, TaskWorkspace.read
+    opened = []
+
+    def narrow_grant(*args, **kwargs):
+        return original_grant(*args, **kwargs).model_copy(update={"read_paths": (
+            "README.md", "AGENTS.md", "src", "docs",
+        )})
+
+    def observed_read(workspace, path, **kwargs):
+        if path.endswith("AGENTS.md"):
+            opened.append(path)
+        return read(workspace, path, **kwargs)
+
+    monkeypatch.setattr(env.harness, "_grant", narrow_grant)
+    monkeypatch.setattr(TaskWorkspace, "read", observed_read)
+    session = completed_inspection(env, "解释 src/task.py 的作用")
+    assert opened == ["AGENTS.md", "src/AGENTS.md"]
+    stored = env.engine.harness.get(session["task_id"])["request"]
+    assert [item["path"] for item in stored["product_guidance"]["sources"]
+            if item["kind"] == "instruction"] == opened
+    prompt = "\n".join(message.content or "" for message in env.model_requests[0].messages)
+    assert "root marker" in prompt and "src marker" in prompt
+    assert "docs marker" not in prompt and "private marker" not in prompt
+
+
 def test_new_finished_turn_uses_same_authorization_budget_and_distinct_run(product_env):
     env = product_env
     first = completed_inspection(env)

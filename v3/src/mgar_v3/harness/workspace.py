@@ -230,6 +230,7 @@ def _open_read_target(
     *,
     authorize: Callable[[str], None] | None = None,
     allow_environment_hash: bool = False,
+    follow_symlinks: bool = True,
 ) -> Iterator[tuple[int, str]]:
     """Open a bounded internal link chain without ever following a host link.
 
@@ -268,6 +269,8 @@ def _open_read_target(
                     parent_fd = child_fd
                 info = os.stat(part, dir_fd=parent_fd, follow_symlinks=False)
                 if stat.S_ISLNK(info.st_mode):
+                    if not follow_symlinks:
+                        raise DomainError("WORKSPACE_SYMLINK_DENIED", "Symlink is not allowed", 403)
                     links += 1
                     if links > 40:
                         raise DomainError("WORKSPACE_SYMLINK_DENIED", "Symlink cycle or limit", 403)
@@ -1174,14 +1177,26 @@ class TaskWorkspace:
         with _open_read_target(self.root, _check_relative(path)) as (_, canonical):
             return canonical
 
-    def read(self, path: str, *, authorize: Callable[[str], None] | None = None) -> str:
+    def read(
+        self, path: str, *, authorize: Callable[[str], None] | None = None,
+        follow_symlinks: bool = True, prefix_bytes: int | None = None,
+    ) -> str:
         relative = _check_relative(path)
         try:
-            with _open_read_target(self.root, relative, authorize=authorize) as (fd, _):
+            with _open_read_target(
+                self.root, relative, authorize=authorize, follow_symlinks=follow_symlinks,
+            ) as (fd, _):
                 if not stat.S_ISREG(os.fstat(fd).st_mode):
                     raise FileNotFoundError(relative)
                 if os.fstat(fd).st_size > self.limits.max_file_bytes:
                     raise DomainError("WORKSPACE_LIMIT", "Workspace file exceeds byte budget", 413)
+                if prefix_bytes is not None:
+                    import codecs
+
+                    with os.fdopen(os.dup(fd), "rb", buffering=0) as prefix:
+                        return codecs.getincrementaldecoder("utf-8")().decode(
+                            prefix.read(min(prefix_bytes, self.limits.max_file_bytes)), final=False,
+                        )
                 with os.fdopen(os.dup(fd), "rb") as handle:
                     data = handle.read(self.limits.max_file_bytes + 1)
                     if len(data) > self.limits.max_file_bytes:
@@ -1335,6 +1350,10 @@ class TaskWorkspace:
 
     # -- edit and apply back --------------------------------------------
 
+    def resolve_edit_path(self, path: str) -> str:
+        """Resolve the same no-symlink target used by journalled edits."""
+        return _safe_target(self.root, _check_relative(path)).relative_to(self.root).as_posix()
+
     def prepare_recovery_edit(
         self,
         edits: Sequence[WorkspaceEdit],
@@ -1364,10 +1383,10 @@ class TaskWorkspace:
         images: dict[str, Any] = {}
         after = dict(current)
         for edit in edits:
-            relative = _check_relative(edit.path)
+            relative = self.resolve_edit_path(edit.path)
             if relative in images:
                 raise DomainError("WORKSPACE_EDIT_DUPLICATED", "Duplicate edit for one path", 422)
-            target = _safe_target(self.root, relative)
+            target = self.root / relative
             if edit.create:
                 if target.exists():
                     raise DomainError("WORKSPACE_EDIT_STALE", "New file target already exists", 409)

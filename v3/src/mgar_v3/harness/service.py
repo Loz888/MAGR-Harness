@@ -1155,6 +1155,7 @@ class CodingTaskRequest:
     product_plan: dict[str, Any] = field(default_factory=dict)
     product_limits: dict[str, Any] = field(default_factory=dict)
     product_context: str = ""
+    product_guidance: dict[str, Any] = field(default_factory=dict)
     product_intent: str = ""
 
 
@@ -1777,12 +1778,40 @@ class HarnessCodingService:
         )
         if request.product_previous_task_id:
             self._inherit_product_tree(workspace, request)
+        test_argv = self._test_command(workspace, request, kind) if (
+            self.store is not None or request.product_session_id
+        ) else ()
+        grant = self._grant(registration, kind, test_argv, request)
         if request.product_session_id:
-            from mgar_v3.harness.project_context import build_project_context
+            from mgar_v3.harness.project_context import (
+                authorize_project_sources,
+                load_workspace_context,
+            )
 
-            context = build_project_context(workspace.snapshot(), request.objective)
+            authority = CapabilityAuthority(lease=issue_lease(
+                mode="investigate", actor=self.actor, workspace_id=registration.workspace_id,
+                repository=registration.repository, execution_epoch=1,
+                read_paths=grant.read_paths, allowed_commands=(),
+            ), budget_check=lambda: True)
+
+            def authorize(path: str) -> None:
+                authorize_project_sources(
+                    workspace, grant, authority, task_id=task_id, actor=self.actor,
+                    epoch=1, paths=(path,),
+                )
+
+            initial_paths = tuple(path for path in (
+                request.target_path, request.product_plan.get("root", "."),
+            ) if path not in {"", "."})
+            with workspace_lock(workspace.root):
+                context = load_workspace_context(
+                    workspace, request.objective, authorize, paths=initial_paths,
+                )
+            assert self.product_model_resolver is not None
+            self.product_model_resolver(request)
             request = replace(
-                request, product_context=context.text + "\n" + request.product_context
+                request, product_context=context.text + "\n" + request.product_context,
+                product_guidance={**context.public(), "paths": list(context.disclosed_paths)},
             )
             if request.approved and kind in _WRITABLE:
                 self._prepare_product_permissions(workspace)
@@ -1802,8 +1831,6 @@ class HarnessCodingService:
         control.on_resumed = lambda: self._control_event(runtime, "resumed")
         control.on_cancel_observed = lambda: self._control_event(runtime, "cancel_observed")
         if self.store is not None:
-            test_argv = self._test_command(workspace, request, kind)
-            grant = self._grant(registration, kind, test_argv, request)
             limits = (
                 profile.resources.budget_limits()
                 if profile
