@@ -12,13 +12,18 @@ from typing import Any
 
 from pydantic import ValidationError
 
+from mgar_v3.domain import digest
 from mgar_v3.quality_eval.ga12_contracts import Arm, Arms, Case, Domains, Freeze, Mode, Split
 from mgar_v3.quality_eval.ga12_fixture import execute
 from mgar_v3.quality_eval.ga12_grader import grade
 
 _PROJECT = Path(__file__).resolve().parents[3]
 _CONTRACT = _PROJECT / "docs/general-agent-v1/GA12_CASE_CONTRACT.md"
-_DEVELOPMENT = _PROJECT / "experiments/general-agent/ga12/dev.jsonl"
+_SUITE = _PROJECT / "experiments/general-agent/ga12"
+_DEVELOPMENT = _SUITE / "dev.jsonl"
+_DEVELOPMENT_FREEZE = _SUITE / "dev.freeze.json"
+_HOLDOUT_COMMITMENT = _SUITE / "holdout.commitment.json"
+_HOLDOUT_COMMITMENT_SHA256 = "6a5d601c8a5e4efecf01573c6fff57f4547596fada44c5250539714a62083d2d"
 _MAX_BUNDLE_BYTES = 2_000_000
 _MEASURES = (
     "task_success",
@@ -75,8 +80,6 @@ def _load(bundle: Path) -> tuple[bytes, tuple[Case, ...]]:
 
 def _freeze(data: bytes, cases: tuple[Case, ...], split: Split) -> Freeze:
     counts = Counter(case.domain for case in cases)
-    if split == "holdout" and data == _bounded(_DEVELOPMENT):
-        raise BenchmarkError("The published development bundle is ineligible for holdout.")
     try:
         return Freeze(
             split=split,
@@ -89,10 +92,46 @@ def _freeze(data: bytes, cases: tuple[Case, ...], split: Split) -> Freeze:
         raise BenchmarkError("GA12 needs ten or more cases in every domain.") from None
 
 
+def _case_fingerprint(case: Case) -> str:
+    # IDs, descriptions and judge answers do not change the fixture's inputs or authority.
+    content = case.model_dump(mode="json", exclude={"id", "goal", "expected"})
+    content["authorized_tools"] = sorted(case.authorized_tools)
+    return digest(content)
+
+
+def _verified_freeze(data: bytes, cases: tuple[Case, ...], split: Split) -> Freeze:
+    manifest = _freeze(data, cases, split)
+    if split != "holdout":
+        return manifest
+
+    dev_data, dev_cases = _load(_DEVELOPMENT)
+    try:
+        dev_freeze = Freeze.model_validate_json(_bounded(_DEVELOPMENT_FREEZE, 16_384))
+    except ValidationError:
+        raise BenchmarkError("Invalid published GA12 development manifest.") from None
+    if dev_freeze != _freeze(dev_data, dev_cases, "dev"):
+        raise BenchmarkError("The published GA12 development bundle differs from its freeze.")
+    development = {_case_fingerprint(case) for case in dev_cases}
+    if any(_case_fingerprint(case) in development for case in cases):
+        raise BenchmarkError("Published development cases are ineligible for holdout.")
+
+    raw_commitment = _bounded(_HOLDOUT_COMMITMENT, 16_384)
+    if hashlib.sha256(raw_commitment).hexdigest() != _HOLDOUT_COMMITMENT_SHA256:
+        raise BenchmarkError("The published GA12 independent commitment has changed.")
+    commitment = json.loads(raw_commitment)
+    if (
+        manifest.bundle_sha256 != commitment["bundle_sha256"]
+        or manifest.counts != commitment["counts"]
+        or len(cases) != commitment["case_count"]
+    ):
+        raise BenchmarkError("GA12 holdout does not match the published independent commitment.")
+    return manifest
+
+
 def freeze(bundle: Path, split: Split) -> Freeze:
     if split == "holdout":
         require_private(bundle)
-    return _freeze(*_load(bundle), split)
+    return _verified_freeze(*_load(bundle), split)
 
 
 def _write_json(path: Path, obj: Any) -> None:
@@ -185,7 +224,7 @@ def run(
         require_private(bundle)
         require_private(out)
     data, cases = _load(bundle)
-    if manifest != _freeze(data, cases, manifest.split):
+    if manifest != _verified_freeze(data, cases, manifest.split):
         raise BenchmarkError("GA12 bundle or contract differs from the frozen SHA-256.")
     if not arms or len(set(arms)) != len(arms) or set(arms) - set(Arms):
         raise BenchmarkError("Provide distinct GA12 ablation arms.")
@@ -200,6 +239,8 @@ def run(
         "verdict": "NOT_RUN",
         "arms": {},
     }
+    if manifest.split == "holdout":
+        report["holdout_commitment_sha256"] = _HOLDOUT_COMMITMENT_SHA256
     if mode == "mock":
         with (out / "raw.jsonl").open("x", encoding="utf-8") as log:
             for arm in arms:

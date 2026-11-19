@@ -2,13 +2,15 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 from pathlib import Path
 
 import pytest
 from pydantic import ValidationError
 
-from mgar_v3.quality_eval.ga12_benchmark import BenchmarkError, freeze, run
+from mgar_v3.quality_eval import ga12_benchmark
+from mgar_v3.quality_eval.ga12_benchmark import BenchmarkError, freeze, run, write_freeze
 from mgar_v3.quality_eval.ga12_contracts import Case, Domains, Freeze
 from mgar_v3.quality_eval.ga12_fixture import Effect, execute
 from mgar_v3.quality_eval.ga12_grader import grade
@@ -105,6 +107,90 @@ def test_holdout_manifest_requires_corresponding_author_role() -> None:
     manifest = Freeze.model_validate_json(DEV_FREEZE.read_bytes())
     with pytest.raises(ValidationError, match="independent author"):
         Freeze.model_validate(manifest.model_dump() | {"split": "holdout"})
+
+
+def _untrusted_holdout_manifest(bundle: Path, destination: Path) -> None:
+    public = freeze(bundle, "dev")
+    destination.write_text(
+        public.model_copy(
+            update={"split": "holdout", "author_role": "independent"}
+        ).model_dump_json()
+    )
+
+
+@pytest.mark.parametrize("relabel", [False, True])
+def test_reformatted_development_cases_are_rejected_before_freeze_and_score(
+    tmp_path: Path,
+    relabel: bool,
+) -> None:
+    rows = [json.loads(line) for line in DEV.read_bytes().splitlines()]
+    if relabel:
+        rows.reverse()
+        for row in rows:
+            row["id"] = "relabel-" + row["id"]
+            row["goal"] = "Rephrased task description"
+    candidate = tmp_path / "reformatted.jsonl"
+    candidate.write_bytes(
+        "".join(
+            json.dumps(row, ensure_ascii=True, sort_keys=True) + "\r\n" for row in rows
+        ).encode()
+    )
+    assert candidate.read_bytes() != DEV.read_bytes()
+    destination = tmp_path / "must-not-freeze.json"
+    with pytest.raises(BenchmarkError, match="development cases are ineligible"):
+        write_freeze(candidate, "holdout", destination)
+    assert not destination.exists()
+
+    forged = tmp_path / "self-declared-freeze.json"
+    _untrusted_holdout_manifest(candidate, forged)
+    out = tmp_path / "must-not-score"
+    with pytest.raises(BenchmarkError, match="development cases are ineligible"):
+        run(forged, candidate, out)
+    assert not out.exists()
+
+
+def _write_holdout_candidate(destination: Path, *, reuse_first: bool = False) -> None:
+    rows = [json.loads(line) for line in DEV.read_bytes().splitlines()]
+    for row in rows[int(reuse_first) :]:
+        # Change the fixture's grant without copying any existing input/authority combination.
+        row["authorized_tools"] = sorted(
+            set(row["expected"]["plan"]) - set(row["authorized_tools"])
+        )
+        row["expected"]["executed_tools"] = []
+    destination.write_text("".join(json.dumps(row) + "\n" for row in rows))
+
+
+def test_one_development_case_is_enough_to_reject_a_holdout(tmp_path: Path) -> None:
+    candidate = tmp_path / "mixed.jsonl"
+    _write_holdout_candidate(candidate, reuse_first=True)
+    with pytest.raises(BenchmarkError, match="development cases are ineligible"):
+        freeze(candidate, "holdout")
+
+
+def test_holdout_requires_published_commitment_even_without_development_overlap(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    candidate = tmp_path / "uncommitted.jsonl"
+    _write_holdout_candidate(candidate)
+    forged = tmp_path / "self-declared-freeze.json"
+    _untrusted_holdout_manifest(candidate, forged)
+    destination = tmp_path / "must-not-freeze.json"
+    out = tmp_path / "must-not-score"
+    with pytest.raises(BenchmarkError, match="does not match the published independent commitment"):
+        write_freeze(candidate, "holdout", destination)
+    with pytest.raises(BenchmarkError, match="does not match the published independent commitment"):
+        run(forged, candidate, out)
+
+    public = json.loads((SUITE / "holdout.commitment.json").read_bytes())
+    public["bundle_sha256"] = hashlib.sha256(candidate.read_bytes()).hexdigest()
+    substituted = tmp_path / "substituted-commitment.json"
+    substituted.write_text(json.dumps(public))
+    monkeypatch.setattr(ga12_benchmark, "_HOLDOUT_COMMITMENT", substituted)
+    with pytest.raises(BenchmarkError, match="published GA12 independent commitment has changed"):
+        run(forged, candidate, out)
+    assert not destination.exists()
+    assert not out.exists()
 
 
 def test_grader_rejects_replaced_coding_deliverable(tmp_path: Path) -> None:
