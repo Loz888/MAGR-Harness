@@ -1,0 +1,227 @@
+{
+  "schema": "magr-general-agent-independent-v1",
+  "date": "2026-11-19",
+  "source_commit": "93eb6d30d2a06e00ec7947ed7ba818252005bffe",
+  "source_sha256": "0ab2ffc95093649c34edc3cafdcbb09b8347cbcdf787bf605a795bb7ba6fc0be",
+  "delivery_commit": "c8cb9ae5bf3f62764d335a56c174882412ace34f",
+  "ga04_earlier_acceptance_commit": "125b33a3ebd0ec145eac34beeee738f611b0969d",
+  "ga05_implementation_commit": "20630daf9803bc3fd9745aaf6995af166586f9cf",
+  "migrations": [
+    {
+      "path": "migrations/0060_general_actions.sql",
+      "sha256": "cb13be00b4a2d5a1a7ded2e6547f1890b18e2c0d51d3ba40a04e3a1703dbafff"
+    },
+    {
+      "path": "migrations/0061_general_verification.sql",
+      "sha256": "9f967baff2437d5aeaee869dd445daf22d9480182571073f76396c9c35b352b1"
+    }
+  ],
+  "registered_and_compatibility": {
+    "passed": 66,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "per_target": {
+      "GA02-REPLAN-REPAIR": 1,
+      "GA04": 15,
+      "GA05": 16,
+      "GA01": 34
+    }
+  },
+  "real_model_calls": 0,
+  "production_provider_calls": 0,
+  "external_e2e": "NOT_RUN",
+  "ruff": "PASS",
+  "mypy": "PASS",
+  "original_refs_verified": 26,
+  "evidence": [
+    {
+      "path": "evidence/GA02-GA04-GA05/independent-20261119T104533Z-1a088e11/GA01/cases.json",
+      "sha256": "fe00f36893ae9ef754850259c9734df98b8ffa43f48e492c11aa2f6595f119cd"
+    },
+    {
+      "path": "evidence/GA02-GA04-GA05/independent-20261119T104533Z-1a088e11/GA01/command.json",
+      "sha256": "c93c9cfa9deb8ca3008aff9571376e4a014ffdb0fa9dd718527a1e8d12a3fd35"
+    },
+    {
+      "path": "evidence/GA02-GA04-GA05/independent-20261119T104533Z-1a088e11/GA01/command.log",
+      "sha256": "fe86a0e8e7262455de22ae5c5ccfaac79afb7288fbfe26d17f28a828e4eafa2b"
+    },
+    {
+      "path": "evidence/GA02-GA04-GA05/independent-20261119T104533Z-1a088e11/GA01/execution.json",
+      "sha256": "41e235dbccc1955402b9d7bdd1e7f2d50de4b4df4f6189ae6aa1107b31fe3c51"
+    },
+    {
+      "path": "evidence/GA02-GA04-GA05/independent-20261119T104533Z-1a088e11/GA01/junit.xml",
+      "sha256": "520b00f59c6732a867f29005297c695e8d3f354456f7ba95b8d360f21bb806f2"
+    },
+    {
+      "path": "evidence/GA02-GA04-GA05/independent-20261119T104533Z-1a088e11/GA02-REPLAN-REPAIR/cases.json",
+      "sha256": "7a8e379ffdb4a035c00dd901cc863deb390d2a64beb9e336a9a2b6c563e535d7"
+    },
+    {
+      "path": "evidence/GA02-GA04-GA05/independent-20261119T104533Z-1a088e11/GA02-REPLAN-REPAIR/command.json",
+      "sha256": "59b385b52c67162da47ed9948b6e5592a09cd0ec40ad14961a2f8d1e67ac2f0d"
+    },
+    {
+      "path": "evidence/GA02-GA04-GA05/independent-20261119T104533Z-1a088e11/GA02-REPLAN-REPAIR/command.log",
+      "sha256": "60f68679a4f51d9912b654495eff15b4d21abbc40f7ec7b53dca51d2392a11c9"
+    },
+    {
+      "path": "evidence/GA02-GA04-GA05/independent-20261119T104533Z-1a088e11/GA02-REPLAN-REPAIR/execution.json",
+      "sha256": "5e383abd1e67feccf9fe931eda16ebe40584dfb1983b4f04bc43b2a91a091774"
+    },
+    {
+      "path": "evidence/GA02-GA04-GA05/independent-20261119T104533Z-1a088e11/GA02-REPLAN-REPAIR/junit.xml",
+      "sha256": "8226b9a7702db1c1fede6b27c356768c2f47aa69cbe8d84f6046c789eada10f5"
+    },
+    {
+      "path": "evidence/GA02-GA04-GA05/independent-20261119T104533Z-1a088e11/GA04/cases.json",
+      "sha256": "7cdba44c4f0fff0a4734e4b8abe9856369518e46c64827bd7811cef8cc3459c5"
+    },
+    {
+      "path": "evidence/GA02-GA04-GA05/independent-20261119T104533Z-1a088e11/GA04/command.json",
+      "sha256": "676f9ebf543617dcc15fe05f166c349873622e433992cd02f2e79bc1f73c4ed9"
+    },
+    {
+      "path": "evidence/GA02-GA04-GA05/independent-20261119T104533Z-1a088e11/GA04/command.log",
+      "sha256": "ebadda78b128349fe8e6fff21b0a7722d49d098a06f9e823fc51343f9c63cff8"
+    },
+    {
+      "path": "evidence/GA02-GA04-GA05/independent-20261119T104533Z-1a088e11/GA04/execution.json",
+      "sha256": "ab2ca02f8c9654fdcaac1fe4f40110de2af86d8bd4d96e79ab7060e0b216d293"
+    },
+    {
+      "path": "evidence/GA02-GA04-GA05/independent-20261119T104533Z-1a088e11/GA04/junit.xml",
+      "sha256": "6d725f0c38d59f736b116408d67922b75beaefd718308c9574bb9ec1784b3229"
+    },
+    {
+      "path": "evidence/GA02-GA04-GA05/independent-20261119T104533Z-1a088e11/GA05/cases.json",
+      "sha256": "e7a0b80109851356d6485c5a0cd74b5a2cff15b37040944d40a9eb08a24c82b3"
+    },
+    {
+      "path": "evidence/GA02-GA04-GA05/independent-20261119T104533Z-1a088e11/GA05/command.json",
+      "sha256": "c4fbfa557b6f6ec5cb2f4282cdfbae4358d4c07d2f0242e111af5893647ffc3d"
+    },
+    {
+      "path": "evidence/GA02-GA04-GA05/independent-20261119T104533Z-1a088e11/GA05/command.log",
+      "sha256": "0bfd1d2841b573492569520a9c2f21ecf2ad2504effe260c7abc0ad3f127c398"
+    },
+    {
+      "path": "evidence/GA02-GA04-GA05/independent-20261119T104533Z-1a088e11/GA05/execution.json",
+      "sha256": "d6593dabecd1a8ec08daa33dc03e8ab9560c1292d76024af59ebe1eb70868ca7"
+    },
+    {
+      "path": "evidence/GA02-GA04-GA05/independent-20261119T104533Z-1a088e11/GA05/junit.xml",
+      "sha256": "02b5ca1c1f6ebbac653eab631781bbdf8f27d54725e2f17913c0ceccfaddf1b4"
+    },
+    {
+      "path": "evidence/GA02-GA04-GA05/independent-20261119T104533Z-1a088e11/install/command.json",
+      "sha256": "aff90aa97c2b4dba08a063bcc32e9d41170e85c03886dc78c19fd5e354faa4b8"
+    },
+    {
+      "path": "evidence/GA02-GA04-GA05/independent-20261119T104533Z-1a088e11/install/command.log",
+      "sha256": "e0efdb350cb87a54600bba67781974c94cb1d542c974bcdb406de902b1d0ee08"
+    },
+    {
+      "path": "evidence/GA02-GA04-GA05/independent-20261119T104533Z-1a088e11/install/execution.json",
+      "sha256": "7d0ff95fc1164e36fce468df47feeed51b81b1cb1d3e1674dd97f9bc598fff5a"
+    },
+    {
+      "path": "evidence/GA02-GA04-GA05/independent-20261119T104533Z-1a088e11/lint/command.json",
+      "sha256": "173a5361639b5af6c5efd07d6b07021cedb66dec35acb8e2de44c25228fe359e"
+    },
+    {
+      "path": "evidence/GA02-GA04-GA05/independent-20261119T104533Z-1a088e11/lint/command.log",
+      "sha256": "a220b562d6bdb3655673add818cabd1dbd6857a7efc7d06ff8178f9e0e2501e2"
+    },
+    {
+      "path": "evidence/GA02-GA04-GA05/independent-20261119T104533Z-1a088e11/lint/execution.json",
+      "sha256": "d2cb7e0ed1dff9a5d03da748ade2db43514d750ae647abf25ecc2ed509144556"
+    },
+    {
+      "path": "evidence/GA02-GA04-GA05/independent-20261119T104533Z-1a088e11/nodeids.json",
+      "sha256": "7e9fa2b3efb1593b76b6998bd47f6ef144b593daa9805994683f0c4b321d05f5"
+    },
+    {
+      "path": "evidence/GA02-GA04-GA05/independent-20261119T104533Z-1a088e11/summary.json",
+      "sha256": "39a92a8159c8845269fe94228b94927568010f2c6bebf8848530e489bec067f3"
+    },
+    {
+      "path": "evidence/GA02-GA04-GA05/independent-20261119T104533Z-1a088e11/typecheck/command.json",
+      "sha256": "8f5e765b34c49faf29a33348a55edb2a86b13b8c6a280be5eb682c2078f055cf"
+    },
+    {
+      "path": "evidence/GA02-GA04-GA05/independent-20261119T104533Z-1a088e11/typecheck/command.log",
+      "sha256": "d2a4dab24203a3364a30ae01666e5564f34593393c283d8872309e9980b4278c"
+    },
+    {
+      "path": "evidence/GA02-GA04-GA05/independent-20261119T104533Z-1a088e11/typecheck/execution.json",
+      "sha256": "0407657461547083048cadc8de5a206739b720a26d0b0bfd0c0ef11f8b5c084d"
+    }
+  ],
+  "task": "GA04",
+  "previous_acceptance": {
+    "path": "docs/general-agent-v1/accept/GA04/accept.json",
+    "sha256": "6efb47e9a39ac0fbe67a23777c9bd1fd2a8a01ef5a83a5c56241540a47811ebe"
+  },
+  "registered_gate": "PASS",
+  "independent_engineering_review": "FAIL",
+  "initial_engineering_tests": 14,
+  "blocking_finding": {
+    "code": "GA04_UNREADABLE_PAYLOAD_STALLS_OUTBOX",
+    "observed": {
+      "fault": "approved_action_loses_local_cas_payload_before_dispatch",
+      "targets_distinct": true,
+      "preflight_result_codes": [
+        "ARTIFACT_MISSING",
+        "ARTIFACT_MISSING",
+        "ARTIFACT_MISSING"
+      ],
+      "first_state_after_polls": "ready",
+      "first_attempt_created": false,
+      "unrelated_action_state_before_explicit_revoke": "ready",
+      "provider_sends_before_explicit_revoke": 0,
+      "unrelated_action_state_after_explicit_revoke": "succeeded",
+      "status": "FAIL"
+    },
+    "evidence": [
+      {
+        "path": "evidence/GA02-GA04-GA05/independent-20261119T105002Z-f3449302/install/command.json",
+        "sha256": "cea3eb965e3ac5de530c272c7a500d22807effa4bf698cb315b27a19cd552723"
+      },
+      {
+        "path": "evidence/GA02-GA04-GA05/independent-20261119T105002Z-f3449302/install/command.log",
+        "sha256": "8ef4b622721105aa55a56d64a4649921c755e1c6fb4567f2813ca11ba68b41aa"
+      },
+      {
+        "path": "evidence/GA02-GA04-GA05/independent-20261119T105002Z-f3449302/install/execution.json",
+        "sha256": "88fed1b98748d3642827316d6c55829352b42eafa85e0bed4058a8027c09e860"
+      },
+      {
+        "path": "evidence/GA02-GA04-GA05/independent-20261119T105002Z-f3449302/missing-payload/command.json",
+        "sha256": "2467a8ea198cdbab13ebca33eeb7da014279f1bf2179c127800156c89ae2a92b"
+      },
+      {
+        "path": "evidence/GA02-GA04-GA05/independent-20261119T105002Z-f3449302/missing-payload/command.log",
+        "sha256": "cd2ced32025b12203ade751b1b31ee74f45efea469e17f97d53e1c6f01629e4c"
+      },
+      {
+        "path": "evidence/GA02-GA04-GA05/independent-20261119T105002Z-f3449302/missing-payload/execution.json",
+        "sha256": "97656e373634959426abe0f4fa98d48a50b9b95169af76b02eec906e3c2dbcf4"
+      },
+      {
+        "path": "evidence/GA02-GA04-GA05/independent-20261119T105002Z-f3449302/missing-payload-probe.json",
+        "sha256": "a80b05848d6ef691506e3f3e37cf6de12531d064ac6a176a9c058eaebed3209d"
+      },
+      {
+        "path": "evidence/GA02-GA04-GA05/independent-20261119T105002Z-f3449302/summary.json",
+        "sha256": "8cde2196e40a5eeb024a0608e5a300b777ee1422a29e0a545e376f47f897de8b"
+      }
+    ],
+    "first_attempt_fixture_actor_mismatch": {
+      "path": "evidence/GA02-GA04-GA05/independent-20261119T104838Z-bc63ff06/missing-payload/command.log",
+      "sha256": "a823c083cac7679237b623bb953b192bf64c14e68fdf25d8b84d9e99268de759"
+    }
+  }
+}

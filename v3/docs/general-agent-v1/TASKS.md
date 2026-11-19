@@ -1,15 +1,15 @@
 # General Agent 任务队列
 
-GA00 冻结和架构盘点已完成独立复验，原冻结工程基线为 FAIL，修复定向独立复验为 INDEPENDENT_PASS。GA01 工程验收和独立复验均通过。GA03 独立工程复验通过。GA02 原独立失败已定向修复，等待独立复验。GA04 完成本地工程验收后开发 GA05，两张卡均通过本地工程验收。[任务书原文](TASKBOOK_V1.md)
+GA00 冻结和架构盘点已完成独立复验，原冻结工程基线为 FAIL，修复定向独立复验为 INDEPENDENT_PASS。GA01 工程验收和独立复验均通过。GA03 独立工程复验通过。GA02 修复通过定向独立复验，GA05 本地工程独立复验通过。GA04 注册测试通过，独立复验发现 Outbox 队首阻塞。[任务书原文](TASKBOOK_V1.md)
 
 | 卡片 | 内容 | 依赖 | 当前状态 |
 | --- | --- | --- | --- |
 | GA00 | 当前版本冻结与架构盘点 | 无 | 冻结与盘点 INDEPENDENT_PASS，修复定向复验 INDEPENDENT_PASS |
 | [GA01](GA01_TASK_OUTCOME.md) | GeneralTaskSpec 与 Outcome Contract | GA00 | INDEPENDENT_PASS |
-| [GA02](GA02_TASK_GRAPH.md) | General Planner 与动态 TaskGraph | GA01 | 原独立 FAIL，修复定向 PASS，待独立复验 |
+| [GA02](GA02_TASK_GRAPH.md) | General Planner 与动态 TaskGraph | GA01 | 修复定向 INDEPENDENT_PASS，真实模型规划 NOT_RUN |
 | [GA03](GA03_CAPABILITY_ROUTING.md) | Capability Registry 与 Domain Router | GA01 | INDEPENDENT_PASS，远程 MCP 联调 NOT_RUN |
-| [GA04](GA04_ACTION_CONTRACT.md) | Universal ActionContract 与副作用治理 | GA01、GA03 | ENGINEERING_PASS |
-| [GA05](GA05_VERIFICATION_CONTRACT.md) | VerificationPlan 与 Evidence Contract | GA01、GA04 | ENGINEERING_PASS |
+| [GA04](GA04_ACTION_CONTRACT.md) | Universal ActionContract 与副作用治理 | GA01、GA03 | 注册工程 PASS，独立复验 FAIL |
+| [GA05](GA05_VERIFICATION_CONTRACT.md) | VerificationPlan 与 Evidence Contract | GA01、GA04 | 本地工程 INDEPENDENT_PASS |
 | GA06 | Web Research Executor | GA02、GA03、GA05 | TODO |
 | GA07 | Data Analysis Executor | GA02、GA03、GA04、GA05 | TODO |
 | GA08 | Office Automation Executor | GA03、GA04、GA05 | TODO |
@@ -21,4 +21,4 @@ GA00 冻结和架构盘点已完成独立复验，原冻结工程基线为 FAIL�
 
 [GA00 冻结报告](GA00_BASELINE_20261119.md) · [调用链与差距矩阵](GA00_ARCHITECTURE.md) · [独立复验入口](GA00_RECHECK.md) · [机器验收记录](accept/GA00/accept.json) · [独立复验报告](GA00_INDEPENDENT_20261119.md) · [工程基线修复](GA00_ENGINEERING_REPAIR_20261119.md) · [修复独立复验](GA00_ENGINEERING_REPAIR_INDEPENDENT_20261119.md) · [GA01 独立复验](GA01_INDEPENDENT_20261119.md) · [GA02 与 GA03 独立复验](GA02_GA03_INDEPENDENT_20261119.md)
 
-[GA02 重规划修复](GA02_REPLAN_REPAIR_20261119.md)
+[GA02 重规划修复](GA02_REPLAN_REPAIR_20261119.md) · [GA02、GA04 与 GA05 独立复验](GA02_GA04_GA05_INDEPENDENT_20261119.md)

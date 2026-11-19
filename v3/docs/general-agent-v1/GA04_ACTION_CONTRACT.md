@@ -20,3 +20,7 @@ make verify TASK=GA04
 ```
 
 隔离 PostgreSQL 与专用夹具账户覆盖审批、越权、租约轮换、撤权、预算共用、并发重投、事务回滚、重启和未知对账。生产远程写入为 `NOT_RUN`，真实模型调用为 0。[先行验收](accept/GA04/accept.json) · [最终集成回执](accept/GA05/accept.json)
+
+注册测试独立复跑通过。补充预检故障用例发现，队首载荷缺失会阻塞同一提供方的后续动作，独立验收为 FAIL。
+
+[独立复验](GA02_GA04_GA05_INDEPENDENT_20261119.md)
