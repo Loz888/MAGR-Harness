@@ -18,4 +18,6 @@ make verify TASK=GA03
 uv run --frozen pytest -q tests/test_mcp.py tests/test_r4_mcp.py
 ```
 
-专项 8/8、既有 MCP 回归 10/10 均通过，无失败、错误或跳过。专项用真实 PostgreSQL 核对路由事件，使用受控 MCP 传输核对认证、目标、输出 Schema、超时回退及并发发现。远程 MCP 联调和独立复验为 `NOT_RUN`。源码指纹及原始证据路径见[验收记录](accept/GA03/accept.json)。
+专项 8/8、既有 MCP 回归 10/10 均通过，无失败、错误或跳过。专项用真实 PostgreSQL 核对路由事件，使用受控 MCP 传输核对认证、目标、输出 Schema、超时回退及并发发现。独立工程复验为 INDEPENDENT_PASS，远程 MCP 联调为 `NOT_RUN`。源码指纹及原始证据路径见[验收记录](accept/GA03/accept.json)。
+
+[独立复验](GA02_GA03_INDEPENDENT_20261119.md)
