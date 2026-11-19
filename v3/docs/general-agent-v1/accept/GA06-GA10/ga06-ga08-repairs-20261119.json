@@ -1,0 +1,84 @@
+{
+  "task": "GA06-GA08-REPAIRS",
+  "baseline": "2b46efb",
+  "source_commit": "c586e823abce67c2b7b47c0af430c6a8b6f4c3ea",
+  "source_sha256": "cd7e82cd003aa6ec50cea4fb54cc07b15ef04a6c9783210fa612eb12fd147cf0",
+  "prior_independent_findings": {
+    "path": "docs/general-agent-v1/GA06_GA10_INDEPENDENT_20261119.md",
+    "sha256": "6117dae6617cb64cf48f3c7ad0f1731ba624848095f41faeed109e3bee0e1ae9"
+  },
+  "command": "make verify TASK=GA06-GA08-REPAIRS",
+  "retest_scope": "GA06 Unicode glyph rendering and GA08 cross-project Calendar identity only",
+  "before": {
+    "status": "FAIL",
+    "failures": 2,
+    "raw": [
+      {
+        "path": "evidence/GA06-GA08-REPAIRS/before/command.log",
+        "sha256": "5613e2b927063fced7c4c14fa8b84d39bece04e6bb4bc8c9c37acb38f50b375d"
+      },
+      {
+        "path": "evidence/GA06-GA08-REPAIRS/before/junit.xml",
+        "sha256": "52d2b7c95b33886beb7d03e7ec7f1b50d6d4283f5efba551f27a6b1a1213a58b"
+      }
+    ]
+  },
+  "after": {
+    "status": "PASS",
+    "counts": {
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "raw": [
+      {
+        "path": "evidence/GA06-GA08-REPAIRS/20261119T120914Z-52288d54/result.json",
+        "sha256": "717bea437bc15128a9d9edae278efc0d9a736a150abfb40ab0753cdb7cb05fb8"
+      },
+      {
+        "path": "evidence/GA06-GA08-REPAIRS/20261119T120914Z-52288d54/command.log",
+        "sha256": "a95b21bda453cf2b2d846d263f05694bb1dbed327828e0836bdc377f862ecfc6"
+      },
+      {
+        "path": "evidence/GA06-GA08-REPAIRS/20261119T120914Z-52288d54/junit.xml",
+        "sha256": "753f9455ad071d2daba6ec5a336f23ff247fdc7769db11bb3f6c2414530bd3ec"
+      }
+    ]
+  },
+  "font_build": {
+    "status": "PASS",
+    "raw": {
+      "path": "evidence/GA06-GA08-REPAIRS/final/font-rebuild.log",
+      "sha256": "06f218f3a21f2abad8637bea6b0c6722758737374cd510d5303c790ee28f5a26"
+    }
+  },
+  "render_probe": {
+    "status": "PASS",
+    "renderer": "2.1",
+    "raw": {
+      "path": "evidence/GA06-GA08-REPAIRS/development/render-probe.json",
+      "sha256": "c4283284b32c4a0a987496bd319e5ecedb8a717f5f15393124ffdcea824927ab"
+    },
+    "pdf": {
+      "path": "evidence/GA06-GA08-REPAIRS/development/ga06-visible.pdf",
+      "sha256": "f9dc743ee3d4f0d6449fb14d3b6d8635bc597b90470a53922aa899677f191252"
+    }
+  },
+  "lint": {
+    "path": "evidence/GA06-GA08-REPAIRS/final/lint.log",
+    "sha256": "a220b562d6bdb3655673add818cabd1dbd6857a7efc7d06ff8178f9e0e2501e2"
+  },
+  "typecheck": {
+    "path": "evidence/GA06-GA08-REPAIRS/final/typecheck.log",
+    "sha256": "09d32ffda51306f41b48d3a75c4842466b84bc94fae728fad894e0bb2b44e301"
+  },
+  "locked_dependencies": {
+    "path": "evidence/GA06-GA08-REPAIRS/final/lock.log",
+    "sha256": "b3cbbdecaa83a53ff5e78261ae4c8cc922da87bb912b5c3dc9f2250a5d086c76"
+  },
+  "independent_retest": "NOT_RUN",
+  "production_account": "NOT_RUN",
+  "real_model_calls": 0,
+  "external_writes": 0
+}
