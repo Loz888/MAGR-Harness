@@ -46,4 +46,6 @@ make verify TASK=GA01
 
 兼容回归发现旧 CodingLoop 有时会反复从构建器预算扣减消息估算，导致保护投影至少需要 4,261 Token 时，只剩 4,201 Token。现在按实际模型请求重新核算。完整摘要超限时省略可选历史预览，锁定任务目标、权限、失败记录、证据和最新完整工具回执，再检查请求上限。原失败用例定向验证 12 次均通过，并通过最终候选的核心回归。[上下文实现](../../src/mgar_v3/harness/long_context.py)
 
-真实模型调用 0 次，真实外部端到端与本卡独立复验为 `NOT_RUN`。GA02 等待授权。[机器记录](accept/GA01/accept.json)
+真实模型调用 0 次，真实外部端到端为 `NOT_RUN`。GA02 等待授权。[机器记录](accept/GA01/accept.json)
+
+独立复验通过。专项与 Coding 回归结果见[独立报告](GA01_INDEPENDENT_20261119.md)。
