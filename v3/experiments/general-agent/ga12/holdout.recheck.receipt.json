@@ -1,0 +1,270 @@
+{
+  "arms": {
+    "multi_domain": {
+      "all": {
+        "evaluated": 60,
+        "external_effects_correct": 60,
+        "passed": 60,
+        "policy_violations": 0
+      },
+      "domains": {
+        "autonomy": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 10,
+          "policy_violations": 0
+        },
+        "coding": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 10,
+          "policy_violations": 0
+        },
+        "cross-domain": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 10,
+          "policy_violations": 0
+        },
+        "data": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 10,
+          "policy_violations": 0
+        },
+        "office": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 10,
+          "policy_violations": 0
+        },
+        "research": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 10,
+          "policy_violations": 0
+        }
+      }
+    },
+    "no_memory": {
+      "all": {
+        "evaluated": 60,
+        "external_effects_correct": 60,
+        "passed": 56,
+        "policy_violations": 0
+      },
+      "domains": {
+        "autonomy": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 10,
+          "policy_violations": 0
+        },
+        "coding": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 6,
+          "policy_violations": 0
+        },
+        "cross-domain": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 10,
+          "policy_violations": 0
+        },
+        "data": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 10,
+          "policy_violations": 0
+        },
+        "office": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 10,
+          "policy_violations": 0
+        },
+        "research": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 10,
+          "policy_violations": 0
+        }
+      }
+    },
+    "no_planner": {
+      "all": {
+        "evaluated": 60,
+        "external_effects_correct": 60,
+        "passed": 0,
+        "policy_violations": 0
+      },
+      "domains": {
+        "autonomy": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 0,
+          "policy_violations": 0
+        },
+        "coding": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 0,
+          "policy_violations": 0
+        },
+        "cross-domain": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 0,
+          "policy_violations": 0
+        },
+        "data": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 0,
+          "policy_violations": 0
+        },
+        "office": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 0,
+          "policy_violations": 0
+        },
+        "research": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 0,
+          "policy_violations": 0
+        }
+      }
+    },
+    "no_reranker": {
+      "all": {
+        "evaluated": 60,
+        "external_effects_correct": 60,
+        "passed": 56,
+        "policy_violations": 0
+      },
+      "domains": {
+        "autonomy": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 10,
+          "policy_violations": 0
+        },
+        "coding": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 10,
+          "policy_violations": 0
+        },
+        "cross-domain": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 9,
+          "policy_violations": 0
+        },
+        "data": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 10,
+          "policy_violations": 0
+        },
+        "office": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 10,
+          "policy_violations": 0
+        },
+        "research": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 7,
+          "policy_violations": 0
+        }
+      }
+    },
+    "single_domain": {
+      "all": {
+        "evaluated": 60,
+        "external_effects_correct": 60,
+        "passed": 53,
+        "policy_violations": 0
+      },
+      "domains": {
+        "autonomy": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 10,
+          "policy_violations": 0
+        },
+        "coding": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 10,
+          "policy_violations": 0
+        },
+        "cross-domain": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 3,
+          "policy_violations": 0
+        },
+        "data": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 10,
+          "policy_violations": 0
+        },
+        "office": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 10,
+          "policy_violations": 0
+        },
+        "research": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 10,
+          "policy_violations": 0
+        }
+      }
+    }
+  },
+  "author_role": "independent",
+  "bundle_sha256": "7cf0a5d3e30252a0de870f578548648c7facbe78478681b755894efd220ac730",
+  "contract_sha256": "cb2faaec550529db43dde74661c644eba73fb9cd13fc6024cc0451261390f3b3",
+  "counts": {
+    "autonomy": 10,
+    "coding": 10,
+    "cross-domain": 10,
+    "data": 10,
+    "office": 10,
+    "research": 10
+  },
+  "evaluated_rows": 300,
+  "fixture_environment": "ga12-fixture-v1",
+  "freeze_manifest_sha256": "c017b366224ff42de3866e9686262ce8ce7f3fcbe90aafe318d8ed8c1a390569",
+  "initial_failed_raw_results_sha256": "ba4b98860de8e930bdaeb29dcc37efaf921fb01eeda70547fa2cd93ad91dcdb9",
+  "initial_failed_receipt_sha256": "f2ffad1f59842ca7ab74391f2cbf0059f929c1deb54af7e28a4ff524c15b02d1",
+  "mode": "mock",
+  "public_commitment_sha256": "6a5d601c8a5e4efecf01573c6fff57f4547596fada44c5250539714a62083d2d",
+  "raw_command_log_sha256": "87e8ec4d14e40d429ad47f0faf1b206bc2e5f9a029b09d51ef1c957c2fac1a2a",
+  "raw_results_sha256": "8ef0eab8edccb6cb7eacef4c92bcae69bed7c7ca1fc42a3aafc2d35e53db8645",
+  "raw_summary_sha256": "f9238f561a337cfafd160ab437aadbb5730e6157fb413cf54b2c52a7c5aaf097",
+  "real_cost_microusd": 0,
+  "real_external_writes": 0,
+  "real_model_calls": 0,
+  "run_kind": "targeted_recheck_same_holdout_bundle",
+  "run_utc": "20261119T130422.978400Z",
+  "schema_version": "ga12-independent-fixture-evidence-v1",
+  "source_commit": "a995416c1714bc7fa8aa22506f5b2c30be97461b",
+  "source_sha256": {
+    "ga12_benchmark.py": "cea861931ee34792685e7dc3f3691e2bae3cef49ab8b3ebe919d3f5be8877aca",
+    "ga12_contracts.py": "c4684dc98fcf3642ae63a7da321e6d9360ffb6f8f12b48abdc8ddae8fb013b5a",
+    "ga12_fixture.py": "dd1861085272db3c7687b0795e7170825bd50930f5a057ebc532ea2af6564f43",
+    "ga12_grader.py": "a588b9176aa8d8ed730c27c7f78ab75d6f8cb25404e24b7161bdde0c8bb8b869"
+  },
+  "split": "holdout",
+  "verdict": "PASS"
+}

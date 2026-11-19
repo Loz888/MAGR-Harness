@@ -1,0 +1,436 @@
+{
+  "schema_version": "magr-general-agent-acceptance-v1",
+  "task_ids": [
+    "GA11",
+    "GA12"
+  ],
+  "source_commit": "a995416c1714bc7fa8aa22506f5b2c30be97461b",
+  "baseline_commit": "f6bf3e41e8c5abcfedb86fd8efe7c96497c8666a",
+  "source_sha256": "2422e2c0fd11e2e648cf980adc32e2b0dfdf332245714cc3c8e4e45f48693c64",
+  "engineering_status": "PASS",
+  "registered": {
+    "GA11": {
+      "command": "make verify TASK=GA11",
+      "status": "PASS",
+      "counts": {
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "source_sha256": "2422e2c0fd11e2e648cf980adc32e2b0dfdf332245714cc3c8e4e45f48693c64",
+      "evidence": [
+        {
+          "path": "evidence/GA11/20261119T130400Z-6e92c4f8/junit.xml",
+          "sha256": "f53a11bf5751c79a9f6e4799ab9436d132d75d1982c2e9c8bcecd769236d9cd6"
+        },
+        {
+          "path": "evidence/GA11/20261119T130400Z-6e92c4f8/command.log",
+          "sha256": "58c2f8119db2d86497236ff41e8aca587364f2ffcb7b59424a1f84548d437a83"
+        },
+        {
+          "path": "evidence/GA11/20261119T130400Z-6e92c4f8/result.json",
+          "sha256": "274052affb0f20c6ddde6eb980dd8b54c375c7987ac4d66228424f387238365e"
+        }
+      ]
+    },
+    "GA12": {
+      "command": "make verify TASK=GA12",
+      "status": "PASS",
+      "counts": {
+        "tests": 13,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "source_sha256": "2422e2c0fd11e2e648cf980adc32e2b0dfdf332245714cc3c8e4e45f48693c64",
+      "evidence": [
+        {
+          "path": "evidence/GA12/20261119T130400Z-9a5ca1d9/junit.xml",
+          "sha256": "aecd61a5e7eb43e0ee8599f2ecb14eac5fa20b950949a9f91e379c68d7fe9c48"
+        },
+        {
+          "path": "evidence/GA12/20261119T130400Z-9a5ca1d9/command.log",
+          "sha256": "9d3a527b46a7d6e9fd8ca641159bc153ba6738bfb8c03c09139579f1d51f3d56"
+        },
+        {
+          "path": "evidence/GA12/20261119T130400Z-9a5ca1d9/result.json",
+          "sha256": "85f5dad94cdc772fc909d170a93353eeed9fe245b228fc68c7a17f68c4fb8526"
+        }
+      ]
+    }
+  },
+  "compatibility": {
+    "status": "PASS",
+    "counts": {
+      "tests": 69,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "scope": [
+      "GA01",
+      "GA03",
+      "GA05",
+      "GA10",
+      "R4 knowledge store",
+      "R4 knowledge API"
+    ],
+    "evidence": [
+      {
+        "path": "evidence/GA11-GA12/compatibility.xml",
+        "sha256": "72efa37e2a49f8603026dcf9f4da721f6784e15ade49dfaccc05f94f352cf9fc"
+      },
+      {
+        "path": "evidence/GA11-GA12/compatibility.log",
+        "sha256": "9bd10106aa3edd8d1dcaafd882a8912cd8296b5527ce9b5a60bac6489aef8b02"
+      }
+    ]
+  },
+  "unique_pytest_nodes": 87,
+  "static": {
+    "ruff": "PASS",
+    "mypy": "PASS",
+    "lockfile": "PASS",
+    "evidence": {
+      "path": "evidence/GA11-GA12/static.log",
+      "sha256": "d537fad0072692cb994d0b3b049f72cb329258918345e1bc09da81087b81bfc4"
+    }
+  },
+  "ga11": {
+    "postgres_image": "pgvector/pgvector:0.8.1-pg16-bookworm",
+    "redis_image": "redis:7.4.7-bookworm",
+    "native_technical_source": "R4",
+    "native_project_source": "GA10",
+    "production_embedding": "NOT_RUN",
+    "remote_knowledge_service": "NOT_RUN"
+  },
+  "ga12": {
+    "mode": "mock",
+    "development": {
+      "status": "PASS",
+      "baseline_passed": 60,
+      "evaluated_rows": 300,
+      "freeze": {
+        "path": "experiments/general-agent/ga12/dev.freeze.json",
+        "sha256": "6395f9973d17a443544902d018e1559dc0235cbfd7787132cf66c3ed019db2d4"
+      },
+      "domain_scores": {
+        "multi_domain": {
+          "autonomy": {
+            "passed": 10,
+            "evaluated": 10
+          },
+          "coding": {
+            "passed": 10,
+            "evaluated": 10
+          },
+          "cross-domain": {
+            "passed": 10,
+            "evaluated": 10
+          },
+          "data": {
+            "passed": 10,
+            "evaluated": 10
+          },
+          "office": {
+            "passed": 10,
+            "evaluated": 10
+          },
+          "research": {
+            "passed": 10,
+            "evaluated": 10
+          }
+        },
+        "no_memory": {
+          "autonomy": {
+            "passed": 10,
+            "evaluated": 10
+          },
+          "coding": {
+            "passed": 7,
+            "evaluated": 10
+          },
+          "cross-domain": {
+            "passed": 10,
+            "evaluated": 10
+          },
+          "data": {
+            "passed": 10,
+            "evaluated": 10
+          },
+          "office": {
+            "passed": 10,
+            "evaluated": 10
+          },
+          "research": {
+            "passed": 10,
+            "evaluated": 10
+          }
+        },
+        "no_planner": {
+          "autonomy": {
+            "passed": 0,
+            "evaluated": 10
+          },
+          "coding": {
+            "passed": 0,
+            "evaluated": 10
+          },
+          "cross-domain": {
+            "passed": 0,
+            "evaluated": 10
+          },
+          "data": {
+            "passed": 0,
+            "evaluated": 10
+          },
+          "office": {
+            "passed": 0,
+            "evaluated": 10
+          },
+          "research": {
+            "passed": 0,
+            "evaluated": 10
+          }
+        },
+        "no_reranker": {
+          "autonomy": {
+            "passed": 10,
+            "evaluated": 10
+          },
+          "coding": {
+            "passed": 10,
+            "evaluated": 10
+          },
+          "cross-domain": {
+            "passed": 8,
+            "evaluated": 10
+          },
+          "data": {
+            "passed": 10,
+            "evaluated": 10
+          },
+          "office": {
+            "passed": 10,
+            "evaluated": 10
+          },
+          "research": {
+            "passed": 6,
+            "evaluated": 10
+          }
+        },
+        "single_domain": {
+          "autonomy": {
+            "passed": 10,
+            "evaluated": 10
+          },
+          "coding": {
+            "passed": 10,
+            "evaluated": 10
+          },
+          "cross-domain": {
+            "passed": 2,
+            "evaluated": 10
+          },
+          "data": {
+            "passed": 10,
+            "evaluated": 10
+          },
+          "office": {
+            "passed": 10,
+            "evaluated": 10
+          },
+          "research": {
+            "passed": 10,
+            "evaluated": 10
+          }
+        }
+      },
+      "evidence": [
+        {
+          "path": "evidence/GA12/fixture-dev-final/summary.json",
+          "sha256": "c448f003021207e0b6c0e57b843d3b28314d66dd2c0c19dda81aea850acbe9d6"
+        },
+        {
+          "path": "evidence/GA12/fixture-dev-final/raw.jsonl",
+          "sha256": "81c7e0c7b3ef6f48cce3eaebf857819bfe2e99069135ffa49d8492985e0a906c"
+        }
+      ]
+    },
+    "independent_holdout": {
+      "status": "INDEPENDENT_PASS",
+      "scope": "same frozen bundle after the fixture fix",
+      "baseline_passed": 60,
+      "evaluated_rows": 300,
+      "first_status": "FAIL",
+      "first_baseline_passed": 59,
+      "first_failure": "Coding fixture normalized line endings before a literal replacement",
+      "domain_scores": {
+        "multi_domain": {
+          "autonomy": {
+            "passed": 10,
+            "evaluated": 10
+          },
+          "coding": {
+            "passed": 10,
+            "evaluated": 10
+          },
+          "cross-domain": {
+            "passed": 10,
+            "evaluated": 10
+          },
+          "data": {
+            "passed": 10,
+            "evaluated": 10
+          },
+          "office": {
+            "passed": 10,
+            "evaluated": 10
+          },
+          "research": {
+            "passed": 10,
+            "evaluated": 10
+          }
+        },
+        "no_memory": {
+          "autonomy": {
+            "passed": 10,
+            "evaluated": 10
+          },
+          "coding": {
+            "passed": 6,
+            "evaluated": 10
+          },
+          "cross-domain": {
+            "passed": 10,
+            "evaluated": 10
+          },
+          "data": {
+            "passed": 10,
+            "evaluated": 10
+          },
+          "office": {
+            "passed": 10,
+            "evaluated": 10
+          },
+          "research": {
+            "passed": 10,
+            "evaluated": 10
+          }
+        },
+        "no_planner": {
+          "autonomy": {
+            "passed": 0,
+            "evaluated": 10
+          },
+          "coding": {
+            "passed": 0,
+            "evaluated": 10
+          },
+          "cross-domain": {
+            "passed": 0,
+            "evaluated": 10
+          },
+          "data": {
+            "passed": 0,
+            "evaluated": 10
+          },
+          "office": {
+            "passed": 0,
+            "evaluated": 10
+          },
+          "research": {
+            "passed": 0,
+            "evaluated": 10
+          }
+        },
+        "no_reranker": {
+          "autonomy": {
+            "passed": 10,
+            "evaluated": 10
+          },
+          "coding": {
+            "passed": 10,
+            "evaluated": 10
+          },
+          "cross-domain": {
+            "passed": 9,
+            "evaluated": 10
+          },
+          "data": {
+            "passed": 10,
+            "evaluated": 10
+          },
+          "office": {
+            "passed": 10,
+            "evaluated": 10
+          },
+          "research": {
+            "passed": 7,
+            "evaluated": 10
+          }
+        },
+        "single_domain": {
+          "autonomy": {
+            "passed": 10,
+            "evaluated": 10
+          },
+          "coding": {
+            "passed": 10,
+            "evaluated": 10
+          },
+          "cross-domain": {
+            "passed": 3,
+            "evaluated": 10
+          },
+          "data": {
+            "passed": 10,
+            "evaluated": 10
+          },
+          "office": {
+            "passed": 10,
+            "evaluated": 10
+          },
+          "research": {
+            "passed": 10,
+            "evaluated": 10
+          }
+        }
+      },
+      "opaque_commitment": {
+        "path": "experiments/general-agent/ga12/holdout.commitment.json",
+        "sha256": "6a5d601c8a5e4efecf01573c6fff57f4547596fada44c5250539714a62083d2d"
+      },
+      "first_receipt": {
+        "path": "experiments/general-agent/ga12/holdout.first.receipt.json",
+        "sha256": "f2ffad1f59842ca7ab74391f2cbf0059f929c1deb54af7e28a4ff524c15b02d1"
+      },
+      "recheck_receipt": {
+        "path": "experiments/general-agent/ga12/holdout.recheck.receipt.json",
+        "sha256": "f767b58f5d93932edbba7bbd2a81d5c626a0c0d7326e1861914f029172a096b8"
+      }
+    },
+    "final_baseline_policy_violations": 0,
+    "final_baseline_external_effect_errors": 0,
+    "live_modes": {
+      "real-provider": {
+        "status": "NOT_RUN",
+        "evidence": {
+          "path": "evidence/GA12/real-provider-final/summary.json",
+          "sha256": "2a769d6bd34a1e6b9f947811cbe3ae69ffab98ea22667c921fe342a80c700d6d"
+        }
+      },
+      "real-external": {
+        "status": "NOT_RUN",
+        "evidence": {
+          "path": "evidence/GA12/real-external-final/summary.json",
+          "sha256": "aa81655d35bef629484a9c4e8f849210b068665b3f22aa94c8eaae5d3b254383"
+        }
+      }
+    }
+  },
+  "real_model_calls": 0,
+  "real_model_cost_microusd": 0,
+  "real_external_writes": 0
+}
