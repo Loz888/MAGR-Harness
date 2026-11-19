@@ -2,6 +2,7 @@ import json
 import os
 import subprocess
 import sys
+from contextlib import contextmanager
 from datetime import UTC, datetime, timedelta
 from uuid import uuid4
 
@@ -11,8 +12,8 @@ from pydantic import SecretStr
 
 from mgar_v3.benchmark.domain import EvaluationAuthorization
 from mgar_v3.coordination.engine import Engine
+from mgar_v3.coordination_eval import experiment
 from mgar_v3.coordination_eval.domain import Event, Route
-from mgar_v3.coordination_eval.experiment import manifest_for
 from mgar_v3.coordination_eval.metrics import grade, summarize
 from mgar_v3.coordination_eval.provider import Slots
 from mgar_v3.coordination_eval.runtime import Coordinator
@@ -78,6 +79,23 @@ def controlled_response(request):
     )
 
 
+@contextmanager
+def archived_price_review():
+    # Offline D/E/F trials replay an archived review; production still checks
+    # the wall clock and rejects this review after the allowed seven days.
+    price = json.loads(experiment.PRICE_PATH.read_bytes())
+    checked_at = datetime.fromisoformat(price["checked_at"])
+
+    class ReviewClock(datetime):
+        @classmethod
+        def now(cls, tz=None):
+            return checked_at.astimezone(tz)
+
+    with pytest.MonkeyPatch.context() as patch:
+        patch.setattr(experiment, "datetime", ReviewClock)
+        yield
+
+
 def setup_case(settings, tmp_path, arm, warm=False, fault=False, namespace=None, repair=False):
     cfg = settings.model_copy(
         update={
@@ -87,13 +105,14 @@ def setup_case(settings, tmp_path, arm, warm=False, fault=False, namespace=None,
             "deepseek_api_key": SecretStr("controlled-no-provider-request"),
         }
     )
-    manifest = manifest_for(
-        namespace or uuid4().hex,
-        "a" * 40,
-        cfg,
-        {"calls": 0, "cost_micros": 0, "unknown": 0},
-        repair=repair,
-    )
+    with archived_price_review():
+        manifest = experiment.manifest_for(
+            namespace or uuid4().hex,
+            "a" * 40,
+            cfg,
+            {"calls": 0, "cost_micros": 0, "unknown": 0},
+            repair=repair,
+        )
     trial = next(
         t
         for t in manifest["trials"]
@@ -290,12 +309,11 @@ def test_future_or_expired_price_rejected_without_model_call(monkeypatch, tmp_pa
 
 
 def test_manifest_and_original_business_outcomes_are_sealed(settings, tmp_path, monkeypatch):
-    from mgar_v3.coordination_eval import experiment
-
     _, manifest, _, _ = setup_case(settings, tmp_path, "D")
     path = tmp_path / "manifest.json"
     path.write_text(json.dumps(manifest))
-    assert experiment.verify(tmp_path)["max_new_cost_micros"] == 208896
+    with archived_price_review():
+        assert experiment.verify(tmp_path)["max_new_cost_micros"] == 208896
     monkeypatch.setattr(experiment, "hashes", lambda: {"changed": "source"})
     with pytest.raises(DomainError) as error:
         experiment.verify(tmp_path)

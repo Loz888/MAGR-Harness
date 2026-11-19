@@ -179,6 +179,8 @@ def _ports(monkeypatch: pytest.MonkeyPatch, effect: Any) -> list[Any]:
     captured = []
 
     class Broker:
+        image_id = "sha256:" + "a" * 64
+
         def __init__(self, root: Path, lease: Any, **kwargs: Any) -> None:
             self.root = root
             self.lease = lease
@@ -191,7 +193,10 @@ def _ports(monkeypatch: pytest.MonkeyPatch, effect: Any) -> list[Any]:
         def close(self) -> int:
             return 0
 
-    def run(session: Any, grant: Any, argv: Any, timeout: Any, evidence: Any, index: Any) -> Any:
+    def run(
+        session: Any, grant: Any, argv: Any, timeout: Any, evidence: Any, index: Any,
+        **receipt_binding: Any,
+    ) -> Any:
         assert grant.write_paths == ()
         assert session.broker.lease.mode == "investigate"
         return effect(session.broker.root, argv, index)

@@ -268,10 +268,11 @@ def test_controller_never_treats_bound_assets_as_executed_model_readiness(tmp_pa
 def test_frozen_controller_rechecks_asset_bytes_and_cannot_drop_opt_in(tmp_path, monkeypatch):
     from mgar_v3.domain import DomainError
     from mgar_v3.quality_eval import h12
+    from mgar_v3.quality_eval.h12_live import MODEL_OBSERVATION
 
     task, document, manifest, asset_root, workspace = fixture(tmp_path)
     runner = controller(tmp_path, task, manifest, asset_root, workspace, monkeypatch)
-    model = runner.root / "experiments/harness-v4/h12-model-v1.json"
+    model = runner.root / MODEL_OBSERVATION
     config = {
         "candidate_source": "synthetic-source",
         "image_locks": {},

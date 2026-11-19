@@ -97,10 +97,14 @@ def execute_experts(
 
     def plan(state: ExpertState) -> ExpertState:
         context = engine.tools.bind_context(run_id, epoch, state["input_revision"])
+        commerce_case = engine.commerce.binding(run_id)
         decision = ExpertRouter().route(
             ExpertContext(
                 task=state["question"],
                 question=state["question"],
+                requires_cross_source_evidence=(
+                    commerce_case is not None and commerce_case["stage"] == "investigation"
+                ),
                 input_revision=state["input_revision"],
             )
         )

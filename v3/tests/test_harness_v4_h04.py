@@ -606,12 +606,25 @@ def test_command_allowlist_is_an_entry_gate_not_process_tree_isolation(tmp_path:
 
 
 @pytest.mark.skipif(not LOCK.is_file(), reason="pinned R03 sandbox is not built")
-def test_no_h04_containers_remain_after_execution(tmp_path: Path) -> None:
+def test_no_h04_containers_remain_after_execution(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch,
+) -> None:
     broker = _broker(_workspace(tmp_path), _lease())
+    docker = broker._docker
+    created = []
+
+    def track(args, **kwargs):
+        result = docker(args, **kwargs)
+        if args[0] == "create" and result.returncode == 0:
+            created.append(result.stdout.decode().strip())
+        return result
+
+    monkeypatch.setattr(broker, "_docker", track)
     result = broker.execute(_request(("id",)), _grant(), CancellationToken())
     assert result.status == "passed"
+    assert len(created) == 1 and created[0]
     listed = subprocess.check_output(
-        ["docker", "ps", "-aq", "--filter", "label=mgar.v4.h04.broker=1"],
+        ["docker", "ps", "-aq", "--no-trunc", "--filter", f"id={created[0]}"],
         text=True,
     )
     assert listed.strip() == ""

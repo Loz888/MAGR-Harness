@@ -7,9 +7,7 @@ import test_h12_public_probe_service as probes
 
 from mgar_v3.harness.contracts import EvaluationProfile
 
-LOCK = Path(
-    "/home/developer/magr-harness/v3/.local/h12/environment-v2/click-less-th0p1e75/sandbox-lock.json"
-)
+LOCK = Path(__file__).resolve().parents[1] / ".local/h12/sandbox-lock.json"
 REGRESSION = ("python3", "-B", "-m", "pytest", "-q", "test_smoke.py")
 
 

@@ -9,7 +9,7 @@ from mgar_v3.harness.contracts import VerificationRequirement
 
 def checklist(*items):
     bound = task(requirements=tuple(items))
-    return CodingLoop._base_items(None, bound)
+    return CodingLoop._base_items(bound)
 
 
 def test_supplemental_build_does_not_require_a_green_original_compile_to_fail():

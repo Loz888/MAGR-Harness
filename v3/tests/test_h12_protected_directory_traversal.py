@@ -11,9 +11,7 @@ from mgar_v3.domain import DomainError
 from mgar_v3.harness.broker import IsolatedExecutionBroker, issue_lease
 from mgar_v3.harness.contracts import CancellationToken, CapabilityGrant, ExecutionRequest
 
-LOCK = Path(
-    "/home/developer/magr-harness/v3/.local/h12/environment-v2/click-less-th0p1e75/sandbox-lock.json"
-)
+LOCK = Path(__file__).resolve().parents[1] / ".local/h12/sandbox-lock.json"
 
 SCRIPT = r"""const assert = require('assert');
 const fs = require('fs');

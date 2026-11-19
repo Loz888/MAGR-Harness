@@ -37,7 +37,9 @@ def test_repeated_real_failed_commands_stop_after_corrective_feedback(tmp_path):
     assert len(result.receipts) == 3
     assert all(receipt.tests_failed == 1 for receipt in result.receipts)
     assert any(
-        "Repeating the same batch will stop" in m.content for m in model.requests[-1].messages
+        "This tool batch made no new progress." in m.content
+        and "Repeated unchanged batches stop at the frozen bound." in m.content
+        for m in model.requests[-1].messages
     )
     assert [attempt.progress for attempt in result.attempts] == [True, False, False]
 

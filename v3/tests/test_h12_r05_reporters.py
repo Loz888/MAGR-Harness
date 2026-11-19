@@ -16,11 +16,7 @@ from mgar_v3.quality_eval.h12_regression_scoring import load_report
 
 ROOT = Path(__file__).parents[1]
 LOCK = ROOT / ".local/h12/environment-v4/got-offline-protocol-v4/sandbox-lock.json"
-EXPRESS = Path(
-    json.loads((ROOT / ".local/h12/public-dev-20261113/image-map.json").read_bytes())[
-        "expressjs/express@8368dc178af16b91b576c4c1d135f701a0007e5d"
-    ]
-)
+EXPRESS = ROOT / ".local/h12/environment-v4/express-node18.10.0/sandbox-lock.json"
 
 
 @pytest.mark.parametrize("language", ["unittest", "go", "node", "mocha", "ava"])

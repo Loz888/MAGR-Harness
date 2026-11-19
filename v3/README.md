@@ -1,5 +1,7 @@
 # MAGR-Harness 本地运行与验证
 
+[项目文档导航](docs/README.md)
+
 MAGR-Harness 是独立项目，当前源码发行版为 0.1.0。主页面接受自然语言需求，并在同一会话中展示流式执行、固定测试与补丁审查。首次登录后配置模型并授权项目与预算。GitHub 仓库分析也可从同一页面使用。
 
 在克隆后的 `MAGR-Harness/v3/` 运行 `make setup`、`make deps-up`、`make migrate`、`make sandbox-build`、`make doctor` 和 `make dev`。升级时先备份，再执行 `make migrate`。打开 `http://127.0.0.1:18080`，首次启动创建管理员账户。停止依赖可用 `make deps-stop`，数据卷保留。

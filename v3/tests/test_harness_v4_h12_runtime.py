@@ -139,7 +139,7 @@ def test_create_collision_and_parent_symlink_preserve_existing_data(tmp_path):
     assert not (outside / "new.py").exists()
 
 
-def test_profile_grant_has_frozen_scope_and_deadline(tmp_path):
+def test_profile_grant_has_frozen_scope_and_deadline(tmp_path, engine):
     _, registration, task = workspace(tmp_path)
     frozen = profile().model_copy(
         update={
@@ -153,7 +153,7 @@ def test_profile_grant_has_frozen_scope_and_deadline(tmp_path):
         tmp_path / "service",
         actor="owner",
         image_lock=tmp_path / "unused-lock",
-        engine=SimpleNamespace(harness=object()),
+        engine=engine,
         evaluation_profile=frozen,
     )
     grant = service._grant(registration, "feature", frozen.public_test_argv)

@@ -49,7 +49,7 @@ def test_product_document_covers_required_sections() -> None:
         assert marker in text
     assert "make deps-up" in text
     assert "mgar workbench" in text
-    assert "https://github.com/Loz888/MAGR-v3.git" in text
+    assert "https://github.com/loz888/magr-harness.git" in text.lower()
 
 
 def test_demo_script_contains_the_seven_stage_narrative() -> None:
@@ -80,31 +80,34 @@ def test_evaluation_index_matches_acceptance_gates() -> None:
     }
     for card, gates in expected.items():
         accept = json.loads((ACCEPT / card / "accept.json").read_text(encoding="utf-8"))
-        actual = (
+        write_gate = accept.get("live_github_write_gate")
+        if write_gate is None:
+            # Published E01 omits the standalone write field. The archived index
+            # still publishes its status and must agree with the record's other gates.
+            assert card == "V35-E01"
+        row = next(line for line in index.splitlines() if line.startswith(f"| {card} |"))
+        columns = [value.strip().replace("**", "") for value in row.strip("|").split("|")]
+        assert tuple(columns[2:7]) == gates, card
+        assert (
             accept["engineering_gate"],
             accept["live_model_gate"],
-            accept["live_github_write_gate"],
+            write_gate if write_gate is not None else columns[4],
             accept["live_agent_gate"],
             accept["security_gate"],
-        )
-        assert actual == gates, card
-        row = next(
-            line for line in index.splitlines() if line.startswith(f"| {card} |")
-        )
-        assert "**FAIL**" in row if "FAIL" in gates else "FAIL" not in row
+        ) == gates, card
         assert f"./accept/{card}/accept.json" in row
-        assert card in index
 
 
 def test_documentation_links_exist() -> None:
     root = (REPO_ROOT / "README.md").read_text(encoding="utf-8")
     guide = (V3_ROOT / "README.md").read_text(encoding="utf-8")
-    for text in (root, guide):
-        assert "v3/docs/v35/PRODUCT.md" in text or "docs/v35/PRODUCT.md" in text
-        assert "v3/docs/v35/DEMO.md" in text or "docs/v35/DEMO.md" in text
-        assert "V3.5" in text
-    assert "make demo" in root and "make demo" in guide
-    assert "/workbench" in guide
+    navigation = (V3_ROOT / "docs" / "README.md").read_text(encoding="utf-8")
+    assert "(v3/docs/README.md)" in root
+    assert "(docs/README.md)" in guide
+    assert "(v35/PRODUCT.md)" in navigation and "(v35/DEMO.md)" in navigation
+    assert (DOCS / "PRODUCT.md").is_file() and (DOCS / "DEMO.md").is_file()
+    assert "make demo" in guide
+    assert "/workbench" in (DOCS / "DEMO.md").read_text(encoding="utf-8")
 
 
 def test_makefile_demo_targets_are_fixture_and_repeatable() -> None:

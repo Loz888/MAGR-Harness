@@ -9,9 +9,7 @@ from mgar_v3.harness.commands import CommandSession
 from mgar_v3.harness.contracts import CancellationToken, CapabilityGrant, ExecutionRequest
 from mgar_v3.harness.workspace import _scan, _tree_hash
 
-LOCK = Path(
-    "/home/developer/magr-harness/v3/.local/h12/environment-v2/click-less-th0p1e75/sandbox-lock.json"
-)
+LOCK = Path(__file__).resolve().parents[1] / ".local/h12/sandbox-lock.json"
 
 
 def test_real_readonly_pytest_cache_preserves_configured_options(tmp_path, monkeypatch):

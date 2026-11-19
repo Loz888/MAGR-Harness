@@ -13,6 +13,7 @@ from test_harness_v4_h12_budget import _freeze
 
 from mgar_v3.domain import DomainError
 from mgar_v3.quality_eval import h12, h12_judge
+from mgar_v3.quality_eval.h12_live import MODEL_OBSERVATION
 from mgar_v3.quality_eval.h12_runner import DEV_ENVIRONMENT_V3, EvaluationRunner, profile_for
 
 
@@ -62,7 +63,7 @@ def test_cached_ready_cannot_bypass_changed_frozen_environment(tmp_path, monkeyp
         "candidate_source": "a" * 64, "environment_revision": DEV_ENVIRONMENT_V3,
         "independent_registry_sha256": None,
         "model_observation_sha256": hashlib.sha256(
-            (root / "experiments/harness-v4/h12-model-v2.json").read_bytes()
+            (root / MODEL_OBSERVATION).read_bytes()
         ).hexdigest(),
         "image_locks": {"fixture@pin": {
             "path": str(lock), "sha256": hashlib.sha256(lock.read_bytes()).hexdigest(),
@@ -75,6 +76,7 @@ def test_cached_ready_cannot_bypass_changed_frozen_environment(tmp_path, monkeyp
         environment_revision=DEV_ENVIRONMENT_V3,
     )
     monkeypatch.setattr(runner, "_candidate_fingerprint", lambda: "a" * 64)
+    monkeypatch.setattr(h12, "frozen_hashes", lambda _: {"status": "PASS"})
     runner._dev_readiness_passed = True
     runner._require_dev_readiness()
     lock.write_text("changed after readiness")

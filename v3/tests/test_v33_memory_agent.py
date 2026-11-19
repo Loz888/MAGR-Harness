@@ -243,7 +243,7 @@ def test_follow_up_reuses_confirmed_facts_at_exact_commit(engine, settings):
     )
     model = RecordingModel()
     finished = _run(service, second, model)
-    assert finished.run_status == "succeeded"
+    assert finished.run_status == "succeeded", finished.run_reason_code
 
     payload = model.payloads[0]
     assert payload["commit"] == first.commit
@@ -303,6 +303,8 @@ def test_poisoned_memory_cannot_change_tools_repository_budget_or_approval(
         "max_model_calls": second.limits.max_model_calls,
         "max_tool_calls": second.limits.max_tool_calls,
         "max_input_tokens": second.limits.max_input_tokens,
+        "max_cost_micros": second.limits.max_cost_micros,
+        "max_seconds": second.limits.max_seconds,
     }
     assert payload["repository"] == second.repository
     assert payload["commit"] == second.commit

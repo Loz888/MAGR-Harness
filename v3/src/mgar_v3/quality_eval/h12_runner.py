@@ -1278,6 +1278,7 @@ class EvaluationRunner:
                 "environment_reason": environment.get("reason"),
                 "environment_evidence": str(environment_path),
             }
+        self._live_policy(str(task.get("split", "")))
         independent = None
         independent_baseline = None
         baseline_assessment_ref = None
@@ -1393,7 +1394,6 @@ class EvaluationRunner:
                 baseline_assessment_ref=baseline_assessment_ref,
             )
 
-        self._live_policy(str(task.get("split", "")))
         self._require_dev_readiness()
         public_options: dict[str, Any] = (
             {"public_probe_root": self.public_probe_root} if frozen_public is not None else {}

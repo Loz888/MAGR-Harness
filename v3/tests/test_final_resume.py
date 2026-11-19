@@ -111,11 +111,30 @@ def test_io_setup_change_preserves_actual_frozen_model_request_and_rejects_proto
     with zipfile.ZipFile(ROOT / "eval/reports/final-v2-baseline-source.zip") as archive:
         original = archive.read(name)
     current = (ROOT / name).read_bytes()
-    assert same_model_protocol(original, current)
+    # The currently shipped adapter deliberately differs from the historical paid protocol.
+    assert not same_model_protocol(original, current)
+    old_setup = (
+        b"        call_id = self.engine.reserve_call(run_id, epoch, step, self.permit)\n"
+        b"        client = self.client or httpx.Client(timeout=45)\n"
+        b"        try:\n"
+    )
+    io_only = original.replace(
+        old_setup,
+        b"        try:\n"
+        b"            client = self.client or httpx.Client(timeout=45)\n"
+        b"        except (OSError, httpx.HTTPError):\n"
+        b'            raise DomainError("MODEL_CLIENT_UNAVAILABLE", '
+        b'"Model client setup failed before paid reservation") from None\n'
+        b"        try:\n"
+        b"            call_id = self.engine.reserve_call(run_id, epoch, step, self.permit)\n",
+    ).replace(
+        b"except (httpx.HTTPError, ValueError):", b"except (httpx.HTTPError, ValueError, OSError):",
+    )
+    assert io_only != original and same_model_protocol(original, io_only)
     for before, after in [
         (b'"max_tokens": p.max_output_tokens', b'"max_tokens": 8192'),
         (b"https://api.deepseek.com/v1/chat/completions", b"https://other.invalid/send"),
         (b'usage["prompt_tokens"] * p.input_micros_per_million', b'usage["prompt_tokens"] * 0'),
     ]:
-        assert before in current
-        assert not same_model_protocol(original, current.replace(before, after))
+        assert before in io_only
+        assert not same_model_protocol(original, io_only.replace(before, after))

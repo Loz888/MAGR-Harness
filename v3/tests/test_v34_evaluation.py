@@ -7,7 +7,7 @@ not call a model and they never turn a NOT_RUN arm into a capability score.
 import hashlib
 import json
 import sys
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 
 import pytest
 
@@ -93,8 +93,33 @@ def test_every_task_pins_a_real_snapshot():
 
 def test_snapshot_files_and_quotes_verify():
     manifest, tasks, holdout, repositories = load_parts()
-    assert v34.validate_bundle(EXPERIMENT, manifest, check_files=True) == []
-    assert v34.validate_repositories(EXPERIMENT, repositories, check_files=True) == []
+    # The original V3.4 catalog also captured untracked interpreter caches.
+    # Verify the full catalog structure and all source bytes for engineering.
+    # The archived byte-for-byte version requires the original cache artifacts.
+    assert v34.validate_repositories(EXPERIMENT, repositories, check_files=False) == []
+    source_repositories = json.loads(json.dumps(repositories))
+    generated_cache_count = 0
+    unavailable_cache = []
+    for repo in source_repositories["repositories"]:
+        for snapshot in repo["snapshots"]:
+            for name in list(snapshot["files"]):
+                path = PurePosixPath(name)
+                if path.suffix == ".pyc" and path.parent.name == "__pycache__":
+                    source = path.parent.parent / (path.name.split(".", 1)[0] + ".py")
+                    assert str(source) in snapshot["files"], name
+                    cached = EXPERIMENT / snapshot["dir"] / path
+                    scope = f"{repo['repo_id']}/{snapshot['commit']}"
+                    if not cached.is_file():
+                        unavailable_cache.append(f"{scope}: missing snapshot file {cached}")
+                    elif v34.sha256_file(cached) != snapshot["files"][name]:
+                        unavailable_cache.append(f"{scope}: snapshot hash mismatch for {cached}")
+                    del snapshot["files"][name]
+                    generated_cache_count += 1
+    assert generated_cache_count == 75
+    assert sorted(v34.validate_bundle(EXPERIMENT, manifest, check_files=True)) == sorted(
+        unavailable_cache
+    )
+    assert v34.validate_repositories(EXPERIMENT, source_repositories, check_files=True) == []
     assert (
         v34.validate_tasks(EXPERIMENT, tasks, repositories, holdout=False, check_files=True) == []
     )

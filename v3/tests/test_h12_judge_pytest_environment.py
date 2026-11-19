@@ -6,9 +6,7 @@ import pytest
 
 from mgar_v3.quality_eval import h12_judge as judge
 
-LOCK = Path(
-    "/home/developer/magr-harness/v3/.local/h12/environment-v2/click-less-th0p1e75/sandbox-lock.json"
-)
+LOCK = Path(__file__).resolve().parents[1] / ".local/h12/sandbox-lock.json"
 
 
 @pytest.mark.parametrize(

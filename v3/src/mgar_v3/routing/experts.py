@@ -66,6 +66,7 @@ class ExpertContext(Model):
     security_findings: list[str] = Field(default_factory=list)
     conflicts: list[str] = Field(default_factory=list)
     user_requested_experts: bool = False
+    requires_cross_source_evidence: bool = False
     attempted_rounds: int = Field(default=0, ge=0)
     input_revision: int = Field(default=1, ge=1)
     evidence_ids: list[str] = Field(default_factory=list)
@@ -225,7 +226,7 @@ class ExpertRouter:
                 ExpertSignal(kind="user_request", detail="user asked for expert help")
             )
         text = f"{context.task} {context.question}".lower()
-        knowledge_hit = _text_hits(
+        knowledge_hit = context.requires_cross_source_evidence or _text_hits(
             text,
             (
                 "documented",
@@ -241,7 +242,7 @@ class ExpertRouter:
                 "口径",
             ),
         )
-        data_hit = _text_hits(
+        data_hit = context.requires_cross_source_evidence or _text_hits(
             text,
             (
                 "count",

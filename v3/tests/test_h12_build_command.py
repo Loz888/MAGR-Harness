@@ -40,9 +40,7 @@ from mgar_v3.harness.service import (
 )
 
 ROOT = Path(__file__).resolve().parents[1]
-LOCK = Path(
-    "/home/developer/magr-harness/v3/.local/h12/environment-v2/click-less-th0p1e75/sandbox-lock.json"
-)
+LOCK = ROOT / ".local/h12/sandbox-lock.json"
 TEST = ("python3", "-B", "-m", "unittest", "-q", "test_public")
 BUILD = ("node", "--check", "source.js")
 BEFORE = "function answer() { return 1; }\n"

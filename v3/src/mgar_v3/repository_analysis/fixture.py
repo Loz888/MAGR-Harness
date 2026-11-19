@@ -239,7 +239,10 @@ class FixtureAnalysisModel:
         history = payload.get("history") or []
         tools = [item for item in history if item.get("tool") not in {"decision", "tool_error"}]
         tool_names = [item.get("tool") for item in tools]
-        if "repository_metadata" not in tool_names:
+        # A follow-up already has pinned repository context. Read the relevant file
+        # directly to fit within the remaining session call limit.
+        continuing = bool(payload.get("prior_evidence_id_map"))
+        if not continuing and "repository_metadata" not in tool_names:
             return AgentDecision(
                 action="tool",
                 thought="Read repository metadata and the root directory before choosing a file.",
@@ -248,7 +251,7 @@ class FixtureAnalysisModel:
                     {"tool": "list_directory", "path": ""},
                 ],
             )
-        if "search_code" not in tool_names:
+        if not continuing and "search_code" not in tool_names:
             return AgentDecision(
                 action="tool",
                 thought="Search for the entry point so the reading order follows real code.",
@@ -257,7 +260,12 @@ class FixtureAnalysisModel:
         read = next((item for item in tools if item.get("tool") == "read_file"), None)
         if read is None:
             search = next((item for item in tools if item.get("tool") == "search_code"), None)
-            path = "src/main.py"
+            task = str(payload.get("task") or "").lower()
+            path = (
+                "src/dispatcher.py"
+                if continuing and ("分发" in task or "dispatch" in task)
+                else "src/main.py"
+            )
             if search is not None:
                 try:
                     items = json.loads(search.get("content") or "{}").get("items") or []
@@ -285,8 +293,12 @@ class FixtureAnalysisModel:
                 thought="The read file was empty.",
                 insufficient_reason="Fixture source file has no quotable lines.",
             )
+        is_dispatcher = str(read.get("reference") or "").endswith("/src/dispatcher.py")
         claim = SourceClaim(
-            statement="入口函数直接调用服务层。",
+            statement=(
+                "分发函数按请求内容选择处理逻辑。"
+                if is_dispatcher else "入口函数直接调用服务层。"
+            ),
             evidence_id=UUID(str(evidence_id)),
             quote=quote,
         )
@@ -297,7 +309,10 @@ class FixtureAnalysisModel:
             call_chains=[],
             findings=[
                 SourceClaim(
-                    statement="读取到的入口代码展示了启动调用路径。",
+                    statement=(
+                        "读取到的分发代码展示了启动请求的处理条件。"
+                        if is_dispatcher else "读取到的入口代码展示了启动调用路径。"
+                    ),
                     evidence_id=UUID(str(evidence_id)),
                     quote=quote,
                 )
