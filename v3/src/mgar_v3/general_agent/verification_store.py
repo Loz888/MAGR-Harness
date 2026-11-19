@@ -20,6 +20,7 @@ from mgar_v3.general_agent.verification_checks import check_action, check_conten
 from mgar_v3.general_agent.verification_contracts import (
     CheckResult,
     CodingDiff,
+    CodingProof,
     CodingRun,
     EvidenceObservation,
     ExternalAction,
@@ -35,7 +36,9 @@ if TYPE_CHECKING:
     from mgar_v3.coordination.engine import Connection, Engine, Row
 
 _DOMAIN_CHECKS = {
-    "coding": {"coding_diff", "coding_test", "coding_build", "citation", "document"},
+    "coding": {
+        "coding_diff", "coding_test", "coding_build", "coding_inspect", "citation", "document",
+    },
     "research": {"citation", "browser"},
     "data": {"numeric"},
     "office": {"document", "email", "calendar", "browser"},
@@ -80,7 +83,9 @@ class GeneralVerificationStore:
             elif output.kind == "test_receipt":
                 required = {"coding_test"}
             elif output.kind == "service_receipt":
-                required = {"coding_build"}
+                if kinds & {"coding_build", "coding_service"}:
+                    continue
+                required = {"coding_service"}
             else:
                 assert task.spec.domain is not None
                 allowed = _DOMAIN_CHECKS[task.spec.domain]
@@ -92,7 +97,7 @@ class GeneralVerificationStore:
         trees = {
             step.tree_sha256
             for step in plan.verification_steps
-            if isinstance(step, (CodingDiff, CodingRun))
+            if isinstance(step, (CodingDiff, CodingRun, CodingProof))
         }
         if len(trees) > 1:
             raise _invalid("Coding checks must cover the same resulting file tree.")
@@ -173,7 +178,7 @@ class GeneralVerificationStore:
         with self.engine.transaction() as conn:
             _, plan, _ = self._current(conn, key)
             step = next((item for item in plan.verification_steps if item.id == step_id), None)
-            if step is None or isinstance(step, ExternalAction):
+            if step is None or isinstance(step, (ExternalAction, CodingProof)):
                 raise _invalid("Evidence step is absent or bound to the action journal.")
             if isinstance(step, SourceStep) and (
                 observation.source != step.source
@@ -211,7 +216,16 @@ class GeneralVerificationStore:
         passed = False
         reason = "artifact_missing" if output is None else "evidence_missing"
         try:
-            if output is not None and isinstance(step, ExternalAction):
+            if output is not None and isinstance(step, CodingProof):
+                from mgar_v3.general_agent.coding_executor import check_coding_proof
+
+                reason = "coding_proof_not_verified"
+                proof = check_coding_proof(self.engine, task, step, output, verifier)
+                if proof is not None:
+                    observed_at, content_hash = proof
+                    valid_until = observed_at + timedelta(seconds=step.max_age_seconds)
+                    passed = observed_at <= now <= valid_until
+            elif output is not None and isinstance(step, ExternalAction):
                 action = self.engine.general_actions.get(step.action_id)
                 reason = "action_not_confirmed"
                 if action.receipt is not None:

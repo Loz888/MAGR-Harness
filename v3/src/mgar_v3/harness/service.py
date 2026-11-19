@@ -20,7 +20,7 @@ from contextlib import nullcontext
 from dataclasses import asdict, dataclass, field, replace
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any, Literal, cast
+from typing import TYPE_CHECKING, Any, Literal, cast
 from uuid import UUID, uuid4
 
 from pydantic import ValidationError
@@ -133,6 +133,9 @@ from mgar_v3.harness.workspace import (
     _scan,
     _tree_hash,
 )
+
+if TYPE_CHECKING:
+    from mgar_v3.general_agent.coding_executor_contract import CodingDispatch
 
 DETERMINISTIC_MODEL_ID = "local-deterministic-h08"
 DETERMINISTIC_PRICE_VERSION = "local-deterministic-v1"
@@ -1730,6 +1733,7 @@ class HarnessCodingService:
             raise DomainError("EVALUATION_MODEL_DENIED", "Unsupported frozen model capability", 409)
         self._lock = threading.Lock()
         self._runtime_lock = threading.Lock()
+        self._general_launch_lock = threading.Lock()
         self._runtimes: dict[str, _TaskRuntime] = {}
 
     # -- projects -------------------------------------------------------
@@ -1792,6 +1796,9 @@ class HarnessCodingService:
 
     def submit_task(self, request: CodingTaskRequest) -> dict[str, Any]:
         runtime = self._prepare(request)
+        return self._submit_runtime(runtime)
+
+    def _submit_runtime(self, runtime: _TaskRuntime) -> dict[str, Any]:
         thread = threading.Thread(
             target=self._background,
             args=(runtime,),
@@ -1801,6 +1808,55 @@ class HarnessCodingService:
         runtime.thread = thread
         thread.start()
         return self._project_status(runtime.task_id)
+
+    def submit_general_task(
+        self, request: CodingTaskRequest, dispatch: CodingDispatch
+    ) -> dict[str, Any]:
+        """Submit a graph-owned task through the original durable Harness run."""
+        if (
+            self.store is None or self.evaluation_profile is not None
+            or request.mode != "deterministic" or request.product_session_id
+            or digest(asdict(request)) != dispatch.request_sha256
+        ):
+            raise DomainError("GENERAL_CODING_SCOPE", "Invalid Coding hand-off.", 403)
+        task = dispatch.require_current(self.engine)
+        if (
+            task.project_id != request.project_id
+            or task.spec.coding_policy != request.task_kind
+            or task.spec.goal != request.objective
+            or bool(dispatch.service_plan) != (request.task_kind == "run_app")
+        ):
+            raise DomainError("GENERAL_CODING_SCOPE", "Coding request differs from graph.", 403)
+        task_id = dispatch.harness_task_id
+        with self._general_launch_lock:
+            try:
+                row = self.store.get(task_id)
+            except DomainError as exc:
+                if exc.code != "HARNESS_TASK_NOT_FOUND":
+                    raise
+                dispatch.require_resources(self.engine)
+                runtime = self._prepare(request, general_dispatch=dispatch)
+                return self._submit_runtime(runtime)
+            saved = row["request"].get("general_dispatch") or {}
+            incoming = dispatch.model_dump(mode="json")
+            if any(saved.get(key) != incoming[key] for key in (
+                "claim", "access", "request_sha256", "service_plan",
+            )):
+                raise DomainError("GENERAL_CODING_SCOPE", "Coding submission binding differs.", 409)
+            if row["status"] != "queued" or task_id in self._runtimes:
+                return self.get_task(task_id)
+            # A controller may stop after persisting admission and before launching.
+            registration = Registration.model_validate(row["registration"])
+            workspace = self.registry.open_task_workspace(registration, task_id)
+            if workspace.manifest.model_dump(mode="json") != row["request"]["workspace_manifest"]:
+                raise DomainError("RECOVERY_MANIFEST_CONFLICT", "Queued workspace changed.", 409)
+            runtime = _TaskRuntime(
+                task_id=task_id, workspace=workspace, registration=registration, request=request,
+                control=TaskControl(), durable_row=row, inbox=EngineInbox(self.store, task_id),
+                events=EngineEvents(self.store, task_id, 0),
+            )
+            self._register_runtime(runtime)
+            return self._submit_runtime(runtime)
 
     def enqueue_product_task(self, request: CodingTaskRequest) -> dict[str, Any]:
         if self.store is None or not request.product_managed or not request.product_session_id:
@@ -1865,11 +1921,15 @@ class HarnessCodingService:
             if runtime is not None:
                 runtime.control.request_cancel("Controller stopping")
 
-    def _prepare(self, request: CodingTaskRequest, *, queue_only: bool = False) -> _TaskRuntime:
+    def _prepare(
+        self, request: CodingTaskRequest, *, queue_only: bool = False,
+        general_dispatch: CodingDispatch | None = None,
+    ) -> _TaskRuntime:
         kind = request.task_kind
         profile = self.evaluation_profile
         if kind not in {"inspect", "bugfix", "feature", "refactor"} and not (
-            (profile is not None or request.product_session_id) and kind == "run_app"
+            (profile is not None or request.product_session_id or general_dispatch is not None)
+            and kind == "run_app"
         ):
             raise DomainError("HARNESS_TASK_KIND", "Unknown task kind", 422)
         objective = request.objective.strip()
@@ -1911,18 +1971,35 @@ class HarnessCodingService:
         if entry is None:
             raise DomainError("HARNESS_PROJECT_UNKNOWN", "Register the project first", 404)
         registration = self.registry.load(request.project_id)
-        task_id = f"h08-{uuid4().hex[:12]}"
-        workspace = self.registry.create_task_workspace(
-            registration,
-            task_id,
-            source_root=Path(str(entry["path"])),
+        task_id = (
+            general_dispatch.harness_task_id if general_dispatch else f"h08-{uuid4().hex[:12]}"
         )
+        try:
+            workspace = self.registry.create_task_workspace(
+                registration, task_id, source_root=Path(str(entry["path"])),
+            )
+        except DomainError as exc:
+            if general_dispatch is None or exc.code != "WORKSPACE_CONFLICT":
+                raise
+            workspace = self.registry.open_task_workspace(registration, task_id)
+            if workspace.snapshot().tree_hash != workspace.manifest.tree_hash:
+                raise DomainError(
+                    "RECOVERY_TREE_CONFLICT", "Coding workspace changed.", 409
+                ) from exc
         if request.product_previous_task_id:
             self._inherit_product_tree(workspace, request)
-        test_argv = self._test_command(workspace, request, kind) if (
+        service_plan = general_dispatch.service_plan if general_dispatch is not None else None
+        test_argv = self._test_command(workspace, request, kind) if service_plan is None and (
             self.store is not None or request.product_session_id
         ) else ()
         grant = self._grant(registration, kind, test_argv, request)
+        if general_dispatch is not None:
+            grant = grant.model_copy(update={
+                "write_paths": (request.target_path,) if grant.write_paths else (),
+                "max_seconds": general_dispatch.limits.max_seconds,
+                **({"allowed_commands": (_program(service_plan.argv),), "execute": True}
+                   if service_plan else {}),
+            })
         if request.product_session_id:
             from mgar_v3.harness.project_context import (
                 authorize_project_sources,
@@ -1966,7 +2043,9 @@ class HarnessCodingService:
         )
         if self.store is not None:
             limits = (
-                profile.resources.budget_limits()
+                general_dispatch.limits
+                if general_dispatch is not None
+                else profile.resources.budget_limits()
                 if profile
                 else BudgetLimits.model_validate(request.product_limits)
                 if request.product_session_id else BudgetLimits(
@@ -1987,6 +2066,8 @@ class HarnessCodingService:
                     **({"trusted_build_argv": list(profile.public_build_argv)}
                        if profile is not None and profile.public_build_argv else {}),
                     "workspace_manifest": workspace.manifest.model_dump(mode="json"),
+                    **({"general_dispatch": general_dispatch.model_dump(mode="json")}
+                       if general_dispatch else {}),
                 },
                 grant.model_dump(mode="json"),
                 limits.model_dump(mode="json"),
@@ -3267,8 +3348,17 @@ class HarnessCodingService:
         request = runtime.request
         kind = request.task_kind
         profile = self.evaluation_profile
+        row = runtime.durable_row
+        general_dispatch = None
+        if row is not None and "general_dispatch" in row["request"]:
+            from mgar_v3.general_agent.coding_executor_contract import CodingDispatch
+
+            general_dispatch = CodingDispatch.model_validate(row["request"]["general_dispatch"])
+        general_service = general_dispatch.service_plan if general_dispatch else None
         max_seconds = (
-            profile.resources.deadline_seconds
+            general_dispatch.limits.max_seconds
+            if general_dispatch
+            else profile.resources.deadline_seconds
             if profile
             else request.product_limits.get("max_seconds", DEFAULT_MAX_SECONDS)
         )
@@ -3310,7 +3400,6 @@ class HarnessCodingService:
             capabilities.context_tokens - max_output - 1024,
             262144,
         )
-        row = runtime.durable_row
         if self.store is not None:
             if row is None or row["status"] == "queued":
                 row = self.store.begin(task_id)
@@ -3370,7 +3459,7 @@ class HarnessCodingService:
             read_paths=grant.read_paths,
             write_paths=grant.write_paths,
             allowed_commands=grant.allowed_commands,
-            timeout_seconds=min(max_seconds, 600) if profile else 120,
+            timeout_seconds=min(max_seconds, 600) if profile or general_dispatch else 120,
             max_output_bytes=profile.sandbox_log_bytes
             if profile
             else 1_048_576
@@ -3474,7 +3563,7 @@ class HarnessCodingService:
                 else 50_000
             )
         else:
-            if kind in _WRITABLE:
+            if kind in _WRITABLE and general_service is None:
                 if not request.target_path or not request.old_text:
                     raise DomainError(
                         "HARNESS_DETERMINISTIC_HINT_REQUIRED",
@@ -3482,7 +3571,7 @@ class HarnessCodingService:
                         422,
                     )
             model = DeterministicCodingModel(
-                task_kind=kind,
+                task_kind="inspect" if general_service is not None else kind,
                 target_path=request.target_path,
                 old_text=request.old_text,
                 new_text=request.new_text,
@@ -3492,7 +3581,7 @@ class HarnessCodingService:
             model_id = DETERMINISTIC_MODEL_ID
             price_version = DETERMINISTIC_PRICE_VERSION
             max_cost = 1_000_000
-            reservation = DEFAULT_RESERVATION_MICROS
+            reservation = 0 if general_dispatch else DEFAULT_RESERVATION_MICROS
         metered = MeteredModel(model, live=live)
         if self.model_factory is not None:
             metered = MeteredModel(self.model_factory(request), live=live)
@@ -3658,6 +3747,7 @@ class HarnessCodingService:
             )
         app_cwd = request.product_plan.get("root", ".") if request.product_session_id else "."
         start_argv = (
+            general_service.argv if general_service else
             profile.service_argv if profile else tuple(request.product_plan.get("start_argv", ()))
         )
         application = (
@@ -3705,7 +3795,7 @@ class HarnessCodingService:
             max_seconds=max_seconds,
             max_repair_rounds=profile.resources.max_repair_rounds if profile else None,
             max_context_tokens=profile.resources.max_context_tokens if profile else None,
-            command_timeout_seconds=min(max_seconds, 1800) if profile else 120,
+            command_timeout_seconds=min(max_seconds, 1800) if profile or general_dispatch else 120,
             continuation=continuation,
             application=application,
             project_context=request.product_context,
@@ -3757,7 +3847,9 @@ class HarnessCodingService:
                     task,
                     baseline_command=test_argv if kind in _WRITABLE else (),
                     service_plan=(
-                        ServicePlan(
+                        general_service
+                        if general_service is not None
+                        else ServicePlan(
                             argv=profile.service_argv,
                             mode=profile.service_mode,
                             port=profile.service_port,

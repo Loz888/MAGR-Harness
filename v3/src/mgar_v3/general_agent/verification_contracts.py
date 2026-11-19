@@ -51,6 +51,14 @@ class CodingDiff(Step):
     tree_sha256: Sha256
 
 
+class CodingProof(Step):
+    kind: Literal["coding_inspect", "coding_service"]
+    harness_task_id: Identifier
+    harness_run_id: UUID
+    harness_result_sha256: Sha256
+    tree_sha256: Sha256
+
+
 class Citation(SourceStep):
     kind: Literal["citation", "document"]
     excerpt: Text
@@ -86,7 +94,7 @@ class BrowserState(SourceStep):
 
 
 VerificationStep = Annotated[
-    CodingRun | CodingDiff | Citation | Numeric | ExternalAction | BrowserState,
+    CodingRun | CodingDiff | CodingProof | Citation | Numeric | ExternalAction | BrowserState,
     Field(discriminator="kind"),
 ]
 

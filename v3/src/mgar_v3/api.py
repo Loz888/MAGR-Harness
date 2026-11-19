@@ -182,6 +182,9 @@ def create_app(
             ),
             allow_paid=configuration.allow_paid,
         )
+        from mgar_v3.general_agent.coding_executor import CodingExecutor
+
+        app.state.general_coding = CodingExecutor(authority, app.state.harness)
         if provided is None:
             app.state.harness.runners.recover()
         from mgar_v3.harness.product import HarnessProductService
@@ -456,11 +459,19 @@ def create_app(
         return user_id
 
     from mgar_v3.general_agent.api import register_general_task_routes
+    from mgar_v3.general_agent.memory_api import register_personal_memory_routes
     from mgar_v3.harness.product_api import register_product_routes
     from mgar_v3.harness.runner_api import register_runner_routes
 
     register_product_routes(app, authenticated, member_user)
     register_general_task_routes(app, member_user)
+
+    def personal_memory_user(request: Request) -> UUID:
+        user = account_user(request)
+        check_origin(request)
+        return user.user_id
+
+    register_personal_memory_routes(app, personal_memory_user)
     register_runner_routes(app, authenticated)
 
     @app.get("/api/v3/auth/session")

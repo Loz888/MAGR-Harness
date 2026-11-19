@@ -195,9 +195,15 @@ def test_cross_domain_graph_hydrates_inputs_and_still_requires_outcome_verificat
     with pytest.raises(DomainError) as forged:
         store.settle(receipt(engine, second, operation_id=uuid4(), outputs={"metrics": "table"}))
     assert forged.value.code == "GENERAL_GRAPH_RECEIPT_STALE"
-    store.settle(receipt(engine, second, outputs={"metrics": "table"}))
+    store.settle(
+        receipt(engine, second, outputs={"metrics": "table", "analysis_evidence": "manifest"})
+    )
     last = claim(store, state, "report", access)
-    assert last.inputs == {"upstream": "table"}
+    assert last.inputs == {
+        "upstream": "table",
+        "source_collection": "frozen source reference",
+        "analysis_manifest": "manifest",
+    }
     with pytest.raises(DomainError) as invalid:
         store.settle(receipt(engine, last, outputs={"result": 42}))
     assert invalid.value.code == "GENERAL_GRAPH_RECEIPT_INVALID"

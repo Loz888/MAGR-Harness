@@ -2243,5 +2243,66 @@
       "tests/test_general_agent_ga05.py"
     ],
     "timeout_seconds": 180
+  },
+  "GA06": {
+    "components": {
+      "postgres": "real",
+      "web": "bounded fixture transport and real PostgreSQL evidence publication"
+    },
+    "tests": [
+      "tests/test_general_agent_ga06.py"
+    ],
+    "timeout_seconds": 240
+  },
+  "GA07": {
+    "components": {
+      "postgres": "real",
+      "data": "isolated fixed Python and SQL, CSV XLSX JSON, reproducible artifacts"
+    },
+    "tests": [
+      "tests/test_general_agent_ga07.py"
+    ],
+    "timeout_seconds": 240
+  },
+  "GA08": {
+    "components": {
+      "postgres": "real",
+      "office": "exact per-account scope, OAuth wire fixture, draft-first action approval and reconciliation"
+    },
+    "tests": [
+      "tests/test_general_agent_ga08.py",
+      "tests/test_general_agent_ga08_google.py"
+    ],
+    "timeout_seconds": 240
+  },
+  "GA09": {
+    "components": {
+      "postgres": "real",
+      "coding": "original Harness policies, H11 Run handoff and GA05 evidence"
+    },
+    "tests": [
+      "tests/test_general_agent_ga09.py"
+    ],
+    "timeout_seconds": 240
+  },
+  "GA10": {
+    "components": {
+      "postgres": "real",
+      "memory": "authenticated scope, provenance, versioned correction and erasure"
+    },
+    "tests": [
+      "tests/test_general_agent_ga10.py"
+    ],
+    "timeout_seconds": 240
+  },
+  "GA06-GA07": {
+    "components": {
+      "postgres": "real",
+      "graph": "cross-domain research to data and combined reports with independent evidence"
+    },
+    "tests": [
+      "tests/test_general_agent_mixed_executors.py"
+    ],
+    "timeout_seconds": 240
   }
 }

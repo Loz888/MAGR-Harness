@@ -82,6 +82,10 @@ _SECRET_PATTERNS = re.compile(
     re.IGNORECASE,
 )
 
+def contains_memory_secret(text: str) -> bool:
+    return _SECRET_PATTERNS.search(text) is not None
+
+
 _INJECTION_PATTERNS = re.compile(
     r"(?:"
     r"ignore\s+(?:all\s+|the\s+|your\s+)?(?:previous|prior|above)\s+"
@@ -409,7 +413,7 @@ class MemoryWriter:
     def _content_issues(self, candidate: MemoryCandidate) -> list[CandidateIssue]:
         issues: list[CandidateIssue] = []
         for field, value in _text_fields(candidate).items():
-            if _SECRET_PATTERNS.search(value):
+            if contains_memory_secret(value):
                 issues.append(
                     CandidateIssue(
                         code="SENSITIVE_CONTENT",

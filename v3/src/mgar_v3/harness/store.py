@@ -192,6 +192,7 @@ class HarnessStore:
             raise DomainError("FENCED", "Harness worker does not own a running epoch", 409)
         if datetime.now(UTC) >= row["deadline_at"]:
             raise DomainError("DEADLINE_EXCEEDED", "Harness deadline has been reached", 403)
+        self._general_scope(task_id, row["request"])
         if row["request"].get("product_session_id"):
             current = conn.execute(
                 "SELECT latest_task_id FROM app.harness_sessions WHERE session_id=%s",
@@ -211,6 +212,19 @@ class HarnessStore:
             ):
                 raise DomainError("HARNESS_AUTHORIZATION_REVOKED", "Project grant was revoked", 403)
         return row
+
+    def _general_scope(self, task_id: str, request: Row) -> None:
+        raw = request.get("general_dispatch")
+        if raw is None:
+            return
+        from mgar_v3.general_agent.coding_executor_contract import CodingDispatch
+
+        binding = CodingDispatch.model_validate(raw)
+        task = binding.require_current(self.engine)
+        if (task_id, task.project_id, task.spec.coding_policy) != (
+            binding.harness_task_id, request["project_id"], request["task_kind"]
+        ):
+            raise DomainError("HARNESS_SCOPE_DENIED", "General Coding binding differs.", 403)
 
     def _managed_scope(self, conn: Connection, row: Row) -> Row:
         workspace_id = row["workspace_id"]
@@ -360,6 +374,7 @@ class HarnessStore:
         profile = digest({"harness_task": task_id, "identity": identity})
         mode = "live" if request.get("mode") == "live" else "fixture"
         with self.engine.transaction() as conn:
+            self._general_scope(task_id, request)
             if evaluation_profile is not None:
                 evaluation = evaluation_profile.model_dump(mode="json")
                 experiment = self._experiment(conn, evaluation_profile.experiment_id)
@@ -554,6 +569,7 @@ class HarnessStore:
             row = self._row(conn, task_id)
             if row["status"] != "queued":
                 raise DomainError("NOT_RUNNABLE", "Task is not queued", 409)
+            self._general_scope(task_id, row["request"])
             if datetime.now(UTC) >= row["deadline_at"]:
                 raise DomainError("DEADLINE_EXCEEDED", "Harness deadline has been reached", 403)
             if row["managed_workspace_id"] is not None:
@@ -622,6 +638,7 @@ class HarnessStore:
             row = self._row(conn, task_id)
             if row["status"] != "paused":
                 raise DomainError("NOT_RESUMABLE", "Harness task is not paused", 409)
+            self._general_scope(task_id, row["request"])
             if row["sealed_tree_hash"] is not None:
                 raise DomainError(
                     "NOT_RESUMABLE", "Independent evaluation has sealed this tree", 409

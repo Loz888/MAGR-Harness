@@ -8,6 +8,7 @@ from typing import Annotated, Any, Literal, Self
 from pydantic import Field, ValidationError, model_validator
 
 from mgar_v3.domain import DomainError, Model
+from mgar_v3.general_agent.builtins import CODING_NODE_LIMITS
 from mgar_v3.general_agent.capabilities import Resources, Seconds
 from mgar_v3.general_agent.contracts import (
     GeneralTaskSpec,
@@ -171,6 +172,7 @@ def _default_node(
     parent: str | None = None,
     input_id: str | None = None,
     preferred: str | None = None,
+    related: tuple[NodeInput, ...] = (),
 ) -> GraphNode:
     alternatives = node_capabilities(spec, domain)
     if preferred in spec.allowed_capabilities:
@@ -182,18 +184,26 @@ def _default_node(
             f"Declare the capability for {domain}: {_DEFAULT_CAPABILITY[domain]}.",
             422,
         )
+    budget, timeout = CODING_NODE_LIMITS.get(alternatives[0], (Resources(tool_calls=1), 60))
+    upstream = (
+        (NodeInput(name="upstream", node_id=parent, output_id=input_id),)
+        if parent is not None and input_id is not None
+        else ()
+    )
+    parents = dict.fromkeys(
+        key for key in (parent, *(item.node_id for item in related)) if key is not None
+    )
     return GraphNode(
         id=key,
         domain=domain,
         goal=goal,
         outputs=outputs,
         capabilities=alternatives,
-        dependencies=(Dependency(node_id=parent),) if parent is not None else (),
-        inputs=(NodeInput(name="upstream", node_id=parent, output_id=input_id),)
-        if parent is not None and input_id is not None
-        else (),
+        dependencies=tuple(Dependency(node_id=parent_id) for parent_id in parents),
+        inputs=upstream + related,
         completion_condition="Return the declared outputs and an execution receipt.",
-        budget=Resources(tool_calls=1),
+        budget=budget,
+        timeout_seconds=timeout,
     )
 
 
@@ -208,6 +218,9 @@ def deterministic_plan(spec: GeneralTaskSpec, revision: int) -> TaskGraph:
         intermediate = "source_evidence"
         while intermediate in declared:
             intermediate += "_"
+        analysis_evidence = "analysis_evidence"
+        while analysis_evidence in declared:
+            analysis_evidence += "_"
         nodes = (
             _default_node(
                 spec,
@@ -222,7 +235,7 @@ def deterministic_plan(spec: GeneralTaskSpec, revision: int) -> TaskGraph:
                 "data",
                 key="analysis",
                 goal="Analyze the declared dataset and sources.",
-                outputs=data,
+                outputs=data + (analysis_evidence,),
                 parent="research",
                 input_id=intermediate,
             ),
@@ -235,9 +248,18 @@ def deterministic_plan(spec: GeneralTaskSpec, revision: int) -> TaskGraph:
                 parent="analysis",
                 input_id=data[0],
                 preferred="research.report",
+                related=(
+                    NodeInput(name="source_collection", node_id="research", output_id=intermediate),
+                    NodeInput(
+                        name="analysis_manifest", node_id="analysis", output_id=analysis_evidence
+                    ),
+                ),
             ),
         )
     else:
+        coding_capability = (
+            "coding.execute.inspect" if spec.coding_policy == "inspect" else "coding.execute"
+        )
         nodes = (
             _default_node(
                 spec,
@@ -245,6 +267,7 @@ def deterministic_plan(spec: GeneralTaskSpec, revision: int) -> TaskGraph:
                 key="work",
                 goal=spec.goal[:2048],
                 outputs=tuple(item.id for item in spec.deliverables),
+                preferred=coding_capability if spec.domain == "coding" else None,
             ),
         )
     graph = TaskGraph(task_revision=revision, nodes=nodes)

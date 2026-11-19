@@ -79,7 +79,10 @@ class Engine:
         self.commerce = Commerce(self)
         from mgar_v3.general_agent.actions import GeneralActionStore
         from mgar_v3.general_agent.builtins import default_registry
+        from mgar_v3.general_agent.data_analysis import DataAnalysisExecutor
+        from mgar_v3.general_agent.executors import GeneralExecutorService
         from mgar_v3.general_agent.graph_store import GeneralGraphStore
+        from mgar_v3.general_agent.personal_memory import PersonalMemoryStore
         from mgar_v3.general_agent.store import GeneralTaskStore
         from mgar_v3.general_agent.verification_store import GeneralVerificationStore
         from mgar_v3.harness.store import HarnessStore
@@ -89,6 +92,9 @@ class Engine:
         self.general_graphs = GeneralGraphStore(self, general_capabilities or default_registry())
         self.general_actions = GeneralActionStore(self)
         self.general_verification = GeneralVerificationStore(self)
+        self.general_executors = GeneralExecutorService(self)
+        self.general_data = DataAnalysisExecutor(artifacts)
+        self.personal_memory = PersonalMemoryStore(self, settings.project_id)
 
     def close(self) -> None:
         with self._mutex:
