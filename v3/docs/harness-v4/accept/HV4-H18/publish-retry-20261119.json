@@ -1,0 +1,61 @@
+{
+  "schema_version": "harness-h18-publish-retry-v1",
+  "task": "HV4-H18-PUBLISH-RETRY",
+  "scope": "targeted_retest",
+  "status": "PASS",
+  "git_commit": "8a6489b6bc9e99237435e297a55542c75f218dd8",
+  "source_sha256": "804fe3a28d0578f51b8e5a6530376214b24d138259d1219bd5c815461ab4d79b",
+  "counts": {
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "duration_seconds": 18.306,
+  "prior_independent_record": "restore-retry-independent-20261119.json",
+  "baseline_evidence": [
+    {
+      "path": ".local/h18/publish-retry/before.log",
+      "sha256": "b2d806d50372672d802a2d6c03c986655031faed70c68d994b84fd114017c6aa"
+    },
+    {
+      "path": ".local/h18/publish-retry/before.xml",
+      "sha256": "36f6d7b5e1a8338e4a56d27a6bd2eedcba08a7dd9432d7a0dfe5f0f7f4437926"
+    }
+  ],
+  "verification_evidence": [
+    {
+      "path": "evidence/HV4-H18-PUBLISH-RETRY/20261119T044659Z-9cd4eb70/result.json",
+      "sha256": "908bfe912ea690f8c128bebc1688bed9f1a5369f91af3ecdcd71035a494fe1d5"
+    },
+    {
+      "path": "evidence/HV4-H18-PUBLISH-RETRY/20261119T044659Z-9cd4eb70/command.log",
+      "sha256": "798f2f4ea1c88d9f8479448261ac889e052bb0e9a11ad50265b0d5330daee71f"
+    },
+    {
+      "path": "evidence/HV4-H18-PUBLISH-RETRY/20261119T044659Z-9cd4eb70/junit.xml",
+      "sha256": "ae31582a239d1e1c04e5d6c9e5e455df6b38ef10395ee3f13da1f3f8596b5596"
+    }
+  ],
+  "assertions": {
+    "denied_parent_write_does_not_create_final_directory_or_change_parent_mode": "PASS",
+    "database_import_diagnostic_survives_staging_cleanup_failure": "PASS",
+    "same_command_publishes_after_permission_restored_with_pg_restore_absent": "PASS",
+    "imported_schema_and_cas_bytes_verified": "PASS"
+  },
+  "source_checks": {
+    "lint": {
+      "path": ".local/h18/publish-retry/lint.log",
+      "sha256": "a220b562d6bdb3655673add818cabd1dbd6857a7efc7d06ff8178f9e0e2501e2"
+    },
+    "typecheck": {
+      "path": ".local/h18/publish-retry/typecheck.log",
+      "sha256": "2217d486a4cb8b894bdd7ab5db80ca0e2a87cee3e8fd896ccfe875137cf5c12e"
+    }
+  },
+  "release": {
+    "path": ".local/h18/releases/magr-harness-8a6489b.tar.gz",
+    "sha256": "7a4cfdfc20108268e21560d28e6346193beef61c0c3ee35c2c749d39ecafa872"
+  },
+  "real_model_calls": 0
+}

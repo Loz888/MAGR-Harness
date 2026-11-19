@@ -476,7 +476,8 @@
       "independent_engineering_gate": "FAIL",
       "independent_recheck": "accept/HV4-H18/independent-20261119.json",
       "restore_retry_recheck": "accept/HV4-H18/restore-retry-20261119.json",
-      "restore_retry_independent_recheck": "accept/HV4-H18/restore-retry-independent-20261119.json"
+      "restore_retry_independent_recheck": "accept/HV4-H18/restore-retry-independent-20261119.json",
+      "publish_retry_recheck": "accept/HV4-H18/publish-retry-20261119.json"
     }
   ],
   "mvp": [

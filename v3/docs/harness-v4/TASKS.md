@@ -633,3 +633,5 @@ HTTPS、Docker、重复领取、失联恢复与撤销。Python、Node 和 Go 样
 - **恢复重试定向复测（2026-11-19）**。旧版失败已复现，修正版 1/1。恢复工具后原样重试成功，原 Cookie 有效。[定向报告](H18_RESTORE_RETRY_20261119.md) · [机器记录](accept/HV4-H18/restore-retry-20261119.json)
 
 - **修复后独立复验（2026-11-19）**。H18 原恢复重试故障已定向复验通过。独立工程门仍为 **FAIL**，发布途中父目录失去写权限会遗留空目录，阻塞同目标重试。[报告](H18_RESTORE_RETRY_INDEPENDENT_20261119.md) · [机器记录](accept/HV4-H18/restore-retry-independent-20261119.json)
+
+- **发布权限中断定向复测（2026-11-19）**。修正版 1/1。目录发布失败保留数据库导入收据，恢复权限后原命令成功发布，省去再次导入。[定向报告](H18_PUBLISH_RETRY_20261119.md) · [机器记录](accept/HV4-H18/publish-retry-20261119.json)
