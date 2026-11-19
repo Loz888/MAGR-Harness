@@ -1,0 +1,137 @@
+{
+  "schema_version": "magr-general-agent-independent-v1",
+  "task": "GA06-GA08-REPAIRS",
+  "source_commit": "c586e823abce67c2b7b47c0af430c6a8b6f4c3ea",
+  "source_sha256": "cd7e82cd003aa6ec50cea4fb54cc07b15ef04a6c9783210fa612eb12fd147cf0",
+  "repair_acceptance_commit": "1d1ff904c2cbb550f3390995fccb530005c18901",
+  "repair_acceptance": {
+    "path": "docs/general-agent-v1/accept/GA06-GA10/ga06-ga08-repairs-20261119.json",
+    "sha256": "914d6438c89e06ec78eda568a1c02c1e9ccd073f354037436a57e8d29d1619b5"
+  },
+  "prior_independent_result": {
+    "path": "docs/general-agent-v1/accept/GA06-GA10/independent-20261119.json",
+    "sha256": "de5dca7234fab96f46349c0adde4450098645aba5d76525d8ab42ea920855ec8"
+  },
+  "prior_evidence_hashes_verified": 131,
+  "scope": "Only the original PDF glyph and cross-project Google Calendar failure scenarios",
+  "independent_retest": {
+    "GA06": "INDEPENDENT_PASS",
+    "GA08": "INDEPENDENT_PASS"
+  },
+  "target": {
+    "command": "make verify TASK=GA06-GA08-REPAIRS",
+    "counts": {
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "case_names": [
+      "test_ga06_supplementary_glyphs_are_visible_and_support_the_same_citation",
+      "test_ga08_split_project_calendar_ids_and_reconcile_legacy_without_resending"
+    ],
+    "raw": [
+      {
+        "path": "evidence/GA06-GA08-REPAIRS/independent-20261119T124027Z-ea9349aa/registered-gate/result.json",
+        "sha256": "456667dee3e1b49014d22c960c76b93c07584eefb90ad56313cfe4eb1c4bf1fa"
+      },
+      {
+        "path": "evidence/GA06-GA08-REPAIRS/independent-20261119T124027Z-ea9349aa/registered-gate/command.log",
+        "sha256": "e8c1a4446d927aa9912b9fa94a77fde129b0c528fc4882c2dd3cdba040554069"
+      },
+      {
+        "path": "evidence/GA06-GA08-REPAIRS/independent-20261119T124027Z-ea9349aa/registered-gate/junit.xml",
+        "sha256": "7e486e184a4fb27742d68b1043c64ea5f9c9df0bf88805fd0192e2c3e800f827"
+      }
+    ]
+  },
+  "pdf": {
+    "renderer": "Poppler pdftoppm 26.07.0",
+    "visible_glyphs_confirmed": [
+      "𠮷",
+      "📈"
+    ],
+    "markdown_pdf_citation_agrees": true,
+    "old_pdf_requires_regeneration": true,
+    "raw": [
+      {
+        "path": "evidence/GA06-GA08-REPAIRS/independent-20261119T124027Z-ea9349aa/pdf/command.log",
+        "sha256": "9783217436615b25d94f08389f64a0add55ff0a9221552da8e12ca367b270cf4"
+      },
+      {
+        "path": "evidence/GA06-GA08-REPAIRS/independent-20261119T124027Z-ea9349aa/pdf/verified-sample.pdf",
+        "sha256": "57965baa018cd95594bf94221b939de194aced57ddaf244c5af9347f3a8e89b6"
+      },
+      {
+        "path": "evidence/GA06-GA08-REPAIRS/independent-20261119T124027Z-ea9349aa/pdf/verified-sample.png",
+        "sha256": "63c05f4fffe09a52279a1a4b48a4ae9c39c10b0373801323a7305bc04163d3c5"
+      },
+      {
+        "path": "evidence/GA06-GA08-REPAIRS/independent-20261119T124027Z-ea9349aa/pdf/supplementary-cjk.pdf",
+        "sha256": "743d6b21996c5c48246f360b2815f32324f4321de5315d9c5c9d43ec3c83e53b"
+      },
+      {
+        "path": "evidence/GA06-GA08-REPAIRS/independent-20261119T124027Z-ea9349aa/pdf/supplementary-cjk.png",
+        "sha256": "e900146a15da458442286fa315c109db3a7a4c60d814e436af646869964b65b0"
+      },
+      {
+        "path": "evidence/GA06-GA08-REPAIRS/independent-20261119T124027Z-ea9349aa/pdf/trend-chart.pdf",
+        "sha256": "bb4377b1fda0e7257c3f19050ce700d0a2d6d69b318e09de555558463421eb83"
+      },
+      {
+        "path": "evidence/GA06-GA08-REPAIRS/independent-20261119T124027Z-ea9349aa/pdf/trend-chart.png",
+        "sha256": "639f06433c689db77e40d3dca7fa90d182825503b1a4d7e8fc61ce5697ee2806"
+      },
+      {
+        "path": "evidence/GA06-GA08-REPAIRS/independent-20261119T124027Z-ea9349aa/pdf/poppler-render.json",
+        "sha256": "83668d93f3e182da0036d823e1c40b94163e4806b151d6ea180c5b4fdc4d788b"
+      },
+      {
+        "path": "evidence/GA06-GA08-REPAIRS/independent-20261119T124027Z-ea9349aa/pdf/version-compatibility.json",
+        "sha256": "8d6a40e939dd31dc70e6d4768e6b857c4bdcf4cfabdcc20de84c065322c0aaad"
+      }
+    ]
+  },
+  "calendar": {
+    "mode": "fixture",
+    "postgresql": "real",
+    "different_event_ids_for_two_projects_sharing_key": true,
+    "acknowledgement_loss_reconciled_read_only": true,
+    "legacy_id_requires_original_intent_marker": true,
+    "additional_posts_during_reconciliation": 0
+  },
+  "static": {
+    "lint": {
+      "exit": 0,
+      "seconds": 0.289,
+      "raw": {
+        "path": "evidence/GA06-GA08-REPAIRS/independent-20261119T124027Z-ea9349aa/lint/command.log",
+        "sha256": "a220b562d6bdb3655673add818cabd1dbd6857a7efc7d06ff8178f9e0e2501e2"
+      }
+    },
+    "typecheck": {
+      "exit": 0,
+      "seconds": 16.471,
+      "raw": {
+        "path": "evidence/GA06-GA08-REPAIRS/independent-20261119T124027Z-ea9349aa/typecheck/command.log",
+        "sha256": "09d32ffda51306f41b48d3a75c4842466b84bc94fae728fad894e0bb2b44e301"
+      }
+    },
+    "lock": {
+      "exit": 0,
+      "seconds": 0.087,
+      "raw": {
+        "path": "evidence/GA06-GA08-REPAIRS/independent-20261119T124027Z-ea9349aa/lock/command.log",
+        "sha256": "b3cbbdecaa83a53ff5e78261ae4c8cc922da87bb912b5c3dc9f2250a5d086c76"
+      }
+    }
+  },
+  "public_web": "BLOCKED_PREVIOUSLY_NOT_RERUN",
+  "office_production": "NOT_RUN",
+  "real_model_calls": 0,
+  "external_writes": 0,
+  "cleanup": {
+    "path": "evidence/GA06-GA08-REPAIRS/independent-20261119T124027Z-ea9349aa/summary.json",
+    "sha256": "c1dce6806c071619f74c387b01b985fdcb5596049f5b843949ec53a8373a391f"
+  }
+}
