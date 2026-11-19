@@ -29,8 +29,10 @@ make verify TASK=GA04
 
 载荷缺失或完整性校验失败时，Engine 将仍未认领的动作置为 `failed`，同时写入失败码、预检阶段和载荷哈希。下一轮轮询可继续处理其他已批准的动作。
 
-源码 `b5b9b83` 在隔离 PostgreSQL 上定向通过 1/1。首个动作没有派发或预算预占，另一目标的动作在下一轮成功执行。原独立失败记录保留，修复待独立复验。[定向回执](accept/GA04/payload-repair-20261119.json)
+源码 `b5b9b83` 在隔离 PostgreSQL 上定向通过 1/1。首个动作没有派发或预算预占，另一目标的动作在下一轮成功执行。原独立失败记录保留，修复已通过定向独立复验。[定向回执](accept/GA04/payload-repair-20261119.json)
 
 ```bash
 make verify TASK=GA04-PAYLOAD-REPAIR
 ```
+
+[修复独立复验](GA04_PAYLOAD_REPAIR_INDEPENDENT_20261119.md)
