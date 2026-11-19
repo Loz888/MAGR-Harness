@@ -1,13 +1,13 @@
 # General Agent 任务队列
 
-任务逐张授权。GA00 冻结和架构盘点已完成独立复验，原冻结工程基线为 FAIL。修复候选的同源合并工程复验为 PASS，修复定向独立复验 INDEPENDENT_PASS。GA01 工程验收和独立复验均通过。GA02 等待授权。[任务书原文](TASKBOOK_V1.md)
+GA00 冻结和架构盘点已完成独立复验，原冻结工程基线为 FAIL，修复定向独立复验为 INDEPENDENT_PASS。GA01 工程验收和独立复验均通过。GA02 与 GA03 已按同批授权完成工程验收，独立复验待跑。GA04 等待授权。[任务书原文](TASKBOOK_V1.md)
 
 | 卡片 | 内容 | 依赖 | 当前状态 |
 | --- | --- | --- | --- |
 | GA00 | 当前版本冻结与架构盘点 | 无 | 冻结与盘点 INDEPENDENT_PASS，修复定向复验 INDEPENDENT_PASS |
 | [GA01](GA01_TASK_OUTCOME.md) | GeneralTaskSpec 与 Outcome Contract | GA00 | INDEPENDENT_PASS |
-| GA02 | General Planner 与动态 TaskGraph | GA01 | TODO |
-| GA03 | Capability Registry 与 Domain Router | GA01 | TODO |
+| [GA02](GA02_TASK_GRAPH.md) | General Planner 与动态 TaskGraph | GA01 | ENGINEERING_PASS，真实模型规划 NOT_RUN |
+| [GA03](GA03_CAPABILITY_ROUTING.md) | Capability Registry 与 Domain Router | GA01 | ENGINEERING_PASS，远程 MCP 联调 NOT_RUN |
 | GA04 | Universal ActionContract 与副作用治理 | GA01、GA03 | TODO |
 | GA05 | VerificationPlan 与 Evidence Contract | GA01、GA04 | TODO |
 | GA06 | Web Research Executor | GA02、GA03、GA05 | TODO |

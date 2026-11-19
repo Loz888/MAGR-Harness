@@ -1,0 +1,165 @@
+{
+  "schema": "magr-general-agent-engineering-v1",
+  "task": "GA02",
+  "source_commit": "1c882622a5f066cdd14b30c58eb33fe669729739",
+  "baseline_ga01_independent_commit": "d78612b",
+  "source_sha256": "a558c59b24f53d29755788a4ba2d839016cad53f31323d6f36d1f76436e7d190",
+  "migration": {
+    "path": "migrations/0059_general_task_graphs.sql",
+    "sha256": "caa7a331dc4327368b6f8cf1a8c8305ed90fe8add35e01f67e988939d18b0423"
+  },
+  "live_gate": "NOT_RUN",
+  "independent_verification": "NOT_RUN",
+  "live_model_calls": 0,
+  "engineering_gate": "PASS",
+  "registered_gate": {
+    "command": "make verify TASK=GA02",
+    "status": "PASS",
+    "counts": {
+      "tests": 15,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "exit_code": 0,
+    "seconds": 30.782,
+    "raw": {
+      "result.json": {
+        "path": "evidence/GA02/20261119T094220Z-190bae63/result.json",
+        "sha256": "039d6d857d66a003747ccdcc7a95ae43f907000e6cc15df16739661165b2a912"
+      },
+      "command.log": {
+        "path": "evidence/GA02/20261119T094220Z-190bae63/command.log",
+        "sha256": "912931aad1e254ebdf5f3c1263effa0882e5df748d5121f2b54dde74035211dc"
+      },
+      "junit.xml": {
+        "path": "evidence/GA02/20261119T094220Z-190bae63/junit.xml",
+        "sha256": "d196bac63646c5a280fe7de3677486917f496a5af30276312d591d8168d820dd"
+      }
+    }
+  },
+  "lint": {
+    "status": "PASS",
+    "log": {
+      "path": "evidence/GA02/frozen-1c88262/lint.log",
+      "sha256": "a220b562d6bdb3655673add818cabd1dbd6857a7efc7d06ff8178f9e0e2501e2"
+    }
+  },
+  "typecheck": {
+    "status": "PASS",
+    "log": {
+      "path": "evidence/GA02/frozen-1c88262/typecheck.log",
+      "sha256": "6e9334ed5d9aa75fc7b92cc5aa2c2f0354dc2032b64c964a5665178ab75ccce5"
+    }
+  },
+  "related_acceptance": {
+    "unique_test_nodes": 176,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "compatibility_regression": {
+    "GA01": {
+      "command": "make verify TASK=GA01",
+      "status": "PASS",
+      "counts": {
+        "tests": 34,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "exit_code": 0,
+      "seconds": 37.507,
+      "raw": {
+        "result.json": {
+          "path": "evidence/GA01/20261119T094220Z-a9215468/result.json",
+          "sha256": "ca76c8b461d4530497486729e54d02dbd2710a548a087d79d75812ff5aca2674"
+        },
+        "command.log": {
+          "path": "evidence/GA01/20261119T094220Z-a9215468/command.log",
+          "sha256": "6527607c7693b094eeead7d96877894b6ad49e15a6fa7bc49458e4e8ce2793b4"
+        },
+        "junit.xml": {
+          "path": "evidence/GA01/20261119T094220Z-a9215468/junit.xml",
+          "sha256": "3bca1bd0758bc94c5f867839779102f6cfe88be5f31457ac99d8573abfc2ff09"
+        }
+      }
+    },
+    "HV4-H07": {
+      "command": "make verify TASK=HV4-H07",
+      "status": "PASS",
+      "counts": {
+        "tests": 29,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "exit_code": 0,
+      "seconds": 4.114,
+      "raw": {
+        "result.json": {
+          "path": "evidence/HV4-H07/20261119T094220Z-c71fb7c8/result.json",
+          "sha256": "f205b1d182724cd46db0fb1476a86c1113acda147a7aace3d4ef383fe5e59026"
+        },
+        "command.log": {
+          "path": "evidence/HV4-H07/20261119T094220Z-c71fb7c8/command.log",
+          "sha256": "e02454d859bc5a80f75d5bda886ffee05165c743db7d362580eb4086bf4b377e"
+        },
+        "junit.xml": {
+          "path": "evidence/HV4-H07/20261119T094220Z-c71fb7c8/junit.xml",
+          "sha256": "0be8bf3d0122ab96c08a9e071a699c559f55f78378fd67cbb657513948449ca6"
+        }
+      }
+    },
+    "HV4-H10": {
+      "command": "make verify TASK=HV4-H10",
+      "status": "PASS",
+      "counts": {
+        "tests": 80,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "exit_code": 0,
+      "seconds": 35.102,
+      "raw": {
+        "result.json": {
+          "path": "evidence/HV4-H10/20261119T094220Z-e4e35677/result.json",
+          "sha256": "27e234d487d95fc593fb09ab3b7b411be7bbe44511259c0153aac50021f04e56"
+        },
+        "command.log": {
+          "path": "evidence/HV4-H10/20261119T094220Z-e4e35677/command.log",
+          "sha256": "daf2efb43c7184fd1732f9266f8e199578f9e87aa9c3cbe5f85f4b98b014da98"
+        },
+        "junit.xml": {
+          "path": "evidence/HV4-H10/20261119T094220Z-e4e35677/junit.xml",
+          "sha256": "440303ef58b8571e313936349b7f29772be25e787bc04a2d52dd19c443147d74"
+        }
+      }
+    }
+  },
+  "live_model_planning": {
+    "status": "NOT_RUN",
+    "reason": "no_ga02_paid_provider_authorization"
+  },
+  "development_attempts": {
+    "initial_focused": {
+      "status": "FAIL",
+      "failures": [
+        "parallel test attempted to start a second Engine for one database",
+        "deterministic inspection request was missing its trusted target path"
+      ],
+      "log": {
+        "path": "evidence/GA02/frozen-1c88262/initial-ga02.log",
+        "sha256": "9f251d2eba24e322bde588a276c0d062a5fae9faab313cb5a31ee75394f9ee95"
+      }
+    },
+    "final_focused": {
+      "status": "PASS",
+      "log": {
+        "path": "evidence/GA02/frozen-1c88262/final-development.log",
+        "sha256": "09240182b1d68da8e222bdbd6ab0197dcff01da430e9c5757012e022eb893a30"
+      }
+    }
+  }
+}

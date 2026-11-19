@@ -1,0 +1,83 @@
+{
+  "schema": "magr-general-agent-engineering-v1",
+  "task": "GA03",
+  "source_commit": "1c882622a5f066cdd14b30c58eb33fe669729739",
+  "baseline_ga01_independent_commit": "d78612b",
+  "source_sha256": "a558c59b24f53d29755788a4ba2d839016cad53f31323d6f36d1f76436e7d190",
+  "migration": {
+    "path": "migrations/0059_general_task_graphs.sql",
+    "sha256": "caa7a331dc4327368b6f8cf1a8c8305ed90fe8add35e01f67e988939d18b0423"
+  },
+  "live_gate": "NOT_RUN",
+  "independent_verification": "NOT_RUN",
+  "live_model_calls": 0,
+  "engineering_gate": "PASS",
+  "registered_gate": {
+    "command": "make verify TASK=GA03",
+    "status": "PASS",
+    "counts": {
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "exit_code": 0,
+    "seconds": 12.346,
+    "raw": {
+      "result.json": {
+        "path": "evidence/GA03/20261119T094220Z-5ef57fb1/result.json",
+        "sha256": "9cdbf08d51c0ebb8ee5358a3e2bd045de88ab21278ae3494a10b1f552078abcd"
+      },
+      "command.log": {
+        "path": "evidence/GA03/20261119T094220Z-5ef57fb1/command.log",
+        "sha256": "3ff1e2324a6668cb12e59ac32a1660883c64c173d5cfce6beb6a95261550a1db"
+      },
+      "junit.xml": {
+        "path": "evidence/GA03/20261119T094220Z-5ef57fb1/junit.xml",
+        "sha256": "9bcbfd0a3c30aa4eecb0d299f1693465fd501b17d5500ed3e4bbfc848acf27b1"
+      }
+    }
+  },
+  "lint": {
+    "status": "PASS",
+    "log": {
+      "path": "evidence/GA02/frozen-1c88262/lint.log",
+      "sha256": "a220b562d6bdb3655673add818cabd1dbd6857a7efc7d06ff8178f9e0e2501e2"
+    }
+  },
+  "typecheck": {
+    "status": "PASS",
+    "log": {
+      "path": "evidence/GA02/frozen-1c88262/typecheck.log",
+      "sha256": "6e9334ed5d9aa75fc7b92cc5aa2c2f0354dc2032b64c964a5665178ab75ccce5"
+    }
+  },
+  "related_acceptance": {
+    "unique_test_nodes": 176,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "existing_mcp_regression": {
+    "command": "uv run --frozen pytest -q tests/test_mcp.py tests/test_r4_mcp.py",
+    "status": "PASS",
+    "counts": {
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "junit": {
+      "path": "evidence/GA03/frozen-1c88262/mcp-junit.xml",
+      "sha256": "52ff64f39343e797f7a4b4f5d977cfee8a8dc5352f9a3951d9406a640787c244"
+    },
+    "log": {
+      "path": "evidence/GA03/frozen-1c88262/mcp.log",
+      "sha256": "4c38263e728b4a1016a152d445b63434ea78c81c655c319f43b544cb590cd2ca"
+    }
+  },
+  "remote_mcp_integration": {
+    "status": "NOT_RUN",
+    "reason": "controlled_transport_only"
+  }
+}
