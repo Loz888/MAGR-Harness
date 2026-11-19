@@ -64,8 +64,13 @@ def register_general_task_routes(
         if user_id is None:
             return
         product: HarnessProductService = request.app.state.product
-        membership = _membership(product, task.project_id, user_id, write=False)
-        if membership != task.membership_id:
+        try:
+            membership = _membership(product, task.project_id, user_id, write=False)
+        except DomainError as exc:
+            if exc.code != "HARNESS_PROJECT_UNKNOWN":
+                raise
+            membership = None
+        if membership is None or membership != task.membership_id:
             raise DomainError("GENERAL_TASK_NOT_FOUND", "任务不存在。", 404)
         if write:
             product.tenancy.require_binding(task.project_id, str(membership), write=True)

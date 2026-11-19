@@ -403,7 +403,10 @@ def test_general_api_uses_existing_auth_and_keeps_execution_fields_server_owned(
             assert browser.get(url, headers=other).status_code == 404
             headers = member(browser, "alice")
             expect(owner.delete(endpoint + "/members/" + users["alice"], headers=ADMIN), 204)
-            assert browser.get(url, headers=headers).status_code == 404
+            revoked = browser.get(url, headers=headers)
+            absent = browser.get(TASKS + "/" + str(uuid4()), headers=headers)
+            assert revoked.status_code == absent.status_code == 404
+            assert revoked.json() == absent.json()
 
         assert expect(owner.get(url, headers=ADMIN)) == revised
         with engine.transaction() as conn:
