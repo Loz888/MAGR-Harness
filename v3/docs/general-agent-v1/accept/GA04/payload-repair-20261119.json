@@ -1,0 +1,65 @@
+{
+  "task": "GA04-PAYLOAD-REPAIR",
+  "baseline": "b87cc9f",
+  "source_commit": "b5b9b833a18780fd26de646ba45acc3ba6d9230e",
+  "source_sha256": "cc0416ea71c9374ed1175cf2eecdbbbd64e70ac944e2ce3b75e43d57d055ece3",
+  "finished_source_sha256": "cc0416ea71c9374ed1175cf2eecdbbbd64e70ac944e2ce3b75e43d57d055ece3",
+  "original_independent_result": "FAIL",
+  "verification": "make verify TASK=GA04-PAYLOAD-REPAIR",
+  "retest_scope": "reported_missing_payload_outbox_scenario_only",
+  "before": {
+    "status": "FAIL",
+    "reason": "ARTIFACT_MISSING",
+    "count": 1,
+    "raw": [
+      {
+        "path": "evidence/GA04-PAYLOAD-REPAIR/before/command.log",
+        "sha256": "dd21b44f86530df14bb38c8eff1cdccfa654cb75d85268a1c7c1e157768db506"
+      },
+      {
+        "path": "evidence/GA04-PAYLOAD-REPAIR/before/junit.xml",
+        "sha256": "adec4e6148414ccedcb6b972d5fa86ec5ef8fc486f4d2d0244a16c69b6f6e541"
+      }
+    ]
+  },
+  "after": {
+    "status": "PASS",
+    "counts": {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "raw": [
+      {
+        "path": "evidence/GA04-PAYLOAD-REPAIR/20261119T105744Z-aa81cd62/command.log",
+        "sha256": "72457c46decc56ea24bb1ab5e91d8e9b2af0e943e818c3ffa7e9935f86334ab4"
+      },
+      {
+        "path": "evidence/GA04-PAYLOAD-REPAIR/20261119T105744Z-aa81cd62/junit.xml",
+        "sha256": "5763e0a24e4ddc06e225eef7812b6c17766e5ef56046e55fc5c87ac7cf83acfb"
+      },
+      {
+        "path": "evidence/GA04-PAYLOAD-REPAIR/20261119T105744Z-aa81cd62/result.json",
+        "sha256": "482c0b68288d3fcec0139bb2a23b5d2d0548a6611cadddde3749b9eab4f302ff"
+      }
+    ]
+  },
+  "lint": {
+    "status": "PASS",
+    "raw": {
+      "path": "evidence/GA04-PAYLOAD-REPAIR/final/lint.log",
+      "sha256": "a220b562d6bdb3655673add818cabd1dbd6857a7efc7d06ff8178f9e0e2501e2"
+    }
+  },
+  "typecheck": {
+    "status": "PASS",
+    "raw": {
+      "path": "evidence/GA04-PAYLOAD-REPAIR/final/typecheck.log",
+      "sha256": "d2a4dab24203a3364a30ae01666e5564f34593393c283d8872309e9980b4278c"
+    }
+  },
+  "independent_retest": "NOT_RUN",
+  "production_provider": "NOT_RUN",
+  "live_model_calls": 0
+}

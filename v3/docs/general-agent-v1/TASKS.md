@@ -1,6 +1,6 @@
 # General Agent 任务队列
 
-GA00 冻结和架构盘点已完成独立复验，原冻结工程基线为 FAIL，修复定向独立复验为 INDEPENDENT_PASS。GA01 工程验收和独立复验均通过。GA03 独立工程复验通过。GA02 修复通过定向独立复验，GA05 本地工程独立复验通过。GA04 注册测试通过，独立复验发现 Outbox 队首阻塞。[任务书原文](TASKBOOK_V1.md)
+GA00 冻结和架构盘点已完成独立复验，原冻结工程基线为 FAIL，修复定向独立复验为 INDEPENDENT_PASS。GA01 工程验收和独立复验均通过。GA03 独立工程复验通过。GA02 修复通过定向独立复验，GA05 本地工程独立复验通过。GA04 的 Outbox 队首阻塞已修复，定向本地复测通过，等待独立复验。[任务书原文](TASKBOOK_V1.md)
 
 | 卡片 | 内容 | 依赖 | 当前状态 |
 | --- | --- | --- | --- |
@@ -8,7 +8,7 @@ GA00 冻结和架构盘点已完成独立复验，原冻结工程基线为 FAIL�
 | [GA01](GA01_TASK_OUTCOME.md) | GeneralTaskSpec 与 Outcome Contract | GA00 | INDEPENDENT_PASS |
 | [GA02](GA02_TASK_GRAPH.md) | General Planner 与动态 TaskGraph | GA01 | 修复定向 INDEPENDENT_PASS，真实模型规划 NOT_RUN |
 | [GA03](GA03_CAPABILITY_ROUTING.md) | Capability Registry 与 Domain Router | GA01 | INDEPENDENT_PASS，远程 MCP 联调 NOT_RUN |
-| [GA04](GA04_ACTION_CONTRACT.md) | Universal ActionContract 与副作用治理 | GA01、GA03 | 注册工程 PASS，独立复验 FAIL |
+| [GA04](GA04_ACTION_CONTRACT.md) | Universal ActionContract 与副作用治理 | GA01、GA03 | 原独立 FAIL，修复定向 PASS，待独立复验 |
 | [GA05](GA05_VERIFICATION_CONTRACT.md) | VerificationPlan 与 Evidence Contract | GA01、GA04 | 本地工程 INDEPENDENT_PASS |
 | GA06 | Web Research Executor | GA02、GA03、GA05 | TODO |
 | GA07 | Data Analysis Executor | GA02、GA03、GA04、GA05 | TODO |
