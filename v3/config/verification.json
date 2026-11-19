@@ -2218,5 +2218,18 @@
       "tests/test_general_agent_ga04.py"
     ],
     "timeout_seconds": 180
+  },
+  "GA05": {
+    "components": {
+      "postgres": "real",
+      "actions": "GA04_dispatch_and_durable_receipt_reconciliation",
+      "verification": "independent_mechanical_checks_coding_research_data_office_browser",
+      "model": "not_used",
+      "scope": "current_plan_and_evidence_cas_with_optional_result_confirmation"
+    },
+    "tests": [
+      "tests/test_general_agent_ga05.py"
+    ],
+    "timeout_seconds": 180
   }
 }

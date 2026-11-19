@@ -229,7 +229,8 @@ class GeneralTaskStore:
         # Reading bounded CAS objects stays outside the Engine write transaction.
         artifacts = self._check_outcome(current, outcome)
         with self.engine.transaction() as conn:
-            self._current(conn, task_id, revision, version)
+            current = self._current(conn, task_id, revision, version)
+            self.engine.general_verification.require_attestation(conn, current, outcome)
             for content_hash, size in artifacts.items():
                 conn.execute(
                     "INSERT INTO app.artifacts(content_hash,byte_count) VALUES (%s,%s) "
