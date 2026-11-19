@@ -27,6 +27,7 @@ from mgar_v3.cli import main
 from mgar_v3.coordination.engine import Engine
 from mgar_v3.domain import DomainError
 from mgar_v3.evidence.artifacts import ArtifactStore
+from mgar_v3.ops import snapshot
 from mgar_v3.ops.doctor import diagnose, migration_status
 from mgar_v3.ops.metrics import export_metrics
 from mgar_v3.ops.snapshot import backup, restore
@@ -236,6 +237,84 @@ def test_h18_same_run_cas_survives_restore_and_metrics_keep_only_operational_fie
         restore(bundle, empty_database(), tmp_path / "reject-bad-backup")
     assert error.value.code == "SNAPSHOT_CHECKSUM_MISMATCH"
     assert not (tmp_path / "reject-bad-backup").exists()
+
+
+def test_restore_retries_same_target_after_missing_pg_restore(
+    product_env, empty_database, tmp_path, monkeypatch, capsys,
+):
+    env = product_env
+    original_cookie = WebAccounts(env.engine).issue_session(env.user.user_id)
+    env.save_model()
+    content = b"Restore retry fixture artifact"
+    content_hash = env.engine.artifacts.put(content)
+    with env.engine.transaction() as conn:
+        conn.execute(
+            "INSERT INTO app.artifacts(content_hash, byte_count) VALUES (%s, %s)",
+            (content_hash, len(content)),
+        )
+    bundle, runtime = tmp_path / "snapshot", tmp_path / "restored"
+    expected = backup(env.settings, bundle)
+    dsn = empty_database()
+    monkeypatch.setenv("H18_RESTORE_TEST_DSN", dsn)
+    args = [
+        "ops", "restore", str(bundle), "--target-dsn-env", "H18_RESTORE_TEST_DSN",
+        "--runtime", str(runtime),
+    ]
+    without_pg_restore = tmp_path / "missing-pg-tools"
+    without_pg_restore.mkdir()
+
+    with monkeypatch.context() as missing:
+        missing.setenv("PATH", str(without_pg_restore))
+        assert main(args) == 2
+    assert json.loads(capsys.readouterr().out) == {
+        "status": "FAIL", "code": "SNAPSHOT_POSTGRES_CLIENT_MISSING",
+    }
+    with psycopg.connect(dsn) as conn:
+        assert conn.execute("SELECT to_regnamespace('app')").fetchone()[0] is None
+    assert not runtime.exists()
+    assert main(args) == 0
+    assert json.loads(capsys.readouterr().out) == expected
+
+    def check_recovered(target_dsn, target_runtime):
+        settings = runtime_settings(env.settings, target_dsn, target_runtime)
+        assert ArtifactStore(settings.artifact_root).read(content_hash) == content
+        backend = create_app(settings, run_background=False)
+        socket = target_runtime / "svc.sock"
+        with private_http(backend, socket), httpx.Client(
+            transport=httpx.HTTPTransport(uds=str(socket)), base_url="http://127.0.0.1:18080",
+            cookies={"reposage_session": original_cookie},
+        ) as browser:
+            session = browser.get("/api/v3/auth/session")
+            assert session.is_success and session.json()["authenticated"]
+            assert session.json()["username"] == env.user.username
+            assert browser.get("/api/v3/agent/sessions").is_success
+
+    check_recovered(dsn, runtime)
+
+    # A later failure after import must also be retryable without another import.
+    postponed_dsn, postponed_runtime = empty_database(), tmp_path / "postponed"
+    monkeypatch.setenv("H18_RESTORE_TEST_DSN", postponed_dsn)
+    followup_args = [*args[:-1], str(postponed_runtime)]
+
+    def deny_publication(*_args):
+        raise PermissionError("Injected runtime publication failure")
+
+    with monkeypatch.context() as denied:
+        denied.setattr(snapshot, "_publish", deny_publication)
+        assert main(followup_args) == 2
+    assert json.loads(capsys.readouterr().out) == {
+        "status": "FAIL", "code": "SNAPSHOT_RUNTIME_PUBLISH_FAILED",
+        "database_restored": True, "retry_same_command": True,
+    }
+    assert not postponed_runtime.exists()
+    with psycopg.connect(postponed_dsn) as conn:
+        assert conn.execute("SELECT count(*) FROM app.web_accounts").fetchone()[0] == 1
+    with monkeypatch.context() as missing:
+        missing.setenv("PATH", str(without_pg_restore))
+        assert main(followup_args) == 0
+    assert json.loads(capsys.readouterr().out) == expected
+    assert not tuple(tmp_path.glob(".mgar-restore-*"))
+    check_recovered(postponed_dsn, postponed_runtime)
 
 
 @pytest.mark.parametrize("tenants", [False], indirect=True)

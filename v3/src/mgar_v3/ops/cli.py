@@ -56,7 +56,10 @@ def run(args: argparse.Namespace) -> int:
                 Settings(), within_hours=args.hours, limit=args.limit, run_id=args.run_id,
             )
     except DomainError as exc:
-        print(json.dumps({"status": "FAIL", "code": exc.code}))
+        failure: dict[str, Any] = {"status": "FAIL", "code": exc.code}
+        if exc.code == "SNAPSHOT_RUNTIME_PUBLISH_FAILED":
+            failure.update(database_restored=True, retry_same_command=True)
+        print(json.dumps(failure))
         return 2
     except ValidationError:
         print(json.dumps({"status": "FAIL", "code": "CONFIGURATION_INVALID"}))

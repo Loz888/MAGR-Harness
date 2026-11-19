@@ -1403,6 +1403,19 @@
     ],
     "timeout_seconds": 400
   },
+  "HV4-H18-RESTORE-RETRY": {
+    "components": {
+      "retry": "same snapshot, database and runtime after missing pg_restore",
+      "publication": "verified import receipt, same-target publication retry without another import",
+      "session": "original account Cookie and CAS over local HTTP and PostgreSQL",
+      "live": "NOT_RUN_no_paid_model_or_production"
+    },
+    "pytest_node_selectors": true,
+    "tests": [
+      "tests/test_harness_h18.py::test_restore_retries_same_target_after_missing_pg_restore"
+    ],
+    "timeout_seconds": 120
+  },
   "HV4-H12": {
     "components": {
       "frozen_catalog": "H00 byte hashes, original judge objects, fixed twelve-case denominator and resource limits",
