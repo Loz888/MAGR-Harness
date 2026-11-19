@@ -2219,6 +2219,18 @@
     ],
     "timeout_seconds": 180
   },
+  "GA04-PAYLOAD-REPAIR": {
+    "components": {
+      "postgres": "real",
+      "dispatcher": "confirmed_local_payload_failure_and_unrelated_target_progress",
+      "provider": "controlled_fixture_only"
+    },
+    "pytest_node_selectors": true,
+    "tests": [
+      "tests/test_general_agent_ga04.py::test_missing_approved_payload_does_not_block_another_target"
+    ],
+    "timeout_seconds": 150
+  },
   "GA05": {
     "components": {
       "postgres": "real",

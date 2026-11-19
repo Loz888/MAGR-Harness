@@ -408,3 +408,51 @@ def test_live_lease_needs_scoped_authorization_and_the_deployment_write_gate(eng
         journal.issue_lease(live, lease.access, lease.plan_version)
     approved = journal.issue_lease(live, lease.access, lease.plan_version, live_authorized=True)
     assert approved.scope.mode == "live"
+
+
+def test_missing_approved_payload_does_not_block_another_target(engine):
+    _, task, first_lease, first = prepare(engine)
+    journal = engine.general_actions
+    payload = engine.artifacts.put(b"missing payload")
+    first = first.model_copy(update={"payload_sha256": payload})
+    approve(journal, journal.submit(first, first_lease.lease_id, first_lease.epoch), first_lease)
+
+    _, _, second_lease, second = prepare(engine)
+    scope = second.scope.model_copy(
+        update={"target": ActionTarget(kind="email", reference="dedicated-fixture-mailbox/item-2")}
+    )
+    second_lease = journal.issue_lease(scope, second_lease.access, second_lease.plan_version)
+    second = second.model_copy(update={"scope": scope, "idempotency_key": "following-action"})
+    approve(
+        journal, journal.submit(second, second_lease.lease_id, second_lease.epoch), second_lease
+    )
+    engine.artifacts.path(payload).unlink()
+
+    observed = []
+
+    class RecordingTransport(Transport):
+        def observe(self, intent):
+            observed.append(intent.action_id)
+            return super().observe(intent)
+
+    transport = RecordingTransport()
+    dispatcher = GeneralActionDispatcher(engine, transport)
+    assert dispatcher.tick() == first.action_id
+    assert journal.get(second.action_id).status == "ready"
+    assert transport.sent == 0 and observed == []
+
+    assert dispatcher.tick() == second.action_id
+    assert dispatcher.tick() is None
+    assert transport.sent == 1 and observed == [second.action_id]
+    assert journal.get(second.action_id).status == "succeeded"
+    failed = journal.get(first.action_id)
+    assert failed.status == "failed" and failed.attempt_id is None and failed.receipt is None
+    events = journal.events(first.action_id)
+    assert [item["kind"] for item in events] == ["submitted", "approved", "failed"]
+    assert events[-1]["payload"] == {
+        "stage": "payload_preflight",
+        "reason": "ARTIFACT_MISSING",
+        "payload_sha256": payload,
+    }
+    with engine.transaction() as conn:
+        assert journal.spent(conn, task.task_id, task.revision) == Resources()

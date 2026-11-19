@@ -183,10 +183,17 @@ class GeneralActionDispatcher:
         intent = journal.candidate(self.transport.mode, self.transport.provider_id)
         if intent is None:
             return None
+        payload = None
+        if intent.payload_sha256 is not None:
+            try:
+                payload = self.engine.artifacts.read(intent.payload_sha256)
+            except DomainError as exc:
+                if exc.code not in {"ARTIFACT_MISSING", "ARTIFACT_CORRUPTED"}:
+                    raise
+                if journal.fail_payload(intent.action_id, intent.payload_sha256, exc.code):
+                    return intent.action_id
+                return None
         observed = self.transport.observe(intent) if intent.precondition_sha256 else None
-        payload = (
-            self.engine.artifacts.read(intent.payload_sha256) if intent.payload_sha256 else None
-        )
         attempt = journal.claim(intent.action_id, observed)
         if attempt is None:
             return None

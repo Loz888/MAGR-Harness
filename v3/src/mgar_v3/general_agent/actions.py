@@ -507,6 +507,29 @@ class GeneralActionStore:
                     return record.intent
             return None
 
+    def fail_payload(self, action_id: UUID, payload_sha256: str, reason: str) -> bool:
+        """Record a local failure only while the original action is still unclaimed."""
+        with self.engine.transaction() as conn:
+            changed = conn.execute(
+                "UPDATE app.general_action_outbox o SET status='failed' "
+                "FROM app.general_action_intents i "
+                "WHERE o.action_id=i.action_id AND o.action_id=%s "
+                "AND o.status='ready' AND o.attempt_id IS NULL "
+                "AND i.intent->>'payload_sha256'=%s",
+                (action_id, payload_sha256),
+            )
+            if changed.rowcount != 1:
+                return False
+            self._event(
+                conn,
+                action_id,
+                "failed",
+                stage="payload_preflight",
+                reason=reason,
+                payload_sha256=payload_sha256,
+            )
+            return True
+
     def claim(self, action_id: UUID, observed_sha256: str | None) -> UUID | None:
         with self.engine.transaction() as conn:
             row = self._row(conn, action_id)
