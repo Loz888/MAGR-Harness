@@ -35,6 +35,7 @@ from mgar_v3.settings import Settings
 
 if TYPE_CHECKING:
     from mgar_v3.general_agent.capabilities import CapabilityRegistry
+    from mgar_v3.general_agent.knowledge_gateway import KnowledgeAdapter
 
 TModel = TypeVar("TModel", bound=Model)
 Row = dict[str, Any]
@@ -51,6 +52,7 @@ class Engine:
     def __init__(
         self, settings: Settings, artifacts: ArtifactStore, *,
         general_capabilities: "CapabilityRegistry | None" = None,
+        general_knowledge_sources: "tuple[KnowledgeAdapter, ...] | None" = None,
     ):
         self.settings = settings
         self.artifacts = artifacts
@@ -82,6 +84,8 @@ class Engine:
         from mgar_v3.general_agent.data_analysis import DataAnalysisExecutor
         from mgar_v3.general_agent.executors import GeneralExecutorService
         from mgar_v3.general_agent.graph_store import GeneralGraphStore
+        from mgar_v3.general_agent.knowledge_gateway import KnowledgeGateway
+        from mgar_v3.general_agent.knowledge_native import native_sources
         from mgar_v3.general_agent.personal_memory import PersonalMemoryStore
         from mgar_v3.general_agent.store import GeneralTaskStore
         from mgar_v3.general_agent.verification_store import GeneralVerificationStore
@@ -95,6 +99,10 @@ class Engine:
         self.general_executors = GeneralExecutorService(self)
         self.general_data = DataAnalysisExecutor(artifacts)
         self.personal_memory = PersonalMemoryStore(self, settings.project_id)
+        sources = (
+            native_sources(self) if general_knowledge_sources is None else general_knowledge_sources
+        )
+        self.general_knowledge = KnowledgeGateway(self, sources)
 
     def close(self) -> None:
         with self._mutex:

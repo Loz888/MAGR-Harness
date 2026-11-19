@@ -437,11 +437,14 @@ def create_app(
             raise DomainError("OPERATOR_REQUIRED", "此操作仅限实例管理员。", 403)
         return user
 
-    def member_user(request: Request) -> UUID | None:
+    def operator_token_matches(request: Request) -> bool:
         supplied = request.headers.get("X-MGAR-Token", "")
-        if supplied and hmac.compare_digest(
+        return bool(supplied) and hmac.compare_digest(
             supplied.encode(), configuration.local_token.get_secret_value().encode()
-        ):
+        )
+
+    def member_user(request: Request) -> UUID | None:
+        if operator_token_matches(request):
             check_origin(request)
             return None
         user = account_user(request)
@@ -459,6 +462,7 @@ def create_app(
         return user_id
 
     from mgar_v3.general_agent.api import register_general_task_routes
+    from mgar_v3.general_agent.knowledge_gateway_api import register_knowledge_gateway_routes
     from mgar_v3.general_agent.memory_api import register_personal_memory_routes
     from mgar_v3.harness.product_api import register_product_routes
     from mgar_v3.harness.runner_api import register_runner_routes
@@ -471,7 +475,14 @@ def create_app(
         check_origin(request)
         return user.user_id
 
+    def knowledge_user(request: Request) -> UUID | None:
+        if operator_token_matches(request):
+            check_origin(request)
+            return None
+        return personal_memory_user(request)
+
     register_personal_memory_routes(app, personal_memory_user)
+    register_knowledge_gateway_routes(app, knowledge_user)
     register_runner_routes(app, authenticated)
 
     @app.get("/api/v3/auth/session")

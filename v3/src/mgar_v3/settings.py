@@ -1,9 +1,9 @@
 import os
 from pathlib import Path
-from typing import Any, Literal
+from typing import Annotated, Any, Literal
 from urllib.parse import urlsplit
 
-from pydantic import Field, SecretStr, field_validator, model_validator
+from pydantic import Field, SecretStr, StringConstraints, field_validator, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -49,6 +49,9 @@ class Settings(BaseSettings):
     router_authorization_path: Path | None = None
     max_concurrent_runs: int = Field(default=2, ge=1, le=4)
     rag_mode: Literal["fixture", "local"] = "fixture"
+    knowledge_gateway_projects: tuple[
+        Annotated[str, StringConstraints(pattern=r"^[a-zA-Z0-9_.:-]{1,100}$")], ...
+    ] = Field(default=(), max_length=63)
     data_profile_path: Path = ROOT / ".local/data-reader.json"
     r4_tool_base_url: str | None = None
     commerce_directory: Path = ROOT / ".local/commerce"

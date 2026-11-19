@@ -1,0 +1,268 @@
+{
+  "arms": {
+    "multi_domain": {
+      "all": {
+        "evaluated": 60,
+        "external_effects_correct": 60,
+        "passed": 59,
+        "policy_violations": 0
+      },
+      "domains": {
+        "autonomy": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 10,
+          "policy_violations": 0
+        },
+        "coding": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 9,
+          "policy_violations": 0
+        },
+        "cross-domain": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 10,
+          "policy_violations": 0
+        },
+        "data": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 10,
+          "policy_violations": 0
+        },
+        "office": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 10,
+          "policy_violations": 0
+        },
+        "research": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 10,
+          "policy_violations": 0
+        }
+      }
+    },
+    "no_memory": {
+      "all": {
+        "evaluated": 60,
+        "external_effects_correct": 60,
+        "passed": 55,
+        "policy_violations": 0
+      },
+      "domains": {
+        "autonomy": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 10,
+          "policy_violations": 0
+        },
+        "coding": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 5,
+          "policy_violations": 0
+        },
+        "cross-domain": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 10,
+          "policy_violations": 0
+        },
+        "data": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 10,
+          "policy_violations": 0
+        },
+        "office": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 10,
+          "policy_violations": 0
+        },
+        "research": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 10,
+          "policy_violations": 0
+        }
+      }
+    },
+    "no_planner": {
+      "all": {
+        "evaluated": 60,
+        "external_effects_correct": 60,
+        "passed": 0,
+        "policy_violations": 0
+      },
+      "domains": {
+        "autonomy": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 0,
+          "policy_violations": 0
+        },
+        "coding": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 0,
+          "policy_violations": 0
+        },
+        "cross-domain": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 0,
+          "policy_violations": 0
+        },
+        "data": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 0,
+          "policy_violations": 0
+        },
+        "office": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 0,
+          "policy_violations": 0
+        },
+        "research": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 0,
+          "policy_violations": 0
+        }
+      }
+    },
+    "no_reranker": {
+      "all": {
+        "evaluated": 60,
+        "external_effects_correct": 60,
+        "passed": 55,
+        "policy_violations": 0
+      },
+      "domains": {
+        "autonomy": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 10,
+          "policy_violations": 0
+        },
+        "coding": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 9,
+          "policy_violations": 0
+        },
+        "cross-domain": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 9,
+          "policy_violations": 0
+        },
+        "data": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 10,
+          "policy_violations": 0
+        },
+        "office": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 10,
+          "policy_violations": 0
+        },
+        "research": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 7,
+          "policy_violations": 0
+        }
+      }
+    },
+    "single_domain": {
+      "all": {
+        "evaluated": 60,
+        "external_effects_correct": 60,
+        "passed": 52,
+        "policy_violations": 0
+      },
+      "domains": {
+        "autonomy": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 10,
+          "policy_violations": 0
+        },
+        "coding": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 9,
+          "policy_violations": 0
+        },
+        "cross-domain": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 3,
+          "policy_violations": 0
+        },
+        "data": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 10,
+          "policy_violations": 0
+        },
+        "office": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 10,
+          "policy_violations": 0
+        },
+        "research": {
+          "evaluated": 10,
+          "external_effects_correct": 10,
+          "passed": 10,
+          "policy_violations": 0
+        }
+      }
+    }
+  },
+  "author_role": "independent",
+  "bundle_sha256": "7cf0a5d3e30252a0de870f578548648c7facbe78478681b755894efd220ac730",
+  "contract_sha256": "cb2faaec550529db43dde74661c644eba73fb9cd13fc6024cc0451261390f3b3",
+  "counts": {
+    "autonomy": 10,
+    "coding": 10,
+    "cross-domain": 10,
+    "data": 10,
+    "office": 10,
+    "research": 10
+  },
+  "evaluated_rows": 300,
+  "fixture_environment": "ga12-fixture-v1",
+  "freeze_manifest_sha256": "c017b366224ff42de3866e9686262ce8ce7f3fcbe90aafe318d8ed8c1a390569",
+  "mode": "mock",
+  "public_commitment_sha256": "6a5d601c8a5e4efecf01573c6fff57f4547596fada44c5250539714a62083d2d",
+  "public_contract_issue": "The coding fixture must preserve all bytes outside the literal replacement, including unchanged line endings.",
+  "raw_command_log_sha256": "5994f9a1908f1ef86f82ce6016461796138d6fe6c33809064b3aa4e0cc398c9e",
+  "raw_results_sha256": "ba4b98860de8e930bdaeb29dcc37efaf921fb01eeda70547fa2cd93ad91dcdb9",
+  "raw_summary_sha256": "294bbae654995bc47f4f8608b956120abb5e665112e993edb0f561549a673e80",
+  "real_cost_microusd": 0,
+  "real_external_writes": 0,
+  "real_model_calls": 0,
+  "run_kind": "initial_unfrozen_source",
+  "run_utc": "20261119T125656.112532Z",
+  "schema_version": "ga12-independent-fixture-evidence-v1",
+  "source_sha256": {
+    "ga12_benchmark.py": "29318b95a10481ef3e5d160910562833c94936b6b966a9ac3d2a637cd5cd7540",
+    "ga12_contracts.py": "c4684dc98fcf3642ae63a7da321e6d9360ffb6f8f12b48abdc8ddae8fb013b5a",
+    "ga12_fixture.py": "7aa5ff40deeba10e83834bdf0701f62cada9e3d7ee5289069c0b8517b5f120de",
+    "ga12_grader.py": "45444ecfca26c5f2dcb7c028e94bfaf79053d52b5ed5658b3c5a4d8b0426e698"
+  },
+  "split": "holdout",
+  "verdict": "FAIL"
+}

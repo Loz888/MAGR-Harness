@@ -1,0 +1,15 @@
+{
+  "author_role": "development",
+  "bundle_sha256": "34054a7d8c322cda8914d4a3f1949583e383022bd8d22573921625ab43c14b63",
+  "contract_sha256": "cb2faaec550529db43dde74661c644eba73fb9cd13fc6024cc0451261390f3b3",
+  "counts": {
+    "autonomy": 10,
+    "coding": 10,
+    "cross-domain": 10,
+    "data": 10,
+    "office": 10,
+    "research": 10
+  },
+  "schema_version": "ga12-freeze-v1",
+  "split": "dev"
+}

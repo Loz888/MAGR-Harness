@@ -2315,5 +2315,28 @@
       "tests/test_general_agent_ga06_ga08_repairs.py"
     ],
     "timeout_seconds": 180
+  },
+  "GA11": {
+    "components": {
+      "postgres": "real",
+      "redis": "real",
+      "knowledge": "native technical index and project memory with independent embeddings, task ACL, and citation checks"
+    },
+    "tests": [
+      "tests/test_general_agent_ga11.py"
+    ],
+    "timeout_seconds": 180
+  },
+  "GA12": {
+    "components": {
+      "benchmark": "six-domain frozen development bundle and deterministic ablations",
+      "scoring": "separate judge with per-case policy and simulated effect checks",
+      "real_provider": "NOT_RUN",
+      "real_external_systems": "NOT_RUN"
+    },
+    "tests": [
+      "tests/test_general_agent_ga12.py"
+    ],
+    "timeout_seconds": 180
   }
 }
