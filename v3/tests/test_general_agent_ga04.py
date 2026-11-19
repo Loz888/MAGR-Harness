@@ -395,3 +395,16 @@ def test_registered_external_capability_has_no_direct_graph_route(engine):
     result = registry.route(task.spec, "office", (CAPABILITY,), lease.access, context_tokens=4096)
     assert result.status == "blocked" and result.checks[0].reason == "action_outbox_required"
     assert engine.general_actions.submit(intent, lease.lease_id, lease.epoch).status == "review"
+
+
+def test_live_lease_needs_scoped_authorization_and_the_deployment_write_gate(engine):
+    _, _, lease, _ = prepare(engine)
+    journal = engine.general_actions
+    live = lease.scope.model_copy(update={"mode": "live"})
+    with pytest.raises(DomainError):
+        journal.issue_lease(live, lease.access, lease.plan_version, live_authorized=True)
+    engine.settings.allow_external_write = True
+    with pytest.raises(DomainError):
+        journal.issue_lease(live, lease.access, lease.plan_version)
+    approved = journal.issue_lease(live, lease.access, lease.plan_version, live_authorized=True)
+    assert approved.scope.mode == "live"

@@ -230,6 +230,11 @@ class GeneralActionStore:
                 descriptor.effect == "external_write"
                 and task.spec.approval_policy == "deny_external_writes"
             )
+            or (
+                scope.mode == "live"
+                and descriptor.effect == "external_write"
+                and not self.engine.settings.allow_external_write
+            )
             or self.engine.general_graphs.registry.health(descriptor.id) != "ready"
         ):
             raise _denied("Capability, permission or effect is outside the grant.")
