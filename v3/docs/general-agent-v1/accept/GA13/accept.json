@@ -1,0 +1,177 @@
+{
+  "schema_version": "magr-general-agent-acceptance-v1",
+  "task": "GA13",
+  "baseline_commit": "57bcf87",
+  "source_commit": "175cabcdf7472b6f4a6a164ead59489b4fc1956d",
+  "source_sha256": "cdca4ff70da47611b0b012fbe06519402e4cd3f15a49bb78d2c767f4dd4e684e",
+  "engineering_gate": "PASS",
+  "independent_gate": "NOT_RUN",
+  "rc_release_gate": "BLOCKED",
+  "gate_conditions": {
+    "ga12_independent_admission_recheck": {
+      "status": "NOT_RUN",
+      "repair_evidence": {
+        "path": "docs/general-agent-v1/accept/GA11-GA12/holdout-admission-repair-20261119.json",
+        "sha256": "0ad56af3cc35f76ec72a2f81b6d2329b7f643a3e6564eafd6ac0d19daadb1763"
+      }
+    },
+    "ga13_independent": "NOT_RUN",
+    "live_coding_provider": "NOT_RUN",
+    "live_research_service": {
+      "status": "BLOCKED",
+      "uri": "https://www.rfc-editor.org/rfc/rfc2606.txt",
+      "code": "RESEARCH_SCOPE",
+      "message": "Research requires routable public addresses."
+    },
+    "live_data_provider": "NOT_RUN",
+    "live_office_account": "NOT_RUN",
+    "live_cross_domain": "NOT_RUN",
+    "frozen_live_task_set_and_threshold": "PENDING"
+  },
+  "registered": {
+    "command": "make verify TASK=GA13",
+    "counts": {
+      "tests": 40,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "status": "PASS",
+    "elapsed_seconds": 89.067,
+    "runner_max_rss_kib": 306608,
+    "evidence": [
+      {
+        "path": "evidence/GA13/20261119T133544Z-d480f5a7/result.json",
+        "sha256": "bf6b06889ecfad41517cedc52c7539c931e8c8948c337a2c3155174acd6235ba"
+      },
+      {
+        "path": "evidence/GA13/20261119T133544Z-d480f5a7/junit.xml",
+        "sha256": "86290ec9fb83fb74859336fd96f1654f1cf83b4d342d6bcebe132cbc8146c0aa"
+      },
+      {
+        "path": "evidence/GA13/20261119T133544Z-d480f5a7/command.log",
+        "sha256": "bc4c6f7719da651d122ac1bb99486f689aa736f504ab233fb8ffe5b264211b0f"
+      }
+    ]
+  },
+  "static": {
+    "ruff": "PASS",
+    "mypy": "PASS",
+    "lockfile": "PASS",
+    "evidence": {
+      "path": "evidence/GA13/frozen/static.log",
+      "sha256": "2e31a864d7bf033467b0db240631e8f014173210cbcd4ea51072f45ae9aab227"
+    }
+  },
+  "release": {
+    "source_commit": "175cabcdf7472b6f4a6a164ead59489b4fc1956d",
+    "archive": "evidence/GA13/frozen/magr-harness-ga13-175cabc.tar.gz",
+    "sha256": "3764a42e046481d774b2284176ffaecec30e2edc6741b8092d3815c402aef745",
+    "bytes": 12103545,
+    "files_verified": 1498,
+    "lock_sha256": "56579416e1652e02a17706e72be15ee5d24762c45d6e27b25618312eddbb6583",
+    "rebuild_byte_identical": true,
+    "offline_uv_sync": "PASS",
+    "packaged_fixture_baselines": {
+      "development": {
+        "verdict": "PASS",
+        "domains": {
+          "autonomy": 10,
+          "coding": 10,
+          "cross-domain": 10,
+          "data": 10,
+          "office": 10,
+          "research": 10
+        },
+        "bundle_sha256": "34054a7d8c322cda8914d4a3f1949583e383022bd8d22573921625ab43c14b63",
+        "raw_sha256": "da1f1cc56b818ba011b6bd548b3593e69c40c2c498701a5a0716c52514fdb542",
+        "model_calls": 0,
+        "external_writes": 0,
+        "policy_violations": 0,
+        "external_effect_errors": 0
+      },
+      "holdout": {
+        "verdict": "PASS",
+        "domains": {
+          "autonomy": 10,
+          "coding": 10,
+          "cross-domain": 10,
+          "data": 10,
+          "office": 10,
+          "research": 10
+        },
+        "bundle_sha256": "7cf0a5d3e30252a0de870f578548648c7facbe78478681b755894efd220ac730",
+        "raw_sha256": "efc879a881b18806a4c4fdaf2f7b2ee8a9bc0aef986b50d7e50fb39adfb0581f",
+        "model_calls": 0,
+        "external_writes": 0,
+        "policy_violations": 0,
+        "external_effect_errors": 0,
+        "holdout_commitment_sha256": "6a5d601c8a5e4efecf01573c6fff57f4547596fada44c5250539714a62083d2d"
+      }
+    },
+    "evidence": {
+      "path": "evidence/GA13/frozen/release.json",
+      "sha256": "b97a49fdde3a7319f9d1af4cc74ef1457c7f1fd91a336bf572286a80f5fba524"
+    },
+    "offline_install_log": {
+      "path": "evidence/GA13/frozen/archive-install-global-cache.log",
+      "sha256": "4686cb87d7c9431f9aa66ae151da39ee0cea2a168e6e62cc2513218febd30c19"
+    }
+  },
+  "browser": {
+    "status": "PASS",
+    "browser": "Edge headless",
+    "artifact": "GA13 packaged candidate",
+    "signed_out_and_setup": true,
+    "create_natural_goal": true,
+    "waiting": true,
+    "structured_revision": true,
+    "plan": true,
+    "reload_same_task": true,
+    "unhandled_errors": 0,
+    "evidence": {
+      "path": "evidence/GA13/frozen/browser-recheck.log",
+      "sha256": "d568635b1749f4e85f9a63af56b88c7c556796b51968faf6b61a7fac2d5d30af"
+    }
+  },
+  "abrupt_worker_exit": {
+    "status": "PASS",
+    "crash": "SIGKILL",
+    "lease_expiry_observed": true,
+    "unknown_blocked_automatic_retry": true,
+    "original_claim_attempts": 1,
+    "original_claim_tool_calls": 1,
+    "receipt_replay_idempotent": true,
+    "task_after_reconciliation": "verifying",
+    "evidence": {
+      "path": "evidence/GA13/frozen/worker-crash.json",
+      "sha256": "a0c258cad6ad52cd182dcc61ef1e71e6a970be14a32e53549c350b2a460761b2"
+    }
+  },
+  "port_18080": {
+    "origin": "http://127.0.0.1:18080",
+    "running_checkout": "/home/imini/magr-harness-h13-runtime/v3",
+    "general_task_api_present": false,
+    "general_task_page_status": 404,
+    "evidence": {
+      "path": "evidence/GA13/frozen/port-18080.json",
+      "sha256": "53d9028e811517e0390abc91243cc49fa630022c4e0e974d0599762820a6e062"
+    }
+  },
+  "first_attempts": [
+    {
+      "path": "evidence/GA13/working/first.log",
+      "sha256": "1a3f298c196b2d5b3b03e58fa218b9200f1bbe2d5f0881854589a2399a6f24cb"
+    },
+    {
+      "path": "evidence/GA13/frozen/archive-install.log",
+      "sha256": "38942223425a6dbc64710e107af589a8af212fd5249ab8df1a1cc2443347f8f2"
+    },
+    {
+      "path": "evidence/GA13/frozen/browser-run.log",
+      "sha256": "a99e779a46879adca643a4a6600ef037f54fefdcfbfb7e320ae5aa2ca17dbf4a"
+    }
+  ],
+  "real_model_calls": 0,
+  "real_external_writes": 0
+}
