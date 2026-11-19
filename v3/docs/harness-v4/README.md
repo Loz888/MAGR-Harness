@@ -8,6 +8,8 @@
 
 2026 年 11 月 18 日，H18 完成本地工程验收。发行包、环境诊断、数据库与 CAS 恢复和脱敏指标可通过现有命令行使用。[H18 验收](H18_ACCEPTANCE_20261118.md) · [安装与恢复](H18_OPERATIONS.md)
 
+2026 年 11 月 19 日，H17 独立本地工程门 **PASS**。受控配对两臂各 2/2，默认采用单 Agent，真实模型效果门仍为 `NOT_RUN`。[独立验收](H17_INDEPENDENT_ACCEPTANCE_20261119.md)
+
 2026 年 11 月 18 日，H17 完成本地工程验收，受限仓库专家可由操作者开启试用。默认采用单 Agent，真实模型效果门为 NOT_RUN。[H17 验收与试用](H17_ACCEPTANCE_20261118.md) · [机器验收](accept/HV4-H17/accept.json)
 
 2026 年 11 月 18 日，H12 R08 的开发集、独立持出集均通过 11/12，合计 22/24。独立复核确认正式质量门 PASS。产品发布状态为 `NOT_RELEASED`。[正式成绩](H12_R08_FORMAL_REAL_MODEL_20261118.md) · [独立验收报告](H12_R08_INDEPENDENT_MATRIX_REVIEW_20261118.md) · [匿名复核回执](accept/HV4-H12-R08-FORMAL-20261118/independent-review.json)
