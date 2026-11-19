@@ -84,14 +84,18 @@ class GeneralTaskStore:
         revision: int,
         version: int,
     ) -> TaskSnapshot:
-        current = _snapshot(
+        current = self.lock_current(conn, task_id)
+        _fence(current, revision, version)
+        return current
+
+    @staticmethod
+    def lock_current(conn: Connection, task_id: UUID) -> TaskSnapshot:
+        return _snapshot(
             conn.execute(
                 _SELECT + "WHERE t.task_id=%s AND r.revision=t.current_revision FOR UPDATE OF t,r",
                 (task_id,),
             ).fetchone()
         )
-        _fence(current, revision, version)
-        return current
 
     @staticmethod
     def _insert_revision(
@@ -163,12 +167,17 @@ class GeneralTaskStore:
         revision: int,
         version: int,
         plan: TaskPlan,
+        *,
+        replace_running: bool = False,
     ) -> TaskSnapshot:
         with self.engine.transaction() as conn:
             current = self._current(conn, task_id, revision, version)
             if plan.task_revision != revision:
                 raise DomainError("GENERAL_PLAN_STALE", "计划与任务修订不匹配。", 409)
-            if current.state != "ready" or _admission(current.spec, False)[0] != "ready":
+            accepted_phase = current.state == "ready" or (
+                replace_running and current.state == "running"
+            )
+            if not accepted_phase or _admission(current.spec, False)[0] != "ready":
                 raise DomainError("GENERAL_TASK_NOT_READY", "任务尚不能接受计划。", 409)
             conn.execute(
                 "UPDATE app.general_task_revisions SET plan=%s,plan_version=version+1,"

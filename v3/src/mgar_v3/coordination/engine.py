@@ -2,7 +2,7 @@ import threading
 from collections.abc import Iterator
 from contextlib import contextmanager
 from datetime import timedelta
-from typing import Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar
 from uuid import UUID, uuid4
 
 import psycopg
@@ -33,6 +33,9 @@ from mgar_v3.repair.store import Repairs
 from mgar_v3.routing.store import Routing
 from mgar_v3.settings import Settings
 
+if TYPE_CHECKING:
+    from mgar_v3.general_agent.capabilities import CapabilityRegistry
+
 TModel = TypeVar("TModel", bound=Model)
 Row = dict[str, Any]
 Connection = psycopg.Connection[Row]
@@ -45,7 +48,10 @@ DUPLEX_VERSIONS = {"r2-mailbox-v1", "r4-experts-v1", "r5-repair-v1", "v32-repo-v
 class Engine:
     """One PG session owns the coordination lock and all global business transactions."""
 
-    def __init__(self, settings: Settings, artifacts: ArtifactStore):
+    def __init__(
+        self, settings: Settings, artifacts: ArtifactStore, *,
+        general_capabilities: "CapabilityRegistry | None" = None,
+    ):
         self.settings = settings
         self.artifacts = artifacts
         self._mutex = threading.RLock()
@@ -71,11 +77,14 @@ class Engine:
         self.proactivity = Proactivity(self)
         self.benchmarks = Benchmarks(self)
         self.commerce = Commerce(self)
+        from mgar_v3.general_agent.builtins import default_registry
+        from mgar_v3.general_agent.graph_store import GeneralGraphStore
         from mgar_v3.general_agent.store import GeneralTaskStore
         from mgar_v3.harness.store import HarnessStore
 
         self.harness = HarnessStore(self)
         self.general_tasks = GeneralTaskStore(self)
+        self.general_graphs = GeneralGraphStore(self, general_capabilities or default_registry())
 
     def close(self) -> None:
         with self._mutex:

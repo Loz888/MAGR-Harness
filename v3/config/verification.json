@@ -2170,5 +2170,30 @@
       "tests/test_harness_h18.py::test_old_schema_backup_restore_then_forward_upgrade_preserves_real_login_and_key"
     ],
     "timeout_seconds": 300
+  },
+  "GA02": {
+    "components": {
+      "api": "authenticated_Harness_task_graph_routes",
+      "coding": "existing_read_only_CodingLoop",
+      "faults": "transaction_rollback_controller_restart_late_receipts_and_concurrent_claims",
+      "model": "controlled_structured_planner_and_deterministic_Coding",
+      "postgres": "real"
+    },
+    "tests": [
+      "tests/test_general_agent_ga02.py"
+    ],
+    "timeout_seconds": 180
+  },
+  "GA03": {
+    "components": {
+      "routing": "versioned_native_mcp_and_executor_capabilities_scoped_to_current_claim",
+      "mcp": "controlled_authenticated_discovery_transport",
+      "model": "no_remote_calls",
+      "postgres": "real_route_audit"
+    },
+    "tests": [
+      "tests/test_general_agent_ga03.py"
+    ],
+    "timeout_seconds": 180
   }
 }

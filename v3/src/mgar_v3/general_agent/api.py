@@ -5,12 +5,15 @@ from typing import Annotated, cast
 from uuid import UUID
 
 from fastapi import FastAPI, Path, Request, Response
+from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from pydantic import Field
 
 from mgar_v3.coordination.engine import Engine
 from mgar_v3.domain import DomainError, Model
 from mgar_v3.general_agent.contracts import GeneralTaskSpec, Identifier, Revision, TaskSnapshot
+from mgar_v3.general_agent.graph import ReplanTrigger, TaskGraph, deterministic_plan
+from mgar_v3.general_agent.graph_store import GraphSnapshot
 from mgar_v3.harness.product import HarnessProductService
 
 
@@ -28,7 +31,21 @@ class ReviseGeneralTask(Model):
     draft: Annotated[bool, Field(strict=True)] = False
 
 
-def _response(snapshot: TaskSnapshot, status: int = 200) -> Response:
+class InstallGraph(Model):
+    expected_revision: Revision
+    expected_version: Revision
+    proposal: TaskGraph | None = None
+
+
+class ReplanGraph(Model):
+    expected_revision: Revision
+    expected_graph_revision: Revision
+    expected_graph_version: Revision
+    trigger: ReplanTrigger
+    proposal: TaskGraph
+
+
+def _response(snapshot: Model, status: int = 200) -> Response:
     return JSONResponse(
         snapshot.model_dump(mode="json"), status_code=status, headers={"Cache-Control": "no-store"}
     )
@@ -131,3 +148,54 @@ def register_general_task_routes(
                 draft=body.draft,
             )
         return _response(snapshot, 201)
+
+    @app.post(
+        "/api/v3/general/tasks/{task_id}/graph",
+        status_code=201,
+        response_model=GraphSnapshot,
+    )
+    def install_graph(task_id: UUID, body: InstallGraph, request: Request) -> Response:
+        user_id = member_user(request)
+        engine: Engine = request.app.state.engine
+        with engine.transaction():
+            task = engine.general_tasks.get(task_id)
+            current_access(request, task, user_id, write=True)
+            if (task.revision, task.version) != (body.expected_revision, body.expected_version):
+                raise DomainError("GENERAL_TASK_STALE", "任务已更新，请读取当前版本。", 409)
+            graph = body.proposal or deterministic_plan(task.spec, task.revision)
+            value = engine.general_graphs.install(task_id, task.revision, task.version, graph)
+        return _response(value, 201)
+
+    @app.get("/api/v3/general/tasks/{task_id}/graph", response_model=GraphSnapshot)
+    def read_graph(task_id: UUID, request: Request) -> Response:
+        user_id = member_user(request)
+        engine: Engine = request.app.state.engine
+        with engine.transaction():
+            current_access(request, engine.general_tasks.get(task_id), user_id, write=False)
+            value = engine.general_graphs.get(task_id)
+        return _response(value)
+
+    @app.patch("/api/v3/general/tasks/{task_id}/graph", response_model=GraphSnapshot)
+    def replan_graph(task_id: UUID, body: ReplanGraph, request: Request) -> Response:
+        user_id = member_user(request)
+        engine: Engine = request.app.state.engine
+        with engine.transaction():
+            current_access(request, engine.general_tasks.get(task_id), user_id, write=True)
+            value = engine.general_graphs.replan(
+                task_id,
+                body.expected_revision,
+                body.expected_graph_revision,
+                body.expected_graph_version,
+                body.proposal,
+                body.trigger,
+            )
+        return _response(value)
+
+    @app.get("/api/v3/general/tasks/{task_id}/graph/events")
+    def graph_events(task_id: UUID, request: Request) -> Response:
+        user_id = member_user(request)
+        engine: Engine = request.app.state.engine
+        with engine.transaction():
+            current_access(request, engine.general_tasks.get(task_id), user_id, write=False)
+            value = engine.general_graphs.events(task_id)
+        return JSONResponse(jsonable_encoder(value), headers={"Cache-Control": "no-store"})
