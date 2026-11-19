@@ -71,7 +71,7 @@ def fixture(engine):
     return task, state, spec, run, web, data, request, logs
 
 
-def test_research_data_report_end_to_end_uses_independently_replayed_data(engine):
+def publish_replayed_research_data_report(engine):
     task, initial, spec, run, web, data, request, logs = fixture(engine)
     assert run("report", web.node_handler) is None
     assert (
@@ -160,8 +160,14 @@ def test_research_data_report_end_to_end_uses_independently_replayed_data(engine
         verifier="independent-check",
     )
     assert review.status == "verified"
-    assert verifier.publish(review.report_id).state == "completed"
+    published = verifier.publish(review.report_id)
+    assert published.state == "completed"
     assert logs == [FIRST]
+    return published
+
+
+def test_research_data_report_end_to_end_uses_independently_replayed_data(engine):
+    publish_replayed_research_data_report(engine)
 
 
 def test_combined_report_rejects_an_upstream_result_that_does_not_reproduce(engine):

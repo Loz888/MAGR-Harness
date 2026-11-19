@@ -19,6 +19,7 @@ SESSION_EXPORT_VERSION = "mgar.harness.session.v1"
 _RESOURCE_ID = re.compile(r"[A-Za-z0-9][A-Za-z0-9._-]{0,99}")
 _AGENT = "/api/v3/agent"
 _HARNESS = "/api/v3/harness"
+_GENERAL_TASKS = "/api/v3/general/tasks"
 
 
 class HarnessAPIError(Exception):
@@ -155,6 +156,24 @@ class HarnessClient:
 
     def register_project(self, path: str) -> JsonObject:
         return _object(self._json("POST", f"{_HARNESS}/projects", json={"path": path}))
+
+    def create_general_task(self, request: JsonObject) -> JsonObject:
+        return _object(self._json("POST", _GENERAL_TASKS, json=request))
+
+    def general_task(self, task_id: str) -> JsonObject:
+        return _object(self._json("GET", _resource(_GENERAL_TASKS, task_id)))
+
+    def revise_general_task(self, task_id: str, request: JsonObject) -> JsonObject:
+        path = _resource(_GENERAL_TASKS, task_id)
+        return _object(self._json("POST", f"{path}/revisions", json=request))
+
+    def plan_general_task(self, task_id: str, request: JsonObject) -> JsonObject:
+        path = _resource(_GENERAL_TASKS, task_id)
+        return _object(self._json("POST", f"{path}/graph", json=request))
+
+    def general_task_graph(self, task_id: str) -> JsonObject:
+        path = _resource(_GENERAL_TASKS, task_id)
+        return _object(self._json("GET", f"{path}/graph"))
 
     def readiness(self, project_id: str) -> JsonObject:
         path = _resource(f"{_AGENT}/projects", project_id)

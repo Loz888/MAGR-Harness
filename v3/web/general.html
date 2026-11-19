@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>通用任务 · MAGR-Harness</title>
+    <link rel="icon" href="/static/agent-icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/static/general.css">
+    <script src="/static/general.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <a href="/static/agent.html">MAGR-Harness</a>
+      <span>通用任务</span>
+    </header>
+    <main>
+      <h1>通用任务</h1>
+      <p id="general-auth" hidden><a href="/static/agent.html">登录后打开通用任务</a></p>
+      <p id="general-error" role="alert" hidden></p>
+      <div id="general-content" hidden>
+        <form id="general-task-create">
+          <label for="general-project">项目</label>
+          <select id="general-project" required><option value="">选择项目</option></select>
+          <label for="general-goal">你想完成什么？</label>
+          <textarea id="general-goal" required maxlength="16000" rows="4"></textarea>
+          <button id="general-create" type="submit">创建任务</button>
+        </form>
+        <form id="general-task-open">
+          <label for="general-id-input">任务 ID</label>
+          <div class="row">
+            <input id="general-id-input" maxlength="36" required spellcheck="false">
+            <button type="submit">打开任务</button>
+          </div>
+        </form>
+        <section id="general-task" aria-labelledby="general-title" hidden>
+          <div class="row status-row">
+            <h2 id="general-title"></h2>
+            <span id="general-status" role="status"></span>
+          </div>
+          <p id="general-current-id"></p>
+          <p id="general-clarifications" hidden></p>
+          <p id="general-outcome" hidden></p>
+          <div class="row">
+            <button id="general-refresh" type="button">刷新状态</button>
+            <button id="general-plan" type="button" hidden>生成计划</button>
+          </div>
+          <ol id="general-steps" aria-label="执行计划" hidden></ol>
+          <details id="general-editor" hidden>
+            <summary>编辑任务配置</summary>
+            <form id="general-task-revise">
+              <label for="general-spec">任务规范（JSON）</label>
+              <textarea id="general-spec" rows="10" spellcheck="false" required></textarea>
+              <button type="submit">保存修订</button>
+            </form>
+          </details>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

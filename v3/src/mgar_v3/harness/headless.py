@@ -56,6 +56,16 @@ def register_commands(parser: argparse.ArgumentParser) -> None:
     commands = parser.add_subparsers(dest="harness_command", required=True)
     commands.add_parser("projects")
     commands.add_parser("sessions")
+    general = commands.add_parser("general", help="Create, clarify, plan and inspect general tasks")
+    general_commands = general.add_subparsers(dest="general_command", required=True)
+    for name in ("submit", "task", "revise", "plan", "graph"):
+        cmd = general_commands.add_parser(name)
+        if name != "submit":
+            cmd.add_argument("resource_id")
+        if name in ("submit", "revise", "plan"):
+            cmd.add_argument(
+                "--input", type=Path, default=Path("-"), help="JSON file or - for stdin"
+            )
     for name in ("register", "submit", "send", "answer"):
         cmd = commands.add_parser(name)
         if name in ("send", "answer"):
@@ -120,9 +130,29 @@ def _status(result: JsonObject) -> int:
     return 1
 
 
+def _general(client: HarnessClient, args: argparse.Namespace) -> JsonObject:
+    name = args.general_command
+    if name == "task":
+        return client.general_task(args.resource_id)
+    if name == "graph":
+        return client.general_task_graph(args.resource_id)
+    raw = sys.stdin.read() if args.input == Path("-") else args.input.read_text(encoding="utf-8")
+    payload = json.loads(raw)
+    if not isinstance(payload, dict):
+        raise ValueError("Expected a General Task JSON request object")
+    if name == "submit":
+        return client.create_general_task(payload)
+    if name == "revise":
+        return client.revise_general_task(args.resource_id, payload)
+    return client.plan_general_task(args.resource_id, payload)
+
+
 def _call(client: HarnessClient, args: argparse.Namespace) -> int:
     name = args.harness_command
     resource = getattr(args, "resource_id", "")
+    if name == "general":
+        _print(_general(client, args))
+        return 0
     if name in _INPUT_FIELDS:
         payload = _input(name, args.input)
         if name == "register":

@@ -2338,5 +2338,38 @@
       "tests/test_general_agent_ga12.py"
     ],
     "timeout_seconds": 180
+  },
+  "GA13": {
+    "components": {
+      "postgres": "real_pgvector_forward_migration_and_snapshot_rollback",
+      "release": "reproducible_source_archive_and_public_benchmark_assets",
+      "clients": "browser_session_loopback_http_headless_cli_and_sdk",
+      "workflows": "coding_research_data_office_and_cross_domain_controlled_end_to_end",
+      "faults": "revocation_budget_deadline_expired_claim_unknown_action_and_snapshot_publish",
+      "real_provider": "NOT_RUN",
+      "real_external_accounts": "NOT_RUN"
+    },
+    "pytest_node_selectors": true,
+    "tests": [
+      "tests/test_general_agent_ga13.py",
+      "tests/test_general_agent_ga02.py::test_time_budget_and_cancellation_fence_new_work_and_late_results",
+      "tests/test_general_agent_ga02.py::test_parallel_claims_reserve_once_and_obey_group_and_cumulative_budget",
+      "tests/test_general_agent_ga02.py::test_controller_restart_expires_unknown_without_repeating_non_idempotent_claim",
+      "tests/test_general_agent_ga02.py::test_current_membership_fences_graph_api_and_new_provider_dispatch",
+      "tests/test_general_agent_ga04.py::test_precondition_and_shared_graph_budget_are_enforced",
+      "tests/test_general_agent_ga04.py::test_controller_restart_marks_abandoned_dispatch_unknown",
+      "tests/test_general_agent_ga05.py::test_external_completion_requires_real_journal_receipt_and_reconciliation",
+      "tests/test_general_agent_ga06.py::test_expired_read_and_forged_content_version_are_rejected",
+      "tests/test_general_agent_ga06.py::test_graph_research_result_is_checked_and_published_by_ga05",
+      "tests/test_general_agent_ga07.py::test_pg_data_node_and_independent_numeric_evidence",
+      "tests/test_general_agent_ga08.py::test_draft_is_local_and_broker_approval_and_reconciliation_control_send",
+      "tests/test_general_agent_ga09.py::test_ga09_patch_and_test_receipt_are_accepted_by_ga05",
+      "tests/test_general_agent_ga09.py::test_ga09_service_receipt_is_accepted_by_ga05",
+      "tests/test_general_agent_mixed_executors.py",
+      "tests/test_general_agent_ga12.py",
+      "tests/test_harness_h18.py::test_source_release_hashes_are_reproducible_and_omit_local_data",
+      "tests/test_harness_h18.py::test_restore_retries_same_target_after_missing_pg_restore"
+    ],
+    "timeout_seconds": 300
   }
 }

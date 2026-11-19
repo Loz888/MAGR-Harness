@@ -20,6 +20,13 @@ RELEASE_PATHS = (
     "config", "deploy", "docs", "eval", "examples", "fixtures", "migrations",
     "scripts", "src", "tests", "web",
 )
+PUBLIC_GA12_PATHS = (
+    "experiments/general-agent/ga12/dev.jsonl",
+    "experiments/general-agent/ga12/dev.freeze.json",
+    "experiments/general-agent/ga12/holdout.commitment.json",
+    "experiments/general-agent/ga12/holdout.first.receipt.json",
+    "experiments/general-agent/ga12/holdout.recheck.receipt.json",
+)
 
 
 def build_release(revision: str, output: Path) -> dict[str, str]:
@@ -29,7 +36,12 @@ def build_release(revision: str, output: Path) -> dict[str, str]:
     verified = git("rev-parse", "--verify", "--end-of-options", revision + "^{commit}")
     commit = verified.decode().strip()
     epoch = int(git("show", "-s", "--format=%ct", commit))
-    raw = git("archive", "--format=tar", f"--prefix={PREFIX}/", f"{commit}:v3", *RELEASE_PATHS)
+    tree = f"{commit}:v3"
+    # Older tagged revisions predate the benchmark's public assets.
+    listing = git("ls-tree", "-r", "--name-only", "-z", tree, "--", *PUBLIC_GA12_PATHS)
+    tracked = set(listing.decode().split("\0"))
+    paths = (*RELEASE_PATHS, *(path for path in PUBLIC_GA12_PATHS if path in tracked))
+    raw = git("archive", "--format=tar", f"--prefix={PREFIX}/", tree, *paths)
     output.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.NamedTemporaryFile(dir=output.parent, delete=False) as file:
         scratch = Path(file.name)
