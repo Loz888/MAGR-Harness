@@ -77,6 +77,7 @@ class Engine:
         self.proactivity = Proactivity(self)
         self.benchmarks = Benchmarks(self)
         self.commerce = Commerce(self)
+        from mgar_v3.general_agent.actions import GeneralActionStore
         from mgar_v3.general_agent.builtins import default_registry
         from mgar_v3.general_agent.graph_store import GeneralGraphStore
         from mgar_v3.general_agent.store import GeneralTaskStore
@@ -85,6 +86,7 @@ class Engine:
         self.harness = HarnessStore(self)
         self.general_tasks = GeneralTaskStore(self)
         self.general_graphs = GeneralGraphStore(self, general_capabilities or default_registry())
+        self.general_actions = GeneralActionStore(self)
 
     def close(self) -> None:
         with self._mutex:

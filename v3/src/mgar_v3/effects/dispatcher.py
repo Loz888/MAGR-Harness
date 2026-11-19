@@ -5,6 +5,7 @@ import httpx
 
 from mgar_v3.coordination.engine import Engine, Row
 from mgar_v3.domain import DomainError
+from mgar_v3.general_agent.actions import ActionIntent, ActionMode, ActionReceipt
 
 
 class DefinitiveFailure(Exception):
@@ -151,3 +152,62 @@ class PublicationDispatcher:
         # No business transaction remains open during the read-only lookup.
         external_id = self.transport.find(action)
         return self.engine.reconcile_publication(publication_id, external_id)
+
+
+class GeneralActionTransport(Protocol):
+    """An injected account-bound provider adapter.
+
+    Send applies the intent's idempotency key and version precondition at the
+    provider. Find performs a read-only lookup on the original key.
+    """
+
+    mode: ActionMode
+    provider_id: str
+
+    def observe(self, intent: ActionIntent) -> str | None: ...
+
+    def send(self, intent: ActionIntent, payload: bytes | None) -> ActionReceipt: ...
+
+    def find(self, intent: ActionIntent) -> ActionReceipt | None: ...
+
+
+class GeneralActionDispatcher:
+    """Dispatch approved universal actions with the original provider idempotency key."""
+
+    def __init__(self, engine: Engine, transport: GeneralActionTransport) -> None:
+        self.engine = engine
+        self.transport = transport
+
+    def tick(self) -> UUID | None:
+        journal = self.engine.general_actions
+        intent = journal.candidate(self.transport.mode, self.transport.provider_id)
+        if intent is None:
+            return None
+        observed = self.transport.observe(intent) if intent.precondition_sha256 else None
+        payload = (
+            self.engine.artifacts.read(intent.payload_sha256) if intent.payload_sha256 else None
+        )
+        attempt = journal.claim(intent.action_id, observed)
+        if attempt is None:
+            return None
+        try:
+            receipt = self.transport.send(intent, payload)
+            journal.result(intent.action_id, attempt, receipt=receipt)
+        except DefinitiveFailure:
+            journal.result(intent.action_id, attempt, definitive_failure=True)
+        except (httpx.HTTPError, OSError, TimeoutError):
+            journal.result(intent.action_id, attempt)
+        except Exception:
+            journal.result(intent.action_id, attempt)
+            raise
+        return intent.action_id
+
+    def reconcile(self, action_id: UUID) -> bool:
+        journal = self.engine.general_actions
+        action = journal.reconcilable(action_id, self.transport.mode, self.transport.provider_id)
+        receipt = self.transport.find(action.intent)
+        if receipt is None:
+            return False
+        assert action.attempt_id is not None
+        result = journal.result(action_id, action.attempt_id, receipt=receipt)
+        return result.status == "succeeded"

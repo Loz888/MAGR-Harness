@@ -150,6 +150,7 @@ def _resource_reservation(
     task: TaskSnapshot,
     access: CapabilityAccess,
     cost: Resources,
+    action_spent: Resources,
 ) -> Resources | None:
     limits = task.spec.budget
     task_caps = {
@@ -162,10 +163,11 @@ def _resource_reservation(
     for field, amount in cost.model_dump().items():
         cap = task_caps[field]
         used = getattr(state.spent, field) + amount
+        overall = used + getattr(action_spent, field)
         if (
             amount > getattr(node.budget, field)
-            or used > getattr(access.resources, field)
-            or (cap is not None and used > cap)
+            or overall > getattr(access.resources, field)
+            or (cap is not None and overall > cap)
         ):
             return None
         total[field] = used
@@ -473,13 +475,19 @@ class GeneralGraphStore:
                 item.name: progress[item.node_id].outputs.get(item.output_id)
                 for item in node.inputs
             }
+            action_spent = self.engine.general_actions.spent(conn, task_id, revision)
 
             def eligible(descriptor: CapabilityDescriptor) -> str | None:
                 if descriptor.evidence_contract != "general-node-receipt-v1":
                     return "unsupported_evidence_contract"
                 if not Draft202012Validator(descriptor.input_schema).is_valid(inputs):
                     return "input_schema"
-                if _resource_reservation(state, node, task, access, descriptor.upper_bound) is None:
+                if (
+                    _resource_reservation(
+                        state, node, task, access, descriptor.upper_bound, action_spent
+                    )
+                    is None
+                ):
                     return "resource_budget"
                 if current.attempts and not descriptor.idempotent:
                     return "non_idempotent_retry_denied"
@@ -509,7 +517,9 @@ class GeneralGraphStore:
                     progress=progress,
                 )
                 return None
-            reserved = _resource_reservation(state, node, task, access, descriptor.upper_bound)
+            reserved = _resource_reservation(
+                state, node, task, access, descriptor.upper_bound, action_spent
+            )
             assert reserved is not None  # The route admitted this exact immutable descriptor.
             idempotent = descriptor.idempotent and (
                 current.claim is None or current.claim.idempotent
@@ -738,8 +748,11 @@ class GeneralGraphStore:
                 )
             if task.membership_id is not None:
                 require_membership(conn, task.project_id, str(task.membership_id), write=True)
+            action_spent = self.engine.general_actions.spent(
+                conn, claim.task_id, claim.task_revision
+            )
             if any(
-                getattr(state.spent, key) > limit
+                getattr(state.spent, key) + getattr(action_spent, key) > limit
                 for key, limit in access.resources.model_dump().items()
             ):
                 return []

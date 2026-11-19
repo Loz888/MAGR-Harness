@@ -2195,5 +2195,28 @@
       "tests/test_general_agent_ga03.py"
     ],
     "timeout_seconds": 180
+  },
+  "GA02-REPLAN-REPAIR": {
+    "components": {
+      "postgres": "real",
+      "scope": "independent_failure_only_removing_final_optional_wait"
+    },
+    "pytest_node_selectors": true,
+    "tests": [
+      "tests/test_general_agent_ga02.py::test_replan_removing_optional_wait_advances_to_verifying"
+    ],
+    "timeout_seconds": 150
+  },
+  "GA04": {
+    "components": {
+      "broker": "task_plan_actor_scope_lease_epoch_budget_approval_and_preconditions",
+      "postgres": "real",
+      "remote_provider": "dedicated_controlled_fixture_only",
+      "recovery": "concurrency_rollback_restart_and_unknown_reconciliation"
+    },
+    "tests": [
+      "tests/test_general_agent_ga04.py"
+    ],
+    "timeout_seconds": 180
   }
 }
