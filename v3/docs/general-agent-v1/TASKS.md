@@ -1,10 +1,10 @@
 # General Agent 任务队列
 
-任务逐张授权。GA00 核对冻结环境和当前源码，完成本轮证据交付后交独立复验。[任务书原文](TASKBOOK_V1.md)
+任务逐张授权。GA00 冻结和架构盘点已完成独立复验，完整工程基线为 FAIL。GA01 等待授权。[任务书原文](TASKBOOK_V1.md)
 
 | 卡片 | 内容 | 依赖 | 当前状态 |
 | --- | --- | --- | --- |
-| GA00 | 当前版本冻结与架构盘点 | 无 | 基线已记录，待独立复验 |
+| GA00 | 当前版本冻结与架构盘点 | 无 | INDEPENDENT_PASS（冻结与盘点），工程基线 FAIL |
 | GA01 | GeneralTaskSpec 与 Outcome Contract | GA00 | TODO |
 | GA02 | General Planner 与动态 TaskGraph | GA01 | TODO |
 | GA03 | Capability Registry 与 Domain Router | GA01 | TODO |
@@ -19,4 +19,4 @@
 | GA12 | General Agent Benchmark Suite | GA01–GA09 | TODO |
 | GA13 | General Agent RC 集成验收 | GA00–GA12 | TODO |
 
-[GA00 冻结报告](GA00_BASELINE_20261119.md) · [调用链与差距矩阵](GA00_ARCHITECTURE.md) · [独立复验入口](GA00_RECHECK.md) · [机器验收记录](accept/GA00/accept.json)
+[GA00 冻结报告](GA00_BASELINE_20261119.md) · [调用链与差距矩阵](GA00_ARCHITECTURE.md) · [独立复验入口](GA00_RECHECK.md) · [机器验收记录](accept/GA00/accept.json) · [独立复验报告](GA00_INDEPENDENT_20261119.md)
