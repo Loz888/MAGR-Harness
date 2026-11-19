@@ -1,0 +1,101 @@
+{
+  "schema_version": "harness-h18-publish-retry-independent-v1",
+  "task": "HV4-H18-PUBLISH-RETRY",
+  "date": "2026-11-19",
+  "source_commit": "8a6489b6bc9e99237435e297a55542c75f218dd8",
+  "verified_head": "173976e52813dfdf584c8b72c97339621ef4a6bd",
+  "source_sha256": "804fe3a28d0578f51b8e5a6530376214b24d138259d1219bd5c815461ab4d79b",
+  "independent_engineering_gate": "PASS",
+  "closure": "prior_independent_evidence_and_targeted_repairs",
+  "targeted_registered_retest": "PASS",
+  "targeted_registered_counts": {
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "other_registered_tests_on_this_source": "NOT_RERUN",
+  "historical_registered_checks": {
+    "source_commit": "6bcf68594622e85662b1a5a5341ddb7e2a9af5c7",
+    "tests": 146,
+    "record": {
+      "path": "docs/harness-v4/accept/HV4-H18/independent-20261119.json",
+      "sha256": "1264a00dcafe82cacde28cfd45b359c880a2ac6c9c515db410b832f6acdc6142"
+    }
+  },
+  "historical_missing_pg_restore_recheck": {
+    "path": "docs/harness-v4/accept/HV4-H18/restore-retry-independent-20261119.json",
+    "sha256": "e6f6777492e7522479e292baaffb06ca7e6afd5b957fc9dc20da2be4e3846711"
+  },
+  "repair_targeted_record": {
+    "path": "docs/harness-v4/accept/HV4-H18/publish-retry-20261119.json",
+    "sha256": "dfbc05c2ca52cb6d1abb8818d354d738d9fbcf1cf9246f28b6bbecf67171d945"
+  },
+  "release_probe": {
+    "release": {
+      "sha256": "7a4cfdfc20108268e21560d28e6346193beef61c0c3ee35c2c749d39ecafa872",
+      "manifest_files": 1357,
+      "prior_evidence_files_verified": 7
+    },
+    "assertions": {
+      "status": "PASS",
+      "permission_revocation": "actual_chmod_0500_at_publication",
+      "first_cli_code": "SNAPSHOT_RUNTIME_PUBLISH_FAILED",
+      "database_restored_diagnostic": true,
+      "final_path_absent_on_failure": true,
+      "parent_mode_preserved": true,
+      "schema_migration_count": 35,
+      "same_command_retry": "PASS",
+      "pg_restore_absent_during_retry": true,
+      "cas_byte_match": true,
+      "existing_empty_directory_preserved": true,
+      "empty_staging_directories_after_retry": 1
+    }
+  },
+  "rebuilt_archive": {
+    "path": "evidence/harness-v4/H18-PUBLISH-RETRY-INDEPENDENT-20261119/54ea6049d79f/magr-harness-8a6489b.tar.gz",
+    "sha256": "7a4cfdfc20108268e21560d28e6346193beef61c0c3ee35c2c749d39ecafa872"
+  },
+  "evidence": [
+    {
+      "path": "evidence/harness-v4/H18-PUBLISH-RETRY-INDEPENDENT-20261119/77581908715c/HV4-H18-PUBLISH-RETRY/20261119T044934Z-f2e0add4/result.json",
+      "sha256": "2fa0194ca38f2127a08b7212434207ea2c61a2ad0d7ae60e10a42d35e1ca7866"
+    },
+    {
+      "path": "evidence/harness-v4/H18-PUBLISH-RETRY-INDEPENDENT-20261119/77581908715c/HV4-H18-PUBLISH-RETRY/20261119T044934Z-f2e0add4/command.log",
+      "sha256": "34186e05a21f263934f2ebf5d60f79ff994ca757c1264fd414081253be6a7560"
+    },
+    {
+      "path": "evidence/harness-v4/H18-PUBLISH-RETRY-INDEPENDENT-20261119/77581908715c/HV4-H18-PUBLISH-RETRY/20261119T044934Z-f2e0add4/junit.xml",
+      "sha256": "10987f8aeb44cfcee9bc3a878c5729e41958542992d9b6c31359d7c6c9ea47b7"
+    },
+    {
+      "path": "evidence/harness-v4/H18-PUBLISH-RETRY-INDEPENDENT-20261119/77581908715c/lint.log",
+      "sha256": "a220b562d6bdb3655673add818cabd1dbd6857a7efc7d06ff8178f9e0e2501e2"
+    },
+    {
+      "path": "evidence/harness-v4/H18-PUBLISH-RETRY-INDEPENDENT-20261119/77581908715c/typecheck.log",
+      "sha256": "2217d486a4cb8b894bdd7ab5db80ca0e2a87cee3e8fd896ccfe875137cf5c12e"
+    },
+    {
+      "path": "evidence/harness-v4/H18-PUBLISH-RETRY-INDEPENDENT-20261119/77581908715c/orchestration.json",
+      "sha256": "2638b2cfa05acaada17200b05d9321852edf9d8b59a5eff4ef50a9adbcd2ac88"
+    },
+    {
+      "path": "evidence/harness-v4/H18-PUBLISH-RETRY-INDEPENDENT-20261119/54ea6049d79f/release-publish-probe.json",
+      "sha256": "e6fcf76659a696c852a1234c3175668a14e012a0dbc177746e17b1cae70ac238"
+    },
+    {
+      "path": "evidence/harness-v4/H18-PUBLISH-RETRY-INDEPENDENT-20261119/54ea6049d79f/release-publish-probe.log",
+      "sha256": "66f7947261724ba9680e991e812641278acf0162d30988df9af5d8889ba01ed7"
+    },
+    {
+      "path": "evidence/harness-v4/H18-PUBLISH-RETRY-INDEPENDENT-20261119/54ea6049d79f/orchestration.json",
+      "sha256": "85cf6c4e623a28664bfca088d0a80f5a73057b0214295e56f008edd03d3aaac7"
+    }
+  ],
+  "real_model_calls": 0,
+  "live_model_gate": "NOT_RUN",
+  "production_gate": "NOT_RUN",
+  "native_linux_host_gate": "NOT_RUN"
+}
