@@ -1,0 +1,127 @@
+{
+  "schema_version": "harness-h14-independent-acceptance-v1",
+  "task": "HV4-H14",
+  "recorded_at": "2026-11-18T12:23:32.518399+00:00",
+  "git_commit": "4be890df8e9b0be65f7816e0e07fc17c3f3e8789",
+  "reviewed_records_commit": "23282ac71c2769860daee540718d71c50ff23d6d",
+  "source_sha256": "f6035f5060c2ff7b741810823ba2a82130f6bd0641be6b1dd1fe6c5344d575c4",
+  "engineering_gate": "PASS",
+  "h13_compatibility_gate": "PASS",
+  "live_gate": "NOT_RUN",
+  "real_provider_calls": 0,
+  "external_writes": 0,
+  "original_acceptance": {
+    "path": "docs/harness-v4/accept/HV4-H14/accept.json",
+    "sha256": "1c12bd0ab883b527672bfc22165e1ca5d20ab866beb461d5a0c51f47a5277846"
+  },
+  "path_bound_evidence_hashes_verified": 20,
+  "registered_attempts": {
+    "HV4-H14": {
+      "status": "PASS",
+      "counts": {
+        "tests": 181,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "duration_seconds": 363.166,
+      "result": {
+        "path": "evidence/harness-v4/H14-INDEPENDENT-20261118/c8394cf77a9e/HV4-H14/20261118T121101Z-96b29452/result.json",
+        "sha256": "3715b3f4e4eb2fe45a6411cfd2c6963ebbcfa1d0636473d7fe017358b2e29dde"
+      },
+      "junit": {
+        "path": "evidence/harness-v4/H14-INDEPENDENT-20261118/c8394cf77a9e/HV4-H14/20261118T121101Z-96b29452/junit.xml",
+        "sha256": "c03f4226712d61b94ad0411fe08b0532d676fe255075913bd9f7518834cd128e"
+      },
+      "raw_log": {
+        "path": "evidence/harness-v4/H14-INDEPENDENT-20261118/c8394cf77a9e/HV4-H14/20261118T121101Z-96b29452/command.log",
+        "sha256": "b63ab38ed12e68d3193b7b5ce5d4c6c050e96c2ca458b55a5aea88ce5a97bfc0"
+      },
+      "failed_nodes": []
+    },
+    "HV4-H13": {
+      "status": "PASS",
+      "counts": {
+        "tests": 42,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "duration_seconds": 687.173,
+      "result": {
+        "path": "evidence/harness-v4/H14-INDEPENDENT-20261118/c8394cf77a9e/HV4-H13/20261118T121101Z-b9a149d0/result.json",
+        "sha256": "5ea384c594251ae86d97e58862a6bd864304fae3ee4b51bc6d3478d48855c323"
+      },
+      "junit": {
+        "path": "evidence/harness-v4/H14-INDEPENDENT-20261118/c8394cf77a9e/HV4-H13/20261118T121101Z-b9a149d0/junit.xml",
+        "sha256": "e55e1e1f1c2be7d75313a90cd465a0624aad5f6b88a930795032e0c0e7ed869e"
+      },
+      "raw_log": {
+        "path": "evidence/harness-v4/H14-INDEPENDENT-20261118/c8394cf77a9e/HV4-H13/20261118T121101Z-b9a149d0/command.log",
+        "sha256": "9254fef6336df55ee16e286c479d14f111a1f6d3d8dc3dd60feac28175b89efa"
+      },
+      "failed_nodes": []
+    }
+  },
+  "targeted_rechecks": {},
+  "v04_observed_cas_binding": {
+    "path": "evidence/harness-v4/H14-INDEPENDENT-20261118/c8394cf77a9e/v04-cas-tree-binding.json",
+    "sha256": "860da7fef1fcd14e171c29224e692b1fe313d6ff2c34d8b54918eff843af9aff"
+  },
+  "h04_baseline_comparison": {
+    "status": "FAIL_GLOBAL_HISTORICAL_CONTAINER_ASSERTION",
+    "result": {
+      "path": "evidence/harness-v4/H14-INDEPENDENT-20261118/c8394cf77a9e/h04-isolated-control.json",
+      "sha256": "baa2a0c52683c6f5f4bb102304949a9fce3378a6d0950216ddf7883c5347b144"
+    },
+    "baseline_junit": {
+      "path": "evidence/harness-v4/H14-INDEPENDENT-20261118/c8394cf77a9e/h04-baseline.xml",
+      "sha256": "caba3a364d65b21eed9cf0cb55374409bd67b5ea5af7c26fff64fd8ad4752ceb"
+    },
+    "baseline_log": {
+      "path": "evidence/harness-v4/H14-INDEPENDENT-20261118/c8394cf77a9e/h04-baseline.log",
+      "sha256": "9c1db21d0b2e08a7cdc6668a91d8150f9e1b9e2c458d733eb454d59b6cb8023d"
+    },
+    "final_junit": {
+      "path": "evidence/harness-v4/H14-INDEPENDENT-20261118/c8394cf77a9e/h04-final.xml",
+      "sha256": "46664286e20ffd088e6f1a3f73651ef4a3c03b01a84b30ab4413ce16745ff453"
+    },
+    "final_log": {
+      "path": "evidence/harness-v4/H14-INDEPENDENT-20261118/c8394cf77a9e/h04-final.log",
+      "sha256": "ce77de5437a06ef34223d30c64d0634085fbee0cadd35d756a36441d1309842f"
+    },
+    "full_h04_rerun": false
+  },
+  "static": {
+    "lint": {
+      "path": "evidence/harness-v4/H14-INDEPENDENT-20261118/c8394cf77a9e/lint.log",
+      "sha256": "a220b562d6bdb3655673add818cabd1dbd6857a7efc7d06ff8178f9e0e2501e2"
+    },
+    "typecheck": {
+      "path": "evidence/harness-v4/H14-INDEPENDENT-20261118/c8394cf77a9e/typecheck.log",
+      "sha256": "79d2ce48896c1b88f2fc3fdb836d0fec03adef283012d81622e31cacb0a30f2a"
+    }
+  },
+  "isolated_dependencies": {
+    "path": "evidence/harness-v4/H14-INDEPENDENT-20261118/c8394cf77a9e/orchestration.json",
+    "sha256": "c21a9255d51f96b901d691934b91643810747f803a33f583f2ec5073d91362ab"
+  },
+  "findings": [
+    {
+      "id": "H14-HANDOFF-DOCUMENT-PROVENANCE",
+      "classification": "EVIDENCE_TRACEABILITY",
+      "reported_sha256": "fd6d98a9039ab9a416393b0ad40b6d6813f8e909b00152f7b11b9bba080af79c",
+      "reported_file_path": null,
+      "baseline_commit": "0ed928659f46b5d3d325d53409718f5edf115257",
+      "path_at_baseline": "v3/docs/harness-v4/H14_HANDOFF.md",
+      "baseline_sha256": "c1ad0127ffe7b5225075a2383fb7af004303a3a96774d029f096df229144dfd9",
+      "current_sha256": "b0419d3a7fbfd3c5a88291266c8f4f7f25526e31c1c90f3c903a976a336d4bd3",
+      "handoff_patch_sha256_matches_saved_commit": true,
+      "status": "ORIGINAL_DOCUMENT_NOT_IDENTIFIED"
+    }
+  ],
+  "live_services": {
+    "external_github": "NOT_RUN",
+    "paid_models": "NOT_RUN"
+  }
+}
