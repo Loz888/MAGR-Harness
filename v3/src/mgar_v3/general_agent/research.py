@@ -15,7 +15,7 @@ from mgar_v3.evidence.artifacts import ArtifactStore
 from mgar_v3.general_agent.contracts import Identifier, Sha256, SourceRef, TaskSnapshot, Text
 from mgar_v3.general_agent.graph import BranchValue, GraphNode
 from mgar_v3.general_agent.graph_store import NodeClaim
-from mgar_v3.general_agent.research_pdf import report_pdf
+from mgar_v3.general_agent.research_pdf import UnsupportedPDFGlyph, report_pdf
 from mgar_v3.general_agent.research_web import (
     PageRead,
     PublicWebReader,
@@ -175,7 +175,7 @@ class ResearchResult(Model):
     claims: tuple[ResearchClaimEvidence, ...]
     conflicts: tuple[Identifier, ...]
     markdown_sha256: Sha256
-    pdf_sha256: Sha256
+    pdf_sha256: Sha256 | None = None
 
 
 class ResearchExecutor:
@@ -384,8 +384,15 @@ class ResearchExecutor:
             claims=tuple(evidence),
             conflicts=conflicts,
             markdown_sha256=self._artifacts.put(markdown.encode()),
-            pdf_sha256=self._artifacts.put(report_pdf(markdown)),
+            pdf_sha256=self._store_pdf(markdown),
         )
+
+    def _store_pdf(self, markdown: str) -> str | None:
+        try:
+            return self._artifacts.put(report_pdf(markdown))
+        except UnsupportedPDFGlyph:
+            # Preserve the exact Markdown when this text cannot be drawn as a PDF.
+            return None
 
     @staticmethod
     def _first_excerpt(text: str) -> str:
@@ -497,6 +504,7 @@ class ResearchExecutor:
             return dict.fromkeys(node.outputs, collection_hash)
         result = self.synthesize(plan, collection)
         markdown_hash, pdf_hash = result.markdown_sha256, result.pdf_sha256
+        needs_pdf = any(output in plan.pdf_outputs for output in node.outputs)
         analysis_manifest = claim.inputs.get("analysis_manifest")
         if source_collection is not None or analysis_manifest is not None:
             if claim.capability_id != "research.report" or source_collection is None:
@@ -506,8 +514,10 @@ class ResearchExecutor:
             appendix = self._analysis_appendix(task, claim, analysis_manifest, upstream)
             markdown = self._artifacts.read(markdown_hash).decode() + appendix
             markdown_hash = self._artifacts.put(markdown.encode())
-            if any(output in plan.pdf_outputs for output in node.outputs):
-                pdf_hash = self._artifacts.put(report_pdf(markdown))
+            if needs_pdf:
+                pdf_hash = self._store_pdf(markdown)
+        if needs_pdf and pdf_hash is None:
+            raise _error("RESEARCH_PDF_GLYPH", "The embedded PDF fonts do not cover this report.")
         return {
             key: (
                 pdf_hash

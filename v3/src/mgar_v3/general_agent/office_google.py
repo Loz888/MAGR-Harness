@@ -248,7 +248,7 @@ class GoogleOfficeConnector:
                 raise
         return None
 
-    def _effect_id(self, intent: ActionIntent) -> str:
+    def _legacy_effect_id(self, intent: ActionIntent) -> str:
         return digest(
             {
                 "provider": self.provider_id,
@@ -259,7 +259,12 @@ class GoogleOfficeConnector:
         )
 
     def _message_id(self, intent: ActionIntent) -> str:
-        return f"<{self._effect_id(intent)}@magr.invalid>"
+        return f"<{self._legacy_effect_id(intent)}@magr.invalid>"
+
+    @staticmethod
+    def _calendar_event_id(intent: ActionIntent) -> str:
+        # The key is project-scoped in the outbox; the durable Action ID is global.
+        return digest({"google_calendar_action": str(intent.action_id)})
 
     def _send_mail(self, intent: ActionIntent, draft: DraftMail) -> str:
         if intent.precondition_sha256 is not None:
@@ -303,7 +308,7 @@ class GoogleOfficeConnector:
         if change.operation == "create_event":
             if resource.parent_id is not None or intent.precondition_sha256 is not None:
                 raise DefinitiveFailure("Google calendar insertion requires a new event ID.")
-            event_id = self._effect_id(intent)
+            event_id = self._calendar_event_id(intent)
             fields["id"] = event_id
             body = self._request(
                 "POST",
@@ -405,14 +410,19 @@ class GoogleOfficeConnector:
             if resource.kind != "calendar":
                 return None
             if intent.scope.operation == "create_event" and resource.parent_id is None:
-                event_id = self._effect_id(intent)
-                path = f"{_calendar_path(resource)}/events/{event_id}"
+                base = f"{_calendar_path(resource)}/events"
+                event_id = self._calendar_event_id(intent)
+                try:
+                    body = self._request("GET", f"{base}/{event_id}")
+                except _Missing:
+                    # A write made by an older dispatcher may still be awaiting a receipt.
+                    event_id = self._legacy_effect_id(intent)
+                    body = self._request("GET", f"{base}/{event_id}")
             elif intent.scope.operation == "update_event" and resource.parent_id is not None:
                 event_id = resource.external_id
-                path = _calendar_path(resource)
+                body = self._request("GET", _calendar_path(resource))
             else:
                 return None
-            body = self._request("GET", path)
             if body.get("id") == event_id and self._action_marker(body) == intent.identity():
                 return event_id
         except _Missing:

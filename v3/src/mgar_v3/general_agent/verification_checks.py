@@ -72,8 +72,6 @@ def check_content(
         if step.kind == "citation" and output.startswith(b"%PDF-"):
             from mgar_v3.general_agent.research_pdf import verified_pdf_text
 
-            if any(ord(char) > 0xFFFF for char in step.excerpt):
-                return False
             output = verified_pdf_text(output)
         return excerpt in observation and excerpt in output and reference in output
     if isinstance(step, BrowserState):

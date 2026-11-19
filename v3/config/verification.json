@@ -2304,5 +2304,16 @@
       "tests/test_general_agent_mixed_executors.py"
     ],
     "timeout_seconds": 240
+  },
+  "GA06-GA08-REPAIRS": {
+    "components": {
+      "postgres": "real",
+      "pdf": "visible embedded supplementary glyphs and consistent citation proof",
+      "office": "distinct cross-project calendar identity and read-only legacy reconciliation"
+    },
+    "tests": [
+      "tests/test_general_agent_ga06_ga08_repairs.py"
+    ],
+    "timeout_seconds": 180
   }
 }
