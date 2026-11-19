@@ -1,0 +1,151 @@
+{
+  "schema_version": "magr-general-agent-independent-v1",
+  "task": "GA12",
+  "source_commit": "554ccea0f550efb4dd8b5318b3d2dda97a6f0681",
+  "source_sha256": "1abd2f9303b3467f0fda6dde265797f881d85bccbdb0a5eed16c31b206dfcda5",
+  "repair_acceptance_commit": "57bcf8743ef86ca227d535948dc7956e5b35405b",
+  "repair_acceptance": {
+    "path": "docs/general-agent-v1/accept/GA11-GA12/holdout-admission-repair-20261119.json",
+    "sha256": "0ad56af3cc35f76ec72a2f81b6d2329b7f643a3e6564eafd6ac0d19daadb1763"
+  },
+  "prior_independent_failure": {
+    "path": "docs/general-agent-v1/accept/GA11-GA12/independent-20261119.json",
+    "sha256": "deb77a927a6051e4f46e44d3f83919162cc2f146400ce523daa6bbdcdbff55e1"
+  },
+  "prior_public_evidence_hashes_verified": 27,
+  "independent_recheck": "INDEPENDENT_PASS",
+  "targeted_admission_checks": {
+    "counts": {
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "exits": {
+      "targeted": 0,
+      "lint": 0,
+      "typecheck": 0,
+      "lock": 0
+    },
+    "raw": [
+      {
+        "path": "evidence/GA12-ADMISSION-REPAIR/independent-20261119T132454609468Z/targeted.log",
+        "sha256": "b5f2d2f897ae9de55ee0675e0ecdf6b56eea49a0e6273f46d56daa3c0ac932ba"
+      },
+      {
+        "path": "evidence/GA12-ADMISSION-REPAIR/independent-20261119T132454609468Z/targeted.xml",
+        "sha256": "141e119bc3f338cbe639fdbe1a674b23c5bfb1b2cd606563ae4edb05dfc9d5b1"
+      }
+    ]
+  },
+  "original_reformatted_development_probe": {
+    "status": "PASS",
+    "case_count": 60,
+    "same_canonical_cases": true,
+    "reformatted_sha256": "1c1dd652c1f772e0b8fc93ee396be0983001ff697dd9f441f678b3a184835f5a",
+    "original_admission_reproduced": true,
+    "legacy_manifest_sha256": "ef4586ae95cdaaa21e798c41f910da870408bec153f21d5313a72743ad77c1eb",
+    "new_freeze_exit": 2,
+    "new_score_exit": 2,
+    "new_outputs_created": false,
+    "reason": "Published development cases are ineligible for holdout.",
+    "raw": [
+      {
+        "path": "evidence/GA12-ADMISSION-REPAIR/independent-20261119T132454609468Z/old-admission.log",
+        "sha256": "ef252caedbe759ccad1d7fe7f6005d5aaf8e0884970a20fd66e3e32270cf973e"
+      },
+      {
+        "path": "evidence/GA12-ADMISSION-REPAIR/independent-20261119T132454609468Z/new-freeze.log",
+        "sha256": "f67d055e4ae43e68ac62ca9131ba3b94543caaecb1ff2db200bc70d8ad1f2d72"
+      },
+      {
+        "path": "evidence/GA12-ADMISSION-REPAIR/independent-20261119T132454609468Z/new-score-legacy-freeze.log",
+        "sha256": "f67d055e4ae43e68ac62ca9131ba3b94543caaecb1ff2db200bc70d8ad1f2d72"
+      }
+    ]
+  },
+  "sealed_holdout_fixture": {
+    "status": "PASS",
+    "arm": "multi_domain",
+    "mode": "mock",
+    "passed": 60,
+    "evaluated": 60,
+    "domains": {
+      "autonomy": {
+        "evaluated": 10,
+        "passed": 10
+      },
+      "coding": {
+        "evaluated": 10,
+        "passed": 10
+      },
+      "cross-domain": {
+        "evaluated": 10,
+        "passed": 10
+      },
+      "data": {
+        "evaluated": 10,
+        "passed": 10
+      },
+      "office": {
+        "evaluated": 10,
+        "passed": 10
+      },
+      "research": {
+        "evaluated": 10,
+        "passed": 10
+      }
+    },
+    "policy_violations": 0,
+    "external_effect_errors": 0,
+    "usage": {
+      "cost_microusd": 0,
+      "input_tokens": 0,
+      "model": null,
+      "model_calls": 0,
+      "output_tokens": 0,
+      "provider": "ga12-mock",
+      "real_external_writes": 0
+    },
+    "historical_freeze_reproduced_byte_for_byte": true,
+    "case_scores_matched_previous_recheck": 60,
+    "bundle_sha256": "7cf0a5d3e30252a0de870f578548648c7facbe78478681b755894efd220ac730",
+    "freeze_sha256": "c017b366224ff42de3866e9686262ce8ce7f3fcbe90aafe318d8ed8c1a390569",
+    "holdout_commitment_sha256": "6a5d601c8a5e4efecf01573c6fff57f4547596fada44c5250539714a62083d2d",
+    "raw_sha256_private": "650b22be19339b000a665253a28a070bc1dcd7a7c5d208a0c54789249d937e01",
+    "summary_sha256_private": "a47b35f7c76605d25e50b3a032dfae7de8186796becb603df8a46f43c83420bd",
+    "freeze_log_sha256_private": "7ef3866b4aaf09be39b352a3029616589224a1dff0d9715df0c5f943de13b616",
+    "score_log_sha256_private": "0fb99d3c19d8dd0a516377f34c28848d7eba2213fd0e147a4879f079a12525da"
+  },
+  "static": {
+    "lint": {
+      "path": "evidence/GA12-ADMISSION-REPAIR/independent-20261119T132454609468Z/lint.log",
+      "sha256": "a220b562d6bdb3655673add818cabd1dbd6857a7efc7d06ff8178f9e0e2501e2"
+    },
+    "typecheck": {
+      "path": "evidence/GA12-ADMISSION-REPAIR/independent-20261119T132454609468Z/typecheck.log",
+      "sha256": "225392ae9d2b3ea0fb928bfb5a8297d8fa396b7e25773fb6e167ec1ec8638180"
+    },
+    "lock": {
+      "path": "evidence/GA12-ADMISSION-REPAIR/independent-20261119T132454609468Z/lock.log",
+      "sha256": "b3cbbdecaa83a53ff5e78261ae4c8cc922da87bb912b5c3dc9f2250a5d086c76"
+    }
+  },
+  "local_registered_result_reference": {
+    "counts": {
+      "tests": 17,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "rerun_in_this_review": false
+  },
+  "real_model": "NOT_RUN",
+  "real_external": "NOT_RUN",
+  "real_model_calls": 0,
+  "real_external_writes": 0,
+  "evidence": {
+    "path": "evidence/GA12-ADMISSION-REPAIR/independent-20261119T132454609468Z/summary.json",
+    "sha256": "04b96328ca5203ad6e08a14a09c9487f6e4683e5d041a1566cf8651dafb4b2bb"
+  }
+}

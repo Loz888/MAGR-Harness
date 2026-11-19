@@ -16,7 +16,7 @@ GA00 冻结和架构盘点已完成独立复验，原冻结工程基线为 FAIL�
 | [GA09](GA09_CODING_EXECUTOR.md) | Coding Executor 统一适配 | GA01、GA03、GA05 | INDEPENDENT_PASS，真实模型 NOT_RUN |
 | [GA10](GA10_PERSONAL_MEMORY.md) | Personal / Cross-domain Memory | GA01、GA05 | INDEPENDENT_PASS |
 | [GA11](GA11_KNOWLEDGE_GATEWAY.md) | Cross-domain Context & Knowledge Gateway | GA03、GA05、GA10 | 本地工程 INDEPENDENT_PASS，远程知识服务和生产 Embedding NOT_RUN |
-| [GA12](GA12_BENCHMARK.md) | General Agent Benchmark Suite | GA01–GA09 | 持出准入修复本地 PASS，待独立复验。真实模型与外部系统 NOT_RUN |
+| [GA12](GA12_BENCHMARK.md) | General Agent Benchmark Suite | GA01–GA09 | 持出准入修复 INDEPENDENT_PASS，原封存夹具 60/60。真实模型与外部系统 NOT_RUN |
 | GA13 | General Agent RC 集成验收 | GA00–GA12 | TODO |
 
 [GA00 冻结报告](GA00_BASELINE_20261119.md) · [调用链与差距矩阵](GA00_ARCHITECTURE.md) · [独立复验入口](GA00_RECHECK.md) · [机器验收记录](accept/GA00/accept.json) · [独立复验报告](GA00_INDEPENDENT_20261119.md) · [工程基线修复](GA00_ENGINEERING_REPAIR_20261119.md) · [修复独立复验](GA00_ENGINEERING_REPAIR_INDEPENDENT_20261119.md) · [GA01 独立复验](GA01_INDEPENDENT_20261119.md) · [GA02 与 GA03 独立复验](GA02_GA03_INDEPENDENT_20261119.md)
@@ -34,3 +34,5 @@ GA00 冻结和架构盘点已完成独立复验，原冻结工程基线为 FAIL�
 [GA11、GA12 独立验收](GA11_GA12_INDEPENDENT_20261119.md) · [独立机器记录](accept/GA11-GA12/independent-20261119.json)
 
 [GA12 持出准入修复](GA12_HOLDOUT_ADMISSION_REPAIR_20261119.md) · [修复机器记录](accept/GA11-GA12/holdout-admission-repair-20261119.json)
+
+[GA12 持出准入修复独立复验](GA12_HOLDOUT_ADMISSION_REPAIR_INDEPENDENT_20261119.md) · [独立机器记录](accept/GA11-GA12/holdout-admission-repair-independent-20261119.json)
