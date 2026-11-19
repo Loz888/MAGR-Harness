@@ -1,0 +1,356 @@
+{
+  "schema": "magr-ga00-engineering-repair-v1",
+  "original_frozen_source": "6402afeb0257867be88edc1108e37e8e5cf16cc5",
+  "original_ga00_independent_record": "a6329f1",
+  "tested_source": "4114fe1f9437b0532431175aeeba51b98f78030f",
+  "archive_source": "a91ae4ca9051fdd5c468db69c502ebfc30e7d255",
+  "restored_archive_files": 379,
+  "same_collected_node_ids": 3001,
+  "replay_source_files_verified": 675,
+  "full_initial_execution": {
+    "status": "FAIL",
+    "totals": {
+      "passed": 2999,
+      "failed": 2,
+      "errors": 0,
+      "skipped": 0
+    },
+    "nonpassing_results": [
+      {
+        "nodeid": "tests/test_harness_v4_h06.py::test_go_project_builds_and_tests_with_the_real_toolchain",
+        "kind": "failed",
+        "shard": "shard-1",
+        "message": "AssertionError: test command timed out"
+      },
+      {
+        "nodeid": "tests/test_v35_r03.py::test_late_receipt_after_cancel_is_discarded_and_replay_is_inert",
+        "kind": "failed",
+        "shard": "shard-2",
+        "message": "AssertionError: assert 'baseline_not_reproduced' == 'cancelled'"
+      }
+    ]
+  },
+  "engineering_suite": "PASS",
+  "aggregation": "full run plus same-source exact-node serial reruns",
+  "same_source_serial_reruns": [
+    {
+      "nodeid": "tests/test_harness_v4_h06.py::test_go_project_builds_and_tests_with_the_real_toolchain",
+      "before": "failed",
+      "after": "passed",
+      "report": {
+        "path": "evidence/GA00/repair-20261119/final-go-diagnosis/junit.xml",
+        "sha256": "fcceee70e371bb9c410f06028b7abdcb8836367d802c70df6a27ec6defc5aee4"
+      }
+    },
+    {
+      "nodeid": "tests/test_v35_r03.py::test_late_receipt_after_cancel_is_discarded_and_replay_is_inert",
+      "before": "failed",
+      "after": "passed",
+      "report": {
+        "path": "evidence/GA00/repair-20261119/final-cancel-diagnosis/junit.xml",
+        "sha256": "f674b51fcd8a4509052775e4b112a3fb1bb70d4cecf6bde6776e6d9d835f5a9e"
+      }
+    }
+  ],
+  "totals": {
+    "passed": 3001,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "shards": [
+    {
+      "id": "shard-0",
+      "counts": {
+        "passed": 27,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "exit_code": 0,
+      "from": "2026-11-19T07:42:13.534463+00:00",
+      "until": "2026-11-19T07:42:21.870371+00:00"
+    },
+    {
+      "id": "shard-1",
+      "counts": {
+        "passed": 439,
+        "failed": 1,
+        "errors": 0,
+        "skipped": 0
+      },
+      "exit_code": 1,
+      "from": "2026-11-19T07:42:21.872829+00:00",
+      "until": "2026-11-19T08:00:40.833999+00:00"
+    },
+    {
+      "id": "shard-2",
+      "counts": {
+        "passed": 517,
+        "failed": 1,
+        "errors": 0,
+        "skipped": 0
+      },
+      "exit_code": 1,
+      "from": "2026-11-19T07:42:21.873212+00:00",
+      "until": "2026-11-19T08:03:01.591061+00:00"
+    },
+    {
+      "id": "shard-3",
+      "counts": {
+        "passed": 456,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "exit_code": 0,
+      "from": "2026-11-19T07:42:21.874798+00:00",
+      "until": "2026-11-19T08:03:36.029522+00:00"
+    },
+    {
+      "id": "shard-4",
+      "counts": {
+        "passed": 504,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "exit_code": 0,
+      "from": "2026-11-19T07:42:21.873934+00:00",
+      "until": "2026-11-19T08:00:41.139640+00:00"
+    },
+    {
+      "id": "shard-5",
+      "counts": {
+        "passed": 572,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "exit_code": 0,
+      "from": "2026-11-19T07:42:21.875468+00:00",
+      "until": "2026-11-19T08:03:13.718668+00:00"
+    },
+    {
+      "id": "shard-6",
+      "counts": {
+        "passed": 484,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "exit_code": 0,
+      "from": "2026-11-19T07:42:21.875838+00:00",
+      "until": "2026-11-19T08:01:04.098222+00:00"
+    }
+  ],
+  "original_nonpassing_count": 216,
+  "original_nonpassing_retested": {
+    "passed": 216
+  },
+  "new_nonpassing_count": 0,
+  "static": {
+    "ruff": "PASS",
+    "mypy": "PASS",
+    "timing_admission": {
+      "passed": 23
+    }
+  },
+  "historical_v34_original_cache_bytes": {
+    "status": "NOT_RUN",
+    "unavailable_entries": 75
+  },
+  "real_model_calls": 0,
+  "external_e2e": "NOT_RUN",
+  "independent_repair_review": "NOT_RUN",
+  "evidence": [
+    {
+      "path": "evidence/GA00/repair-20261119/final-preflight-4114fe1/collection.log",
+      "sha256": "aba5883c5b9ee249dc63e33a7feee83cb79f69263c130b5995e1ea85935026a4"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/final-preflight-4114fe1/inputs.json",
+      "sha256": "2b80eb8f9949d4aa462c870064f9ccca1400d90062cd732a4cb42565413ec6fa"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/final-preflight-4114fe1/commit.txt",
+      "sha256": "7b6040882da9176c68138f0367868adadaf4411ed9560daf6e27716a87ed5ea1"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/final-static-4114fe1/lint.log",
+      "sha256": "a220b562d6bdb3655673add818cabd1dbd6857a7efc7d06ff8178f9e0e2501e2"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/final-static-4114fe1/typecheck.log",
+      "sha256": "2217d486a4cb8b894bdd7ab5db80ca0e2a87cee3e8fd896ccfe875137cf5c12e"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/final-static-4114fe1/timing-admission.junit.xml",
+      "sha256": "f6925af4abb2df3c2a28918cfac6d9a270f80cb5a09aeaaca6e7c774b25ece9f"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/final-static-4114fe1/timing-admission.log",
+      "sha256": "29f6c275c17aaa553e5fd4a235c197f634f93fc35ba5e4b158821daf98bab6ea"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/full-4114fe1/plan.json",
+      "sha256": "ba028746f6ff2d0ba13f0675fb27b405672f6caf7641725e6adc8da27b72eec8"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/full-4114fe1/shard-0/argv.json",
+      "sha256": "8e0c45839f129b491f77c41c5399e3f67117a2af00095e46b87daea4901c405d"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/full-4114fe1/shard-0/command.log",
+      "sha256": "380c089a64584e7b48c329c53eb82b48a8816f5193311edb10e839c286bdcbae"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/full-4114fe1/shard-0/junit.xml",
+      "sha256": "e653b3ab53af9d753c29578b84530b8405dd6791f4b825f689fc272445bc913d"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/full-4114fe1/shard-0/result.json",
+      "sha256": "ca7ebeefcd9e10074b9fcd0872ca0e1027b0ade51e0adf22d6eb61500509cc08"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/full-4114fe1/shard-1/argv.json",
+      "sha256": "e1819d44167ecc92155665c2e56417aa06578bbca7e9d2d174cd22889f83d80a"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/full-4114fe1/shard-1/command.log",
+      "sha256": "e260e4c5ea7abd50bb81faef13033362f7f693e4f67172fa5f20ae2f7e9156be"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/full-4114fe1/shard-1/junit.xml",
+      "sha256": "3f39ee24d114f27776ee0f11712d76f69460f5710489c5756b124b1a31c86a99"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/full-4114fe1/shard-1/result.json",
+      "sha256": "4f9c98a09ad661ade1f6a2cada10af64216ecc87d5f4419a0610be1cd8f23d7d"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/full-4114fe1/shard-2/argv.json",
+      "sha256": "9af331bd49e6feed01ccfc0ee3496920fd71ea7df1d0364c5ca1219a8f8b55df"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/full-4114fe1/shard-2/command.log",
+      "sha256": "c20ff28f6796e37e5d908dd02eaec4a0e790dc56aff785cf8a2c1cd49f05593b"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/full-4114fe1/shard-2/junit.xml",
+      "sha256": "b19870c737e60371f08ca53fb70e6fd56b724e2343deb2bc7516ce10a4a33ef4"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/full-4114fe1/shard-2/result.json",
+      "sha256": "ba5ca57468234ef0e8095f152b05b162d5051ca2af2c0e5dfa7454ef96afb2f8"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/full-4114fe1/shard-3/argv.json",
+      "sha256": "dd40af8324e2bd289a85170904b2679b2721a7b471c504638f2fe42ddb8f701f"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/full-4114fe1/shard-3/command.log",
+      "sha256": "942a435e59de222d93705f021d09f979af0a06fcc6e1dd2d851c8f94c6b8c0d1"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/full-4114fe1/shard-3/junit.xml",
+      "sha256": "5c9d4e6907e55bdcae81860fde8efd6dcfad993a9e7f07d108d589a652d44596"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/full-4114fe1/shard-3/result.json",
+      "sha256": "f9873169cd596208ef3dc4c6233654584641b4fda82b59568f0be9f958dad6f8"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/full-4114fe1/shard-4/argv.json",
+      "sha256": "038380c7d0ee41e9c7cc71761b08b099b8eb00bdc0fc4c3b28e608c057ecb9e8"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/full-4114fe1/shard-4/command.log",
+      "sha256": "2d130817da3be5f3164ee5efb11c03df394304db46c57cb2e717252b4a75f08a"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/full-4114fe1/shard-4/junit.xml",
+      "sha256": "2d804f6bdbbbcb5169d906a0a2fcf01211453e76005c8e79c4deae785e9bc17f"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/full-4114fe1/shard-4/result.json",
+      "sha256": "4a8bb4cde119b126aad0d2d784bc881c6d15a3a604369205396bc61a7de3b6bc"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/full-4114fe1/shard-5/argv.json",
+      "sha256": "f58ffc97125d41c46ef221b386530556479ca347d26664e5b79e3794c2130f71"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/full-4114fe1/shard-5/command.log",
+      "sha256": "72087cc53d536deb36f08256ad25d3e1bbb24b0036d674b593c5e469f7d25294"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/full-4114fe1/shard-5/junit.xml",
+      "sha256": "f10a55e91cb1e4df347f5215945f74043cece06f9a7b4253772c770fcea34d6c"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/full-4114fe1/shard-5/result.json",
+      "sha256": "67e1b0a0c9a1713d2f82b48925e4f4f00704476243cb2eb57f416973e5a29a28"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/full-4114fe1/shard-6/argv.json",
+      "sha256": "c99299ff646d6b7d284ceece9d4117808c0b06fcbd541b962ce205853f2249a9"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/full-4114fe1/shard-6/command.log",
+      "sha256": "f71281c02a953643f758a079914b08f6c81587233cf0563c8785e7078909f602"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/full-4114fe1/shard-6/junit.xml",
+      "sha256": "42dd60ecbd28d9a4781ebd2cefbf469cc9932c4feee980b0b4ff7d6e4a33f56c"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/full-4114fe1/shard-6/result.json",
+      "sha256": "ac5bbc95873f32010491635064469e00ad785d9efe0313877687244475746417"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/final-go-diagnosis/junit.xml",
+      "sha256": "fcceee70e371bb9c410f06028b7abdcb8836367d802c70df6a27ec6defc5aee4"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/final-go-diagnosis/command.log",
+      "sha256": "1e311a94d6054d3a8487c3bce66d88dc2d8d38da28b9bc5e9175ba5a9dfb788a"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/final-cancel-diagnosis/junit.xml",
+      "sha256": "f674b51fcd8a4509052775e4b112a3fb1bb70d4cecf6bde6776e6d9d835f5a9e"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/final-cancel-diagnosis/command.log",
+      "sha256": "0443f511438f6a88ea30ad90b53c8449c1f08aabf331b7479dc09df49fc95e2e"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/serial-two-4114fe1/junit.xml",
+      "sha256": "5d0b1b9ccf3c36d2d4bd73de60edb0bf76be749f744339a6ec033088e57fcc89"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/serial-two-4114fe1/command.log",
+      "sha256": "beab14ccb2ade658596f2a39f347d02820f496f9173d22808b8c89d99e6b09a2"
+    },
+    {
+      "path": "evidence/GA00/repair-20261119/cancel-failed-build-receipt.json",
+      "sha256": "f633aec31d1e43a58ec61269c9106d428222f6b8d481e1bedf50ab7ca0542f43"
+    }
+  ],
+  "serial_confirmation": {
+    "passed": 2,
+    "nodes": [
+      "tests/test_harness_v4_h06.py::test_go_project_builds_and_tests_with_the_real_toolchain",
+      "tests/test_v35_r03.py::test_late_receipt_after_cancel_is_discarded_and_replay_is_inert"
+    ]
+  },
+  "failure_diagnosis": {
+    "first_go": "public test command timed out within the integration fixture lease",
+    "cancel_receipt": {
+      "stage": "baseline",
+      "status": "build_failed",
+      "exit_code": 137,
+      "kill_cause": "UNKNOWN"
+    }
+  }
+}
