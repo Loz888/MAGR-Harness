@@ -1,0 +1,653 @@
+{
+  "schema_version": "magr-general-agent-independent-v1",
+  "tasks": [
+    "GA11",
+    "GA12"
+  ],
+  "source_commit": "a995416c1714bc7fa8aa22506f5b2c30be97461b",
+  "source_sha256": "2422e2c0fd11e2e648cf980adc32e2b0dfdf332245714cc3c8e4e45f48693c64",
+  "original_acceptance_commit": "9b95892ce5b94496ec93a558f28ae95257a22e10",
+  "original_acceptance": {
+    "path": "docs/general-agent-v1/accept/GA11-GA12/accept.json",
+    "sha256": "d761a2d1844c33e4c5295b4e74c57fe49cc9649bc1b63e20ccd6f1eb583fc6f3"
+  },
+  "original_public_evidence_hashes_verified": 17,
+  "independent_acceptance": {
+    "GA11": "INDEPENDENT_PASS",
+    "GA12": "INDEPENDENT_FAIL"
+  },
+  "engineering_registered": {
+    "GA11": {
+      "counts": {
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "raw": [
+        {
+          "path": "evidence/GA11-GA12/independent-20261119T130950Z-4d6541f2/GA11/official/result.json",
+          "sha256": "db892f100fd85f4a29af84dc6dce3d57663e5fa27074af44e6d753f563f25e3f"
+        },
+        {
+          "path": "evidence/GA11-GA12/independent-20261119T130950Z-4d6541f2/GA11/official/command.log",
+          "sha256": "9553ebded99f5688f7ea37c2f17858f0cfe3cdc19b100abe535b02c2f5d40bfc"
+        },
+        {
+          "path": "evidence/GA11-GA12/independent-20261119T130950Z-4d6541f2/GA11/official/junit.xml",
+          "sha256": "4a6e460d5520a52f2d2741006d3649e37a49fa84be56ce38686ef2e36e4b8345"
+        }
+      ]
+    },
+    "GA12": {
+      "counts": {
+        "tests": 13,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "raw": [
+        {
+          "path": "evidence/GA11-GA12/independent-20261119T130950Z-4d6541f2/GA12/official/result.json",
+          "sha256": "cf0073536fe04e695c66a5c068b9635fa72a7b3e55e34017571342345fd78ffa"
+        },
+        {
+          "path": "evidence/GA11-GA12/independent-20261119T130950Z-4d6541f2/GA12/official/command.log",
+          "sha256": "5f0705a01840a8d73b0ce64ea9aac2137b789ff161d182500e8bbd154c5bf343"
+        },
+        {
+          "path": "evidence/GA11-GA12/independent-20261119T130950Z-4d6541f2/GA12/official/junit.xml",
+          "sha256": "53fc7c08f81d4e078634483929b1eb2c1b49838b43a2490c6eb3a996d2cc739f"
+        }
+      ]
+    }
+  },
+  "original_compatibility": {
+    "passed": 69,
+    "raw": [
+      {
+        "path": "evidence/GA11-GA12/independent-20261119T130950Z-4d6541f2/compatibility/command.json",
+        "sha256": "e11818317da59d0a9a385bc6915c3446c2854f622c11e1a91ae2bd450bebc02b"
+      },
+      {
+        "path": "evidence/GA11-GA12/independent-20261119T130950Z-4d6541f2/compatibility/command.log",
+        "sha256": "f2e14407a62caab4998ae2350ba0d90f25f1211e43e642684a3e50c7f5aa585b"
+      },
+      {
+        "path": "evidence/GA11-GA12/independent-20261119T130950Z-4d6541f2/compatibility/junit.xml",
+        "sha256": "31236498ef85f7b2ab0332d46f5cd466d97a5e742d86acb40459f1d4b7912a49"
+      },
+      {
+        "path": "evidence/GA11-GA12/independent-20261119T130950Z-4d6541f2/compatibility/cases.json",
+        "sha256": "e593f99f4c9621d56a90ab5885ef6f73665a3d844a6b640a0b3af2aecc8c7d1f"
+      }
+    ]
+  },
+  "unique_pytest": {
+    "passed": 87,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "static": {
+    "lint": {
+      "exit": 0,
+      "seconds": 0.125,
+      "raw": {
+        "path": "evidence/GA11-GA12/independent-20261119T130950Z-4d6541f2/lint/command.log",
+        "sha256": "a220b562d6bdb3655673add818cabd1dbd6857a7efc7d06ff8178f9e0e2501e2"
+      }
+    },
+    "typecheck": {
+      "exit": 0,
+      "seconds": 16.928,
+      "raw": {
+        "path": "evidence/GA11-GA12/independent-20261119T130950Z-4d6541f2/typecheck/command.log",
+        "sha256": "225392ae9d2b3ea0fb928bfb5a8297d8fa396b7e25773fb6e167ec1ec8638180"
+      }
+    },
+    "lock": {
+      "exit": 0,
+      "seconds": 0.042,
+      "raw": {
+        "path": "evidence/GA11-GA12/independent-20261119T130950Z-4d6541f2/lock/command.log",
+        "sha256": "b3cbbdecaa83a53ff5e78261ae4c8cc922da87bb912b5c3dc9f2250a5d086c76"
+      }
+    }
+  },
+  "development_fixture": {
+    "status": "PASS",
+    "matched_case_scores": 300,
+    "bundle_sha256": "34054a7d8c322cda8914d4a3f1949583e383022bd8d22573921625ab43c14b63",
+    "arms": {
+      "multi_domain": {
+        "all": {
+          "evaluated": 60,
+          "passed": 60,
+          "policy_violations": 0,
+          "external_effect_errors": 0
+        },
+        "domains": {
+          "autonomy": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "coding": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "cross-domain": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "data": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "office": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "research": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          }
+        }
+      },
+      "no_memory": {
+        "all": {
+          "evaluated": 60,
+          "passed": 57,
+          "policy_violations": 0,
+          "external_effect_errors": 0
+        },
+        "domains": {
+          "autonomy": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "coding": {
+            "evaluated": 10,
+            "passed": 7,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "cross-domain": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "data": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "office": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "research": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          }
+        }
+      },
+      "no_planner": {
+        "all": {
+          "evaluated": 60,
+          "passed": 0,
+          "policy_violations": 0,
+          "external_effect_errors": 0
+        },
+        "domains": {
+          "autonomy": {
+            "evaluated": 10,
+            "passed": 0,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "coding": {
+            "evaluated": 10,
+            "passed": 0,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "cross-domain": {
+            "evaluated": 10,
+            "passed": 0,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "data": {
+            "evaluated": 10,
+            "passed": 0,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "office": {
+            "evaluated": 10,
+            "passed": 0,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "research": {
+            "evaluated": 10,
+            "passed": 0,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          }
+        }
+      },
+      "no_reranker": {
+        "all": {
+          "evaluated": 60,
+          "passed": 54,
+          "policy_violations": 0,
+          "external_effect_errors": 0
+        },
+        "domains": {
+          "autonomy": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "coding": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "cross-domain": {
+            "evaluated": 10,
+            "passed": 8,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "data": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "office": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "research": {
+            "evaluated": 10,
+            "passed": 6,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          }
+        }
+      },
+      "single_domain": {
+        "all": {
+          "evaluated": 60,
+          "passed": 52,
+          "policy_violations": 0,
+          "external_effect_errors": 0
+        },
+        "domains": {
+          "autonomy": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "coding": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "cross-domain": {
+            "evaluated": 10,
+            "passed": 2,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "data": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "office": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "research": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          }
+        }
+      }
+    },
+    "raw": [
+      {
+        "path": "evidence/GA11-GA12/independent-20261119T130950Z-4d6541f2/fixture-dev/raw.jsonl",
+        "sha256": "2e7ec2ef2666f45252ae81f07080277173f24fe29c06e49ae7e93d3f3cef4ad7"
+      },
+      {
+        "path": "evidence/GA11-GA12/independent-20261119T130950Z-4d6541f2/fixture-dev/summary.json",
+        "sha256": "ee551610d339f40a821195cc0618368cee867caf1e60335ee72b8c116b5fde8a"
+      },
+      {
+        "path": "evidence/GA11-GA12/independent-20261119T130950Z-4d6541f2/dev-cli/command.log",
+        "sha256": "530e9e4eab3fc60ddc2eb5d05d662dda0c43290154f94371ed970c611c6ec2e0"
+      }
+    ]
+  },
+  "sealed_holdout_fixture": {
+    "status": "PASS",
+    "matched_case_scores": 300,
+    "initial": {
+      "passed": 59,
+      "evaluated": 60,
+      "failure_domain": "coding",
+      "reason": "PATCH_STALE"
+    },
+    "previous_failed_case_passed": true,
+    "bundle_sha256": "7cf0a5d3e30252a0de870f578548648c7facbe78478681b755894efd220ac730",
+    "contract_sha256": "cb2faaec550529db43dde74661c644eba73fb9cd13fc6024cc0451261390f3b3",
+    "freeze_manifest_sha256": "c017b366224ff42de3866e9686262ce8ce7f3fcbe90aafe318d8ed8c1a390569",
+    "exact_case_overlap_excluding_ids": 0,
+    "opaque_commitments_verified": 60,
+    "raw_results_sha256_private": "24ece53919e6292d77a9af10c56fcd89f79e5ce91612e85a4c5f01af56b3f495",
+    "raw_summary_sha256_private": "da0a1409b399357cb46ef171dc9feedf4c06adcf2e3e56d5a7ddfef1ebca4acf",
+    "arms": {
+      "multi_domain": {
+        "all": {
+          "evaluated": 60,
+          "passed": 60,
+          "policy_violations": 0,
+          "external_effect_errors": 0
+        },
+        "domains": {
+          "autonomy": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "coding": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "cross-domain": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "data": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "office": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "research": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          }
+        }
+      },
+      "no_memory": {
+        "all": {
+          "evaluated": 60,
+          "passed": 56,
+          "policy_violations": 0,
+          "external_effect_errors": 0
+        },
+        "domains": {
+          "autonomy": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "coding": {
+            "evaluated": 10,
+            "passed": 6,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "cross-domain": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "data": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "office": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "research": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          }
+        }
+      },
+      "no_planner": {
+        "all": {
+          "evaluated": 60,
+          "passed": 0,
+          "policy_violations": 0,
+          "external_effect_errors": 0
+        },
+        "domains": {
+          "autonomy": {
+            "evaluated": 10,
+            "passed": 0,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "coding": {
+            "evaluated": 10,
+            "passed": 0,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "cross-domain": {
+            "evaluated": 10,
+            "passed": 0,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "data": {
+            "evaluated": 10,
+            "passed": 0,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "office": {
+            "evaluated": 10,
+            "passed": 0,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "research": {
+            "evaluated": 10,
+            "passed": 0,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          }
+        }
+      },
+      "no_reranker": {
+        "all": {
+          "evaluated": 60,
+          "passed": 56,
+          "policy_violations": 0,
+          "external_effect_errors": 0
+        },
+        "domains": {
+          "autonomy": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "coding": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "cross-domain": {
+            "evaluated": 10,
+            "passed": 9,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "data": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "office": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "research": {
+            "evaluated": 10,
+            "passed": 7,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          }
+        }
+      },
+      "single_domain": {
+        "all": {
+          "evaluated": 60,
+          "passed": 53,
+          "policy_violations": 0,
+          "external_effect_errors": 0
+        },
+        "domains": {
+          "autonomy": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "coding": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "cross-domain": {
+            "evaluated": 10,
+            "passed": 3,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "data": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "office": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          },
+          "research": {
+            "evaluated": 10,
+            "passed": 10,
+            "policy_violations": 0,
+            "external_effect_errors": 0
+          }
+        }
+      }
+    },
+    "public_audit": {
+      "path": "evidence/GA11-GA12/independent-20261119T130950Z-4d6541f2/holdout-blind-audit.json",
+      "sha256": "8d3730eb5dfd91c52657cc841119318ec4bb8a8034cd197da59ee255568fe920"
+    }
+  },
+  "independent_finding": {
+    "task": "GA12",
+    "code": "DEVELOPMENT_CASES_ADMITTED_AS_HOLDOUT",
+    "status": "FAIL",
+    "reason": "unchanged development cases admitted as holdout",
+    "admitted_cases": 60,
+    "reported_role": "independent",
+    "reported_split": "holdout",
+    "reported_passed": 60,
+    "development_sha256": "34054a7d8c322cda8914d4a3f1949583e383022bd8d22573921625ab43c14b63",
+    "reserialized_sha256": "1c1dd652c1f772e0b8fc93ee396be0983001ff697dd9f441f678b3a184835f5a",
+    "canonical_case_objects_identical": true,
+    "evidence": {
+      "path": "evidence/GA11-GA12/independent-20261119T130950Z-4d6541f2/holdout-blind-audit.json",
+      "sha256": "8d3730eb5dfd91c52657cc841119318ec4bb8a8034cd197da59ee255568fe920"
+    }
+  },
+  "live": {
+    "remote_knowledge": "NOT_RUN",
+    "production_embedding": "NOT_RUN",
+    "real_provider": "NOT_RUN",
+    "real_external_systems": "NOT_RUN",
+    "real_model_calls": 0,
+    "real_cost_microusd": 0,
+    "real_external_writes": 0
+  },
+  "cleanup": {
+    "path": "evidence/GA11-GA12/independent-20261119T130950Z-4d6541f2/summary.json",
+    "sha256": "de0ee4f5fa5a677f7b788d726c67ff1f6e423b67f62194c7df50f6dd11b6a38a"
+  }
+}
