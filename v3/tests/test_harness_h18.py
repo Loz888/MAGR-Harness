@@ -317,6 +317,65 @@ def test_restore_retries_same_target_after_missing_pg_restore(
     check_recovered(postponed_dsn, postponed_runtime)
 
 
+def test_restore_retries_when_publication_loses_parent_write_permission(
+    product_env, empty_database, tmp_path, monkeypatch, capsys,
+):
+    env = product_env
+    payload = b"Restore publication permission fixture"
+    content_hash = env.engine.artifacts.put(payload)
+    with env.engine.transaction() as conn:
+        conn.execute(
+            "INSERT INTO app.artifacts(content_hash, byte_count) VALUES (%s, %s)",
+            (content_hash, len(payload)),
+        )
+    bundle = tmp_path / "snapshot"
+    expected = backup(env.settings, bundle)
+    parent = tmp_path / "publish"
+    parent.mkdir(mode=0o700)
+    runtime = parent / "runtime"
+    dsn = empty_database()
+    monkeypatch.setenv("H18_PUBLISH_TEST_DSN", dsn)
+    args = [
+        "ops", "restore", str(bundle), "--target-dsn-env", "H18_PUBLISH_TEST_DSN",
+        "--runtime", str(runtime),
+    ]
+    publish = snapshot._publish
+
+    def revoke_at_publication(stage, output):
+        assert output == runtime and stage.is_dir()
+        parent.chmod(0o500)
+        publish(stage, output)
+
+    try:
+        with monkeypatch.context() as fault:
+            fault.setattr(snapshot, "_publish", revoke_at_publication)
+            assert main(args) == 2
+        assert not runtime.exists(), "publication left a directory at the final runtime path"
+        assert parent.stat().st_mode & 0o777 == 0o500
+    finally:
+        parent.chmod(0o700)
+
+    assert json.loads(capsys.readouterr().out) == {
+        "status": "FAIL", "code": "SNAPSHOT_RUNTIME_PUBLISH_FAILED",
+        "database_restored": True, "retry_same_command": True,
+    }
+    receipts = list(parent.glob(".mgar-restore-*"))
+    assert len(receipts) == 1 and receipts[0].read_text().endswith("\nimported\n")
+    with psycopg.connect(dsn) as conn:
+        assert conn.execute("SELECT count(*) FROM app.schema_migrations").fetchone()[0] == (
+            expected["migrations"]
+        )
+
+    no_restore_tool = tmp_path / "empty-path"
+    no_restore_tool.mkdir()
+    with monkeypatch.context() as retry:
+        retry.setenv("PATH", str(no_restore_tool))
+        assert main(args) == 0
+    assert json.loads(capsys.readouterr().out) == expected
+    assert ArtifactStore(runtime / "artifacts").read(content_hash) == payload
+    assert not receipts[0].exists()
+
+
 @pytest.mark.parametrize("tenants", [False], indirect=True)
 def test_disconnected_event_stream_exports_a_correlatable_request(tenants):
     env = tenants

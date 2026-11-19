@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import ctypes
+import errno
 import hashlib
 import json
 import logging
@@ -9,8 +11,10 @@ import os
 import re
 import shutil
 import subprocess
+from collections.abc import Iterator
+from contextlib import contextmanager
 from pathlib import Path
-from tempfile import TemporaryDirectory
+from tempfile import mkdtemp
 from typing import Any, cast
 
 import psycopg
@@ -31,6 +35,8 @@ _PG_FIELDS = {
 }
 _PG_OVERRIDES = {"dbname": "PGDATABASE"}
 _RESTORE_LOCK = 31010018
+_AT_FDCWD = -100
+_RENAME_NOREPLACE = 1
 _LOGGER = logging.getLogger(__name__)
 
 
@@ -84,13 +90,30 @@ def _validate_artifacts(conn: psycopg.Connection[Any], data: Path) -> None:
 
 
 def _publish(stage: Path, output: Path) -> None:
-    # Reserve a new destination without ever replacing an existing backup or runtime.
-    output.mkdir(mode=0o700)
+    """Publish on Linux/WSL in one operation without replacing even an empty directory."""
     try:
-        stage.rename(output)
-    except OSError:
-        output.rmdir()
-        raise
+        renameat2 = ctypes.CDLL(None, use_errno=True).renameat2
+    except AttributeError as exc:
+        raise OSError(errno.ENOTSUP, "Atomic directory publication is unavailable", output) from exc
+    renameat2.argtypes = [ctypes.c_int, ctypes.c_char_p, ctypes.c_int, ctypes.c_char_p,
+                          ctypes.c_uint]
+    renameat2.restype = ctypes.c_int
+    if renameat2(_AT_FDCWD, os.fsencode(stage), _AT_FDCWD, os.fsencode(output), _RENAME_NOREPLACE):
+        failure = ctypes.get_errno()
+        raise OSError(failure, os.strerror(failure), output)
+
+
+@contextmanager
+def _staging_directory(parent: Path, prefix: str) -> Iterator[Path]:
+    scratch = Path(mkdtemp(dir=parent, prefix=prefix))
+    try:
+        yield scratch
+    finally:
+        try:
+            shutil.rmtree(scratch)
+        except OSError:
+            # Keep the original publication error and the operator's directory mode.
+            _LOGGER.warning("Could not remove snapshot staging directory %s", scratch.name)
 
 
 def backup(settings: Settings, output: Path) -> dict[str, Any]:
@@ -102,8 +125,8 @@ def backup(settings: Settings, output: Path) -> dict[str, Any]:
         raise DomainError("SNAPSHOT_DESTINATION_EXISTS", "Choose a new snapshot directory")
     output.parent.mkdir(mode=0o700, parents=True, exist_ok=True)
     dsn = settings.database_url.get_secret_value()
-    with TemporaryDirectory(dir=output.parent, prefix=".backup-") as tmp:
-        stage = Path(tmp) / "snapshot"
+    with _staging_directory(output.parent, ".backup-") as scratch:
+        stage = scratch / "snapshot"
         stage.mkdir(mode=0o700)
         with psycopg.connect(dsn, connect_timeout=5) as conn:
             conn.execute("SET TRANSACTION ISOLATION LEVEL REPEATABLE READ READ ONLY")
@@ -284,8 +307,7 @@ def restore(source: Path, dsn: str, runtime: Path) -> dict[str, Any]:
             raise DomainError(
                 "SNAPSHOT_TARGET_NOT_EMPTY", "Restore requires an empty target database",
             )
-        with TemporaryDirectory(dir=runtime.parent, prefix=".restore-") as tmp:
-            scratch = Path(tmp)
+        with _staging_directory(runtime.parent, ".restore-") as scratch:
             stage = scratch / "runtime"
             (stage / "artifacts").mkdir(mode=0o700, parents=True)
             stage.chmod(0o700)

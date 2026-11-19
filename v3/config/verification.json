@@ -1416,6 +1416,19 @@
     ],
     "timeout_seconds": 120
   },
+  "HV4-H18-PUBLISH-RETRY": {
+    "components": {
+      "fault": "loss of actual parent directory write permission at runtime publication",
+      "recovery": "completed import receipt, atomic publication and retry with pg_restore absent",
+      "integrity": "PostgreSQL migration history and recovered CAS bytes",
+      "live": "NOT_RUN_no_paid_model_or_production"
+    },
+    "pytest_node_selectors": true,
+    "tests": [
+      "tests/test_harness_h18.py::test_restore_retries_when_publication_loses_parent_write_permission"
+    ],
+    "timeout_seconds": 120
+  },
   "HV4-H12": {
     "components": {
       "frozen_catalog": "H00 byte hashes, original judge objects, fixed twelve-case denominator and resource limits",

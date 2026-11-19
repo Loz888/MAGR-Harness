@@ -42,7 +42,7 @@ uv run --frozen mgar ops restore /path/to/new-backup \
 
 预先创建目标空数据库，并用指定的环境变量提供 DSN。恢复会校验快照文件，在新目录恢复 `artifacts/` 和 `web/credentials.key`，以事务导入目标数据库并复核迁移历史及 CAS。回滚时将对应的旧发行包指向恢复库、恢复目录下的 `artifacts/` 和原工作区卷。数据库集群角色和授权由原部署工具恢复。Web 账户、会话随数据库恢复，已加密的凭据使用备份内的密钥恢复。
 
-数据库导入与核验成功后才会发布运行目录。缺少 `pg_restore` 时，安装或恢复工具后用相同快照、目标数据库和运行目录执行原命令。若 CLI 返回 `SNAPSHOT_RUNTIME_PUBLISH_FAILED` 和 `database_restored: true`，修好目标路径或权限后执行原命令即可继续发布。若返回 `SNAPSHOT_RESTORE_OUTCOME_UNKNOWN`，先核对上一轮 PostgreSQL 导入结果和隔离目标，再决定是否重试。
+数据库导入与核验成功后才会原子发布运行目录。快照发布要求 Linux 或 WSL2 上的目标文件系统支持无覆盖原子重命名，已有目录受到保护。缺少 `pg_restore` 时，安装或恢复工具后用相同快照、目标数据库和运行目录执行原命令。若 CLI 返回 `SNAPSHOT_RUNTIME_PUBLISH_FAILED` 和 `database_restored: true`，修好目标路径或权限后执行原命令即可继续发布。若返回 `SNAPSHOT_RESTORE_OUTCOME_UNKNOWN`，先核对上一轮 PostgreSQL 导入结果和隔离目标，再决定是否重试。
 
 ## 指标与保留
 
