@@ -742,7 +742,10 @@ def test_forward_migration_preserves_legacy_owner_session_and_migration_hashes(s
                 hashes = previous.execute(
                     "SELECT name,sha256 FROM app.schema_migrations ORDER BY name"
                 ).fetchall()
-            assert migrate(dsn) == ["0057_harness_tenants.sql"]
+            migrations = Path(__file__).resolve().parents[1] / "migrations"
+            expected = sorted(p.name for p in migrations.glob("*.sql") if p.name >= "0057")
+            assert expected[0] == "0057_harness_tenants.sql"
+            assert migrate(dsn) == expected
             assert not migrate(dsn)
             with psycopg.connect(dsn) as migrated:
                 assert (

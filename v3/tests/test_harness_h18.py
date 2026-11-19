@@ -142,6 +142,11 @@ def test_old_schema_backup_restore_then_forward_upgrade_preserves_real_login_and
     for migration in (ROOT / "migrations").glob("*.sql"):
         if migration.name < "0057":
             shutil.copyfile(migration, prior_migrations / migration.name)
+    expected = sorted(
+        migration.name for migration in (ROOT / "migrations").glob("*.sql")
+        if not (prior_migrations / migration.name).is_file()
+    )
+    assert expected[0] == "0057_harness_tenants.sql"
     applied = migrate(source_dsn, prior_migrations)
     assert applied[-1].startswith("0056")
     source_settings = runtime_settings(settings, source_dsn, tmp_path / "source")
@@ -163,7 +168,7 @@ def test_old_schema_backup_restore_then_forward_upgrade_preserves_real_login_and
         ), BrowserSession(user_id=expected_id, username="owner", csrf_token="fixture"))
         with psycopg.connect(source_dsn) as pg:
             assert migration_status(pg, ROOT / "migrations") == {
-                "code": "SCHEMA_UPGRADE_REQUIRED", "files": ["0057_harness_tenants.sql"],
+                "code": "SCHEMA_UPGRADE_REQUIRED", "files": expected,
             }
         bundle = tmp_path / "before-upgrade"
         backup(source_settings, bundle)
@@ -180,7 +185,7 @@ def test_old_schema_backup_restore_then_forward_upgrade_preserves_real_login_and
         assert WebAnalysisSettings(restored, target_settings).snapshot()[1]["deepseek_api_key"] == (
             KEY_A
         )
-        assert migrate(target_dsn) == ["0057_harness_tenants.sql"]
+        assert migrate(target_dsn) == expected
         assert migrate(target_dsn) == []
         web = WebAnalysisSettings(restored, target_settings)
         assert hashlib.sha256(web.key_path.read_bytes()).hexdigest() == expected_key_hash

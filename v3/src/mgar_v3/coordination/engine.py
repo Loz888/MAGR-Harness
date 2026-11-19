@@ -71,9 +71,11 @@ class Engine:
         self.proactivity = Proactivity(self)
         self.benchmarks = Benchmarks(self)
         self.commerce = Commerce(self)
+        from mgar_v3.general_agent.store import GeneralTaskStore
         from mgar_v3.harness.store import HarnessStore
 
         self.harness = HarnessStore(self)
+        self.general_tasks = GeneralTaskStore(self)
 
     def close(self) -> None:
         with self._mutex:

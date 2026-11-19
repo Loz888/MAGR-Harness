@@ -455,10 +455,12 @@ def create_app(
             request.app.state.product.tenancy.require_task(request.path_params["task_id"], user_id)
         return user_id
 
+    from mgar_v3.general_agent.api import register_general_task_routes
     from mgar_v3.harness.product_api import register_product_routes
     from mgar_v3.harness.runner_api import register_runner_routes
 
     register_product_routes(app, authenticated, member_user)
+    register_general_task_routes(app, member_user)
     register_runner_routes(app, authenticated)
 
     @app.get("/api/v3/auth/session")

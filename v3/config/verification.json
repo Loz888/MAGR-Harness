@@ -2153,5 +2153,22 @@
     ],
     "timeout_seconds": 240,
     "pytest_node_selectors": true
+  },
+  "GA01": {
+    "components": {
+      "api": "authenticated_harness_routes",
+      "model": "not_used",
+      "postgres": "real",
+      "redis": "real",
+      "outcomes": "fixture_verifier_receipts_bound_to_content"
+    },
+    "pytest_node_selectors": true,
+    "tests": [
+      "tests/test_general_agent_ga01.py",
+      "tests/test_environment.py",
+      "tests/test_harness_h16.py::test_forward_migration_preserves_legacy_owner_session_and_migration_hashes",
+      "tests/test_harness_h18.py::test_old_schema_backup_restore_then_forward_upgrade_preserves_real_login_and_key"
+    ],
+    "timeout_seconds": 300
   }
 }
