@@ -391,7 +391,7 @@ class GeneralGraphStore:
                 TaskPlan(task_revision=revision, steps=tuple(node.goal for node in graph.nodes)),
                 replace_running=True,
             )
-            return self._save(
+            updated = self._save(
                 conn,
                 task,
                 state,
@@ -406,6 +406,8 @@ class GeneralGraphStore:
                 graph_revision=state.graph_revision + 1,
                 plan_version=planned.version,
             )
+            self._advance_task(planned, updated)
+            return updated
 
     def claim(
         self,

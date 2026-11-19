@@ -638,3 +638,32 @@ def test_current_membership_fences_graph_api_and_new_provider_dispatch(settings,
                 claim(store, state, "work", access)
             assert revoked.value.code == "HARNESS_MEMBER_REVOKED"
             assert store.get(task.task_id) == state
+
+
+def test_replan_removing_optional_wait_advances_to_verifying(engine):
+    from mgar_v3.general_agent.capabilities import CapabilityRegistry
+
+    descriptor = capability()
+    store = engine.general_graphs
+    store.registry = CapabilityRegistry([descriptor])
+    report = node("report", outputs=("result",))
+    wait = node(
+        "optional", kind="wait_event", capabilities=(), budget=Resources(), signal_key="extra"
+    )
+    task, state, access = start(engine, graph(report, wait), None, descriptor)
+    operation = claim(store, state, "report", access)
+    before = store.settle(receipt(engine, operation, outputs={"result": "report evidence"}))
+    assert engine.general_tasks.get(task.task_id).state == "running"
+    updated = store.replan(
+        task.task_id,
+        1,
+        before.graph_revision,
+        before.version,
+        graph(report),
+        ReplanTrigger(kind="external_event", reference="optional event withdrawn"),
+    )
+    assert updated.graph_revision == before.graph_revision + 1
+    assert updated.progress == {"report": before.progress["report"]}
+    assert updated.spent == before.spent
+    current = engine.general_tasks.get(task.task_id)
+    assert current.state == "verifying" and current.plan_version == updated.plan_version
