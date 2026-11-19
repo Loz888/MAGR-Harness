@@ -1,4 +1,4 @@
-# V3 application rules
+# MAGR-Harness application rules
 
 Use Python 3.12, the locked environment, and the explicit SQL migrations.
 Keep remote calls outside database transactions. Route external writes through approved Action/Outbox records and Dispatcher.

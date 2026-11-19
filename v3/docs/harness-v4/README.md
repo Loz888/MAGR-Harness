@@ -1,4 +1,4 @@
-# MAGR Harness 升级任务书与规划
+# MAGR-Harness 任务书与规划
 
 2026 年 11 月 19 日，H18 本地独立工程门 **PASS**。发布权限中断后可原样重试，CAS 内容一致，已有目录受到保护。[独立复验](H18_PUBLISH_RETRY_INDEPENDENT_20261119.md)
 

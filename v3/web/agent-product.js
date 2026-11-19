@@ -585,7 +585,7 @@
       const header = node("div", "product-assistant-heading");
       const result = data.results.get(turn.task_id);
       const status = turn.task_id === data.taskId ? data.status : result?.status || turn.status;
-      header.append(node("span", "assistant-icon", "R"), node("strong", "", "RepoSage"), node("span", "run-status " + (status === "completed" ? "succeeded" : status), statusLabels[status] || status || "已保存"));
+      header.append(node("span", "assistant-icon", "M"), node("strong", "", "MAGR-Harness"), node("span", "run-status " + (status === "completed" ? "succeeded" : status), statusLabels[status] || status || "已保存"));
       article.append(header);
       const logs = data.logs.get(turn.task_id) || [];
       if (logs.length) {

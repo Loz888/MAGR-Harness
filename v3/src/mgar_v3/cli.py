@@ -15,7 +15,7 @@ from mgar_v3.settings import Settings
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(prog="mgar")
+    parser = argparse.ArgumentParser(prog="mgar", description="MAGR-Harness command line")
     parser.add_argument("--api", default="http://127.0.0.1:18080")
     commands = parser.add_subparsers(dest="command", required=True)
     headless.register_commands(commands.add_parser("harness", help="Harness sessions and tasks"))

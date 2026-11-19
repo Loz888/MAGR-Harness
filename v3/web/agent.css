@@ -97,12 +97,6 @@ a {
   font-size: 20px;
   font-family: Georgia, serif;
 }
-.brand-tag {
-  font-size: 8px;
-  letter-spacing: 1.1px;
-  color: #7e8a80;
-  margin-left: auto;
-}
 .new-chat {
   margin: 37px 0 30px;
   border: 1px solid #d6ded2;
@@ -1675,9 +1669,6 @@ dialog textarea {
   }
 }
 
-@media (max-width: 1050px) {
-  .sidebar .brand-tag { display: none; }
-}
 @media (max-width: 700px) {
   #close-sidebar { position: absolute; right: 10px; top: 16px; }
   .sidebar .brand { padding-right: 24px; }

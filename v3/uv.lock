@@ -680,7 +680,7 @@ wheels = [
 ]
 
 [[package]]
-name = "mgar-v3"
+name = "magr-harness"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [

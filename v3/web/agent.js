@@ -221,9 +221,9 @@ function showLogin() {
 function configureLogin(setup) {
   state.setupRequired = setup;
   $("auth-eyebrow").textContent = setup ? "第一次见面，你好" : "欢迎回来";
-  $("auth-title").textContent = setup ? "创建你的管理员账户" : "登录 RepoSage";
+  $("auth-title").textContent = setup ? "创建你的管理员账户" : "登录 MAGR-Harness";
   $("auth-description").textContent = setup
-    ? "为这台电脑上的 RepoSage 设置用户名与密码。"
+    ? "为这台电脑上的 MAGR-Harness 设置用户名与密码。"
     : "使用你的账户，继续项目对话。";
   $("login-submit").textContent = setup ? "创建账户并开始" : "登录";
   $("password").autocomplete = setup ? "new-password" : "current-password";

@@ -352,7 +352,7 @@ def create_app(
             if provided is None:
                 authority.close()
 
-    app = FastAPI(title="MGAR V3.1 R4", lifespan=lifespan)
+    app = FastAPI(title="MAGR-Harness", lifespan=lifespan)
     mcp_servers = [server(role, lambda: app.state.engine) for role in ("knowledge", "data")]
     for role, mcp_server in zip(("knowledge", "data"), mcp_servers, strict=True):
         app.mount("/mcp/" + role, mcp_server.streamable_http_app())

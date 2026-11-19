@@ -1,6 +1,6 @@
-# MGAR V3 implementation scope
+# MAGR-Harness implementation scope
 
-This is the independent V3 repository. Application code belongs in `v3/`.
+MAGR-Harness is an independent project. Application code belongs in `v3/`.
 Read `v31-upgrade/TASK_QUEUE.md`, the current card, and `v3/docs/adr/0001-v31-boundaries.md` before changing behavior.
 The original `v3-upgrade/` execution pack is preserved locally as source material; the public checkout uses the published ADRs and V3.1 task cards. Overrides are recorded explicitly in ADRs and new cards.
 Do not modify the adjacent V2 repository, its migrations, dependencies, or historical evidence.

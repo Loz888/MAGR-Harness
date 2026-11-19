@@ -1,7 +1,7 @@
 [project]
-name = "mgar-v3"
+name = "magr-harness"
 version = "0.1.0"
-description = "Event-driven, evidence-backed MGAR coordination runtime"
+description = "MAGR-Harness, an independent development agent and execution harness"
 requires-python = ">=3.12,<3.13"
 dependencies = [
   "cryptography>=45,<51",

@@ -1,30 +1,14 @@
-# Harness 本地运行与验证
+# MAGR-Harness 本地运行与验证
 
-当前首页提供自然语言项目 Agent。首次登录后配置模型、打开项目并设置一次工作区权限和
-累计预算；日常直接描述需求，在同一会话中继续调整、查看执行过程、预览和审查变更。
-无需填写任务类型、替换文本或逐条勾选执行许可。仓库分析模式与旧操作员接口继续保留。
-升级必须先执行 `make migrate`（包含 0056），再启动服务。
-完整步骤见 [Agent 使用说明](docs/agent-ui.md) 和 [产品接线任务卡](docs/harness-v4/HARNESS_PRODUCT_TASK.md)。
-命令行和 Python SDK 可以使用同一套会话、任务、事件和补丁接口。[Headless 使用说明](docs/harness-v4/HEADLESS.md)
-可配对另一台设备，在设备上运行已登记项目的固定测试。[Runner 使用说明](docs/harness-v4/RUNNER.md)
-工程闭环使用受控模型验证，不代表 H12 的真实模型质量门已通过。
+MAGR-Harness 是独立项目，当前源码发行版为 0.1.0。主页面接受自然语言需求，并在同一会话中展示流式执行、固定测试与补丁审查。首次登录后配置模型并授权项目与预算。GitHub 仓库分析也可从同一页面使用。
 
-[Harness 升级任务书与规划](docs/harness-v4/README.md)包含差距分析、19 张任务卡和
-分阶段验收；具体已接通能力与限制以产品任务卡和各项实测记录为准。
+在克隆后的 `MAGR-Harness/v3/` 运行 `make setup`、`make deps-up`、`make migrate`、`make sandbox-build`、`make doctor` 和 `make dev`。升级时先备份，再执行 `make migrate`。打开 `http://127.0.0.1:18080`，首次启动创建管理员账户。停止依赖可用 `make deps-stop`，数据卷保留。
 
-[项目首页](../README.md) · [V3.5 产品说明](docs/v35/PRODUCT.md) · [90 秒演示](docs/v35/DEMO.md) · [评测索引](docs/v35/EVALUATION_INDEX.md) · [完整技术报告](docs/TECHNICAL_REPORT.md) · [文档导航](docs/README.md)
+Python 包发行名为 `magr-harness`。现有 `mgar` CLI、`mgar_v3` Python 导入路径、`/api/v3` 路由和 `MGAR_V3_` 环境变量继续作为接口标识，可复用原有调用和部署配置。
 
-本页提供实际运行命令。V3.5 已把只读调查、Finding/Evidence、有授权修复、测试回执、Review Bundle 与受控 Draft PR 串成一条可复核链路；Web 与 CLI 调同一 API。工程门与安全门 `PASS`；E02 真实 live 四臂失败，`live_agent_gate=FAIL`；真实 GitHub 写入 `NOT_RUN`。电商Case工单、独立业务判定、API/CLI与工作台的历史交付见[P0运行手册](docs/p0-commerce-runbook.md)与[最终复验/交付](docs/repairs/P0-20261107/README.md)。历史阶段结果按记录时间理解。
+[项目首页](../README.md) · [网页使用](docs/agent-ui.md) · [CLI 与 Python SDK](docs/harness-v4/HEADLESS.md) · [Runner](docs/harness-v4/RUNNER.md) · [安装与恢复](docs/harness-v4/H18_OPERATIONS.md) · [验收与任务卡](docs/harness-v4/TASKS.md)
 
-仓库地址为`https://github.com/Loz888/Magr-Harness.git`。所有make命令在你本机克隆后的`Magr-Harness/v3/`执行；`/workspace/MAGR-v3/v3`是开发云路径，在你的WSL上不会自动存在。
-
-依次执行`make setup`、`make deps-up`、`make migrate`、`make doctor`和`make dev`。工作台为`http://127.0.0.1:18080`（任务页 `/workbench`，仓库分析 `/repo`，API 文档 `/docs`）。首次打开创建管理员账户，之后用账户密码登录。模型配置直接在设置弹窗中填写。setup仅生成缺失的0600配置，不覆盖既有值。
-
-网页默认打开项目 Agent，缺少模型或项目授权会引导设置；CLI 原 fixture 模式保留。
-PG端口55433、Redis端口56379仅绑定回环；停止依赖用`make deps-stop`，保留数据卷。
-真实模型调用必须同时具有有效模型设置和项目授权；发布仍使用原审批出口。
-
-## V3.5 演示与验收
+## 历史评测演示
 
 ```bash
 make demo          # 单任务 adversarial fixture 评测：真实 Docker，零付费
@@ -56,7 +40,7 @@ uv run --frozen python scripts/r5_demo.py --run <run_id> --approve-payload-hash 
 
 门禁口径见[评测索引](docs/v35/EVALUATION_INDEX.md)：工程门与 live 门分开记录，`NOT_RUN` 不得改写为 `PASS`；fixture 发布回执永不显示为 GitHub 链接。
 
-## V3.2 通用 GitHub 仓库分析
+## GitHub 仓库分析
 
 `repository_analysis` 任务接受 `https://github.com/owner/repo` 与自然语言问题，
 在固定 Commit 上由 DeepSeek 自主执行 `Reason → Tool Call → Observation → Reason`，
@@ -101,10 +85,10 @@ export PATH="$HOME/.local/bin:$PATH"
 (
 set -e
 mkdir -p "$HOME/projects"
-if [ ! -d "$HOME/projects/Magr-Harness/.git" ]; then
-    git clone https://github.com/Loz888/Magr-Harness.git "$HOME/projects/Magr-Harness"
+if [ ! -d "$HOME/projects/MAGR-Harness/.git" ]; then
+    git clone https://github.com/Loz888/MAGR-Harness.git "$HOME/projects/MAGR-Harness"
 fi
-cd "$HOME/projects/Magr-Harness"
+cd "$HOME/projects/MAGR-Harness"
 git pull --ff-only
 cd v3
 docker info >/dev/null
