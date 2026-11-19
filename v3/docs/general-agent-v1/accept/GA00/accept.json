@@ -1,0 +1,685 @@
+{
+  "schema_version": "magr-general-agent-ga00-v1",
+  "task": "GA00",
+  "task_status": "IMPLEMENTED",
+  "baseline_capture": "PASS",
+  "baseline": {
+    "ref": "refs/heads/main",
+    "repository": "Loz888/MAGR-Harness",
+    "commit": "6402afeb0257867be88edc1108e37e8e5cf16cc5",
+    "git_tree": "71eda705b72bd27fc74e4441bf053436ead00581",
+    "standard_source_sha256": "51586bf2e7a1bc56559e79ea0a63655b2eafdb4ab998ce67d1e2c70e18854900",
+    "package": "magr-harness",
+    "version": "0.1.0",
+    "worktree_clean_before_and_after": true
+  },
+  "checks": {
+    "pytest": {
+      "status": "FAIL",
+      "collected": 3001,
+      "collected_modules": 219,
+      "junit_identity_matches_collection": true,
+      "totals": {
+        "passed": 2785,
+        "failed": 214,
+        "errors": 2,
+        "skipped": 0
+      },
+      "shards": [
+        {
+          "id": "shard-0",
+          "exit_code": 1,
+          "counts": {
+            "passed": 26,
+            "failed": 1,
+            "errors": 0,
+            "skipped": 0
+          },
+          "command_path": "evidence/GA00/baseline-20261119T062105Z/shard-0/command.json",
+          "duration_seconds": 9.0,
+          "result_path": "evidence/GA00/baseline-20261119T062105Z/shard-0/result.json",
+          "report_path": "evidence/GA00/baseline-20261119T062105Z/shard-0/junit.xml"
+        },
+        {
+          "id": "shard-1",
+          "exit_code": 1,
+          "counts": {
+            "passed": 641,
+            "failed": 37,
+            "errors": 0,
+            "skipped": 0
+          },
+          "command_path": "evidence/GA00/baseline-20261119T062105Z/shard-1/command.json",
+          "duration_seconds": 1042.1,
+          "result_path": "evidence/GA00/baseline-20261119T062105Z/shard-1/result.json",
+          "report_path": "evidence/GA00/baseline-20261119T062105Z/shard-1/junit.xml"
+        },
+        {
+          "id": "shard-2",
+          "exit_code": 1,
+          "counts": {
+            "passed": 645,
+            "failed": 70,
+            "errors": 2,
+            "skipped": 0
+          },
+          "command_path": "evidence/GA00/baseline-20261119T062105Z/shard-2/command.json",
+          "duration_seconds": 1750.15,
+          "result_path": "evidence/GA00/baseline-20261119T062105Z/shard-2/result.json",
+          "report_path": "evidence/GA00/baseline-20261119T062105Z/shard-2/junit.xml"
+        },
+        {
+          "id": "shard-3",
+          "exit_code": 1,
+          "counts": {
+            "passed": 740,
+            "failed": 70,
+            "errors": 0,
+            "skipped": 0
+          },
+          "command_path": "evidence/GA00/baseline-20261119T062105Z/shard-3/command.json",
+          "duration_seconds": 916.08,
+          "result_path": "evidence/GA00/baseline-20261119T062105Z/shard-3/result.json",
+          "report_path": "evidence/GA00/baseline-20261119T062105Z/shard-3/junit.xml"
+        },
+        {
+          "id": "shard-4",
+          "exit_code": 1,
+          "counts": {
+            "passed": 733,
+            "failed": 36,
+            "errors": 0,
+            "skipped": 0
+          },
+          "command_path": "evidence/GA00/baseline-20261119T062105Z/shard-4/command.json",
+          "duration_seconds": 1690.14,
+          "result_path": "evidence/GA00/baseline-20261119T062105Z/shard-4/result.json",
+          "report_path": "evidence/GA00/baseline-20261119T062105Z/shard-4/junit.xml"
+        }
+      ],
+      "collection_argv": [
+        "python",
+        "-m",
+        "pytest",
+        "--collect-only",
+        "-q"
+      ],
+      "non_passing_cases": {
+        "path": "docs/general-agent-v1/accept/GA00/non-passing-cases.json",
+        "sha256": "7dd366c4b3e960c132533acd16854f8cb5eb50083f9db306cb388c89d8e318b6"
+      }
+    },
+    "timing_admission_supplement": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": "PYTHONPATH=.:${PWD}/src python -m pytest -q experiments/harness-v4/r08-timing-admission-v1/test_timing_admission.py",
+      "tests": 23
+    },
+    "lint": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": "make lint"
+    },
+    "typecheck": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": "make typecheck"
+    }
+  },
+  "real_provider": {
+    "status": "NOT_RUN",
+    "model_calls": 0
+  },
+  "external_e2e": {
+    "status": "NOT_RUN"
+  },
+  "independent_review": {
+    "status": "NOT_RUN",
+    "entrypoint": "GA00_RECHECK.md"
+  },
+  "taskbook": {
+    "path": "docs/general-agent-v1/TASKBOOK_V1.md",
+    "sha256": "c4e9a282975174ab9f45e5b31234d2343817043d925a3c2739bcbfaed4d2a152"
+  },
+  "architecture": {
+    "Web 与 FastAPI": {
+      "source": "PRESENT",
+      "call_chain": "WIRED",
+      "engineering": "PASS",
+      "tests": [
+        "tests/test_agent_page.py",
+        "tests/test_agent_assets.py",
+        "tests/test_harness_product_api.py"
+      ],
+      "counts": {
+        "passed": 38,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "real_provider": "NOT_RUN",
+      "external_e2e": "NOT_RUN",
+      "independent": "NOT_RUN"
+    },
+    "CLI 与 Python SDK": {
+      "source": "PRESENT",
+      "call_chain": "WIRED",
+      "engineering": "PASS",
+      "tests": [
+        "tests/test_harness_headless.py",
+        "tests/test_cli.py"
+      ],
+      "counts": {
+        "passed": 12,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "real_provider": "NOT_RUN",
+      "external_e2e": "NOT_RUN",
+      "independent": "NOT_RUN"
+    },
+    "CodingLoop 与任务策略": {
+      "source": "PRESENT",
+      "call_chain": "WIRED",
+      "engineering": "PASS",
+      "tests": [
+        "tests/test_harness_v4_h08.py",
+        "tests/test_harness_v4_h09.py",
+        "tests/test_harness_v4_h10.py",
+        "tests/test_harness_product_service.py"
+      ],
+      "counts": {
+        "passed": 80,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "real_provider": "NOT_RUN",
+      "external_e2e": "NOT_RUN",
+      "independent": "NOT_RUN"
+    },
+    "审批、完成条件及证据": {
+      "source": "PRESENT",
+      "call_chain": "WIRED",
+      "engineering": "PASS",
+      "tests": [
+        "tests/test_harness_v4_h10_finalization.py",
+        "tests/test_harness_v4_h10_lease_provenance.py",
+        "tests/test_public_probe_verification.py"
+      ],
+      "counts": {
+        "passed": 65,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "real_provider": "NOT_RUN",
+      "external_e2e": "NOT_RUN",
+      "independent": "NOT_RUN"
+    },
+    "Broker、权限与沙箱": {
+      "source": "PRESENT",
+      "call_chain": "WIRED",
+      "engineering": "FAIL",
+      "tests": [
+        "tests/test_harness_v4_h04.py",
+        "tests/test_harness_v4_h06.py",
+        "tests/test_harness_v4_h10_tools.py"
+      ],
+      "counts": {
+        "passed": 84,
+        "failed": 1,
+        "errors": 0,
+        "skipped": 0
+      },
+      "real_provider": "NOT_RUN",
+      "external_e2e": "NOT_RUN",
+      "independent": "NOT_RUN"
+    },
+    "工作区与增量编辑": {
+      "source": "PRESENT",
+      "call_chain": "WIRED",
+      "engineering": "PASS",
+      "tests": [
+        "tests/test_harness_v4_h05.py",
+        "tests/test_harness_product_symlinks.py"
+      ],
+      "counts": {
+        "passed": 34,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "real_provider": "NOT_RUN",
+      "external_e2e": "NOT_RUN",
+      "independent": "NOT_RUN"
+    },
+    "PostgreSQL、配额与恢复": {
+      "source": "PRESENT",
+      "call_chain": "WIRED",
+      "engineering": "PASS",
+      "tests": [
+        "tests/test_harness_v4_h11_store.py",
+        "tests/test_harness_v4_h11_service.py",
+        "tests/test_harness_v4_h11_io.py",
+        "tests/test_harness_v4_h11_boundaries.py",
+        "tests/test_h11_loop.py"
+      ],
+      "counts": {
+        "passed": 57,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "real_provider": "NOT_RUN",
+      "external_e2e": "NOT_RUN",
+      "independent": "NOT_RUN"
+    },
+    "同一会话上下文": {
+      "source": "PRESENT",
+      "call_chain": "WIRED",
+      "engineering": "PASS",
+      "tests": [
+        "tests/test_context_policy.py",
+        "tests/test_harness_product_context.py",
+        "tests/test_harness_v4_h12_context_feedback.py"
+      ],
+      "counts": {
+        "passed": 56,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "real_provider": "NOT_RUN",
+      "external_e2e": "NOT_RUN",
+      "independent": "NOT_RUN"
+    },
+    "仓库级持久记忆": {
+      "source": "PRESENT",
+      "call_chain": "WIRED",
+      "engineering": "FAIL",
+      "tests": [
+        "tests/test_v33_memory_schema.py",
+        "tests/test_v33_memory_retrieval.py",
+        "tests/test_v33_memory_write.py",
+        "tests/test_v33_memory_agent.py"
+      ],
+      "counts": {
+        "passed": 44,
+        "failed": 2,
+        "errors": 0,
+        "skipped": 0
+      },
+      "real_provider": "NOT_RUN",
+      "external_e2e": "NOT_RUN",
+      "independent": "NOT_RUN"
+    },
+    "模型适配与计费": {
+      "source": "PRESENT",
+      "call_chain": "WIRED",
+      "engineering": "PASS",
+      "tests": [
+        "tests/test_harness_product_models.py",
+        "tests/test_analysis_response_receipts.py",
+        "tests/test_h12_budget_context.py"
+      ],
+      "counts": {
+        "passed": 42,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "real_provider": "NOT_RUN",
+      "external_e2e": "NOT_RUN",
+      "independent": "NOT_RUN"
+    },
+    "MCP 与固定知识源": {
+      "source": "PRESENT",
+      "call_chain": "WIRED",
+      "engineering": "PASS",
+      "tests": [
+        "tests/test_mcp.py",
+        "tests/test_r4_mcp.py",
+        "tests/test_harness_product_extensions.py"
+      ],
+      "counts": {
+        "passed": 50,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "real_provider": "NOT_RUN",
+      "external_e2e": "NOT_RUN",
+      "independent": "NOT_RUN"
+    },
+    "项目规则及插件": {
+      "source": "PRESENT",
+      "call_chain": "WIRED",
+      "engineering": "PASS",
+      "tests": [
+        "tests/test_harness_h14_guidance.py",
+        "tests/test_harness_h14_plugins.py"
+      ],
+      "counts": {
+        "passed": 17,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "real_provider": "NOT_RUN",
+      "external_e2e": "NOT_RUN",
+      "independent": "NOT_RUN"
+    },
+    "多用户队列与调度": {
+      "source": "PRESENT",
+      "call_chain": "WIRED",
+      "engineering": "PASS",
+      "tests": [
+        "tests/test_harness_h16.py"
+      ],
+      "counts": {
+        "passed": 11,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "real_provider": "NOT_RUN",
+      "external_e2e": "NOT_RUN",
+      "independent": "NOT_RUN"
+    },
+    "配对 Runner": {
+      "source": "PRESENT",
+      "call_chain": "WIRED",
+      "engineering": "PASS",
+      "tests": [
+        "tests/test_harness_runner.py"
+      ],
+      "counts": {
+        "passed": 16,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "real_provider": "NOT_RUN",
+      "external_e2e": "NOT_RUN",
+      "independent": "NOT_RUN"
+    },
+    "动作、Outbox 与 GitHub 交付": {
+      "source": "PRESENT",
+      "call_chain": "WIRED",
+      "engineering": "PASS",
+      "tests": [
+        "tests/test_pipeline.py",
+        "tests/test_harness_github_delivery.py",
+        "tests/test_r5_live.py"
+      ],
+      "counts": {
+        "passed": 45,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "real_provider": "NOT_RUN",
+      "external_e2e": "NOT_RUN",
+      "independent": "NOT_RUN"
+    },
+    "仓库分析与领域路由前身": {
+      "source": "PRESENT",
+      "call_chain": "WIRED",
+      "engineering": "PASS",
+      "tests": [
+        "tests/test_v32_repository_analysis.py",
+        "tests/test_v32_repository_analysis_db.py",
+        "tests/test_router_api.py",
+        "tests/test_router_model.py"
+      ],
+      "counts": {
+        "passed": 31,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "real_provider": "NOT_RUN",
+      "external_e2e": "NOT_RUN",
+      "independent": "NOT_RUN"
+    },
+    "可选仓库专家": {
+      "source": "PRESENT",
+      "call_chain": "WIRED",
+      "engineering": "PASS",
+      "tests": [
+        "tests/test_harness_h17.py"
+      ],
+      "counts": {
+        "passed": 18,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "real_provider": "NOT_RUN",
+      "external_e2e": "NOT_RUN",
+      "independent": "NOT_RUN"
+    },
+    "运行诊断与恢复": {
+      "source": "PRESENT",
+      "call_chain": "WIRED",
+      "engineering": "FAIL",
+      "tests": [
+        "tests/test_harness_h18.py",
+        "tests/test_environment.py"
+      ],
+      "counts": {
+        "passed": 9,
+        "failed": 2,
+        "errors": 0,
+        "skipped": 0
+      },
+      "real_provider": "NOT_RUN",
+      "external_e2e": "NOT_RUN",
+      "independent": "NOT_RUN"
+    }
+  },
+  "evidence": [
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/git-identity.txt",
+      "sha256": "480275a95c5afb2de140b0112254fa857d596de39d3c1d9466e9304429ab286e"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/remote-main.txt",
+      "sha256": "028dfb4bfdfe512e60e69fff84c6860ba596a959c08fdf89abf6b167e480b402"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/worktree-before.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/worktree-after.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/platform.txt",
+      "sha256": "8475cb033df31b9e2f84c96e8499f506ad88575f269a88a8bb36b84b71f2111c"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/dependency-hashes.txt",
+      "sha256": "f68df78365ceb1f30b67015936c056fb32ca2ea776e531259c65ca8fc69cb729"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/image-lock-hashes.txt",
+      "sha256": "aaa3de86265a00b81776cb54618568aa017272660c0816416de0c4e19ce0400e"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/prepared-inputs.json",
+      "sha256": "56f9b15d00065c0e926a71eb4bda50d3578989effe04bb0cccc286e357829c8e"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/existing-broker-containers.txt",
+      "sha256": "c200bac7d9af5b7d857b7259b4183133dd1ab53db9ba8871edd9505b38a95dcd"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/install.log",
+      "sha256": "40438e8507ea964539719dc9539fdaff099720eea50ad61a7e1df0aa7d1d0a0e"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/lock-check.log",
+      "sha256": "b8a9fa2fc7aaaf2878e07c0f9fb2fb05e2879fd58906900fc205844601f605e3"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/collection.log",
+      "sha256": "9907d40ea649861bcd4914839ae9a8692966e7950390876bcf0f1cd8924c5092"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/collected-nodeids.txt",
+      "sha256": "e3fa7758091a26361b89fb22e3178c1275e2828c99e1d9d4713106cbdc50adea"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/shards.json",
+      "sha256": "f85ea0bf1abdb37e5f716890380697b4329c80efa299e29323cd890c9cbabc2d"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/execution.json",
+      "sha256": "ef860da5bde2ff820f6803812d1c59271c6fa5c0daada5a47975150f952daef4"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/orchestration.log",
+      "sha256": "8adde173895e6c25ccc44a3d6ab689180cdc363a355c23a0cdbba32bec2f8f76"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/lint.log",
+      "sha256": "a220b562d6bdb3655673add818cabd1dbd6857a7efc7d06ff8178f9e0e2501e2"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/lint.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/typecheck.log",
+      "sha256": "2217d486a4cb8b894bdd7ab5db80ca0e2a87cee3e8fd896ccfe875137cf5c12e"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/typecheck.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/source-fingerprint.txt",
+      "sha256": "90a908cde27524ce0d2bfb2783d34672b1438d8512c996ce215beee2c5316d1e"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/timing-admission.log",
+      "sha256": "9188b017ad1272c7a968971126df7f3bf9260736a5d26ab6dbb12796c404df4f"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/timing-admission.junit.xml",
+      "sha256": "ae3e34d7be82da999e05963e0d5b62c0bcd1ee548130531679495bcf315b96a4"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/timing-admission.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/general-contracts-search.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/general-contracts-search.exit",
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/h00-public-snapshot-hashes.json",
+      "sha256": "56a9280fd10edad0b28517ccacd874ebd82feb093492c2ddc857eaa9ea5bfac6"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/orchestration-script.py",
+      "sha256": "6e9941a933349e21ca8edb462da3bba96d52fffe4993475cf255f5dcdd689990"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/source-fingerprint-after.txt",
+      "sha256": "90a908cde27524ce0d2bfb2783d34672b1438d8512c996ce215beee2c5316d1e"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/v35-public-fixture-fields.json",
+      "sha256": "5699d1178d48f3223f796fc5b34eb4d6dce1b798117d7a5fc296e444e799b24a"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/shard-0/command.json",
+      "sha256": "40c578286b0f0c1d181d32ff0bd212e5c45212c028be0bb6218239a7dea6afee"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/shard-0/command.log",
+      "sha256": "6a564185fa09b62ef8e4eaa72600c920e87056b41b7250a27d324efdcafc8143"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/shard-0/junit.xml",
+      "sha256": "06884ff93a2eb02b76e101fe293851f9ab2388d8dcc06994dd71806c55a3231d"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/shard-0/result.json",
+      "sha256": "a6d1e56207d03778fac439e7f1ec186a9f10d95495d87fd35905cf538d2b1770"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/shard-1/command.json",
+      "sha256": "7ae682d60d293ed874a0b1ca00790d286513b12e67c3b3f202d67d36e22a6acf"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/shard-1/command.log",
+      "sha256": "44a4638ef6093bdef65fe4c347c5603455c588853d9c383b0101df1a3e6a3611"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/shard-1/junit.xml",
+      "sha256": "c4e1ac12b697c573698ad2d60a1e79018d92afc48f35ead211603c5c14ea6cc6"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/shard-1/result.json",
+      "sha256": "7a8c3425185fed86217ad1a06bc62a5e1377a02bdfa9ceb90de21b1094cabddf"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/shard-2/command.json",
+      "sha256": "ac7cb09a3c7569c20616a563fa2b5b4779a0ea487f932f96ec84dc8389a51597"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/shard-2/command.log",
+      "sha256": "b0740e6b7146d022d985dc03dfa59877ac13066c56f52b0c7d207ead7e411cdd"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/shard-2/junit.xml",
+      "sha256": "fc05779d6a48d1c821292cfeaa5d60ee41b0d513b2894199f0d6d825d7744b67"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/shard-2/result.json",
+      "sha256": "1a0f6cf4bc2824387930be5695d0f8ce0b1305dff9d13125a585a02d49a73a86"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/shard-3/command.json",
+      "sha256": "a00253dee0261f40478b883850a6bcb4ee80bd0a76470ee4ef5f12590d4351fb"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/shard-3/command.log",
+      "sha256": "c165d7d8437f75e5cda8a1219a9f795eeb93e135e389f99a8b0f7e9dc100b07c"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/shard-3/junit.xml",
+      "sha256": "b73fdf5870e436b1b4b12d8bc4ea992b2f00176d1dde4559595f11e3e9237816"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/shard-3/result.json",
+      "sha256": "1b4263e0e1b567e2030047797a7485de7339f509643f5cf252dc100ae4f26eba"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/shard-4/command.json",
+      "sha256": "c738494a024e2173a9e00072f27d954e04233d1d2bd059ec86b2c1d86ac747f7"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/shard-4/command.log",
+      "sha256": "d5c0bb9149b068ddf90281a360257df60c7ed184cef7cb76f8efce912854a740"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/shard-4/junit.xml",
+      "sha256": "b170dcd566ef0ba456f17637e66b503449348496f38e3c08ce83476b6f8622bf"
+    },
+    {
+      "path": "evidence/GA00/baseline-20261119T062105Z/shard-4/result.json",
+      "sha256": "29042363561874d7a176188b09d9908f6966414d45fa23569f047a4be4ce3952"
+    }
+  ]
+}

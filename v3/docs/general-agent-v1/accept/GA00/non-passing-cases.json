@@ -1,0 +1,1514 @@
+[
+  {
+    "nodeid": "tests/test_harness_v4_h04.py::test_no_h04_containers_remain_after_execution",
+    "kind": "failed",
+    "shard": "shard-0",
+    "junit_message": "AssertionError: assert '54ea1f85d4b9\\nca6c02a153c4' == ''\n  \n  + 54ea1f85d4b9\n  + ca6c02a153c4",
+    "last_traceback_error": "+ ca6c02a153c4"
+  },
+  {
+    "nodeid": "tests/test_h12_build_acceptance.py::test_supplemental_build_does_not_require_a_green_original_compile_to_fail",
+    "kind": "failed",
+    "shard": "shard-1",
+    "junit_message": "AttributeError: 'NoneType' object has no attribute 'task_kind'",
+    "last_traceback_error": "AttributeError: 'NoneType' object has no attribute 'task_kind'"
+  },
+  {
+    "nodeid": "tests/test_h12_build_acceptance.py::test_compile_only_bugfix_still_requires_original_build_failure",
+    "kind": "failed",
+    "shard": "shard-1",
+    "junit_message": "AttributeError: 'NoneType' object has no attribute 'task_kind'",
+    "last_traceback_error": "AttributeError: 'NoneType' object has no attribute 'task_kind'"
+  },
+  {
+    "nodeid": "tests/test_h12_build_acceptance.py::test_public_probe_build_is_a_separate_required_gate",
+    "kind": "failed",
+    "shard": "shard-1",
+    "junit_message": "AttributeError: 'NoneType' object has no attribute 'task_kind'",
+    "last_traceback_error": "AttributeError: 'NoneType' object has no attribute 'task_kind'"
+  },
+  {
+    "nodeid": "tests/test_h12_build_command.py::test_real_pg_and_docker_require_both_build_and_tests",
+    "kind": "failed",
+    "shard": "shard-1",
+    "junit_message": "mgar_v3.domain.DomainError: A pinned sandbox image is required",
+    "last_traceback_error": "mgar_v3.domain.DomainError: A pinned sandbox image is required"
+  },
+  {
+    "nodeid": "tests/test_h12_build_command.py::test_known_build_recovers_with_original_purpose_and_no_relaunch",
+    "kind": "failed",
+    "shard": "shard-1",
+    "junit_message": "mgar_v3.domain.DomainError: A pinned sandbox image is required",
+    "last_traceback_error": "mgar_v3.domain.DomainError: A pinned sandbox image is required"
+  },
+  {
+    "nodeid": "tests/test_h12_independent_regression.py::test_score_merge_clears_target_zero_when_private_check_stops_full_regression",
+    "kind": "failed",
+    "shard": "shard-1",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_h12_narrow_pytest_cache_service.py::test_real_narrow_scope_service_pytest_cache_completes_red_green",
+    "kind": "failed",
+    "shard": "shard-1",
+    "junit_message": "mgar_v3.domain.DomainError: A pinned sandbox image is required",
+    "last_traceback_error": "mgar_v3.domain.DomainError: A pinned sandbox image is required"
+  },
+  {
+    "nodeid": "tests/test_h12_r06_service.py::test_pg_unpublished_judge_constraint_is_blocked_before_model_or_tool_dispatch[freeze]",
+    "kind": "failed",
+    "shard": "shard-1",
+    "junit_message": "AssertionError: Regex pattern did not match.\n  Expected regex: 'symbol name absent'\n  Actual message: 'Frozen H00 bytes changed'",
+    "last_traceback_error": "Actual message: 'Frozen H00 bytes changed'"
+  },
+  {
+    "nodeid": "tests/test_h12_r07_reporters.py::test_actual_public_tool_preserves_reporter_ids_counts_exit_and_raw_log[mocha-json]",
+    "kind": "failed",
+    "shard": "shard-1",
+    "junit_message": "AssertionError: HarnessToolResult(call_id='public-tool', status='error', content='HARNESS_PUBLIC_TEST_FEEDBACK_V1 {\"version\":\"harness-...v'], 'grant_hash': '1f7f9013e77cb60d4698488de1eaa6e64928edd19b2cc5a4f521ff7dd28d0231'}, 'write_paths': ['']}}, code='')\nassert ('error' == 'error'\n  \n    error and 'unverified' == 'failed'\n  \n  - failed\n  + unverified)",
+    "last_traceback_error": "+ unverified)"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_dispatch_gate.py::test_direct_task_historical_holdout_is_blocked_before_readiness",
+    "kind": "failed",
+    "shard": "shard-1",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_dispatch_gate.py::test_cached_ready_cannot_bypass_changed_frozen_environment",
+    "kind": "failed",
+    "shard": "shard-1",
+    "junit_message": "mgar_v3.domain.DomainError: Source, model, environment or private registry differs from the frozen experiment",
+    "last_traceback_error": "mgar_v3.domain.DomainError: Source, model, environment or private registry differs from the frozen experiment"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_dispatch_gate.py::test_internal_dispatch_requires_execution_authority_even_after_environment_check",
+    "kind": "failed",
+    "shard": "shard-1",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_environment_v4.py::test_only_explicit_new_revision_grants_requests_timeout_namespace",
+    "kind": "failed",
+    "shard": "shard-1",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_environment_v4.py::test_go_compile_revision_changes_sandbox_only_and_preserves_old_profile",
+    "kind": "failed",
+    "shard": "shard-1",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_readiness.py::test_metadata_success_does_not_claim_that_a_single_command_executed",
+    "kind": "failed",
+    "shard": "shard-1",
+    "junit_message": "KeyError: 'execution_readiness'",
+    "last_traceback_error": "KeyError: 'execution_readiness'"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_readiness.py::test_new_environment_limit_is_explicit_and_cannot_be_applied_to_exposed_holdout",
+    "kind": "failed",
+    "shard": "shard-1",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_readiness.py::test_got_cache_and_memory_amendment_is_fixed_to_new_dev_environment",
+    "kind": "failed",
+    "shard": "shard-1",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_readiness.py::test_python_application_plans_require_public_unambiguous_commands",
+    "kind": "failed",
+    "shard": "shard-1",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_readiness.py::test_missing_image_matrix_checks_all_twelve_before_any_process",
+    "kind": "failed",
+    "shard": "shard-1",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_readiness.py::test_single_task_cannot_spend_before_the_full_readiness_matrix",
+    "kind": "failed",
+    "shard": "shard-1",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_v34_evaluation.py::test_dataset_meets_requirement_floor",
+    "kind": "failed",
+    "shard": "shard-1",
+    "junit_message": "mgar_v3.quality_eval.v34.EvaluationError: manifest has no v34 section",
+    "last_traceback_error": "mgar_v3.quality_eval.v34.EvaluationError: manifest has no v34 section"
+  },
+  {
+    "nodeid": "tests/test_v34_evaluation.py::test_every_task_pins_a_real_snapshot",
+    "kind": "failed",
+    "shard": "shard-1",
+    "junit_message": "mgar_v3.quality_eval.v34.EvaluationError: manifest has no v34 section",
+    "last_traceback_error": "mgar_v3.quality_eval.v34.EvaluationError: manifest has no v34 section"
+  },
+  {
+    "nodeid": "tests/test_v34_evaluation.py::test_snapshot_files_and_quotes_verify",
+    "kind": "failed",
+    "shard": "shard-1",
+    "junit_message": "mgar_v3.quality_eval.v34.EvaluationError: manifest has no v34 section",
+    "last_traceback_error": "mgar_v3.quality_eval.v34.EvaluationError: manifest has no v34 section"
+  },
+  {
+    "nodeid": "tests/test_v34_evaluation.py::test_negative_tasks_are_verified_absent",
+    "kind": "failed",
+    "shard": "shard-1",
+    "junit_message": "mgar_v3.quality_eval.v34.EvaluationError: manifest has no v34 section",
+    "last_traceback_error": "mgar_v3.quality_eval.v34.EvaluationError: manifest has no v34 section"
+  },
+  {
+    "nodeid": "tests/test_v34_evaluation.py::test_holdout_is_isolated_from_development",
+    "kind": "failed",
+    "shard": "shard-1",
+    "junit_message": "mgar_v3.quality_eval.v34.EvaluationError: manifest has no v34 section",
+    "last_traceback_error": "mgar_v3.quality_eval.v34.EvaluationError: manifest has no v34 section"
+  },
+  {
+    "nodeid": "tests/test_v34_evaluation.py::test_committed_selftest_matches_recomputation",
+    "kind": "failed",
+    "shard": "shard-1",
+    "junit_message": "mgar_v3.quality_eval.v34.EvaluationError: manifest has no v34 section",
+    "last_traceback_error": "mgar_v3.quality_eval.v34.EvaluationError: manifest has no v34 section"
+  },
+  {
+    "nodeid": "tests/test_v34_evaluation.py::test_live_arms_are_honest",
+    "kind": "failed",
+    "shard": "shard-1",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/experiments/v34-audit-repair/cases.jsonl'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/experiments/v34-audit-repair/cases.jsonl'"
+  },
+  {
+    "nodeid": "tests/test_v34_evaluation.py::test_abc_pairing_is_complete",
+    "kind": "failed",
+    "shard": "shard-1",
+    "junit_message": "mgar_v3.quality_eval.v34.EvaluationError: manifest has no v34 section",
+    "last_traceback_error": "mgar_v3.quality_eval.v34.EvaluationError: manifest has no v34 section"
+  },
+  {
+    "nodeid": "tests/test_v34_evaluation.py::test_manifest_and_case_files_agree",
+    "kind": "failed",
+    "shard": "shard-1",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/experiments/v34-audit-repair/cases.jsonl'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/experiments/v34-audit-repair/cases.jsonl'"
+  },
+  {
+    "nodeid": "tests/test_v34_evaluation.py::test_review_grading_perfect_answer",
+    "kind": "failed",
+    "shard": "shard-1",
+    "junit_message": "mgar_v3.quality_eval.v34.EvaluationError: manifest has no v34 section",
+    "last_traceback_error": "mgar_v3.quality_eval.v34.EvaluationError: manifest has no v34 section"
+  },
+  {
+    "nodeid": "tests/test_v34_evaluation.py::test_review_grading_penalizes_unverifiable_extra_finding",
+    "kind": "failed",
+    "shard": "shard-1",
+    "junit_message": "mgar_v3.quality_eval.v34.EvaluationError: manifest has no v34 section",
+    "last_traceback_error": "mgar_v3.quality_eval.v34.EvaluationError: manifest has no v34 section"
+  },
+  {
+    "nodeid": "tests/test_v34_evaluation.py::test_review_grading_recall_uses_gold_denominator",
+    "kind": "failed",
+    "shard": "shard-1",
+    "junit_message": "mgar_v3.quality_eval.v34.EvaluationError: manifest has no v34 section",
+    "last_traceback_error": "mgar_v3.quality_eval.v34.EvaluationError: manifest has no v34 section"
+  },
+  {
+    "nodeid": "tests/test_v34_evaluation.py::test_negative_grading_rejects_fabricated_finding",
+    "kind": "failed",
+    "shard": "shard-1",
+    "junit_message": "mgar_v3.quality_eval.v34.EvaluationError: manifest has no v34 section",
+    "last_traceback_error": "mgar_v3.quality_eval.v34.EvaluationError: manifest has no v34 section"
+  },
+  {
+    "nodeid": "tests/test_v34_evaluation.py::test_repair_grading_requires_all_binary_gates",
+    "kind": "failed",
+    "shard": "shard-1",
+    "junit_message": "mgar_v3.quality_eval.v34.EvaluationError: manifest has no v34 section",
+    "last_traceback_error": "mgar_v3.quality_eval.v34.EvaluationError: manifest has no v34 section"
+  },
+  {
+    "nodeid": "tests/test_v35_r02.py::test_go_snapshot_repair_runs_in_the_restricted_sandbox",
+    "kind": "failed",
+    "shard": "shard-1",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/experiments/v34-audit-repair/snapshots/goexample/ca271338190ded05fc544764d6e84289cedf1354/internal/cmd/weave/weave.go'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/experiments/v34-audit-repair/snapshots/goexample/ca271338190ded05fc544764d6e84289cedf1354/internal/cmd/weave/weave.go'"
+  },
+  {
+    "nodeid": "tests/test_v35_r02.py::test_python_snapshot_repair_never_starts_a_host_test_process",
+    "kind": "failed",
+    "shard": "shard-1",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/experiments/v34-audit-repair/snapshots/click/f67c2bb6c2f055c1c7a57cd46c3697fc26a7742e/src/click/utils.py'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/experiments/v34-audit-repair/snapshots/click/f67c2bb6c2f055c1c7a57cd46c3697fc26a7742e/src/click/utils.py'"
+  },
+  {
+    "nodeid": "tests/test_v35_r02.py::test_existing_fix_is_baseline_not_reproduced_without_a_model",
+    "kind": "failed",
+    "shard": "shard-1",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/experiments/v34-audit-repair/snapshots/goexample/ca271338190ded05fc544764d6e84289cedf1354/internal/cmd/weave/weave.go'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/experiments/v34-audit-repair/snapshots/goexample/ca271338190ded05fc544764d6e84289cedf1354/internal/cmd/weave/weave.go'"
+  },
+  {
+    "nodeid": "tests/test_h12_acceptance_refresh.py::test_same_tree_build_after_rejected_answer_updates_next_context",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "mgar_v3.domain.DomainError: A pinned sandbox image is required",
+    "last_traceback_error": "mgar_v3.domain.DomainError: A pinned sandbox image is required"
+  },
+  {
+    "nodeid": "tests/test_h12_r01_flow.py::test_pg_result_binds_all_stages_and_scorer_rejects_missing_or_stale_facts",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_h12_r01_flow.py::test_public_selfcheck_requirement_reaches_profile_and_actual_worker_projection",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_h12_r01_flow.py::test_legacy_profile_serialization_retains_original_hash_inputs",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_h12_r03_recovery.py::test_new_profile_freezes_policy_without_rewriting_archived_profiles",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_h12_r05_reporters.py::test_actual_fixed_reporter_observes_every_test_and_failure[mocha]",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "AssertionError: {'schema_version': 'harness-independent-report-v1', 'receipt_id': '058394f2d068229f33932ddb661eee515089589d3d2bc79ffe4dae26b2ef29a0', 'producer': 'independent-runner', 'task_id': 'r05-mocha', ...}\nassert 'BLOCKED' == 'FAIL'\n  \n  - FAIL\n  + BLOCKED",
+    "last_traceback_error": "+ BLOCKED"
+  },
+  {
+    "nodeid": "tests/test_h12_r05_reporters.py::test_new_summary_requires_independent_dimensions_and_never_totals_unknown_as_zero[valid]",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_h12_r05_reporters.py::test_new_summary_requires_independent_dimensions_and_never_totals_unknown_as_zero[dimensions-missing]",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_h12_r05_reporters.py::test_new_summary_requires_independent_dimensions_and_never_totals_unknown_as_zero[seal]",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_h12_r05_reporters.py::test_new_summary_requires_independent_dimensions_and_never_totals_unknown_as_zero[tree]",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_h12_r05_reporters.py::test_new_summary_requires_independent_dimensions_and_never_totals_unknown_as_zero[required]",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_h12_r05_reporters.py::test_new_summary_requires_independent_dimensions_and_never_totals_unknown_as_zero[count-missing]",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_h12_r05_reporters.py::test_new_summary_requires_independent_dimensions_and_never_totals_unknown_as_zero[null]",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_h12_r08_native_baseline.py::test_real_mocha_duplicate_titles_preserve_failure_identity_and_count",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "AssertionError: assert 'BLOCKED' == 'FAIL'\n  \n  - FAIL\n  + BLOCKED",
+    "last_traceback_error": "+ BLOCKED"
+  },
+  {
+    "nodeid": "tests/test_h12_regression_metrics.py::test_scoring_integration_does_not_gate_counts_on_completion",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_h12_regression_metrics.py::test_unknown_regressions_prevent_quality_gate_and_preserve_raw_score",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h00.py::test_catalog_validates_and_is_frozen",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: hv4-dev-click-help-name: missing keys: fix_commit",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: hv4-dev-click-help-name: missing keys: fix_commit"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h00.py::test_each_split_has_the_frozen_composition",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/experiments/harness-v4/tasks/holdout.jsonl'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/experiments/harness-v4/tasks/holdout.jsonl'"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h00.py::test_judge_hashes_are_bound_and_reference_files_match",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "AssertionError: assert '79c1ec691c0a...f609dabbe7e07' == 'b45085dfeac2...a1fb8412a6f51'\n  \n  - b45085dfeac2ffb51578b16966d9ae748187d35877b2402ba5ba1fb8412a6f51\n  + 79c1ec691c0a612c913d2a3ef0ceb67669fded6204290602e7af609dabbe7e07",
+    "last_traceback_error": "+ 79c1ec691c0a612c913d2a3ef0ceb67669fded6204290602e7af609dabbe7e07"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h00.py::test_resources_stay_within_the_frozen_ceilings",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/experiments/harness-v4/tasks/holdout.jsonl'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/experiments/harness-v4/tasks/holdout.jsonl'"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h00.py::test_task_catalog_files_are_machine_readable",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/experiments/harness-v4/tasks/holdout.jsonl'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/experiments/harness-v4/tasks/holdout.jsonl'"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12.py::test_frozen_hashes_and_dev_loader_never_parse_holdout",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "AssertionError: assert 'FAIL' == 'PASS'\n  \n  - PASS\n  + FAIL",
+    "last_traceback_error": "+ FAIL"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12.py::test_holdout_loader_uses_isolated_child_without_parent_parsing",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12.py::test_model_projection_strips_answers_private_paths_and_shell_commands",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12.py::test_three_public_reference_snapshots_have_exact_hashes_and_task_specific_tests",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "assert 0 == 3\n +  where 0 = len([])",
+    "last_traceback_error": "+  where 0 = len([])"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12.py::test_reusing_source_pin_does_not_publish_another_tasks_dev_public_reproduction[holdout-True]",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12.py::test_reusing_source_pin_does_not_publish_another_tasks_dev_public_reproduction[dev-False]",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_runtime.py::test_profile_grant_has_frozen_scope_and_deadline",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "AttributeError: 'types.SimpleNamespace' object has no attribute 'settings'",
+    "last_traceback_error": "AttributeError: 'types.SimpleNamespace' object has no attribute 'settings'"
+  },
+  {
+    "nodeid": "tests/test_p0_commerce.py::test_registered_investigation_and_repair[duplicate_paid-expected0]",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "AssertionError: {'view': {'schema': 'commerce-case-view-v1', 'case_id': '2e635d0b-fc22-485e-9a3f-e5a4e3dc23e1', 'case_revision': 1, 'c...-0f2f98b1b8cf', ...}, 'result_hash': 'cd19f230e3ed3004c3a15b13c09e57c4d241bd2569d45d2a5e20a99d240a2559', 'actions': []}\n[+4 more lines; full report in element text]",
+    "last_traceback_error": "+ failed)"
+  },
+  {
+    "nodeid": "tests/test_p0_commerce.py::test_registered_investigation_and_repair[status_filter-expected1]",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "AssertionError: {'view': {'schema': 'commerce-case-view-v1', 'case_id': 'b77b9503-778d-4d2b-a2fb-b08f5b698110', 'case_revision': 1, 'c...-4f66ca5fbd15', ...}, 'result_hash': 'bf70d775d2d1f5a7e1ffe873403e436bd2f9bd3588ad88bf6138010e2526cc46', 'actions': []}\n[+4 more lines; full report in element text]",
+    "last_traceback_error": "+ failed)"
+  },
+  {
+    "nodeid": "tests/test_p0_commerce.py::test_registered_investigation_and_repair[refunded_status-expected2]",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "AssertionError: {'view': {'schema': 'commerce-case-view-v1', 'case_id': '2e76bdb2-6446-44e2-bcf7-f9ddc7ff1914', 'case_revision': 1, 'c...-3cc375d1c8e2', ...}, 'result_hash': '02eaeb09090207a3da7fbe4da4a75891e5318d4374ab699c3cd0330f6cd15e43', 'actions': []}\n[+4 more lines; full report in element text]",
+    "last_traceback_error": "+ failed)"
+  },
+  {
+    "nodeid": "tests/test_p0_commerce.py::test_idempotence_conflict_and_competing_repair_requests",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "AssertionError: ['BUSINESS_RESULT_REQUIRED', 'BUSINESS_RESULT_REQUIRED']\nassert 0 == 1\n +  where 0 = sum(<generator object test_idempotence_conflict_and_competing_repair_requests.<locals>.<genexpr> at 0x7ba267c5e960>)",
+    "last_traceback_error": "+  where 0 = sum(<generator object test_idempotence_conflict_and_competing_repair_requests.<locals>.<genexpr> at 0x7ba267c5e960>)"
+  },
+  {
+    "nodeid": "tests/test_p0_commerce.py::test_atomic_report_and_business_result_rollback",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "Failed: DID NOT RAISE RuntimeError",
+    "last_traceback_error": "Failed: DID NOT RAISE RuntimeError"
+  },
+  {
+    "nodeid": "tests/test_p0_commerce.py::test_revocation_after_preparation_redacts_old_pass",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "AssertionError: assert 'failed' == 'passed'\n  \n  - passed\n  + failed",
+    "last_traceback_error": "+ failed"
+  },
+  {
+    "nodeid": "tests/test_p0_commerce.py::test_unknown_draft_reconciles_readonly_without_resend",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "mgar_v3.domain.DomainError: A current passed business result is required",
+    "last_traceback_error": "mgar_v3.domain.DomainError: A current passed business result is required"
+  },
+  {
+    "nodeid": "tests/test_p0_commerce.py::test_repair_message_invalidates_old_action_and_starts_new_version",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "mgar_v3.domain.DomainError: A current passed business result is required",
+    "last_traceback_error": "mgar_v3.domain.DomainError: A current passed business result is required"
+  },
+  {
+    "nodeid": "tests/test_p0_commerce.py::test_no_artifact_or_sql_io_inside_business_transactions",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "mgar_v3.domain.DomainError: A current passed business result is required",
+    "last_traceback_error": "mgar_v3.domain.DomainError: A current passed business result is required"
+  },
+  {
+    "nodeid": "tests/test_p0_commerce.py::test_acl_revoked_between_artifact_preparation_and_business_commit",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "assert False",
+    "last_traceback_error": "assert False"
+  },
+  {
+    "nodeid": "tests/test_p0_commerce.py::test_protected_test_failure_cannot_become_approvable[failed]",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "mgar_v3.domain.DomainError: A current passed business result is required",
+    "last_traceback_error": "mgar_v3.domain.DomainError: A current passed business result is required"
+  },
+  {
+    "nodeid": "tests/test_p0_commerce.py::test_protected_test_failure_cannot_become_approvable[skipped]",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "mgar_v3.domain.DomainError: A current passed business result is required",
+    "last_traceback_error": "mgar_v3.domain.DomainError: A current passed business result is required"
+  },
+  {
+    "nodeid": "tests/test_p0_commerce.py::test_protected_test_failure_cannot_become_approvable[timeout]",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "mgar_v3.domain.DomainError: A current passed business result is required",
+    "last_traceback_error": "mgar_v3.domain.DomainError: A current passed business result is required"
+  },
+  {
+    "nodeid": "tests/test_p0_commerce.py::test_late_delivery_receipt_after_cancel_does_not_restore_case",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "mgar_v3.domain.DomainError: A current passed business result is required",
+    "last_traceback_error": "mgar_v3.domain.DomainError: A current passed business result is required"
+  },
+  {
+    "nodeid": "tests/test_p0_commerce.py::test_sigkill_at_joint_result_commit_recovers_without_duplicate_reads",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "AssertionError: Building prefix dict from the default dictionary ...\n  Loading model from cache /tmp/g0.s2tlg3fp/jieba.cache\n  Loading model cost 0.352 seconds.\n  Prefix dict has been built successfully.\n  Traceback (most recent call last):\n    File \"/home/imini/magr-harness-ga00/v3/tests/fixtures/p0_crash_worker.py\", line 38, in <module>\n      raise RuntimeError(\"The expected crash point was not reached\")\n  RuntimeError: The expected crash point was not reached\n  \nassert 1 == -9\n[+1 more line; full report in element text]",
+    "last_traceback_error": "+  where 1 = CompletedProcess(args=['/home/imini/magr-harness-ga00/v3/.venv/bin/python', '/home/imini/magr-harness-ga00/v3/tests/fi...se RuntimeError(\"The expected crash point was not reached\")\\nRuntimeError: The expected crash point was not reached\\n').returncode"
+  },
+  {
+    "nodeid": "tests/test_p0_commerce.py::test_exhausted_invalid_patch_responses_have_explicit_failed_business_result",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "mgar_v3.domain.DomainError: A current passed business result is required",
+    "last_traceback_error": "mgar_v3.domain.DomainError: A current passed business result is required"
+  },
+  {
+    "nodeid": "tests/test_p0_review.py::test_exact_review_preserves_history_and_delivers_original_payload",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "mgar_v3.domain.DomainError: A current passed business result is required",
+    "last_traceback_error": "mgar_v3.domain.DomainError: A current passed business result is required"
+  },
+  {
+    "nodeid": "tests/test_p0_review.py::test_failed_fresh_tests_are_recorded_and_never_renew",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "mgar_v3.domain.DomainError: A current passed business result is required",
+    "last_traceback_error": "mgar_v3.domain.DomainError: A current passed business result is required"
+  },
+  {
+    "nodeid": "tests/test_p0_review.py::test_changed_observed_data_cannot_reuse_approval",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "mgar_v3.domain.DomainError: A current passed business result is required",
+    "last_traceback_error": "mgar_v3.domain.DomainError: A current passed business result is required"
+  },
+  {
+    "nodeid": "tests/test_p0_review.py::test_recheck_fences_and_rollback[actor]",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "mgar_v3.domain.DomainError: A current passed business result is required",
+    "last_traceback_error": "mgar_v3.domain.DomainError: A current passed business result is required"
+  },
+  {
+    "nodeid": "tests/test_p0_review.py::test_recheck_fences_and_rollback[hash]",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "mgar_v3.domain.DomainError: A current passed business result is required",
+    "last_traceback_error": "mgar_v3.domain.DomainError: A current passed business result is required"
+  },
+  {
+    "nodeid": "tests/test_p0_review.py::test_recheck_fences_and_rollback[epoch]",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "mgar_v3.domain.DomainError: A current passed business result is required",
+    "last_traceback_error": "mgar_v3.domain.DomainError: A current passed business result is required"
+  },
+  {
+    "nodeid": "tests/test_p0_review.py::test_recheck_fences_and_rollback[input]",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "mgar_v3.domain.DomainError: A current passed business result is required",
+    "last_traceback_error": "mgar_v3.domain.DomainError: A current passed business result is required"
+  },
+  {
+    "nodeid": "tests/test_p0_review.py::test_recheck_fences_and_rollback[acl]",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "mgar_v3.domain.DomainError: A current passed business result is required",
+    "last_traceback_error": "mgar_v3.domain.DomainError: A current passed business result is required"
+  },
+  {
+    "nodeid": "tests/test_p0_review.py::test_recheck_fences_and_rollback[during_test]",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "mgar_v3.domain.DomainError: A current passed business result is required",
+    "last_traceback_error": "mgar_v3.domain.DomainError: A current passed business result is required"
+  },
+  {
+    "nodeid": "tests/test_r6_repair_contract.py::test_remaining_call_envelope_is_frozen_below_task_reservations",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "KeyError: 'implementation_sha256'",
+    "last_traceback_error": "KeyError: 'implementation_sha256'"
+  },
+  {
+    "nodeid": "tests/test_v33_memory_agent.py::test_follow_up_reuses_confirmed_facts_at_exact_commit",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "AssertionError: assert 'waiting_input' == 'succeeded'\n  \n  - succeeded\n  + waiting_input",
+    "last_traceback_error": "+ waiting_input"
+  },
+  {
+    "nodeid": "tests/test_v33_memory_agent.py::test_poisoned_memory_cannot_change_tools_repository_budget_or_approval",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "AssertionError: assert {'max_model_c...: 500000, ...} == {'max_model_c...okens': 60000}\n  \n  Omitting 3 identical items, use -vv to show\n  Left contains 2 more items:\n  {'max_cost_micros': 500000, 'max_seconds': 600}\n  Use -v to get more diff",
+    "last_traceback_error": "Use -v to get more diff"
+  },
+  {
+    "nodeid": "tests/test_v35_e02.py::test_memory_corpus_filters_stale_unverified_and_superseded",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "KeyError: 'expected_changed_paths'",
+    "last_traceback_error": "KeyError: 'expected_changed_paths'"
+  },
+  {
+    "nodeid": "tests/test_v35_e02.py::test_arm_context_gates_memory_and_compaction_per_arm",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "KeyError: 'expected_changed_paths'",
+    "last_traceback_error": "KeyError: 'expected_changed_paths'"
+  },
+  {
+    "nodeid": "tests/test_v35_e02.py::test_compaction_accounts_for_every_observation_and_reports_loss",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "KeyError: 'expected_changed_paths'",
+    "last_traceback_error": "KeyError: 'expected_changed_paths'"
+  },
+  {
+    "nodeid": "tests/test_v35_e02.py::test_experts_only_consult_on_multifile_revision",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "KeyError: 'expected_changed_paths'",
+    "last_traceback_error": "KeyError: 'expected_changed_paths'"
+  },
+  {
+    "nodeid": "tests/test_v35_e02.py::test_summary_reports_paired_intervals_and_gates",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "KeyError: 'expected_changed_paths'",
+    "last_traceback_error": "KeyError: 'expected_changed_paths'"
+  },
+  {
+    "nodeid": "tests/test_v35_e02.py::test_not_run_cells_never_count_as_executed",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "KeyError: 'expected_changed_paths'",
+    "last_traceback_error": "KeyError: 'expected_changed_paths'"
+  },
+  {
+    "nodeid": "tests/test_v35_e02.py::test_report_is_immutable_and_fixture_never_claims_live_gate",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "KeyError: 'expected_changed_paths'",
+    "last_traceback_error": "KeyError: 'expected_changed_paths'"
+  },
+  {
+    "nodeid": "tests/test_v35_e02.py::test_fixture_ablation_runs_all_four_arms_on_the_real_sandbox",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "KeyError: 'expected_changed_paths'",
+    "last_traceback_error": "KeyError: 'expected_changed_paths'"
+  },
+  {
+    "nodeid": "tests/test_v35_e03.py::test_interrupted_resume_does_not_repeat_provider_calls",
+    "kind": "errors",
+    "shard": "shard-2",
+    "junit_message": "failed on setup with \"KeyError: 'expected_changed_paths'\"",
+    "last_traceback_error": "KeyError: 'expected_changed_paths'"
+  },
+  {
+    "nodeid": "tests/test_v35_e03.py::test_forked_checkpoint_resume_is_deterministic",
+    "kind": "errors",
+    "shard": "shard-2",
+    "junit_message": "failed on setup with \"KeyError: 'expected_changed_paths'\"",
+    "last_traceback_error": "KeyError: 'expected_changed_paths'"
+  },
+  {
+    "nodeid": "tests/test_v35_e03.py::test_round_two_expert_advisories_are_read_only",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "KeyError: 'expected_changed_paths'",
+    "last_traceback_error": "KeyError: 'expected_changed_paths'"
+  },
+  {
+    "nodeid": "tests/test_v35_r03.py::test_authorized_repair_reaches_waiting_approval_with_real_sandbox",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/experiments/v34-audit-repair/snapshots/goexample/ca271338190ded05fc544764d6e84289cedf1354/internal/cmd/weave/weave.go'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/experiments/v34-audit-repair/snapshots/goexample/ca271338190ded05fc544764d6e84289cedf1354/internal/cmd/weave/weave.go'"
+  },
+  {
+    "nodeid": "tests/test_v35_r03.py::test_repair_authorization_is_independent_and_denied_by_default",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/experiments/v34-audit-repair/snapshots/goexample/ca271338190ded05fc544764d6e84289cedf1354/internal/cmd/weave/weave.go'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/experiments/v34-audit-repair/snapshots/goexample/ca271338190ded05fc544764d6e84289cedf1354/internal/cmd/weave/weave.go'"
+  },
+  {
+    "nodeid": "tests/test_v35_r03.py::test_repo_commit_advanced_is_refused_before_any_provider_or_sandbox",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/experiments/v34-audit-repair/snapshots/goexample/ca271338190ded05fc544764d6e84289cedf1354/internal/cmd/weave/weave.go'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/experiments/v34-audit-repair/snapshots/goexample/ca271338190ded05fc544764d6e84289cedf1354/internal/cmd/weave/weave.go'"
+  },
+  {
+    "nodeid": "tests/test_v35_r03.py::test_late_receipt_after_cancel_is_discarded_and_replay_is_inert",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/experiments/v34-audit-repair/snapshots/goexample/ca271338190ded05fc544764d6e84289cedf1354/internal/cmd/weave/weave.go'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/experiments/v34-audit-repair/snapshots/goexample/ca271338190ded05fc544764d6e84289cedf1354/internal/cmd/weave/weave.go'"
+  },
+  {
+    "nodeid": "tests/test_v35_r03.py::test_sigkill_mid_public_test_resumes_without_duplicate_provider_call",
+    "kind": "failed",
+    "shard": "shard-2",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/experiments/v34-audit-repair/snapshots/goexample/ca271338190ded05fc544764d6e84289cedf1354/internal/cmd/weave/weave.go'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/experiments/v34-audit-repair/snapshots/goexample/ca271338190ded05fc544764d6e84289cedf1354/internal/cmd/weave/weave.go'"
+  },
+  {
+    "nodeid": "tests/test_coordination_candidates.py::test_candidate_matrix_real_pg_worker[False-E-8]",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'"
+  },
+  {
+    "nodeid": "tests/test_coordination_candidates.py::test_candidate_matrix_real_pg_worker[False-F-3]",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'"
+  },
+  {
+    "nodeid": "tests/test_coordination_candidates.py::test_candidate_matrix_real_pg_worker[True-E-8]",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'"
+  },
+  {
+    "nodeid": "tests/test_coordination_candidates.py::test_candidate_matrix_real_pg_worker[True-F-3]",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'"
+  },
+  {
+    "nodeid": "tests/test_coordination_candidates.py::test_bounded_attempts_known_failure_and_unknown_stop[schema]",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'"
+  },
+  {
+    "nodeid": "tests/test_coordination_candidates.py::test_bounded_attempts_known_failure_and_unknown_stop[candidate]",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'"
+  },
+  {
+    "nodeid": "tests/test_coordination_candidates.py::test_bounded_attempts_known_failure_and_unknown_stop[twice]",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'"
+  },
+  {
+    "nodeid": "tests/test_coordination_candidates.py::test_bounded_attempts_known_failure_and_unknown_stop[unknown0]",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'"
+  },
+  {
+    "nodeid": "tests/test_coordination_candidates.py::test_bounded_attempts_known_failure_and_unknown_stop[unknown1]",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'"
+  },
+  {
+    "nodeid": "tests/test_coordination_candidates.py::test_bounded_attempts_known_failure_and_unknown_stop[budget]",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'"
+  },
+  {
+    "nodeid": "tests/test_coordination_candidates.py::test_revision_actor_and_rollback_guards",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'"
+  },
+  {
+    "nodeid": "tests/test_coordination_candidates.py::test_all_historical_bad_initial_proposals_are_rejected",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "assert 0 == 11",
+    "last_traceback_error": "assert 0 == 11"
+  },
+  {
+    "nodeid": "tests/test_final_resume.py::test_io_setup_change_preserves_actual_frozen_model_request_and_rejects_protocol_edits",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v2-baseline-source.zip'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v2-baseline-source.zip'"
+  },
+  {
+    "nodeid": "tests/test_h12_judge_ava_environment.py::test_typescript_verifier_also_uses_the_immutable_dependency_entrypoint",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_h12_protected_directory_traversal.py::test_real_protected_directory_scan_stays_empty_readonly_and_scope_bound",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.domain.DomainError: A pinned sandbox image is required",
+    "last_traceback_error": "mgar_v3.domain.DomainError: A pinned sandbox image is required"
+  },
+  {
+    "nodeid": "tests/test_h12_r02_recovery.py::test_preexisting_contract_profile_can_be_read_without_rewriting_output_policy",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_h12_readonly_pytest_cache.py::test_real_readonly_pytest_cache_preserves_configured_options",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.domain.DomainError: A pinned sandbox image is required",
+    "last_traceback_error": "mgar_v3.domain.DomainError: A pinned sandbox image is required"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_bounded_runtime.py::test_repeated_real_failed_commands_stop_after_corrective_feedback",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "assert False\n +  where False = any(<generator object test_repeated_real_failed_commands_stop_after_corrective_feedback.<locals>.<genexpr> at 0x767062d8ef60>)",
+    "last_traceback_error": "+  where False = any(<generator object test_repeated_real_failed_commands_stop_after_corrective_feedback.<locals>.<genexpr> at 0x767062d8ef60>)"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_judge.py::test_nine_additional_implementations_bind_original_frozen_judge_hashes",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_judge.py::test_binding_does_not_accept_a_different_original_specification",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_judge.py::test_modified_implementation_manifest_is_rejected",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "AssertionError: Regex pattern did not match.\n  Expected regex: 'manifest changed'\n  Actual message: 'Frozen H00 bytes do not match'",
+    "last_traceback_error": "Actual message: 'Frozen H00 bytes do not match'"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_judge.py::test_final_refuses_unsealed_session_before_creating_or_running_a_judge",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_judge.py::test_final_requires_original_test_hashes",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_judge.py::test_modifying_or_deleting_an_original_test_never_reaches_execution[edit]",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_judge.py::test_modifying_or_deleting_an_original_test_never_reaches_execution[delete]",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_judge.py::test_changing_npm_test_script_does_not_hide_existing_regressions",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_judge.py::test_expected_tree_guard_rejects_a_different_model_tree",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_judge.py::test_refactor_without_private_pinned_oracle_cannot_self_certify",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_judge.py::test_tree_changes_during_readonly_verification_invalidate_successful_receipts[original]",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_judge.py::test_tree_changes_during_readonly_verification_invalidate_successful_receipts[verifier]",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_judge.py::test_missing_dependencies_are_not_an_independent_pass_or_baseline_reproduction",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_judge.py::test_synthetic_external_registry_accepts_only_the_supplied_exact_hash",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_judge.py::test_external_registry_paths_cannot_escape_or_hide_from_tree_binding[source-../escape.py]",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_judge.py::test_external_registry_paths_cannot_escape_or_hide_from_tree_binding[target-../escape.py]",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_judge.py::test_external_registry_paths_cannot_escape_or_hide_from_tree_binding[target-/tmp/escape.py]",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_judge.py::test_external_registry_paths_cannot_escape_or_hide_from_tree_binding[target-node_modules/private.py]",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_judge.py::test_external_registry_cannot_follow_source_symlink_outside_its_directory",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_judge.py::test_external_registry_cannot_follow_target_symlink_to_original_workspace",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_judge.py::test_source_symlink_refuses_verification_before_hidden_materialization",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_judge.py::test_environment_checks_existing_public_regressions_without_goal_or_private_commands",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_judge.py::test_environment_dependency_failures_never_count_as_a_reproduced_defect[No module named pytest_httpbin]",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_judge.py::test_environment_dependency_failures_never_count_as_a_reproduced_defect[ERROR collecting tests/test_base.py; 1 failed]",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_judge.py::test_environment_dependency_failures_never_count_as_a_reproduced_defect[fixture 'httpbin' not found; 1 failed]",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_judge.py::test_environment_retains_executed_original_assertion_failures_without_calling_them_green[bugfix]",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_judge.py::test_environment_retains_executed_original_assertion_failures_without_calling_them_green[feature]",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_judge.py::test_missing_judge_is_detected_without_starting_any_environment_process",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_judge.py::test_additional_registry_supplements_original_hash_bound_h00_checks",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_judge.py::test_final_public_regression_uses_separate_copy_without_private_test_files",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_judge.py::test_expected_syntax_error_text_is_not_a_missing_environment[0-3 passing]",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_judge.py::test_expected_syntax_error_text_is_not_a_missing_environment[1-4 failing]",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_judge.py::test_environment_resource_failures_are_explicitly_not_run[Error: EMFILE: too many open files]",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_judge.py::test_environment_resource_failures_are_explicitly_not_run[compile: resource temporarily unavailable]",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_judge.py::test_reference_baseline_runs_real_public_assertion_without_collecting_future_hidden_symbol",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "AttributeError: 'Broker' object has no attribute 'image_id'",
+    "last_traceback_error": "AttributeError: 'Broker' object has no attribute 'image_id'"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_runner.py::test_source_uses_exact_reference_snapshot_path_instead_of_unrelated_git_pin",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_runner.py::test_legacy_not_run_does_not_invoke_a_provider_or_create_runtime",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_runner.py::test_arbitrary_task_ids_cannot_invent_a_passing_frozen_score",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "AssertionError: Regex pattern did not match.\n  Expected regex: 'frozen task IDs'\n  Actual message: 'Frozen H00 bytes do not match'",
+    "last_traceback_error": "Actual message: 'Frozen H00 bytes do not match'"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_runner.py::test_completion_and_resource_limits_are_part_of_independent_score",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_runner.py::test_adding_test_configuration_after_model_start_invalidates_the_tree[pytest.ini]",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_runner.py::test_adding_test_configuration_after_model_start_invalidates_the_tree[conftest.py]",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_runner.py::test_adding_test_configuration_after_model_start_invalidates_the_tree[pyproject.toml]",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_runner.py::test_missing_environment_returns_before_service_or_paid_model_creation",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_runner.py::test_paid_model_failure_without_final_judge_remains_fail",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_runner.py::test_public_one_shot_application_goal_keeps_regression_and_selfcheck_distinct",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_runner.py::test_http_application_plan_uses_only_explicit_public_endpoint_and_port",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_p0_live_adapter.py::test_native_live_stage_permits_body_provenance_and_no_repeat",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "AssertionError: {'view': {'schema': 'commerce-case-view-v1', 'case_id': '8a257843-af79-47ce-a42a-df9f468c09bb', 'case_revision': 1, 'c...-0d2767b0994a', ...}, 'result_hash': '703a7fe82849a0e3396c2cdb15618433aff9446d80d5bba347305622b69845f1', 'actions': []}\nassert 'failed' == 'passed'\n  \n  - passed\n  + failed",
+    "last_traceback_error": "+ failed"
+  },
+  {
+    "nodeid": "tests/test_v35_d01.py::test_product_document_covers_required_sections",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "AssertionError: assert 'https://github.com/Loz888/MAGR-v3.git' in '# MAGR-v3 V3.5 产品说明\\n\\n- 状态：D01（2026-11-10）\\n- 适用版本：V3.5，基线 `6cf67f404d8575d5e02f0dd0edfcbfb67a512ddc`\\n- 共同前提：[ARCHI...3/evidence/v35/<CARD>/<UTC>-<RUN_ID>/`（`.gitignore`，不入库）；公开可复核记录是各卡 `accept.json` 与 [评测结果索引](./EVALUATION_INDEX.md)。\\n'",
+    "last_traceback_error": "AssertionError: assert 'https://github.com/Loz888/MAGR-v3.git' in '# MAGR-v3 V3.5 产品说明\\n\\n- 状态：D01（2026-11-10）\\n- 适用版本：V3.5，基线 `6cf67f404d8575d5e02f0dd0edfcbfb67a512ddc`\\n- 共同前提：[ARCHI...3/evidence/v35/<CARD>/<UTC>-<RUN_ID>/`（`.gitignore`，不入库）；公开可复核记录是各卡 `accept.json` 与 [评测结果索引](./EVALUATION_INDEX.md)。\\n'"
+  },
+  {
+    "nodeid": "tests/test_v35_d01.py::test_evaluation_index_matches_acceptance_gates",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "KeyError: 'live_github_write_gate'",
+    "last_traceback_error": "KeyError: 'live_github_write_gate'"
+  },
+  {
+    "nodeid": "tests/test_v35_d01.py::test_documentation_links_exist",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "AssertionError: assert ('v3/docs/v35/PRODUCT.md' in '# MAGR-Harness\\n\\nMAGR-Harness 是独立的研发 Agent 项目。你可以直接描述需求，让 Agent 调查 GitHub 仓库、理解本地项目、在隔离工作区提出修改，并根据测试回执审查结果。项目使用自己的版本...EPENDENT_20261119.md)\\n\\n[文档导航](v3/docs/README.md) · [任务卡](v3/docs/harness-v4/TASKS.md) · [历史公开快照说明](PUBLICATION.md)\\n' or 'docs/v35/PRODUCT.md' in '# MAGR-Harness\\n\\nMAGR-Harness 是独立的研发 Agent 项目。你可以直接描述需求，让 Agent 调查 GitHub 仓库、理解本地项目、在隔离工作区提出修改，并根据测试回执审查结果。项目使用自己的版本...EPENDENT_20261119.md)\\n\\n[文档导航](v3/docs/README.md) · [任务卡]...\n[truncated; full report in element text]",
+    "last_traceback_error": "AssertionError: assert ('v3/docs/v35/PRODUCT.md' in '# MAGR-Harness\\n\\nMAGR-Harness 是独立的研发 Agent 项目。你可以直接描述需求，让 Agent 调查 GitHub 仓库、理解本地项目、在隔离工作区提出修改，并根据测试回执审查结果。项目使用自己的版本...EPENDENT_20261119.md)\\n\\n[文档导航](v3/docs/README.md) · [任务卡](v3/docs/harness-v4/TASKS.md) · [历史公开快照说明](PUBLICATION.md)\\n' or 'docs/v35/PRODUCT.md' in '# MAGR-Harness\\n\\nMAGR-Harness 是独立的研发 Agent 项目。你可以直接描述需求，让 Agent 调查 GitHub 仓库、理解本地项目、在隔离工作区提出修改，并根据测试回执审查结果。项目使用自己的版本...EPENDENT"
+  },
+  {
+    "nodeid": "tests/test_v35_d01.py::test_demo_repository_is_a_pinned_snapshot",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "KeyError: 'expected_changed_paths'",
+    "last_traceback_error": "KeyError: 'expected_changed_paths'"
+  },
+  {
+    "nodeid": "tests/test_v35_d01.py::test_demo_repository_refuses_to_overwrite",
+    "kind": "failed",
+    "shard": "shard-3",
+    "junit_message": "AssertionError: Traceback (most recent call last):\n    File \"/home/imini/magr-harness-ga00/v3/scripts/demo_v35.py\", line 110, in <module>\n      raise SystemExit(main())\n                       ^^^^^^\n    File \"/home/imini/magr-harness-ga00/v3/scripts/demo_v35.py\", line 88, in main\n      task = _select(args.task)\n             ^^^^^^^^^^^^^^^^^^\n    File \"/home/imini/magr-harness-ga00/v3/scripts/demo_v35.py\", line 27, in _select\n      available = harness.load_development(EXPERIMENT)\n[+10 more lines; full report in element text]",
+    "last_traceback_error": "+  where 1 = CompletedProcess(args=['/home/imini/magr-harness-ga00/v3/.venv/bin/python', 'scripts/demo_v35.py', '--out', '/tmp/g0.j...paths\"]),\\n                                 ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^\\nKeyError: \\'expected_changed_paths\\'\\n').returncode"
+  },
+  {
+    "nodeid": "tests/test_coordination_eval.py::test_real_engine_fixed_worker_and_independent_grade[False-D-0]",
+    "kind": "failed",
+    "shard": "shard-4",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'"
+  },
+  {
+    "nodeid": "tests/test_coordination_eval.py::test_real_engine_fixed_worker_and_independent_grade[False-E-8]",
+    "kind": "failed",
+    "shard": "shard-4",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'"
+  },
+  {
+    "nodeid": "tests/test_coordination_eval.py::test_real_engine_fixed_worker_and_independent_grade[False-F-3]",
+    "kind": "failed",
+    "shard": "shard-4",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'"
+  },
+  {
+    "nodeid": "tests/test_coordination_eval.py::test_real_engine_fixed_worker_and_independent_grade[True-D-0]",
+    "kind": "failed",
+    "shard": "shard-4",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'"
+  },
+  {
+    "nodeid": "tests/test_coordination_eval.py::test_real_engine_fixed_worker_and_independent_grade[True-E-8]",
+    "kind": "failed",
+    "shard": "shard-4",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'"
+  },
+  {
+    "nodeid": "tests/test_coordination_eval.py::test_real_engine_fixed_worker_and_independent_grade[True-F-3]",
+    "kind": "failed",
+    "shard": "shard-4",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'"
+  },
+  {
+    "nodeid": "tests/test_coordination_eval.py::test_unknown_response_retains_hold_and_never_sends_again",
+    "kind": "failed",
+    "shard": "shard-4",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'"
+  },
+  {
+    "nodeid": "tests/test_coordination_eval.py::test_stale_and_cross_issue_route_cannot_commit",
+    "kind": "failed",
+    "shard": "shard-4",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'"
+  },
+  {
+    "nodeid": "tests/test_coordination_eval.py::test_shared_budget_and_mismatched_binding_fail_before_http",
+    "kind": "failed",
+    "shard": "shard-4",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'"
+  },
+  {
+    "nodeid": "tests/test_coordination_eval.py::test_future_or_expired_price_rejected_without_model_call[-1]",
+    "kind": "failed",
+    "shard": "shard-4",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/docs/repairs/R6-HOST-20261105/v2-current-official-pricing.json'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/docs/repairs/R6-HOST-20261105/v2-current-official-pricing.json'"
+  },
+  {
+    "nodeid": "tests/test_coordination_eval.py::test_future_or_expired_price_rejected_without_model_call[8]",
+    "kind": "failed",
+    "shard": "shard-4",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/docs/repairs/R6-HOST-20261105/v2-current-official-pricing.json'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/docs/repairs/R6-HOST-20261105/v2-current-official-pricing.json'"
+  },
+  {
+    "nodeid": "tests/test_coordination_eval.py::test_manifest_and_original_business_outcomes_are_sealed",
+    "kind": "failed",
+    "shard": "shard-4",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'"
+  },
+  {
+    "nodeid": "tests/test_coordination_eval.py::test_real_sigkill_reuses_known_response_and_fences_old_epoch[False]",
+    "kind": "failed",
+    "shard": "shard-4",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'"
+  },
+  {
+    "nodeid": "tests/test_coordination_eval.py::test_real_sigkill_reuses_known_response_and_fences_old_epoch[True]",
+    "kind": "failed",
+    "shard": "shard-4",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/eval/reports/final-v6-answers.jsonl'"
+  },
+  {
+    "nodeid": "tests/test_environment.py::test_real_postgres_vector_and_idempotent_migrations",
+    "kind": "failed",
+    "shard": "shard-4",
+    "junit_message": "assert (35,) == (19,)\n  \n  At index 0 diff: 35 != 19\n  Use -v to get more diff",
+    "last_traceback_error": "Use -v to get more diff"
+  },
+  {
+    "nodeid": "tests/test_environment.py::test_call_limit_migration_preserves_existing_one_call_budgets",
+    "kind": "failed",
+    "shard": "shard-4",
+    "junit_message": "AssertionError: assert ['0005_profil...irs.sql', ...] == ['0005_profil...irs.sql', ...]\n  \n  Left contains 16 more items, first extra item: '0020_repository_analysis.sql'\n  Use -v to get more diff",
+    "last_traceback_error": "Use -v to get more diff"
+  },
+  {
+    "nodeid": "tests/test_h12_judge_pytest_environment.py::test_verifier_preserves_pytest_cache_config_and_behavior[environment--PASS]",
+    "kind": "failed",
+    "shard": "shard-4",
+    "junit_message": "AssertionError: ('SANDBOX_NOT_PREPARED', '')\nassert 'NOT_RUN' == 'PASS'\n  \n  - PASS\n  + NOT_RUN",
+    "last_traceback_error": "+ NOT_RUN"
+  },
+  {
+    "nodeid": "tests/test_h12_judge_pytest_environment.py::test_verifier_preserves_pytest_cache_config_and_behavior[baseline--PASS]",
+    "kind": "failed",
+    "shard": "shard-4",
+    "junit_message": "AssertionError: ('SANDBOX_NOT_PREPARED', '')\nassert 'NOT_RUN' == 'PASS'\n  \n  - PASS\n  + NOT_RUN",
+    "last_traceback_error": "+ NOT_RUN"
+  },
+  {
+    "nodeid": "tests/test_h12_judge_pytest_environment.py::test_verifier_preserves_pytest_cache_config_and_behavior[regression--PASS]",
+    "kind": "failed",
+    "shard": "shard-4",
+    "junit_message": "AssertionError: ('SANDBOX_NOT_PREPARED', '')\nassert 'NOT_RUN' == 'PASS'\n  \n  - PASS\n  + NOT_RUN",
+    "last_traceback_error": "+ NOT_RUN"
+  },
+  {
+    "nodeid": "tests/test_h12_judge_pytest_environment.py::test_verifier_preserves_pytest_cache_config_and_behavior[final--PASS]",
+    "kind": "failed",
+    "shard": "shard-4",
+    "junit_message": "AssertionError: ('SANDBOX_NOT_PREPARED', '')\nassert 'NOT_RUN' == 'PASS'\n  \n  - PASS\n  + NOT_RUN",
+    "last_traceback_error": "+ NOT_RUN"
+  },
+  {
+    "nodeid": "tests/test_h12_judge_pytest_environment.py::test_verifier_preserves_pytest_cache_config_and_behavior[final-assert False, \"real behavioral failure\"-FAIL]",
+    "kind": "failed",
+    "shard": "shard-4",
+    "junit_message": "AssertionError: ('SANDBOX_NOT_PREPARED', '')\nassert 'NOT_RUN' == 'FAIL'\n  \n  - FAIL\n  + NOT_RUN",
+    "last_traceback_error": "+ NOT_RUN"
+  },
+  {
+    "nodeid": "tests/test_h12_judge_pytest_environment.py::test_verifier_preserves_pytest_cache_config_and_behavior[final-warnings.warn(\"real project warning\", UserWarning)-FAIL]",
+    "kind": "failed",
+    "shard": "shard-4",
+    "junit_message": "AssertionError: ('SANDBOX_NOT_PREPARED', '')\nassert 'NOT_RUN' == 'FAIL'\n  \n  - FAIL\n  + NOT_RUN",
+    "last_traceback_error": "+ NOT_RUN"
+  },
+  {
+    "nodeid": "tests/test_h12_judge_pytest_environment.py::test_public_preparation_exercises_the_actual_verifier_command_without_private_assets[False]",
+    "kind": "failed",
+    "shard": "shard-4",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/developer/magr-harness/v3/.local/h12/environment-v2/click-less-th0p1e75/sandbox-lock.json'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/developer/magr-harness/v3/.local/h12/environment-v2/click-less-th0p1e75/sandbox-lock.json'"
+  },
+  {
+    "nodeid": "tests/test_h12_judge_pytest_environment.py::test_public_preparation_exercises_the_actual_verifier_command_without_private_assets[True]",
+    "kind": "failed",
+    "shard": "shard-4",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/developer/magr-harness/v3/.local/h12/environment-v2/click-less-th0p1e75/sandbox-lock.json'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/developer/magr-harness/v3/.local/h12/environment-v2/click-less-th0p1e75/sandbox-lock.json'"
+  },
+  {
+    "nodeid": "tests/test_h12_public_plan.py::test_frozen_controller_rechecks_asset_bytes_and_cannot_drop_opt_in",
+    "kind": "failed",
+    "shard": "shard-4",
+    "junit_message": "mgar_v3.domain.DomainError: Source, model, environment or private registry differs from the frozen experiment",
+    "last_traceback_error": "mgar_v3.domain.DomainError: Source, model, environment or private registry differs from the frozen experiment"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_benchmark_revision.py::test_draft_readiness_is_separate_and_cannot_grant_paid_dispatch",
+    "kind": "failed",
+    "shard": "shard-4",
+    "junit_message": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match",
+    "last_traceback_error": "mgar_v3.quality_eval.harness_v4.CatalogError: Frozen H00 bytes do not match"
+  },
+  {
+    "nodeid": "tests/test_harness_v4_h12_benchmark_revision.py::test_draft_rejects_silent_removal_of_another_task",
+    "kind": "failed",
+    "shard": "shard-4",
+    "junit_message": "AssertionError: Regex pattern did not match.\n  Expected regex: 'eleven'\n  Actual message: 'Frozen H00 bytes do not match'",
+    "last_traceback_error": "Actual message: 'Frozen H00 bytes do not match'"
+  },
+  {
+    "nodeid": "tests/test_v35_e01.py::test_dataset_covers_three_kinds_and_one_adversarial_task",
+    "kind": "failed",
+    "shard": "shard-4",
+    "junit_message": "KeyError: 'expected_changed_paths'",
+    "last_traceback_error": "KeyError: 'expected_changed_paths'"
+  },
+  {
+    "nodeid": "tests/test_v35_e01.py::test_every_task_pins_commit_snapshot_and_hiding",
+    "kind": "failed",
+    "shard": "shard-4",
+    "junit_message": "KeyError: 'expected_changed_paths'",
+    "last_traceback_error": "KeyError: 'expected_changed_paths'"
+  },
+  {
+    "nodeid": "tests/test_v35_e01.py::test_development_loader_never_opens_the_holdout",
+    "kind": "failed",
+    "shard": "shard-4",
+    "junit_message": "KeyError: 'expected_changed_paths'",
+    "last_traceback_error": "KeyError: 'expected_changed_paths'"
+  },
+  {
+    "nodeid": "tests/test_v35_e01.py::test_hidden_sources_never_enter_the_visible_snapshot",
+    "kind": "failed",
+    "shard": "shard-4",
+    "junit_message": "KeyError: 'expected_changed_paths'",
+    "last_traceback_error": "KeyError: 'expected_changed_paths'"
+  },
+  {
+    "nodeid": "tests/test_v35_e01.py::test_adversarial_task_uses_real_sandbox_and_retries",
+    "kind": "failed",
+    "shard": "shard-4",
+    "junit_message": "KeyError: 'expected_changed_paths'",
+    "last_traceback_error": "KeyError: 'expected_changed_paths'"
+  },
+  {
+    "nodeid": "tests/test_v35_e01.py::test_multifile_feature_changes_exactly_two_files",
+    "kind": "failed",
+    "shard": "shard-4",
+    "junit_message": "KeyError: 'expected_changed_paths'",
+    "last_traceback_error": "KeyError: 'expected_changed_paths'"
+  },
+  {
+    "nodeid": "tests/test_v35_r01.py::test_e01_patch_failures_replay_to_applied_or_recoverable[click-sentinel-repair-snapshots/click/3cbcf9b11546f4cf10b36d3e2e531733ba6fe001-snapshots/click/4295457ddc7b5ca9a733d59ca40d9651b02b9b1d-src/click/_utils.py]",
+    "kind": "failed",
+    "shard": "shard-4",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/experiments/v34-audit-repair/snapshots/click/4295457ddc7b5ca9a733d59ca40d9651b02b9b1d/src/click/_utils.py'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/experiments/v34-audit-repair/snapshots/click/4295457ddc7b5ca9a733d59ca40d9651b02b9b1d/src/click/_utils.py'"
+  },
+  {
+    "nodeid": "tests/test_v35_r01.py::test_e01_patch_failures_replay_to_applied_or_recoverable[click-short-help-repair-snapshots/click/6d5bac5c712195cbfa9666ba0ecbf0573cdea356-snapshots/click/f67c2bb6c2f055c1c7a57cd46c3697fc26a7742e-src/click/utils.py]",
+    "kind": "failed",
+    "shard": "shard-4",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/experiments/v34-audit-repair/snapshots/click/f67c2bb6c2f055c1c7a57cd46c3697fc26a7742e/src/click/utils.py'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/experiments/v34-audit-repair/snapshots/click/f67c2bb6c2f055c1c7a57cd46c3697fc26a7742e/src/click/utils.py'"
+  },
+  {
+    "nodeid": "tests/test_v35_r01.py::test_e01_patch_failures_replay_to_applied_or_recoverable[click-help-name-repair-snapshots/click/8c1a0a7abbc1c36f70d1f65f3604acc46c5ce6ab-snapshots/click/b67832c2167e5b0ff6764a8c04a0a9087e697b5a-src/click/core.py]",
+    "kind": "failed",
+    "shard": "shard-4",
+    "junit_message": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/experiments/v34-audit-repair/snapshots/click/b67832c2167e5b0ff6764a8c04a0a9087e697b5a/src/click/core.py'",
+    "last_traceback_error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/imini/magr-harness-ga00/v3/experiments/v34-audit-repair/snapshots/click/b67832c2167e5b0ff6764a8c04a0a9087e697b5a/src/click/core.py'"
+  }
+]

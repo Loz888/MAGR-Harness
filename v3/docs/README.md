@@ -5,6 +5,7 @@ MAGR-Harness 独立交付的使用和验收入口见[项目首页](../../README.
 | 阅读目的 | 入口 |
 |---|---|
 | 快速了解项目 | [仓库首页](../../README.md) |
+| General Agent 下一阶段 | [任务书](general-agent-v1/TASKBOOK_V1.md) · [任务队列](general-agent-v1/TASKS.md) · [GA00 基线](general-agent-v1/GA00_BASELINE_20261119.md) |
 | 理解技术、设计及失败修复 | [完整技术报告](TECHNICAL_REPORT.md) · [PDF](reports/20261106/MGAR-V3.1-Technical-Report.pdf) · [独立HTML](reports/20261106/MGAR-V3.1-Technical-Report.html) |
 | 本机启动和演示 | [应用README](../README.md) · [已验证版本](versions.md) |
 | 使用自然语言项目 Agent | [首次使用](agent-ui.md) · [产品接线任务卡](harness-v4/HARNESS_PRODUCT_TASK.md) |
