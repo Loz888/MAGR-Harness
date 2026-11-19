@@ -1,5 +1,7 @@
 # MAGR Harness 升级任务书与规划
 
+2026 年 11 月 19 日，H18 独立工程门 **FAIL**。注册测试和 WSL2、Debian 12 容器安装通过。恢复失败会遗留运行目录，阻塞同目标重试。[独立验收](H18_INDEPENDENT_ACCEPTANCE_20261119.md)
+
 2026 年 11 月 18 日，H18 完成本地工程验收。发行包、环境诊断、数据库与 CAS 恢复和脱敏指标可通过现有命令行使用。[H18 验收](H18_ACCEPTANCE_20261118.md) · [安装与恢复](H18_OPERATIONS.md)
 
 2026 年 11 月 18 日，H17 完成本地工程验收，受限仓库专家可由操作者开启试用。默认采用单 Agent，真实模型效果门为 NOT_RUN。[H17 验收与试用](H17_ACCEPTANCE_20261118.md) · [机器验收](accept/HV4-H17/accept.json)

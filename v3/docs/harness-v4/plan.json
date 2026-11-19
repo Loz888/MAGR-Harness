@@ -472,7 +472,9 @@
       "verification_target_on_implementation": "HV4-H18",
       "engineering_gate": "PASS",
       "live_model_gate": "NOT_RUN",
-      "accept_record": "accept/HV4-H18/accept.json"
+      "accept_record": "accept/HV4-H18/accept.json",
+      "independent_engineering_gate": "FAIL",
+      "independent_recheck": "accept/HV4-H18/independent-20261119.json"
     }
   ],
   "mvp": [

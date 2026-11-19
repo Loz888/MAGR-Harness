@@ -1,0 +1,315 @@
+{
+  "schema_version": "harness-independent-acceptance-v1",
+  "task": "HV4-H18",
+  "date": "2026-11-19",
+  "source_commit": "6bcf68594622e85662b1a5a5341ddb7e2a9af5c7",
+  "verified_head": "423ff1bab1a3ab6c3ec49fc3d7f063361f9dc5fe",
+  "source_sha256": "b8b4e5d7ab481a08e4d941bf75415e058e89c8bf274a865265f36d86d18f3676",
+  "source_to_head_changes": [
+    "v3/docs/harness-v4/H18_ACCEPTANCE_20261118.md",
+    "v3/docs/harness-v4/H18_OPERATIONS.md",
+    "v3/docs/harness-v4/README.md",
+    "v3/docs/harness-v4/TASKS.md",
+    "v3/docs/harness-v4/accept/HV4-H18/accept.json",
+    "v3/docs/harness-v4/plan.json"
+  ],
+  "historical_acceptance": {
+    "path": "docs/harness-v4/accept/HV4-H18/accept.json",
+    "sha256": "8362a197e22721a82c67c426ac9ffb44f92432484f3c9b8e89263bbf1c5c5b41"
+  },
+  "historical_reference_hashes_verified": 31,
+  "registered_engineering_gate": "PASS",
+  "real_model_gate": "NOT_RUN",
+  "production_gate": "NOT_RUN",
+  "native_linux_host_gate": "NOT_RUN",
+  "real_model_calls": 0,
+  "checks": {
+    "HV4-H11": {
+      "status": "PASS",
+      "counts": {
+        "tests": 68,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "wall_seconds": 165.312,
+      "evidence": {
+        "result.json": {
+          "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/4b98ca757460/HV4-H11/20261119T041639Z-73a5fcb1/result.json",
+          "sha256": "b45ba75b618467409ce629e640207aee9e65ca161f8ba7f15971c8bf4164af66"
+        },
+        "junit.xml": {
+          "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/4b98ca757460/HV4-H11/20261119T041639Z-73a5fcb1/junit.xml",
+          "sha256": "00d5b38d4e8d4892d739b97458ba8ea5ac52cd637a895f848d8263b835dab1b8"
+        },
+        "command.log": {
+          "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/4b98ca757460/HV4-H11/20261119T041639Z-73a5fcb1/command.log",
+          "sha256": "152f4378b7bc3fb227407e5df19f653564e4d563a31bd5aa804ea570028b4ff4"
+        }
+      },
+      "reason": null,
+      "failed_nodes": []
+    },
+    "HV4-H13": {
+      "status": "PASS",
+      "counts": {
+        "tests": 42,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "wall_seconds": 589.936,
+      "evidence": {
+        "result.json": {
+          "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/4b98ca757460/HV4-H13/20261119T041525Z-42830c7d/result.json",
+          "sha256": "e386c3ba26916cb47e64f20ad9278631e663e1f33e846c31bc8f4ab54daddb0f"
+        },
+        "junit.xml": {
+          "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/4b98ca757460/HV4-H13/20261119T041525Z-42830c7d/junit.xml",
+          "sha256": "30d6e9cdde3d42e2b3339da93a77f8d75382480de98b6221c5a24315da8e81db"
+        },
+        "command.log": {
+          "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/4b98ca757460/HV4-H13/20261119T041525Z-42830c7d/command.log",
+          "sha256": "743d1c21fb3e7a36724f236c1f23e81bbcbcd53cf08bb8cc7cae51481e4b8e3b"
+        }
+      },
+      "reason": null,
+      "failed_nodes": []
+    },
+    "HV4-H16": {
+      "status": "PASS",
+      "counts": {
+        "tests": 13,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "wall_seconds": 137.517,
+      "evidence": {
+        "result.json": {
+          "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/4b98ca757460/HV4-H16/20261119T041421Z-d42640be/result.json",
+          "sha256": "b821ada1348c9c1042d7f60ce73a65ba95bc4ed3b7ce2e0ba291b467251918ce"
+        },
+        "junit.xml": {
+          "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/4b98ca757460/HV4-H16/20261119T041421Z-d42640be/junit.xml",
+          "sha256": "ff064cb336af171e62b6e995c0e4e48d826394603441290008a74e83b374bbb1"
+        },
+        "command.log": {
+          "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/4b98ca757460/HV4-H16/20261119T041421Z-d42640be/command.log",
+          "sha256": "562498f7fd48c6861dd543886e361929fe4c791ffc052bedd18d0a25e09a9e41"
+        }
+      },
+      "reason": null,
+      "failed_nodes": []
+    },
+    "HV4-H17": {
+      "status": "PASS",
+      "counts": {
+        "tests": 18,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "wall_seconds": 162.233,
+      "evidence": {
+        "result.json": {
+          "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/4b98ca757460/HV4-H17/20261119T041421Z-1c732cf6/result.json",
+          "sha256": "0956e76f498bbe29d451777bd97b85e0220305e879cde1b340da34e13c2bcd5c"
+        },
+        "junit.xml": {
+          "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/4b98ca757460/HV4-H17/20261119T041421Z-1c732cf6/junit.xml",
+          "sha256": "f908a590f29ca03f8bee53607fb34b3b80f3d931403c412aa9be1385af0d81e2"
+        },
+        "command.log": {
+          "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/4b98ca757460/HV4-H17/20261119T041421Z-1c732cf6/command.log",
+          "sha256": "8870875b1cac8325890a54ee93b25d29a2f1353247caab1b8f1f1256983e51a7"
+        }
+      },
+      "reason": null,
+      "failed_nodes": []
+    },
+    "HV4-H18": {
+      "status": "PASS",
+      "counts": {
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "wall_seconds": 63.219,
+      "evidence": {
+        "result.json": {
+          "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/4b98ca757460/HV4-H18/20261119T041421Z-c6ee2b14/result.json",
+          "sha256": "1fda5a228d5c8f7fce1395a24cdcc2ba4fc4ccadaaea451061f55845fbfeac66"
+        },
+        "junit.xml": {
+          "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/4b98ca757460/HV4-H18/20261119T041421Z-c6ee2b14/junit.xml",
+          "sha256": "ea13af9c451f677e610cd5b7e71d72e1db73f1856dba5a6be978d6bf83e9c303"
+        },
+        "command.log": {
+          "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/4b98ca757460/HV4-H18/20261119T041421Z-c6ee2b14/command.log",
+          "sha256": "91fed54a599658ef6629843f2c33c11999bf89b1379fad475e99dc4c52a8d05a"
+        }
+      },
+      "reason": null,
+      "failed_nodes": []
+    },
+    "lint": {
+      "status": "PASS",
+      "evidence": {
+        "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/4b98ca757460/lint-retry.log",
+        "sha256": "a220b562d6bdb3655673add818cabd1dbd6857a7efc7d06ff8178f9e0e2501e2"
+      },
+      "initial_environment_failure": {
+        "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/4b98ca757460/lint.log",
+        "sha256": "c1b9561a73f9654b1b950e3f8b8a51e9cfe298e39543b4485297e429800de245"
+      }
+    },
+    "typecheck": {
+      "status": "PASS",
+      "evidence": {
+        "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/4b98ca757460/typecheck-retry.log",
+        "sha256": "2217d486a4cb8b894bdd7ab5db80ca0e2a87cee3e8fd896ccfe875137cf5c12e"
+      },
+      "initial_environment_failure": {
+        "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/4b98ca757460/typecheck.log",
+        "sha256": "b2f40cb816ecf12642c9f0773a32ae551de1d83d0e169f0cd73ca319e12d63d5"
+      }
+    }
+  },
+  "environment_and_cleanup": {
+    "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/4b98ca757460/orchestration.json",
+    "sha256": "f77fff3154fc0249ff59213d24820a8b04bac9376f80825b3dbc6598463768e6"
+  },
+  "independent_engineering_gate": "FAIL",
+  "blocking_findings": [
+    {
+      "code": "RESTORE_PUBLISHES_RUNTIME_BEFORE_IMPORT",
+      "expected": "Failed import preserves the empty database and leaves the target runtime available for retry.",
+      "observed": "SNAPSHOT_POSTGRES_CLIENT_MISSING leaves the runtime directory published. An identical retry with pg_restore available fails with SNAPSHOT_DESTINATION_EXISTS. A new runtime directory restores successfully."
+    }
+  ],
+  "installation": {
+    "source": "6bcf68594622e85662b1a5a5341ddb7e2a9af5c7",
+    "paid_model_calls": 0,
+    "archive_sha256": "47d385c36859844288c62c6734d02a59500a08092b25e29bc726c580bbbe3b51",
+    "manifest_files": 1349,
+    "wsl2": {
+      "status": "PASS",
+      "kernel": "6.18.33.2-microsoft-standard-WSL2",
+      "migrations": 35,
+      "same_cookie_after_restart": true,
+      "doctor": {
+        "postgres": "PASS",
+        "redis": "PASS",
+        "sandbox": "PASS",
+        "live": "NOT_RUN",
+        "diagnostics": {
+          "postgres": {
+            "code": "OK",
+            "applied": 35,
+            "latest": "0057_harness_tenants.sql"
+          },
+          "redis": {
+            "code": "OK"
+          },
+          "sandbox": {
+            "code": "OK"
+          }
+        }
+      },
+      "sandbox_lock_reused": true
+    },
+    "restore_failure": {
+      "expected_error_observed": true,
+      "target_database_unchanged": true,
+      "runtime_left_after_failure": true,
+      "same_runtime_retry_blocked": true
+    },
+    "real_http_rollback_login": "PASS",
+    "debian12_container": "PASS",
+    "compose_cleaned": true
+  },
+  "installation_evidence": [
+    {
+      "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/install-b3bab0b1bb/build-a.log",
+      "sha256": "2c77b9999aa2e96673e2f7c6e523615bc32d91e9581198d5a68a459acafe974d"
+    },
+    {
+      "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/install-b3bab0b1bb/build-b.log",
+      "sha256": "4a6e16e161d1a52c805b91598930cec7b305f3a810e7de3e3a6e180fa690db8b"
+    },
+    {
+      "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/install-b3bab0b1bb/compose-cleanup.log",
+      "sha256": "078300d850ae82e42281546fce8caf51cadbd963c2e123fb4ab93344e150e99e"
+    },
+    {
+      "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/install-b3bab0b1bb/compose-final.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/install-b3bab0b1bb/compose-initial.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/install-b3bab0b1bb/compose-up.log",
+      "sha256": "d4d231168c6296e59922fb20190fce57d03d66eeab4d44737e6d0bec826d21f9"
+    },
+    {
+      "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/install-b3bab0b1bb/debian.log",
+      "sha256": "6b715f14e92b290e13deffe5ef301aa91c1c54df805f6d1f877494c60501fb51"
+    },
+    {
+      "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/install-b3bab0b1bb/snapshot-restore-failure.log",
+      "sha256": "ab1e251afe11340a396a0435edfc4415afdc57f474b59276995c72ce7edbc250"
+    },
+    {
+      "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/install-b3bab0b1bb/snapshot-restore.log",
+      "sha256": "d5479767ab83f412c55192c1913b40a82639d22cdfdff0b097d76be583ebb779"
+    },
+    {
+      "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/install-b3bab0b1bb/snapshot-same-target-retry.log",
+      "sha256": "14a2be7bea1c34ccd4685cbe6360fc908302f7c93ddae58f7ceeda265df6225a"
+    },
+    {
+      "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/install-b3bab0b1bb/snapshot.log",
+      "sha256": "d5479767ab83f412c55192c1913b40a82639d22cdfdff0b097d76be583ebb779"
+    },
+    {
+      "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/install-b3bab0b1bb/wsl-doctor.log",
+      "sha256": "eb24079d976e80c1891c2c8592164cb4529b6d97c5e5aa05a8457c561f74bb8a"
+    },
+    {
+      "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/install-b3bab0b1bb/wsl-migrate-repeat.log",
+      "sha256": "8155ffc09af2b7a2c063f86f1298feb7e4320f31216e57bb7bbed70d0ea74657"
+    },
+    {
+      "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/install-b3bab0b1bb/wsl-migrate.log",
+      "sha256": "7962d71b9a19035d824cc34955b98843b4c6688e078a3f4ab3fd01aa3878e65c"
+    },
+    {
+      "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/install-b3bab0b1bb/wsl-setup-retry.log",
+      "sha256": "813bedad7335e9ad68e9fe58f4349c031fe57d1556e01b025bdd9a3d3efe6e59"
+    },
+    {
+      "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/install-b3bab0b1bb/wsl-setup.log",
+      "sha256": "56c4a77bd347a085d0f2ddc8c3cf27633e8d058d2df9f683fbd5c48572e7a3e1"
+    },
+    {
+      "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/install-b3bab0b1bb/wsl-web-initial.log",
+      "sha256": "63093edd723f9fc576bef53d5e76f4a92f5d44d00d06a941a181480f348859f8"
+    },
+    {
+      "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/install-b3bab0b1bb/wsl-web-restart.log",
+      "sha256": "b3d9d9f8e812ada3548a652f99b1a23243d198528368aae337ccfa2a94942722"
+    },
+    {
+      "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/install-b3bab0b1bb/wsl-web-rollback.log",
+      "sha256": "e4595480d8ccfdc4104d07daed43ed9f13e4562e57561ea864dc77198c0c2b13"
+    },
+    {
+      "path": "evidence/harness-v4/H18-INDEPENDENT-20261119/install-b3bab0b1bb/install.json",
+      "sha256": "f56ee45adb0d7d3e1d78afad4dd39b4b2a0e26cefe9b5018b176f4794e6989e9"
+    }
+  ]
+}
