@@ -1,0 +1,127 @@
+{
+  "schema_version": "magr-general-agent-acceptance-v1",
+  "task": "GA12",
+  "source_commit": "554ccea0f550efb4dd8b5318b3d2dda97a6f0681",
+  "source_sha256": "1abd2f9303b3467f0fda6dde265797f881d85bccbdb0a5eed16c31b206dfcda5",
+  "historical_verification_commit": "a7799bf",
+  "historical_status": "INDEPENDENT_FAIL",
+  "historical_evidence": {
+    "path": "docs/general-agent-v1/accept/GA11-GA12/independent-20261119.json",
+    "sha256": "deb77a927a6051e4f46e44d3f83919162cc2f146400ce523daa6bbdcdbff55e1"
+  },
+  "engineering_status": "PASS",
+  "independent_recheck": "NOT_RUN",
+  "reformatted_development_probe": {
+    "old_freeze": "ACCEPTED",
+    "new_freeze": "REJECTED",
+    "old_manifest_with_new_runner": "REJECTED",
+    "new_exit_codes": {
+      "freeze": 2,
+      "run": 2
+    },
+    "new_outputs_created": false,
+    "evidence": [
+      {
+        "path": "evidence/GA12-ADMISSION-REPAIR/original-reproduction.log",
+        "sha256": "ef252caedbe759ccad1d7fe7f6005d5aaf8e0884970a20fd66e3e32270cf973e"
+      },
+      {
+        "path": "evidence/GA12-ADMISSION-REPAIR/rejected-after.log",
+        "sha256": "a8f4740034408ba006e94c182865254f3c47f5e65b4cbe9587dcd4b06d203198"
+      }
+    ]
+  },
+  "registered": {
+    "command": "make verify TASK=GA12",
+    "counts": {
+      "tests": 17,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "status": "PASS",
+    "evidence": [
+      {
+        "path": "evidence/GA12/20261119T132119Z-ec55b511/result.json",
+        "sha256": "b01ece7286a15724f0e8101a3355a07c97b74332d6ff9e54847f831e8bdfeb2e"
+      },
+      {
+        "path": "evidence/GA12/20261119T132119Z-ec55b511/junit.xml",
+        "sha256": "c39dae0f97541904740f1dbad13fb30577342e63d1525c247131e9dfd0a152a8"
+      },
+      {
+        "path": "evidence/GA12/20261119T132119Z-ec55b511/command.log",
+        "sha256": "1a3accc2b03e107060c71f03de9129cdeacb4aeaf4edb4b30c19752453d926f6"
+      }
+    ]
+  },
+  "sealed_holdout_local_baseline": {
+    "bundle_sha256": "7cf0a5d3e30252a0de870f578548648c7facbe78478681b755894efd220ac730",
+    "cases": 60,
+    "domains": {
+      "autonomy": {
+        "evaluated": 10,
+        "passed": 10
+      },
+      "coding": {
+        "evaluated": 10,
+        "passed": 10
+      },
+      "cross-domain": {
+        "evaluated": 10,
+        "passed": 10
+      },
+      "data": {
+        "evaluated": 10,
+        "passed": 10
+      },
+      "office": {
+        "evaluated": 10,
+        "passed": 10
+      },
+      "research": {
+        "evaluated": 10,
+        "passed": 10
+      }
+    },
+    "external_effect_errors": 0,
+    "holdout_commitment_sha256": "6a5d601c8a5e4efecf01573c6fff57f4547596fada44c5250539714a62083d2d",
+    "original_freeze_sha256": "c017b366224ff42de3866e9686262ce8ce7f3fcbe90aafe318d8ed8c1a390569",
+    "policy_violations": 0,
+    "raw_sha256": "4a503f55d005cb24dab8cf04e3b73220f5ddefd18793151d1197ae8a92dabbab",
+    "same_freeze_bytes": true,
+    "source_sha256": {
+      "ga12_benchmark.py": "ca107f1c3f31a70787d52cdcc89e8f2dd0b8f0cfdf36bd1ffd91abb61b5ccc07",
+      "ga12_contracts.py": "c4684dc98fcf3642ae63a7da321e6d9360ffb6f8f12b48abdc8ddae8fb013b5a",
+      "ga12_fixture.py": "dd1861085272db3c7687b0795e7170825bd50930f5a057ebc532ea2af6564f43",
+      "ga12_grader.py": "a588b9176aa8d8ed730c27c7f78ab75d6f8cb25404e24b7161bdde0c8bb8b869"
+    },
+    "usage": {
+      "cost_microusd": 0,
+      "input_tokens": 0,
+      "model": null,
+      "model_calls": 0,
+      "output_tokens": 0,
+      "provider": "ga12-mock",
+      "real_external_writes": 0
+    },
+    "verdict": "PASS",
+    "aggregate_receipt": {
+      "path": "evidence/GA12-ADMISSION-REPAIR/sealed-recheck.json",
+      "sha256": "8ccda027cccdaba8abd213c8e5959be5dcf63e62826cd267d2d5393804daf993"
+    }
+  },
+  "static": {
+    "ruff": "PASS",
+    "mypy": "PASS",
+    "lockfile": "PASS",
+    "evidence": {
+      "path": "evidence/GA12-ADMISSION-REPAIR/static.log",
+      "sha256": "0925f4fd0f3cde5872dd267a004dff8497b7197be007b58cb468ed521d1d130d"
+    }
+  },
+  "real_model": "NOT_RUN",
+  "real_external": "NOT_RUN",
+  "real_model_calls": 0,
+  "real_external_writes": 0
+}
