@@ -1,0 +1,141 @@
+{
+  "schema_version": "magr-general-agent-engineering-v1",
+  "task": "GA05",
+  "source_commit": "93eb6d30d2a06e00ec7947ed7ba818252005bffe",
+  "ga04_acceptance_before_ga05": "125b33a",
+  "source_sha256": "0ab2ffc95093649c34edc3cafdcbb09b8347cbcdf787bf605a795bb7ba6fc0be",
+  "migration": {
+    "path": "migrations/0061_general_verification.sql",
+    "sha256": "9f967baff2437d5aeaee869dd445daf22d9480182571073f76396c9c35b352b1"
+  },
+  "ga04_migration": {
+    "path": "migrations/0060_general_actions.sql",
+    "sha256": "cb13be00b4a2d5a1a7ded2e6547f1890b18e2c0d51d3ba40a04e3a1703dbafff"
+  },
+  "engineering_gate": "PASS",
+  "independent_verification": "NOT_RUN",
+  "live_gate": "NOT_RUN",
+  "live_model_calls": 0,
+  "production_provider_calls": 0,
+  "unique_test_nodes": 66,
+  "registered_gates": {
+    "GA02-REPLAN-REPAIR": {
+      "command": "make verify TASK=GA02-REPLAN-REPAIR",
+      "verdict": "PASS",
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "artifact": {
+        "result.json": {
+          "path": "evidence/GA02-REPLAN-REPAIR/20261119T104119Z-0e68c057/result.json",
+          "sha256": "e0d75ba768fecd0ed632ae36b6a76a566ad0b574576fe1f0a2fa7bf7017e3e0a"
+        },
+        "command.log": {
+          "path": "evidence/GA02-REPLAN-REPAIR/20261119T104119Z-0e68c057/command.log",
+          "sha256": "5c811bab3c8a2b5f1eaa8adf68378c3b2029726fe3c6bb79e58272f2298b58b4"
+        },
+        "junit.xml": {
+          "path": "evidence/GA02-REPLAN-REPAIR/20261119T104119Z-0e68c057/junit.xml",
+          "sha256": "8c11d5b36995ad594e9c4a77506ae413dba6d1b2cf2d9e1454696b85f7ce5ef8"
+        }
+      }
+    },
+    "GA04": {
+      "command": "make verify TASK=GA04",
+      "verdict": "PASS",
+      "counts": {
+        "tests": 15,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "artifact": {
+        "result.json": {
+          "path": "evidence/GA04/20261119T104119Z-f7b21afa/result.json",
+          "sha256": "6667bf93c65bc7daa0a8042c1c9fdfb5d65e20f39bf2bc2531d080516b7f7767"
+        },
+        "command.log": {
+          "path": "evidence/GA04/20261119T104119Z-f7b21afa/command.log",
+          "sha256": "3edc41a79a990e5c67676a215a2c793a63730e559d2d546774f29e0838d4faef"
+        },
+        "junit.xml": {
+          "path": "evidence/GA04/20261119T104119Z-f7b21afa/junit.xml",
+          "sha256": "f91ff88b170181b37b164f4b16de690daef910854ff0bb67aa2cded973aaaf05"
+        }
+      }
+    },
+    "GA05": {
+      "command": "make verify TASK=GA05",
+      "verdict": "PASS",
+      "counts": {
+        "tests": 16,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "artifact": {
+        "result.json": {
+          "path": "evidence/GA05/20261119T104119Z-cc2cdede/result.json",
+          "sha256": "21e0d3c8f7a690e43de1ff424c06087e49b69049654f51fb8e179b9397e787dc"
+        },
+        "command.log": {
+          "path": "evidence/GA05/20261119T104119Z-cc2cdede/command.log",
+          "sha256": "dcbf01282aff7798d503a7ba9b6160001a56ab8195cbd295d292694431c30130"
+        },
+        "junit.xml": {
+          "path": "evidence/GA05/20261119T104119Z-cc2cdede/junit.xml",
+          "sha256": "1ceae99e9008e13a767db9151346b85e3bfba5a2002f2434db860f82807eddd2"
+        }
+      }
+    },
+    "GA01": {
+      "command": "make verify TASK=GA01",
+      "verdict": "PASS",
+      "counts": {
+        "tests": 34,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "artifact": {
+        "result.json": {
+          "path": "evidence/GA01/20261119T104119Z-53f450b6/result.json",
+          "sha256": "6862c223082cf1bd3a05949ebd6b3ecbbdd8b9eed569838e30315cc4357132d2"
+        },
+        "command.log": {
+          "path": "evidence/GA01/20261119T104119Z-53f450b6/command.log",
+          "sha256": "9f1cbc5389028f85f758b8ee6798baa72f468acf0511b810b757be04fb54c015"
+        },
+        "junit.xml": {
+          "path": "evidence/GA01/20261119T104119Z-53f450b6/junit.xml",
+          "sha256": "887d50b2f7306fffcdac0137d1f9740ced665b266e795dc28454e5f2efe87c90"
+        }
+      }
+    }
+  },
+  "lint": {
+    "status": "PASS",
+    "log": {
+      "path": "evidence/GA05/development/lint-93eb6d3.log",
+      "sha256": "a220b562d6bdb3655673add818cabd1dbd6857a7efc7d06ff8178f9e0e2501e2"
+    }
+  },
+  "typecheck": {
+    "status": "PASS",
+    "log": {
+      "path": "evidence/GA05/development/typecheck-93eb6d3.log",
+      "sha256": "d2a4dab24203a3364a30ae01666e5564f34593393c283d8872309e9980b4278c"
+    }
+  },
+  "prior_ga04_engineering_receipt": {
+    "path": "docs/general-agent-v1/accept/GA04/accept.json",
+    "sha256": "6efb47e9a39ac0fbe67a23777c9bd1fd2a8a01ef5a83a5c56241540a47811ebe"
+  },
+  "previous_ga02_targeted_receipt": {
+    "path": "docs/general-agent-v1/accept/GA02/replan-repair-20261119.json",
+    "sha256": "0327016245732b12b53a0f2fdf95ec5ef271c8c9fbf174b570ac142062800a09"
+  }
+}
