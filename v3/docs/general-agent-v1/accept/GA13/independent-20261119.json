@@ -1,0 +1,270 @@
+{
+  "schema_version": "magr-general-agent-independent-v1",
+  "task": "GA13",
+  "source_commit": "175cabcdf7472b6f4a6a164ead59489b4fc1956d",
+  "source_sha256": "cdca4ff70da47611b0b012fbe06519402e4cd3f15a49bb78d2c767f4dd4e684e",
+  "source_parent": "40e8dbf2f03da0299287e61656af59de0d98a172",
+  "original_acceptance_commit": "505d789cbd7352d8e35ef05504cb258cd9f4c3b0",
+  "original_acceptance": {
+    "path": "docs/general-agent-v1/accept/GA13/accept.json",
+    "sha256": "baee81774cda5811c954f4c74147f3a9d23d3a969223c6a898da7c7deb3a4155"
+  },
+  "original_evidence_paths_verified": 13,
+  "engineering_independent_gate": "INDEPENDENT_PASS",
+  "rc_release_gate": "BLOCKED",
+  "registered_engineering": {
+    "initial_attempt": {
+      "status": "FAIL",
+      "counts": {
+        "tests": 40,
+        "failures": 2,
+        "errors": 0,
+        "skipped": 0
+      },
+      "cause": "Independent worktree did not have the required sandbox image lock.",
+      "raw": [
+        {
+          "path": "evidence/GA13/independent-20261119T134441Z-7a0f7a98/registered-gate/result.json",
+          "sha256": "f2a823d2e424baa68f143e36b1bad3a00b23c5dace3aadfa71ff5e1d336c13d1"
+        },
+        {
+          "path": "evidence/GA13/independent-20261119T134441Z-7a0f7a98/registered-gate/junit.xml",
+          "sha256": "dded9e2ba32d11502f5581a5fb6ec83fef01c25344e87e5f1447fd90fbe76343"
+        },
+        {
+          "path": "evidence/GA13/independent-20261119T134441Z-7a0f7a98/registered-gate/command.log",
+          "sha256": "6b113c8389927437b6e2064716bac0bc15ac81f4165b0920988542079e3d20cf"
+        },
+        {
+          "path": "evidence/GA13/independent-20261119T134441Z-7a0f7a98/cases.json",
+          "sha256": "2d6f28d5a444618b2235070b669d418a8b84a63ca9e08d1afc7090d753265a17"
+        }
+      ]
+    },
+    "targeted_retry": {
+      "status": "PASS",
+      "passed": 2,
+      "sandbox_lock_sha256": "2b6ffb5cead4d18e1219816c4d829c7f2cdf3dc5165cf1683fb4c25f360f3e86",
+      "raw": [
+        {
+          "path": "evidence/GA13/independent-coding-recheck-20261119T134954Z-1ec5b674/coding-recheck/junit.xml",
+          "sha256": "7e0b41960fda618c7325e18882ef13d5898aedaf24b7126a78eb5a8436990c00"
+        },
+        {
+          "path": "evidence/GA13/independent-coding-recheck-20261119T134954Z-1ec5b674/coding-recheck/command.log",
+          "sha256": "9b2cd85dc31dbaf63c23242d6642139f31c6dc9a39d4e98eb79b1f2b86f057df"
+        },
+        {
+          "path": "evidence/GA13/independent-coding-recheck-20261119T134954Z-1ec5b674/coding-recheck/cases.json",
+          "sha256": "c188c1ec45cd3193880ad552dee9d8b8cb9756796b1fcd8e6114f112a5e18616"
+        }
+      ]
+    },
+    "combined": {
+      "passed": 40,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "combined_cases": {
+      "path": "evidence/GA13/independent-coding-recheck-20261119T134954Z-1ec5b674/combined-cases.json",
+      "sha256": "70fd9d5fff98544f81da641a98adf80d05b42a1637687a59bc5675b5c69fdd02"
+    }
+  },
+  "static": {
+    "lint": {
+      "exit": 0,
+      "seconds": 0.144,
+      "raw": {
+        "path": "evidence/GA13/independent-20261119T134441Z-7a0f7a98/lint/command.log",
+        "sha256": "a220b562d6bdb3655673add818cabd1dbd6857a7efc7d06ff8178f9e0e2501e2"
+      }
+    },
+    "typecheck": {
+      "exit": 0,
+      "seconds": 17.261,
+      "raw": {
+        "path": "evidence/GA13/independent-20261119T134441Z-7a0f7a98/typecheck/command.log",
+        "sha256": "225392ae9d2b3ea0fb928bfb5a8297d8fa396b7e25773fb6e167ec1ec8638180"
+      }
+    },
+    "lock": {
+      "exit": 0,
+      "seconds": 0.055,
+      "raw": {
+        "path": "evidence/GA13/independent-20261119T134441Z-7a0f7a98/lock/command.log",
+        "sha256": "b3cbbdecaa83a53ff5e78261ae4c8cc922da87bb912b5c3dc9f2250a5d086c76"
+      }
+    }
+  },
+  "release": {
+    "sha256": "3764a42e046481d774b2284176ffaecec30e2edc6741b8092d3815c402aef745",
+    "files_verified": 1498,
+    "byte_identical": true,
+    "setup": "PASS",
+    "lock_sha256": "56579416e1652e02a17706e72be15ee5d24762c45d6e27b25618312eddbb6583",
+    "fixture_scores": {
+      "development": {
+        "passed": 60,
+        "domains": {
+          "autonomy": 10,
+          "coding": 10,
+          "cross-domain": 10,
+          "data": 10,
+          "office": 10,
+          "research": 10
+        },
+        "bundle_sha256": "34054a7d8c322cda8914d4a3f1949583e383022bd8d22573921625ab43c14b63",
+        "raw_sha256": "1cb3ac35d1518e3e8f1f23bdaf9dca0764bd15a29d20d9aef1ee8962d273870d"
+      },
+      "holdout": {
+        "passed": 60,
+        "domains": {
+          "autonomy": 10,
+          "coding": 10,
+          "cross-domain": 10,
+          "data": 10,
+          "office": 10,
+          "research": 10
+        },
+        "bundle_sha256": "7cf0a5d3e30252a0de870f578548648c7facbe78478681b755894efd220ac730",
+        "raw_sha256": "79db89776aa3a81d8b23a663762b220c72d150c5b66a890c993349a5fbe2d102"
+      }
+    },
+    "browser": {
+      "status": "PASS",
+      "browser": "Edge headless",
+      "run": "20261119T134936Z-f0f3041b",
+      "signed_out_and_setup": true,
+      "natural_goal_waiting": true,
+      "structured_revision": 2,
+      "planned": true,
+      "same_task_after_reload": true,
+      "browser_api_agrees": true,
+      "unhandled_errors": 0,
+      "isolated_origin": "http://127.0.0.1:43526"
+    },
+    "recorded_archive": {
+      "path": "evidence/GA13/frozen/magr-harness-ga13-175cabc.tar.gz",
+      "sha256": "3764a42e046481d774b2284176ffaecec30e2edc6741b8092d3815c402aef745"
+    },
+    "raw": [
+      {
+        "path": "evidence/GA13/independent-package-20261119T134936Z-f0f3041b/build-1/command.log",
+        "sha256": "b09a8b6696966277429053a890fef8a1f33dbc7f9eba352db7c25f306ec8e2bc"
+      },
+      {
+        "path": "evidence/GA13/independent-package-20261119T134936Z-f0f3041b/build-2/command.log",
+        "sha256": "b6df606b8d7189880d44581dbefa7ba37a9b88d900f3d0a5b111e49679f45603"
+      },
+      {
+        "path": "evidence/GA13/independent-package-20261119T134936Z-f0f3041b/archive-setup/command.log",
+        "sha256": "9e56c9e950e5574f526437fa7968d3a5f11164510459771a266317ca240cf59c"
+      },
+      {
+        "path": "evidence/GA13/independent-package-20261119T134936Z-f0f3041b/archive-migrate/command.log",
+        "sha256": "c70d7447462a7f71bbcd9fbd94dafa1c86434cc828383d79e82293e018818672"
+      },
+      {
+        "path": "evidence/GA13/independent-package-20261119T134936Z-f0f3041b/archive-http.log",
+        "sha256": "5968f72eca9cc2f6f83d4d34a1dc7df31a172c9cdcd618d9a47e8c5200a7d6f3"
+      },
+      {
+        "path": "evidence/GA13/independent-package-20261119T134936Z-f0f3041b/package-fixtures.json",
+        "sha256": "7dd642b2e822e29852f73bebacfb54400bfaa3ce921ddafb4a8183e96d0d4a9b"
+      },
+      {
+        "path": "evidence/GA13/independent-package-20261119T134936Z-f0f3041b/browser.json",
+        "sha256": "daea14b4f782033afb626020f92c2e48017f982e5608ff4ca5f09ea1b64d4c95"
+      },
+      {
+        "path": "evidence/GA13/independent-package-20261119T134936Z-f0f3041b/general-plan.png",
+        "sha256": "17c8c66c281f4cc1a90d09f86f49143f06c3ecb429226bca4da118f196bcbfac"
+      }
+    ]
+  },
+  "worker_recovery": {
+    "status": "PASS",
+    "signal": "SIGKILL",
+    "leased_operation_restored": true,
+    "state_after_expiry": "unknown",
+    "attempts": 1,
+    "tool_calls": 1,
+    "automatic_retry_blocked": true,
+    "receipt_replay_idempotent": true,
+    "state_after_reconciliation": "verifying",
+    "raw": [
+      {
+        "path": "evidence/GA13/independent-worker-20261119T135127Z-c3690174/worker/junit.xml",
+        "sha256": "13fe7714305735b708fd0d9f86ae5f0658311635a65fc94f2d5b76dd1ac49ca1"
+      },
+      {
+        "path": "evidence/GA13/independent-worker-20261119T135127Z-c3690174/worker/command.log",
+        "sha256": "5cf0302d52a2ee74fe2da45f1717cfc24ffe87bb5bc7c33cc2f85d3c5a0b2f4c"
+      }
+    ]
+  },
+  "environment": {
+    "temporary_postgres_pgvector_image": "sha256:33198da2828a14c30348d2ccb4750833d5ed9a44c88d840a0e523d7417120337",
+    "temporary_redis_image": "sha256:976ab0f0939b78c06d802bcd3bea44c5142ea9a756a57b861e08819817f768c8",
+    "isolated_services_cleaned": true
+  },
+  "port_18080": {
+    "origin": "http://127.0.0.1:18080",
+    "pid": 387672,
+    "checkout": "/home/imini/magr-harness-h13-runtime/v3",
+    "general_page": 404,
+    "general_tasks_path": 404,
+    "general_task_route_present": false
+  },
+  "gate_conditions": {
+    "ga12_holdout_admission": {
+      "status": "INDEPENDENT_PASS",
+      "raw": {
+        "path": "docs/general-agent-v1/accept/GA11-GA12/holdout-admission-repair-independent-20261119.json",
+        "sha256": "de1c0e7fed1759d64009875670db2d959c81232d333acfff14d0831e7ee3f3f0"
+      }
+    },
+    "ga13_local_engineering": "INDEPENDENT_PASS",
+    "public_research": {
+      "uri": "https://www.rfc-editor.org/rfc/rfc2606.txt",
+      "method": "GET",
+      "status": "BLOCKED",
+      "code": "RESEARCH_SCOPE",
+      "reason": "Research requires routable public addresses."
+    },
+    "live_coding_provider": "NOT_RUN",
+    "live_data_external_service": "NOT_RUN",
+    "live_office_dedicated_account": "NOT_RUN",
+    "live_cross_domain": "NOT_RUN",
+    "frozen_live_task_set_and_threshold": "PENDING"
+  },
+  "observations": {
+    "path": "evidence/GA13/independent-worker-20261119T135127Z-c3690174/probes/command.log",
+    "sha256": "6e8ecab397523e8c6e1bff643a4fb8a3b0d477f45936b59d7425a20b59300c00"
+  },
+  "cleanup_raw": [
+    {
+      "path": "evidence/GA13/independent-20261119T134441Z-7a0f7a98/summary.json",
+      "sha256": "4b6063496f6598e2b2d084e3af60cee21aa1cd12cdffd33e66d0d91f2b67d5aa"
+    },
+    {
+      "path": "evidence/GA13/independent-coding-recheck-20261119T134954Z-1ec5b674/summary.json",
+      "sha256": "2cef92d5849b60496819b45187e059f4cc306255271d4c738bd6c3fce76e4996"
+    },
+    {
+      "path": "evidence/GA13/independent-package-20261119T134936Z-f0f3041b/summary.json",
+      "sha256": "558d43203b5c87a0991365322c271feca5522c5de8cb42e00a6433947c0c88f0"
+    },
+    {
+      "path": "evidence/GA13/independent-package-20261119T134731Z-dfc8cdd1/summary.json",
+      "sha256": "cde9592a3c0fb2fc7b9372bcb086cc8c22fd56af88910ef443f31a9065c8a4b7"
+    },
+    {
+      "path": "evidence/GA13/independent-worker-20261119T135127Z-c3690174/summary.json",
+      "sha256": "9db5c68fa34be7be4b67c1b23a3873c8f0919d3bb66a95f90e9c040f70f8236b"
+    }
+  ],
+  "real_model_calls": 0,
+  "real_external_writes": 0
+}
