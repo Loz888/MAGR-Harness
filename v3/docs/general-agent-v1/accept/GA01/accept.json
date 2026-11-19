@@ -1,0 +1,342 @@
+{
+  "schema": "magr-general-agent-ga01-v1",
+  "task": "GA01",
+  "source_commit": "01af7d16398b28990269147f0c6011622b7afb8f",
+  "ga00_dependency": "223117c",
+  "source_sha256": "81d3aa93947bd73f6047496582d2c0f5e8b9ccbc37f4a385b3e2704cd71d566e",
+  "source_schema": "general-task-v1",
+  "migration": {
+    "path": "migrations/0058_general_tasks.sql",
+    "sha256": "844c8f3c7d3cd28382690925a2559f9f0d0e4b9722c6b5fd3654c71ea10a3388"
+  },
+  "engineering_gate": "PASS",
+  "registered_gate": {
+    "command": "make verify TASK=GA01",
+    "status": "PASS",
+    "counts": {
+      "tests": 34,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "exit_code": 0
+  },
+  "coding_regression": {
+    "status": "PASS",
+    "counts": {
+      "passed": 512,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "matches_ga00_collected_nodes": 512,
+    "shards": [
+      {
+        "shard": "0",
+        "cards": [
+          "HV4-H07",
+          "HV4-H08",
+          "HV4-H09",
+          "HV4-H10"
+        ],
+        "tests": [
+          "tests/test_harness_v4_h07.py",
+          "tests/test_harness_v4_h08.py",
+          "tests/test_harness_v4_h09.py",
+          "tests/test_harness_v4_h10.py",
+          "tests/test_harness_v4_h10_tools.py",
+          "tests/test_harness_v4_h10_finalization.py",
+          "tests/test_harness_v4_h10_lease_provenance.py"
+        ],
+        "counts": {
+          "passed": 138,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "command": {
+          "path": "evidence/GA01/coding-regression-01af7d1/shard-0/argv.json",
+          "sha256": "13e5fd625b072d8ca3747ed8a42bf8a56d86d778e89790dd88f75a39cdbc2b20"
+        },
+        "result": {
+          "code": 0,
+          "started": "2026-11-19T08:55:19.866337+00:00",
+          "finished": "2026-11-19T08:56:43.064837+00:00"
+        },
+        "nonpassing": []
+      },
+      {
+        "shard": "1",
+        "cards": [
+          "HV4-H11",
+          "HV4-H13"
+        ],
+        "tests": [
+          "tests/test_harness_v4_h11_store.py",
+          "tests/test_harness_v4_h11_service.py",
+          "tests/test_harness_v4_h11_boundaries.py",
+          "tests/test_harness_v4_h11_io.py",
+          "tests/test_h11_loop.py",
+          "tests/test_harness_v4_h11.py",
+          "tests/test_harness_headless.py",
+          "tests/test_harness_product_api.py",
+          "tests/test_cli.py"
+        ],
+        "counts": {
+          "passed": 105,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "command": {
+          "path": "evidence/GA01/coding-regression-01af7d1/shard-1/argv.json",
+          "sha256": "7e7b6ceffd22eef7161a61867c83fcaa6d9424d02ddb5094b7c0f094346972d4"
+        },
+        "result": {
+          "code": 0,
+          "started": "2026-11-19T08:55:19.866861+00:00",
+          "finished": "2026-11-19T09:02:28.467464+00:00"
+        },
+        "nonpassing": []
+      },
+      {
+        "shard": "2",
+        "cards": [
+          "HV4-H14"
+        ],
+        "tests": [
+          "tests/test_harness_h14_guidance.py",
+          "tests/test_harness_h14_plugins.py",
+          "tests/test_harness_product_context.py",
+          "tests/test_harness_product_extensions.py",
+          "tests/test_harness_product_models.py",
+          "tests/test_harness_product_service.py",
+          "tests/test_mcp.py",
+          "tests/test_r4_mcp.py",
+          "tests/test_harness_v4_h12_runtime.py",
+          "tests/test_context_policy.py",
+          "tests/test_v33_context_compaction.py",
+          "tests/test_harness_v4_h12_context_feedback.py",
+          "tests/test_v35_m02.py"
+        ],
+        "counts": {
+          "passed": 214,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "command": {
+          "path": "evidence/GA01/coding-regression-01af7d1/shard-2/argv.json",
+          "sha256": "ac00628d415d7e8fc37ce4eb7f46c1d061f83c1af92e5371fe5ef8710fbd076d"
+        },
+        "result": {
+          "code": 0,
+          "started": "2026-11-19T08:55:19.867419+00:00",
+          "finished": "2026-11-19T09:01:02.546633+00:00"
+        },
+        "nonpassing": []
+      },
+      {
+        "shard": "3",
+        "cards": [
+          "HV4-H15",
+          "HV4-H16",
+          "HV4-H17",
+          "HV4-H18"
+        ],
+        "tests": [
+          "tests/test_harness_runner.py",
+          "tests/test_harness_github_delivery.py::test_fixed_import_serializes_same_snapshot_and_never_persists_read_token",
+          "tests/test_agent_assets.py",
+          "tests/test_harness_h16.py",
+          "tests/test_harness_h17.py",
+          "tests/test_harness_h18.py"
+        ],
+        "counts": {
+          "passed": 55,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "command": {
+          "path": "evidence/GA01/coding-regression-01af7d1/shard-3/argv.json",
+          "sha256": "792d1602caf22d5ba8ebc126272c64d044f321dec996fda602e8a65458c88c31"
+        },
+        "result": {
+          "code": 0,
+          "started": "2026-11-19T08:55:19.868071+00:00",
+          "finished": "2026-11-19T09:01:36.952244+00:00"
+        },
+        "nonpassing": []
+      }
+    ]
+  },
+  "h10_context_followup": {
+    "case": "test_bugfix_recovers_source_and_real_log_after_three_compactions",
+    "diagnosed_minimum_projection_tokens": 4261,
+    "overly_reduced_builder_budget": 4201,
+    "repeated_fixture_probes_passed": 12
+  },
+  "static": {
+    "lint": "PASS",
+    "typecheck": "PASS"
+  },
+  "real_provider": "NOT_RUN",
+  "real_model_calls": 0,
+  "external_e2e": "NOT_RUN",
+  "independent_review": "NOT_RUN",
+  "evidence": [
+    {
+      "path": "evidence/GA01/20261119T085519Z-0d4ac214/result.json",
+      "sha256": "4a8ed4c4b1f43f90be2ff2951c869b480fd155ad438a07108c4eb1476a273c70"
+    },
+    {
+      "path": "evidence/GA01/20261119T085519Z-0d4ac214/command.log",
+      "sha256": "c8820e669a3071371ada5953da2bb076f7f309c7c814d3f0145bbf81cf543ee1"
+    },
+    {
+      "path": "evidence/GA01/20261119T085519Z-0d4ac214/junit.xml",
+      "sha256": "eceab40b2b9efc1e59580b12a0045bb6647891c86ee304df4f5d78e62f5fc182"
+    },
+    {
+      "path": "evidence/GA01/registered-verify-01af7d1.log",
+      "sha256": "2ac56c1ee32ee4bef3267579db630d3a6ee2c70559c3017036165bda94fca9ff"
+    },
+    {
+      "path": "evidence/GA01/coding-regression-01af7d1/plan.json",
+      "sha256": "af96766388617d9220ed4769df726ec0eb678fa88f9976d69cbb316f24953586"
+    },
+    {
+      "path": "evidence/GA01/coding-regression-01af7d1/commit.txt",
+      "sha256": "e42e3aa25b9afba0751b9b0a341c635945f00df1dbefa4207d81c2064679d013"
+    },
+    {
+      "path": "evidence/GA01/first/command.log",
+      "sha256": "216f7968d973469043f4979d12e1808610d1a4b88eb7ae1e92b1b3e9636276a5"
+    },
+    {
+      "path": "evidence/GA01/iteration-2/command.log",
+      "sha256": "240499c913fee53fc28271049c432b6917d6d789ee3525cecaf7d023ff74fb71"
+    },
+    {
+      "path": "evidence/GA01/iteration-3/command.log",
+      "sha256": "10befed3a45eacabb77d1b98d7c58c2c4a109935759300c47c37edd6f8cdced7"
+    },
+    {
+      "path": "evidence/GA01/iteration-4/command.log",
+      "sha256": "8412ffb391f5112807a8cd2c5c20738c8f6b473f2f0048b6998ef0c81d3d904a"
+    },
+    {
+      "path": "evidence/GA01/lint.log",
+      "sha256": "a220b562d6bdb3655673add818cabd1dbd6857a7efc7d06ff8178f9e0e2501e2"
+    },
+    {
+      "path": "evidence/GA01/typecheck.log",
+      "sha256": "df81b790fd8b6a24ef8d65f17b36ae406b4c629c01ad2badbc3c5adeb0ff52c9"
+    },
+    {
+      "path": "evidence/GA01/h10-reproduction/attempt-5.log",
+      "sha256": "412ddfc371f8852439f50141c49b896139da4392fbfb3cad75944cb788f4d9bf"
+    },
+    {
+      "path": "evidence/GA01/h10-measured-retry/attempt-1.log",
+      "sha256": "ab5b4d2efccc09d1ccfcdcdd7df90ddca16325380d271b5e15ba3a45a4590a3e"
+    },
+    {
+      "path": "evidence/GA01/h10-protected-projection/attempt-1.log",
+      "sha256": "db368bcef4c8bcfe203caff9e1747c1f597457aaad5478a9f532e474444ad9c2"
+    },
+    {
+      "path": "evidence/GA01/h10-protected-projection/attempt-10.log",
+      "sha256": "d08e393371575566f1778adc2f3c993301d327d8a561e46737acc1b2ea946163"
+    },
+    {
+      "path": "evidence/GA01/h10-protected-projection/attempt-11.log",
+      "sha256": "bf80bd8e387e86f15469681ff117b591a94893e47a8b9e8c8b8fc0a986843805"
+    },
+    {
+      "path": "evidence/GA01/h10-protected-projection/attempt-12.log",
+      "sha256": "710ee030f3a0ae07e2d078190e38dc8b28667661231efab005d031b4ce0c2c15"
+    },
+    {
+      "path": "evidence/GA01/h10-protected-projection/attempt-2.log",
+      "sha256": "9604e0197c1843db79fef459ba3b05886239e86a9731fa412004635e54acf8dc"
+    },
+    {
+      "path": "evidence/GA01/h10-protected-projection/attempt-3.log",
+      "sha256": "2a12004548d3e07d8f6b1baeafc25b86ab3576abd29c38efcf71e32662297e82"
+    },
+    {
+      "path": "evidence/GA01/h10-protected-projection/attempt-4.log",
+      "sha256": "f096f2f21de4a79594b498397612256af02d60d5470b53449d821911fa5f6804"
+    },
+    {
+      "path": "evidence/GA01/h10-protected-projection/attempt-5.log",
+      "sha256": "defd5d1d3abbbaf8243f1eae143ec71a6f4916ba614916d6f4d3e0b68317ad33"
+    },
+    {
+      "path": "evidence/GA01/h10-protected-projection/attempt-6.log",
+      "sha256": "868a75592d4b2c64481ffa0ce08b16cddb4ed728e52ff175203985e69f46468f"
+    },
+    {
+      "path": "evidence/GA01/h10-protected-projection/attempt-7.log",
+      "sha256": "d17509ade2c379f3727edad9673c3b21d27b103aef8faa388de1a4f12bcb80ac"
+    },
+    {
+      "path": "evidence/GA01/h10-protected-projection/attempt-8.log",
+      "sha256": "c153b3a2887d0bd869d6b0622cda151615db6d5afc1c821ef3b44ddb3cfc018d"
+    },
+    {
+      "path": "evidence/GA01/h10-protected-projection/attempt-9.log",
+      "sha256": "e7599514946cbfbfa2fa16813f21a76d7a721fcd643b611da9a4cbbe51e3402a"
+    },
+    {
+      "path": "evidence/GA01/coding-regression-01af7d1/shard-0/junit.xml",
+      "sha256": "143874b69c1706e9b81cb9cb2c898ae8e65ba49336165e9e35d99b6bff27e476"
+    },
+    {
+      "path": "evidence/GA01/coding-regression-01af7d1/shard-0/command.log",
+      "sha256": "9615143151af25d94bf7b962d01302503610728c81b83c8089a61ee0690b3024"
+    },
+    {
+      "path": "evidence/GA01/coding-regression-01af7d1/shard-0/result.json",
+      "sha256": "aedc110492860efa430ee957ece86f78ed1beea899ed83bb61b4942b29a3584c"
+    },
+    {
+      "path": "evidence/GA01/coding-regression-01af7d1/shard-1/junit.xml",
+      "sha256": "222108b30720f1b9acf5bd8e291541921c4805da42f91c76053ead2ad480040a"
+    },
+    {
+      "path": "evidence/GA01/coding-regression-01af7d1/shard-1/command.log",
+      "sha256": "4ffa03face78f510289224ee2d1e8ca7c2bfe1200d2ddd7a56468f7bf1372f56"
+    },
+    {
+      "path": "evidence/GA01/coding-regression-01af7d1/shard-1/result.json",
+      "sha256": "d280f457473bb22dafedb0ff5909b9cced021549d5a045a9f94e40e38a4780d7"
+    },
+    {
+      "path": "evidence/GA01/coding-regression-01af7d1/shard-2/junit.xml",
+      "sha256": "7cb7b73b548981d9f5b00111eeecaa36eb6e8a0944439a2b9c502212709ae19e"
+    },
+    {
+      "path": "evidence/GA01/coding-regression-01af7d1/shard-2/command.log",
+      "sha256": "7de29578c185e174b0ca25bed89b8ee07544f5341b974d2d0fca78c2a806581f"
+    },
+    {
+      "path": "evidence/GA01/coding-regression-01af7d1/shard-2/result.json",
+      "sha256": "9c874ae0141ed067e8d88d52b8d31ec99748a16fc617b38f734ccee3919088a8"
+    },
+    {
+      "path": "evidence/GA01/coding-regression-01af7d1/shard-3/junit.xml",
+      "sha256": "89e7153e8893cb466f146101b94425af49700686291e7411a6c170b50251a735"
+    },
+    {
+      "path": "evidence/GA01/coding-regression-01af7d1/shard-3/command.log",
+      "sha256": "8bcaa259403cbd872aef52f53106bfaad5f703d7c8aa7d224b2964aa88ceb91a"
+    },
+    {
+      "path": "evidence/GA01/coding-regression-01af7d1/shard-3/result.json",
+      "sha256": "05ccfaa6a35740ad0bcce830fc5bb103476ddaca3040137df5d281f9ccaa5f53"
+    }
+  ]
+}

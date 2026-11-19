@@ -1,11 +1,11 @@
 # General Agent 任务队列
 
-任务逐张授权。GA00 冻结和架构盘点已完成独立复验，原冻结工程基线为 FAIL。修复候选的同源合并工程复验为 PASS，修复定向独立复验 INDEPENDENT_PASS。GA01 等待授权。[任务书原文](TASKBOOK_V1.md)
+任务逐张授权。GA00 冻结和架构盘点已完成独立复验，原冻结工程基线为 FAIL。修复候选的同源合并工程复验为 PASS，修复定向独立复验 INDEPENDENT_PASS。GA01 工程验收已通过，独立复验待执行。GA02 等待授权。[任务书原文](TASKBOOK_V1.md)
 
 | 卡片 | 内容 | 依赖 | 当前状态 |
 | --- | --- | --- | --- |
 | GA00 | 当前版本冻结与架构盘点 | 无 | 冻结与盘点 INDEPENDENT_PASS，修复定向复验 INDEPENDENT_PASS |
-| GA01 | GeneralTaskSpec 与 Outcome Contract | GA00 | TODO |
+| [GA01](GA01_TASK_OUTCOME.md) | GeneralTaskSpec 与 Outcome Contract | GA00 | ENGINEERING_PASS |
 | GA02 | General Planner 与动态 TaskGraph | GA01 | TODO |
 | GA03 | Capability Registry 与 Domain Router | GA01 | TODO |
 | GA04 | Universal ActionContract 与副作用治理 | GA01、GA03 | TODO |
