@@ -1,0 +1,299 @@
+{
+  "schema_version": "harness-independent-acceptance-v1",
+  "task": "HV4-H17",
+  "date": "2026-11-19",
+  "source_commit": "fcc77f42cbc7dd0a85c445c4dcf8291821764ca8",
+  "verified_head": "c66a9ea32998c68cafceb06b33e2a47b6863566c",
+  "source_sha256": "abb51f7ea0ba6c93003cbe2d2c9d981f015071c52b505036f6d7cfbd5840c949",
+  "source_to_head_changes": [
+    "v3/docs/harness-v4/H17_ACCEPTANCE_20261118.md",
+    "v3/docs/harness-v4/README.md",
+    "v3/docs/harness-v4/TASKS.md",
+    "v3/docs/harness-v4/accept/HV4-H17/accept.json",
+    "v3/docs/harness-v4/plan.json"
+  ],
+  "historical_acceptance": {
+    "path": "docs/harness-v4/accept/HV4-H17/accept.json",
+    "sha256": "8427f724b097df30e0dcf77493e320eed7e6199188432a15c5e150d998d64868"
+  },
+  "historical_reference_hashes_verified": 25,
+  "registered_engineering_gate": "PASS",
+  "real_model_gate": "NOT_RUN",
+  "production_gate": "NOT_RUN",
+  "native_linux_host_gate": "NOT_RUN",
+  "real_model_calls": 0,
+  "checks": {
+    "HV4-H11": {
+      "status": "PASS",
+      "counts": {
+        "tests": 68,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "wall_seconds": 169.013,
+      "evidence": {
+        "result.json": {
+          "path": "evidence/harness-v4/H17-INDEPENDENT-20261119/d1bb34501278/HV4-H11/20261119T041707Z-2bb6304f/result.json",
+          "sha256": "4035209d8a2c6439abddf1ffa9dbdd60b74a9332ebcf7fda37160c13b061e974"
+        },
+        "junit.xml": {
+          "path": "evidence/harness-v4/H17-INDEPENDENT-20261119/d1bb34501278/HV4-H11/20261119T041707Z-2bb6304f/junit.xml",
+          "sha256": "87e5b528ea7291dbdad673ad9ba4afd81413be6407cb7952c7b989a639ea2ead"
+        },
+        "command.log": {
+          "path": "evidence/harness-v4/H17-INDEPENDENT-20261119/d1bb34501278/HV4-H11/20261119T041707Z-2bb6304f/command.log",
+          "sha256": "c1d646648ae97148b1ec0bc410e90cd4cdf469e5e1cbfc59b50106c77e875bec"
+        }
+      },
+      "reason": null,
+      "failed_nodes": []
+    },
+    "HV4-H13": {
+      "status": "PASS",
+      "counts": {
+        "tests": 42,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "wall_seconds": 593.046,
+      "evidence": {
+        "result.json": {
+          "path": "evidence/harness-v4/H17-INDEPENDENT-20261119/d1bb34501278/HV4-H13/20261119T041643Z-4ea3c9b8/result.json",
+          "sha256": "4f8e4415c04833a2628602fb2af9c6f6bdaf71749590f04adb4cca2778e18df8"
+        },
+        "junit.xml": {
+          "path": "evidence/harness-v4/H17-INDEPENDENT-20261119/d1bb34501278/HV4-H13/20261119T041643Z-4ea3c9b8/junit.xml",
+          "sha256": "882116b7edd62575cafa0cd5d9ba1f399e1161d092e07f82f3eba3b334d5bec5"
+        },
+        "command.log": {
+          "path": "evidence/harness-v4/H17-INDEPENDENT-20261119/d1bb34501278/HV4-H13/20261119T041643Z-4ea3c9b8/command.log",
+          "sha256": "1a13e7f15c2c77ebf5dec3c4b35120acc7dd76a19b684073c8865d99c45db823"
+        }
+      },
+      "reason": null,
+      "failed_nodes": []
+    },
+    "HV4-H14": {
+      "status": "PASS",
+      "counts": {
+        "tests": 181,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "wall_seconds": 343.734,
+      "evidence": {
+        "result.json": {
+          "path": "evidence/harness-v4/H17-INDEPENDENT-20261119/d1bb34501278/HV4-H14/20261119T041639Z-2ba7157f/result.json",
+          "sha256": "53d718427e06042802815a2833ec1ee09a9c6aa19f89c5e98b8ddfd3f3aef749"
+        },
+        "junit.xml": {
+          "path": "evidence/harness-v4/H17-INDEPENDENT-20261119/d1bb34501278/HV4-H14/20261119T041639Z-2ba7157f/junit.xml",
+          "sha256": "6395177b2545b7e23a813016d6963bcba632c022d26c6098e97115f8968263a5"
+        },
+        "command.log": {
+          "path": "evidence/harness-v4/H17-INDEPENDENT-20261119/d1bb34501278/HV4-H14/20261119T041639Z-2ba7157f/command.log",
+          "sha256": "c711f4ef93b131318aa251af76bda0562ebb451612dfb832d3fe87e6f11ebb31"
+        }
+      },
+      "reason": null,
+      "failed_nodes": []
+    },
+    "HV4-H15": {
+      "status": "PASS",
+      "counts": {
+        "tests": 19,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "wall_seconds": 135.865,
+      "evidence": {
+        "result.json": {
+          "path": "evidence/harness-v4/H17-INDEPENDENT-20261119/d1bb34501278/HV4-H15/20261119T041423Z-f805f2e8/result.json",
+          "sha256": "fd55c700ff25c13116d6dc71676ec2bc866fde876e4d844905b65a9199b95ca2"
+        },
+        "junit.xml": {
+          "path": "evidence/harness-v4/H17-INDEPENDENT-20261119/d1bb34501278/HV4-H15/20261119T041423Z-f805f2e8/junit.xml",
+          "sha256": "1a2fba1555b057e56ad6c06cd5348e7b177f7b838ebde08eda5499abd203854e"
+        },
+        "command.log": {
+          "path": "evidence/harness-v4/H17-INDEPENDENT-20261119/d1bb34501278/HV4-H15/20261119T041423Z-f805f2e8/command.log",
+          "sha256": "497bcd9464d48bfdbb28440e8cecbfdf7d6ab268e7354cb29be4f9570058223b"
+        }
+      },
+      "reason": null,
+      "failed_nodes": []
+    },
+    "HV4-H16": {
+      "status": "PASS",
+      "counts": {
+        "tests": 13,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "wall_seconds": 139.416,
+      "evidence": {
+        "result.json": {
+          "path": "evidence/harness-v4/H17-INDEPENDENT-20261119/d1bb34501278/HV4-H16/20261119T041423Z-94e644a2/result.json",
+          "sha256": "fae94132c6ec53828e9b421a24ff1d9f34ae187f8bc4480156d5a9f19a3ecbfc"
+        },
+        "junit.xml": {
+          "path": "evidence/harness-v4/H17-INDEPENDENT-20261119/d1bb34501278/HV4-H16/20261119T041423Z-94e644a2/junit.xml",
+          "sha256": "bfb453c0884482c09d6aec9346dedfa2b1e5030a04e9143dbe75f3034e057a0c"
+        },
+        "command.log": {
+          "path": "evidence/harness-v4/H17-INDEPENDENT-20261119/d1bb34501278/HV4-H16/20261119T041423Z-94e644a2/command.log",
+          "sha256": "d219941d402c7bde30ed76bcbd4c627cec1b3a6964b15e766d94ee2ecc6c8100"
+        }
+      },
+      "reason": null,
+      "failed_nodes": []
+    },
+    "HV4-H17": {
+      "status": "PASS",
+      "counts": {
+        "tests": 18,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "wall_seconds": 163.225,
+      "evidence": {
+        "result.json": {
+          "path": "evidence/harness-v4/H17-INDEPENDENT-20261119/d1bb34501278/HV4-H17/20261119T041423Z-7f241dda/result.json",
+          "sha256": "50e51790860ec4aafdb2aaf803bd7d93391fee4c14989724ba2ff623ba12548b"
+        },
+        "junit.xml": {
+          "path": "evidence/harness-v4/H17-INDEPENDENT-20261119/d1bb34501278/HV4-H17/20261119T041423Z-7f241dda/junit.xml",
+          "sha256": "b640d6a761cae93a368d178bbd62ed5db08492e005b984c7bb9f140a33625b24"
+        },
+        "command.log": {
+          "path": "evidence/harness-v4/H17-INDEPENDENT-20261119/d1bb34501278/HV4-H17/20261119T041423Z-7f241dda/command.log",
+          "sha256": "0cb867391d029cfd7fded1297dfe071eeaf63080265912ddea07422ea9f4c0b7"
+        }
+      },
+      "reason": null,
+      "failed_nodes": []
+    },
+    "V35-X01": {
+      "status": "PASS",
+      "counts": {
+        "tests": 63,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "wall_seconds": 47.881,
+      "evidence": {
+        "result.json": {
+          "path": "evidence/harness-v4/H17-INDEPENDENT-20261119/d1bb34501278/V35-X01/20261119T041956Z-182830eb/result.json",
+          "sha256": "c43f81eff9faa5a6c40e6253577ac10415943bde8d77a99edba95947d55a1f5a"
+        },
+        "junit.xml": {
+          "path": "evidence/harness-v4/H17-INDEPENDENT-20261119/d1bb34501278/V35-X01/20261119T041956Z-182830eb/junit.xml",
+          "sha256": "a73a331ca64d440fbe3c356afe0921121502c8dcf92de6a5e3a513a5358b1fd5"
+        },
+        "command.log": {
+          "path": "evidence/harness-v4/H17-INDEPENDENT-20261119/d1bb34501278/V35-X01/20261119T041956Z-182830eb/command.log",
+          "sha256": "4abf64a29e9e4cc3965fc98955ac7623897fd73c5b33e9e56fe41f951c1427bc"
+        }
+      },
+      "reason": null,
+      "failed_nodes": []
+    },
+    "lint": {
+      "status": "PASS",
+      "evidence": {
+        "path": "evidence/harness-v4/H17-INDEPENDENT-20261119/d1bb34501278/lint-retry.log",
+        "sha256": "a220b562d6bdb3655673add818cabd1dbd6857a7efc7d06ff8178f9e0e2501e2"
+      },
+      "initial_environment_failure": {
+        "path": "evidence/harness-v4/H17-INDEPENDENT-20261119/d1bb34501278/lint.log",
+        "sha256": "5a70aea9137a83602e7a8c2364652a99c081c334d0fb1835c4791e2f7a424a4c"
+      }
+    },
+    "typecheck": {
+      "status": "PASS",
+      "evidence": {
+        "path": "evidence/harness-v4/H17-INDEPENDENT-20261119/d1bb34501278/typecheck-retry.log",
+        "sha256": "2f6b775a61bb36088faf3c609c03b4de611a376d720e68a04051e7d4b82d98d1"
+      },
+      "initial_environment_failure": {
+        "path": "evidence/harness-v4/H17-INDEPENDENT-20261119/d1bb34501278/typecheck.log",
+        "sha256": "fa461592495835d23f3b8913c4ee20d6cf7a8814031a07b0b62067e43b7f317b"
+      }
+    }
+  },
+  "environment_and_cleanup": {
+    "path": "evidence/harness-v4/H17-INDEPENDENT-20261119/d1bb34501278/orchestration.json",
+    "sha256": "f4eba143739d06eeb663550ca70ec4e28afd924b7452333f4146ed3565d7d0a4"
+  },
+  "independent_engineering_gate": "PASS",
+  "default_mode": "single_agent",
+  "controlled_pairs": {
+    "source-explanation": [
+      {
+        "mode": "single",
+        "passed": true,
+        "model_calls": 2,
+        "expert_calls": 0,
+        "input_tokens": 220,
+        "output_tokens": 44,
+        "cost_micros": 6,
+        "wall_seconds": 3.816,
+        "tree_before": "9a2a24376ce89868d8ae6b6ade8669834a358d73ff56246d0717eacd91b3844e",
+        "tree_after": "9a2a24376ce89868d8ae6b6ade8669834a358d73ff56246d0717eacd91b3844e",
+        "test_count": 0,
+        "conflicts": 0
+      },
+      {
+        "mode": "expert",
+        "passed": true,
+        "model_calls": 4,
+        "expert_calls": 1,
+        "input_tokens": 440,
+        "output_tokens": 88,
+        "cost_micros": 12,
+        "wall_seconds": 4.232,
+        "tree_before": "9a2a24376ce89868d8ae6b6ade8669834a358d73ff56246d0717eacd91b3844e",
+        "tree_after": "9a2a24376ce89868d8ae6b6ade8669834a358d73ff56246d0717eacd91b3844e",
+        "test_count": 0,
+        "conflicts": 0
+      }
+    ],
+    "addition-repair": [
+      {
+        "mode": "single",
+        "passed": true,
+        "model_calls": 4,
+        "expert_calls": 0,
+        "input_tokens": 440,
+        "output_tokens": 88,
+        "cost_micros": 12,
+        "wall_seconds": 18.585,
+        "tree_before": "9159c063d4d11e9f871ad669845192df1266d9aa1d17f969a5763e33244845ed",
+        "tree_after": "ebd1679c40688001cec22f03061ac5304e977e3bfcc74608a357c0d7c45eedc5",
+        "test_count": 1,
+        "conflicts": 0
+      },
+      {
+        "mode": "expert",
+        "passed": true,
+        "model_calls": 6,
+        "expert_calls": 1,
+        "input_tokens": 660,
+        "output_tokens": 132,
+        "cost_micros": 18,
+        "wall_seconds": 19.147,
+        "tree_before": "9159c063d4d11e9f871ad669845192df1266d9aa1d17f969a5763e33244845ed",
+        "tree_after": "ebd1679c40688001cec22f03061ac5304e977e3bfcc74608a357c0d7c45eedc5",
+        "test_count": 1,
+        "conflicts": 0
+      }
+    ]
+  }
+}

@@ -614,6 +614,8 @@ HTTPS、Docker、重复领取、失联恢复与撤销。Python、Node 和 Go 样
 
 - **本地交付**：只读仓库专家的工程门通过。受控配对两臂各通过 2/2，默认采用单 Agent。真实模型效果门为 NOT_RUN。[验收与试用](H17_ACCEPTANCE_20261118.md) · [机器验收](accept/HV4-H17/accept.json)
 
+- **独立验收（2026-11-19）**。H17 独立本地工程门 **PASS**。受控配对两臂各 2/2，默认采用单 Agent，真实模型效果门仍为 `NOT_RUN`。[报告](H17_INDEPENDENT_ACCEPTANCE_20261119.md) · [机器记录](accept/HV4-H17/independent-20261119.json)
+
 <a id="hv4-h18"></a>
 
 ## HV4-H18：可安装发布、诊断与运维指标

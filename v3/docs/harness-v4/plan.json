@@ -451,7 +451,9 @@
       "engineering_gate": "PASS",
       "live_model_gate": "NOT_RUN",
       "default_mode": "single_agent",
-      "accept_record": "accept/HV4-H17/accept.json"
+      "accept_record": "accept/HV4-H17/accept.json",
+      "independent_engineering_gate": "PASS",
+      "independent_recheck": "accept/HV4-H17/independent-20261119.json"
     },
     {
       "id": "HV4-H18",
