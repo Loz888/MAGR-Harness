@@ -620,8 +620,8 @@ class LongContextManager:
         tail_messages = [message for group in tail for message in group]
         tail_tokens = _message_tokens(tail_messages) if tail_messages else 0
         pinned_tokens = _message_tokens(pinned_messages) if pinned_messages else 0
-        builder_budget = message_budget - tail_tokens - pinned_tokens - 256
-        if builder_budget < 512:
+        projection_budget = message_budget - tail_tokens - pinned_tokens
+        if projection_budget < 512:
             raise DomainError(
                 "CONTEXT_BUDGET_EXCEEDED", "Latest complete tool exchange exceeds context", 413
             )
@@ -639,34 +639,39 @@ class LongContextManager:
         request = self._request(
             working_state, observations, input_tokens=self.max_tokens - overhead_tokens
         )
-        # Builder accounting covers its structured payload. Provider messages
-        # additionally JSON-escape that payload inside a content string. Measure
-        # the real wire representation and deterministically shrink the flexible
-        # builder section until the pinned projection and latest exchange fit.
-        # This uses no model calls and cannot discard protected state or a page.
-        for _ in range(8):
-            builder = ContextBuilder(max_tokens=builder_budget, artifacts=self.artifacts)
-            bundle = builder.build(request)
+        # Check the combined provider wire payload, including JSON escaping.
+        # If the rich projection does not fit, omit its optional history preview
+        # while retaining protected facts and the exact newest tool exchange.
+        def project(
+            budget: int, *, protected_only: bool = False,
+        ) -> tuple[ContextBundle, tuple[ModelMessage, ModelMessage]]:
+            builder = ContextBuilder(max_tokens=budget, artifacts=self.artifacts)
+            bundle = (builder.build(request, protected_only=True)
+                      if protected_only else builder.build(request))
             bundle.assert_current(working_state.revision)
             self._assert_bundle(working_state, request, bundle)
-            projection = (
+            return bundle, (
                 ModelMessage(role="system", content=_SYSTEM, name=_PROJECTION_NAME),
                 ModelMessage(role="user", content=_encoded(bundle.to_payload()),
                              name=_PROJECTION_NAME),
             )
-            mandatory = (projection[0], *pinned_messages, *tail_messages, projection[1])
-            overflow = _message_tokens(mandatory) - message_budget
-            if overflow <= 0:
-                break
-            builder_budget -= overflow + 64
-            if builder_budget < 512:
-                raise DomainError(
-                    "CONTEXT_BUDGET_EXCEEDED",
-                    "Pinned context and latest exchange exceed budget", 413,
-                )
-        else:
+
+        bundle: ContextBundle | None = None
+        projection: tuple[ModelMessage, ModelMessage]
+        try:
+            bundle, projection = project(max(512, projection_budget - 256))
+        except DomainError as exc:
+            if exc.code != "CONTEXT_BUDGET_EXCEEDED":
+                raise
+        if bundle is None or _message_tokens(
+            (projection[0], *pinned_messages, *tail_messages, projection[1])
+        ) > message_budget:
+            bundle, projection = project(projection_budget, protected_only=True)
+        if _message_tokens(
+            (projection[0], *pinned_messages, *tail_messages, projection[1])
+        ) > message_budget:
             raise DomainError(
-                "CONTEXT_BUDGET_EXCEEDED", "Context wire representation cannot fit budget", 413
+                "CONTEXT_BUDGET_EXCEEDED", "Pinned context and latest exchange exceed budget", 413,
             )
         original = (projection[0], *pinned_messages,
                     *(message for group in original_groups for message in group), projection[1])

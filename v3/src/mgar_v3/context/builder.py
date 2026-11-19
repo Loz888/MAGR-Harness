@@ -568,7 +568,7 @@ class ContextBuilder:
         return bundle
 
     def _short_window(
-        self, request: ContextRequest, reason: str
+        self, request: ContextRequest, reason: str, *, include_preview: bool = True,
     ) -> ContextBundle:
         """Degrade to a safe short window when the structured summary fails.
 
@@ -579,7 +579,7 @@ class ContextBuilder:
         """
 
         total = len(request.observations)
-        newest = request.observations[-1:] if request.observations else []
+        newest = request.observations[-1:] if include_preview else []
         kept = [compress_observation(item, max_chars=120)[0] for item in newest]
         evidence_ids = {
             item.evidence_id for item in request.observations if item.evidence_id
@@ -800,7 +800,7 @@ class ContextBuilder:
             ),
         )
 
-    def build(self, request: ContextRequest) -> ContextBundle:
+    def build(self, request: ContextRequest, *, protected_only: bool = False) -> ContextBundle:
         self._validate_scope(request)
         started = self.clock()
         pinned = self._pinned_tokens(request)
@@ -815,25 +815,29 @@ class ContextBuilder:
         memory_budget = int(flex * _MEMORY_SHARE)
         observation_budget = max(32, flex - plan_budget - memory_budget)
         loss_check_failures = 0
-        degraded = False
         reason: str | None = None
-        try:
-            bundle = self._assemble(
-                request, pinned, plan_budget, memory_budget, observation_budget
-            )
+        bundle: ContextBundle | None = None
+        if not protected_only:
+            try:
+                bundle = self._assemble(
+                    request, pinned, plan_budget, memory_budget, observation_budget
+                )
+                self._validate(request, bundle)
+            except DomainError as exc:
+                if exc.code not in {
+                    "CONTEXT_BUDGET_EXCEEDED",
+                    "CONTEXT_BOUND",
+                    "CONTEXT_INVARIANT_VIOLATED",
+                }:
+                    raise
+                bundle = None
+                loss_check_failures = 1
+                reason = exc.code
+        if bundle is None:
+            reason = reason or "CONTEXT_BUDGET_EXCEEDED"
+            bundle = self._short_window(request, reason, include_preview=not protected_only)
             self._validate(request, bundle)
-        except DomainError as exc:
-            if exc.code not in {
-                "CONTEXT_BUDGET_EXCEEDED",
-                "CONTEXT_BOUND",
-                "CONTEXT_INVARIANT_VIOLATED",
-            }:
-                raise
-            bundle = self._short_window(request, reason=exc.code)
-            self._validate(request, bundle)
-            loss_check_failures = 1
-            degraded = True
-            reason = exc.code
+        degraded = reason is not None
         metrics = self._metrics(
             bundle,
             request,

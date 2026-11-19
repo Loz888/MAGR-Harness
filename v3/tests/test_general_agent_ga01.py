@@ -406,7 +406,9 @@ def test_general_api_uses_existing_auth_and_keeps_execution_fields_server_owned(
             revoked = browser.get(url, headers=headers)
             absent = browser.get(TASKS + "/" + str(uuid4()), headers=headers)
             assert revoked.status_code == absent.status_code == 404
-            assert revoked.json() == absent.json()
+            revoked_error, absent_error = revoked.json(), absent.json()
+            assert revoked_error.pop("request_id") and absent_error.pop("request_id")
+            assert revoked_error == absent_error
 
         assert expect(owner.get(url, headers=ADMIN)) == revised
         with engine.transaction() as conn:
