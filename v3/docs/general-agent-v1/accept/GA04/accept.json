@@ -1,0 +1,44 @@
+{
+  "task": "GA04",
+  "command": "make verify TASK=GA04",
+  "source_commit": "8e7e686a12dafb4aae4ce69a264c8a92247175e2",
+  "source_sha256": "de621d2a74afeadde22e165575b155daf3b5ed97b66fc5cae3c239901516a5f8",
+  "finished_source_sha256": "de621d2a74afeadde22e165575b155daf3b5ed97b66fc5cae3c239901516a5f8",
+  "engineering_gate": "PASS",
+  "live_gate": "NOT_RUN",
+  "independent_retest": "NOT_RUN",
+  "model_calls": 0,
+  "counts": {
+    "tests": 14,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "evidence": {
+    "command.log": {
+      "path": "evidence/GA04/20261119T102839Z-18f47bf4/command.log",
+      "sha256": "e1693d4b76c020fa381be12b742762bdb1bf1f4ae6dbaef05d33f97bd2a1dced"
+    },
+    "junit.xml": {
+      "path": "evidence/GA04/20261119T102839Z-18f47bf4/junit.xml",
+      "sha256": "bafcd39b6f26d029e266afabdeefb9266107a118246f27d0791739b2df56c8d8"
+    },
+    "result.json": {
+      "path": "evidence/GA04/20261119T102839Z-18f47bf4/result.json",
+      "sha256": "8d516594cb08a3b319d5e3533ff057a253711364285e92bcec7fe338f6639f0a"
+    }
+  },
+  "lint": {
+    "path": "evidence/GA04/development/lint-8e7e686.log",
+    "sha256": "a220b562d6bdb3655673add818cabd1dbd6857a7efc7d06ff8178f9e0e2501e2"
+  },
+  "typecheck": {
+    "path": "evidence/GA04/development/typecheck-8e7e686.log",
+    "sha256": "3442917dc531a587e73073af2abeaf0b448e2b65b3eb4cae6cdfe82c0460f96c"
+  },
+  "migration": {
+    "path": "migrations/0060_general_actions.sql",
+    "sha256": "cb13be00b4a2d5a1a7ded2e6547f1890b18e2c0d51d3ba40a04e3a1703dbafff"
+  },
+  "production_provider": "NOT_RUN"
+}

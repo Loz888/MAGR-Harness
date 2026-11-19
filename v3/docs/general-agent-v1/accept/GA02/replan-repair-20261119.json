@@ -1,0 +1,42 @@
+{
+  "task": "GA02-REPLAN-REPAIR",
+  "command": "make verify TASK=GA02-REPLAN-REPAIR",
+  "source_commit": "8e7e686a12dafb4aae4ce69a264c8a92247175e2",
+  "source_sha256": "de621d2a74afeadde22e165575b155daf3b5ed97b66fc5cae3c239901516a5f8",
+  "finished_source_sha256": "de621d2a74afeadde22e165575b155daf3b5ed97b66fc5cae3c239901516a5f8",
+  "engineering_gate": "PASS",
+  "live_gate": "NOT_RUN",
+  "independent_retest": "NOT_RUN",
+  "model_calls": 0,
+  "counts": {
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "evidence": {
+    "command.log": {
+      "path": "evidence/GA02-REPLAN-REPAIR/20261119T102839Z-9f24b7ff/command.log",
+      "sha256": "da372ff503522d056d20e431a25f06fb0050ad50c2c6dc6103c93f5538713a92"
+    },
+    "junit.xml": {
+      "path": "evidence/GA02-REPLAN-REPAIR/20261119T102839Z-9f24b7ff/junit.xml",
+      "sha256": "77a24b88119d8d70fed2812ec8c4229860d75d27465056b5fa9fc5ee6afdf923"
+    },
+    "result.json": {
+      "path": "evidence/GA02-REPLAN-REPAIR/20261119T102839Z-9f24b7ff/result.json",
+      "sha256": "3355cd4f5e65bd16b847d82b6dcb468ebf59dc965d17259f32718184c7ec1571"
+    }
+  },
+  "lint": {
+    "path": "evidence/GA04/development/lint-8e7e686.log",
+    "sha256": "a220b562d6bdb3655673add818cabd1dbd6857a7efc7d06ff8178f9e0e2501e2"
+  },
+  "typecheck": {
+    "path": "evidence/GA04/development/typecheck-8e7e686.log",
+    "sha256": "3442917dc531a587e73073af2abeaf0b448e2b65b3eb4cae6cdfe82c0460f96c"
+  },
+  "historical_independent_result": "FAIL",
+  "fixed_in": "ddb1855",
+  "retest_scope": "reported_failure_only"
+}
