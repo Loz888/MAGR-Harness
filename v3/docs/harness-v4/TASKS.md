@@ -629,3 +629,5 @@ HTTPS、Docker、重复领取、失联恢复与撤销。Python、Node 和 Go 样
 - **本地交付**：WSL2 安装、Debian 容器安装、旧版本升级、备份恢复及指标导出通过。生产与真实模型为 NOT_RUN。[H18 验收](H18_ACCEPTANCE_20261118.md) · [运维指南](H18_OPERATIONS.md)
 
 - **独立验收（2026-11-19）**。H18 独立工程门 **FAIL**。注册测试和 WSL2、Debian 12 容器安装通过。恢复失败会遗留运行目录，阻塞同目标重试。[报告](H18_INDEPENDENT_ACCEPTANCE_20261119.md) · [机器记录](accept/HV4-H18/independent-20261119.json)
+
+- **恢复重试定向复测（2026-11-19）**。旧版失败已复现，修正版 1/1。恢复工具后原样重试成功，原 Cookie 有效。[定向报告](H18_RESTORE_RETRY_20261119.md) · [机器记录](accept/HV4-H18/restore-retry-20261119.json)
