@@ -1,0 +1,278 @@
+{
+  "schema": "magr-ga00-engineering-repair-independent-v1",
+  "date": "2026-11-19",
+  "source_commit": "4114fe1f9437b0532431175aeeba51b98f78030f",
+  "repair_record_commit": "67dbbaa655e389c7fe207285fa0659ccc132ae0d",
+  "archive_commit": "a91ae4ca9051fdd5c468db69c502ebfc30e7d255",
+  "engineering_repair_independent_review": "INDEPENDENT_PASS",
+  "required_archived_engineering_material": true,
+  "historical_frozen_baseline": {
+    "commit": "6402afeb0257867be88edc1108e37e8e5cf16cc5",
+    "status": "FAIL"
+  },
+  "candidate_initial_run": {
+    "status": "FAIL",
+    "totals": {
+      "passed": 2999,
+      "failed": 2,
+      "errors": 0,
+      "skipped": 0
+    },
+    "nonpassing_results": [
+      {
+        "nodeid": "tests/test_harness_v4_h06.py::test_go_project_builds_and_tests_with_the_real_toolchain",
+        "kind": "failed",
+        "shard": "shard-1",
+        "message": "AssertionError: test command timed out"
+      },
+      {
+        "nodeid": "tests/test_v35_r03.py::test_late_receipt_after_cancel_is_discarded_and_replay_is_inert",
+        "kind": "failed",
+        "shard": "shard-2",
+        "message": "AssertionError: assert 'baseline_not_reproduced' == 'cancelled'"
+      }
+    ]
+  },
+  "same_source_full_plus_exact_rerun_merge": {
+    "passed": 3001,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "accounting_correction": {
+    "prior_nonpassing": 216,
+    "prior_nonpassing_passed_in_candidate_initial": 215,
+    "prior_nonpassing_failed_in_candidate_initial": 1,
+    "prior_nonpassing_passed_after_exact_reruns": 216,
+    "new_nonpassing_nodes_in_candidate_initial": [
+      "tests/test_harness_v4_h06.py::test_go_project_builds_and_tests_with_the_real_toolchain"
+    ],
+    "previously_failing_nodes_with_different_candidate_initial_failure": [
+      "tests/test_v35_r03.py::test_late_receipt_after_cancel_is_discarded_and_replay_is_inert"
+    ],
+    "candidate_initial_failure_nodes": [
+      "tests/test_harness_v4_h06.py::test_go_project_builds_and_tests_with_the_real_toolchain",
+      "tests/test_v35_r03.py::test_late_receipt_after_cancel_is_discarded_and_replay_is_inert"
+    ]
+  },
+  "independent_exact_rerun": {
+    "passed": 217,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "independent_original_failure_subset": {
+    "passed": 216,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "independent_serial_first_run_anomaly_subset": {
+    "passed": 2,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "full_independent_run": "NOT_RUN_TARGETED_ONLY",
+  "independent_ruff": "PASS",
+  "independent_mypy": "PASS",
+  "prior_h12_timing_admission_junit": 23,
+  "replay_preflight": {
+    "source_files": 675,
+    "source_manifest_sha256": "7a31d7363341bdf83134c24527d4dfb71bebcaf9bd388dc82931dc1c77b0b2eb",
+    "archived_inputs_verified_against_git": 379,
+    "archive_commit": "a91ae4ca9051fdd5c468db69c502ebfc30e7d255"
+  },
+  "historical_v34_archive": {
+    "source_files_verified": 137,
+    "original_unavailable_cache_bytes": 75,
+    "original_byte_for_byte_archive_gate": "NOT_RUN"
+  },
+  "initial_cancel_preflight_exit": 137,
+  "initial_termination_cause": "UNDETERMINED",
+  "setup_attempts": [
+    {
+      "issue": "assumed disjoint failure lists",
+      "tests_started": false,
+      "resolution": "found overlap from original raw node list and reran each unique node once"
+    }
+  ],
+  "prior_evidence_files_verified": 43,
+  "previous_record": {
+    "path": "docs/general-agent-v1/accept/GA00/engineering-repair-20261119.json",
+    "sha256": "aeac343f2137d09d200961ba9c64e12a6ad67f98cdc06f9d2969f70332e55467"
+  },
+  "evidence": [
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/collection/command.json",
+      "sha256": "504a4f816cf9a49569c78c74817dc15670d34531f9888768c02bfa24c7f795a1"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/collection/command.log",
+      "sha256": "adebb14b49e73226b6c122774a9d406350c95d4ca92c830532990177c25a9b2d"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/collection/execution.json",
+      "sha256": "e23662fada151ce8b47bf407d4c15ccc20811e6a501e4e60eaca1ce9cc770ac1"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/lint/command.json",
+      "sha256": "df6c0cd81205ab325d255ab71c5dadb43c061b2bfefb12b88f56bd4982c09c63"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/lint/command.log",
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/lint/execution.json",
+      "sha256": "856159f023b5f7cad2ddd9e074dbc164de8a223ea93058fc4b5ffe5c30739dc1"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/prepare.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/replay-preflight.json",
+      "sha256": "32cb0c37dfed91d67896e4ce6e51cef12568f18ac3852c9ba54e32d0e1a2acd3"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/serial-two/cases.json",
+      "sha256": "9e2b00a8ef74a405c528981ad28fcfd1b650f3423a5472656428aefba3d0870b"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/serial-two/command.json",
+      "sha256": "20f6d1c83bdd882ba7c18f42b30d993ebbfd02334df953e2b7db78ee2cc81e91"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/serial-two/command.log",
+      "sha256": "85dd73a7901a03499be518c78c659e2ea01ea09bcbd9300f2749e7164b819af3"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/serial-two/execution.json",
+      "sha256": "d6677466f0e2e9d7ea551b0fb8ec813d87203e0e4d4b9af149e0d505e2e7a79c"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/serial-two/junit.xml",
+      "sha256": "d92aa0539c10d542c78b700f8300e7fa2d28080cc9380e2d40b95122e7c5e904"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/shard-0/cases.json",
+      "sha256": "99845d6a93f7686219c6949fd4e7acce0038e336ac6e87640f6fcb9bfeff3a54"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/shard-0/command.json",
+      "sha256": "f5928140779f8b5f05bed489be945c04d09125eabb774fe1fad7ca546b360f45"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/shard-0/command.log",
+      "sha256": "392b582e7c6e6f786f0689272be7632a2d498c4c99ce93770c01f072300a79fe"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/shard-0/execution.json",
+      "sha256": "306c951236ce2ebfb6ee250d98ef9952a9a2a7dcc9c5bf13c952c48dac67d3d1"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/shard-0/junit.xml",
+      "sha256": "f011ac2cb9d1d74f5b7fe8b9b4f7fd308f3f12773b3309caf504b268f93a3e08"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/shard-1/cases.json",
+      "sha256": "b1532638ed5ac446df54c98ac47b0a3ac0fef8e70707280982c9f8b6ce085f96"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/shard-1/command.json",
+      "sha256": "a6bfe14b1376e4d541746a5b5fe375392b00ec71961568076e423474d9d06bf0"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/shard-1/command.log",
+      "sha256": "6fbd1ec03801725f8b037843c39cf820f393806516fe6653ce7711273594f79c"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/shard-1/execution.json",
+      "sha256": "68cdc8c99298d474232c7d2c2eab20501860121b428beda6232f665e6aba1d4a"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/shard-1/junit.xml",
+      "sha256": "9ba83f48f0bc8f76bea571334a301ccdbd056f1e82c90f52905d50a0d3ef3924"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/shard-2/cases.json",
+      "sha256": "56b02e3e999fe6654f5ae45059365ea32bcd5226c86153ce456c59c573bc742c"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/shard-2/command.json",
+      "sha256": "4767e08cb88e241ba1844a7aa953a771e084fe0b6d455cdfb789f13ea1b90eff"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/shard-2/command.log",
+      "sha256": "7b3da7976a4abb87d15160e632562d6b701c3bfc3e9a9975935c4bb19cb23981"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/shard-2/execution.json",
+      "sha256": "ac07ed5b8399f17b0f7e79ae20d15970be52ab67a266e0bfd6f7fa23d12ba14c"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/shard-2/junit.xml",
+      "sha256": "8fdfd9c5307ee3cecf5252b68e19e6697b655869f34ae1504c6c37508ffea048"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/shard-3/cases.json",
+      "sha256": "c06274534a8b96df1083fe7e32cbc0ee1ec85b9e8a45039ef238ee593a167bfb"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/shard-3/command.json",
+      "sha256": "b0c11b4f36bea01381f171246192537eef2fd6e13e24704e8bcebba4835c7649"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/shard-3/command.log",
+      "sha256": "1ba719a438116792a9da91f6dfa3989694a3f1e87d591b2f5af355c58da617c8"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/shard-3/execution.json",
+      "sha256": "4e6cd08cf31ea4fe0d2e578912f93a0986f1baea3b90c9d4a3ba96063e7d41b1"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/shard-3/junit.xml",
+      "sha256": "a738836483e5d2a5f7d150e4b4bd971ebc346ac607219e292a1e47c2e7ad52da"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/shard-4/cases.json",
+      "sha256": "98566205ca17785eb9846d39b9adf6daac4a40f0e9e9219c900fb877cde51cf4"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/shard-4/command.json",
+      "sha256": "4304b7df2e9d25b66dc9a4238cc8ce45fb138eed35e0044fae0d7cdf6641dfcd"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/shard-4/command.log",
+      "sha256": "f89b68070ba37be24c9baf39f81190101a56000d9155edb191660ff05fd86fd6"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/shard-4/execution.json",
+      "sha256": "4e04e11cb5eb98e41363d953112b44cf668677869198ead83dabb43bcb88a837"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/shard-4/junit.xml",
+      "sha256": "7a1fa7d3e56c4aff58a8d305a9fe1e0bd6c29fffc121bf6d5422c09bd9a23262"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/summary.json",
+      "sha256": "ac36f79e779bbfb375b76b3369e22b7e2ffdc201149f49842d7043475f538a81"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/typecheck/command.json",
+      "sha256": "7367dad2cd79f438091eaebcaaf4dc4154fedf3eded3ef98f7af42b5d47777e6"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/typecheck/command.log",
+      "sha256": "c4f7934e535e53ddfdfa7e8858793dc3f44ac2014c76c5a8a7d678bb09fc0968"
+    },
+    {
+      "path": "evidence/GA00/repair-independent-20261119T081214Z-1d48e041/typecheck/execution.json",
+      "sha256": "e100f74d8accfbb30c93fd1c7d89110e487c9a70890ce25efb9f3fcaf4900c39"
+    }
+  ],
+  "real_model_calls": 0,
+  "external_e2e": "NOT_RUN",
+  "ga01": "WAITING_APPROVAL"
+}
