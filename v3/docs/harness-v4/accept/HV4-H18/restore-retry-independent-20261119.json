@@ -1,0 +1,83 @@
+{
+  "schema_version": "harness-h18-restore-retry-independent-v1",
+  "task": "HV4-H18-RESTORE-RETRY",
+  "date": "2026-11-19",
+  "source_commit": "cefa3860f879e8f503903039954e996c6aa7eda6",
+  "verified_head": "2a45bee429991e09be744d73d80324f6ef1d88e2",
+  "source_sha256": "f19775395efc62aee8a9b961f6ffaf04cf5578855f3f34b218e319aa2f62698f",
+  "original_finding_missing_pg_restore": "FIXED",
+  "registered_targeted_retest_gate": "PASS",
+  "registered_targeted_retest_counts": {
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "filesystem_publication_retry_gate": "FAIL",
+  "independent_engineering_gate": "FAIL",
+  "failure": {
+    "fault": "parent_write_permission_lost_after_runtime_mkdir",
+    "initial_cli_code": "OPERATOR_FILESYSTEM_ERROR",
+    "retry_cli_code": "SNAPSHOT_DESTINATION_EXISTS",
+    "migrations_imported": 35,
+    "imported_receipt": true,
+    "runtime_directory_left_empty": true,
+    "permissions_restored_before_identical_retry": true
+  },
+  "release": {
+    "sha256": "a54dba1fbbb6fb5c6746256ad118c16f1413b316b379500683d9a5b0cd93e967",
+    "manifest_files": 1353,
+    "rebuilt": {
+      "path": "evidence/harness-v4/H18-RESTORE-RETRY-INDEPENDENT-20261119/f3b6c3c65b2f/magr-harness-cefa386-rebuilt.tar.gz",
+      "sha256": "a54dba1fbbb6fb5c6746256ad118c16f1413b316b379500683d9a5b0cd93e967"
+    }
+  },
+  "historical_record": {
+    "path": "docs/harness-v4/accept/HV4-H18/restore-retry-20261119.json",
+    "sha256": "8b701ae41eeacbc6531e9c89e1cf029df81665cb2cb92077b71c076aaae6e1ef"
+  },
+  "historical_evidence_hashes_verified": 7,
+  "evidence": [
+    {
+      "path": "evidence/harness-v4/H18-RESTORE-RETRY-INDEPENDENT-20261119/0a04619abefc/HV4-H18-RESTORE-RETRY/20261119T043906Z-2a2933d4/result.json",
+      "sha256": "5ed09dccd446bc443d662b4152faa5fbd65a6f577f9223d6aa64059b590e879d"
+    },
+    {
+      "path": "evidence/harness-v4/H18-RESTORE-RETRY-INDEPENDENT-20261119/0a04619abefc/HV4-H18-RESTORE-RETRY/20261119T043906Z-2a2933d4/junit.xml",
+      "sha256": "aceee1fdad206b3964b100c6866fd7a6a792ad9bead3ae0f990d38d04749e82a"
+    },
+    {
+      "path": "evidence/harness-v4/H18-RESTORE-RETRY-INDEPENDENT-20261119/0a04619abefc/HV4-H18-RESTORE-RETRY/20261119T043906Z-2a2933d4/command.log",
+      "sha256": "205a624913509fa6f67e79a2cf14c9aafa4e877e568e87cbe0aba37a470e2868"
+    },
+    {
+      "path": "evidence/harness-v4/H18-RESTORE-RETRY-INDEPENDENT-20261119/0a04619abefc/lint.log",
+      "sha256": "a220b562d6bdb3655673add818cabd1dbd6857a7efc7d06ff8178f9e0e2501e2"
+    },
+    {
+      "path": "evidence/harness-v4/H18-RESTORE-RETRY-INDEPENDENT-20261119/0a04619abefc/typecheck.log",
+      "sha256": "2217d486a4cb8b894bdd7ab5db80ca0e2a87cee3e8fd896ccfe875137cf5c12e"
+    },
+    {
+      "path": "evidence/harness-v4/H18-RESTORE-RETRY-INDEPENDENT-20261119/0a04619abefc/orchestration.json",
+      "sha256": "ceefc6f102e816a51ae2ae86fa55cb7d8482e1b05a504ae1a6b0ba8db5caa7ff"
+    },
+    {
+      "path": "evidence/harness-v4/H18-RESTORE-RETRY-INDEPENDENT-20261119/f3b6c3c65b2f/publish-filesystem-probe.json",
+      "sha256": "7e396da42f7437d097ba4a6e448d5a1ea5285237636dbb5dd9f7c674e53ac3bd"
+    },
+    {
+      "path": "evidence/harness-v4/H18-RESTORE-RETRY-INDEPENDENT-20261119/f3b6c3c65b2f/publish-filesystem-probe.log",
+      "sha256": "b4c866780bd59a1fe50aac572e9698b58f87b825e5fb9f457b7853dc0ca7f810"
+    },
+    {
+      "path": "evidence/harness-v4/H18-RESTORE-RETRY-INDEPENDENT-20261119/f3b6c3c65b2f/orchestration.json",
+      "sha256": "278a31cc05b26b06e1b0d87690bb4a80185a0a291fc58a6a915658fa4a54a0ce"
+    }
+  ],
+  "other_registered_tests": "NOT_RERUN",
+  "live_model_gate": "NOT_RUN",
+  "production_gate": "NOT_RUN",
+  "native_linux_host_gate": "NOT_RUN",
+  "real_model_calls": 0
+}
