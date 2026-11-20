@@ -214,7 +214,7 @@ class PersonalMemoryStore:
                         raise
                     raise _source_unavailable() from None
                 membership = (
-                    active_membership(conn, task.project_id, user_id=user)
+                    active_membership(conn, task.require_project(), user_id=user)
                     if task.membership_id is not None
                     else None
                 )

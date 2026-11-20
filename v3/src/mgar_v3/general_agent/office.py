@@ -406,7 +406,7 @@ class OfficeExecutor:
                     change,
                     account=self.connector.account,
                     actor=intent.scope.actor,
-                    project_id=task.project_id,
+                    project_id=task.require_project(),
                 )
         except (DomainError, ValueError) as exc:
             raise DefinitiveFailure("Office payload does not match the approved action") from exc

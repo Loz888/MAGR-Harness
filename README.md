@@ -18,7 +18,7 @@ make doctor
 make dev
 ```
 
-打开 `http://127.0.0.1:18080` 进入通用智能体工作台，首次使用创建管理员账户。在对话框提交自然语言需求后，可补充任务范围、查看计划和已验证结果。项目助手和 GitHub 分析可从侧栏进入，并使用各自的模型与项目授权。[通用工作台](v3/docs/general-agent-v1/GA13_RC.md) · [项目助手](v3/docs/agent-ui.md) · [安装与恢复](v3/docs/harness-v4/H18_OPERATIONS.md)
+打开 `http://127.0.0.1:18080` 进入通用智能体工作台，首次使用创建管理员账户。登录后可以直接提交个人任务，访问项目资源时再关联已授权的项目。提交后可补充任务范围、查看计划和已验证结果。项目助手和 GitHub 分析可从侧栏进入，并使用各自的模型与项目授权。[通用工作台](v3/docs/general-agent-v1/GA13_RC.md) · [项目助手](v3/docs/agent-ui.md) · [安装与恢复](v3/docs/harness-v4/H18_OPERATIONS.md)
 
 ## 已交付能力
 

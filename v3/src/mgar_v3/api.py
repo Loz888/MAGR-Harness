@@ -444,12 +444,16 @@ def create_app(
         )
 
     def member_user(request: Request) -> UUID | None:
+        user = general_task_user(request)
+        return user.user_id if user is not None and not user.is_owner else None
+
+    def general_task_user(request: Request) -> BrowserSession | None:
         if operator_token_matches(request):
             check_origin(request)
             return None
         user = account_user(request)
         check_origin(request)
-        return None if user.is_owner else user.user_id
+        return user
 
     def authenticated(request: Request) -> None:
         if member_user(request) is not None:
@@ -468,7 +472,7 @@ def create_app(
     from mgar_v3.harness.runner_api import register_runner_routes
 
     register_product_routes(app, authenticated, member_user)
-    register_general_task_routes(app, member_user)
+    register_general_task_routes(app, general_task_user)
 
     def personal_memory_user(request: Request) -> UUID:
         user = account_user(request)

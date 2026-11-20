@@ -23,6 +23,7 @@
   let renderedRecent;
   let pendingCreate;
   let busy = false;
+  let clarifyOpen = false;
 
   function element(tag, className, label) {
     const node = document.createElement(tag);
@@ -41,7 +42,7 @@
     if (response.status === 401) {
       session = null;
       projectNames.clear();
-      byId("general-project").replaceChildren(new Option("选择项目", ""));
+      byId("general-project").replaceChildren(new Option("个人任务", ""));
       showTask(null);
       recent = [];
       drafts.clear();
@@ -114,6 +115,7 @@
     const profile = profiles[selectedDomain()];
     byId("general-delivery").placeholder = profile?.output || "填写希望收到的交付物";
     byId("general-criteria").placeholder = profile?.check || "描述怎样算完成";
+    byId("general-project-needed").hidden = Boolean(current?.project_id) || selectedDomain() !== "coding";
   }
 
   function needsClarification(task) {
@@ -124,7 +126,10 @@
 
   function renderClarification(changed) {
     const form = byId("general-clarify");
-    form.hidden = !editable.has(current.state) || !needsClarification(current);
+    const required = editable.has(current.state) && needsClarification(current);
+    const offerConfig = required && !current.project_id && !clarifyOpen;
+    byId("general-configure").hidden = !offerConfig;
+    form.hidden = !required || offerConfig;
     if (form.hidden) return;
     const missing = new Set(current.clarifications);
     const questions = current.spec.open_questions;
@@ -171,7 +176,32 @@
     box.placeholder = locked ? "可新建任务继续" : current ? "补充需求或上下文…" : "描述你的需求…";
     byId("general-composer-scope").textContent = current
       ? (locked ? (editable.has(current.state) ? "当前任务已达到补充上限" : "当前任务状态不支持修订") : "补充会创建新的任务修订")
-      : (projectNames.get(byId("general-project").value) || "发送前选择项目");
+      : (projectNames.get(byId("general-project").value) || "个人任务 · 项目可选");
+  }
+
+  function updateProjectControl() {
+    const selector = byId("general-project");
+    const linkableTask = current && !current.project_id &&
+      ["draft", "ready", "waiting"].includes(current.state);
+    selector.disabled = !projectNames.size || Boolean(current && !linkableTask);
+    byId("general-attach").hidden = !linkableTask || !selector.value;
+  }
+
+  async function refreshProjects() {
+    const selector = byId("general-project");
+    try {
+      const projects = await call("/api/v3/harness/projects");
+      if (!session) return;
+      for (const project of projects) {
+        const name = project.repository || project.project_id;
+        projectNames.set(project.project_id, name);
+        selector.add(new Option(name, project.project_id));
+      }
+      if (current?.project_id) selector.value = current.project_id;
+      updateProjectControl();
+    } catch {
+      if (session) selector.title = "暂时无法加载项目，个人任务仍可使用。";
+    }
   }
 
   function showTask(task, candidateGraph = null) {
@@ -182,6 +212,8 @@
       const input = byId("general-goal");
       drafts.set(previous, input.value);
       input.value = drafts.get(next) || "";
+      byId("general-project").value = task?.project_id || "";
+      clarifyOpen = false;
     }
     current = task;
     graph = candidateGraph;
@@ -189,7 +221,7 @@
     byId("general-task").hidden = !task;
     byId("general-refresh").hidden = !task;
     if (task && projectNames.has(task.project_id)) byId("general-project").value = task.project_id;
-    byId("general-project").disabled = Boolean(task) || !projectNames.size;
+    updateProjectControl();
     const url = new URL(location.href);
     if (task) url.searchParams.set("task", task.task_id);
     else url.searchParams.delete("task");
@@ -200,9 +232,10 @@
     byId("general-id-input").value = task.task_id;
     byId("general-title").textContent = task.spec.goal || "未填写目标";
     byId("general-status").textContent = task.state === "ready" && task.plan_version ? "计划已生成" :
-      task.reason === "clarification_required" ? "待补充" : (statuses[task.state] || task.state);
+      task.reason === "clarification_required" ? (task.project_id ? "待补充" : "已记录需求") :
+        (statuses[task.state] || task.state);
     byId("general-task-info").textContent = [
-      projectNames.get(task.project_id) || task.project_id,
+      projectNames.get(task.project_id) || task.project_id || "个人任务",
       profiles[task.spec.domain]?.label,
       `修订 ${task.revision}`,
     ].filter(Boolean).join(" · ");
@@ -254,6 +287,9 @@
   }
 
   async function plan(task) {
+    if (task.spec.domain === "coding" && !task.project_id) {
+      throw new Error("代码检查需要先关联项目。可在右上角选择项目并确认关联。");
+    }
     await call(`${tasks}/${task.task_id}/graph`, fence(task));
     await load(task.task_id);
   }
@@ -262,6 +298,9 @@
     const domain = selectedDomain();
     const profile = profiles[domain];
     if (!profile) throw new Error("请选择最接近的任务方向。");
+    if (domain === "coding" && !task.project_id) {
+      throw new Error("代码检查需要先关联项目。可在右上角选择项目并确认关联。");
+    }
     const spec = {...task.spec, domain};
     spec.goal ||= byId("general-goal-input").value.trim();
     if (!spec.goal) throw new Error("请输入任务需求。");
@@ -303,8 +342,7 @@
         const spec = {...current.spec, context: [...current.spec.context, text]};
         showTask(await revise(current, spec, current.state === "draft"));
       } else {
-        const project = byId("general-project").value;
-        if (!project) throw new Error("请先选择任务所属项目。");
+        const project = byId("general-project").value || null;
         if (pendingCreate?.spec.goal !== text || pendingCreate?.project_id !== project) {
           pendingCreate = {project_id: project, request_id: crypto.randomUUID(),
             spec: {goal: text, approval_policy: "deny_external_writes"}};
@@ -332,8 +370,25 @@
     void action(event.submitter, () => load(byId("general-id-input").value.trim()));
   });
   byId("general-domain").addEventListener("change", updateDraftFields);
-  byId("general-project").addEventListener("change", updateComposer);
+  byId("general-project").addEventListener("change", () => {
+    updateComposer();
+    updateProjectControl();
+  });
+  byId("general-attach").addEventListener("click", (event) => {
+    void action(event.currentTarget, async () => {
+      const task = current;
+      const project = byId("general-project").value;
+      if (!task || task.project_id || !project) return;
+      showTask(await call(`${tasks}/${task.task_id}/project`, {...fence(task), project_id: project}));
+      await refreshRecent();
+    });
+  });
+  byId("general-configure").addEventListener("click", () => {
+    clarifyOpen = true;
+    renderClarification(true);
+  });
   byId("general-new").addEventListener("click", (event) => void action(event.currentTarget, async () => {
+    byId("general-project").value = "";
     showTask(null);
     byId("general-goal").focus();
   }));
@@ -376,19 +431,10 @@
       return;
     }
     byId("general-account").textContent = session.username || "";
-    const projects = await call("/api/v3/harness/projects");
-    const selector = byId("general-project");
-    for (const project of projects) {
-      const name = project.repository || project.project_id;
-      projectNames.set(project.project_id, name);
-      selector.add(new Option(name, project.project_id));
-    }
-    if (projects.length === 1) selector.value = projects[0].project_id;
-    selector.disabled = !projects.length;
-    byId("general-no-project").hidden = Boolean(projects.length);
-    byId("general-examples").hidden = !projects.length;
-    byId("general-content").hidden = !projects.length;
+    byId("general-examples").hidden = false;
+    byId("general-content").hidden = false;
     updateComposer();
+    void refreshProjects();
     await refreshRecent();
     if (selected) await load(selected);
   });

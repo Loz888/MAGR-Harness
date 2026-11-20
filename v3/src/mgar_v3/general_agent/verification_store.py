@@ -62,7 +62,7 @@ class GeneralVerificationStore:
         if (task.revision, task.version, task.state) != (revision, version, "verifying"):
             raise _invalid("Verification is outside the current task phase or revision.")
         if task.membership_id is not None:
-            require_membership(conn, task.project_id, str(task.membership_id), write=True)
+            require_membership(conn, task.require_project(), str(task.membership_id), write=True)
         return task
 
     @staticmethod
@@ -488,7 +488,7 @@ class GeneralVerificationStore:
         if row is None or not row["managed"]:
             return
         if task.membership_id is not None:
-            require_membership(conn, task.project_id, str(task.membership_id), write=True)
+            require_membership(conn, task.require_project(), str(task.membership_id), write=True)
         if conn.execute(
             "SELECT 1 FROM app.general_action_intents i JOIN app.general_action_outbox o "
             "USING (action_id) WHERE i.task_id=%s AND i.task_revision=%s "

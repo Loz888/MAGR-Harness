@@ -248,6 +248,8 @@ class KnowledgeGateway:
     ) -> tuple[TaskSnapshot, KnowledgePrincipal]:
         with self.engine.transaction() as conn:
             task = self.engine.general_tasks.lock_current(conn, task_id)
+            if task.project_id is None:
+                raise DomainError("GENERAL_TASK_NOT_FOUND", "任务不存在。", 404)
             actor = self.engine.settings.local_actor
             role: Role = "operator"
             membership_id = None

@@ -43,7 +43,7 @@ a { color: var(--accent); text-underline-offset: .18em; }
 .workspace { display: flex; flex-direction: column; min-width: 0; min-height: 0; }
 .topbar { flex: 0 0 auto; min-height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 24px; background: #fcfcfb; border-bottom: 1px solid var(--line); }
 .workspace-title { font-weight: 680; }
-.top-actions { display: flex; gap: 8px; align-items: center; }
+.top-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; align-items: center; }
 .top-actions > * { max-width: min(40vw, 270px); }
 .top-actions button, select, input { background: #fff; color: var(--ink); border: 1px solid #cbd4d7; border-radius: 7px; padding: 6px 8px; }
 .scroll { flex: 1; overflow: auto; min-height: 0; }

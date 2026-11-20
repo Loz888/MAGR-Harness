@@ -5,7 +5,7 @@ from uuid import UUID
 
 from pydantic import AwareDatetime, Field, StringConstraints, model_validator
 
-from mgar_v3.domain import Model
+from mgar_v3.domain import DomainError, Model
 from mgar_v3.harness.contracts import TaskKind
 
 TaskDomain = Literal["coding", "research", "data", "office"]
@@ -178,7 +178,7 @@ class OutcomeContract(Model):
 
 class RecentTask(Model):
     task_id: UUID
-    project_id: Identifier
+    project_id: Identifier | None
     goal: Goal | None
     state: TaskState
     updated_at: AwareDatetime
@@ -186,8 +186,9 @@ class RecentTask(Model):
 
 class TaskSnapshot(Model):
     task_id: UUID
-    project_id: Identifier
+    project_id: Identifier | None
     membership_id: UUID | None = Field(exclude=True)
+    owner_user_id: UUID | None = Field(default=None, exclude=True)
     revision: Revision
     version: Revision
     state: TaskState
@@ -197,3 +198,8 @@ class TaskSnapshot(Model):
     plan: TaskPlan | None
     plan_version: Revision | None
     outcome: OutcomeContract | None
+
+    def require_project(self) -> str:
+        if self.project_id is None:
+            raise DomainError("GENERAL_TASK_PROJECT_REQUIRED", "请先为任务关联项目。", 409)
+        return self.project_id

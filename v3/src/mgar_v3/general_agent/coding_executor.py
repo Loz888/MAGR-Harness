@@ -178,7 +178,7 @@ class CodingExecutor:
         if not path:
             raise _deny()
         task = self.engine.general_tasks.get(claim.task_id)
-        request = to_coding_request(task.spec, project_id=task.project_id)
+        request = to_coding_request(task.spec, project_id=task.require_project())
         if (
             (request.task_kind != "inspect" and not options.approved)
             or (request.task_kind in {"bugfix", "feature", "refactor"} and not options.old_text)

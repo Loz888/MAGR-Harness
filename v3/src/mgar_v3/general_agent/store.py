@@ -25,7 +25,8 @@ if TYPE_CHECKING:
     from mgar_v3.coordination.engine import Connection, Engine, Row
 
 _SELECT = (
-    "SELECT t.task_id,t.project_id,t.membership_id,r.revision,r.version,r.state,r.reason,"
+    "SELECT t.task_id,t.project_id,t.membership_id,t.owner_user_id,"
+    "r.revision,r.version,r.state,r.reason,"
     "r.spec,r.plan,r.plan_version,r.outcome FROM app.general_tasks t "
     "JOIN app.general_task_revisions r ON r.task_id=t.task_id "
 )
@@ -70,18 +71,20 @@ class GeneralTaskStore:
     def __init__(self, engine: Engine) -> None:
         self.engine = engine
 
-    def recent(self, user_id: UUID | None, limit: int) -> list[RecentTask]:
+    def recent(self, user_id: UUID | None, all_projects: bool, limit: int) -> list[RecentTask]:
         with self.engine.transaction() as conn:
             rows = conn.execute(
                 "SELECT t.task_id,t.project_id,LEFT(r.spec->>'goal',160) AS goal,"
                 "r.state,r.updated_at "
                 "FROM app.general_tasks t JOIN app.general_task_revisions r "
                 "ON (r.task_id,r.revision)=(t.task_id,t.current_revision) "
-                "WHERE %s::uuid IS NULL OR EXISTS (SELECT 1 FROM app.harness_project_memberships m "
+                "WHERE (t.owner_user_id=%s AND t.project_id IS NULL) "
+                "OR (t.project_id IS NOT NULL AND (%s OR EXISTS ("
+                "SELECT 1 FROM app.harness_project_memberships m "
                 "WHERE m.membership_id=t.membership_id AND m.workspace_id=t.project_id "
-                "AND m.user_id=%s::uuid AND m.revoked_at IS NULL) "
+                "AND m.user_id=%s::uuid AND m.revoked_at IS NULL))) "
                 "ORDER BY r.updated_at DESC,t.task_id DESC LIMIT %s",
-                (user_id, user_id, limit),
+                (user_id, all_projects, user_id, limit),
             ).fetchall()
         return [RecentTask.model_validate(row) for row in rows]
 
@@ -130,20 +133,28 @@ class GeneralTaskStore:
 
     def create(
         self,
-        project_id: str,
+        project_id: str | None,
         membership_id: UUID | None,
         request_id: UUID,
         spec: GeneralTaskSpec,
         *,
         draft: bool = False,
+        owner_user_id: UUID | None = None,
     ) -> TaskSnapshot:
         request_hash = digest({"spec": spec.model_dump(mode="json"), "draft": draft})
         with self.engine.transaction() as conn:
-            existing = conn.execute(
-                "SELECT task_id,request_hash FROM app.general_tasks WHERE project_id=%s "
-                "AND membership_id IS NOT DISTINCT FROM %s::uuid AND request_id=%s",
-                (project_id, membership_id, request_id),
-            ).fetchone()
+            if owner_user_id is not None:
+                existing = conn.execute(
+                    "SELECT task_id,request_hash FROM app.general_tasks "
+                    "WHERE owner_user_id=%s AND request_id=%s", (owner_user_id, request_id),
+                ).fetchone()
+            else:
+                existing = conn.execute(
+                    "SELECT task_id,request_hash FROM app.general_tasks WHERE project_id=%s "
+                    "AND owner_user_id IS NULL "
+                    "AND membership_id IS NOT DISTINCT FROM %s::uuid AND request_id=%s",
+                    (project_id, membership_id, request_id),
+                ).fetchone()
             if existing is not None:
                 if existing["request_hash"] != request_hash:
                     raise DomainError("IDEMPOTENCY_CONFLICT", "请求标识已绑定其他任务内容。", 409)
@@ -151,11 +162,28 @@ class GeneralTaskStore:
             task_id = uuid4()
             conn.execute(
                 "INSERT INTO app.general_tasks("
-                "task_id,project_id,membership_id,request_id,request_hash,current_revision) "
-                "VALUES (%s,%s,%s,%s,%s,1)",
-                (task_id, project_id, membership_id, request_id, request_hash),
+                "task_id,project_id,membership_id,owner_user_id,request_id,request_hash,"
+                "current_revision) "
+                "VALUES (%s,%s,%s,%s,%s,%s,1)",
+                (task_id, project_id, membership_id, owner_user_id, request_id, request_hash),
             )
             self._insert_revision(conn, task_id, 1, spec, draft)
+            return self.get(task_id)
+
+    def attach_project(
+        self, task_id: UUID, revision: int, version: int,
+        project_id: str, membership_id: UUID | None,
+    ) -> TaskSnapshot:
+        with self.engine.transaction() as conn:
+            task = self._current(conn, task_id, revision, version)
+            if task.project_id is not None or task.state not in {"draft", "ready", "waiting"}:
+                raise DomainError("GENERAL_TASK_SCOPE_FIXED", "当前任务无法更换项目。", 409)
+            next_revision = revision + 1
+            self._insert_revision(conn, task_id, next_revision, task.spec, task.state == "draft")
+            conn.execute(
+                "UPDATE app.general_tasks SET project_id=%s,membership_id=%s,current_revision=%s "
+                "WHERE task_id=%s", (project_id, membership_id, next_revision, task_id),
+            )
             return self.get(task_id)
 
     def revise(

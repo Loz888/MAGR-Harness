@@ -33,8 +33,9 @@
       <header class="topbar">
         <div class="workspace-title">通用智能体</div>
         <div class="top-actions">
-          <label class="sr-only" for="general-project">项目</label>
-          <select id="general-project" disabled><option value="">选择项目</option></select>
+          <label class="sr-only" for="general-project">关联项目（可选）</label>
+          <select id="general-project" disabled><option value="">个人任务</option></select>
+          <button id="general-attach" type="button" hidden>关联项目</button>
           <button id="general-refresh" type="button" hidden>刷新状态</button>
         </div>
       </header>
@@ -44,7 +45,6 @@
           <section id="general-welcome" class="welcome">
             <h1>你想完成什么？</h1>
             <p id="general-auth" hidden><a href="/repo?next=general">登录或初始化工作台</a></p>
-            <p id="general-no-project" hidden><a href="/repo">在项目助手中打开一个项目</a></p>
             <div id="general-examples" class="examples" hidden>
               <button type="button" data-prompt="梳理这个项目的架构和运行方式，并列出需要核实的问题。"><strong>理解项目</strong><span>梳理架构和入口</span></button>
               <button type="button" data-prompt="按地区分析我提供的数据，列出关键指标和异常。"><strong>分析数据</strong><span>整理指标与异常</span></button>
@@ -65,6 +65,7 @@
               </div>
               <p id="general-task-info" class="secondary"></p>
               <p id="general-reason" class="secondary" hidden></p>
+              <button id="general-configure" type="button" class="primary" hidden>准备任务计划</button>
               <form id="general-clarify" class="clarify" hidden>
                 <h2>补充任务目标</h2>
                 <div id="general-missing-goal" hidden>
@@ -95,6 +96,9 @@
                     <input id="general-criteria" maxlength="2048">
                   </div>
                 </div>
+                <p id="general-project-needed" class="secondary" hidden>
+                  代码检查需要关联项目。可在右上角选择项目，或<a href="/repo">打开一个项目</a>。
+                </p>
                 <button type="submit" class="primary">确认并生成计划</button>
               </form>
 

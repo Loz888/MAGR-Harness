@@ -424,3 +424,149 @@ def test_general_api_uses_existing_auth_and_keeps_execution_fields_server_owned(
         with engine.transaction() as conn:
             assert conn.execute("SELECT count(*) AS n FROM app.runs").fetchone()["n"] == 0
             assert conn.execute("SELECT count(*) AS n FROM app.usage_calls").fetchone()["n"] == 0
+
+
+def test_projectless_intake_is_private_and_project_link_preserves_request_id(
+    settings, engine, tmp_path
+):
+    settings.local_token = SecretStr(ADMIN["X-MGAR-Token"])
+    app = create_app(settings, engine, run_background=False)
+    source = tmp_path / "workspace"
+    source.mkdir()
+    (source / "README.md").write_text("Fixture workspace")
+    with TestClient(app, base_url=ORIGIN, client=("127.0.0.1", 50300)) as owner:
+        users = {
+            name: expect(
+                owner.post(
+                    "/api/v3/agent/accounts",
+                    headers=ADMIN,
+                    json={
+                        "username": name,
+                        "password": PASSWORD,
+                    },
+                ),
+                201,
+            )["user_id"]
+            for name in ("alice", "bob")
+        }
+        payload = {"request_id": str(uuid4()), "spec": {"goal": "写一封感谢信"}}
+        assert owner.post(TASKS, headers=ADMIN, json=payload).status_code == 401
+        with closing(TestClient(app, base_url=ORIGIN, client=("127.0.0.1", 50301))) as browser:
+            headers = member(browser, "alice")
+            assert expect(browser.get("/api/v3/harness/projects")) == []
+            response = browser.post(TASKS, headers=headers, json=payload)
+            task = expect(response, 201)
+            assert task["project_id"] is None and task["state"] == "waiting"
+            assert "owner_user_id" not in task and "membership_id" not in task
+            task_url = TASKS + "/" + task["task_id"]
+            assert expect(browser.get(TASKS))[0]["task_id"] == task["task_id"]
+            assert expect(owner.get(TASKS, headers=ADMIN)) == []
+            assert owner.get(task_url, headers=ADMIN).status_code == 404
+            assert expect(browser.post(TASKS, headers=headers, json=payload), 201) == task
+
+            bob = member(browser, "bob")
+            assert browser.get(task_url).status_code == 404
+            assert expect(browser.get(TASKS)) == []
+            other = expect(browser.post(TASKS, headers=bob, json=payload), 201)
+            assert other["task_id"] != task["task_id"]
+            assert (
+                browser.post(
+                    task_url + "/project",
+                    headers=bob,
+                    json={
+                        "project_id": "forged",
+                        "expected_revision": 1,
+                        "expected_version": 1,
+                    },
+                ).status_code
+                == 404
+            )
+
+            headers = member(browser, "alice")
+            project = expect(
+                owner.post(
+                    "/api/v3/harness/projects",
+                    headers=ADMIN,
+                    json={
+                        "path": str(source),
+                    },
+                ),
+                201,
+            )["project_id"]
+            endpoint = f"/api/v3/agent/projects/{project}"
+            expect(owner.put(endpoint + "/quota", headers=ADMIN, json={}))
+            attachment = {"project_id": project, "expected_revision": 1, "expected_version": 1}
+            assert (
+                browser.post(task_url + "/project", headers=headers, json=attachment).status_code
+                == 404
+            )
+            expect(
+                owner.put(
+                    endpoint + "/members/" + users["alice"],
+                    headers=ADMIN,
+                    json={"role": "contributor"},
+                )
+            )
+            linked = expect(browser.post(task_url + "/project", headers=headers, json=attachment))
+            assert linked["revision"] == 2 and linked["task_id"] == task["task_id"]
+            assert linked["project_id"] == project and linked["spec"] == task["spec"]
+            assert expect(browser.post(TASKS, headers=headers, json=payload), 201) == linked
+            assert (
+                browser.post(
+                    task_url + "/project",
+                    headers=headers,
+                    json=attachment
+                    | {
+                        "expected_revision": 2,
+                    },
+                ).status_code
+                == 409
+            )
+            expect(owner.delete(endpoint + "/members/" + users["alice"], headers=ADMIN), 204)
+            assert browser.get(task_url).status_code == 404
+            assert browser.post(TASKS, headers=headers, json=payload).status_code == 404
+
+
+def test_personal_task_plans_require_project_only_for_project_tools(settings, engine):
+    app = create_app(settings, engine, run_background=False)
+    with TestClient(app, base_url=ORIGIN, client=("127.0.0.1", 50302)) as browser:
+        auth = expect(
+            browser.post(
+                "/api/v3/auth/setup",
+                headers={"Origin": ORIGIN},
+                json={
+                    "username": "owner",
+                    "password": PASSWORD,
+                },
+            ),
+            201,
+        )
+        headers = {"Origin": ORIGIN, "X-CSRF-Token": auth["csrf_token"]}
+        versions = {"expected_revision": 1, "expected_version": 1}
+        for domain, capability in (("data", "data.analyze"), ("coding", "coding.execute.inspect")):
+            value = spec(domain).model_copy(update={"allowed_capabilities": (capability,)})
+            if domain == "coding":
+                value = value.model_copy(update={"coding_policy": "inspect"})
+            task = expect(
+                browser.post(
+                    TASKS,
+                    headers=headers,
+                    json={
+                        "project_id": None,
+                        "request_id": str(uuid4()),
+                        "spec": value.model_dump(mode="json"),
+                    },
+                ),
+                201,
+            )
+            url = TASKS + "/" + task["task_id"]
+            result = browser.post(url + "/graph", headers=headers, json=versions)
+            if domain == "coding":
+                assert result.status_code == 409
+                assert result.json()["code"] == "GENERAL_TASK_PROJECT_REQUIRED"
+            else:
+                assert expect(result, 201)["graph"]["nodes"][0]["domain"] == "data"
+            assert (
+                browser.get(url + "/knowledge/sources", params={"expected_revision": 1}).status_code
+                == 404
+            )

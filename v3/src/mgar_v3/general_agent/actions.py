@@ -208,7 +208,9 @@ class GeneralActionStore:
                 raise _denied("Task time budget expired.")
         actor = self.engine.settings.local_actor
         if task.membership_id is not None:
-            member = require_membership(conn, task.project_id, str(task.membership_id), write=True)
+            member = require_membership(
+                conn, task.require_project(), str(task.membership_id), write=True,
+            )
             actor = str(member["user_id"])
         if actor != scope.actor:
             raise _denied("Action actor is outside the task scope.")

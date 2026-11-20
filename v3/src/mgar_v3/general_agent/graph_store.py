@@ -98,6 +98,14 @@ def _update[T: Model](value: T, **changes: Any) -> T:
     return value.model_copy(update=changes)
 
 
+def _check_project_scope(task: TaskSnapshot, graph: TaskGraph) -> None:
+    if any(node.domain == "coding" for node in graph.nodes) or any(
+        source.kind == "repository" or source.reference.startswith("knowledge:")
+        for source in task.spec.source_refs
+    ):
+        task.require_project()
+
+
 def _expired_state(state: GraphSnapshot, now: datetime) -> dict[str, NodeProgress]:
     return {
         key: _update(item, state="unknown", reason="receipt_reconciliation_required")
@@ -281,6 +289,7 @@ class GeneralGraphStore:
             if task.revision != revision or task.version != task_version:
                 raise DomainError("GENERAL_TASK_STALE", "Task version changed.", 409)
             graph.check_task(task.spec, revision)
+            _check_project_scope(task, graph)
             present = conn.execute(
                 "SELECT 1 FROM app.general_task_graphs WHERE task_id=%s AND task_revision=%s",
                 (task_id, revision),
@@ -355,6 +364,7 @@ class GeneralGraphStore:
                     "GENERAL_GRAPH_STATE", "Task phase cannot accept a new plan.", 409
                 )
             graph.check_task(task.spec, revision)
+            _check_project_scope(task, graph)
             before = {node.id: node for node in state.graph.nodes}
             after = {node.id: node for node in graph.nodes}
             dirty = {
@@ -432,7 +442,9 @@ class GeneralGraphStore:
             ):
                 raise DomainError("GENERAL_GRAPH_ACCESS", "Grant is outside task scope.", 403)
             if task.membership_id is not None:
-                require_membership(conn, task.project_id, str(task.membership_id), write=True)
+                require_membership(
+                    conn, task.require_project(), str(task.membership_id), write=True,
+                )
             if task.state not in {"ready", "running"}:
                 raise DomainError("GENERAL_GRAPH_STATE", "Task cannot claim new work.", 409)
             node = self._node(state, node_id)
@@ -747,7 +759,9 @@ class GeneralGraphStore:
                     "GENERAL_GRAPH_ACCESS", "Model projection is outside active claim.", 403
                 )
             if task.membership_id is not None:
-                require_membership(conn, task.project_id, str(task.membership_id), write=True)
+                require_membership(
+                    conn, task.require_project(), str(task.membership_id), write=True,
+                )
             action_spent = self.engine.general_actions.spent(
                 conn, claim.task_id, claim.task_revision
             )
@@ -799,7 +813,7 @@ class GeneralGraphStore:
             task = self.engine.general_tasks.get(claim.task_id)
             if claim.capability_id == "coding.inspect" and task.spec.coding_policy != "inspect":
                 raise DomainError("GENERAL_CODING_ROUTE_REQUIRED", "Coding inspection only.", 403)
-            request = to_coding_request(task.spec, project_id=task.project_id)
+            request = to_coding_request(task.spec, project_id=task.require_project())
             if inspect_path and request.task_kind != "inspect":
                 raise DomainError("GENERAL_CODING_ROUTE_REQUIRED", "Coding inspection only.", 403)
             return replace(request, target_path=inspect_path)
