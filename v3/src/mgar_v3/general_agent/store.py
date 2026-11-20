@@ -15,6 +15,7 @@ from mgar_v3.general_agent.contracts import (
     GeneralTaskSpec,
     OutcomeContract,
     OutcomeVerificationReceipt,
+    RecentTask,
     TaskPlan,
     TaskSnapshot,
     TaskState,
@@ -68,6 +69,21 @@ def _fence(snapshot: TaskSnapshot, revision: int, version: int) -> None:
 class GeneralTaskStore:
     def __init__(self, engine: Engine) -> None:
         self.engine = engine
+
+    def recent(self, user_id: UUID | None, limit: int) -> list[RecentTask]:
+        with self.engine.transaction() as conn:
+            rows = conn.execute(
+                "SELECT t.task_id,t.project_id,LEFT(r.spec->>'goal',160) AS goal,"
+                "r.state,r.updated_at "
+                "FROM app.general_tasks t JOIN app.general_task_revisions r "
+                "ON (r.task_id,r.revision)=(t.task_id,t.current_revision) "
+                "WHERE %s::uuid IS NULL OR EXISTS (SELECT 1 FROM app.harness_project_memberships m "
+                "WHERE m.membership_id=t.membership_id AND m.workspace_id=t.project_id "
+                "AND m.user_id=%s::uuid AND m.revoked_at IS NULL) "
+                "ORDER BY r.updated_at DESC,t.task_id DESC LIMIT %s",
+                (user_id, user_id, limit),
+            ).fetchall()
+        return [RecentTask.model_validate(row) for row in rows]
 
     def get(self, task_id: UUID, *, revision: int | None = None) -> TaskSnapshot:
         with self.engine.transaction() as conn:

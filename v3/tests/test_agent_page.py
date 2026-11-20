@@ -55,9 +55,13 @@ def client_for(settings, engine, *, background=False):
     )
 
 
-def test_all_entry_urls_serve_one_page_without_credentials(settings, engine):
+def test_entry_urls_serve_workspace_and_project_pages_without_credentials(settings, engine):
     with client_for(settings, engine) as client:
-        pages = [client.get(path) for path in ("/", "/repo", "/workbench")]
+        workspace = client.get("/")
+        assert workspace.status_code == 200 and workspace.text == client.get("/general").text
+        assert 'id="general-task-create"' in workspace.text
+        assert settings.local_token.get_secret_value() not in workspace.text
+        pages = [client.get(path) for path in ("/repo", "/workbench")]
         assert all(page.status_code == 200 for page in pages)
         assert len({page.text for page in pages}) == 1
         assert 'id="repository-url"' in pages[0].text

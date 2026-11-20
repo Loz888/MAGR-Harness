@@ -355,6 +355,7 @@ def test_general_api_uses_existing_auth_and_keeps_execution_fields_server_owned(
             "spec": {"goal": "写一封邮件"},
         }
         assert owner.post(TASKS, json=payload).status_code == 401
+        assert owner.get(TASKS).status_code == 401
         with closing(TestClient(app, base_url=ORIGIN, client=("127.0.0.1", 50201))) as browser:
             headers = member(browser, "alice")
             assert (
@@ -372,6 +373,12 @@ def test_general_api_uses_existing_auth_and_keeps_execution_fields_server_owned(
             task = expect(response, 201)
             assert response.headers["cache-control"] == "no-store"
             assert task["state"] == "waiting" and task["reason"] == "clarification_required"
+            history = browser.get(TASKS, headers=headers)
+            assert history.headers["cache-control"] == "no-store"
+            [summary] = expect(history)
+            assert summary["task_id"] == task["task_id"]
+            assert summary["goal"] == payload["spec"]["goal"]
+            assert set(summary) == {"task_id", "project_id", "goal", "state", "updated_at"}
             assert "membership_id" not in task
             assert expect(browser.post(TASKS, headers=headers, json=payload), 201) == task
             assert (
@@ -401,8 +408,10 @@ def test_general_api_uses_existing_auth_and_keeps_execution_fields_server_owned(
             other = member(browser, "bob")
             assert browser.post(TASKS, headers=other, json=payload).status_code == 403
             assert browser.get(url, headers=other).status_code == 404
+            assert expect(browser.get(TASKS, headers=other)) == []
             headers = member(browser, "alice")
             expect(owner.delete(endpoint + "/members/" + users["alice"], headers=ADMIN), 204)
+            assert expect(browser.get(TASKS, headers=headers)) == []
             revoked = browser.get(url, headers=headers)
             absent = browser.get(TASKS + "/" + str(uuid4()), headers=headers)
             assert revoked.status_code == absent.status_code == 404
@@ -411,6 +420,7 @@ def test_general_api_uses_existing_auth_and_keeps_execution_fields_server_owned(
             assert revoked_error == absent_error
 
         assert expect(owner.get(url, headers=ADMIN)) == revised
+        assert expect(owner.get(TASKS, headers=ADMIN))[0]["task_id"] == task["task_id"]
         with engine.transaction() as conn:
             assert conn.execute("SELECT count(*) AS n FROM app.runs").fetchone()["n"] == 0
             assert conn.execute("SELECT count(*) AS n FROM app.usage_calls").fetchone()["n"] == 0

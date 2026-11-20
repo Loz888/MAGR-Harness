@@ -56,7 +56,7 @@ from mgar_v3.web_access import (
     LoginInput,
     WebAccounts,
 )
-from mgar_v3.web_assets import agent_page_html
+from mgar_v3.web_assets import agent_page_html, general_page_html
 from mgar_v3.workbench.domain import (
     ApproveWorkbenchFinding,
     CreateWorkbenchTask,
@@ -574,12 +574,9 @@ def create_app(
     def healthz() -> dict[str, str]:
         return {"status": "alive", "release_status": "ENGINEERING_INCOMPLETE"}
 
-    @app.get("/", include_in_schema=False)
-    @app.get("/repo", include_in_schema=False)
-    @app.get("/workbench", include_in_schema=False)
-    def agent_page() -> HTMLResponse:
+    def workspace_page(page: str) -> HTMLResponse:
         return HTMLResponse(
-            agent_page_html(ROOT / "web"),
+            page,
             headers={
                 "Content-Security-Policy": (
                     "default-src 'self'; script-src 'self'; style-src 'self'; "
@@ -590,6 +587,16 @@ def create_app(
                 "X-Content-Type-Options": "nosniff",
             },
         )
+
+    @app.get("/", include_in_schema=False)
+    @app.get("/general", include_in_schema=False)
+    def general_page() -> HTMLResponse:
+        return workspace_page(general_page_html(ROOT / "web"))
+
+    @app.get("/repo", include_in_schema=False)
+    @app.get("/workbench", include_in_schema=False)
+    def agent_page() -> HTMLResponse:
+        return workspace_page(agent_page_html(ROOT / "web"))
 
     @app.get("/legacy", include_in_schema=False)
     def index() -> FileResponse:

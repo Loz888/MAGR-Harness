@@ -176,6 +176,14 @@ class OutcomeContract(Model):
         return self
 
 
+class RecentTask(Model):
+    task_id: UUID
+    project_id: Identifier
+    goal: Goal | None
+    state: TaskState
+    updated_at: AwareDatetime
+
+
 class TaskSnapshot(Model):
     task_id: UUID
     project_id: Identifier

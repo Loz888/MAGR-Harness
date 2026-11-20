@@ -99,7 +99,7 @@ def test_web_cli_and_sdk_share_task_clarification_revision_and_plan(settings, en
             project_id = sdk.register_project(str(source))["project_id"]
             page = browser.get("/static/general.html")
             assert page.status_code == 200 and 'id="general-task-create"' in page.text
-            assert "general.html" in browser.get("/static/agent.html").text
+            assert 'href="/general"' in browser.get("/static/agent.html").text
             assert _TASKS in browser.get("/static/general.js").text
             payload = {
                 "project_id": project_id,

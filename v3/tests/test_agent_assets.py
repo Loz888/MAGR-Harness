@@ -29,7 +29,7 @@ def test_asset_url_changes_when_script_changes_without_an_html_edit(tmp_path):
 
 def test_served_page_pins_actual_asset_bytes_and_retains_security_headers(settings, engine):
     with client_for(settings, engine) as client:
-        page = client.get("/")
+        page = client.get("/repo")
         assert page.status_code == 200
         assert page.headers["cache-control"] == "no-store"
         assert "script-src 'self'" in page.headers["content-security-policy"]
@@ -43,3 +43,12 @@ def test_served_page_pins_actual_asset_bytes_and_retains_security_headers(settin
             assert response.status_code == 200
             assert hashlib.sha256(response.content).hexdigest() == version
         assert client.get("/repo").text == client.get("/workbench").text == page.text
+        general = client.get("/")
+        assert general.headers["cache-control"] == "no-store"
+        assert "script-src 'self'" in general.headers["content-security-policy"]
+        general_assets = re.findall(
+            r'(?:src|href)="(/static/general[^"?]*\?v=([a-f0-9]{64}))"', general.text,
+        )
+        assert len(general_assets) == 2
+        for url, version in general_assets:
+            assert hashlib.sha256(client.get(url).content).hexdigest() == version

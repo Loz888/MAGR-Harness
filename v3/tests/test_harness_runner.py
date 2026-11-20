@@ -191,7 +191,7 @@ def test_pairing_auth_expiry_and_opaque_workspace_scope(owner_api):
 
 def test_browser_pairing_controls_use_existing_login_and_csrf(owner_api):
     http, _, _, _ = owner_api
-    page = http.get("/")
+    page = http.get("/repo")
     assert page.status_code == 200 and 'id="product-runner-open"' in page.text
     auth = accept(
         http.post(

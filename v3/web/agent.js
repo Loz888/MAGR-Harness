@@ -346,6 +346,10 @@ async function loadSettings() {
   } else $("product-model-notice").hidden = true;
 }
 async function enterApp(session) {
+  if (new URLSearchParams(location.search).get("next") === "general") {
+    location.replace("/general");
+    return;
+  }
   configureLogin(false);
   state.username = session.username;
   state.isOwner = session.is_owner !== false;

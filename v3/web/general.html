@@ -3,58 +3,126 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>通用任务 · MAGR-Harness</title>
+    <meta name="color-scheme" content="light">
+    <title>通用智能体 · MAGR-Harness</title>
     <link rel="icon" href="/static/agent-icon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/static/general.css">
     <script src="/static/general.js" defer></script>
   </head>
   <body>
-    <header>
-      <a href="/static/agent.html">MAGR-Harness</a>
-      <span>通用任务</span>
-    </header>
-    <main>
-      <h1>通用任务</h1>
-      <p id="general-auth" hidden><a href="/static/agent.html">登录后打开通用任务</a></p>
-      <p id="general-error" role="alert" hidden></p>
-      <div id="general-content" hidden>
-        <form id="general-task-create">
-          <label for="general-project">项目</label>
-          <select id="general-project" required><option value="">选择项目</option></select>
-          <label for="general-goal">你想完成什么？</label>
-          <textarea id="general-goal" required maxlength="16000" rows="4"></textarea>
-          <button id="general-create" type="submit">创建任务</button>
-        </form>
+    <aside class="rail" aria-label="工作台导航">
+      <a class="brand" href="/"><span class="mark" aria-hidden="true">M</span>MAGR-Harness</a>
+      <button id="general-new" class="new-task" type="button"><span aria-hidden="true">＋</span> 新任务</button>
+      <div class="history-heading"><h2>最近任务</h2><button id="general-reload" type="button" aria-label="刷新最近任务">↻</button></div>
+      <nav id="general-recent" aria-label="最近任务"></nav>
+      <details class="open-task">
+        <summary>按 ID 打开</summary>
         <form id="general-task-open">
-          <label for="general-id-input">任务 ID</label>
-          <div class="row">
-            <input id="general-id-input" maxlength="36" required spellcheck="false">
-            <button type="submit">打开任务</button>
+          <label class="sr-only" for="general-id-input">任务 ID</label>
+          <input id="general-id-input" maxlength="36" placeholder="任务 ID" required spellcheck="false">
+          <button type="submit">打开</button>
+        </form>
+      </details>
+      <div class="rail-bottom">
+        <a href="/repo">项目助手与 GitHub 分析 <span aria-hidden="true">↗</span></a>
+        <span id="general-account"></span>
+      </div>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar">
+        <div class="workspace-title">通用智能体</div>
+        <div class="top-actions">
+          <label class="sr-only" for="general-project">项目</label>
+          <select id="general-project" disabled><option value="">选择项目</option></select>
+          <button id="general-refresh" type="button" hidden>刷新状态</button>
+        </div>
+      </header>
+      <div id="general-scroll" class="scroll">
+        <div class="stream">
+          <p id="general-error" class="error" role="alert" hidden></p>
+          <section id="general-welcome" class="welcome">
+            <h1>你想完成什么？</h1>
+            <p id="general-auth" hidden><a href="/repo?next=general">登录或初始化工作台</a></p>
+            <p id="general-no-project" hidden><a href="/repo">在项目助手中打开一个项目</a></p>
+            <div id="general-examples" class="examples" hidden>
+              <button type="button" data-prompt="梳理这个项目的架构和运行方式，并列出需要核实的问题。"><strong>理解项目</strong><span>梳理架构和入口</span></button>
+              <button type="button" data-prompt="按地区分析我提供的数据，列出关键指标和异常。"><strong>分析数据</strong><span>整理指标与异常</span></button>
+              <button type="button" data-prompt="根据我提供的材料，整理一份带引用的研究简报。"><strong>梳理资料</strong><span>形成可核实的简报</span></button>
+            </div>
+          </section>
+
+          <section id="general-task" aria-label="当前任务" hidden>
+            <div class="entry entry-user">
+              <div class="entry-label">你</div>
+              <h1 id="general-title"></h1>
+            </div>
+            <div id="general-context" class="context-list"></div>
+            <div class="entry entry-agent">
+              <div class="entry-heading">
+                <div class="entry-label">MAGR</div>
+                <span id="general-status" class="status" role="status"></span>
+              </div>
+              <p id="general-task-info" class="secondary"></p>
+              <p id="general-reason" class="secondary" hidden></p>
+              <form id="general-clarify" class="clarify" hidden>
+                <h2>补充任务目标</h2>
+                <div id="general-missing-goal" hidden>
+                  <label for="general-goal-input">想完成的需求</label>
+                  <input id="general-goal-input" maxlength="16000">
+                </div>
+                <fieldset id="general-domain" hidden>
+                  <legend>这个任务更接近</legend>
+                  <div class="choices">
+                    <label><input type="radio" name="domain" value="coding"><span>代码检查</span></label>
+                    <label><input type="radio" name="domain" value="research"><span>资料研究</span></label>
+                    <label><input type="radio" name="domain" value="data"><span>数据分析</span></label>
+                    <label><input type="radio" name="domain" value="office"><span>办公草稿</span></label>
+                  </div>
+                </fieldset>
+                <div id="general-questions-wrap" hidden>
+                  <p id="general-questions"></p>
+                  <label for="general-answer">补充说明</label>
+                  <textarea id="general-answer" maxlength="2048" rows="2"></textarea>
+                </div>
+                <div class="clarify-grid">
+                  <div id="general-delivery-wrap" hidden>
+                    <label for="general-delivery">希望交付</label>
+                    <input id="general-delivery" maxlength="2048">
+                  </div>
+                  <div id="general-criteria-wrap" hidden>
+                    <label for="general-criteria">完成条件</label>
+                    <input id="general-criteria" maxlength="2048">
+                  </div>
+                </div>
+                <button type="submit" class="primary">确认并生成计划</button>
+              </form>
+
+              <button id="general-plan" type="button" class="primary" hidden>生成计划</button>
+              <section id="general-plan-panel" class="panel" hidden>
+                <h2>任务计划</h2>
+                <ol id="general-steps"></ol>
+              </section>
+              <section id="general-result" class="panel" hidden>
+                <h2>已验证结果</h2>
+                <p id="general-outcome"></p>
+                <ul id="general-deliverables"></ul>
+              </section>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <footer id="general-content" class="input-area" hidden>
+        <form id="general-task-create" class="composer">
+          <label class="sr-only" for="general-goal">给通用智能体发消息</label>
+          <textarea id="general-goal" maxlength="16000" rows="2" required placeholder="描述你的需求…"></textarea>
+          <div class="composer-actions">
+            <span id="general-composer-scope" class="secondary"></span>
+            <button id="general-create" class="primary" type="submit">发送 <span aria-hidden="true">↑</span></button>
           </div>
         </form>
-        <section id="general-task" aria-labelledby="general-title" hidden>
-          <div class="row status-row">
-            <h2 id="general-title"></h2>
-            <span id="general-status" role="status"></span>
-          </div>
-          <p id="general-current-id"></p>
-          <p id="general-clarifications" hidden></p>
-          <p id="general-outcome" hidden></p>
-          <div class="row">
-            <button id="general-refresh" type="button">刷新状态</button>
-            <button id="general-plan" type="button" hidden>生成计划</button>
-          </div>
-          <ol id="general-steps" aria-label="执行计划" hidden></ol>
-          <details id="general-editor" hidden>
-            <summary>编辑任务配置</summary>
-            <form id="general-task-revise">
-              <label for="general-spec">任务规范（JSON）</label>
-              <textarea id="general-spec" rows="10" spellcheck="false" required></textarea>
-              <button type="submit">保存修订</button>
-            </form>
-          </details>
-        </section>
-      </div>
+      </footer>
     </main>
   </body>
 </html>

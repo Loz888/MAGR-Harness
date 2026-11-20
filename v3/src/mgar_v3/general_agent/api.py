@@ -4,14 +4,20 @@ from collections.abc import Callable
 from typing import Annotated, cast
 from uuid import UUID
 
-from fastapi import FastAPI, Path, Request, Response
+from fastapi import FastAPI, Path, Query, Request, Response
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from pydantic import Field
 
 from mgar_v3.coordination.engine import Engine
 from mgar_v3.domain import DomainError, Model
-from mgar_v3.general_agent.contracts import GeneralTaskSpec, Identifier, Revision, TaskSnapshot
+from mgar_v3.general_agent.contracts import (
+    GeneralTaskSpec,
+    Identifier,
+    RecentTask,
+    Revision,
+    TaskSnapshot,
+)
 from mgar_v3.general_agent.graph import ReplanTrigger, TaskGraph, deterministic_plan
 from mgar_v3.general_agent.graph_store import GraphSnapshot
 from mgar_v3.harness.product import HarnessProductService
@@ -91,6 +97,15 @@ def register_general_task_routes(
             raise DomainError("GENERAL_TASK_NOT_FOUND", "任务不存在。", 404)
         if write:
             product.tenancy.require_binding(task.project_id, str(membership), write=True)
+
+    @app.get("/api/v3/general/tasks", response_model=list[RecentTask])
+    def recent(request: Request, limit: Annotated[int, Query(ge=1, le=100)] = 50) -> Response:
+        user_id = member_user(request)
+        engine: Engine = request.app.state.engine
+        return JSONResponse(
+            jsonable_encoder(engine.general_tasks.recent(user_id, limit)),
+            headers={"Cache-Control": "no-store"},
+        )
 
     @app.post("/api/v3/general/tasks", status_code=201, response_model=TaskSnapshot)
     def create(body: CreateGeneralTask, request: Request) -> Response:
