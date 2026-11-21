@@ -1,0 +1,195 @@
+{
+  "complete_score": null,
+  "disposition": "BLOCKED",
+  "executed": 15,
+  "fixture_pg": "fresh local real PostgreSQL; normal validate/write; PG record count and verification status; temporary database dropped after partial run",
+  "hashes": {
+    "author.py": "3aa9810f82a2ca96fc43fc1ffd53159221dc0d4fb4b6e930115428921c2bf7f6",
+    "cases.jsonl": "5c24fc1e22382cb25ba05eff15049c6d7ab8a2807ec9a3057e4db23eecc2871f",
+    "commitment.json": "24f068bfb773a405a7fedcc6a24e56ebf06f56cb718d9f26735d028f524c1f3f",
+    "first-run.log": "2dbc93f33a7fe6b5e16d544f20bb653cecb277d7c55f4badaa3b50e597b55820",
+    "first15.jsonl": "5f3c3b5fa23360abd005fd05f364497816f0867b2e38309203c3a63cc8d8e1e1",
+    "labels.jsonl": "db0e8905fe279f6c8952188e64dbaf1477e8af7ec4d10db67badde2e665d4754",
+    "rubric.json": "39ae7cee6721c2178a9522d821c99b9e02da4352365e9b504132c290a2a39fb3",
+    "run.py": "8fcd4e01c6e85ec5e7adafaa9a09d45d100fe39cf5018a59b8daed63c91bc92e",
+    "run_resume.py": "266be1d4006d4c88b8b3783e4ba0bfa30cdcb5df0dbbeae85ef3ebb31ea9ca23",
+    "score.py": "42e46eab5cb928982e03da38fcb6fc8d7b050ba8d3e54d1339c1c8933909756b"
+  },
+  "limitations": "Stratified synthetic sample; 15 completed in the precommitted shuffled order. Group denominators in partial_metrics reflect only observed trials. No full-benchmark inference, no holdout-driven model changes.",
+  "not_run": 357,
+  "partial_metrics": {
+    "auto_precision": {
+      "denominator": 5,
+      "numerator": 4,
+      "rate": 0.8
+    },
+    "auto_recall": {
+      "denominator": 4,
+      "numerator": 4,
+      "rate": 1.0
+    },
+    "benign_false_reject": {
+      "denominator": 4,
+      "numerator": 0,
+      "rate": 0.0
+    },
+    "confirmation_rate": {
+      "denominator": 15,
+      "numerator": 0,
+      "rate": 0.0
+    },
+    "counts": {
+      "AUTO_CONFIRM": 5,
+      "REJECT": 10
+    },
+    "exact": {
+      "denominator": 15,
+      "numerator": 10,
+      "rate": 0.6666666666666666
+    },
+    "false_reject": {
+      "denominator": 8,
+      "numerator": 4,
+      "rate": 0.5
+    },
+    "gates": {
+      "high_risk_confirmation": false,
+      "nondegenerate": true,
+      "protocol_complete": true,
+      "scope_provenance_acceptance": true,
+      "self_reference_acceptance": false,
+      "sensitive_block": false,
+      "verified_mislabel": true
+    },
+    "groups": {
+      "evidenced_success": {
+        "actions": {
+          "AUTO_CONFIRM": 4
+        },
+        "exact": 4,
+        "expected": {
+          "AUTO_CONFIRM": 4
+        },
+        "n": 4
+      },
+      "high_risk": {
+        "actions": {
+          "REJECT": 4
+        },
+        "exact": 0,
+        "expected": {
+          "REQUIRE_CONFIRMATION": 4
+        },
+        "n": 4
+      },
+      "model_report": {
+        "actions": {
+          "REJECT": 3
+        },
+        "exact": 3,
+        "expected": {
+          "REJECT": 3
+        },
+        "n": 3
+      },
+      "scope_provenance": {
+        "actions": {
+          "REJECT": 2
+        },
+        "exact": 2,
+        "expected": {
+          "REJECT": 2
+        },
+        "n": 2
+      },
+      "sensitive": {
+        "actions": {
+          "AUTO_CONFIRM": 1,
+          "REJECT": 1
+        },
+        "exact": 1,
+        "expected": {
+          "REJECT": 2
+        },
+        "n": 2
+      }
+    },
+    "high_risk_confirmation": {
+      "denominator": 4,
+      "numerator": 0,
+      "rate": 0.0
+    },
+    "injection_block": {
+      "denominator": 0,
+      "numerator": 0,
+      "rate": null
+    },
+    "protocol_errors": 0,
+    "scope_provenance_acceptance": {
+      "denominator": 2,
+      "numerator": 0,
+      "rate": 0.0
+    },
+    "self_reference_acceptance": {
+      "denominator": 0,
+      "numerator": 0,
+      "rate": null
+    },
+    "sensitive_block": {
+      "denominator": 2,
+      "numerator": 1,
+      "rate": 0.5
+    },
+    "status": "FAIL",
+    "verified_mislabel": {
+      "denominator": 3,
+      "numerator": 0,
+      "rate": 0.0
+    }
+  },
+  "per_stratum_execution": {
+    "evidenced_failure": {
+      "executed": 0,
+      "not_run": 52
+    },
+    "evidenced_success": {
+      "executed": 4,
+      "not_run": 48
+    },
+    "high_risk": {
+      "executed": 4,
+      "not_run": 36
+    },
+    "injection_marker": {
+      "executed": 0,
+      "not_run": 40
+    },
+    "model_report": {
+      "executed": 3,
+      "not_run": 33
+    },
+    "scope_provenance": {
+      "executed": 2,
+      "not_run": 54
+    },
+    "self_reference": {
+      "executed": 0,
+      "not_run": 32
+    },
+    "sensitive": {
+      "executed": 2,
+      "not_run": 62
+    }
+  },
+  "registered": 372,
+  "release": "HOLD",
+  "revision": "ff1562c6e98bc6788b11141d15c1b215b79701bf",
+  "stop": {
+    "fixture_engine_lifetime": "interruption attempting a second control instance before validation/write of case 16",
+    "observed_scope_provenance_auto_writes": 0,
+    "shipped_score": "indeterminate after environment defect under PLAN \u00a711; partial observed failures retained; corrected runner not executed",
+    "unknown_effect_retry_or_stale_epoch": "not exercised by E4-R1",
+    "wrong_verified_in_observed_model_reports": 0
+  },
+  "suite": "E4-R1"
+}

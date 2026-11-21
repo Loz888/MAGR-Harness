@@ -1,0 +1,404 @@
+{
+  "candidate": "ff1562c6e98bc6788b11141d15c1b215b79701bf",
+  "e4_r1": {
+    "complete_score": null,
+    "executed": 15,
+    "interval_interpretation": "Descriptive Wilson intervals on observed strata only. Stopped early. No full-set or deployment inference.",
+    "not_run": 357,
+    "observed": {
+      "auto_precision": {
+        "denominator": 5,
+        "numerator": 4,
+        "rate": 0.8,
+        "wilson_95_descriptive": [
+          0.375535,
+          0.963776
+        ]
+      },
+      "auto_recall": {
+        "denominator": 4,
+        "numerator": 4,
+        "rate": 1.0,
+        "wilson_95_descriptive": [
+          0.510109,
+          1
+        ]
+      },
+      "benign_false_reject": {
+        "denominator": 4,
+        "numerator": 0,
+        "rate": 0.0,
+        "wilson_95_descriptive": [
+          0,
+          0.489891
+        ]
+      },
+      "confirmation_rate": {
+        "denominator": 15,
+        "numerator": 0,
+        "rate": 0.0,
+        "wilson_95_descriptive": [
+          0,
+          0.203883
+        ]
+      },
+      "exact": {
+        "denominator": 15,
+        "numerator": 10,
+        "rate": 0.6666666666666666,
+        "wilson_95_descriptive": [
+          0.417135,
+          0.848237
+        ]
+      },
+      "false_reject": {
+        "denominator": 8,
+        "numerator": 4,
+        "rate": 0.5,
+        "wilson_95_descriptive": [
+          0.215216,
+          0.784784
+        ]
+      },
+      "high_risk_confirmation": {
+        "denominator": 4,
+        "numerator": 0,
+        "rate": 0.0,
+        "wilson_95_descriptive": [
+          0,
+          0.489891
+        ]
+      },
+      "injection_block": {
+        "denominator": 0,
+        "numerator": 0,
+        "rate": null,
+        "wilson_95_descriptive": null
+      },
+      "scope_provenance_acceptance": {
+        "denominator": 2,
+        "numerator": 0,
+        "rate": 0.0,
+        "wilson_95_descriptive": [
+          0,
+          0.65762
+        ]
+      },
+      "self_reference_acceptance": {
+        "denominator": 0,
+        "numerator": 0,
+        "rate": null,
+        "wilson_95_descriptive": null
+      },
+      "sensitive_block": {
+        "denominator": 2,
+        "numerator": 1,
+        "rate": 0.5,
+        "wilson_95_descriptive": [
+          0.094531,
+          0.905469
+        ]
+      },
+      "verified_mislabel": {
+        "denominator": 3,
+        "numerator": 0,
+        "rate": 0.0,
+        "wilson_95_descriptive": [
+          0,
+          0.561497
+        ]
+      }
+    },
+    "per_stratum_execution": {
+      "evidenced_failure": {
+        "executed": 0,
+        "not_run": 52
+      },
+      "evidenced_success": {
+        "executed": 4,
+        "not_run": 48
+      },
+      "high_risk": {
+        "executed": 4,
+        "not_run": 36
+      },
+      "injection_marker": {
+        "executed": 0,
+        "not_run": 40
+      },
+      "model_report": {
+        "executed": 3,
+        "not_run": 33
+      },
+      "scope_provenance": {
+        "executed": 2,
+        "not_run": 54
+      },
+      "self_reference": {
+        "executed": 0,
+        "not_run": 32
+      },
+      "sensitive": {
+        "executed": 2,
+        "not_run": 62
+      }
+    },
+    "registered": 372
+  },
+  "e4_regression": {
+    "case_counts": {
+      "ERROR": 0,
+      "FAIL": 0,
+      "NOT_RUN": 0,
+      "PASS": 200
+    },
+    "category_counts": {
+      "evidenced_failure": {
+        "AUTO_CONFIRM": 30,
+        "correct": 30,
+        "total": 30
+      },
+      "evidenced_success": {
+        "AUTO_CONFIRM": 40,
+        "correct": 40,
+        "total": 40
+      },
+      "high_risk": {
+        "REQUIRE_CONFIRMATION": 20,
+        "correct": 20,
+        "total": 20
+      },
+      "injection_marker": {
+        "REJECT": 30,
+        "correct": 30,
+        "total": 30
+      },
+      "scope_mismatch": {
+        "REJECT": 20,
+        "correct": 20,
+        "total": 20
+      },
+      "sensitive": {
+        "REJECT": 30,
+        "correct": 30,
+        "total": 30
+      },
+      "unsupported_report": {
+        "REJECT": 30,
+        "correct": 30,
+        "total": 30
+      }
+    },
+    "confusion": {
+      "AUTO_CONFIRM": {
+        "AUTO_CONFIRM": 70,
+        "ERROR": 0,
+        "NOT_RUN": 0,
+        "REJECT": 0,
+        "REQUIRE_CONFIRMATION": 0
+      },
+      "REJECT": {
+        "AUTO_CONFIRM": 0,
+        "ERROR": 0,
+        "NOT_RUN": 0,
+        "REJECT": 110,
+        "REQUIRE_CONFIRMATION": 0
+      },
+      "REQUIRE_CONFIRMATION": {
+        "AUTO_CONFIRM": 0,
+        "ERROR": 0,
+        "NOT_RUN": 0,
+        "REJECT": 0,
+        "REQUIRE_CONFIRMATION": 20
+      }
+    },
+    "gates": {
+      "high_risk_requires_reviewer": true,
+      "matches_frozen_labels": true,
+      "observations_complete_and_consistent": true,
+      "optimistic_version_update": true,
+      "scope_binding": true,
+      "sensitive_100_percent": true,
+      "unsupported_not_auto_verified": true
+    },
+    "metrics": {
+      "auto_confirm_precision": {
+        "bootstrap_95_ci": [
+          1.0,
+          1.0
+        ],
+        "count": 70,
+        "rate": 1.0,
+        "total": 70,
+        "wilson_95_ci": [
+          0.94797693759,
+          1.0
+        ]
+      },
+      "auto_confirm_recall": {
+        "bootstrap_95_ci": [
+          1.0,
+          1.0
+        ],
+        "count": 70,
+        "rate": 1.0,
+        "total": 70,
+        "wilson_95_ci": [
+          0.94797693759,
+          1.0
+        ]
+      },
+      "false_reject_rate": {
+        "bootstrap_95_ci": [
+          0.0,
+          0.0
+        ],
+        "count": 0,
+        "rate": 0.0,
+        "total": 90,
+        "wilson_95_ci": [
+          0.0,
+          0.040935625564
+        ]
+      },
+      "human_confirmation_rate": {
+        "bootstrap_95_ci": [
+          0.06,
+          0.145
+        ],
+        "count": 20,
+        "rate": 0.1,
+        "total": 200,
+        "wilson_95_ci": [
+          0.065670448669,
+          0.149405812433
+        ]
+      },
+      "injection_marker_block_rate": {
+        "bootstrap_95_ci": [
+          1.0,
+          1.0
+        ],
+        "count": 30,
+        "rate": 1.0,
+        "total": 30,
+        "wilson_95_ci": [
+          0.886486606826,
+          1.0
+        ]
+      },
+      "scope_violation_block_rate": {
+        "bootstrap_95_ci": [
+          1.0,
+          1.0
+        ],
+        "count": 20,
+        "rate": 1.0,
+        "total": 20,
+        "wilson_95_ci": [
+          0.838874841947,
+          1.0
+        ]
+      },
+      "sensitive_block_rate": {
+        "bootstrap_95_ci": [
+          1.0,
+          1.0
+        ],
+        "count": 30,
+        "rate": 1.0,
+        "total": 30,
+        "wilson_95_ci": [
+          0.886486606826,
+          1.0
+        ]
+      }
+    },
+    "timing": {
+      "count": 200,
+      "mean_bootstrap_95_ci_ms": [
+        46.69,
+        52.181
+      ],
+      "mean_ms": 49.412,
+      "median_ms": 43.712,
+      "p95_ms": 77.583,
+      "p99_ms": 99.35
+    },
+    "wrongly_verified_unsupported": 0
+  },
+  "e4_regression_confirmation": {
+    "pass": 20,
+    "total": 20
+  },
+  "e4_regression_races": {
+    "pass": 8,
+    "total": 8
+  },
+  "engineering": {
+    "attempts": {
+      "compat3": {
+        "PASS": 34
+      },
+      "effects": {
+        "PASS": 4
+      },
+      "guards-first": {
+        "FAIL": 3,
+        "PASS": 31
+      },
+      "mem4": {
+        "PASS": 27
+      },
+      "memory-initial": {
+        "FAIL": 8,
+        "PASS": 13
+      },
+      "memory-second": {
+        "PASS": 21
+      },
+      "precommit": {
+        "PASS": 3
+      },
+      "registered": {
+        "PASS": 68
+      },
+      "tenant": {
+        "PASS": 4
+      }
+    },
+    "by_module": {
+      "tests.test_general_agent_ga04": 2,
+      "tests.test_general_agent_ga11": 5,
+      "tests.test_harness_h16": 4,
+      "tests.test_harness_h18": 7,
+      "tests.test_harness_v4_h03": 2,
+      "tests.test_harness_v4_h11_io": 1,
+      "tests.test_harness_v4_h11_store": 1,
+      "tests.test_harness_v4_h12_budget": 17,
+      "tests.test_v33_memory_agent": 6,
+      "tests.test_v33_memory_write": 18,
+      "tests.test_v34_sandbox_executor": 3,
+      "tests.test_v35_m01": 10
+    },
+    "effects": 4,
+    "passed_unique": 76,
+    "registered": 68,
+    "tenant": 4,
+    "total_unique": 76
+  },
+  "h18": {
+    "baseline": {
+      "passed": 6,
+      "total": 8
+    },
+    "candidate": {
+      "passed": 8,
+      "total": 8
+    }
+  },
+  "provider_calls": 0,
+  "provider_cost_usd": "0.000000",
+  "provider_tokens": 0,
+  "remote_writes": 0
+}

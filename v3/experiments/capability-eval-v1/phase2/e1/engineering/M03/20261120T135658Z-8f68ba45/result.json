@@ -1,0 +1,44 @@
+{
+  "task": "M03",
+  "status": "PASS",
+  "engineering_gate": "PASS",
+  "live_gate": "NOT_RUN",
+  "reason": null,
+  "argv": [
+    "/home/imini/magr-harness-memory-context/v3/.venv/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/test_v33_memory_retrieval.py",
+    "--junitxml=/home/imini/magr-harness-memory-context/v3/experiments/capability-eval-v1/phase2/e1/engineering/M03/20261120T135658Z-8f68ba45/junit.xml"
+  ],
+  "cwd": "/home/imini/magr-harness-memory-context/v3",
+  "started_at": "2026-11-20T13:56:58.036904+00:00",
+  "finished_at": "2026-11-20T13:57:23.178173+00:00",
+  "duration_seconds": 25.049,
+  "command_exit_code": 0,
+  "exit_code": 0,
+  "counts": {
+    "tests": 13,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "components": {
+    "degradation": "lexical_bm25_when_embedding_is_absent_or_unavailable_with_reported_reason",
+    "embedding": "fixture_protocol_only_no_vector_model_required",
+    "evidence": "hits_return_source_uris_evidence_ids_confidence_and_verification_status",
+    "fusion": "bm25_plus_optional_dense_rrf_with_optional_reranker",
+    "model": "not_used",
+    "network": "not_used",
+    "postgres": "real_disposable_database_0021_migration",
+    "redis": "not_used",
+    "scope": "project_repository_actor_filtered_before_scoring",
+    "versioning": "commit_scope_marked_current_historical_stale_with_reverification_required"
+  },
+  "git_commit": "d4fee2f555c5e031720302e98ba164cf1bd8db74",
+  "source_sha256": "cb1062605700d393d3fde3aaed1ba2568fe8a40171bde0f8b17341bea96343bd",
+  "finished_source_sha256": "cb1062605700d393d3fde3aaed1ba2568fe8a40171bde0f8b17341bea96343bd",
+  "log_path": "experiments/capability-eval-v1/phase2/e1/engineering/M03/20261120T135658Z-8f68ba45/command.log",
+  "attempt_path": "experiments/capability-eval-v1/phase2/e1/engineering/M03/20261120T135658Z-8f68ba45"
+}

@@ -1,0 +1,118 @@
+{
+  "fixture_cost_ratio": 1.5,
+  "fixture_noninferiority": true,
+  "fixture_p50_wall_ratio": 1.0587908479403916,
+  "fixture_paired_difference": 0,
+  "fixture_paired_interval95": [
+    0,
+    0
+  ],
+  "fixture_stratum_rates": {
+    "coding": {
+      "difference": 0,
+      "pairs": 15
+    },
+    "complex": {
+      "difference": 0,
+      "pairs": 15
+    },
+    "cross_module": {
+      "difference": 0,
+      "pairs": 15
+    },
+    "multi_file": {
+      "difference": 0,
+      "pairs": 15
+    },
+    "research": {
+      "difference": 0,
+      "pairs": 15
+    },
+    "simple": {
+      "difference": 0,
+      "pairs": 15
+    }
+  },
+  "fixture_superiority": false,
+  "junit": [
+    {
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "tests": 15
+    },
+    {
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "tests": 15
+    },
+    {
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "tests": 15
+    },
+    {
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "tests": 15
+    },
+    {
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "tests": 15
+    },
+    {
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "tests": 15
+    }
+  ],
+  "missing": [],
+  "paired_case_clusters": 30,
+  "results": {
+    "delegate": {
+      "delegated_model_seconds": 1.6851723993895575,
+      "duplicate_calls": 0,
+      "expert_calls": 90,
+      "fixture_cost_micros": 1620,
+      "fixture_input_tokens": 59400,
+      "fixture_output_tokens": 11880,
+      "mean_quality": 1.0,
+      "model_calls": 540,
+      "observed": 90,
+      "overlapping_write_conflicts": 0,
+      "p50_seconds": 10.062215313024353,
+      "p95_seconds": 32.14621095499024,
+      "parallel_wait_seconds": null,
+      "parent_and_expert_reviewed_same_source": 180,
+      "reserved_micros": 0,
+      "successes": 90,
+      "verifier_failures": 0
+    },
+    "single": {
+      "delegated_model_seconds": 0.0,
+      "duplicate_calls": 0,
+      "expert_calls": 0,
+      "fixture_cost_micros": 1080,
+      "fixture_input_tokens": 39600,
+      "fixture_output_tokens": 7920,
+      "mean_quality": 1.0,
+      "model_calls": 360,
+      "observed": 90,
+      "overlapping_write_conflicts": 0,
+      "p50_seconds": 9.50349668454146,
+      "p95_seconds": 30.12234399805311,
+      "parallel_wait_seconds": null,
+      "parent_and_expert_reviewed_same_source": 0,
+      "reserved_micros": 0,
+      "successes": 90,
+      "verifier_failures": 0
+    }
+  },
+  "same_deliveries": 90
+}

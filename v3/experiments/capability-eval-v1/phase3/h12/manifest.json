@@ -1,0 +1,10 @@
+{
+  "file_sha256": {
+    "acceptance.json": "1f580c72c17a80012467dec9db463fa765a018a6c77de279ae2c75ec6d011e96",
+    "cases.jsonl": "1106ee3a6f1de723b2f39e92b17202a64b30153036486b5f889afa99cfa4674a",
+    "metrics.json": "b738d641a3d382028c20131898fea4fbb4c062fdf4ac4fe182a1dd81fb3584d7",
+    "raw.jsonl": "7dd3be5418bad904b7405568a7fd7e86f46c9dae0f551db3b1cee49f4000cc2b"
+  },
+  "parent_manifest_sha256": "653ea67222adfae4abff8120313d60863db1a47805a11e8e745faa1a5e362340",
+  "study": "h12"
+}

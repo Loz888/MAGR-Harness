@@ -1,0 +1,223 @@
+{
+  "E1": {
+    "case_arm_count": 1500,
+    "failed_gate": "holdout_recall_at_5_gain_at_least_5pp",
+    "paid_model_calls": 0,
+    "quality_gate": "FAIL",
+    "query_count": 300,
+    "splits": {
+      "development": {
+        "comparison_full_vs_bm25": {
+          "mrr_at_10": {
+            "ci95": [
+              0.07903600464576074,
+              0.15615318416523236
+            ],
+            "cohorts": 21,
+            "paired_answerable_queries": 168,
+            "paired_difference": 0.1144817649281935
+          },
+          "recall_at_5": {
+            "ci95": [
+              0.03474399922570654,
+              0.11114532019704434
+            ],
+            "cohorts": 21,
+            "paired_answerable_queries": 168,
+            "paired_difference": 0.07479213907785336
+          }
+        },
+        "quality_gate": {
+          "full_matrix_measured": true,
+          "positive_mrr_gain_with_ci_above_zero": true,
+          "recall_at_5_gain_at_least_5pp": true,
+          "zero_acl_leakage": true,
+          "zero_wrong_version_flags": true
+        }
+      },
+      "holdout": {
+        "comparison_full_vs_bm25": {
+          "mrr_at_10": {
+            "ci95": [
+              0.025603621730382296,
+              0.17434224831485107
+            ],
+            "cohorts": 9,
+            "paired_answerable_queries": 72,
+            "paired_difference": 0.10103615520282187
+          },
+          "recall_at_5": {
+            "ci95": [
+              -0.041666666666666664,
+              0.033105022831050226
+            ],
+            "cohorts": 9,
+            "paired_answerable_queries": 72,
+            "paired_difference": -0.003472222222222222
+          }
+        },
+        "quality_gate": {
+          "full_matrix_measured": true,
+          "positive_mrr_gain_with_ci_above_zero": true,
+          "recall_at_5_gain_at_least_5pp": false,
+          "zero_acl_leakage": true,
+          "zero_wrong_version_flags": true
+        }
+      }
+    }
+  },
+  "E2": {
+    "cumulative_pilot_input_reduction": 0.013544564034345119,
+    "formal_quality_gate": "NOT_RUN",
+    "independent_holdout": "NOT_RUN",
+    "offline_arms": 4,
+    "pilot_arms": 4,
+    "pilot_calls": 7,
+    "public_task_scales": 90,
+    "settled_upper_micros": 14473
+  },
+  "E3": {
+    "fixture_pass": 1080,
+    "fixture_sessions": 1080,
+    "pilot_calls": 22,
+    "pilot_pass": 10,
+    "pilot_sessions": 12,
+    "scope": {
+      "environment_seeds": 3,
+      "formal_independent_holdout": "NOT_RUN",
+      "formal_real_development": "NOT_RUN",
+      "offline_chains": 30,
+      "real_call_limit": 24,
+      "real_cost_limit_micros": 300000,
+      "real_pilot_case": "e3-c01",
+      "real_pilot_environment_seed": 42
+    },
+    "settled_upper_micros": 6462
+  },
+  "E4": {
+    "case_counts": {
+      "ERROR": 0,
+      "FAIL": 34,
+      "NOT_RUN": 0,
+      "PASS": 166
+    },
+    "confusion": {
+      "AUTO_CONFIRM": {
+        "AUTO_CONFIRM": 66,
+        "ERROR": 0,
+        "NOT_RUN": 0,
+        "REJECT": 4,
+        "REQUIRE_CONFIRMATION": 0
+      },
+      "REJECT": {
+        "AUTO_CONFIRM": 30,
+        "ERROR": 0,
+        "NOT_RUN": 0,
+        "REJECT": 80,
+        "REQUIRE_CONFIRMATION": 0
+      },
+      "REQUIRE_CONFIRMATION": {
+        "AUTO_CONFIRM": 0,
+        "ERROR": 0,
+        "NOT_RUN": 0,
+        "REJECT": 0,
+        "REQUIRE_CONFIRMATION": 20
+      }
+    },
+    "gates": {
+      "high_risk_requires_reviewer": true,
+      "matches_frozen_labels": false,
+      "observations_complete_and_consistent": true,
+      "optimistic_version_update": true,
+      "scope_binding": false,
+      "sensitive_100_percent": false,
+      "unsupported_not_auto_verified": true
+    },
+    "model_calls": 0,
+    "status": "FAIL"
+  },
+  "E5": {
+    "model_calls": 0,
+    "native_passed_requests": 480,
+    "primary_passed_requests": 120000,
+    "regrade": {
+      "cold_hot_result_pairs": 60,
+      "counts": {
+        "native_pass": 480,
+        "primary_pass": 120000
+      },
+      "native_cell_rechecks": 12,
+      "primary_cell_rechecks": 120,
+      "source_files_verified": 67,
+      "status": "PASS"
+    },
+    "status": "PASS"
+  },
+  "H12": {
+    "cases_with_model_requests": 23,
+    "development": {
+      "fail": 1,
+      "not_run": 0,
+      "pass": 11
+    },
+    "holdout": {
+      "fail": 1,
+      "not_run": 0,
+      "pass": 11
+    },
+    "new_physical_calls": 197,
+    "new_upper_cost_micros": 1669227,
+    "product_release_status": "NOT_RELEASED",
+    "scored_cases": 24,
+    "status": "PASS",
+    "thresholds": {
+      "denominator_each": 12,
+      "dev": 10,
+      "holdout": 9
+    },
+    "total_pass": 22
+  },
+  "H17": {
+    "controlled_pairs": 2,
+    "controlled_pass_each": 2,
+    "multi_agent_advantage": "NOT_ESTABLISHED",
+    "stages": [
+      {
+        "gate": "PASS",
+        "live": "NOT_RUN",
+        "model_calls": 0,
+        "production": "NOT_RUN",
+        "receipt": "docs/harness-v4/accept/HV4-H17/independent-20261119.json",
+        "source_id": "H17"
+      }
+    ]
+  },
+  "H18": {
+    "stages": [
+      {
+        "gate": "FAIL",
+        "live": "NOT_RUN",
+        "model_calls": 0,
+        "production": "NOT_RUN",
+        "receipt": "docs/harness-v4/accept/HV4-H18/independent-20261119.json",
+        "source_id": "H18-initial"
+      },
+      {
+        "gate": "FAIL",
+        "live": "NOT_RUN",
+        "model_calls": 0,
+        "production": "NOT_RUN",
+        "receipt": "docs/harness-v4/accept/HV4-H18/restore-retry-independent-20261119.json",
+        "source_id": "H18-retry"
+      },
+      {
+        "gate": "PASS",
+        "live": "NOT_RUN",
+        "model_calls": 0,
+        "production": "NOT_RUN",
+        "receipt": "docs/harness-v4/accept/HV4-H18/publish-retry-independent-20261119.json",
+        "source_id": "H18-closure"
+      }
+    ]
+  }
+}

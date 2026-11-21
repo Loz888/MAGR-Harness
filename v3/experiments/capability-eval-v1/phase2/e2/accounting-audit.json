@@ -1,0 +1,23 @@
+{
+  "expected": 1440,
+  "terminal": 1440,
+  "missing": 0,
+  "statuses": {
+    "ANSWERED": 1336,
+    "FAIL": 104
+  },
+  "permission_or_required_retention_failures": [],
+  "examined_page_reads": 754,
+  "usage_unknown_after_reconciliation": [],
+  "tariff_nano_usd_sum": 2468679714,
+  "held_peak_micros": 0,
+  "settled_peak_micros": 10443886,
+  "all_request_deviations_recomputed": true,
+  "all_charge_bounds_checked": true,
+  "provider_actual_invoice": null,
+  "ledger_attempts": 2324,
+  "by_source": {
+    "base": "d4fee2f555c5e031720302e98ba164cf1bd8db74",
+    "sqlite": "3.53.1"
+  }
+}

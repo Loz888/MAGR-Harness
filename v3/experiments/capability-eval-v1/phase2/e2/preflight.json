@@ -1,0 +1,1 @@
+{"transport": "httpx.MockTransport", "network_requests": 0, "worker_reservations": 3, "over_budget_prevented": 5, "unknown_request_retains_reservation": true, "replay_settled_no_resend": true, "grade_contract_checks": 3, "tokenizer_initialized": true, "credential_present": true}

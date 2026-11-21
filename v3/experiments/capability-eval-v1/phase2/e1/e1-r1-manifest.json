@@ -1,0 +1,65 @@
+{
+  "schema": "e1-r1-1",
+  "frozen_at": "2026-11-20T13:56:03.942638+00:00",
+  "bindings": {
+    "base_commit": "d4fee2f555c5e031720302e98ba164cf1bd8db74",
+    "legacy_transitive_source_sha256": "58d51ae12deb88a839cae7c9de09139a6291c8594ae3a1874324aea949da62ac",
+    "candidate_sources": {
+      "experiments/capability-eval-v1/phase2/e1/run.py": "94feb1c2d6bde90fbdf506a3ddb77f6944cf08742e30d197d72292ca61aa2a01",
+      "experiments/capability-eval-v1/phase2/e1/grade.py": "a48bba1902f3c55dfaaba2bdbba7730a49dea20fecc8db55220a272368aaf11b",
+      "experiments/capability-eval-v1/phase2/e1/prepare.py": "65ddaf6fd70221f4cc9ebf9a12f5bf21aaa1d9a214e41266739165a944de5f51",
+      "src/mgar_v3/quality_eval/e5_pg.py": "fc924d57a105e7280975d389544a8cabdb8801e5a3f05c1e26730caa7b38436a",
+      "src/mgar_v3/memory/calibrated.py": "e423d4c62573abfe436719a64cbef2133b6021abe6a14dfff1629b8a9898d7be",
+      "src/mgar_v3/memory/retrieval.py": "612c85c4b55e01df7f7526272cfb8d29bd1dec598cc34cca80150760c77ad214"
+    },
+    "corpus": {
+      "base-corpus.jsonl": "aa8ddd2e5ebc6eece9fa1adbff90715bc185e40616bf344da1e96b066566b45d",
+      "development-overlay.jsonl": "2e70ea794f3adfc094572a7d15ae175492d07245e5ca89234ae0f2f70eff8079",
+      "independent-overlay.jsonl": "c6d46fd0e32925417af4d3d56d280f5b1e4b69111292e04e8f364eada7ef0242"
+    },
+    "corpus_concat_sha256": "d1deff51ff2e212f86acf944b09571f9362c0713f4cc94cb1914b8c7760698cf",
+    "split": {
+      "development": {
+        "queries": "823bdaf1b0c0c03ead34d30871f13765aeb0884be36a930673c14ec068d8753f",
+        "labels": "3bbdb6eba7512085e09b3a1ca2ef75e217038263e2a56ace8b753784d735c10c",
+        "count": 315
+      },
+      "holdout": {
+        "queries": "8aa48ea0fc2da289878d339c7fe2f919bba9e3cfc3e2b2b7d2cd3c5c3297f281",
+        "labels": "47cdb6f7209c56e2b4a147f117ab2eddf59bdba680bd13e344b2b03bcc8ac9b3",
+        "count": 210
+      }
+    },
+    "development_label_review_sha256": "eb60cc1780a92baf9a89979a7415675231b4d264277cfd826b75996e71734a66",
+    "holdout_commitment_sha256": "5ca0315ca2415464a357666b349232f88ac8afa0b7b977678fced9f0d28cdc70",
+    "models": {
+      "embedding_receipt": "0557f4ec1d8e7787d9a7cb5be2e3a4f01026b3b78a6ffe02ea7741cfa7ada5cf",
+      "weights": "3aa28294883c5b45ab8618eddb82ec16ed8762b0a7625196d15ec6f1f3781023",
+      "lock": "4d26c782867fecd6dda6e8430d3c074e67e0c4db1473f0c3246d71985f3d8434"
+    },
+    "execution": {
+      "postgres_image": "sha256:33198da2828a14c30348d2ccb4750833d5ed9a44c88d840a0e523d7417120337",
+      "python_hash_seed": 0,
+      "python": "3.12.16",
+      "spacy": "3.8.18",
+      "spacy-pkuseg": "1.0.2",
+      "jieba": "0.42.1",
+      "numpy": "2.5.4",
+      "psycopg": "3.3.6"
+    },
+    "gate": {
+      "recall_at_5_min_delta": 0.05,
+      "mrr_at_10_paired_ci_low_gt": 0,
+      "no_answer_fpr_max": 0.1,
+      "answerable_coverage_min": 0.9,
+      "acl_leakage_max": 0
+    },
+    "budget": {
+      "top_k": 10,
+      "max_scoped_records": 64,
+      "bootstrap_replicates": 10000,
+      "seed": 20261120,
+      "paid_calls": 0
+    }
+  }
+}

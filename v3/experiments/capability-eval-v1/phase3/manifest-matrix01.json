@@ -1,0 +1,27 @@
+{
+  "product_commit": "8469ef488c6a178d85172e11be3e9efcd8167a06",
+  "model": "controlled-local",
+  "paid_allowed": false,
+  "h12_patch_trials": 32,
+  "h12_readiness_trials": 12,
+  "h17_pairs": 90,
+  "h17_trials": 180,
+  "sources": {
+    ".local/r03/sandbox-lock.json": "2b6ffb5cead4d18e1219816c4d829c7f2cdf3dc5165cf1683fb4c25f360f3e86",
+    "experiments/capability-eval-v1/phase3/h12/cases.jsonl": "1106ee3a6f1de723b2f39e92b17202a64b30153036486b5f889afa99cfa4674a",
+    "experiments/capability-eval-v1/phase3/h12/preflight-cases.jsonl": "ec04cc8f8bfe2024c2f7c1163187793a266c2399718fee0a9aa7b9b23e32dbd0",
+    "experiments/capability-eval-v1/phase3/h12/preflight.py": "f11ba05e7ad09b37421f930790095bdabfa23e21b801ad391b405a9856575130",
+    "experiments/capability-eval-v1/phase3/h12/test_matrix.py": "b55509407af83164ba4fdf4976c320c3e8e557d0fcad790b6d1d247e92dab732",
+    "experiments/capability-eval-v1/phase3/h17/cases.jsonl": "25bd7ac2adb3a32c1203cf22d1c71574a052c78efb7c6dea1aa974fef39ffe82",
+    "experiments/capability-eval-v1/phase3/h17/grader.py": "bea77fd2a6af75e5fb8b0cc26972708769a879784a23e2c68e643b16efc442ee",
+    "experiments/capability-eval-v1/phase3/h17/schedule.jsonl": "e8f4a24f46be22b4e6269de21df468cfd9d5100eda87a4eef834b03380ee4c37",
+    "experiments/capability-eval-v1/phase3/h17/test_paired.py": "9af89a86cf1e681b06c30e2cbfa0b023c009eaf8b7a8e1c28c51bcf8eb0dba3d",
+    "experiments/capability-eval-v1/phase3/protocol.md": "e2df4182379dffdb7d55d331f6223466a88f29bc4e7f70d082d03a842f7ccdf8",
+    "experiments/capability-eval-v1/phase3/run.py": "87ef9c24adb3ca9870e1195651d2999f3cb8e13ee417114b482f3196592e9fa5",
+    "tests/conftest.py": "a28c0c0bd1d03e10e32f5559e0461e68c237b13c282a3840bf5aced29e8d16c6",
+    "tests/test_harness_product_service.py": "3f1c027418999bd9a88000dec23a7b7c5d0ad06e7678c87e56fcd320b3769617",
+    "tests/test_harness_v4_h10.py": "b33a097166220400e8f8603f60ab54b3a15529f9887dcfed39f02082a4d65f36",
+    "tests/test_harness_v4_h11_service.py": "4bacd9aae1fedb623bd3464cb6bbe701627bd6a67f87eeb7d68367c58bd8f37d",
+    "uv.lock": "56579416e1652e02a17706e72be15ee5d24762c45d6e27b25618312eddbb6583"
+  }
+}

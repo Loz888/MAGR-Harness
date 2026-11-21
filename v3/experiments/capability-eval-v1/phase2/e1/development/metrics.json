@@ -1,0 +1,4684 @@
+{
+  "overall": {
+    "n": 315,
+    "cohorts": 21,
+    "arms": {
+      "A": {
+        "recall_at_5": {
+          "numerator": 247.0,
+          "denominator": 252.0,
+          "value": 0.9801587301587301,
+          "ci95": [
+            0.9642857142857143,
+            0.9920634920634921
+          ]
+        },
+        "recall_at_10": {
+          "numerator": 250.0,
+          "denominator": 252.0,
+          "value": 0.9920634920634921,
+          "ci95": [
+            0.9801587301587301,
+            1.0
+          ]
+        },
+        "precision_at_5": {
+          "numerator": 49.59999999999999,
+          "denominator": 252.0,
+          "value": 0.19682539682539676,
+          "ci95": [
+            0.19285714285714287,
+            0.19999999999999998
+          ]
+        },
+        "mrr_at_10": {
+          "numerator": 155.62619047619043,
+          "denominator": 252.0,
+          "value": 0.6175642479213906,
+          "ci95": [
+            0.578353410808768,
+            0.6576828231292516
+          ]
+        },
+        "ndcg_at_10": {
+          "numerator": 179.47217396565415,
+          "denominator": 252.0,
+          "value": 0.7121911665303736,
+          "ci95": [
+            0.6831470391358393,
+            0.7420573590958693
+          ]
+        },
+        "no_answer_fpr": {
+          "numerator": 63.0,
+          "denominator": 63.0,
+          "value": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ]
+        },
+        "answerable_coverage": {
+          "numerator": 252.0,
+          "denominator": 252.0,
+          "value": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ]
+        },
+        "stale_contamination_at_5": {
+          "numerator": 475.0,
+          "denominator": 1575.0,
+          "value": 0.30158730158730157,
+          "ci95": [
+            0.2768253968253968,
+            0.32634920634920633
+          ]
+        },
+        "invalid_version_contamination_at_5": {
+          "numerator": 935.0,
+          "denominator": 1575.0,
+          "value": 0.5936507936507937,
+          "ci95": [
+            0.572063492063492,
+            0.6165079365079366
+          ]
+        },
+        "acl_leakage_at_10": {
+          "numerator": 0.0,
+          "denominator": 3150.0,
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "B": {
+        "recall_at_5": {
+          "numerator": 175.0,
+          "denominator": 252.0,
+          "value": 0.6944444444444444,
+          "ci95": [
+            0.6706349206349206,
+            0.7182539682539683
+          ]
+        },
+        "recall_at_10": {
+          "numerator": 189.0,
+          "denominator": 252.0,
+          "value": 0.75,
+          "ci95": [
+            0.75,
+            0.75
+          ]
+        },
+        "precision_at_5": {
+          "numerator": 35.00000000000001,
+          "denominator": 252.0,
+          "value": 0.13888888888888892,
+          "ci95": [
+            0.13412698412698415,
+            0.14365079365079364
+          ]
+        },
+        "mrr_at_10": {
+          "numerator": 102.68809523809522,
+          "denominator": 252.0,
+          "value": 0.40749244142101276,
+          "ci95": [
+            0.368602843915344,
+            0.44653273809523814
+          ]
+        },
+        "ndcg_at_10": {
+          "numerator": 124.18909418196398,
+          "denominator": 252.0,
+          "value": 0.4928138658014444,
+          "ci95": [
+            0.46346881225599323,
+            0.522156291685003
+          ]
+        },
+        "no_answer_fpr": {
+          "numerator": 63.0,
+          "denominator": 63.0,
+          "value": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ]
+        },
+        "answerable_coverage": {
+          "numerator": 252.0,
+          "denominator": 252.0,
+          "value": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ]
+        },
+        "stale_contamination_at_5": {
+          "numerator": 516.0,
+          "denominator": 1575.0,
+          "value": 0.32761904761904764,
+          "ci95": [
+            0.3136507936507936,
+            0.34095238095238095
+          ]
+        },
+        "invalid_version_contamination_at_5": {
+          "numerator": 1037.0,
+          "denominator": 1575.0,
+          "value": 0.6584126984126984,
+          "ci95": [
+            0.6476190476190476,
+            0.6685714285714286
+          ]
+        },
+        "acl_leakage_at_10": {
+          "numerator": 0.0,
+          "denominator": 3150.0,
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "C": {
+        "recall_at_5": {
+          "numerator": 199.0,
+          "denominator": 252.0,
+          "value": 0.7896825396825397,
+          "ci95": [
+            0.7698412698412699,
+            0.8095238095238095
+          ]
+        },
+        "recall_at_10": {
+          "numerator": 218.0,
+          "denominator": 252.0,
+          "value": 0.8650793650793651,
+          "ci95": [
+            0.8372023809523811,
+            0.8968253968253969
+          ]
+        },
+        "precision_at_5": {
+          "numerator": 39.79999999999999,
+          "denominator": 252.0,
+          "value": 0.1579365079365079,
+          "ci95": [
+            0.15396825396825395,
+            0.16190476190476188
+          ]
+        },
+        "mrr_at_10": {
+          "numerator": 120.31150793650794,
+          "denominator": 252.0,
+          "value": 0.4774266187956664,
+          "ci95": [
+            0.4421097096245905,
+            0.5119758597883597
+          ]
+        },
+        "ndcg_at_10": {
+          "numerator": 144.43105183820506,
+          "denominator": 252.0,
+          "value": 0.5731390945960518,
+          "ci95": [
+            0.5456533329939338,
+            0.6003293292342046
+          ]
+        },
+        "no_answer_fpr": {
+          "numerator": 63.0,
+          "denominator": 63.0,
+          "value": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ]
+        },
+        "answerable_coverage": {
+          "numerator": 252.0,
+          "denominator": 252.0,
+          "value": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ]
+        },
+        "stale_contamination_at_5": {
+          "numerator": 507.0,
+          "denominator": 1575.0,
+          "value": 0.3219047619047619,
+          "ci95": [
+            0.30095238095238097,
+            0.3422222222222222
+          ]
+        },
+        "invalid_version_contamination_at_5": {
+          "numerator": 1043.0,
+          "denominator": 1575.0,
+          "value": 0.6622222222222223,
+          "ci95": [
+            0.6406349206349207,
+            0.6838095238095238
+          ]
+        },
+        "acl_leakage_at_10": {
+          "numerator": 0.0,
+          "denominator": 3150.0,
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "D": {
+        "recall_at_5": {
+          "numerator": 249.0,
+          "denominator": 252.0,
+          "value": 0.9880952380952381,
+          "ci95": [
+            0.9761904761904762,
+            1.0
+          ]
+        },
+        "recall_at_10": {
+          "numerator": 252.0,
+          "denominator": 252.0,
+          "value": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ]
+        },
+        "precision_at_5": {
+          "numerator": 49.99999999999998,
+          "denominator": 252.0,
+          "value": 0.19841269841269832,
+          "ci95": [
+            0.19523809523809518,
+            0.20158730158730154
+          ]
+        },
+        "mrr_at_10": {
+          "numerator": 162.97619047619048,
+          "denominator": 252.0,
+          "value": 0.6467309145880574,
+          "ci95": [
+            0.6156554705215419,
+            0.6773157596371882
+          ]
+        },
+        "ndcg_at_10": {
+          "numerator": 185.66103574153982,
+          "denominator": 252.0,
+          "value": 0.7367501418315072,
+          "ci95": [
+            0.7135707011071183,
+            0.7596419503784033
+          ]
+        },
+        "no_answer_fpr": {
+          "numerator": 63.0,
+          "denominator": 63.0,
+          "value": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ]
+        },
+        "answerable_coverage": {
+          "numerator": 252.0,
+          "denominator": 252.0,
+          "value": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ]
+        },
+        "stale_contamination_at_5": {
+          "numerator": 407.0,
+          "denominator": 1575.0,
+          "value": 0.2584126984126984,
+          "ci95": [
+            0.2438095238095238,
+            0.273015873015873
+          ]
+        },
+        "invalid_version_contamination_at_5": {
+          "numerator": 875.0,
+          "denominator": 1575.0,
+          "value": 0.5555555555555556,
+          "ci95": [
+            0.5396825396825397,
+            0.5714285714285714
+          ]
+        },
+        "acl_leakage_at_10": {
+          "numerator": 0.0,
+          "denominator": 3150.0,
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "E": {
+        "recall_at_5": {
+          "numerator": 249.0,
+          "denominator": 252.0,
+          "value": 0.9880952380952381,
+          "ci95": [
+            0.9761904761904762,
+            1.0
+          ]
+        },
+        "recall_at_10": {
+          "numerator": 252.0,
+          "denominator": 252.0,
+          "value": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ]
+        },
+        "precision_at_5": {
+          "numerator": 49.99999999999998,
+          "denominator": 252.0,
+          "value": 0.19841269841269832,
+          "ci95": [
+            0.19523809523809518,
+            0.20158730158730154
+          ]
+        },
+        "mrr_at_10": {
+          "numerator": 233.42619047619047,
+          "denominator": 252.0,
+          "value": 0.9262944066515495,
+          "ci95": [
+            0.9044690098261526,
+            0.948318216175359
+          ]
+        },
+        "ndcg_at_10": {
+          "numerator": 238.1327930740936,
+          "denominator": 252.0,
+          "value": 0.944971401087673,
+          "ci95": [
+            0.9288382208074799,
+            0.9613410771207018
+          ]
+        },
+        "no_answer_fpr": {
+          "numerator": 63.0,
+          "denominator": 63.0,
+          "value": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ]
+        },
+        "answerable_coverage": {
+          "numerator": 252.0,
+          "denominator": 252.0,
+          "value": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ]
+        },
+        "stale_contamination_at_5": {
+          "numerator": 130.0,
+          "denominator": 1575.0,
+          "value": 0.08253968253968254,
+          "ci95": [
+            0.07873015873015873,
+            0.08698412698412698
+          ]
+        },
+        "invalid_version_contamination_at_5": {
+          "numerator": 301.0,
+          "denominator": 1575.0,
+          "value": 0.19111111111111112,
+          "ci95": [
+            0.18222222222222223,
+            0.19746031746031745
+          ]
+        },
+        "acl_leakage_at_10": {
+          "numerator": 0.0,
+          "denominator": 3150.0,
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "F": {
+        "recall_at_5": {
+          "numerator": 171.0,
+          "denominator": 252.0,
+          "value": 0.6785714285714286,
+          "ci95": [
+            0.6349206349206349,
+            0.7222222222222222
+          ]
+        },
+        "recall_at_10": {
+          "numerator": 174.0,
+          "denominator": 252.0,
+          "value": 0.6904761904761905,
+          "ci95": [
+            0.6507936507936508,
+            0.7341269841269841
+          ]
+        },
+        "precision_at_5": {
+          "numerator": 34.400000000000006,
+          "denominator": 252.0,
+          "value": 0.13650793650793652,
+          "ci95": [
+            0.126984126984127,
+            0.14603174603174604
+          ]
+        },
+        "mrr_at_10": {
+          "numerator": 162.75952380952384,
+          "denominator": 252.0,
+          "value": 0.6458711262282693,
+          "ci95": [
+            0.5990447845804989,
+            0.6934004157218443
+          ]
+        },
+        "ndcg_at_10": {
+          "numerator": 165.5616360312361,
+          "denominator": 252.0,
+          "value": 0.6569906191715719,
+          "ci95": [
+            0.6117077124467521,
+            0.7031961806680875
+          ]
+        },
+        "no_answer_fpr": {
+          "numerator": 1.0,
+          "denominator": 63.0,
+          "value": 0.015873015873015872,
+          "ci95": [
+            0.0,
+            0.047619047619047616
+          ]
+        },
+        "answerable_coverage": {
+          "numerator": 174.0,
+          "denominator": 252.0,
+          "value": 0.6904761904761905,
+          "ci95": [
+            0.6507936507936508,
+            0.7341269841269841
+          ]
+        },
+        "stale_contamination_at_5": {
+          "numerator": 102.0,
+          "denominator": 875.0,
+          "value": 0.11657142857142858,
+          "ci95": [
+            0.10843238877296897,
+            0.125
+          ]
+        },
+        "invalid_version_contamination_at_5": {
+          "numerator": 198.0,
+          "denominator": 875.0,
+          "value": 0.22628571428571428,
+          "ci95": [
+            0.21452513966480447,
+            0.23930635838150288
+          ]
+        },
+        "acl_leakage_at_10": {
+          "numerator": 0.0,
+          "denominator": 1750.0,
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "paired_F_minus_A": {
+      "recall_at_5": {
+        "difference": -0.3015873015873015,
+        "ci95": [
+          -0.34523809523809523,
+          -0.2579365079365079
+        ]
+      },
+      "recall_at_10": {
+        "difference": -0.3015873015873016,
+        "ci95": [
+          -0.34523809523809523,
+          -0.2579365079365079
+        ]
+      },
+      "precision_at_5": {
+        "difference": -0.06031746031746024,
+        "ci95": [
+          -0.06904761904761902,
+          -0.05158730158730154
+        ]
+      },
+      "mrr_at_10": {
+        "difference": 0.028306878306878613,
+        "ci95": [
+          -0.0228557256235826,
+          0.08290816326530603
+        ]
+      },
+      "ndcg_at_10": {
+        "difference": -0.055200547358801755,
+        "ci95": [
+          -0.10238494075027667,
+          -0.005802120011404729
+        ]
+      },
+      "no_answer_fpr": {
+        "difference": -0.9841269841269842,
+        "ci95": [
+          -1.0,
+          -0.9523809523809523
+        ]
+      },
+      "answerable_coverage": {
+        "difference": -0.30952380952380953,
+        "ci95": [
+          -0.3492063492063492,
+          -0.2658730158730159
+        ]
+      },
+      "stale_contamination_at_5": {
+        "difference": -0.185015873015873,
+        "ci95": [
+          -0.2115107495649775,
+          -0.15844134157428955
+        ]
+      },
+      "invalid_version_contamination_at_5": {
+        "difference": -0.36736507936507934,
+        "ci95": [
+          -0.39685177186333254,
+          -0.3382994864612512
+        ]
+      },
+      "acl_leakage_at_10": {
+        "difference": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      }
+    }
+  },
+  "by_category": {
+    "acl_negative": {
+      "n": 21,
+      "cohorts": 21,
+      "arms": {
+        "A": {
+          "recall_at_5": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "recall_at_10": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "precision_at_5": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "mrr_at_10": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "ndcg_at_10": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "no_answer_fpr": {
+            "numerator": 21.0,
+            "denominator": 21.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "answerable_coverage": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "stale_contamination_at_5": {
+            "numerator": 30.0,
+            "denominator": 105.0,
+            "value": 0.2857142857142857,
+            "ci95": [
+              0.21904761904761905,
+              0.34285714285714286
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 56.0,
+            "denominator": 105.0,
+            "value": 0.5333333333333333,
+            "ci95": [
+              0.45714285714285713,
+              0.6095238095238096
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 210.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "B": {
+          "recall_at_5": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "recall_at_10": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "precision_at_5": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "mrr_at_10": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "ndcg_at_10": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "no_answer_fpr": {
+            "numerator": 21.0,
+            "denominator": 21.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "answerable_coverage": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "stale_contamination_at_5": {
+            "numerator": 49.0,
+            "denominator": 105.0,
+            "value": 0.4666666666666667,
+            "ci95": [
+              0.4,
+              0.5238095238095238
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 92.0,
+            "denominator": 105.0,
+            "value": 0.8761904761904762,
+            "ci95": [
+              0.819047619047619,
+              0.9333333333333333
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 210.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "C": {
+          "recall_at_5": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "recall_at_10": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "precision_at_5": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "mrr_at_10": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "ndcg_at_10": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "no_answer_fpr": {
+            "numerator": 21.0,
+            "denominator": 21.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "answerable_coverage": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "stale_contamination_at_5": {
+            "numerator": 43.0,
+            "denominator": 105.0,
+            "value": 0.4095238095238095,
+            "ci95": [
+              0.3619047619047619,
+              0.45714285714285713
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 87.0,
+            "denominator": 105.0,
+            "value": 0.8285714285714286,
+            "ci95": [
+              0.7714285714285715,
+              0.8857142857142857
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 210.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "D": {
+          "recall_at_5": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "recall_at_10": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "precision_at_5": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "mrr_at_10": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "ndcg_at_10": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "no_answer_fpr": {
+            "numerator": 21.0,
+            "denominator": 21.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "answerable_coverage": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "stale_contamination_at_5": {
+            "numerator": 36.0,
+            "denominator": 105.0,
+            "value": 0.34285714285714286,
+            "ci95": [
+              0.2857142857142857,
+              0.4
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 69.0,
+            "denominator": 105.0,
+            "value": 0.6571428571428571,
+            "ci95": [
+              0.6,
+              0.7142857142857143
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 210.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "E": {
+          "recall_at_5": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "recall_at_10": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "precision_at_5": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "mrr_at_10": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "ndcg_at_10": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "no_answer_fpr": {
+            "numerator": 21.0,
+            "denominator": 21.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "answerable_coverage": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "stale_contamination_at_5": {
+            "numerator": 0.0,
+            "denominator": 105.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 0.0,
+            "denominator": 105.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 210.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "F": {
+          "recall_at_5": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "recall_at_10": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "precision_at_5": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "mrr_at_10": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "ndcg_at_10": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "no_answer_fpr": {
+            "numerator": 0.0,
+            "denominator": 21.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          },
+          "answerable_coverage": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "stale_contamination_at_5": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          }
+        }
+      },
+      "paired_F_minus_A": {
+        "recall_at_5": {
+          "difference": null,
+          "ci95": null
+        },
+        "recall_at_10": {
+          "difference": null,
+          "ci95": null
+        },
+        "precision_at_5": {
+          "difference": null,
+          "ci95": null
+        },
+        "mrr_at_10": {
+          "difference": null,
+          "ci95": null
+        },
+        "ndcg_at_10": {
+          "difference": null,
+          "ci95": null
+        },
+        "no_answer_fpr": {
+          "difference": -1.0,
+          "ci95": [
+            -1.0,
+            -1.0
+          ]
+        },
+        "answerable_coverage": {
+          "difference": null,
+          "ci95": null
+        },
+        "stale_contamination_at_5": {
+          "difference": null,
+          "ci95": null
+        },
+        "invalid_version_contamination_at_5": {
+          "difference": null,
+          "ci95": null
+        },
+        "acl_leakage_at_10": {
+          "difference": null,
+          "ci95": null
+        }
+      }
+    },
+    "commit_version": {
+      "n": 42,
+      "cohorts": 21,
+      "arms": {
+        "A": {
+          "recall_at_5": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall_at_10": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "precision_at_5": {
+            "numerator": 8.400000000000002,
+            "denominator": 42.0,
+            "value": 0.20000000000000004,
+            "ci95": [
+              0.2,
+              0.20000000000000004
+            ]
+          },
+          "mrr_at_10": {
+            "numerator": 24.999999999999996,
+            "denominator": 42.0,
+            "value": 0.5952380952380951,
+            "ci95": [
+              0.5198412698412698,
+              0.6746031746031745
+            ]
+          },
+          "ndcg_at_10": {
+            "numerator": 29.35673556428624,
+            "denominator": 42.0,
+            "value": 0.6989698943877676,
+            "ci95": [
+              0.6425634599489928,
+              0.758493703911577
+            ]
+          },
+          "no_answer_fpr": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "answerable_coverage": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "stale_contamination_at_5": {
+            "numerator": 74.0,
+            "denominator": 210.0,
+            "value": 0.3523809523809524,
+            "ci95": [
+              0.319047619047619,
+              0.38095238095238093
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 142.0,
+            "denominator": 210.0,
+            "value": 0.6761904761904762,
+            "ci95": [
+              0.638095238095238,
+              0.7142857142857143
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 420.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "B": {
+          "recall_at_5": {
+            "numerator": 34.0,
+            "denominator": 42.0,
+            "value": 0.8095238095238095,
+            "ci95": [
+              0.7142857142857143,
+              0.9047619047619048
+            ]
+          },
+          "recall_at_10": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "precision_at_5": {
+            "numerator": 6.8000000000000025,
+            "denominator": 42.0,
+            "value": 0.16190476190476197,
+            "ci95": [
+              0.14285714285714285,
+              0.18095238095238098
+            ]
+          },
+          "mrr_at_10": {
+            "numerator": 14.642857142857139,
+            "denominator": 42.0,
+            "value": 0.3486394557823128,
+            "ci95": [
+              0.3248299319727891,
+              0.3736989795918367
+            ]
+          },
+          "ndcg_at_10": {
+            "numerator": 21.31390678686406,
+            "denominator": 42.0,
+            "value": 0.5074739711158109,
+            "ci95": [
+              0.48807459017094407,
+              0.5280254137963396
+            ]
+          },
+          "no_answer_fpr": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "answerable_coverage": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "stale_contamination_at_5": {
+            "numerator": 56.0,
+            "denominator": 210.0,
+            "value": 0.26666666666666666,
+            "ci95": [
+              0.23809523809523808,
+              0.29523809523809524
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 140.0,
+            "denominator": 210.0,
+            "value": 0.6666666666666666,
+            "ci95": [
+              0.638095238095238,
+              0.6952380952380952
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 420.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "C": {
+          "recall_at_5": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall_at_10": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "precision_at_5": {
+            "numerator": 8.400000000000002,
+            "denominator": 42.0,
+            "value": 0.20000000000000004,
+            "ci95": [
+              0.2,
+              0.20000000000000004
+            ]
+          },
+          "mrr_at_10": {
+            "numerator": 20.916666666666664,
+            "denominator": 42.0,
+            "value": 0.49801587301587297,
+            "ci95": [
+              0.4206349206349206,
+              0.5773809523809523
+            ]
+          },
+          "ndcg_at_10": {
+            "numerator": 26.169384674371045,
+            "denominator": 42.0,
+            "value": 0.6230805874850249,
+            "ci95": [
+              0.5644588564697633,
+              0.6833528766413959
+            ]
+          },
+          "no_answer_fpr": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "answerable_coverage": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "stale_contamination_at_5": {
+            "numerator": 54.0,
+            "denominator": 210.0,
+            "value": 0.2571428571428571,
+            "ci95": [
+              0.22857142857142856,
+              0.2857142857142857
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 137.0,
+            "denominator": 210.0,
+            "value": 0.6523809523809524,
+            "ci95": [
+              0.6285714285714286,
+              0.6761904761904762
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 420.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "D": {
+          "recall_at_5": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall_at_10": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "precision_at_5": {
+            "numerator": 8.400000000000002,
+            "denominator": 42.0,
+            "value": 0.20000000000000004,
+            "ci95": [
+              0.2,
+              0.20000000000000004
+            ]
+          },
+          "mrr_at_10": {
+            "numerator": 25.999999999999996,
+            "denominator": 42.0,
+            "value": 0.619047619047619,
+            "ci95": [
+              0.5634920634920635,
+              0.6666666666666666
+            ]
+          },
+          "ndcg_at_10": {
+            "numerator": 30.02371901428583,
+            "denominator": 42.0,
+            "value": 0.7148504527210913,
+            "ci95": [
+              0.6734661552721131,
+              0.750564738435377
+            ]
+          },
+          "no_answer_fpr": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "answerable_coverage": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "stale_contamination_at_5": {
+            "numerator": 51.0,
+            "denominator": 210.0,
+            "value": 0.24285714285714285,
+            "ci95": [
+              0.22380952380952382,
+              0.2619047619047619
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 135.0,
+            "denominator": 210.0,
+            "value": 0.6428571428571429,
+            "ci95": [
+              0.6190476190476191,
+              0.6666666666666666
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 420.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "E": {
+          "recall_at_5": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall_at_10": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "precision_at_5": {
+            "numerator": 8.400000000000002,
+            "denominator": 42.0,
+            "value": 0.20000000000000004,
+            "ci95": [
+              0.2,
+              0.20000000000000004
+            ]
+          },
+          "mrr_at_10": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "ndcg_at_10": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "no_answer_fpr": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "answerable_coverage": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "stale_contamination_at_5": {
+            "numerator": 29.0,
+            "denominator": 210.0,
+            "value": 0.1380952380952381,
+            "ci95": [
+              0.11904761904761904,
+              0.15714285714285714
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 65.0,
+            "denominator": 210.0,
+            "value": 0.30952380952380953,
+            "ci95": [
+              0.3,
+              0.3238095238095238
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 420.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "F": {
+          "recall_at_5": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall_at_10": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "precision_at_5": {
+            "numerator": 8.400000000000002,
+            "denominator": 42.0,
+            "value": 0.20000000000000004,
+            "ci95": [
+              0.2,
+              0.20000000000000004
+            ]
+          },
+          "mrr_at_10": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "ndcg_at_10": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "no_answer_fpr": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "answerable_coverage": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "stale_contamination_at_5": {
+            "numerator": 29.0,
+            "denominator": 210.0,
+            "value": 0.1380952380952381,
+            "ci95": [
+              0.11904761904761904,
+              0.15714285714285714
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 65.0,
+            "denominator": 210.0,
+            "value": 0.30952380952380953,
+            "ci95": [
+              0.3,
+              0.3238095238095238
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 420.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        }
+      },
+      "paired_F_minus_A": {
+        "recall_at_5": {
+          "difference": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall_at_10": {
+          "difference": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ]
+        },
+        "precision_at_5": {
+          "difference": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ]
+        },
+        "mrr_at_10": {
+          "difference": 0.4047619047619049,
+          "ci95": [
+            0.32539682539682546,
+            0.48015873015873023
+          ]
+        },
+        "ndcg_at_10": {
+          "difference": 0.3010301056122324,
+          "ci95": [
+            0.241506296088423,
+            0.3574365400510072
+          ]
+        },
+        "no_answer_fpr": {
+          "difference": null,
+          "ci95": null
+        },
+        "answerable_coverage": {
+          "difference": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ]
+        },
+        "stale_contamination_at_5": {
+          "difference": -0.2142857142857143,
+          "ci95": [
+            -0.2523809523809524,
+            -0.17619047619047618
+          ]
+        },
+        "invalid_version_contamination_at_5": {
+          "difference": -0.3666666666666667,
+          "ci95": [
+            -0.40476190476190477,
+            -0.3238095238095238
+          ]
+        },
+        "acl_leakage_at_10": {
+          "difference": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "conflict": {
+      "n": 42,
+      "cohorts": 21,
+      "arms": {
+        "A": {
+          "recall_at_5": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall_at_10": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "precision_at_5": {
+            "numerator": 8.400000000000002,
+            "denominator": 42.0,
+            "value": 0.20000000000000004,
+            "ci95": [
+              0.2,
+              0.20000000000000004
+            ]
+          },
+          "mrr_at_10": {
+            "numerator": 28.833333333333332,
+            "denominator": 42.0,
+            "value": 0.6865079365079365,
+            "ci95": [
+              0.6071428571428571,
+              0.7658730158730158
+            ]
+          },
+          "ndcg_at_10": {
+            "numerator": 32.20208679642895,
+            "denominator": 42.0,
+            "value": 0.7667163522959274,
+            "ci95": [
+              0.7071925427721178,
+              0.82567542338436
+            ]
+          },
+          "no_answer_fpr": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "answerable_coverage": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "stale_contamination_at_5": {
+            "numerator": 79.0,
+            "denominator": 210.0,
+            "value": 0.3761904761904762,
+            "ci95": [
+              0.3523809523809524,
+              0.40476190476190477
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 154.0,
+            "denominator": 210.0,
+            "value": 0.7333333333333333,
+            "ci95": [
+              0.7,
+              0.7619047619047619
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 420.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "B": {
+          "recall_at_5": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall_at_10": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "precision_at_5": {
+            "numerator": 8.400000000000002,
+            "denominator": 42.0,
+            "value": 0.20000000000000004,
+            "ci95": [
+              0.2,
+              0.20000000000000004
+            ]
+          },
+          "mrr_at_10": {
+            "numerator": 23.516666666666666,
+            "denominator": 42.0,
+            "value": 0.5599206349206349,
+            "ci95": [
+              0.4869047619047619,
+              0.6396825396825396
+            ]
+          },
+          "ndcg_at_10": {
+            "numerator": 28.202112920924417,
+            "denominator": 42.0,
+            "value": 0.671478879069629,
+            "ci95": [
+              0.616340169821137,
+              0.7312438710451551
+            ]
+          },
+          "no_answer_fpr": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "answerable_coverage": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "stale_contamination_at_5": {
+            "numerator": 68.0,
+            "denominator": 210.0,
+            "value": 0.3238095238095238,
+            "ci95": [
+              0.29523809523809524,
+              0.3476190476190476
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 123.0,
+            "denominator": 210.0,
+            "value": 0.5857142857142857,
+            "ci95": [
+              0.5619047619047619,
+              0.6095238095238096
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 420.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "C": {
+          "recall_at_5": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall_at_10": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "precision_at_5": {
+            "numerator": 8.400000000000002,
+            "denominator": 42.0,
+            "value": 0.20000000000000004,
+            "ci95": [
+              0.2,
+              0.20000000000000004
+            ]
+          },
+          "mrr_at_10": {
+            "numerator": 30.583333333333332,
+            "denominator": 42.0,
+            "value": 0.7281746031746031,
+            "ci95": [
+              0.6567460317460319,
+              0.7936507936507935
+            ]
+          },
+          "ndcg_at_10": {
+            "numerator": 33.52555261521672,
+            "denominator": 42.0,
+            "value": 0.7982274432194456,
+            "ci95": [
+              0.7449383838657055,
+              0.847497048979603
+            ]
+          },
+          "no_answer_fpr": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "answerable_coverage": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "stale_contamination_at_5": {
+            "numerator": 63.0,
+            "denominator": 210.0,
+            "value": 0.3,
+            "ci95": [
+              0.2714285714285714,
+              0.32857142857142857
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 127.0,
+            "denominator": 210.0,
+            "value": 0.6047619047619047,
+            "ci95": [
+              0.580952380952381,
+              0.6285714285714286
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 420.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "D": {
+          "recall_at_5": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall_at_10": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "precision_at_5": {
+            "numerator": 8.400000000000002,
+            "denominator": 42.0,
+            "value": 0.20000000000000004,
+            "ci95": [
+              0.2,
+              0.20000000000000004
+            ]
+          },
+          "mrr_at_10": {
+            "numerator": 29.5,
+            "denominator": 42.0,
+            "value": 0.7023809523809523,
+            "ci95": [
+              0.6428571428571429,
+              0.7619047619047619
+            ]
+          },
+          "ndcg_at_10": {
+            "numerator": 32.773243839286444,
+            "denominator": 42.0,
+            "value": 0.7803153295068201,
+            "ci95": [
+              0.7363783954081841,
+              0.8242522636054561
+            ]
+          },
+          "no_answer_fpr": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "answerable_coverage": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "stale_contamination_at_5": {
+            "numerator": 66.0,
+            "denominator": 210.0,
+            "value": 0.3142857142857143,
+            "ci95": [
+              0.2904761904761905,
+              0.3380952380952381
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 132.0,
+            "denominator": 210.0,
+            "value": 0.6285714285714286,
+            "ci95": [
+              0.6,
+              0.6571428571428571
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 420.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "E": {
+          "recall_at_5": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall_at_10": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "precision_at_5": {
+            "numerator": 8.400000000000002,
+            "denominator": 42.0,
+            "value": 0.20000000000000004,
+            "ci95": [
+              0.2,
+              0.20000000000000004
+            ]
+          },
+          "mrr_at_10": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "ndcg_at_10": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "no_answer_fpr": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "answerable_coverage": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "stale_contamination_at_5": {
+            "numerator": 21.0,
+            "denominator": 210.0,
+            "value": 0.1,
+            "ci95": [
+              0.1,
+              0.1
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 42.0,
+            "denominator": 210.0,
+            "value": 0.2,
+            "ci95": [
+              0.18571428571428572,
+              0.21428571428571427
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 420.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "F": {
+          "recall_at_5": {
+            "numerator": 20.0,
+            "denominator": 42.0,
+            "value": 0.47619047619047616,
+            "ci95": [
+              0.40476190476190477,
+              0.5476190476190477
+            ]
+          },
+          "recall_at_10": {
+            "numerator": 20.0,
+            "denominator": 42.0,
+            "value": 0.47619047619047616,
+            "ci95": [
+              0.40476190476190477,
+              0.5476190476190477
+            ]
+          },
+          "precision_at_5": {
+            "numerator": 4.000000000000001,
+            "denominator": 42.0,
+            "value": 0.09523809523809526,
+            "ci95": [
+              0.08095238095238096,
+              0.10952380952380954
+            ]
+          },
+          "mrr_at_10": {
+            "numerator": 20.0,
+            "denominator": 42.0,
+            "value": 0.47619047619047616,
+            "ci95": [
+              0.40476190476190477,
+              0.5476190476190477
+            ]
+          },
+          "ndcg_at_10": {
+            "numerator": 20.0,
+            "denominator": 42.0,
+            "value": 0.47619047619047616,
+            "ci95": [
+              0.40476190476190477,
+              0.5476190476190477
+            ]
+          },
+          "no_answer_fpr": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "answerable_coverage": {
+            "numerator": 20.0,
+            "denominator": 42.0,
+            "value": 0.47619047619047616,
+            "ci95": [
+              0.40476190476190477,
+              0.5476190476190477
+            ]
+          },
+          "stale_contamination_at_5": {
+            "numerator": 19.0,
+            "denominator": 100.0,
+            "value": 0.19,
+            "ci95": [
+              0.17142857142857143,
+              0.2
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 20.0,
+            "denominator": 100.0,
+            "value": 0.2,
+            "ci95": [
+              0.2,
+              0.2
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 200.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        }
+      },
+      "paired_F_minus_A": {
+        "recall_at_5": {
+          "difference": -0.5238095238095238,
+          "ci95": [
+            -0.5952380952380952,
+            -0.45238095238095233
+          ]
+        },
+        "recall_at_10": {
+          "difference": -0.5238095238095238,
+          "ci95": [
+            -0.5952380952380952,
+            -0.45238095238095233
+          ]
+        },
+        "precision_at_5": {
+          "difference": -0.10476190476190478,
+          "ci95": [
+            -0.11904761904761908,
+            -0.09047619047619047
+          ]
+        },
+        "mrr_at_10": {
+          "difference": -0.21031746031746035,
+          "ci95": [
+            -0.2976190476190476,
+            -0.11904761904761907
+          ]
+        },
+        "ndcg_at_10": {
+          "difference": -0.2905258761054512,
+          "ci95": [
+            -0.37017709591837294,
+            -0.21286255450681035
+          ]
+        },
+        "no_answer_fpr": {
+          "difference": null,
+          "ci95": null
+        },
+        "answerable_coverage": {
+          "difference": -0.5238095238095238,
+          "ci95": [
+            -0.5952380952380952,
+            -0.45238095238095233
+          ]
+        },
+        "stale_contamination_at_5": {
+          "difference": -0.18619047619047618,
+          "ci95": [
+            -0.21904761904761907,
+            -0.1523809523809524
+          ]
+        },
+        "invalid_version_contamination_at_5": {
+          "difference": -0.5333333333333332,
+          "ci95": [
+            -0.5619047619047619,
+            -0.49999999999999994
+          ]
+        },
+        "acl_leakage_at_10": {
+          "difference": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "exact_symbol": {
+      "n": 63,
+      "cohorts": 21,
+      "arms": {
+        "A": {
+          "recall_at_5": {
+            "numerator": 60.0,
+            "denominator": 63.0,
+            "value": 0.9523809523809523,
+            "ci95": [
+              0.9047619047619048,
+              1.0
+            ]
+          },
+          "recall_at_10": {
+            "numerator": 61.0,
+            "denominator": 63.0,
+            "value": 0.9682539682539683,
+            "ci95": [
+              0.9206349206349206,
+              1.0
+            ]
+          },
+          "precision_at_5": {
+            "numerator": 12.199999999999996,
+            "denominator": 63.0,
+            "value": 0.19365079365079357,
+            "ci95": [
+              0.18095238095238095,
+              0.2063492063492063
+            ]
+          },
+          "mrr_at_10": {
+            "numerator": 46.042857142857144,
+            "denominator": 63.0,
+            "value": 0.7308390022675737,
+            "ci95": [
+              0.6566506046863191,
+              0.8015910808767951
+            ]
+          },
+          "ndcg_at_10": {
+            "numerator": 49.87205033290493,
+            "denominator": 63.0,
+            "value": 0.7916198465540465,
+            "ci95": [
+              0.7330019241254395,
+              0.8481372606986807
+            ]
+          },
+          "no_answer_fpr": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "answerable_coverage": {
+            "numerator": 63.0,
+            "denominator": 63.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "stale_contamination_at_5": {
+            "numerator": 33.0,
+            "denominator": 315.0,
+            "value": 0.10476190476190476,
+            "ci95": [
+              0.06349206349206349,
+              0.1492063492063492
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 58.0,
+            "denominator": 315.0,
+            "value": 0.18412698412698414,
+            "ci95": [
+              0.12063492063492064,
+              0.2507936507936508
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 630.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "B": {
+          "recall_at_5": {
+            "numerator": 0.0,
+            "denominator": 63.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          },
+          "recall_at_10": {
+            "numerator": 0.0,
+            "denominator": 63.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          },
+          "precision_at_5": {
+            "numerator": 0.0,
+            "denominator": 63.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          },
+          "mrr_at_10": {
+            "numerator": 0.0,
+            "denominator": 63.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          },
+          "ndcg_at_10": {
+            "numerator": 0.0,
+            "denominator": 63.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          },
+          "no_answer_fpr": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "answerable_coverage": {
+            "numerator": 63.0,
+            "denominator": 63.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "stale_contamination_at_5": {
+            "numerator": 90.0,
+            "denominator": 315.0,
+            "value": 0.2857142857142857,
+            "ci95": [
+              0.24761904761904763,
+              0.3238095238095238
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 206.0,
+            "denominator": 315.0,
+            "value": 0.653968253968254,
+            "ci95": [
+              0.6222222222222222,
+              0.6888888888888889
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 630.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "C": {
+          "recall_at_5": {
+            "numerator": 10.0,
+            "denominator": 63.0,
+            "value": 0.15873015873015872,
+            "ci95": [
+              0.07936507936507936,
+              0.23809523809523808
+            ]
+          },
+          "recall_at_10": {
+            "numerator": 29.0,
+            "denominator": 63.0,
+            "value": 0.4603174603174603,
+            "ci95": [
+              0.3488095238095241,
+              0.5873015873015873
+            ]
+          },
+          "precision_at_5": {
+            "numerator": 2.0,
+            "denominator": 63.0,
+            "value": 0.031746031746031744,
+            "ci95": [
+              0.015873015873015872,
+              0.04761904761904763
+            ]
+          },
+          "mrr_at_10": {
+            "numerator": 6.011507936507938,
+            "denominator": 63.0,
+            "value": 0.0954207608969514,
+            "ci95": [
+              0.06384999370118416,
+              0.13241417863441676
+            ]
+          },
+          "ndcg_at_10": {
+            "numerator": 11.189086046237358,
+            "denominator": 63.0,
+            "value": 0.177604540416466,
+            "ci95": [
+              0.13014326419378436,
+              0.2257564464561203
+            ]
+          },
+          "no_answer_fpr": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "answerable_coverage": {
+            "numerator": 63.0,
+            "denominator": 63.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "stale_contamination_at_5": {
+            "numerator": 91.0,
+            "denominator": 315.0,
+            "value": 0.28888888888888886,
+            "ci95": [
+              0.2507936507936508,
+              0.326984126984127
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 196.0,
+            "denominator": 315.0,
+            "value": 0.6222222222222222,
+            "ci95": [
+              0.5746031746031746,
+              0.6698412698412698
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 630.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "D": {
+          "recall_at_5": {
+            "numerator": 60.0,
+            "denominator": 63.0,
+            "value": 0.9523809523809523,
+            "ci95": [
+              0.9047619047619048,
+              1.0
+            ]
+          },
+          "recall_at_10": {
+            "numerator": 63.0,
+            "denominator": 63.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "precision_at_5": {
+            "numerator": 12.199999999999996,
+            "denominator": 63.0,
+            "value": 0.19365079365079357,
+            "ci95": [
+              0.18095238095238095,
+              0.2063492063492063
+            ]
+          },
+          "mrr_at_10": {
+            "numerator": 48.59285714285714,
+            "denominator": 63.0,
+            "value": 0.7713151927437641,
+            "ci95": [
+              0.6956500377928949,
+              0.8431623204837491
+            ]
+          },
+          "ndcg_at_10": {
+            "numerator": 52.216284799093394,
+            "denominator": 63.0,
+            "value": 0.8288299174459269,
+            "ci95": [
+              0.7720804596894603,
+              0.8824659430220587
+            ]
+          },
+          "no_answer_fpr": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "answerable_coverage": {
+            "numerator": 63.0,
+            "denominator": 63.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "stale_contamination_at_5": {
+            "numerator": 12.0,
+            "denominator": 315.0,
+            "value": 0.0380952380952381,
+            "ci95": [
+              0.01904761904761905,
+              0.06349206349206349
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 43.0,
+            "denominator": 315.0,
+            "value": 0.1365079365079365,
+            "ci95": [
+              0.08571428571428572,
+              0.19047619047619047
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 630.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "E": {
+          "recall_at_5": {
+            "numerator": 60.0,
+            "denominator": 63.0,
+            "value": 0.9523809523809523,
+            "ci95": [
+              0.9047619047619048,
+              1.0
+            ]
+          },
+          "recall_at_10": {
+            "numerator": 63.0,
+            "denominator": 63.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "precision_at_5": {
+            "numerator": 12.199999999999996,
+            "denominator": 63.0,
+            "value": 0.19365079365079357,
+            "ci95": [
+              0.18095238095238095,
+              0.2063492063492063
+            ]
+          },
+          "mrr_at_10": {
+            "numerator": 48.59285714285714,
+            "denominator": 63.0,
+            "value": 0.7713151927437641,
+            "ci95": [
+              0.6956500377928949,
+              0.8431623204837491
+            ]
+          },
+          "ndcg_at_10": {
+            "numerator": 52.216284799093394,
+            "denominator": 63.0,
+            "value": 0.8288299174459269,
+            "ci95": [
+              0.7720804596894603,
+              0.8824659430220587
+            ]
+          },
+          "no_answer_fpr": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "answerable_coverage": {
+            "numerator": 63.0,
+            "denominator": 63.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "stale_contamination_at_5": {
+            "numerator": 0.0,
+            "denominator": 315.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 0.0,
+            "denominator": 315.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 630.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "F": {
+          "recall_at_5": {
+            "numerator": 45.0,
+            "denominator": 63.0,
+            "value": 0.7142857142857143,
+            "ci95": [
+              0.5873015873015873,
+              0.8253968253968254
+            ]
+          },
+          "recall_at_10": {
+            "numerator": 48.0,
+            "denominator": 63.0,
+            "value": 0.7619047619047619,
+            "ci95": [
+              0.6507936507936508,
+              0.873015873015873
+            ]
+          },
+          "precision_at_5": {
+            "numerator": 9.200000000000003,
+            "denominator": 63.0,
+            "value": 0.14603174603174607,
+            "ci95": [
+              0.11746031746031746,
+              0.17142857142857146
+            ]
+          },
+          "mrr_at_10": {
+            "numerator": 36.759523809523806,
+            "denominator": 63.0,
+            "value": 0.5834845049130762,
+            "ci95": [
+              0.4520001889644747,
+              0.7096815948601662
+            ]
+          },
+          "ndcg_at_10": {
+            "numerator": 39.561636031236105,
+            "denominator": 63.0,
+            "value": 0.6279624766862874,
+            "ci95": [
+              0.5039645081118128,
+              0.7470160565305546
+            ]
+          },
+          "no_answer_fpr": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "answerable_coverage": {
+            "numerator": 48.0,
+            "denominator": 63.0,
+            "value": 0.7619047619047619,
+            "ci95": [
+              0.6507936507936508,
+              0.873015873015873
+            ]
+          },
+          "stale_contamination_at_5": {
+            "numerator": 0.0,
+            "denominator": 240.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 0.0,
+            "denominator": 240.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 480.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        }
+      },
+      "paired_F_minus_A": {
+        "recall_at_5": {
+          "difference": -0.23809523809523803,
+          "ci95": [
+            -0.3492063492063492,
+            -0.12698412698412698
+          ]
+        },
+        "recall_at_10": {
+          "difference": -0.2063492063492064,
+          "ci95": [
+            -0.31746031746031744,
+            -0.09523809523809523
+          ]
+        },
+        "precision_at_5": {
+          "difference": -0.047619047619047505,
+          "ci95": [
+            -0.06984126984126983,
+            -0.025396825396825418
+          ]
+        },
+        "mrr_at_10": {
+          "difference": -0.14735449735449746,
+          "ci95": [
+            -0.25385487528344663,
+            -0.04720332577475428
+          ]
+        },
+        "ndcg_at_10": {
+          "difference": -0.16365736986775914,
+          "ci95": [
+            -0.2687435266193014,
+            -0.06454210749741493
+          ]
+        },
+        "no_answer_fpr": {
+          "difference": null,
+          "ci95": null
+        },
+        "answerable_coverage": {
+          "difference": -0.23809523809523814,
+          "ci95": [
+            -0.3492063492063492,
+            -0.12698412698412698
+          ]
+        },
+        "stale_contamination_at_5": {
+          "difference": -0.10476190476190476,
+          "ci95": [
+            -0.1492063492063492,
+            -0.06349206349206349
+          ]
+        },
+        "invalid_version_contamination_at_5": {
+          "difference": -0.18412698412698414,
+          "ci95": [
+            -0.2507936507936508,
+            -0.12063492063492064
+          ]
+        },
+        "acl_leakage_at_10": {
+          "difference": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "no_answer": {
+      "n": 42,
+      "cohorts": 21,
+      "arms": {
+        "A": {
+          "recall_at_5": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "recall_at_10": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "precision_at_5": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "mrr_at_10": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "ndcg_at_10": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "no_answer_fpr": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "answerable_coverage": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "stale_contamination_at_5": {
+            "numerator": 77.0,
+            "denominator": 210.0,
+            "value": 0.36666666666666664,
+            "ci95": [
+              0.319047619047619,
+              0.4142857142857143
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 146.0,
+            "denominator": 210.0,
+            "value": 0.6952380952380952,
+            "ci95": [
+              0.6476190476190476,
+              0.7428571428571429
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 420.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "B": {
+          "recall_at_5": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "recall_at_10": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "precision_at_5": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "mrr_at_10": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "ndcg_at_10": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "no_answer_fpr": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "answerable_coverage": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "stale_contamination_at_5": {
+            "numerator": 71.0,
+            "denominator": 210.0,
+            "value": 0.3380952380952381,
+            "ci95": [
+              0.3047619047619048,
+              0.37142857142857144
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 142.0,
+            "denominator": 210.0,
+            "value": 0.6761904761904762,
+            "ci95": [
+              0.6523809523809524,
+              0.7
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 420.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "C": {
+          "recall_at_5": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "recall_at_10": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "precision_at_5": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "mrr_at_10": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "ndcg_at_10": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "no_answer_fpr": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "answerable_coverage": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "stale_contamination_at_5": {
+            "numerator": 73.0,
+            "denominator": 210.0,
+            "value": 0.3476190476190476,
+            "ci95": [
+              0.319047619047619,
+              0.3761904761904762
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 146.0,
+            "denominator": 210.0,
+            "value": 0.6952380952380952,
+            "ci95": [
+              0.6619047619047619,
+              0.7285714285714285
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 420.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "D": {
+          "recall_at_5": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "recall_at_10": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "precision_at_5": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "mrr_at_10": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "ndcg_at_10": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "no_answer_fpr": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "answerable_coverage": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "stale_contamination_at_5": {
+            "numerator": 69.0,
+            "denominator": 210.0,
+            "value": 0.32857142857142857,
+            "ci95": [
+              0.2904761904761905,
+              0.3619047619047619
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 139.0,
+            "denominator": 210.0,
+            "value": 0.6619047619047619,
+            "ci95": [
+              0.6285714285714286,
+              0.6952380952380952
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 420.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "E": {
+          "recall_at_5": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "recall_at_10": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "precision_at_5": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "mrr_at_10": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "ndcg_at_10": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "no_answer_fpr": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "answerable_coverage": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "stale_contamination_at_5": {
+            "numerator": 20.0,
+            "denominator": 210.0,
+            "value": 0.09523809523809523,
+            "ci95": [
+              0.08571428571428572,
+              0.1
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 38.0,
+            "denominator": 210.0,
+            "value": 0.18095238095238095,
+            "ci95": [
+              0.15714285714285714,
+              0.2
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 420.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "F": {
+          "recall_at_5": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "recall_at_10": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "precision_at_5": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "mrr_at_10": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "ndcg_at_10": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "no_answer_fpr": {
+            "numerator": 1.0,
+            "denominator": 42.0,
+            "value": 0.023809523809523808,
+            "ci95": [
+              0.0,
+              0.07142857142857142
+            ]
+          },
+          "answerable_coverage": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "stale_contamination_at_5": {
+            "numerator": 1.0,
+            "denominator": 5.0,
+            "value": 0.2,
+            "ci95": [
+              0.2,
+              0.2
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 2.0,
+            "denominator": 5.0,
+            "value": 0.4,
+            "ci95": [
+              0.4,
+              0.4
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 10.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        }
+      },
+      "paired_F_minus_A": {
+        "recall_at_5": {
+          "difference": null,
+          "ci95": null
+        },
+        "recall_at_10": {
+          "difference": null,
+          "ci95": null
+        },
+        "precision_at_5": {
+          "difference": null,
+          "ci95": null
+        },
+        "mrr_at_10": {
+          "difference": null,
+          "ci95": null
+        },
+        "ndcg_at_10": {
+          "difference": null,
+          "ci95": null
+        },
+        "no_answer_fpr": {
+          "difference": -0.9761904761904762,
+          "ci95": [
+            -1.0,
+            -0.9285714285714286
+          ]
+        },
+        "answerable_coverage": {
+          "difference": null,
+          "ci95": null
+        },
+        "stale_contamination_at_5": {
+          "difference": -0.16666666666666663,
+          "ci95": [
+            -0.2142857142857143,
+            -0.12380952380952381
+          ]
+        },
+        "invalid_version_contamination_at_5": {
+          "difference": -0.2952380952380952,
+          "ci95": [
+            -0.34285714285714286,
+            -0.24761904761904763
+          ]
+        },
+        "acl_leakage_at_10": {
+          "difference": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "semantic_paraphrase": {
+      "n": 63,
+      "cohorts": 21,
+      "arms": {
+        "A": {
+          "recall_at_5": {
+            "numerator": 61.0,
+            "denominator": 63.0,
+            "value": 0.9682539682539683,
+            "ci95": [
+              0.9206349206349206,
+              1.0
+            ]
+          },
+          "recall_at_10": {
+            "numerator": 63.0,
+            "denominator": 63.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "precision_at_5": {
+            "numerator": 12.199999999999998,
+            "denominator": 63.0,
+            "value": 0.1936507936507936,
+            "ci95": [
+              0.1841269841269841,
+              0.2
+            ]
+          },
+          "mrr_at_10": {
+            "numerator": 34.75,
+            "denominator": 63.0,
+            "value": 0.5515873015873016,
+            "ci95": [
+              0.4952380952380952,
+              0.6066137566137565
+            ]
+          },
+          "ndcg_at_10": {
+            "numerator": 41.7794417648911,
+            "denominator": 63.0,
+            "value": 0.6631657422998587,
+            "ci95": [
+              0.6207253894429818,
+              0.7046791489550994
+            ]
+          },
+          "no_answer_fpr": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "answerable_coverage": {
+            "numerator": 63.0,
+            "denominator": 63.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "stale_contamination_at_5": {
+            "numerator": 105.0,
+            "denominator": 315.0,
+            "value": 0.3333333333333333,
+            "ci95": [
+              0.3238095238095238,
+              0.34285714285714286
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 231.0,
+            "denominator": 315.0,
+            "value": 0.7333333333333333,
+            "ci95": [
+              0.7238095238095238,
+              0.7428571428571429
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 630.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "B": {
+          "recall_at_5": {
+            "numerator": 57.0,
+            "denominator": 63.0,
+            "value": 0.9047619047619048,
+            "ci95": [
+              0.8412698412698413,
+              0.9682539682539683
+            ]
+          },
+          "recall_at_10": {
+            "numerator": 63.0,
+            "denominator": 63.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "precision_at_5": {
+            "numerator": 11.399999999999999,
+            "denominator": 63.0,
+            "value": 0.18095238095238092,
+            "ci95": [
+              0.16825396825396824,
+              0.19365079365079366
+            ]
+          },
+          "mrr_at_10": {
+            "numerator": 34.161904761904765,
+            "denominator": 63.0,
+            "value": 0.5422524565381709,
+            "ci95": [
+              0.4687433862433862,
+              0.615760582010582
+            ]
+          },
+          "ndcg_at_10": {
+            "numerator": 41.32227536336909,
+            "denominator": 63.0,
+            "value": 0.6559091327518902,
+            "ci95": [
+              0.6001754712486274,
+              0.7116213836936783
+            ]
+          },
+          "no_answer_fpr": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "answerable_coverage": {
+            "numerator": 63.0,
+            "denominator": 63.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "stale_contamination_at_5": {
+            "numerator": 105.0,
+            "denominator": 315.0,
+            "value": 0.3333333333333333,
+            "ci95": [
+              0.3111111111111111,
+              0.35873015873015873
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 199.0,
+            "denominator": 315.0,
+            "value": 0.6317460317460317,
+            "ci95": [
+              0.6095238095238096,
+              0.6507936507936508
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 630.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "C": {
+          "recall_at_5": {
+            "numerator": 63.0,
+            "denominator": 63.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall_at_10": {
+            "numerator": 63.0,
+            "denominator": 63.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "precision_at_5": {
+            "numerator": 12.599999999999996,
+            "denominator": 63.0,
+            "value": 0.19999999999999993,
+            "ci95": [
+              0.19999999999999996,
+              0.20000000000000004
+            ]
+          },
+          "mrr_at_10": {
+            "numerator": 37.96666666666667,
+            "denominator": 63.0,
+            "value": 0.6026455026455027,
+            "ci95": [
+              0.5476190476190477,
+              0.6544973544973545
+            ]
+          },
+          "ndcg_at_10": {
+            "numerator": 44.3052208076611,
+            "denominator": 63.0,
+            "value": 0.7032574731374778,
+            "ci95": [
+              0.6616847168478701,
+              0.7422812576598296
+            ]
+          },
+          "no_answer_fpr": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "answerable_coverage": {
+            "numerator": 63.0,
+            "denominator": 63.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "stale_contamination_at_5": {
+            "numerator": 107.0,
+            "denominator": 315.0,
+            "value": 0.3396825396825397,
+            "ci95": [
+              0.3238095238095238,
+              0.35555555555555557
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 209.0,
+            "denominator": 315.0,
+            "value": 0.6634920634920635,
+            "ci95": [
+              0.6349206349206349,
+              0.692063492063492
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 630.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "D": {
+          "recall_at_5": {
+            "numerator": 63.0,
+            "denominator": 63.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall_at_10": {
+            "numerator": 63.0,
+            "denominator": 63.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "precision_at_5": {
+            "numerator": 12.599999999999996,
+            "denominator": 63.0,
+            "value": 0.19999999999999993,
+            "ci95": [
+              0.19999999999999996,
+              0.20000000000000004
+            ]
+          },
+          "mrr_at_10": {
+            "numerator": 36.88333333333333,
+            "denominator": 63.0,
+            "value": 0.5854497354497354,
+            "ci95": [
+              0.5370370370370371,
+              0.6301587301587301
+            ]
+          },
+          "ndcg_at_10": {
+            "numerator": 43.50547400315916,
+            "denominator": 63.0,
+            "value": 0.6905630794152248,
+            "ci95": [
+              0.6543498050942015,
+              0.7241333630591515
+            ]
+          },
+          "no_answer_fpr": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "answerable_coverage": {
+            "numerator": 63.0,
+            "denominator": 63.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "stale_contamination_at_5": {
+            "numerator": 99.0,
+            "denominator": 315.0,
+            "value": 0.3142857142857143,
+            "ci95": [
+              0.29523809523809524,
+              0.3333333333333333
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 207.0,
+            "denominator": 315.0,
+            "value": 0.6571428571428571,
+            "ci95": [
+              0.6253968253968254,
+              0.6888888888888889
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 630.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "E": {
+          "recall_at_5": {
+            "numerator": 63.0,
+            "denominator": 63.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall_at_10": {
+            "numerator": 63.0,
+            "denominator": 63.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "precision_at_5": {
+            "numerator": 12.599999999999996,
+            "denominator": 63.0,
+            "value": 0.19999999999999993,
+            "ci95": [
+              0.19999999999999996,
+              0.20000000000000004
+            ]
+          },
+          "mrr_at_10": {
+            "numerator": 58.83333333333333,
+            "denominator": 63.0,
+            "value": 0.9338624338624338,
+            "ci95": [
+              0.8968253968253969,
+              0.9682539682539683
+            ]
+          },
+          "ndcg_at_10": {
+            "numerator": 59.916508275000204,
+            "denominator": 63.0,
+            "value": 0.9510556869047652,
+            "ci95": [
+              0.9234661552721131,
+              0.9765669684807274
+            ]
+          },
+          "no_answer_fpr": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "answerable_coverage": {
+            "numerator": 63.0,
+            "denominator": 63.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "stale_contamination_at_5": {
+            "numerator": 41.0,
+            "denominator": 315.0,
+            "value": 0.13015873015873017,
+            "ci95": [
+              0.12063492063492064,
+              0.13968253968253969
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 101.0,
+            "denominator": 315.0,
+            "value": 0.32063492063492066,
+            "ci95": [
+              0.2984126984126984,
+              0.3333333333333333
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 630.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "F": {
+          "recall_at_5": {
+            "numerator": 36.0,
+            "denominator": 63.0,
+            "value": 0.5714285714285714,
+            "ci95": [
+              0.5079365079365079,
+              0.6349206349206349
+            ]
+          },
+          "recall_at_10": {
+            "numerator": 36.0,
+            "denominator": 63.0,
+            "value": 0.5714285714285714,
+            "ci95": [
+              0.5079365079365079,
+              0.6349206349206349
+            ]
+          },
+          "precision_at_5": {
+            "numerator": 7.200000000000003,
+            "denominator": 63.0,
+            "value": 0.11428571428571434,
+            "ci95": [
+              0.10158730158730159,
+              0.12698412698412698
+            ]
+          },
+          "mrr_at_10": {
+            "numerator": 36.0,
+            "denominator": 63.0,
+            "value": 0.5714285714285714,
+            "ci95": [
+              0.5079365079365079,
+              0.6349206349206349
+            ]
+          },
+          "ndcg_at_10": {
+            "numerator": 36.0,
+            "denominator": 63.0,
+            "value": 0.5714285714285714,
+            "ci95": [
+              0.5079365079365079,
+              0.6349206349206349
+            ]
+          },
+          "no_answer_fpr": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "answerable_coverage": {
+            "numerator": 36.0,
+            "denominator": 63.0,
+            "value": 0.5714285714285714,
+            "ci95": [
+              0.5079365079365079,
+              0.6349206349206349
+            ]
+          },
+          "stale_contamination_at_5": {
+            "numerator": 34.0,
+            "denominator": 180.0,
+            "value": 0.18888888888888888,
+            "ci95": [
+              0.17142857142857143,
+              0.2
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 69.0,
+            "denominator": 180.0,
+            "value": 0.38333333333333336,
+            "ci95": [
+              0.35555555555555557,
+              0.4
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 360.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        }
+      },
+      "paired_F_minus_A": {
+        "recall_at_5": {
+          "difference": -0.39682539682539686,
+          "ci95": [
+            -0.47619047619047616,
+            -0.31746031746031744
+          ]
+        },
+        "recall_at_10": {
+          "difference": -0.4285714285714286,
+          "ci95": [
+            -0.4920634920634921,
+            -0.3650793650793651
+          ]
+        },
+        "precision_at_5": {
+          "difference": -0.07936507936507926,
+          "ci95": [
+            -0.09523809523809526,
+            -0.06349206349206345
+          ]
+        },
+        "mrr_at_10": {
+          "difference": 0.01984126984126977,
+          "ci95": [
+            -0.06216931216931221,
+            0.10556216931216929
+          ]
+        },
+        "ndcg_at_10": {
+          "difference": -0.0917371708712873,
+          "ci95": [
+            -0.166836196916135,
+            -0.01534498948145023
+          ]
+        },
+        "no_answer_fpr": {
+          "difference": null,
+          "ci95": null
+        },
+        "answerable_coverage": {
+          "difference": -0.4285714285714286,
+          "ci95": [
+            -0.4920634920634921,
+            -0.3650793650793651
+          ]
+        },
+        "stale_contamination_at_5": {
+          "difference": -0.14444444444444443,
+          "ci95": [
+            -0.15833333333333333,
+            -0.1333333333333333
+          ]
+        },
+        "invalid_version_contamination_at_5": {
+          "difference": -0.3499999999999999,
+          "ci95": [
+            -0.3752401433691756,
+            -0.33333333333333326
+          ]
+        },
+        "acl_leakage_at_10": {
+          "difference": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "time_validity": {
+      "n": 42,
+      "cohorts": 21,
+      "arms": {
+        "A": {
+          "recall_at_5": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall_at_10": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "precision_at_5": {
+            "numerator": 8.400000000000002,
+            "denominator": 42.0,
+            "value": 0.20000000000000004,
+            "ci95": [
+              0.2,
+              0.20000000000000004
+            ]
+          },
+          "mrr_at_10": {
+            "numerator": 20.999999999999996,
+            "denominator": 42.0,
+            "value": 0.4999999999999999,
+            "ci95": [
+              0.4325396825396825,
+              0.5674603174603174
+            ]
+          },
+          "ndcg_at_10": {
+            "numerator": 26.261859507142916,
+            "denominator": 42.0,
+            "value": 0.6252823692176884,
+            "ci95": [
+              0.5745459465136061,
+              0.6760187919217708
+            ]
+          },
+          "no_answer_fpr": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "answerable_coverage": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "stale_contamination_at_5": {
+            "numerator": 77.0,
+            "denominator": 210.0,
+            "value": 0.36666666666666664,
+            "ci95": [
+              0.3380952380952381,
+              0.3904761904761905
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 148.0,
+            "denominator": 210.0,
+            "value": 0.7047619047619048,
+            "ci95": [
+              0.680952380952381,
+              0.7285714285714285
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 420.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "B": {
+          "recall_at_5": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall_at_10": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "precision_at_5": {
+            "numerator": 8.400000000000002,
+            "denominator": 42.0,
+            "value": 0.20000000000000004,
+            "ci95": [
+              0.2,
+              0.20000000000000004
+            ]
+          },
+          "mrr_at_10": {
+            "numerator": 30.366666666666667,
+            "denominator": 42.0,
+            "value": 0.723015873015873,
+            "ci95": [
+              0.6317460317460318,
+              0.8134920634920635
+            ]
+          },
+          "ndcg_at_10": {
+            "numerator": 33.350799110806406,
+            "denominator": 42.0,
+            "value": 0.7940666454953906,
+            "ci95": [
+              0.7257554491518539,
+              0.8618166370068122
+            ]
+          },
+          "no_answer_fpr": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "answerable_coverage": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "stale_contamination_at_5": {
+            "numerator": 77.0,
+            "denominator": 210.0,
+            "value": 0.36666666666666664,
+            "ci95": [
+              0.3380952380952381,
+              0.3904761904761905
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 135.0,
+            "denominator": 210.0,
+            "value": 0.6428571428571429,
+            "ci95": [
+              0.6189285714285716,
+              0.6714285714285714
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 420.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "C": {
+          "recall_at_5": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall_at_10": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "precision_at_5": {
+            "numerator": 8.400000000000002,
+            "denominator": 42.0,
+            "value": 0.20000000000000004,
+            "ci95": [
+              0.2,
+              0.20000000000000004
+            ]
+          },
+          "mrr_at_10": {
+            "numerator": 24.83333333333333,
+            "denominator": 42.0,
+            "value": 0.5912698412698412,
+            "ci95": [
+              0.5198412698412698,
+              0.6666666666666666
+            ]
+          },
+          "ndcg_at_10": {
+            "numerator": 29.241807694718855,
+            "denominator": 42.0,
+            "value": 0.6962335165409251,
+            "ci95": [
+              0.6421959775546234,
+              0.7522627937134073
+            ]
+          },
+          "no_answer_fpr": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "answerable_coverage": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "stale_contamination_at_5": {
+            "numerator": 76.0,
+            "denominator": 210.0,
+            "value": 0.3619047619047619,
+            "ci95": [
+              0.3333333333333333,
+              0.3904761904761905
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 141.0,
+            "denominator": 210.0,
+            "value": 0.6714285714285714,
+            "ci95": [
+              0.6333333333333333,
+              0.7095238095238096
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 420.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "D": {
+          "recall_at_5": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall_at_10": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "precision_at_5": {
+            "numerator": 8.400000000000002,
+            "denominator": 42.0,
+            "value": 0.20000000000000004,
+            "ci95": [
+              0.2,
+              0.20000000000000004
+            ]
+          },
+          "mrr_at_10": {
+            "numerator": 21.999999999999996,
+            "denominator": 42.0,
+            "value": 0.5238095238095237,
+            "ci95": [
+              0.47619047619047616,
+              0.5753968253968254
+            ]
+          },
+          "ndcg_at_10": {
+            "numerator": 27.142314085714982,
+            "denominator": 42.0,
+            "value": 0.6462455734694044,
+            "ci95": [
+              0.6110960261904955,
+              0.6845124958333478
+            ]
+          },
+          "no_answer_fpr": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "answerable_coverage": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "stale_contamination_at_5": {
+            "numerator": 74.0,
+            "denominator": 210.0,
+            "value": 0.3523809523809524,
+            "ci95": [
+              0.3238095238095238,
+              0.3761904761904762
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 150.0,
+            "denominator": 210.0,
+            "value": 0.7142857142857143,
+            "ci95": [
+              0.6904761904761905,
+              0.7380952380952381
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 420.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "E": {
+          "recall_at_5": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall_at_10": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "precision_at_5": {
+            "numerator": 8.400000000000002,
+            "denominator": 42.0,
+            "value": 0.20000000000000004,
+            "ci95": [
+              0.2,
+              0.20000000000000004
+            ]
+          },
+          "mrr_at_10": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "ndcg_at_10": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "no_answer_fpr": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "answerable_coverage": {
+            "numerator": 42.0,
+            "denominator": 42.0,
+            "value": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "stale_contamination_at_5": {
+            "numerator": 19.0,
+            "denominator": 210.0,
+            "value": 0.09047619047619047,
+            "ci95": [
+              0.07142857142857142,
+              0.10952380952380952
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 55.0,
+            "denominator": 210.0,
+            "value": 0.2619047619047619,
+            "ci95": [
+              0.24285714285714285,
+              0.28095238095238095
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 420.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "F": {
+          "recall_at_5": {
+            "numerator": 28.0,
+            "denominator": 42.0,
+            "value": 0.6666666666666666,
+            "ci95": [
+              0.5714285714285714,
+              0.7619047619047619
+            ]
+          },
+          "recall_at_10": {
+            "numerator": 28.0,
+            "denominator": 42.0,
+            "value": 0.6666666666666666,
+            "ci95": [
+              0.5714285714285714,
+              0.7619047619047619
+            ]
+          },
+          "precision_at_5": {
+            "numerator": 5.600000000000002,
+            "denominator": 42.0,
+            "value": 0.1333333333333334,
+            "ci95": [
+              0.1142857142857143,
+              0.15238095238095242
+            ]
+          },
+          "mrr_at_10": {
+            "numerator": 28.0,
+            "denominator": 42.0,
+            "value": 0.6666666666666666,
+            "ci95": [
+              0.5714285714285714,
+              0.7619047619047619
+            ]
+          },
+          "ndcg_at_10": {
+            "numerator": 28.0,
+            "denominator": 42.0,
+            "value": 0.6666666666666666,
+            "ci95": [
+              0.5714285714285714,
+              0.7619047619047619
+            ]
+          },
+          "no_answer_fpr": {
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "value": null,
+            "ci95": null
+          },
+          "answerable_coverage": {
+            "numerator": 28.0,
+            "denominator": 42.0,
+            "value": 0.6666666666666666,
+            "ci95": [
+              0.5714285714285714,
+              0.7619047619047619
+            ]
+          },
+          "stale_contamination_at_5": {
+            "numerator": 19.0,
+            "denominator": 140.0,
+            "value": 0.1357142857142857,
+            "ci95": [
+              0.10967741935483871,
+              0.16296296296296298
+            ]
+          },
+          "invalid_version_contamination_at_5": {
+            "numerator": 42.0,
+            "denominator": 140.0,
+            "value": 0.3,
+            "ci95": [
+              0.2687455357142857,
+              0.3333333333333333
+            ]
+          },
+          "acl_leakage_at_10": {
+            "numerator": 0.0,
+            "denominator": 280.0,
+            "value": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        }
+      },
+      "paired_F_minus_A": {
+        "recall_at_5": {
+          "difference": -0.33333333333333337,
+          "ci95": [
+            -0.4285714285714286,
+            -0.23809523809523814
+          ]
+        },
+        "recall_at_10": {
+          "difference": -0.33333333333333337,
+          "ci95": [
+            -0.4285714285714286,
+            -0.23809523809523814
+          ]
+        },
+        "precision_at_5": {
+          "difference": -0.06666666666666665,
+          "ci95": [
+            -0.08571428571428573,
+            -0.04761904761904759
+          ]
+        },
+        "mrr_at_10": {
+          "difference": 0.16666666666666674,
+          "ci95": [
+            0.06746031746031755,
+            0.27380952380952384
+          ]
+        },
+        "ndcg_at_10": {
+          "difference": 0.0413842974489782,
+          "ci95": [
+            -0.05385379778911703,
+            0.1428571428571428
+          ]
+        },
+        "no_answer_fpr": {
+          "difference": null,
+          "ci95": null
+        },
+        "answerable_coverage": {
+          "difference": -0.33333333333333337,
+          "ci95": [
+            -0.4285714285714286,
+            -0.23809523809523814
+          ]
+        },
+        "stale_contamination_at_5": {
+          "difference": -0.23095238095238094,
+          "ci95": [
+            -0.2721619047619047,
+            -0.18809523809523812
+          ]
+        },
+        "invalid_version_contamination_at_5": {
+          "difference": -0.4047619047619048,
+          "ci95": [
+            -0.4504761904761905,
+            -0.35677655677655673
+          ]
+        },
+        "acl_leakage_at_10": {
+          "difference": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    }
+  },
+  "bootstrap": {
+    "method": "paired percentile by resampled query cohort",
+    "seed": 20261120,
+    "iterations": 10000
+  },
+  "median_stage_ms_warm_text_cache": {
+    "bm25": 0.9995390428230166,
+    "calibration_and_version": 1.0440800106152892,
+    "dense": 2.0569009939208627,
+    "fusion_and_pairwise": 1.4104979345574975
+  },
+  "abstention_reasons": {
+    "accepted": 175,
+    "insufficient_absolute_query_support": 140
+  }
+}

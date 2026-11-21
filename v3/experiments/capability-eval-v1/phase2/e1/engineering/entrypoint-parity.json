@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "samples": [
+    {
+      "query_id": "r1-dev-001",
+      "result_count": 10,
+      "abstention": null
+    },
+    {
+      "query_id": "r1-dev-002",
+      "result_count": 0,
+      "abstention": "insufficient_absolute_query_support"
+    }
+  ],
+  "frozen_development_raw_sha256": "5954e69c0631a13d9c25c93ea0652a6454df8369ca2ed1a01b56430127deaa26"
+}

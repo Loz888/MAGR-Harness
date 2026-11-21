@@ -1,0 +1,24 @@
+{
+  "scope": "development labels only; structural, source-blob and synthetic topic review before retrieval scoring",
+  "status": "PASS",
+  "rows": 315,
+  "positive_entries": 253,
+  "categories": {
+    "exact_symbol": 63,
+    "semantic_paraphrase": 63,
+    "time_validity": 42,
+    "commit_version": 42,
+    "conflict": 42,
+    "no_answer": 42,
+    "acl_negative": 21
+  },
+  "source_blobs_checked": 21,
+  "sha256": {
+    "base-corpus.jsonl": "aa8ddd2e5ebc6eece9fa1adbff90715bc185e40616bf344da1e96b066566b45d",
+    "development-overlay.jsonl": "2e70ea794f3adfc094572a7d15ae175492d07245e5ca89234ae0f2f70eff8079",
+    "independent-overlay.jsonl": "c6d46fd0e32925417af4d3d56d280f5b1e4b69111292e04e8f364eada7ef0242",
+    "development.queries.jsonl": "823bdaf1b0c0c03ead34d30871f13765aeb0884be36a930673c14ec068d8753f",
+    "development.labels.jsonl": "3bbdb6eba7512085e09b3a1ca2ef75e217038263e2a56ace8b753784d735c10c"
+  },
+  "limitations": "Semantic equivalence of general natural language is not exhaustively decidable. Seven strata were sampled for wording. Shared corpus only; private queries and labels were not opened."
+}

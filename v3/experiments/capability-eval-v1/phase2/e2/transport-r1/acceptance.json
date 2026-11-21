@@ -1,0 +1,8 @@
+{
+  "offline": "PASS",
+  "formal": "BLOCKED",
+  "halt_reason": "UNCONFIRMED_ConnectError",
+  "expected_trials": 1440,
+  "terminal_trials": 1,
+  "independently_graded": 1
+}

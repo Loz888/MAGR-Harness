@@ -1,0 +1,16 @@
+{
+  "status": "FAIL",
+  "checks": {
+    "recall_improvement": false,
+    "mrr_paired_lower_bound": false,
+    "no_answer_fpr": true,
+    "answerable_coverage": false,
+    "acl": true
+  },
+  "split": "development",
+  "candidate_manifest_sha256": "733b51b422c90da9166380a711b8922a9d90863f6ff8e703db7401d54d0f283f",
+  "metrics_sha256": "c3eb6ec4714b51f38d45c6f19dde4d248e009a2a9a364c62e82d6bd4889a2caa",
+  "cases_sha256": "a7b42060d7b926e46eb8b5a16fb2d831fd877545d8bc2827d9fbfc8ad7b4acde",
+  "labels_sha256": "3bbdb6eba7512085e09b3a1ca2ef75e217038263e2a56ace8b753784d735c10c",
+  "scope": "Frozen R1 retrieval mechanism only. No release promotion."
+}

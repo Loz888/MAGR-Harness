@@ -1,0 +1,25 @@
+{
+  "settled": 1451,
+  "priced": 1451,
+  "complete": true,
+  "missing_or_not_rateable": {},
+  "studies": {
+    "h12": {
+      "priced_requests": 256,
+      "input_cache_hit_tokens": 903936,
+      "input_cache_miss_tokens": 1623130,
+      "output_tokens": 129159,
+      "estimated_usd_nano": 323676708
+    },
+    "h17": {
+      "priced_requests": 1195,
+      "input_cache_hit_tokens": 3554048,
+      "input_cache_miss_tokens": 6507191,
+      "output_tokens": 279343,
+      "estimated_usd_nano": 1154346594
+    }
+  },
+  "total_estimated_usd_nano": 1478023302,
+  "pricing_url": "https://api-docs.deepseek.com/quick_start/pricing/",
+  "invoice_reconciliation": "NOT_RUN"
+}

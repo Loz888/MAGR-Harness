@@ -1,0 +1,9 @@
+{
+  "terminal_model_failures": {
+    "REJECTED_CURSOR": 72,
+    "FINISH_length": 12,
+    "MULTIPLE_CALLS_IN_ONE_REPLY": 20
+  },
+  "successful_read_traces": "live-trials.jsonl.gz / reads, indexed by ordinal",
+  "model_tool_requests": "live-model-events.jsonl.gz"
+}

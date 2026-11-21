@@ -1,0 +1,17 @@
+{
+  "baseline": "d4fee2f555c5e031720302e98ba164cf1bd8db74",
+  "freeze_utc": "2026-11-20T13:48:59.060871+00:00",
+  "receipt_recorded_utc": "2026-11-20T13:51:03.498627+00:00",
+  "queries_sha256": "8aa48ea0fc2da289878d339c7fe2f919bba9e3cfc3e2b2b7d2cd3c5c3297f281",
+  "labels_sha256": "47cdb6f7209c56e2b4a147f117ab2eddf59bdba680bd13e344b2b03bcc8ac9b3",
+  "overlay_sha256": "c6d46fd0e32925417af4d3d56d280f5b1e4b69111292e04e8f364eada7ef0242",
+  "query_count": 210,
+  "categories": 7,
+  "per_category": 30,
+  "answerable": 150,
+  "unanswerable": 60,
+  "scope_count": 6,
+  "overlay_rows": 270,
+  "origin": "Independent synthetic collection work instructions and annotation. 30 topics. No old query or label files opened. Author and candidate developer are separate agents under the same OS user.",
+  "evaluation": "Single evaluation of immutable candidate. Private queries and labels retained outside the source checkout. ACL also requires checking every returned ID against scope in the full corpus."
+}

@@ -1,0 +1,54 @@
+{
+  "authored_at_utc": "2026-11-20T13:26:45.227941+00:00",
+  "base": "41df5c0eb27912fe9b8a2f8b215a277eddb7feec",
+  "expected_decisions": {
+    "AUTO_CONFIRM": 78,
+    "REJECT": 222,
+    "REQUIRE_CONFIRMATION": 60
+  },
+  "image_id": "sha256:33198da2828a14c30348d2ccb4750833d5ed9a44c88d840a0e523d7417120337",
+  "manifest_sha256": "8e9dfabf7fc384e4d2d7eb3ced7047b6c68d98e94cbf2a042361e8664acb5bd5",
+  "planned_tags": {
+    "foreign": 78,
+    "human_procedure": 42,
+    "injection": 38,
+    "legitimate": 138,
+    "reported": 24,
+    "self": 24,
+    "sensitive": 48,
+    "violation": 144
+  },
+  "postgresql": "16.12 (Debian 16.12-1.pgdg12+1)",
+  "protocol": "E4-R2 Museum v1",
+  "public_control": {
+    "passed": 12,
+    "planned": 12
+  },
+  "public_control_raw_sha256": "9d9862c69dc7ec135b2582abf1bff6dd6468667a8ea47c675bb1d7971e884485",
+  "public_control_sha256": "81ba640d59725bb21beda32a61b46c92041082be920e29ee8107846d1f6c47ed",
+  "python_lock_sha256": "56579416e1652e02a17706e72be15ee5d24762c45d6e27b25618312eddbb6583",
+  "sealed_files": {
+    "cases.jsonl": "29b348a4a089c39db74c8be8470b4bb1a06fb8bb21447ad6e2c7a2bcbf118e6b",
+    "design.py": "056e8e2c1a584ec4984cd967e370fba5c41a12f3fe114059c5416b5de6b1c8c2",
+    "fixture.py": "2422e674d2922c8bbf0df6eca20f358c5b3b0f14ea586d9ed8d8a60483d7b87f",
+    "labels.jsonl": "52d7b5e8c0c2454932e0347d213ed64389f1d1c782e816221c22d2cea537a2c1",
+    "protocol.md": "26e93fdecaeecf0b5d01d44fa13926e8feec944e0faf07738e8903564f812051",
+    "run.py": "5fbe1bfed5255e6ba8be362c661a8a2da40dd6d07a9f895984c61103f60df017",
+    "score_once.py": "c4cd948d9efb49d51b3d256ba9dd2843940632877c8bffcfb80d199c942f4309",
+    "scoring.py": "814fedd324db12330f50adcbc6c5dd27264b86b7a9befb59e1d67bf778bde2b7"
+  },
+  "strata": {
+    "episode": 42,
+    "instruction": 30,
+    "mixed_sources": 16,
+    "procedure": 42,
+    "procedure_foreign": 22,
+    "procedure_missing": 18,
+    "reported": 24,
+    "scope": 40,
+    "secret": 48,
+    "self": 24,
+    "semantic": 18,
+    "ui": 36
+  }
+}

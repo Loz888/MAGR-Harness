@@ -1,0 +1,38 @@
+{
+  "h12_gate": "BLOCKED",
+  "h17_multi_agent_advantage": "NOT_ESTABLISHED",
+  "scored_trials": {
+    "h12": 26,
+    "h17": 180
+  },
+  "trial_counts": {
+    "h12": {
+      "FAIL": 7,
+      "PASS": 19,
+      "BLOCKED": 6
+    },
+    "h17": {
+      "PASS": 167,
+      "FAIL": 13
+    }
+  },
+  "phase4": "NOT_RUN",
+  "independent_operator": "NOT_RUN",
+  "paid_attempts": 1451,
+  "supplier_settled": 1451,
+  "held_micros": 0,
+  "peak_usd_micros": 4267357,
+  "tariff_usd_nano": 1478023302,
+  "checks": {
+    "raw.jsonl": "5fc128b175dee1ff6d63c72ddba314b45c2e86e86dae61da561e6f84641f94a9",
+    "provider-receipts.jsonl": "5c21b106c82b05c1633b2da34eddf571211b96493b29bfbeefbd360c4df78e9e",
+    "metrics.json": "afde406b2417c8334abff1efe13f4c6965f6595de84964947f25d0ff7da26695",
+    "failures.md": "26681aec04e5486bfe0e26f454f926593181d6b1504c64fe7da450c29561c740",
+    "report.md": "46bd7150b1b8b7d910086fabb9d306e6e84ac80a0ccf270fda4adbe2105a29e3",
+    "h12-report.md": "5fcf8802dba1f8ec17c6af1a2ca2985904dff4c30ec01001c113c07cfe4741fc",
+    "h17-report.md": "c06348afd167a500bbb9c56bc1187d9fc8646f0f52b549653c9f032c39062ce6",
+    "evidence-index.json": "74993202222d5b101f3ef5dbae5d9ad4a6df34d3742e2d1bbde3e70de219743d",
+    "tariff-audit.json": "38617e4fb5bf2a41b3f4e43e47835c9f8002ffda00e413ef977991e1953d304a",
+    "independent_review.md": "0e0920a11c0bce2280f9060f45e1d8751ce6e8bdafaf494ed77e3e7d4928f9c3"
+  }
+}

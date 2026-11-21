@@ -1,0 +1,230 @@
+{
+  "h12": {
+    "accounting": {
+      "calls": 256,
+      "held_micros": 0,
+      "input_tokens": 2527066,
+      "output_tokens": 129159,
+      "peak_cost_micros": 913224,
+      "settled": 256,
+      "unknown": 0
+    },
+    "arms": {
+      "chunked": {
+        "bound_later_continuations": 0,
+        "consultation_tool_receipts": 0,
+        "expert_dispatches": 0,
+        "reasons": [
+          [
+            "PASS",
+            "verified",
+            4
+          ],
+          [
+            "BLOCKED",
+            "PHASE3_BUDGET",
+            3
+          ],
+          [
+            "FAIL",
+            "PHASE3_BUDGET",
+            1
+          ]
+        ],
+        "settled_provider_truncations": 1,
+        "statuses": {
+          "BLOCKED": 3,
+          "FAIL": 1,
+          "PASS": 4
+        },
+        "strategy_match": 5,
+        "successful_after_truncation": 0,
+        "test_changed": 0,
+        "unsafe_truncated_dispatch_detected": 0
+      },
+      "full_file": {
+        "bound_later_continuations": 2,
+        "consultation_tool_receipts": 0,
+        "expert_dispatches": 0,
+        "reasons": [
+          [
+            "PASS",
+            "verified",
+            7
+          ],
+          [
+            "BLOCKED",
+            "RECOVERY_BLOCKED",
+            1
+          ]
+        ],
+        "settled_provider_truncations": 2,
+        "statuses": {
+          "BLOCKED": 1,
+          "PASS": 7
+        },
+        "strategy_match": 6,
+        "successful_after_truncation": 1,
+        "test_changed": 0,
+        "unsafe_truncated_dispatch_detected": 0
+      },
+      "structured_plan": {
+        "bound_later_continuations": 0,
+        "consultation_tool_receipts": 0,
+        "expert_dispatches": 0,
+        "reasons": [
+          [
+            "PASS",
+            "verified",
+            7
+          ],
+          [
+            "BLOCKED",
+            "PHASE3_BUDGET",
+            1
+          ]
+        ],
+        "settled_provider_truncations": 0,
+        "statuses": {
+          "BLOCKED": 1,
+          "PASS": 7
+        },
+        "strategy_match": 7,
+        "successful_after_truncation": 0,
+        "test_changed": 0,
+        "unsafe_truncated_dispatch_detected": 0
+      },
+      "verified_resume": {
+        "bound_later_continuations": 13,
+        "consultation_tool_receipts": 0,
+        "expert_dispatches": 0,
+        "reasons": [
+          [
+            "FAIL",
+            "model_output_continuation_limit",
+            4
+          ],
+          [
+            "PASS",
+            "verified",
+            1
+          ],
+          [
+            "FAIL",
+            "PHASE3_BUDGET",
+            2
+          ],
+          [
+            "BLOCKED",
+            "PHASE3_BUDGET",
+            1
+          ]
+        ],
+        "settled_provider_truncations": 18,
+        "statuses": {
+          "BLOCKED": 1,
+          "FAIL": 6,
+          "PASS": 1
+        },
+        "strategy_match": 0,
+        "successful_after_truncation": 1,
+        "test_changed": 0,
+        "unsafe_truncated_dispatch_detected": 0
+      }
+    },
+    "independent_operator": "NOT_RUN",
+    "scheduled": 32
+  },
+  "h17": {
+    "accounting": {
+      "calls": 1195,
+      "held_micros": 0,
+      "input_tokens": 10061239,
+      "output_tokens": 279343,
+      "peak_cost_micros": 3354133,
+      "settled": 1195,
+      "unknown": 0
+    },
+    "arms": {
+      "delegate": {
+        "bound_later_continuations": 4,
+        "consultation_tool_receipts": 0,
+        "expert_dispatches": 0,
+        "reasons": [
+          [
+            "PASS",
+            "verified",
+            80
+          ],
+          [
+            "FAIL",
+            "non_recoverable_policy_denial",
+            4
+          ],
+          [
+            "FAIL",
+            "PHASE3_BUDGET",
+            5
+          ],
+          [
+            "FAIL",
+            "model_output_continuation_limit",
+            1
+          ]
+        ],
+        "settled_provider_truncations": 4,
+        "statuses": {
+          "FAIL": 10,
+          "PASS": 80
+        },
+        "strategy_match": 0,
+        "successful_after_truncation": 3,
+        "test_changed": 0,
+        "unsafe_truncated_dispatch_detected": 0
+      },
+      "single": {
+        "bound_later_continuations": 2,
+        "consultation_tool_receipts": 0,
+        "expert_dispatches": 0,
+        "reasons": [
+          [
+            "PASS",
+            "verified",
+            87
+          ],
+          [
+            "FAIL",
+            "PHASE3_BUDGET",
+            3
+          ]
+        ],
+        "settled_provider_truncations": 2,
+        "statuses": {
+          "FAIL": 3,
+          "PASS": 87
+        },
+        "strategy_match": 0,
+        "successful_after_truncation": 2,
+        "test_changed": 0,
+        "unsafe_truncated_dispatch_detected": 0
+      }
+    },
+    "comparison": {
+      "ci95": [
+        -0.15555555555555556,
+        -0.01111111111111111
+      ],
+      "clusters": 30,
+      "default_change_supported": false,
+      "meets_numeric_default_gates": false,
+      "noninferiority": false,
+      "paired_difference": -0.07777777777777778,
+      "relative_cost": 0.03279512347476987,
+      "relative_median_wall": -0.06607594479956791,
+      "status": "COMPLETE",
+      "superiority": false
+    },
+    "independent_operator": "NOT_RUN",
+    "scheduled": 180
+  }
+}

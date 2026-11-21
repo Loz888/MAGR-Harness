@@ -1,0 +1,10 @@
+{
+  "case_count": 10,
+  "expectation_count": 40,
+  "baseline": "d4fee2f555c5e031720302e98ba164cf1bd8db74",
+  "public_cases_sha256": "0ca1cda4bc8ac84a4fa16be1996b72134cdd7beb3b65680dc061d3817027378d",
+  "private_expectations_sha256": "5b84657d721205be2da73797fa1a93eb8fb905cc5573fcdba953b5d127a20e6d",
+  "grader_sha256": "982816a093a5770dbc96be51ce31e30b7a4ebd5bf45e4946bdb33713c094a201",
+  "private_key_file_mtime_utc": "2026-11-20T13:52:49.497283+00:00",
+  "review": "Synthetic materials authored separately from candidate development. Gold held outside checkout. Positive and negative grader contract checks executed with fabricated responses; contract checks do not score the candidate."
+}

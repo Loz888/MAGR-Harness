@@ -1,0 +1,20 @@
+{
+  "scheduled": 160,
+  "observed": 160,
+  "missing": [],
+  "passed": 160,
+  "disagreements": [],
+  "stale_submissions": 0,
+  "arms": {
+    "bm25": 40,
+    "hybrid": 40,
+    "hybrid_reranked": 40,
+    "off": 40
+  },
+  "mode": "formal",
+  "raw_sha256": "686689bcaa4436a09b1fd35acf8998b4184e3c7b4e0072785d26059455417024",
+  "holdout_raw_sha256": "884e4dbf33bdb0965377819a89d6eb17505e8703d78900d7caa3f29bd2fa256c",
+  "private_adjudications_sha256": "9c8915e7627df4a471612590d43f984b9a665b8ee9bd2a6eace10f89af3693c1",
+  "freeze": "7c47b95d45a551be930a249aaaa87d265c290680dfaf3375c141989a5a3dc229",
+  "private_expectations_sha256": "5b84657d721205be2da73797fa1a93eb8fb905cc5573fcdba953b5d127a20e6d"
+}

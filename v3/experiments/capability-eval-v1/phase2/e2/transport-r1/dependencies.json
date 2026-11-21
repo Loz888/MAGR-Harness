@@ -1,0 +1,11 @@
+{
+  "httpx": "0.28.1",
+  "httpcore": "1.0.9",
+  "sha256": {
+    "httpx/_client.py": "c43f941baefe58c91e96d00039e1868fe719d91453026d7db1647194563bff8d",
+    "httpx/_transports/default.py": "03379a454c95c0271c4f2c8d25ec437f49f57457f3cf2769748420bf0ecf2e79",
+    "httpcore/_sync/connection.py": "f5ec4639bdcf07e329d93d7eb1c91278bdadfad27ff7e357a2657c8a19960a05",
+    "httpcore/_sync/http11.py": "205a1b0f531de491652462969e1d7f4377a98a452bc88f2aa34f6ff0c8892040",
+    "httpcore/_backends/sync.py": "6e113877d88af549b176c76c826d847ca9d76819acd9682019853eee3994ba35"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "default": "single",
+  "engineering": "PASS",
+  "independent_operator": "NOT_RUN",
+  "live": "NOT_RUN",
+  "real_model_advantage": "NOT_ESTABLISHED"
+}

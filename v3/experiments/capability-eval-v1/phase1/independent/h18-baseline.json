@@ -1,0 +1,34 @@
+{
+  "revision": "fcabf97653a77db0032af5f80463d1ad72447181",
+  "cases": {
+    "G01": {
+      "status": "PASS"
+    },
+    "G02": {
+      "status": "FAIL",
+      "exception": "AssertionError",
+      "reason": "same target remains blocked after proven transaction rollback"
+    },
+    "G03": {
+      "status": "FAIL",
+      "exception": "AssertionError",
+      "reason": "expected failed forward SQL migration after import and before publication"
+    },
+    "G04": {
+      "status": "PASS"
+    },
+    "G05": {
+      "status": "PASS"
+    },
+    "G06": {
+      "status": "PASS"
+    },
+    "G07": {
+      "status": "PASS"
+    },
+    "G08": {
+      "status": "PASS"
+    }
+  },
+  "paid_calls": 0
+}

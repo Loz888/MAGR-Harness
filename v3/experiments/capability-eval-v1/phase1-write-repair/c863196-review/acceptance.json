@@ -1,0 +1,22 @@
+{
+  "attempted": 4,
+  "blocked": null,
+  "candidate": "c86319673c8bbfb83428cffb571b0e3e6c616bc3",
+  "executed": 4,
+  "failed_count": 1,
+  "indeterminate": 0,
+  "migration_tree": "6b345b2e4b0517b76cd098b801334085051167a0",
+  "not_run": 356,
+  "planned": 360,
+  "preregistration_sha256": "8e9dfabf7fc384e4d2d7eb3ced7047b6c68d98e94cbf2a042361e8664acb5bd5",
+  "provider_calls": 0,
+  "raw_sha256": "25a5dd5123e97c5e6af4fc8485a684d79867c0add76cdf92e4bfc743bcc45a2c",
+  "remote_writes": 0,
+  "result": "FAIL",
+  "source_tar_sha256": "1a83aa7da527cdc0b68c9a33fedb918bd5c9323e37734afcfd56412eac24a485",
+  "source_tree": "0ad0ceeb104c6627efb72ff50157328071fb228d",
+  "stop": [
+    "INCORRECT_VERIFIED"
+  ],
+  "usd": 0
+}

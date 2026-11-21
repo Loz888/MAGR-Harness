@@ -1,0 +1,26 @@
+{
+  "schema": "E3-R1-20261120",
+  "runtime_commit": "d4fee2f555c5e031720302e98ba164cf1bd8db74",
+  "approval": "user approved Phase 2 formal E3 up to 2040 calls and USD18, frozen synthetic sources only",
+  "arms": [
+    "off",
+    "bm25",
+    "hybrid",
+    "hybrid_reranked"
+  ],
+  "planned_sessions": 640,
+  "planned_upper_bound_calls": 1920,
+  "private_gold_sha256": "5b84657d721205be2da73797fa1a93eb8fb905cc5573fcdba953b5d127a20e6d",
+  "files": {
+    "experiments/capability-eval-v1/phase2/e3/run.py": "d81e9b3d15ec75d174265c40a69edc3ae98f2b7bb404c00956aaf77a3793a52e",
+    "experiments/capability-eval-v1/phase2/e3/controls.py": "f207ec5b854c865b6df7a215e11de6da42e6b40df2930873ea1037b54e59d1ee",
+    "experiments/capability-eval-v1/phase2/e3/provider.py": "4f116663a46daee611aaf968836486acdba8d15614682f090433ceeecddf92c6",
+    "experiments/capability-eval-v1/phase2/e3/development.jsonl": "3debd627f30511a73a9cabc04155a0a9f258b78ccac5584479ebe7702a84d094",
+    "experiments/capability-eval-v1/phase2/e3/e3-holdout.jsonl": "0ca1cda4bc8ac84a4fa16be1996b72134cdd7beb3b65680dc061d3817027378d",
+    "experiments/capability-eval-v1/phase2/e3/e3_independent_grader.py": "982816a093a5770dbc96be51ce31e30b7a4ebd5bf45e4946bdb33713c094a201",
+    "experiments/capability-eval-v1/phase2/e3/summarize.py": "108eb3754fd1fcfb3f90c405da478f72177f56b1eea9013a05bb3a82a7f4d870",
+    "experiments/capability-eval-v1/phase2/e3/protocol.md": "d7a5eed5995b8436ad82fbc24068c82c26674a8e0d5ac20906e77a033ac3c53f",
+    ".local/models/zh_core_web_md-3.8.0/mgar-model-receipt.json": "0557f4ec1d8e7787d9a7cb5be2e3a4f01026b3b78a6ffe02ea7741cfa7ada5cf",
+    "evidence/E1/preparation-20261120/pairwise-ranker.json": "3aa28294883c5b45ab8618eddb82ec16ed8762b0a7625196d15ec6f1f3781023"
+  }
+}

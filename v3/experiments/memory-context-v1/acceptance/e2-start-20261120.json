@@ -1,0 +1,1005 @@
+{
+  "schema_version": "memory-context-e2-evidence-v1",
+  "phase": "DEVELOPMENT_MATRIX_AND_LIVE_PILOT_COMPLETE",
+  "formal_quality_gate": "NOT_RUN",
+  "independent_holdout": "NOT_RUN",
+  "dataset_freeze": {
+    "schema_version": "e2-public-development-v1",
+    "source_commit": "4e2fe05487262fee38b9ae0fe67301758c7c6faf",
+    "experiment_commit": "0db27e2f7491b42436537befb7dc879e5d2e84ed",
+    "source_sha256": "4e603f3b036400dedda587d02dff69385bd0b691f7a278a0e85a992f14eca9ce",
+    "implementation_sha256": {
+      "src/mgar_v3/quality_eval/e2_context.py": "c205110ca5015422800bf1fe6dddc5e2354436b9bd2a742b7d4b82d490ad6f77",
+      "src/mgar_v3/quality_eval/e2_dataset.py": "9a88c2eed9020a834f630aa5d7f006d4237e7bd1c2b5c3db79ba499c46fce49a",
+      "src/mgar_v3/quality_eval/e2_grader.py": "835ed1588e7fb17355f20a16ae37ae2aef82bf817e425901fc153a2762e13c6a",
+      "src/mgar_v3/quality_eval/e2_live.py": "24faa86010a17576a372599ef0b6a1b7752b4ee1000d014ed6c9f6a2032d963c",
+      "src/mgar_v3/context/builder.py": "e6befaf4842bb2299d176b12e4ecd829434c1baa15f2f2ee2656ee8995dfe5a0",
+      "src/mgar_v3/context/compactor.py": "69b68492a68f517bf6b467ff48b9563656fed88a57c09ac6823e5fe583deeac3",
+      "src/mgar_v3/evidence/artifacts.py": "62ea463b3a0f9924388732d02a9d62751f7e1dad695a2813a9355dffa3cbe679",
+      "src/mgar_v3/models/deepseek_policy.py": "79218a7282da42663c59888e19dcf8174b645028664fae10e4efa8c980baff52",
+      "scripts/memory_context_e2.py": "aa52e1733343830f4f5611f777ad82327b29055ff0ce2e9d9150f427147bdb0b",
+      "tests/test_memory_context_e2.py": "fbfc984396b973251ff4e53d1ca8ef7818c8ac21b568ed589a125e1d13039e4c",
+      "config/verification.json": "314a75cc9231913fe370641da5f49cda56372367b82e243148d0fb25f9d664d0",
+      "uv.lock": "56579416e1652e02a17706e72be15ee5d24762c45d6e27b25618312eddbb6583",
+      "experiments/memory-context-v1/E2_PROTOCOL.md": "26fa6cd38a3e48e9364b2da005c68e5c3e915dbff4671cc5c9769fd1cceddf77"
+    },
+    "taskbook_sha256": "834da3d6366a6945a16dd966bb4a4b7a3c3d34083a72ffb972c7c5589f2d17ae",
+    "corpus_sha256": {
+      "src/mgar_v3/context/builder.py": "e6befaf4842bb2299d176b12e4ecd829434c1baa15f2f2ee2656ee8995dfe5a0",
+      "src/mgar_v3/context/compactor.py": "69b68492a68f517bf6b467ff48b9563656fed88a57c09ac6823e5fe583deeac3",
+      "src/mgar_v3/general_agent/data_analysis.py": "7fad1f54442cb4ec5893725af2edd23e3bac3c6f9c33914356cfe8d90ce5089c",
+      "src/mgar_v3/general_agent/data_formats.py": "fd8854d8c348f53ae9b167818aad4b35c0599c2b81d9c4d1b30a901ee59d627f",
+      "src/mgar_v3/general_agent/research.py": "67ac872100d455f9fe803f67b24295f693b229415421f1b80450c5d5e2131fd0",
+      "src/mgar_v3/quality_eval/ga12_benchmark.py": "ca107f1c3f31a70787d52cdcc89e8f2dd0b8f0cfdf36bd1ffd91abb61b5ccc07",
+      "src/mgar_v3/harness/client.py": "ad3a0dd84e413e193fb01cba587dd26b56d1d458e5376b3f748201d46b1c0615",
+      "src/mgar_v3/evidence/artifacts.py": "62ea463b3a0f9924388732d02a9d62751f7e1dad695a2813a9355dffa3cbe679"
+    },
+    "inputs_sha256": "d2010a3a5a51932c87de61bca91dc68b30ba0c9269d7c510ec5de3b4962bf7b2",
+    "judge_sha256": "8f54e19d7f49bdc2bc94771732eda3801198593a137eb42937f7bee324c2b3a9",
+    "cases": 30,
+    "scale_ranges": {
+      "8192": [
+        8073,
+        8274
+      ],
+      "16384": [
+        16205,
+        16625
+      ],
+      "32768": [
+        32422,
+        33177
+      ]
+    },
+    "provider": "deepseek",
+    "model": "deepseek-flash",
+    "model_release": "DeepSeek-V4.1-Flash-1017",
+    "tokenizer": {
+      "release": "1bae0e1088993b9b82de08f59de5be5a34e42170",
+      "package": "0.23.1",
+      "sha256": {
+        "tokenizer.json": "c90dfa01249db1be4245780a052ede752e1361c612ac6d08e2bdada7d599476b",
+        "encoding.py": "13231c592e958fb39e2af6001dae69d90e7a36b265702b9b390236fb387599e2"
+      }
+    },
+    "sha256": "f6194c28e0358cabdde33a28c04a1b7d05d8708169457a0a8f0a90a42bfe7f74",
+    "path": ".local/memory-context-v1/frozen-20261120/freeze.json"
+  },
+  "offline": {
+    "schema_version": "e2-offline-v1",
+    "freeze_sha256": "f6194c28e0358cabdde33a28c04a1b7d05d8708169457a0a8f0a90a42bfe7f74",
+    "source_commit": "4e2fe05487262fee38b9ae0fe67301758c7c6faf",
+    "source_sha256": "4e603f3b036400dedda587d02dff69385bd0b691f7a278a0e85a992f14eca9ce",
+    "dataset_sha256": "d2010a3a5a51932c87de61bca91dc68b30ba0c9269d7c510ec5de3b4962bf7b2",
+    "grader_sha256": "8f54e19d7f49bdc2bc94771732eda3801198593a137eb42937f7bee324c2b3a9",
+    "model_calls": 0,
+    "hardware": {
+      "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+      "python": "3.12.16",
+      "logical_cpus": 20,
+      "memory_bytes": 14450081792
+    },
+    "raw_sha256": "c5a538f5fc535f0290a9cac11eb4b09ce7586a911c79b6991699f151ec2d7f28",
+    "arms": {
+      "full_history": {
+        "measured": 90,
+        "failed": 0,
+        "mean_input_tokens_reference": 19134.8,
+        "mean_history_tokens_reference": 18148.866666666665,
+        "permission_mutations": 0,
+        "integrity": {
+          "constraints": {
+            "kept": 90,
+            "total": 90
+          },
+          "evidence": {
+            "kept": 3840,
+            "total": 3840
+          },
+          "failures": {
+            "kept": 180,
+            "total": 180
+          },
+          "approvals": {
+            "kept": 90,
+            "total": 90
+          },
+          "actions": {
+            "kept": 90,
+            "total": 90
+          },
+          "open_questions": {
+            "kept": 90,
+            "total": 90
+          },
+          "artifacts": {
+            "kept": 3577,
+            "total": 3577
+          }
+        },
+        "latency_ms": {
+          "p50": 0.03,
+          "p95": 0.049
+        }
+      },
+      "truncate": {
+        "measured": 90,
+        "failed": 0,
+        "mean_input_tokens_reference": 10645.1,
+        "mean_history_tokens_reference": 9659.166666666666,
+        "permission_mutations": 0,
+        "integrity": {
+          "constraints": {
+            "kept": 90,
+            "total": 90
+          },
+          "evidence": {
+            "kept": 2078,
+            "total": 3840
+          },
+          "failures": {
+            "kept": 135,
+            "total": 180
+          },
+          "approvals": {
+            "kept": 90,
+            "total": 90
+          },
+          "actions": {
+            "kept": 90,
+            "total": 90
+          },
+          "open_questions": {
+            "kept": 90,
+            "total": 90
+          },
+          "artifacts": {
+            "kept": 1958,
+            "total": 3577
+          }
+        },
+        "latency_ms": {
+          "p50": 57.769,
+          "p95": 176.012
+        }
+      },
+      "summary": {
+        "measured": 90,
+        "failed": 0,
+        "mean_input_tokens_reference": 6786.688888888889,
+        "mean_history_tokens_reference": 5800.7555555555555,
+        "permission_mutations": 0,
+        "integrity": {
+          "constraints": {
+            "kept": 90,
+            "total": 90
+          },
+          "evidence": {
+            "kept": 435,
+            "total": 3840
+          },
+          "failures": {
+            "kept": 95,
+            "total": 180
+          },
+          "approvals": {
+            "kept": 90,
+            "total": 90
+          },
+          "actions": {
+            "kept": 90,
+            "total": 90
+          },
+          "open_questions": {
+            "kept": 90,
+            "total": 90
+          },
+          "artifacts": {
+            "kept": 435,
+            "total": 3577
+          }
+        },
+        "latency_ms": {
+          "p50": 35.585,
+          "p95": 66.797
+        }
+      },
+      "magr_compaction": {
+        "measured": 90,
+        "failed": 0,
+        "mean_input_tokens_reference": 8964.633333333333,
+        "mean_history_tokens_reference": 8006.888888888889,
+        "permission_mutations": 0,
+        "integrity": {
+          "constraints": {
+            "kept": 90,
+            "total": 90
+          },
+          "evidence": {
+            "kept": 3840,
+            "total": 3840
+          },
+          "failures": {
+            "kept": 180,
+            "total": 180
+          },
+          "approvals": {
+            "kept": 90,
+            "total": 90
+          },
+          "actions": {
+            "kept": 90,
+            "total": 90
+          },
+          "open_questions": {
+            "kept": 90,
+            "total": 90
+          },
+          "artifacts": {
+            "kept": 3577,
+            "total": 3577
+          }
+        },
+        "latency_ms": {
+          "p50": 1062.863,
+          "p95": 2995.64
+        }
+      }
+    },
+    "clustered_cases": 30,
+    "paired_scales": 90,
+    "history_token_reduction_reference": 0.5588215486978678,
+    "history_token_reduction_reference_bootstrap_95_ci": [
+      0.532997150285094,
+      0.5901272561281391
+    ],
+    "provider_token_reduction": null,
+    "task_success": null,
+    "by_scale": {
+      "8192": {
+        "arms": {
+          "full_history": {
+            "measured": 30,
+            "failed": 0,
+            "mean_input_tokens_reference": 8184.766666666666,
+            "mean_history_tokens_reference": 7198.833333333333,
+            "permission_mutations": 0,
+            "integrity": {
+              "constraints": {
+                "kept": 30,
+                "total": 30
+              },
+              "evidence": {
+                "kept": 720,
+                "total": 720
+              },
+              "failures": {
+                "kept": 60,
+                "total": 60
+              },
+              "approvals": {
+                "kept": 30,
+                "total": 30
+              },
+              "actions": {
+                "kept": 30,
+                "total": 30
+              },
+              "open_questions": {
+                "kept": 30,
+                "total": 30
+              },
+              "artifacts": {
+                "kept": 683,
+                "total": 683
+              }
+            },
+            "latency_ms": {
+              "p50": 0.037,
+              "p95": 0.051
+            }
+          },
+          "truncate": {
+            "measured": 30,
+            "failed": 0,
+            "mean_input_tokens_reference": 4718.866666666667,
+            "mean_history_tokens_reference": 3732.9333333333334,
+            "permission_mutations": 0,
+            "integrity": {
+              "constraints": {
+                "kept": 30,
+                "total": 30
+              },
+              "evidence": {
+                "kept": 388,
+                "total": 720
+              },
+              "failures": {
+                "kept": 45,
+                "total": 60
+              },
+              "approvals": {
+                "kept": 30,
+                "total": 30
+              },
+              "actions": {
+                "kept": 30,
+                "total": 30
+              },
+              "open_questions": {
+                "kept": 30,
+                "total": 30
+              },
+              "artifacts": {
+                "kept": 374,
+                "total": 683
+              }
+            },
+            "latency_ms": {
+              "p50": 26.418,
+              "p95": 32.827
+            }
+          },
+          "summary": {
+            "measured": 30,
+            "failed": 0,
+            "mean_input_tokens_reference": 4339.1,
+            "mean_history_tokens_reference": 3353.1666666666665,
+            "permission_mutations": 0,
+            "integrity": {
+              "constraints": {
+                "kept": 30,
+                "total": 30
+              },
+              "evidence": {
+                "kept": 145,
+                "total": 720
+              },
+              "failures": {
+                "kept": 35,
+                "total": 60
+              },
+              "approvals": {
+                "kept": 30,
+                "total": 30
+              },
+              "actions": {
+                "kept": 30,
+                "total": 30
+              },
+              "open_questions": {
+                "kept": 30,
+                "total": 30
+              },
+              "artifacts": {
+                "kept": 145,
+                "total": 683
+              }
+            },
+            "latency_ms": {
+              "p50": 19.733,
+              "p95": 23.547
+            }
+          },
+          "magr_compaction": {
+            "measured": 30,
+            "failed": 0,
+            "mean_input_tokens_reference": 4272.166666666667,
+            "mean_history_tokens_reference": 3342.233333333333,
+            "permission_mutations": 0,
+            "integrity": {
+              "constraints": {
+                "kept": 30,
+                "total": 30
+              },
+              "evidence": {
+                "kept": 720,
+                "total": 720
+              },
+              "failures": {
+                "kept": 60,
+                "total": 60
+              },
+              "approvals": {
+                "kept": 30,
+                "total": 30
+              },
+              "actions": {
+                "kept": 30,
+                "total": 30
+              },
+              "open_questions": {
+                "kept": 30,
+                "total": 30
+              },
+              "artifacts": {
+                "kept": 683,
+                "total": 683
+              }
+            },
+            "latency_ms": {
+              "p50": 214.81,
+              "p95": 349.037
+            }
+          }
+        },
+        "clustered_cases": 30,
+        "paired_scales": 30,
+        "history_token_reduction_reference": 0.5357256962933808,
+        "history_token_reduction_reference_bootstrap_95_ci": [
+          0.518173949669291,
+          0.5549092590451972
+        ],
+        "provider_token_reduction": null,
+        "task_success": null
+      },
+      "16384": {
+        "arms": {
+          "full_history": {
+            "measured": 30,
+            "failed": 0,
+            "mean_input_tokens_reference": 16447.166666666668,
+            "mean_history_tokens_reference": 15461.233333333334,
+            "permission_mutations": 0,
+            "integrity": {
+              "constraints": {
+                "kept": 30,
+                "total": 30
+              },
+              "evidence": {
+                "kept": 1200,
+                "total": 1200
+              },
+              "failures": {
+                "kept": 60,
+                "total": 60
+              },
+              "approvals": {
+                "kept": 30,
+                "total": 30
+              },
+              "actions": {
+                "kept": 30,
+                "total": 30
+              },
+              "open_questions": {
+                "kept": 30,
+                "total": 30
+              },
+              "artifacts": {
+                "kept": 1118,
+                "total": 1118
+              }
+            },
+            "latency_ms": {
+              "p50": 0.024,
+              "p95": 0.056
+            }
+          },
+          "truncate": {
+            "measured": 30,
+            "failed": 0,
+            "mean_input_tokens_reference": 9157.066666666668,
+            "mean_history_tokens_reference": 8171.133333333333,
+            "permission_mutations": 0,
+            "integrity": {
+              "constraints": {
+                "kept": 30,
+                "total": 30
+              },
+              "evidence": {
+                "kept": 647,
+                "total": 1200
+              },
+              "failures": {
+                "kept": 45,
+                "total": 60
+              },
+              "approvals": {
+                "kept": 30,
+                "total": 30
+              },
+              "actions": {
+                "kept": 30,
+                "total": 30
+              },
+              "open_questions": {
+                "kept": 30,
+                "total": 30
+              },
+              "artifacts": {
+                "kept": 611,
+                "total": 1118
+              }
+            },
+            "latency_ms": {
+              "p50": 57.769,
+              "p95": 78.993
+            }
+          },
+          "summary": {
+            "measured": 30,
+            "failed": 0,
+            "mean_input_tokens_reference": 6456.033333333334,
+            "mean_history_tokens_reference": 5470.1,
+            "permission_mutations": 0,
+            "integrity": {
+              "constraints": {
+                "kept": 30,
+                "total": 30
+              },
+              "evidence": {
+                "kept": 145,
+                "total": 1200
+              },
+              "failures": {
+                "kept": 30,
+                "total": 60
+              },
+              "approvals": {
+                "kept": 30,
+                "total": 30
+              },
+              "actions": {
+                "kept": 30,
+                "total": 30
+              },
+              "open_questions": {
+                "kept": 30,
+                "total": 30
+              },
+              "artifacts": {
+                "kept": 145,
+                "total": 1118
+              }
+            },
+            "latency_ms": {
+              "p50": 35.585,
+              "p95": 42.34
+            }
+          },
+          "magr_compaction": {
+            "measured": 30,
+            "failed": 0,
+            "mean_input_tokens_reference": 6125.366666666667,
+            "mean_history_tokens_reference": 5177.133333333333,
+            "permission_mutations": 0,
+            "integrity": {
+              "constraints": {
+                "kept": 30,
+                "total": 30
+              },
+              "evidence": {
+                "kept": 1200,
+                "total": 1200
+              },
+              "failures": {
+                "kept": 60,
+                "total": 60
+              },
+              "approvals": {
+                "kept": 30,
+                "total": 30
+              },
+              "actions": {
+                "kept": 30,
+                "total": 30
+              },
+              "open_questions": {
+                "kept": 30,
+                "total": 30
+              },
+              "artifacts": {
+                "kept": 1118,
+                "total": 1118
+              }
+            },
+            "latency_ms": {
+              "p50": 1062.863,
+              "p95": 1201.831
+            }
+          }
+        },
+        "clustered_cases": 30,
+        "paired_scales": 30,
+        "history_token_reduction_reference": 0.6651539226064329,
+        "history_token_reduction_reference_bootstrap_95_ci": [
+          0.6221499285458321,
+          0.7072672193533781
+        ],
+        "provider_token_reduction": null,
+        "task_success": null
+      },
+      "32768": {
+        "arms": {
+          "full_history": {
+            "measured": 30,
+            "failed": 0,
+            "mean_input_tokens_reference": 32772.46666666667,
+            "mean_history_tokens_reference": 31786.533333333333,
+            "permission_mutations": 0,
+            "integrity": {
+              "constraints": {
+                "kept": 30,
+                "total": 30
+              },
+              "evidence": {
+                "kept": 1920,
+                "total": 1920
+              },
+              "failures": {
+                "kept": 60,
+                "total": 60
+              },
+              "approvals": {
+                "kept": 30,
+                "total": 30
+              },
+              "actions": {
+                "kept": 30,
+                "total": 30
+              },
+              "open_questions": {
+                "kept": 30,
+                "total": 30
+              },
+              "artifacts": {
+                "kept": 1776,
+                "total": 1776
+              }
+            },
+            "latency_ms": {
+              "p50": 0.029,
+              "p95": 0.042
+            }
+          },
+          "truncate": {
+            "measured": 30,
+            "failed": 0,
+            "mean_input_tokens_reference": 18059.366666666665,
+            "mean_history_tokens_reference": 17073.433333333334,
+            "permission_mutations": 0,
+            "integrity": {
+              "constraints": {
+                "kept": 30,
+                "total": 30
+              },
+              "evidence": {
+                "kept": 1043,
+                "total": 1920
+              },
+              "failures": {
+                "kept": 45,
+                "total": 60
+              },
+              "approvals": {
+                "kept": 30,
+                "total": 30
+              },
+              "actions": {
+                "kept": 30,
+                "total": 30
+              },
+              "open_questions": {
+                "kept": 30,
+                "total": 30
+              },
+              "artifacts": {
+                "kept": 973,
+                "total": 1776
+              }
+            },
+            "latency_ms": {
+              "p50": 159.792,
+              "p95": 191.481
+            }
+          },
+          "summary": {
+            "measured": 30,
+            "failed": 0,
+            "mean_input_tokens_reference": 9564.933333333332,
+            "mean_history_tokens_reference": 8579,
+            "permission_mutations": 0,
+            "integrity": {
+              "constraints": {
+                "kept": 30,
+                "total": 30
+              },
+              "evidence": {
+                "kept": 145,
+                "total": 1920
+              },
+              "failures": {
+                "kept": 30,
+                "total": 60
+              },
+              "approvals": {
+                "kept": 30,
+                "total": 30
+              },
+              "actions": {
+                "kept": 30,
+                "total": 30
+              },
+              "open_questions": {
+                "kept": 30,
+                "total": 30
+              },
+              "artifacts": {
+                "kept": 145,
+                "total": 1776
+              }
+            },
+            "latency_ms": {
+              "p50": 62.416,
+              "p95": 72.789
+            }
+          },
+          "magr_compaction": {
+            "measured": 30,
+            "failed": 0,
+            "mean_input_tokens_reference": 16496.366666666665,
+            "mean_history_tokens_reference": 15501.3,
+            "permission_mutations": 0,
+            "integrity": {
+              "constraints": {
+                "kept": 30,
+                "total": 30
+              },
+              "evidence": {
+                "kept": 1920,
+                "total": 1920
+              },
+              "failures": {
+                "kept": 60,
+                "total": 60
+              },
+              "approvals": {
+                "kept": 30,
+                "total": 30
+              },
+              "actions": {
+                "kept": 30,
+                "total": 30
+              },
+              "open_questions": {
+                "kept": 30,
+                "total": 30
+              },
+              "artifacts": {
+                "kept": 1776,
+                "total": 1776
+              }
+            },
+            "latency_ms": {
+              "p50": 2517.586,
+              "p95": 3186.973
+            }
+          }
+        },
+        "clustered_cases": 30,
+        "paired_scales": 30,
+        "history_token_reduction_reference": 0.5123312178322896,
+        "history_token_reduction_reference_bootstrap_95_ci": [
+          0.47706903982207627,
+          0.5586253666381824
+        ],
+        "provider_token_reduction": null,
+        "task_success": null
+      }
+    },
+    "evidence_path": "evidence/E2/offline-20261120",
+    "summary_sha256": "5d112815d2bfc498ab3fe7de0e59982bcee87718c72f98173013ea752e4adf18",
+    "magr_degraded_by_scale": {
+      "8192": 7,
+      "16384": 21,
+      "32768": 4
+    }
+  },
+  "pilot": {
+    "schema_version": "e2-live-pilot-v1",
+    "freeze_sha256": "f6194c28e0358cabdde33a28c04a1b7d05d8708169457a0a8f0a90a42bfe7f74",
+    "authorization_sha256": "f2fab56db1ff8d8a91e5e319810fcfea105e4880dd4b6695cd5436ed36670098",
+    "case_id": "e2-01",
+    "scale": 8192,
+    "model": "deepseek-flash",
+    "reference_model_release": "DeepSeek-V4.1-Flash-1017",
+    "order": [
+      "full_history",
+      "truncate",
+      "summary",
+      "magr_compaction"
+    ],
+    "model_calls": 7,
+    "settled_peak_upper_micros": 14473,
+    "retained_reservation_micros": 0,
+    "max_model_calls": 8,
+    "max_cost_micros": 250000,
+    "halt_reason": null,
+    "raw_sha256": "6a4842d2165253559e62a0cd0078e708d5efa3fe55acb783c0dac860358cc04b",
+    "usage_sha256": "9ee8781347b3df9a72d7a5f35ab09477cff68bddd930bdde70731bd2c8eeefd6",
+    "formal_quality_gate": "NOT_RUN",
+    "evidence_path": "evidence/E2/pilot-20261120-8k",
+    "summary_sha256": "32870b2b167da8403433778328f093156eee1b9b84d0c28b52ef4a67c77496c2",
+    "grades_sha256": "74d234835fbf50c3f4ac644d931c89323d47edd251bf0566f6d654ec913e409d",
+    "grades": {
+      "schema_version": "e2-pilot-grades-v1",
+      "freeze_sha256": "f6194c28e0358cabdde33a28c04a1b7d05d8708169457a0a8f0a90a42bfe7f74",
+      "grader_sha256": "8f54e19d7f49bdc2bc94771732eda3801198593a137eb42937f7bee324c2b3a9",
+      "raw_sha256": "6a4842d2165253559e62a0cd0078e708d5efa3fe55acb783c0dac860358cc04b",
+      "sample_count_per_condition": 1,
+      "formal_quality_gate": "NOT_RUN",
+      "first_prompt_provider_token_reduction": 0.5483129761760793,
+      "total_provider_input_token_reduction": 0.013544564034345119,
+      "arms": {
+        "full_history": {
+          "case_id": "e2-01",
+          "scale": 8192,
+          "condition": "full_history",
+          "run_id": "7925c2ec-fa03-452b-8dc1-c86e0fbb4f9a",
+          "status": "PASS",
+          "failure": null,
+          "wrong_fields": [],
+          "first_prompt_tokens": 8269,
+          "first_prompt_tokens_reference": 8247,
+          "total_input_tokens": 8269,
+          "total_output_tokens": 540,
+          "cost_micros_peak_upper": 3129,
+          "model_calls": 1,
+          "tool_reads": 0,
+          "provider_finish": null
+        },
+        "truncate": {
+          "case_id": "e2-01",
+          "scale": 8192,
+          "condition": "truncate",
+          "run_id": "b4dc6199-bcd5-4412-a02c-7dea9fc7f191",
+          "status": "PASS",
+          "failure": null,
+          "wrong_fields": [],
+          "first_prompt_tokens": 4767,
+          "first_prompt_tokens_reference": 4745,
+          "total_input_tokens": 10280,
+          "total_output_tokens": 826,
+          "cost_micros_peak_upper": 4076,
+          "model_calls": 2,
+          "tool_reads": 1,
+          "provider_finish": null
+        },
+        "summary": {
+          "case_id": "e2-01",
+          "scale": 8192,
+          "condition": "summary",
+          "run_id": "204660a7-e2a6-4760-b603-fa8fe3cf0094",
+          "status": "PASS",
+          "failure": null,
+          "wrong_fields": [],
+          "first_prompt_tokens": 4285,
+          "first_prompt_tokens_reference": 4263,
+          "total_input_tokens": 9424,
+          "total_output_tokens": 1207,
+          "cost_micros_peak_upper": 4277,
+          "model_calls": 2,
+          "tool_reads": 1,
+          "provider_finish": null
+        },
+        "magr_compaction": {
+          "case_id": "e2-01",
+          "scale": 8192,
+          "condition": "magr_compaction",
+          "run_id": "10c20347-a83e-4590-8072-df92fe1cf0b7",
+          "status": "PASS",
+          "failure": null,
+          "wrong_fields": [],
+          "first_prompt_tokens": 3735,
+          "first_prompt_tokens_reference": 3713,
+          "total_input_tokens": 8157,
+          "total_output_tokens": 452,
+          "cost_micros_peak_upper": 2991,
+          "model_calls": 2,
+          "tool_reads": 1,
+          "provider_finish": null
+        }
+      }
+    },
+    "total_input_tokens": 36130,
+    "total_output_tokens": 3025,
+    "cache_hit_tokens": 14592,
+    "cache_miss_tokens": 21538,
+    "provider_input_minus_reference_per_call": [
+      22,
+      22,
+      22,
+      22,
+      22,
+      22,
+      22
+    ]
+  },
+  "engineering": {
+    "doctor": {
+      "status": "PASS",
+      "postgres_version": "16.12",
+      "log_path": "evidence/E2/baseline-20261120/doctor.log",
+      "sha256": "fb7d5bc31b5876c1ee006b336284e743c047303ee032f464bc9d104f66b7e2ca"
+    },
+    "checks": {
+      "MEMORY-CONTEXT-E2": {
+        "counts": {
+          "tests": 14,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "status": "PASS",
+        "source_sha256": "c57dca3b47a2051e6f70f5877235d0561c9a8408271498f4b7573e275889adb4",
+        "attempt_path": "evidence/MEMORY-CONTEXT-E2/20261120T085739Z-21f6fe0f",
+        "git_commit": "0db27e2f7491b42436537befb7dc879e5d2e84ed",
+        "sha256": "ad0871c88610335aeb087ec60136afda922ac59049bbe2519c9aa1e01a2a5ab3"
+      },
+      "GA10": {
+        "counts": {
+          "tests": 5,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "status": "PASS",
+        "source_sha256": "c57dca3b47a2051e6f70f5877235d0561c9a8408271498f4b7573e275889adb4",
+        "attempt_path": "evidence/GA10/20261120T085745Z-b5a1fb0d",
+        "git_commit": "0db27e2f7491b42436537befb7dc879e5d2e84ed",
+        "sha256": "9c01491a63d02231a7bd445ee9d2545f463ab3a32ef18390d6d41930b3d24578"
+      },
+      "GA11": {
+        "counts": {
+          "tests": 5,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "status": "PASS",
+        "source_sha256": "c57dca3b47a2051e6f70f5877235d0561c9a8408271498f4b7573e275889adb4",
+        "attempt_path": "evidence/GA11/20261120T085802Z-9b1af6a9",
+        "git_commit": "0db27e2f7491b42436537befb7dc879e5d2e84ed",
+        "sha256": "b3964ba808dc3c938a9c1cb9decd88d31c9e7063aebba5fd8b51e7ce93712e43"
+      },
+      "GA12": {
+        "counts": {
+          "tests": 17,
+          "failures": 5,
+          "errors": 0,
+          "skipped": 0
+        },
+        "status": "FAIL",
+        "source_sha256": "c57dca3b47a2051e6f70f5877235d0561c9a8408271498f4b7573e275889adb4",
+        "attempt_path": "evidence/GA12/20261120T085814Z-ae670c19",
+        "git_commit": "0db27e2f7491b42436537befb7dc879e5d2e84ed",
+        "sha256": "df5d4d2740113264f946c81582bfb1512a86f5506f0f8a5155b7671321439f89"
+      }
+    },
+    "GA12_targeted_recheck": {
+      "git_commit": "0db27e2f7491b42436537befb7dc879e5d2e84ed",
+      "first_report": "evidence/GA12/20261120T085814Z-ae670c19/junit.xml",
+      "scoped_nodes": [
+        "tests/test_general_agent_ga12.py::test_duplicate_cases_and_public_holdout_input_are_rejected",
+        "tests/test_general_agent_ga12.py::test_reformatted_development_cases_are_rejected_before_freeze_and_score[False]",
+        "tests/test_general_agent_ga12.py::test_reformatted_development_cases_are_rejected_before_freeze_and_score[True]",
+        "tests/test_general_agent_ga12.py::test_one_development_case_is_enough_to_reject_a_holdout",
+        "tests/test_general_agent_ga12.py::test_holdout_requires_published_commitment_even_without_development_overlap"
+      ],
+      "exit_code": 0,
+      "counts": {
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "cause": "The first pytest temporary path was below the repository. GA12 holdout tests require private paths outside the checkout.",
+      "report_sha256": "de008ea9c0404e1e5f0c4d57f8ffa8ae585b695433e3750739337469060cccf2",
+      "effective_passed": 17
+    },
+    "ruff": "PASS",
+    "mypy": "PASS",
+    "dependency_lock": "PASS"
+  }
+}

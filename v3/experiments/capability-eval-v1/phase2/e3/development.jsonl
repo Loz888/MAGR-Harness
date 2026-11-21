@@ -1,0 +1,30 @@
+{"case_id": "e3-r1-d01", "domain": "coding", "label": "转录器字符路径", "operation": "configured_value", "releases": [1, 1, 2], "seed": 24111, "source": "coding/transcript.json"}
+{"case_id": "e3-r1-d02", "domain": "coding", "label": "清单输出布局", "operation": "configured_value", "releases": [1, 1, 2, 2], "seed": 24170, "source": "coding/ledger.json"}
+{"case_id": "e3-r1-d03", "domain": "coding", "label": "曲线插值设置", "operation": "configured_value", "releases": [1, 1, 2, 2, 2], "seed": 24229, "source": "coding/curve.json"}
+{"case_id": "e3-r1-d04", "domain": "coding", "label": "压缩帧格式", "operation": "configured_value", "releases": [1, 1, 1], "seed": 24288, "source": "coding/frame.json"}
+{"case_id": "e3-r1-d05", "domain": "coding", "label": "容器索引策略", "operation": "configured_value", "releases": [1, 1, 1, 1], "seed": 24347, "source": "coding/container.json"}
+{"case_id": "e3-r1-d06", "domain": "coding", "label": "渲染缓存类型", "operation": "configured_value", "releases": [1, 1, 2, 2, 2], "seed": 24406, "source": "coding/render.json"}
+{"case_id": "e3-r1-d07", "domain": "coding", "label": "表头空值策略", "operation": "configured_value", "releases": [1, 1, 2], "seed": 24465, "source": "coding/column.json"}
+{"case_id": "e3-r1-d08", "domain": "coding", "label": "标签排序规则", "operation": "configured_value", "releases": [1, 1, 2, 2], "seed": 24524, "source": "coding/tag.json"}
+{"case_id": "e3-r1-d09", "domain": "coding", "label": "小数编码选择", "operation": "configured_value", "releases": [1, 1, 1, 1, 1], "seed": 24583, "source": "coding/decimal.json"}
+{"case_id": "e3-r1-d10", "domain": "coding", "label": "闹钟合并模式", "operation": "configured_value", "releases": [1, 1, 1], "seed": 24642, "source": "coding/alarm.json"}
+{"case_id": "e3-r1-d11", "domain": "research", "label": "标本陈列记录", "operation": "verified_observation", "releases": [1, 1, 2, 2], "seed": 24701, "source": "research/exhibit.json"}
+{"case_id": "e3-r1-d12", "domain": "research", "label": "校对窗口公告", "operation": "verified_observation", "releases": [1, 1, 2, 2, 2], "seed": 24760, "source": "research/proofread.json"}
+{"case_id": "e3-r1-d13", "domain": "research", "label": "公交涂色公告", "operation": "verified_observation", "releases": [1, 1, 2], "seed": 24819, "source": "research/transit.json"}
+{"case_id": "e3-r1-d14", "domain": "research", "label": "扎染材料说明", "operation": "verified_observation", "releases": [1, 1, 1, 1], "seed": 24878, "source": "research/pigment.json"}
+{"case_id": "e3-r1-d15", "domain": "research", "label": "版画开放公告", "operation": "verified_observation", "releases": [1, 1, 1, 1, 1], "seed": 24937, "source": "research/print.json"}
+{"case_id": "e3-r1-d16", "domain": "research", "label": "校舍借用说明", "operation": "verified_observation", "releases": [1, 1, 2], "seed": 24996, "source": "research/studio.json"}
+{"case_id": "e3-r1-d17", "domain": "research", "label": "观测时钟说明", "operation": "verified_observation", "releases": [1, 1, 2, 2], "seed": 25055, "source": "research/clock.json"}
+{"case_id": "e3-r1-d18", "domain": "research", "label": "接驳点公告", "operation": "verified_observation", "releases": [1, 1, 2, 2, 2], "seed": 25114, "source": "research/shuttle.json"}
+{"case_id": "e3-r1-d19", "domain": "data", "label": "场馆余位总数", "operation": "sum", "releases": [1, 1, 1], "seed": 25173, "source": "data/venues.json"}
+{"case_id": "e3-r1-d20", "domain": "data", "label": "书签批次数", "operation": "sum", "releases": [1, 1, 1, 1], "seed": 25232, "source": "data/markers.json"}
+{"case_id": "e3-r1-d21", "domain": "data", "label": "画架数量", "operation": "sum", "releases": [1, 1, 2, 2, 2], "seed": 25291, "source": "data/easels.json"}
+{"case_id": "e3-r1-d22", "domain": "data", "label": "木板工序峰值", "operation": "max", "releases": [1, 1, 2], "seed": 25350, "source": "data/boards.json"}
+{"case_id": "e3-r1-d23", "domain": "data", "label": "修缮人员峰值", "operation": "max", "releases": [1, 1, 2, 2], "seed": 25409, "source": "data/repair.json"}
+{"case_id": "e3-r1-d24", "domain": "data", "label": "分类件数峰值", "operation": "max", "releases": [1, 1, 1, 1, 1], "seed": 25468, "source": "data/sorting.json"}
+{"case_id": "e3-r1-d25", "domain": "cross_domain", "label": "陶片数量及装箱规则", "operation": "adjusted_sum", "releases": [1, 1, 1], "seed": 25527, "source": "cross_domain/shards.json"}
+{"case_id": "e3-r1-d26", "domain": "cross_domain", "label": "绘图课时及折算", "operation": "adjusted_sum", "releases": [1, 1, 2, 2], "seed": 25586, "source": "cross_domain/graphics.json"}
+{"case_id": "e3-r1-d27", "domain": "cross_domain", "label": "装订页数及纸张系数", "operation": "adjusted_sum", "releases": [1, 1, 2, 2, 2], "seed": 25645, "source": "cross_domain/pages.json"}
+{"case_id": "e3-r1-d28", "domain": "cross_domain", "label": "出库卷数及拨付规则", "operation": "adjusted_sum", "releases": [1, 1, 2], "seed": 25704, "source": "cross_domain/coils.json"}
+{"case_id": "e3-r1-d29", "domain": "cross_domain", "label": "曝光数量及校准规则", "operation": "adjusted_sum", "releases": [1, 1, 1, 1], "seed": 25763, "source": "cross_domain/exposure.json"}
+{"case_id": "e3-r1-d30", "domain": "cross_domain", "label": "采集箱数及容量规则", "operation": "adjusted_sum", "releases": [1, 1, 1, 1, 1], "seed": 25822, "source": "cross_domain/crates.json"}

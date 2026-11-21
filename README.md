@@ -39,4 +39,4 @@ make dev
 - H12 的冻结真实模型质量评测共通过 22/24，开发集与独立持出集各 11/12。该记录的产品发布状态为 `NOT_RELEASED`。[独立质量复核](v3/docs/harness-v4/H12_R08_INDEPENDENT_MATRIX_REVIEW_20261118.md)
 - H13 至 H18 的本地独立工程验收已归档。H17 受控对照支持保留单 Agent 默认设置。H18 复核通过 WSL2 安装、Debian 12 容器安装及恢复权限后用原命令继续发布。原生 Linux 宿主机和生产多机验收为 `NOT_RUN`。[H13](v3/docs/harness-v4/H13_INDEPENDENT_ACCEPTANCE_20261118.md) · [H14](v3/docs/harness-v4/H14_INDEPENDENT_ACCEPTANCE_20261118.md) · [H15](v3/docs/harness-v4/H15_INDEPENDENT_ACCEPTANCE_20261118.md) · [H16](v3/docs/harness-v4/H16_INDEPENDENT_ACCEPTANCE_20261118.md) · [H17](v3/docs/harness-v4/H17_INDEPENDENT_ACCEPTANCE_20261119.md) · [H18](v3/docs/harness-v4/H18_PUBLISH_RETRY_INDEPENDENT_20261119.md)
 
-[文档导航](v3/docs/README.md) · [任务卡](v3/docs/harness-v4/TASKS.md) · [历史公开快照说明](PUBLICATION.md)
+[实验档案与结果](v3/experiments/capability-eval-v1/README.md) · [文档导航](v3/docs/README.md) · [任务卡](v3/docs/harness-v4/TASKS.md) · [历史公开快照说明](PUBLICATION.md)

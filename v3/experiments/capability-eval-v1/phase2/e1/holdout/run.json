@@ -1,0 +1,17 @@
+{
+  "freeze_sha256": "733b51b422c90da9166380a711b8922a9d90863f6ff8e703db7401d54d0f283f",
+  "queries_sha256": "8aa48ea0fc2da289878d339c7fe2f919bba9e3cfc3e2b2b7d2cd3c5c3297f281",
+  "split": "holdout",
+  "raw_sha256": "890f91cb22414e51da682d0dfca8e2464c636614a9140ace3a0fe0bdfff8461a",
+  "filter_sha256": "341e1eb6edba42793b67f896b305a9c2682b952dfeb75ba03413ff251c4a3c81",
+  "count": 210,
+  "postgres": "PostgreSQL 16.12 (Debian 16.12-1.pgdg12+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit",
+  "embedding": "zh_core_web_md@3.8.0:mean300:l2:bcf300540fbd15b1b0aac358f327f2a31de8992b346162d5600f843514da0e98",
+  "reranker": "pairwise-linear:3aa28294883c5b45ab8618eddb82ec16ed8762b0a7625196d15ec6f1f3781023",
+  "model_mode": "pretrained_spacy_mean300_plus_locally_trained_pairwise",
+  "paid_requests": 0,
+  "provider_tokens": 0,
+  "cost": 0,
+  "raw_ranking_format": "[candidate index, score], full ranking. Evaluate first 10.",
+  "elapsed_seconds_including_database": 34.0908204219304
+}

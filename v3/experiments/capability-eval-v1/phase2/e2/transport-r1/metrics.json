@@ -1,0 +1,655 @@
+{
+  "offline": {
+    "development": {
+      "rows": 1080,
+      "arms": {
+        "full_history": {
+          "measured": 270,
+          "failed": 0,
+          "mean_input_tokens_reference": 19125.11111111111,
+          "mean_history_tokens_reference": 18188.1,
+          "permission_mutations": 0,
+          "integrity": {
+            "constraints": {
+              "kept": 270,
+              "total": 270
+            },
+            "evidence": {
+              "kept": 5580,
+              "total": 5580
+            },
+            "failures": {
+              "kept": 540,
+              "total": 540
+            },
+            "approvals": {
+              "kept": 270,
+              "total": 270
+            },
+            "actions": {
+              "kept": 270,
+              "total": 270
+            },
+            "open_questions": {
+              "kept": 270,
+              "total": 270
+            },
+            "artifacts": {
+              "kept": 5580,
+              "total": 5580
+            }
+          },
+          "latency_ms": {
+            "p50": 0.024,
+            "p95": 0.036
+          }
+        },
+        "truncate": {
+          "measured": 270,
+          "failed": 0,
+          "mean_input_tokens_reference": 10338.488888888889,
+          "mean_history_tokens_reference": 9401.477777777778,
+          "permission_mutations": 0,
+          "integrity": {
+            "constraints": {
+              "kept": 270,
+              "total": 270
+            },
+            "evidence": {
+              "kept": 3000,
+              "total": 5580
+            },
+            "failures": {
+              "kept": 354,
+              "total": 540
+            },
+            "approvals": {
+              "kept": 270,
+              "total": 270
+            },
+            "actions": {
+              "kept": 270,
+              "total": 270
+            },
+            "open_questions": {
+              "kept": 270,
+              "total": 270
+            },
+            "artifacts": {
+              "kept": 3000,
+              "total": 5580
+            }
+          },
+          "latency_ms": {
+            "p50": 115.948,
+            "p95": 274.893
+          }
+        },
+        "summary": {
+          "measured": 270,
+          "failed": 0,
+          "mean_input_tokens_reference": 5465.955555555555,
+          "mean_history_tokens_reference": 4528.944444444444,
+          "permission_mutations": 0,
+          "integrity": {
+            "constraints": {
+              "kept": 270,
+              "total": 270
+            },
+            "evidence": {
+              "kept": 1323,
+              "total": 5580
+            },
+            "failures": {
+              "kept": 279,
+              "total": 540
+            },
+            "approvals": {
+              "kept": 270,
+              "total": 270
+            },
+            "actions": {
+              "kept": 270,
+              "total": 270
+            },
+            "open_questions": {
+              "kept": 270,
+              "total": 270
+            },
+            "artifacts": {
+              "kept": 1323,
+              "total": 5580
+            }
+          },
+          "latency_ms": {
+            "p50": 60.074,
+            "p95": 94.674
+          }
+        },
+        "magr_compaction": {
+          "measured": 270,
+          "failed": 0,
+          "mean_input_tokens_reference": 9766.744444444445,
+          "mean_history_tokens_reference": 8814.4,
+          "permission_mutations": 0,
+          "integrity": {
+            "constraints": {
+              "kept": 270,
+              "total": 270
+            },
+            "evidence": {
+              "kept": 5580,
+              "total": 5580
+            },
+            "failures": {
+              "kept": 540,
+              "total": 540
+            },
+            "approvals": {
+              "kept": 270,
+              "total": 270
+            },
+            "actions": {
+              "kept": 270,
+              "total": 270
+            },
+            "open_questions": {
+              "kept": 270,
+              "total": 270
+            },
+            "artifacts": {
+              "kept": 5580,
+              "total": 5580
+            }
+          },
+          "latency_ms": {
+            "p50": 334.92,
+            "p95": 706.052
+          }
+        }
+      },
+      "first_input_reference": {
+        "clusters": 30,
+        "pairs": 270,
+        "reduction": 0.4893235188176104,
+        "reduction_ci": [
+          0.47706134592389615,
+          0.5029179711378318
+        ],
+        "success_difference": null,
+        "success_difference_ci": null
+      },
+      "history_reference": {
+        "clusters": 30,
+        "pairs": 270,
+        "reduction": 0.5153754377862448,
+        "reduction_ci": [
+          0.502487859635423,
+          0.5296191578402505
+        ],
+        "success_difference": null,
+        "success_difference_ci": null
+      }
+    },
+    "holdout": {
+      "rows": 360,
+      "arms": {
+        "full_history": {
+          "measured": 90,
+          "failed": 0,
+          "mean_input_tokens_reference": 19128.4,
+          "mean_history_tokens_reference": 18200.4,
+          "permission_mutations": 0,
+          "integrity": {
+            "constraints": {
+              "kept": 90,
+              "total": 90
+            },
+            "evidence": {
+              "kept": 1860,
+              "total": 1860
+            },
+            "failures": {
+              "kept": 180,
+              "total": 180
+            },
+            "approvals": {
+              "kept": 90,
+              "total": 90
+            },
+            "actions": {
+              "kept": 90,
+              "total": 90
+            },
+            "open_questions": {
+              "kept": 90,
+              "total": 90
+            },
+            "artifacts": {
+              "kept": 1860,
+              "total": 1860
+            }
+          },
+          "latency_ms": {
+            "p50": 0.025,
+            "p95": 0.036
+          }
+        },
+        "truncate": {
+          "measured": 90,
+          "failed": 0,
+          "mean_input_tokens_reference": 10319.433333333332,
+          "mean_history_tokens_reference": 9391.433333333332,
+          "permission_mutations": 0,
+          "integrity": {
+            "constraints": {
+              "kept": 90,
+              "total": 90
+            },
+            "evidence": {
+              "kept": 996,
+              "total": 1860
+            },
+            "failures": {
+              "kept": 117,
+              "total": 180
+            },
+            "approvals": {
+              "kept": 90,
+              "total": 90
+            },
+            "actions": {
+              "kept": 90,
+              "total": 90
+            },
+            "open_questions": {
+              "kept": 90,
+              "total": 90
+            },
+            "artifacts": {
+              "kept": 996,
+              "total": 1860
+            }
+          },
+          "latency_ms": {
+            "p50": 102.599,
+            "p95": 242.647
+          }
+        },
+        "summary": {
+          "measured": 90,
+          "failed": 0,
+          "mean_input_tokens_reference": 5419.1,
+          "mean_history_tokens_reference": 4491.1,
+          "permission_mutations": 0,
+          "integrity": {
+            "constraints": {
+              "kept": 90,
+              "total": 90
+            },
+            "evidence": {
+              "kept": 441,
+              "total": 1860
+            },
+            "failures": {
+              "kept": 93,
+              "total": 180
+            },
+            "approvals": {
+              "kept": 90,
+              "total": 90
+            },
+            "actions": {
+              "kept": 90,
+              "total": 90
+            },
+            "open_questions": {
+              "kept": 90,
+              "total": 90
+            },
+            "artifacts": {
+              "kept": 441,
+              "total": 1860
+            }
+          },
+          "latency_ms": {
+            "p50": 49.036,
+            "p95": 83.125
+          }
+        },
+        "magr_compaction": {
+          "measured": 90,
+          "failed": 0,
+          "mean_input_tokens_reference": 9780.066666666668,
+          "mean_history_tokens_reference": 8838.466666666667,
+          "permission_mutations": 0,
+          "integrity": {
+            "constraints": {
+              "kept": 90,
+              "total": 90
+            },
+            "evidence": {
+              "kept": 1860,
+              "total": 1860
+            },
+            "failures": {
+              "kept": 180,
+              "total": 180
+            },
+            "approvals": {
+              "kept": 90,
+              "total": 90
+            },
+            "actions": {
+              "kept": 90,
+              "total": 90
+            },
+            "open_questions": {
+              "kept": 90,
+              "total": 90
+            },
+            "artifacts": {
+              "kept": 1860,
+              "total": 1860
+            }
+          },
+          "latency_ms": {
+            "p50": 470.21,
+            "p95": 587.538
+          }
+        }
+      },
+      "first_input_reference": {
+        "clusters": 10,
+        "pairs": 90,
+        "reduction": 0.48871486027756283,
+        "reduction_ci": [
+          0.4786275379580375,
+          0.4982371568642828
+        ],
+        "success_difference": null,
+        "success_difference_ci": null
+      },
+      "history_reference": {
+        "clusters": 10,
+        "pairs": 90,
+        "reduction": 0.5143806363230112,
+        "reduction_ci": [
+          0.503799494862732,
+          0.5244141929745252
+        ],
+        "success_difference": null,
+        "success_difference_ci": null
+      }
+    }
+  },
+  "live": {
+    "splits": {
+      "development": {
+        "arms": {
+          "full_history": {
+            "trials": 0,
+            "graded": 0,
+            "success": 0,
+            "confirmed_requests": 0,
+            "confirmed_input": 0,
+            "confirmed_output": 0,
+            "confirmed_peak_cost_micros": 0,
+            "tariff_cost_nano_usd": null,
+            "ledger_invoice_usd": null,
+            "first_input_tokens": [],
+            "cumulative_input_per_trial": [],
+            "total_io_tokens_per_success": null,
+            "input_tokens_per_success": null,
+            "peak_cost_micros_per_success": null,
+            "tariff_cost_nano_usd_per_success": null,
+            "purposes": {},
+            "grade_model_calls": 0,
+            "reads": 0,
+            "repeated_reads": 0,
+            "read_bytes": 0,
+            "read_reference_tokens": 0,
+            "reread_bytes": 0,
+            "reread_reference_tokens": 0,
+            "compaction_ms": {
+              "p50": null,
+              "p95": null
+            }
+          },
+          "truncate": {
+            "trials": 1,
+            "graded": 1,
+            "success": 0,
+            "confirmed_requests": 0,
+            "confirmed_input": 0,
+            "confirmed_output": 0,
+            "confirmed_peak_cost_micros": 0,
+            "tariff_cost_nano_usd": null,
+            "ledger_invoice_usd": null,
+            "first_input_tokens": [],
+            "cumulative_input_per_trial": [
+              null
+            ],
+            "total_io_tokens_per_success": null,
+            "input_tokens_per_success": null,
+            "peak_cost_micros_per_success": null,
+            "tariff_cost_nano_usd_per_success": null,
+            "purposes": {},
+            "grade_model_calls": 0,
+            "reads": 0,
+            "repeated_reads": 0,
+            "read_bytes": 0,
+            "read_reference_tokens": 0,
+            "reread_bytes": 0,
+            "reread_reference_tokens": 0,
+            "compaction_ms": {
+              "p50": 213.31,
+              "p95": 213.31
+            }
+          },
+          "summary": {
+            "trials": 0,
+            "graded": 0,
+            "success": 0,
+            "confirmed_requests": 0,
+            "confirmed_input": 0,
+            "confirmed_output": 0,
+            "confirmed_peak_cost_micros": 0,
+            "tariff_cost_nano_usd": null,
+            "ledger_invoice_usd": null,
+            "first_input_tokens": [],
+            "cumulative_input_per_trial": [],
+            "total_io_tokens_per_success": null,
+            "input_tokens_per_success": null,
+            "peak_cost_micros_per_success": null,
+            "tariff_cost_nano_usd_per_success": null,
+            "purposes": {},
+            "grade_model_calls": 0,
+            "reads": 0,
+            "repeated_reads": 0,
+            "read_bytes": 0,
+            "read_reference_tokens": 0,
+            "reread_bytes": 0,
+            "reread_reference_tokens": 0,
+            "compaction_ms": {
+              "p50": null,
+              "p95": null
+            }
+          },
+          "magr_compaction": {
+            "trials": 0,
+            "graded": 0,
+            "success": 0,
+            "confirmed_requests": 0,
+            "confirmed_input": 0,
+            "confirmed_output": 0,
+            "confirmed_peak_cost_micros": 0,
+            "tariff_cost_nano_usd": null,
+            "ledger_invoice_usd": null,
+            "first_input_tokens": [],
+            "cumulative_input_per_trial": [],
+            "total_io_tokens_per_success": null,
+            "input_tokens_per_success": null,
+            "peak_cost_micros_per_success": null,
+            "tariff_cost_nano_usd_per_success": null,
+            "purposes": {},
+            "grade_model_calls": 0,
+            "reads": 0,
+            "repeated_reads": 0,
+            "read_bytes": 0,
+            "read_reference_tokens": 0,
+            "reread_bytes": 0,
+            "reread_reference_tokens": 0,
+            "compaction_ms": {
+              "p50": null,
+              "p95": null
+            }
+          }
+        },
+        "paired": {
+          "clusters": 0,
+          "pairs": 0,
+          "reduction": null,
+          "reduction_ci": null,
+          "success_difference": null,
+          "success_difference_ci": null
+        }
+      },
+      "holdout": {
+        "arms": {
+          "full_history": {
+            "trials": 0,
+            "graded": 0,
+            "success": 0,
+            "confirmed_requests": 0,
+            "confirmed_input": 0,
+            "confirmed_output": 0,
+            "confirmed_peak_cost_micros": 0,
+            "tariff_cost_nano_usd": null,
+            "ledger_invoice_usd": null,
+            "first_input_tokens": [],
+            "cumulative_input_per_trial": [],
+            "total_io_tokens_per_success": null,
+            "input_tokens_per_success": null,
+            "peak_cost_micros_per_success": null,
+            "tariff_cost_nano_usd_per_success": null,
+            "purposes": {},
+            "grade_model_calls": 0,
+            "reads": 0,
+            "repeated_reads": 0,
+            "read_bytes": 0,
+            "read_reference_tokens": 0,
+            "reread_bytes": 0,
+            "reread_reference_tokens": 0,
+            "compaction_ms": {
+              "p50": null,
+              "p95": null
+            }
+          },
+          "truncate": {
+            "trials": 0,
+            "graded": 0,
+            "success": 0,
+            "confirmed_requests": 0,
+            "confirmed_input": 0,
+            "confirmed_output": 0,
+            "confirmed_peak_cost_micros": 0,
+            "tariff_cost_nano_usd": null,
+            "ledger_invoice_usd": null,
+            "first_input_tokens": [],
+            "cumulative_input_per_trial": [],
+            "total_io_tokens_per_success": null,
+            "input_tokens_per_success": null,
+            "peak_cost_micros_per_success": null,
+            "tariff_cost_nano_usd_per_success": null,
+            "purposes": {},
+            "grade_model_calls": 0,
+            "reads": 0,
+            "repeated_reads": 0,
+            "read_bytes": 0,
+            "read_reference_tokens": 0,
+            "reread_bytes": 0,
+            "reread_reference_tokens": 0,
+            "compaction_ms": {
+              "p50": null,
+              "p95": null
+            }
+          },
+          "summary": {
+            "trials": 0,
+            "graded": 0,
+            "success": 0,
+            "confirmed_requests": 0,
+            "confirmed_input": 0,
+            "confirmed_output": 0,
+            "confirmed_peak_cost_micros": 0,
+            "tariff_cost_nano_usd": null,
+            "ledger_invoice_usd": null,
+            "first_input_tokens": [],
+            "cumulative_input_per_trial": [],
+            "total_io_tokens_per_success": null,
+            "input_tokens_per_success": null,
+            "peak_cost_micros_per_success": null,
+            "tariff_cost_nano_usd_per_success": null,
+            "purposes": {},
+            "grade_model_calls": 0,
+            "reads": 0,
+            "repeated_reads": 0,
+            "read_bytes": 0,
+            "read_reference_tokens": 0,
+            "reread_bytes": 0,
+            "reread_reference_tokens": 0,
+            "compaction_ms": {
+              "p50": null,
+              "p95": null
+            }
+          },
+          "magr_compaction": {
+            "trials": 0,
+            "graded": 0,
+            "success": 0,
+            "confirmed_requests": 0,
+            "confirmed_input": 0,
+            "confirmed_output": 0,
+            "confirmed_peak_cost_micros": 0,
+            "tariff_cost_nano_usd": null,
+            "ledger_invoice_usd": null,
+            "first_input_tokens": [],
+            "cumulative_input_per_trial": [],
+            "total_io_tokens_per_success": null,
+            "input_tokens_per_success": null,
+            "peak_cost_micros_per_success": null,
+            "tariff_cost_nano_usd_per_success": null,
+            "purposes": {},
+            "grade_model_calls": 0,
+            "reads": 0,
+            "repeated_reads": 0,
+            "read_bytes": 0,
+            "read_reference_tokens": 0,
+            "reread_bytes": 0,
+            "reread_reference_tokens": 0,
+            "compaction_ms": {
+              "p50": null,
+              "p95": null
+            }
+          }
+        },
+        "paired": {
+          "clusters": 0,
+          "pairs": 0,
+          "reduction": null,
+          "reduction_ci": null,
+          "success_difference": null,
+          "success_difference_ci": null
+        }
+      }
+    },
+    "expected": 1440,
+    "terminal": 1,
+    "graded": 1,
+    "complete": false,
+    "actual_requests": 1,
+    "held_micros": 10893,
+    "settled_peak_micros": 0
+  }
+}

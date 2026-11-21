@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "scope": "E5-R1 performance and recall parity in dedicated PostgreSQL",
+  "overall_release": "BLOCKED",
+  "promotion": "experimental branch",
+  "paid_calls": 0,
+  "remote_writes": 0,
+  "independent_operator": "NOT_RUN",
+  "historically_independent_holdout": "REGRESSION_VERIFIED",
+  "cells": 172,
+  "completed_requests": 36864,
+  "source": "088b087",
+  "sha256": {
+    "manifest.json": "c18006a7ba76fabbcacff19ae40838af0d7977f21c54b3b66dd09973e5751692",
+    "cases.jsonl": "20bbb94e3809cac1e6fddb8f8040ad27e462cd1413bf768f3233f094ea02fc62",
+    "raw.jsonl": "cbac546bde2ebf7c960680fdb6f7daef502031595d0941c6a4e4c29850c77e4e",
+    "metrics.json": "357fe23637db2a7cf03e096c1469f74f47658f8279738e3c3595c0e5f8219af3",
+    "failures.md": "7a5dc1ae7084a7aae390bfb2c3779cff62af051e93d9407e665dc8a1e6cad42f",
+    "independent_review.md": "340e73a79989816cca71439ad3985fa892e16e7b9c8c70b521bc3e7e0cd25587",
+    "report.md": "b97dca0d003eec783429df66947771542b591235299f1b1a54d9c1281dc65bdf",
+    "samples.tar.gz": "9616f8ddae66b9cc0052378895bb6aa5193573dd314c4bf3199cb1c02df431a3",
+    "archive-audit.json": "38812a0a70845769b6b74277a59b8ab20daa9233cbd21e6abf2a2227c671670e",
+    "evidence-index.json": "3e874467b02c75a3992f2cb4f5d8dfae1c16d8d863b6e10cfdd34af071f5c7bd",
+    "e1-development.json": "d2ad7bb951df745fdc2798c5bbb99344038e231339a44e340e94b2be4d7ca394",
+    "e1-holdout.json": "3115c68f9a14f1ba8d9edc4b05d78c8fee07c81c93ff574da05332d83471b2a8"
+  }
+}

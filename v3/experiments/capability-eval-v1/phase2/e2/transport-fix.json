@@ -1,0 +1,19 @@
+{
+  "schema": "e2-r1-transport-repair-v1",
+  "authorized_attempts": 5760,
+  "authorized_usd_micros": 369000000,
+  "authorization_sha256": "a6f8d3d58c194c3c9590ef67c9e9780082a30d396a9d1aada2723f7040e5bf1c",
+  "offline_sha256": "83705cac6e0f592a96713f336311c69b4dc2b2a4a1250f31ae1cbad82575d9a0",
+  "files": {
+    "transport_fix.py": "a708ed5014923758d2839fd1ecccd87e2c2fd0f23287f827d5a52263c0e3a1f2",
+    "analyze_repair.py": "0f6b7a179fd5652e2e42a4521e6927749d3f5319f11600055545fe7d2e53b576",
+    "manifest.json": "fef32397d832ef7cf6f8508ec511d59236675c214903003caeccb916b08501f7",
+    "transport-r1/acceptance.json": "4be32a85b53e0af2f074404d16a150bff9efe701ecafe99dbc4a678cf5630777",
+    "transport-r1/dependencies.json": "07313268922aa2459d9b5adbe40d0cdaac5e6c70d02aeadcb8d7d4fe4991895d",
+    "transport-r1/metrics.json": "1bede8e5533d240c57b5be4700805811b2613e3b15bc272ebf71d43e0788516f",
+    "transport-r1/provider-requests.jsonl": "31c045fb7e35af2986002ff575f2c78d0aa621aef5bf7299893a98faa817ac10",
+    "transport-r1/proxy-preflight.json": "1c0e9a6af712e5d07184ffc7516430923db4c8624864ff7abdff1f4aa8e7186f",
+    "transport-r1/reconciliation.md": "26de4588dc7363e3478272c42b33499f706baa691a9510143113fd8f0a5f639b",
+    "transport-r1/route-preflight.json": "104ebe4045c07c969421420867dbe38d27521250b9450dc16fb3d2969e01fa54"
+  }
+}

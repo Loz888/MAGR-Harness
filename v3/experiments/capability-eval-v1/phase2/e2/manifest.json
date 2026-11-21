@@ -1,0 +1,49 @@
+{
+  "source_commit": "d4fee2f555c5e031720302e98ba164cf1bd8db74",
+  "model": "deepseek-flash",
+  "provider": "deepseek",
+  "release": "DeepSeek-V4.1-Flash-1017",
+  "tokenizer": {
+    "files": {
+      "tokenizer.json": "c90dfa01249db1be4245780a052ede752e1361c612ac6d08e2bdada7d599476b",
+      "encoding.py": "13231c592e958fb39e2af6001dae69d90e7a36b265702b9b390236fb387599e2"
+    },
+    "package": "0.23.1",
+    "release": "1bae0e1088993b9b82de08f59de5be5a34e42170"
+  },
+  "python": "3.12.16 (main, Oct 26 2026, 14:08:45) [Clang 23.1.3 ]",
+  "database": "none; local filesystem CAS",
+  "sandbox": "local read-only evidence pagination",
+  "prompt_sha256": "3f8f62bbab2752b6f5e0efea067ec6a50b0ac0fa8075846b17407da0c181df8f",
+  "seed": "E2-R1-20261120",
+  "cases_sha256": "1609e4d63b6c63e2aa634790104ff38a35771c1f2644eb81c401e7a0221674f1",
+  "dataset_sha256": "6637cc6644a0581e3e806b791e68ae5ede816a63a49fce7f445a1253eff06351",
+  "sources": {
+    "experiments/capability-eval-v1/phase2/e2/protocol.md": "d7825827c6102ebe5bc9255ccc0e09659d627e7f53c46a8354c25c1d3fa3d152",
+    "experiments/capability-eval-v1/phase2/e2/make_dev.py": "96e59a1e35075562dddbc60b2b06710305d78b34ef74e3865a14ed4e0f3bb5ce",
+    "experiments/capability-eval-v1/phase2/e2/development.jsonl": "9d58ec1fdfc89788c76fbc7a9c8c36d822687fc299220f51c3d986359af0af3f",
+    "experiments/capability-eval-v1/phase2/e2/matrix.py": "8d73e040d4b4e8e5a59ffd962c7979e86618e6211d3c8f3aa7572e4baee18c7b",
+    "experiments/capability-eval-v1/phase2/e2/lifecycle.py": "198be20fe6bbb95bfea69dfd0a3ebcb902aa0230e6059a6162b84b2ea335b7aa",
+    "experiments/capability-eval-v1/phase2/e2/analyze.py": "a1a59db533514e3ecde2dc5f2841709332a6a8c2fdc0b59941fe27d743c9c253",
+    "experiments/capability-eval-v1/phase2/e2/e2_independent_grader.py": "cc8b38288717b9486b544369089c2170692afc62164bcd2bfc3912ee020ed61d",
+    "experiments/capability-eval-v1/phase2/e2/e2-holdout.jsonl": "d04c518877af2490137f6edf66e383c9117772b711499f6ef22ed463dfc06155",
+    "src/mgar_v3/context/builder.py": "e6befaf4842bb2299d176b12e4ecd829434c1baa15f2f2ee2656ee8995dfe5a0",
+    "src/mgar_v3/context/compactor.py": "69b68492a68f517bf6b467ff48b9563656fed88a57c09ac6823e5fe583deeac3",
+    "src/mgar_v3/evidence/artifacts.py": "62ea463b3a0f9924388732d02a9d62751f7e1dad695a2813a9355dffa3cbe679",
+    "src/mgar_v3/quality_eval/e2_context.py": "c205110ca5015422800bf1fe6dddc5e2354436b9bd2a742b7d4b82d490ad6f77",
+    "src/mgar_v3/quality_eval/e2_grader.py": "835ed1588e7fb17355f20a16ae37ae2aef82bf817e425901fc153a2762e13c6a",
+    "src/mgar_v3/quality_eval/e2_live.py": "24faa86010a17576a372599ef0b6a1b7752b4ee1000d014ed6c9f6a2032d963c",
+    "src/mgar_v3/models/deepseek_policy.py": "79218a7282da42663c59888e19dcf8174b645028664fae10e4efa8c980baff52",
+    "uv.lock": "56579416e1652e02a17706e72be15ee5d24762c45d6e27b25618312eddbb6583",
+    "experiments/capability-eval-v1/PLAN_V1.0.md": "8c2b0ca6f3f9e43c0797c9e929e7f9bf785a422dfdc3b74b20689d188def496b"
+  },
+  "development_labels_sha256": "57f799272ebd129952ab2d6701cd18b9b42aea4e1de3cc731c4c7f91e4843f28",
+  "independent_commitment": {
+    "holdout_author": "independent reviewer, no arm results available at creation",
+    "tasks": 10,
+    "case_scales": 30,
+    "tasks_sha256": "d04c518877af2490137f6edf66e383c9117772b711499f6ef22ed463dfc06155",
+    "labels_sha256": "ffa02693e152514f955bd810c911bf973e9f46e3cd19c778b4c3604ab375a7de",
+    "grader_sha256": "cc8b38288717b9486b544369089c2170692afc62164bcd2bfc3912ee020ed61d"
+  }
+}

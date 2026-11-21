@@ -1,0 +1,258 @@
+{
+  "baseline": {
+    "branch": "experiment/memory-context-benchmark-v1",
+    "head": "07486a610ffe5f0be99167a8125ef8e9e925af16",
+    "observed_at": "2026-11-20T20:39:10+08:00",
+    "porcelain_v1": "",
+    "remote_main": "4653afc7c0de2526a25148ea4b96adb4a88ce936",
+    "tree": "b1bda4b5bce39c9d24f62680aeeeaa7a091d7876",
+    "worktree_source_sha256": "3af2c133e8c2dfcfbd16d01ee94778ba62bc4208222c5fb1a07caedfd96f1c5f"
+  },
+  "cases": "cases.jsonl",
+  "deliverables_sha256": {
+    "acceptance.json": "9d3cf6ead508d36e5edca2c252984432455f431c9b09edf350ef919471efa8ef",
+    "cases.jsonl": "9b7a5d4e4444d50a47e320aec10a2a36b3f9226ceeb9d6a0d5f82e98fc4f1358",
+    "failures.md": "262d1aa7a269eb37a8262f549d2916d7bcd1f096c66e9e11d3e76f6fe87f9321",
+    "independent_review.md": "7a52336d80fb22517ee2d506d92e3081191661a25dba4090d11bd54b72c61044",
+    "metrics.json": "e6ec921834c76ec4a6b9ffcc38a751294233ab6ba7c2e3589b13a023c44a9eb8",
+    "raw.jsonl": "4bc8f412ed6b839e2655dbd7d63617c24dc36a46cee1415fe5d7d3d7ab93fc5e",
+    "report.md": "1a20fa9856d1916e84889c3d84022eb44ead322b219404ff9c7b107e367ba604",
+    "verify.py": "3bed3337a36d4784732fd5cf0843ecc9240420dc9ecba850e83adeb5bca7a6e1"
+  },
+  "e1_candidate_sha256": "6ae6733faab6bebb88787ae5f1676cdf8b3086305a709d2fe113bf4b8e1177c8",
+  "evidence_counts": {
+    "E1": 19,
+    "E2": 12,
+    "E3": 9,
+    "E4": 11,
+    "E5": 142,
+    "H12": 16,
+    "H17": 56,
+    "H18": 121
+  },
+  "evidence_scope": "Rehash original bytes in their existing custody, including all 132 E5 compressed files. E1 private holdout labels, queries and per-query rankings stay sealed. PG, live models and historical tasks were not rerun.",
+  "external_writes": 0,
+  "file_root_layout": "benchmark = original experiment v3 checkout. H12/H17/H18 = original acceptance v3 worktrees. Review roots = custodian metadata directories (verify.py).",
+  "h12_original_dev_files_verified": 531,
+  "h12_score_commitments": {
+    "archive": "evidence/harness-v4/HV4-H12-R08-FORMAL-20261118/live/candidate",
+    "audit": "evidence/harness-v4/HV4-H12-R08-FORMAL-20261118/audit/final.json",
+    "by_split": {
+      "dev": [
+        "7f1f92f0c78d77bfb596a4fe9d69ccf93cc5a5b8705fecf89a88743a2d56e1ab",
+        "d1f9c6585fbee4241b7d756d65037a168e97462aaa3842547aadf3734ac1b9f4",
+        "5bfdd0f65a75f9d1a9623bfab810cfa091a662a1de2a76cddff8aa82ed080d35",
+        "9cf967eb4780572216bcddf528be1240892db9730f43f745d07fa15945f5d66f",
+        "d3e7081833f442f061b50403a1f4f941da3a4a6f5c81f662ae3b1b9761ee986b",
+        "760d0ce74e488b88736aa2767ee792808eba9806575a7d4b624e7b709f4825fe",
+        "d003c71ce4ce4bd3050f9848756d3c327737607d3af468c51bc825bf72472724",
+        "7c86513f6f0df42328a03f9d5c95c8283e8e82d863cfd86f517838b98e783200",
+        "771b5e9ee38cbad96b3c28734a07984d36aaecb8f35589fc21790c11c2d0509b",
+        "c50e65996feee35eec38a3ae733053b72cfaff0753f9ca365547dc299b73978f",
+        "056c5f76405dcf62d75f833f66483e6c763b0c60c6c78f9711bb1177abe934bc",
+        "475d3c2af2e34062e0d764e61775032abc09ec4da549e0b1dd49f5f4e30d243a"
+      ],
+      "holdout": [
+        "0123f5f5425a45d0dfc739d377ed0b67e851d1234fd1044939cb7492a40a01b8",
+        "06ca4b3cfe2af39502c6cab3447ea56edb1ed2d11c740a26e0825c1490b05374",
+        "b6684ab69b6844ad61df510856f91258487b0593780a46ad1c53d371ef4202e0",
+        "da09aab02acfdee1f843719551b70b9b84205da5e631c08dbd26c018bc44ab3a",
+        "9101a6a7bb211b9f15a9714f701180b969ed48b565be1250ad0f44796957287a",
+        "ef57cd6c90a43d72ff9a433e7715880ff38d009b99435d10f3b2a631af8bbd95",
+        "a61a90b37d14c06c41409305ea82ccfd56b316fb879f9c5470a57ab179a55f0e",
+        "4c8e6b26f26b0064caf20b69818b054c1337c6446cd84af829a589e81be1d65d",
+        "08443e511d317885944857cd5d33fa800bf04c6177b97dba30151b5983c40018",
+        "e49769020a471bb59d17ed787c40fbe44a0ef745ac7618705fc13e3a61818270",
+        "2cc9de664c9fed52a5baeba636c647640f796ed0a374434aad526cee1621ec05",
+        "4b4c5502f789f561fc6b11ac9d50869687e570a398bc9fda3c836703cef558fa"
+      ]
+    },
+    "original_dev_files": 531,
+    "original_dev_index": "original-hashes.json"
+  },
+  "historical_file_maps": [
+    {
+      "commit": "0db27e2f7491b42436537befb7dc879e5d2e84ed",
+      "experiment": "E2",
+      "field": [
+        "dataset_freeze",
+        "implementation_sha256"
+      ],
+      "receipt": "experiments/memory-context-v1/acceptance/e2-start-20261120.json"
+    },
+    {
+      "commit": "4e2fe05487262fee38b9ae0fe67301758c7c6faf",
+      "experiment": "E2",
+      "field": [
+        "dataset_freeze",
+        "corpus_sha256"
+      ],
+      "receipt": "experiments/memory-context-v1/acceptance/e2-start-20261120.json"
+    },
+    {
+      "commit": "46eda7844f2f9b04d09c9a94a9965715d97b9716",
+      "experiment": "E3",
+      "field": [
+        "inputs",
+        "source_sha256"
+      ],
+      "receipt": "evidence/E3/freeze-20261120.json"
+    },
+    {
+      "commit": "533c4c9b9816b5c6718b56fb296193df22290695",
+      "experiment": "E4",
+      "field": [
+        "inputs",
+        "source_sha256"
+      ],
+      "receipt": "evidence/E4/freeze-20261120.json"
+    },
+    {
+      "commit": "8891be30171897d80d6b2e7f1c68020bb0ea83fb",
+      "experiment": "E5",
+      "field": [
+        "inputs",
+        "files"
+      ],
+      "receipt": "evidence/E5/freeze-20261120.json"
+    }
+  ],
+  "historical_metrics": "metrics.json",
+  "historical_source_bindings": 216,
+  "holdout_policy": {
+    "E1_V1": {
+      "independent_commitment_sha256": "25ef543482b71e3ce1d460b2e0d22b051b334d5389c2bdc2baecd30e8bcc6c6d",
+      "labels_sha256": "d75c6524aa75219cfa48fd496ca0ea88fa1b24ab372ce2b1d40796087ffd6811",
+      "queries_sha256": "7b51c10b14f59655f599d99e96b868fa9723544c47600d6fd94ac252c420a389"
+    },
+    "E2_E3_formal_holdouts": "NOT_RUN; public pilots excluded from future blind results",
+    "E4_V1_regression_only": "e409b7f55fc465d1335b8ad787d5b8db6d322eaa615e189dd551ff16fc8be3a8",
+    "H12_Formal_V5": {
+      "candidate_sha256": "b953a102be5bf5f030a004e727a336a84d6bd97bf48b7f9c023a02b7190a1d99",
+      "historical_only": true,
+      "sampling_plan_sha256": "01b8e58a91945740d95833c04416b91149736259f563207b9931c59cfdfbd033"
+    },
+    "rule": "Prior holdout inputs, labels and per-case results may not be used for tuning or counted as a fresh independent test. New independent datasets and graders require commitments before scoring. No new candidate or dataset was created in Phase 0."
+  },
+  "independent_phase0_review": "NOT_RUN",
+  "local_evidence_archives": [
+    {
+      "bytes": 13864960,
+      "objects": 545,
+      "path": ".local/capability-eval-v1/phase0-20261120/e6e5d253124cc8fa99e528f66dcd9e9b12b8e7079ed84deb4d82449149cfbef8.tar",
+      "root": "H12",
+      "sha256": "e6e5d253124cc8fa99e528f66dcd9e9b12b8e7079ed84deb4d82449149cfbef8"
+    },
+    {
+      "bytes": 215040,
+      "objects": 50,
+      "path": ".local/capability-eval-v1/phase0-20261120/f37079e0ec53f0270834b4fe0149deaceba816b64a909521b9ae645874bf30c8.tar",
+      "root": "H17",
+      "sha256": "f37079e0ec53f0270834b4fe0149deaceba816b64a909521b9ae645874bf30c8"
+    },
+    {
+      "bytes": 11202560,
+      "objects": 96,
+      "path": ".local/capability-eval-v1/phase0-20261120/30473b49c261d8e0bc4f9e056bb776b8df904e40a2bb3776ed5823cee99d7095.tar",
+      "root": "H18",
+      "sha256": "30473b49c261d8e0bc4f9e056bb776b8df904e40a2bb3776ed5823cee99d7095"
+    },
+    {
+      "bytes": 25896960,
+      "objects": 206,
+      "path": ".local/capability-eval-v1/phase0-20261120/01678b1483d8dd337f634a47fe77901d46afe54af39d8fdddddb195087159531.tar",
+      "root": "benchmark",
+      "sha256": "01678b1483d8dd337f634a47fe77901d46afe54af39d8fdddddb195087159531"
+    }
+  ],
+  "new_candidate_scores": "NOT_RUN",
+  "new_model_calls": 0,
+  "plan_sha256": "8c2b0ca6f3f9e43c0797c9e929e7f9bf785a422dfdc3b74b20689d188def496b",
+  "schema": "magr-capability-eval-phase0-freeze-v1",
+  "source_hash_method": "v3/scripts/verify.py source_fingerprint over the archived Git revision; local working-tree fingerprint separately compared before delivery",
+  "sources": [
+    {
+      "commit": "07486a610ffe5f0be99167a8125ef8e9e925af16",
+      "id": "snapshot",
+      "root": "benchmark",
+      "source_sha256": "3af2c133e8c2dfcfbd16d01ee94778ba62bc4208222c5fb1a07caedfd96f1c5f"
+    },
+    {
+      "commit": "4653afc7c0de2526a25148ea4b96adb4a88ce936",
+      "id": "main",
+      "root": "benchmark",
+      "source_sha256": "928d1b41220ae2b90a3440d59f3cd05829935f502cb618a4f2a861b34ff55a9f"
+    },
+    {
+      "commit": "4e2fe05487262fee38b9ae0fe67301758c7c6faf",
+      "id": "product",
+      "root": "benchmark",
+      "source_sha256": "928d1b41220ae2b90a3440d59f3cd05829935f502cb618a4f2a861b34ff55a9f"
+    },
+    {
+      "commit": "27072856aae6932c69b4ed47f882108f024c2e5d",
+      "id": "E1",
+      "root": "benchmark",
+      "source_sha256": "c876cc035f6052e42f6690886cc3339703577b1129d071ac56a9990a118b729c"
+    },
+    {
+      "commit": "0db27e2f7491b42436537befb7dc879e5d2e84ed",
+      "id": "E2",
+      "root": "benchmark",
+      "source_sha256": "c57dca3b47a2051e6f70f5877235d0561c9a8408271498f4b7573e275889adb4"
+    },
+    {
+      "commit": "46eda7844f2f9b04d09c9a94a9965715d97b9716",
+      "id": "E3",
+      "root": "benchmark",
+      "source_sha256": "74df7b8495f034d1dc2ed4609398bcba0cec5c279d98dcd5da6a08c4e17ae8dd"
+    },
+    {
+      "commit": "533c4c9b9816b5c6718b56fb296193df22290695",
+      "id": "E4",
+      "root": "benchmark",
+      "source_sha256": "397de85c4025f0159501e790990ca115c4c74c15ce0f94dad4423ea3f054c60e"
+    },
+    {
+      "commit": "8891be30171897d80d6b2e7f1c68020bb0ea83fb",
+      "id": "E5",
+      "root": "benchmark",
+      "source_sha256": "3af2c133e8c2dfcfbd16d01ee94778ba62bc4208222c5fb1a07caedfd96f1c5f"
+    },
+    {
+      "commit": "33e39a4c18043613965d4490fd4001b3b5da5524",
+      "id": "H12",
+      "root": "H12",
+      "source_sha256": "387a6577c3cb9c7b82a568bbc1d4c5f188489df9c51b27066d47d8537c746165"
+    },
+    {
+      "commit": "fcc77f42cbc7dd0a85c445c4dcf8291821764ca8",
+      "id": "H17",
+      "root": "H17",
+      "source_sha256": "abb51f7ea0ba6c93003cbe2d2c9d981f015071c52b505036f6d7cfbd5840c949"
+    },
+    {
+      "commit": "6bcf68594622e85662b1a5a5341ddb7e2a9af5c7",
+      "id": "H18-initial",
+      "root": "H18",
+      "source_sha256": "b8b4e5d7ab481a08e4d941bf75415e058e89c8bf274a865265f36d86d18f3676"
+    },
+    {
+      "commit": "cefa3860f879e8f503903039954e996c6aa7eda6",
+      "id": "H18-retry",
+      "root": "H18",
+      "source_sha256": "f19775395efc62aee8a9b961f6ffaf04cf5578855f3f34b218e319aa2f62698f"
+    },
+    {
+      "commit": "8a6489b6bc9e99237435e297a55542c75f218dd8",
+      "id": "H18-closure",
+      "root": "H18",
+      "source_sha256": "804fe3a28d0578f51b8e5a6530376214b24d138259d1219bd5c815461ab4d79b"
+    }
+  ],
+  "timing_evaluator": {
+    "commit": "832fcf119451d196c3d9eab7e5efaec6c78eb874",
+    "path": "v3/experiments/harness-v4/r08-timing-admission-v1/timing_admission.py",
+    "sha256": "7cd0a3b6d0b6679d390b47eb8c6d25e254adcbc845ef762ffd339ec73f778571"
+  }
+}

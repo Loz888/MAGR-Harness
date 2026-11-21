@@ -1,0 +1,114 @@
+{
+  "schema_version": "e1-preparation-acceptance-v1",
+  "phase": "PREPARED_FOR_LABEL_REVIEW",
+  "source_commit": "4e2fe05487262fee38b9ae0fe67301758c7c6faf",
+  "formal_scoring": "NOT_RUN",
+  "paid_model_calls": 0,
+  "dataset": {
+    "corpus_count": 1080,
+    "corpus_by_provenance": {
+      "public_source": 960,
+      "synthetic_control": 120
+    },
+    "development_count": 210,
+    "development_by_category": {
+      "acl_negative": 21,
+      "commit_version": 28,
+      "exact_fact": 42,
+      "no_answer": 21,
+      "path_symbol": 35,
+      "semantic_paraphrase": 42,
+      "time_validity": 21
+    },
+    "holdout_quota": {
+      "acl_negative": 9,
+      "commit_version": 12,
+      "exact_fact": 18,
+      "no_answer": 9,
+      "path_symbol": 15,
+      "semantic_paraphrase": 18,
+      "time_validity": 9
+    },
+    "files": {
+      "corpus.jsonl": "aa8ddd2e5ebc6eece9fa1adbff90715bc185e40616bf344da1e96b066566b45d",
+      "development.review.draft.jsonl": "4ee9ef4a041e588451daf7c7854dbec8d596c29d215c91d2a02774ab0a59ce82"
+    },
+    "manifest_path": ".local/memory-context-v1/e1-prep-20261120/preparation.json",
+    "manifest_sha256": "6bd85f9b2741617fce00418937e4a6abf6f5f0966c59a7dcdf33f86e28f99c1d",
+    "byte_identical_regeneration": true,
+    "public_blob_and_line_checks": 960,
+    "max_scoped_candidates": 35,
+    "labels": "UNREVIEWED",
+    "holdout_queries": "NOT_AUTHORED"
+  },
+  "model_smoke": {
+    "path": "evidence/E1/preparation-20261120/model-and-scope-smoke.json",
+    "sha256": "9fab5d01d12134d1096992351aebaf64e86003045fadd37eee00307be8b0cadb",
+    "schema_version": "e1-synthetic-readiness-v1",
+    "status": "PASS",
+    "formal_scoring": "NOT_RUN",
+    "provider_calls": 0,
+    "local_dense_model": "zh_core_web_md@3.8.0:mean300:l2:bcf300540fbd15b1b0aac358f327f2a31de8992b346162d5600f843514da0e98",
+    "dense_mode": "local_pretrained",
+    "ranker_model": "pairwise-linear:3aa28294883c5b45ab8618eddb82ec16ed8762b0a7625196d15ec6f1f3781023",
+    "ranker_mode": "local_trained_pairwise",
+    "ranker_file_sha256": "3aa28294883c5b45ab8618eddb82ec16ed8762b0a7625196d15ec6f1f3781023",
+    "training_file_sha256": "a070e8d29faa0c0b4741eaf46f0a73d2169042ee303f99c1a32d496dcb86809a",
+    "training_pairs": 16,
+    "postgres_version": "16.12 (Debian 16.12-1.pgdg12+1)",
+    "counts": {
+      "scope_admitted": 3,
+      "scope_denied": 3,
+      "bm25": 3,
+      "dense": 3,
+      "rrf": 3,
+      "reranker_scores": 3,
+      "native_full_hits": 3
+    },
+    "native_mode": "hybrid_reranked",
+    "native_degraded_reason": null
+  },
+  "ablation_smoke": {
+    "path": "evidence/E1/preparation-20261120/ablation-smoke.json",
+    "sha256": "ec214d8adb38aad76186e1d8f122330360de76ef1b6c7c002fd439889a173b3f",
+    "status": "PASS",
+    "formal_scoring": "NOT_RUN",
+    "admitted": 3,
+    "blocked": 3,
+    "embedded_blocked_texts": 0,
+    "arms": {
+      "bm25": 3,
+      "dense_only": 3,
+      "hybrid": 3,
+      "hybrid_reranked": 3,
+      "full": 3
+    },
+    "native_full_rank_and_scores_match": true,
+    "production_mode": "hybrid_reranked",
+    "degraded_reason": null,
+    "dense_model": "zh_core_web_md@3.8.0:mean300:l2:bcf300540fbd15b1b0aac358f327f2a31de8992b346162d5600f843514da0e98",
+    "reranker_model": "pairwise-linear:3aa28294883c5b45ab8618eddb82ec16ed8762b0a7625196d15ec6f1f3781023",
+    "paid_calls": 0
+  },
+  "engineering": {
+    "M03": {
+      "path": "evidence/M03/20261120T090840Z-c774cc45/result.json",
+      "sha256": "dd2751af0dfa1ffbf193f9dee791912caaea17c9027582468ef7aca5e5588029",
+      "source_commit": "9251cf48d1c1c1885c9584bb32017fb62f46afbf",
+      "counts": {
+        "tests": 12,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    "ruff": "PASS",
+    "mypy": "PASS"
+  },
+  "preparation_source_sha256": {
+    "scripts/prepare_memory_context_e1.py": "79fdeba2573fe1ac2338eff4f745913ea252563e59e52a4316f63fcf90683734",
+    "src/mgar_v3/quality_eval/e1_retrieval.py": "e6934254463a615f589921644023e8812ccbf54081b2ffd0a5a655a1e57b4b14",
+    "experiments/memory-context-v1/E1_PREPARATION.md": "3e5938695bdbc0677d752d2d72a926ac2a1637bb139e7881a192acf4ebc0a86a",
+    "uv.lock": "56579416e1652e02a17706e72be15ee5d24762c45d6e27b25618312eddbb6583"
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "frozen_manifest_sha256": "653ea67222adfae4abff8120313d60863db1a47805a11e8e745faa1a5e362340",
+  "logs": {
+    "evidence/CAPABILITY-PHASE3/h12/environment01/command.log": "15b179a07fe082d825886660e91932979502cb55b825e8e20e5f6f4f5349c2f2",
+    "evidence/CAPABILITY-PHASE3/h12/environment01/junit.xml": "ac193290c91bd9748d59534de4569bb73d890fb31f5b688b26d73418e1aab431",
+    "evidence/CAPABILITY-PHASE3/h12/matrix01/command.log": "612bb6e2f2d96e67cfcff4323792651906c04202a19e36eff7af376f9188c999",
+    "evidence/CAPABILITY-PHASE3/h12/matrix01/junit.xml": "4a9e0f53b0d4606f0bcc65574626801e49d6766e1ed51561474de92f4e5bf407",
+    "evidence/CAPABILITY-PHASE3/h12/patch02/command.log": "f029427b2f3aa7f6c51c1b35bd0bbdb27bd4fd42c819463ce007ec6e8ff7b6de",
+    "evidence/CAPABILITY-PHASE3/h12/patch02/junit.xml": "78cbf7468e9dbef4081d78cace050ba28040c877755de0a5ae591cf98cc294fd",
+    "evidence/CAPABILITY-PHASE3/h17/matrix01/command.log": "eb7c096bf19856a31199f9dec1a6efe177758723c5205c7ec2599e7c368fbf7f",
+    "evidence/CAPABILITY-PHASE3/h17/matrix01/junit.xml": "3b2f3692f0cd143292d679533f247fabb60b60f4e66ecae8ce847caeae518a33",
+    "evidence/CAPABILITY-PHASE3/h17/slice0/command.log": "230f0a6c43d015adab26926e5aad1693ef472efa29d301d6a45f7c795cd8b0cb",
+    "evidence/CAPABILITY-PHASE3/h17/slice0/junit.xml": "92ac250c8995e239085159d2d3429b6ee61a7344ea1ffbb250f22781a08b586b",
+    "evidence/CAPABILITY-PHASE3/h17/slice1/command.log": "ad29bd9173d936e081511d365b13aec7ac7047cb5cc7673c656f48e4dbaaf49c",
+    "evidence/CAPABILITY-PHASE3/h17/slice1/junit.xml": "531f66ea6ffd809f84a99819392589e43fb5058aef9236f5958273596d40890e",
+    "evidence/CAPABILITY-PHASE3/h17/slice2/command.log": "68c435477da141e358d94e6093bab165d3359733e9888afea3890cdce8319f28",
+    "evidence/CAPABILITY-PHASE3/h17/slice2/junit.xml": "54d5d9e4e65679bc37ffed7d3ea2e1fad87cfca4b67d9f601fd32173a912c91c",
+    "evidence/CAPABILITY-PHASE3/h17/slice3/command.log": "73317f6792b470719efa16274701eac523057f7322ec1f8de8f7c0679a6ba191",
+    "evidence/CAPABILITY-PHASE3/h17/slice3/junit.xml": "d771a12bdae295e4272fdc38ddb29790c800a888312dee23da5607f15ffd73c0",
+    "evidence/CAPABILITY-PHASE3/h17/slice4/command.log": "a016b96b411cddea2e1a8a89ec5b1fe4ba28b38c3d696beb7a25c9493aab6044",
+    "evidence/CAPABILITY-PHASE3/h17/slice4/junit.xml": "0e17f137dcfd9459b641e666e61f11a729931b446e5997b2f126c0ef995847f5",
+    "evidence/CAPABILITY-PHASE3/h17/slice5/command.log": "401740b53ba6a79a21c10a978ea9294aafeaf5d096981b0649fee040760992ea",
+    "evidence/CAPABILITY-PHASE3/h17/slice5/junit.xml": "d0ed26ae6c888b72b55e77c11e3facad24a7daeb926b55cbcd4987095d257e81",
+    "evidence/CAPABILITY-PHASE3/registered/HV4-H12-R02-archive-full.log": "50d635fd231cdac27e4b4f2c728019f27eb513868a88a490e1f5d1e07a541c9f",
+    "evidence/CAPABILITY-PHASE3/registered/HV4-H12-R02-archive-targeted.log": "306dc3c5362ba0ddab83b51abc2385aa1b7e052dc3f436be1ee1c838328a56c8",
+    "evidence/CAPABILITY-PHASE3/registered/HV4-H12-R02-archive.log": "cb1c7880bc66a645aaaa5002d072ea70af903330c69c38e2201543d85a4be7ef",
+    "evidence/CAPABILITY-PHASE3/registered/HV4-H12-R02-prepared.log": "2d4ce9124a34e636b38efc7956f7b650e74b9b3451ca8da1868fc1416b39e282",
+    "evidence/CAPABILITY-PHASE3/registered/HV4-H12-R02.log": "1fb11d4f6c57834a6916a0aa9d688f581e7569083250761df57c8fb266a0e14a",
+    "evidence/CAPABILITY-PHASE3/registered/HV4-H17-archive.log": "de0e93a454dfe5942747a47f35e5da655fc267ec725e0a69427d6d2d7ff22d4e",
+    "evidence/CAPABILITY-PHASE3/registered/HV4-H17-prepared.log": "1aa2997a55612b5f6d872d4b302b3ef6d78ff4dee1b9610ae3e2246ab07ea0a9",
+    "evidence/CAPABILITY-PHASE3/registered/HV4-H17.log": "92a7f0f3ef94727fc738268f9301cfd803b3045f3d2118dc0860d67e2eeae2dd",
+    "evidence/CAPABILITY-PHASE3/registered/lint.log": "a220b562d6bdb3655673add818cabd1dbd6857a7efc7d06ff8178f9e0e2501e2",
+    "evidence/CAPABILITY-PHASE3/registered/phase3-lint.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "evidence/CAPABILITY-PHASE3/registered/typecheck.log": "55e8065e5cb816d5bd59cf16fea684a4287f1c40fa7e299505dd78d037b061ed"
+  },
+  "paid_model_calls": 0,
+  "postgres_image_id": "sha256:33198da2828a14c30348d2ccb4750833d5ed9a44c88d840a0e523d7417120337",
+  "postgres_version": "PostgreSQL 16.12 (Debian 16.12-1.pgdg12+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit",
+  "reviews": [
+    {
+      "archive_check": {
+        "argv": [
+          "/home/imini/magr-harness-memory-context/v3/.venv/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "tests/test_h12_r02_stream.py",
+          "tests/test_h12_r02_recovery.py",
+          "tests/test_harness_v4_h02.py",
+          "tests/test_harness_v4_h11_io.py",
+          "tests/test_h11_loop.py",
+          "tests/test_harness_product_models.py",
+          "tests/test_harness_v4_h12_live.py",
+          "tests/test_h12_complete_matrix.py",
+          "tests/test_h12_r01_contract.py",
+          "tests/test_h12_r01_flow.py",
+          "tests/test_harness_v4_h07.py",
+          "tests/test_harness_v4_h10.py",
+          "tests/test_harness_v4_h10_finalization.py",
+          "tests/test_harness_v4_h11_service.py",
+          "tests/test_harness_v4_h12_runner.py",
+          "tests/test_harness_v4_h12_accounting.py",
+          "tests/test_h12_budget_context.py",
+          "tests/test_h12_preexecution_repair.py",
+          "tests/test_h12_regression_metrics.py",
+          "tests/test_v33_context_compaction.py",
+          "tests/test_context_policy.py",
+          "tests/test_deepseek_reasoning_policy.py",
+          "--junitxml=/home/imini/magr-phase3-history-check/v3/evidence/HV4-H12-R02/20261121T033609Z-c5423310/junit.xml"
+        ],
+        "attempt_path": "evidence/HV4-H12-R02/20261121T033609Z-c5423310",
+        "command_exit_code": 0,
+        "components": {
+          "integrity": "Strict complete JSON and local schema validation; no incomplete/invalid parallel batch reaches Broker",
+          "output": "Bounded per-phase output/argument/reasoning byte policy within declared provider capabilities; original finish and private partial SSE/CAS facts",
+          "recovery": "Known-usage bounded continuation with original request/CAS/receipts/budget references; no unknown retries; original PG/epoch recovery",
+          "scoring": "Frozen output policy and known complete final reply required for new profiles; preserve original archived profile hashes"
+        },
+        "counts": {
+          "errors": 0,
+          "failures": 0,
+          "skipped": 0,
+          "tests": 347
+        },
+        "cwd": "/home/imini/magr-phase3-history-check/v3",
+        "duration_seconds": 164.292,
+        "engineering_gate": "PASS",
+        "exit_code": 0,
+        "finished_at": "2026-11-21T03:38:54.378818+00:00",
+        "finished_source_sha256": "cb1062605700d393d3fde3aaed1ba2568fe8a40171bde0f8b17341bea96343bd",
+        "git_commit": "e18bc0c7be7afcf786107b110344b68df4fd5f14",
+        "live_gate": "NOT_RUN",
+        "log_path": "evidence/HV4-H12-R02/20261121T033609Z-c5423310/command.log",
+        "reason": null,
+        "source_sha256": "cb1062605700d393d3fde3aaed1ba2568fe8a40171bde0f8b17341bea96343bd",
+        "started_at": "2026-11-21T03:36:09.957243+00:00",
+        "status": "PASS",
+        "task": "HV4-H12-R02"
+      },
+      "evidence": [
+        {
+          "path": "/home/imini/magr-phase3-history-check/v3/evidence/HV4-H12-R02/20261121T033609Z-c5423310/command.log",
+          "sha256": "6e371f4d88909eda0a4cfbba772c75300a7031c30349559041b2ca465f6dd75c"
+        }
+      ],
+      "task": "HV4-H12-R02"
+    },
+    {
+      "archive_check": {
+        "argv": [
+          "/home/imini/magr-harness-memory-context/v3/.venv/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "tests/test_harness_h17.py",
+          "--junitxml=/home/imini/magr-phase3-history-check/v3/evidence/HV4-H17/20261121T033152Z-a4fcf149/junit.xml"
+        ],
+        "attempt_path": "evidence/HV4-H17/20261121T033152Z-a4fcf149",
+        "command_exit_code": 0,
+        "components": {
+          "accounting": "same Run, original PostgreSQL fee ledger and cumulative token gate",
+          "live": "NOT_RUN",
+          "paired": "controlled transports and real local sandbox, default stays single",
+          "recovery": "bounded dispatch, cancellation, expiry, deduplication and unknown-use fencing",
+          "scope": "product sessions, authorized exact repository excerpts and advisory-only outputs"
+        },
+        "counts": {
+          "errors": 0,
+          "failures": 0,
+          "skipped": 0,
+          "tests": 18
+        },
+        "cwd": "/home/imini/magr-phase3-history-check/v3",
+        "duration_seconds": 194.191,
+        "engineering_gate": "PASS",
+        "exit_code": 0,
+        "finished_at": "2026-11-21T03:35:07.250727+00:00",
+        "finished_source_sha256": "cb1062605700d393d3fde3aaed1ba2568fe8a40171bde0f8b17341bea96343bd",
+        "git_commit": "e18bc0c7be7afcf786107b110344b68df4fd5f14",
+        "live_gate": "NOT_RUN",
+        "log_path": "evidence/HV4-H17/20261121T033152Z-a4fcf149/command.log",
+        "reason": null,
+        "source_sha256": "cb1062605700d393d3fde3aaed1ba2568fe8a40171bde0f8b17341bea96343bd",
+        "started_at": "2026-11-21T03:31:52.960836+00:00",
+        "status": "PASS",
+        "task": "HV4-H17"
+      },
+      "evidence": [
+        {
+          "path": "/home/imini/magr-phase3-history-check/v3/evidence/HV4-H17/20261121T033152Z-a4fcf149/command.log",
+          "sha256": "971d91ea85eb4541a83bfe19c420791e832011c85cc43500a7f4024aae050614"
+        }
+      ],
+      "task": "HV4-H17"
+    }
+  ]
+}

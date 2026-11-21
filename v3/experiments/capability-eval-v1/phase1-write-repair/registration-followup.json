@@ -1,0 +1,16 @@
+{
+  "suite": "E4 independent repair confirmation M110",
+  "registered": 448,
+  "expected_actions": {"AUTO_CONFIRM": 72, "REQUIRE_CONFIRMATION": 48, "REJECT": 328},
+  "public_controls": {"passed": 10, "total": 10},
+  "graded_at_registration": 0,
+  "sha256": {
+    "independent_manifest": "4a6e79684db5d3fca57ecbd66c88ea8bb857c8dc09f0d745465fbac7fc457bfe",
+    "inputs": "ea1321976260174552e6091ad9c4c62596addc8f9e65e3766aa2002d99f166d3",
+    "labels": "dc8d1b01dd7b80f54cb841cd232e74531407e61cd5f3ccc845644fbd2616fa65",
+    "scoring": "e3d3b515363da0e88bff40bf2b19d529a3c92b866814b6167e509ec72211d752",
+    "fixture": "9262457f0deadae45d8e7403cef4f690f254254f599954b45f0dbd541b0b021a",
+    "protocol": "677156bc0866c98172199230a409ab5618a398d0db08b76d17d5aecdf2e8304c",
+    "public_controls_repeat": "0b635521035066e4e76816d76befa8477ebbd15de2fc67db1980c7793023df6e"
+  }
+}

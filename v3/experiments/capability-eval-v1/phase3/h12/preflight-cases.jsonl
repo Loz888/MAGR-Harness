@@ -1,0 +1,12 @@
+{"case_id": "p3-env-python-clean", "expected": "READY", "fault": "python-clean"}
+{"case_id": "p3-env-node-clean", "expected": "READY", "fault": "node-clean"}
+{"case_id": "p3-env-go-clean", "expected": "READY", "fault": "go-clean"}
+{"case_id": "p3-env-missing-package", "expected": "MISSING_PACKAGE", "fault": "missing-package"}
+{"case_id": "p3-env-missing-file", "expected": "MISSING_FILE", "fault": "missing-file"}
+{"case_id": "p3-env-python-version", "expected": "RUNTIME_VERSION", "fault": "python-version"}
+{"case_id": "p3-env-node-version", "expected": "RUNTIME_VERSION", "fault": "node-version"}
+{"case_id": "p3-env-go-version", "expected": "RUNTIME_VERSION", "fault": "go-version"}
+{"case_id": "p3-env-missing-command", "expected": "COMMAND_NOT_FOUND", "fault": "missing-command"}
+{"case_id": "p3-env-wrong-directory", "expected": "WORKING_DIRECTORY", "fault": "wrong-directory"}
+{"case_id": "p3-env-test-asset", "expected": "TEST_ASSET_MISSING", "fault": "test-asset"}
+{"case_id": "p3-env-examples-package", "expected": "MISSING_PACKAGE", "fault": "examples-package"}

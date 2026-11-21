@@ -1,0 +1,42 @@
+{
+  "candidate": "07486a610ffe5f0be99167a8125ef8e9e925af16",
+  "checks": {
+    "archival_sets": 4,
+    "clean_at_freeze": true,
+    "e1_private_query_label_or_ranking_files_opened": 0,
+    "groups": [
+      "E1",
+      "E2",
+      "E3",
+      "E4",
+      "E5",
+      "H12",
+      "H17",
+      "H18"
+    ],
+    "h12_first_sample_scores": 24,
+    "h12_original_dev_files": 531,
+    "h12_timing_evaluator_blob": true,
+    "historical_file_bindings": 386,
+    "historical_per_file_source_bindings": 216,
+    "holdout_exclusions_recorded": true,
+    "negative_controls_rejected": [
+      "incorrect_manifest_pin",
+      "changed_metric_bytes",
+      "reordered_holdout_scores",
+      "private_e1_path"
+    ],
+    "plan_matches_download": true,
+    "source_commits": 13
+  },
+  "historical_statuses": "metrics.json",
+  "new_candidate_evaluations": "NOT_RUN",
+  "new_cost_usd": "0.000000",
+  "new_independent_operator_review": "NOT_RUN",
+  "new_paid_model_calls": 0,
+  "phase1": "NOT_RUN",
+  "remote_writes": 0,
+  "schema": "capability-evaluation-phase0-acceptance-v1",
+  "scope": "Phase 0 historical evidence freeze only",
+  "status": "PASS"
+}

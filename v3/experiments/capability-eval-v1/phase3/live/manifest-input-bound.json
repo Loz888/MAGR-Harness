@@ -1,0 +1,22 @@
+{
+  "product_commit": "d835972",
+  "authority": "user authorized a new Phase 3 live round if required",
+  "only_synthetic_material": true,
+  "h12_calls_cap": 256,
+  "h12_peak_micros_cap": 5000000,
+  "h17_calls_cap": 1440,
+  "h17_peak_micros_cap": 24000000,
+  "model": "deepseek-flash",
+  "thinking": "enabled",
+  "reasoning_effort": "max",
+  "file_sha256": {
+    ".local/r03/sandbox-lock.json": "2b6ffb5cead4d18e1219816c4d829c7f2cdf3dc5165cf1683fb4c25f360f3e86",
+    "experiments/capability-eval-v1/phase3/live/budget.py": "be3c46f202984cb543e040fc22e01e1174f7b0a61cd70101f23d218c1c2cc7e5",
+    "experiments/capability-eval-v1/phase3/live/grade.py": "382bc987a93a1e0aa37b8c7298bb4c896810ada6f17aa4057e04018c4b912401",
+    "experiments/capability-eval-v1/phase3/live/protocol.md": "a642a42ac0aa37b47e44f088ae343b31272f432eb6d570dec0eb25eb3b93df22",
+    "experiments/capability-eval-v1/phase3/live/run.py": "cc17c68a5f1f83526d5bdc1508700c845b0ad6022a500ff8f12ca2e0b26d32b8",
+    "experiments/capability-eval-v1/phase3/live/schedule.jsonl": "3ac29ee0df48133fd9002af303f596dc899a3e62b9018ceb5892f7545f34241e",
+    "uv.lock": "56579416e1652e02a17706e72be15ee5d24762c45d6e27b25618312eddbb6583"
+  },
+  "supersedes": "af587711bd0748b446ce3cb747bfd81ce01b34ac199efd428fafe662aee699f4"
+}

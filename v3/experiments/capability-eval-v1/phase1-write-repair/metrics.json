@@ -1,0 +1,339 @@
+{
+  "candidate": "945568847d7477090a43ca274851ef6cb77d9c0b",
+  "credential_policy_public": {
+    "artifacts": {
+      "baseline-frozen.log": "0a22d731d4518667a53feae8613e06383bfe1b2564c93ab1e422240d27326c7a",
+      "candidate.log": "ac2c2a952e6685fb895112716b11658b3e65b0df90861c422d1ed8e067c5051c",
+      "compat.log": "c807faf0cf27e43c317cf58a54b07b317c16c4619799e599eb886daef45b9460"
+    },
+    "baseline": "c863196",
+    "baseline_measurements": {
+      "benign_accepted_execution": [
+        3,
+        4
+      ],
+      "benign_accepted_personal": [
+        3,
+        4
+      ],
+      "personal_only_pii_correct": true,
+      "sensitive_blocked_execution": [
+        0,
+        9
+      ],
+      "sensitive_blocked_personal": [
+        3,
+        9
+      ]
+    },
+    "candidate_measurements": {
+      "benign_accepted_execution": [
+        4,
+        4
+      ],
+      "benign_accepted_personal": [
+        4,
+        4
+      ],
+      "personal_only_pii_correct": true,
+      "sensitive_blocked_execution": [
+        9,
+        9
+      ],
+      "sensitive_blocked_personal": [
+        9,
+        9
+      ]
+    },
+    "intermediate_attempts": "before.log and after.log used the same cases with the previous artifact fixture. The final pair registers the exact UTF-8 byte count. intermediate-collection-error.log caught a transient import during concurrent integration; the candidate rerun completed.",
+    "limits": "Public fixtures cover selected formatted identifiers, localized assignments, structured fields and signed queries. Opaque unlabelled values are not universally distinguishable from public text.",
+    "paid_calls": 0,
+    "related_regressions": {
+      "files": [
+        "tests/test_phase1_memory_sensitive.py",
+        "tests/test_general_agent_ga10.py"
+      ],
+      "passed": 20
+    },
+    "scope": "14 independently authored public fixtures, applied to both MemoryWriter and PersonalMemoryStore. Each session creates its own PostgreSQL database and CAS. Both first-write outcomes and resulting row counts were checked.",
+    "stage": "public_development_regression",
+    "synthetic_cases": 14,
+    "test": "tests/test_memory_credential_policy.py",
+    "test_sha256": "8c8254d850cb37c292cc2d8e8368e5f9e19d6689f45fba3717eefc1dc1be2e13"
+  },
+  "historical_e4": {
+    "confirmation": 20,
+    "counts": {
+      "ERROR": 0,
+      "FAIL": 0,
+      "NOT_RUN": 0,
+      "PASS": 200
+    },
+    "metrics": {
+      "auto_confirm_precision": {
+        "bootstrap_95_ci": [
+          1.0,
+          1.0
+        ],
+        "count": 70,
+        "rate": 1.0,
+        "total": 70,
+        "wilson_95_ci": [
+          0.94797693759,
+          1.0
+        ]
+      },
+      "auto_confirm_recall": {
+        "bootstrap_95_ci": [
+          1.0,
+          1.0
+        ],
+        "count": 70,
+        "rate": 1.0,
+        "total": 70,
+        "wilson_95_ci": [
+          0.94797693759,
+          1.0
+        ]
+      },
+      "false_reject_rate": {
+        "bootstrap_95_ci": [
+          0.0,
+          0.0
+        ],
+        "count": 0,
+        "rate": 0.0,
+        "total": 90,
+        "wilson_95_ci": [
+          0.0,
+          0.040935625564
+        ]
+      },
+      "human_confirmation_rate": {
+        "bootstrap_95_ci": [
+          0.06,
+          0.145
+        ],
+        "count": 20,
+        "rate": 0.1,
+        "total": 200,
+        "wilson_95_ci": [
+          0.065670448669,
+          0.149405812433
+        ]
+      },
+      "injection_marker_block_rate": {
+        "bootstrap_95_ci": [
+          1.0,
+          1.0
+        ],
+        "count": 30,
+        "rate": 1.0,
+        "total": 30,
+        "wilson_95_ci": [
+          0.886486606826,
+          1.0
+        ]
+      },
+      "scope_violation_block_rate": {
+        "bootstrap_95_ci": [
+          1.0,
+          1.0
+        ],
+        "count": 20,
+        "rate": 1.0,
+        "total": 20,
+        "wilson_95_ci": [
+          0.838874841947,
+          1.0
+        ]
+      },
+      "sensitive_block_rate": {
+        "bootstrap_95_ci": [
+          1.0,
+          1.0
+        ],
+        "count": 30,
+        "rate": 1.0,
+        "total": 30,
+        "wilson_95_ci": [
+          0.886486606826,
+          1.0
+        ]
+      }
+    },
+    "races": 8
+  },
+  "independent": {
+    "blocked": null,
+    "correct": 31,
+    "executed": 38,
+    "failures": 7,
+    "metrics": {
+      "auto_precision": {
+        "denominator": 8,
+        "fraction": 0.5,
+        "numerator": 4,
+        "wilson95": [
+          0.21521606221387757,
+          0.7847839377861224
+        ]
+      },
+      "auto_recall": {
+        "denominator": 4,
+        "fraction": 1.0,
+        "numerator": 4,
+        "wilson95": [
+          0.5101091635454027,
+          1
+        ]
+      },
+      "confirmation_required": {
+        "denominator": 1,
+        "fraction": 1.0,
+        "numerator": 1,
+        "wilson95": [
+          0.20654931437723745,
+          1
+        ]
+      },
+      "confirmation_self": {
+        "denominator": 1,
+        "fraction": 1.0,
+        "numerator": 1,
+        "wilson95": [
+          0.20654931437723745,
+          1
+        ]
+      },
+      "confirmation_unlisted": {
+        "denominator": 0,
+        "fraction": null,
+        "numerator": 0,
+        "wilson95": null
+      },
+      "confirmation_valid": {
+        "denominator": 0,
+        "fraction": null,
+        "numerator": 0,
+        "wilson95": null
+      },
+      "confirmation_wrong_digest": {
+        "denominator": 0,
+        "fraction": null,
+        "numerator": 0,
+        "wilson95": null
+      },
+      "false_reject": {
+        "denominator": 5,
+        "fraction": 0.0,
+        "numerator": 0,
+        "wilson95": [
+          0,
+          0.43448246478317476
+        ]
+      },
+      "instruction_block": {
+        "denominator": 6,
+        "fraction": 0.0,
+        "numerator": 0,
+        "wilson95": [
+          2.7755575615628914e-17,
+          0.3903342879021653
+        ]
+      },
+      "scope_or_provenance_auto": {
+        "denominator": 14,
+        "fraction": 0.0,
+        "numerator": 0,
+        "wilson95": [
+          1.3877787807814457e-17,
+          0.2153108027376358
+        ]
+      },
+      "scope_or_provenance_persisted": {
+        "denominator": 14,
+        "fraction": 0.0,
+        "numerator": 0,
+        "wilson95": [
+          1.3877787807814457e-17,
+          0.2153108027376358
+        ]
+      },
+      "self_accept": {
+        "denominator": 3,
+        "fraction": 0.0,
+        "numerator": 0,
+        "wilson95": [
+          5.551115123125783e-17,
+          0.5614970317550454
+        ]
+      },
+      "self_reported_verified": {
+        "denominator": 4,
+        "fraction": 0.0,
+        "numerator": 0,
+        "wilson95": [
+          0,
+          0.4898908364545973
+        ]
+      },
+      "sensitive_block": {
+        "denominator": 5,
+        "fraction": 0.8,
+        "numerator": 4,
+        "wilson95": [
+          0.37553462976252533,
+          0.9637758913675698
+        ]
+      },
+      "verified_mislabel": {
+        "denominator": 19,
+        "fraction": 0.05263157894736842,
+        "numerator": 1,
+        "wilson95": [
+          0.009351994062300362,
+          0.24638731166898786
+        ]
+      }
+    },
+    "planned": 448,
+    "status": "FAIL",
+    "stop": "invalid_verified_persisted",
+    "strata": {
+      "authority": 4,
+      "confirmation": 1,
+      "instruction": 6,
+      "missing": 5,
+      "mixed": 6,
+      "safe": 4,
+      "scope": 4,
+      "self": 3,
+      "sensitive": 5
+    },
+    "unscored": 410
+  },
+  "model_calls": 0,
+  "registered": {
+    "M02": {
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "tests": 84
+    },
+    "M03": {
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "tests": 13
+    },
+    "V35-M01": {
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "tests": 50
+    }
+  },
+  "unique_engineering_nodes": 113,
+  "usd": "0"
+}

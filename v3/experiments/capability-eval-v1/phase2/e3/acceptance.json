@@ -1,0 +1,65 @@
+{
+  "status": "INCONCLUSIVE",
+  "real_model_claim": "MEMORY_BENEFIT_NOT_ESTABLISHED",
+  "execution": {
+    "fixture": "COMPLETE",
+    "formal": "COMPLETE"
+  },
+  "mechanical_fixture": true,
+  "ledger_reconciled": true,
+  "stale_accepted_observed": 0,
+  "arms_meeting_success_and_cost_condition_in_both_splits": [],
+  "arms_with_detected_cost_increase_in_either_split": [],
+  "independent": {
+    "status": "VERIFIED",
+    "input": {
+      "path": "experiments/capability-eval-v1/phase2/e3/independent-formal.json",
+      "sha256": "57851906be467902ce85ac3353106a41b986e66f672ba850398d408072dc15e1",
+      "bytes": 696
+    },
+    "raw_sha256_matches": true,
+    "scheduled": 160,
+    "observed": 160,
+    "passed": 160,
+    "stale_submissions": 0,
+    "disagreement_count": 0
+  },
+  "release_decision": "PHASE1_STOP_REMAINS_IN_FORCE",
+  "delivery_and_receipt_audit": {
+    "binding_matches_this_run": true,
+    "file": {
+      "path": "experiments/capability-eval-v1/phase2/e3/receipt-audit.json",
+      "sha256": "bdbe5282cf440aa91a16a11961933277e11ff6257e4b51b1d24e8f33ce97fc1d",
+      "bytes": 679
+    },
+    "result": {
+      "status": "PASS",
+      "planned_and_observed_sessions": 640,
+      "unique_settled_completions": 1061,
+      "input_tokens": 423933,
+      "output_tokens": 157205,
+      "upper_cost_micros": 316312,
+      "outstanding_micros": 0,
+      "receipt_priced_rows": 1061,
+      "off_peak_estimated_nanodollars": 125223384,
+      "off_peak_estimated_nanodollars_by_arm": {
+        "off": 35711568,
+        "bm25": 30541836,
+        "hybrid": 29284347,
+        "hybrid_reranked": 29685633
+      },
+      "public_rate_source": "https://api-docs.deepseek.com/quick_start/pricing/",
+      "supplier_invoice_review": "NOT_RUN",
+      "delivery_artifacts_verified": 640,
+      "raw_sha256": "686689bcaa4436a09b1fd35acf8998b4184e3c7b4e0072785d26059455417024"
+    }
+  },
+  "snapshot_utc": "2026-11-20T14:06:32.573962+00:00",
+  "manifest_sha256": "7c47b95d45a551be930a249aaaa87d265c290680dfaf3375c141989a5a3dc229",
+  "files": {
+    "failures.md": "4eb95eeff026da2625920228b71dab25d93ecfb4080e6135bc2e58e85246df99",
+    "metrics.json": "ed3f8460a0ed6eda0f61e82f649dad3225a595665a6da6c017c1efaa4ac17778",
+    "raw.jsonl": "bc8730d2c8388a4cac62a1ed9e2b1e9b6d9c26247792c11f6c9adf0e55b24452",
+    "report.md": "1106ee6447da6201b4ef5acfc55bd43af99f52176fd0c397a2dbee7c0dc12338"
+  }
+}

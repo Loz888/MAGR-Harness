@@ -1,0 +1,484 @@
+.............                                                            [100%]
+=============================== warnings summary ===============================
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-a0e53e50-7ce6-4ac8-8ebe-8eb7470587a2/test_container_bytecode_caches0/workspace/__pycache__
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-a0e53e50-7ce6-4ac8-8ebe-8eb7470587a2/test_container_bytecode_caches0/workspace/__pycache__'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-a0e53e50-7ce6-4ac8-8ebe-8eb7470587a2/test_container_bytecode_caches0/workspace
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-a0e53e50-7ce6-4ac8-8ebe-8eb7470587a2/test_container_bytecode_caches0/workspace'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-a0e53e50-7ce6-4ac8-8ebe-8eb7470587a2/test_container_bytecode_caches0
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-a0e53e50-7ce6-4ac8-8ebe-8eb7470587a2/test_container_bytecode_caches0'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-a0e53e50-7ce6-4ac8-8ebe-8eb7470587a2/test_all_skipped_and_missing_t0/workspace/tests/__pycache__
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-a0e53e50-7ce6-4ac8-8ebe-8eb7470587a2/test_all_skipped_and_missing_t0/workspace/tests/__pycache__'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-a0e53e50-7ce6-4ac8-8ebe-8eb7470587a2/test_all_skipped_and_missing_t0/workspace/tests
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-a0e53e50-7ce6-4ac8-8ebe-8eb7470587a2/test_all_skipped_and_missing_t0/workspace/tests'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-a0e53e50-7ce6-4ac8-8ebe-8eb7470587a2/test_all_skipped_and_missing_t0/workspace
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-a0e53e50-7ce6-4ac8-8ebe-8eb7470587a2/test_all_skipped_and_missing_t0/workspace'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-a0e53e50-7ce6-4ac8-8ebe-8eb7470587a2/test_all_skipped_and_missing_t0
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-a0e53e50-7ce6-4ac8-8ebe-8eb7470587a2/test_all_skipped_and_missing_t0'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-a0e53e50-7ce6-4ac8-8ebe-8eb7470587a2/test_python_unittest_project_r0/workspace/tests/__pycache__
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-a0e53e50-7ce6-4ac8-8ebe-8eb7470587a2/test_python_unittest_project_r0/workspace/tests/__pycache__'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-a0e53e50-7ce6-4ac8-8ebe-8eb7470587a2/test_python_unittest_project_r0/workspace/tests
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-a0e53e50-7ce6-4ac8-8ebe-8eb7470587a2/test_python_unittest_project_r0/workspace/tests'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-a0e53e50-7ce6-4ac8-8ebe-8eb7470587a2/test_python_unittest_project_r0/workspace
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-a0e53e50-7ce6-4ac8-8ebe-8eb7470587a2/test_python_unittest_project_r0/workspace'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-a0e53e50-7ce6-4ac8-8ebe-8eb7470587a2/test_python_unittest_project_r0
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-a0e53e50-7ce6-4ac8-8ebe-8eb7470587a2/test_python_unittest_project_r0'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-a0e53e50-7ce6-4ac8-8ebe-8eb7470587a2
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-a0e53e50-7ce6-4ac8-8ebe-8eb7470587a2'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-cd514877-eb1d-48d6-876f-db67f98c428a/test_container_bytecode_caches0/workspace/__pycache__
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-cd514877-eb1d-48d6-876f-db67f98c428a/test_container_bytecode_caches0/workspace/__pycache__'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-cd514877-eb1d-48d6-876f-db67f98c428a/test_container_bytecode_caches0/workspace
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-cd514877-eb1d-48d6-876f-db67f98c428a/test_container_bytecode_caches0/workspace'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-cd514877-eb1d-48d6-876f-db67f98c428a/test_container_bytecode_caches0
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-cd514877-eb1d-48d6-876f-db67f98c428a/test_container_bytecode_caches0'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-cd514877-eb1d-48d6-876f-db67f98c428a/test_all_skipped_and_missing_t0/workspace/tests/__pycache__
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-cd514877-eb1d-48d6-876f-db67f98c428a/test_all_skipped_and_missing_t0/workspace/tests/__pycache__'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-cd514877-eb1d-48d6-876f-db67f98c428a/test_all_skipped_and_missing_t0/workspace/tests
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-cd514877-eb1d-48d6-876f-db67f98c428a/test_all_skipped_and_missing_t0/workspace/tests'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-cd514877-eb1d-48d6-876f-db67f98c428a/test_all_skipped_and_missing_t0/workspace
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-cd514877-eb1d-48d6-876f-db67f98c428a/test_all_skipped_and_missing_t0/workspace'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-cd514877-eb1d-48d6-876f-db67f98c428a/test_all_skipped_and_missing_t0
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-cd514877-eb1d-48d6-876f-db67f98c428a/test_all_skipped_and_missing_t0'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-cd514877-eb1d-48d6-876f-db67f98c428a/test_python_unittest_project_r0/workspace/tests/__pycache__
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-cd514877-eb1d-48d6-876f-db67f98c428a/test_python_unittest_project_r0/workspace/tests/__pycache__'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-cd514877-eb1d-48d6-876f-db67f98c428a/test_python_unittest_project_r0/workspace/tests
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-cd514877-eb1d-48d6-876f-db67f98c428a/test_python_unittest_project_r0/workspace/tests'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-cd514877-eb1d-48d6-876f-db67f98c428a/test_python_unittest_project_r0/workspace
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-cd514877-eb1d-48d6-876f-db67f98c428a/test_python_unittest_project_r0/workspace'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-cd514877-eb1d-48d6-876f-db67f98c428a/test_python_unittest_project_r0
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-cd514877-eb1d-48d6-876f-db67f98c428a/test_python_unittest_project_r0'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-cd514877-eb1d-48d6-876f-db67f98c428a
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-cd514877-eb1d-48d6-876f-db67f98c428a'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-49672181-61f2-472e-b188-9bd0de439e3e/test_container_bytecode_caches0/workspace/__pycache__
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-49672181-61f2-472e-b188-9bd0de439e3e/test_container_bytecode_caches0/workspace/__pycache__'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-49672181-61f2-472e-b188-9bd0de439e3e/test_container_bytecode_caches0/workspace
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-49672181-61f2-472e-b188-9bd0de439e3e/test_container_bytecode_caches0/workspace'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-49672181-61f2-472e-b188-9bd0de439e3e/test_container_bytecode_caches0
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-49672181-61f2-472e-b188-9bd0de439e3e/test_container_bytecode_caches0'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-49672181-61f2-472e-b188-9bd0de439e3e/test_all_skipped_and_missing_t0/workspace/tests/__pycache__
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-49672181-61f2-472e-b188-9bd0de439e3e/test_all_skipped_and_missing_t0/workspace/tests/__pycache__'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-49672181-61f2-472e-b188-9bd0de439e3e/test_all_skipped_and_missing_t0/workspace/tests
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-49672181-61f2-472e-b188-9bd0de439e3e/test_all_skipped_and_missing_t0/workspace/tests'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-49672181-61f2-472e-b188-9bd0de439e3e/test_all_skipped_and_missing_t0/workspace
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-49672181-61f2-472e-b188-9bd0de439e3e/test_all_skipped_and_missing_t0/workspace'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-49672181-61f2-472e-b188-9bd0de439e3e/test_all_skipped_and_missing_t0
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-49672181-61f2-472e-b188-9bd0de439e3e/test_all_skipped_and_missing_t0'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-49672181-61f2-472e-b188-9bd0de439e3e/test_python_unittest_project_r0/workspace/tests/__pycache__
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-49672181-61f2-472e-b188-9bd0de439e3e/test_python_unittest_project_r0/workspace/tests/__pycache__'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-49672181-61f2-472e-b188-9bd0de439e3e/test_python_unittest_project_r0/workspace/tests
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-49672181-61f2-472e-b188-9bd0de439e3e/test_python_unittest_project_r0/workspace/tests'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-49672181-61f2-472e-b188-9bd0de439e3e/test_python_unittest_project_r0/workspace
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-49672181-61f2-472e-b188-9bd0de439e3e/test_python_unittest_project_r0/workspace'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-49672181-61f2-472e-b188-9bd0de439e3e/test_python_unittest_project_r0
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-49672181-61f2-472e-b188-9bd0de439e3e/test_python_unittest_project_r0'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-49672181-61f2-472e-b188-9bd0de439e3e
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-49672181-61f2-472e-b188-9bd0de439e3e'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-d93dc9fb-bff6-40f6-8588-6d61fd48c774/test_container_bytecode_caches0/workspace/__pycache__
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-d93dc9fb-bff6-40f6-8588-6d61fd48c774/test_container_bytecode_caches0/workspace/__pycache__'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-d93dc9fb-bff6-40f6-8588-6d61fd48c774/test_container_bytecode_caches0/workspace
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-d93dc9fb-bff6-40f6-8588-6d61fd48c774/test_container_bytecode_caches0/workspace'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-d93dc9fb-bff6-40f6-8588-6d61fd48c774/test_container_bytecode_caches0
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-d93dc9fb-bff6-40f6-8588-6d61fd48c774/test_container_bytecode_caches0'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-d93dc9fb-bff6-40f6-8588-6d61fd48c774/test_all_skipped_and_missing_t0/workspace/tests/__pycache__
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-d93dc9fb-bff6-40f6-8588-6d61fd48c774/test_all_skipped_and_missing_t0/workspace/tests/__pycache__'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-d93dc9fb-bff6-40f6-8588-6d61fd48c774/test_all_skipped_and_missing_t0/workspace/tests
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-d93dc9fb-bff6-40f6-8588-6d61fd48c774/test_all_skipped_and_missing_t0/workspace/tests'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-d93dc9fb-bff6-40f6-8588-6d61fd48c774/test_all_skipped_and_missing_t0/workspace
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-d93dc9fb-bff6-40f6-8588-6d61fd48c774/test_all_skipped_and_missing_t0/workspace'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-d93dc9fb-bff6-40f6-8588-6d61fd48c774/test_all_skipped_and_missing_t0
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-d93dc9fb-bff6-40f6-8588-6d61fd48c774/test_all_skipped_and_missing_t0'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-d93dc9fb-bff6-40f6-8588-6d61fd48c774/test_python_unittest_project_r0/workspace/tests/__pycache__
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-d93dc9fb-bff6-40f6-8588-6d61fd48c774/test_python_unittest_project_r0/workspace/tests/__pycache__'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-d93dc9fb-bff6-40f6-8588-6d61fd48c774/test_python_unittest_project_r0/workspace/tests
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-d93dc9fb-bff6-40f6-8588-6d61fd48c774/test_python_unittest_project_r0/workspace/tests'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-d93dc9fb-bff6-40f6-8588-6d61fd48c774/test_python_unittest_project_r0/workspace
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-d93dc9fb-bff6-40f6-8588-6d61fd48c774/test_python_unittest_project_r0/workspace'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-d93dc9fb-bff6-40f6-8588-6d61fd48c774/test_python_unittest_project_r0
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-d93dc9fb-bff6-40f6-8588-6d61fd48c774/test_python_unittest_project_r0'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-d93dc9fb-bff6-40f6-8588-6d61fd48c774
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-d93dc9fb-bff6-40f6-8588-6d61fd48c774'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-04d69873-42bd-4d95-a606-7f9196ffc17c/test_container_bytecode_caches0/workspace/__pycache__
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-04d69873-42bd-4d95-a606-7f9196ffc17c/test_container_bytecode_caches0/workspace/__pycache__'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-04d69873-42bd-4d95-a606-7f9196ffc17c/test_container_bytecode_caches0/workspace
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-04d69873-42bd-4d95-a606-7f9196ffc17c/test_container_bytecode_caches0/workspace'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-04d69873-42bd-4d95-a606-7f9196ffc17c/test_container_bytecode_caches0
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-04d69873-42bd-4d95-a606-7f9196ffc17c/test_container_bytecode_caches0'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-04d69873-42bd-4d95-a606-7f9196ffc17c
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-04d69873-42bd-4d95-a606-7f9196ffc17c'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-db527084-8847-494f-a965-06eccd9b9fbb/test_container_bytecode_caches0/workspace/__pycache__
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-db527084-8847-494f-a965-06eccd9b9fbb/test_container_bytecode_caches0/workspace/__pycache__'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-db527084-8847-494f-a965-06eccd9b9fbb/test_container_bytecode_caches0/workspace
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-db527084-8847-494f-a965-06eccd9b9fbb/test_container_bytecode_caches0/workspace'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-db527084-8847-494f-a965-06eccd9b9fbb/test_container_bytecode_caches0
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-db527084-8847-494f-a965-06eccd9b9fbb/test_container_bytecode_caches0'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-db527084-8847-494f-a965-06eccd9b9fbb/test_all_skipped_and_missing_t0/workspace/tests/__pycache__
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-db527084-8847-494f-a965-06eccd9b9fbb/test_all_skipped_and_missing_t0/workspace/tests/__pycache__'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-db527084-8847-494f-a965-06eccd9b9fbb/test_all_skipped_and_missing_t0/workspace/tests
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-db527084-8847-494f-a965-06eccd9b9fbb/test_all_skipped_and_missing_t0/workspace/tests'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-db527084-8847-494f-a965-06eccd9b9fbb/test_all_skipped_and_missing_t0/workspace
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-db527084-8847-494f-a965-06eccd9b9fbb/test_all_skipped_and_missing_t0/workspace'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-db527084-8847-494f-a965-06eccd9b9fbb/test_all_skipped_and_missing_t0
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-db527084-8847-494f-a965-06eccd9b9fbb/test_all_skipped_and_missing_t0'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-db527084-8847-494f-a965-06eccd9b9fbb/test_python_unittest_project_r0/workspace/tests/__pycache__
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-db527084-8847-494f-a965-06eccd9b9fbb/test_python_unittest_project_r0/workspace/tests/__pycache__'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-db527084-8847-494f-a965-06eccd9b9fbb/test_python_unittest_project_r0/workspace/tests
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-db527084-8847-494f-a965-06eccd9b9fbb/test_python_unittest_project_r0/workspace/tests'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-db527084-8847-494f-a965-06eccd9b9fbb/test_python_unittest_project_r0/workspace
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-db527084-8847-494f-a965-06eccd9b9fbb/test_python_unittest_project_r0/workspace'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-db527084-8847-494f-a965-06eccd9b9fbb/test_python_unittest_project_r0
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-db527084-8847-494f-a965-06eccd9b9fbb/test_python_unittest_project_r0'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-db527084-8847-494f-a965-06eccd9b9fbb
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-db527084-8847-494f-a965-06eccd9b9fbb'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-2f52c69a-7995-4b88-87a5-15438624beb2/test_container_bytecode_caches0/workspace/__pycache__
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-2f52c69a-7995-4b88-87a5-15438624beb2/test_container_bytecode_caches0/workspace/__pycache__'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-2f52c69a-7995-4b88-87a5-15438624beb2/test_container_bytecode_caches0/workspace
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-2f52c69a-7995-4b88-87a5-15438624beb2/test_container_bytecode_caches0/workspace'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-2f52c69a-7995-4b88-87a5-15438624beb2/test_container_bytecode_caches0
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-2f52c69a-7995-4b88-87a5-15438624beb2/test_container_bytecode_caches0'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-2f52c69a-7995-4b88-87a5-15438624beb2
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-2f52c69a-7995-4b88-87a5-15438624beb2'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-cc665aea-d628-4dee-a495-d0fe9d7b8885/test_container_bytecode_caches0/workspace/__pycache__
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-cc665aea-d628-4dee-a495-d0fe9d7b8885/test_container_bytecode_caches0/workspace/__pycache__'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-cc665aea-d628-4dee-a495-d0fe9d7b8885/test_container_bytecode_caches0/workspace
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-cc665aea-d628-4dee-a495-d0fe9d7b8885/test_container_bytecode_caches0/workspace'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-cc665aea-d628-4dee-a495-d0fe9d7b8885/test_container_bytecode_caches0
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-cc665aea-d628-4dee-a495-d0fe9d7b8885/test_container_bytecode_caches0'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-cc665aea-d628-4dee-a495-d0fe9d7b8885/test_all_skipped_and_missing_t0/workspace/tests/__pycache__
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-cc665aea-d628-4dee-a495-d0fe9d7b8885/test_all_skipped_and_missing_t0/workspace/tests/__pycache__'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-cc665aea-d628-4dee-a495-d0fe9d7b8885/test_all_skipped_and_missing_t0/workspace/tests
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-cc665aea-d628-4dee-a495-d0fe9d7b8885/test_all_skipped_and_missing_t0/workspace/tests'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-cc665aea-d628-4dee-a495-d0fe9d7b8885/test_all_skipped_and_missing_t0/workspace
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-cc665aea-d628-4dee-a495-d0fe9d7b8885/test_all_skipped_and_missing_t0/workspace'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-cc665aea-d628-4dee-a495-d0fe9d7b8885/test_all_skipped_and_missing_t0
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-cc665aea-d628-4dee-a495-d0fe9d7b8885/test_all_skipped_and_missing_t0'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-cc665aea-d628-4dee-a495-d0fe9d7b8885/test_python_unittest_project_r0/workspace/tests/__pycache__
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-cc665aea-d628-4dee-a495-d0fe9d7b8885/test_python_unittest_project_r0/workspace/tests/__pycache__'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-cc665aea-d628-4dee-a495-d0fe9d7b8885/test_python_unittest_project_r0/workspace/tests
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-cc665aea-d628-4dee-a495-d0fe9d7b8885/test_python_unittest_project_r0/workspace/tests'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-cc665aea-d628-4dee-a495-d0fe9d7b8885/test_python_unittest_project_r0/workspace
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-cc665aea-d628-4dee-a495-d0fe9d7b8885/test_python_unittest_project_r0/workspace'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-cc665aea-d628-4dee-a495-d0fe9d7b8885/test_python_unittest_project_r0
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-cc665aea-d628-4dee-a495-d0fe9d7b8885/test_python_unittest_project_r0'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-cc665aea-d628-4dee-a495-d0fe9d7b8885
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-cc665aea-d628-4dee-a495-d0fe9d7b8885'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-ee6716a4-4b42-4f4c-8ca1-680045a37c50/test_container_bytecode_caches0/workspace/__pycache__
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-ee6716a4-4b42-4f4c-8ca1-680045a37c50/test_container_bytecode_caches0/workspace/__pycache__'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-ee6716a4-4b42-4f4c-8ca1-680045a37c50/test_container_bytecode_caches0/workspace
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-ee6716a4-4b42-4f4c-8ca1-680045a37c50/test_container_bytecode_caches0/workspace'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-ee6716a4-4b42-4f4c-8ca1-680045a37c50/test_container_bytecode_caches0
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-ee6716a4-4b42-4f4c-8ca1-680045a37c50/test_container_bytecode_caches0'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-ee6716a4-4b42-4f4c-8ca1-680045a37c50
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-ee6716a4-4b42-4f4c-8ca1-680045a37c50'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-1b396a41-c306-4f1d-9e1d-0b68ce0dd446/test_container_bytecode_caches0/workspace/__pycache__
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-1b396a41-c306-4f1d-9e1d-0b68ce0dd446/test_container_bytecode_caches0/workspace/__pycache__'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-1b396a41-c306-4f1d-9e1d-0b68ce0dd446/test_container_bytecode_caches0/workspace
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-1b396a41-c306-4f1d-9e1d-0b68ce0dd446/test_container_bytecode_caches0/workspace'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-1b396a41-c306-4f1d-9e1d-0b68ce0dd446/test_container_bytecode_caches0
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-1b396a41-c306-4f1d-9e1d-0b68ce0dd446/test_container_bytecode_caches0'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-1b396a41-c306-4f1d-9e1d-0b68ce0dd446/test_all_skipped_and_missing_t0/workspace/tests/__pycache__
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-1b396a41-c306-4f1d-9e1d-0b68ce0dd446/test_all_skipped_and_missing_t0/workspace/tests/__pycache__'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-1b396a41-c306-4f1d-9e1d-0b68ce0dd446/test_all_skipped_and_missing_t0/workspace/tests
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-1b396a41-c306-4f1d-9e1d-0b68ce0dd446/test_all_skipped_and_missing_t0/workspace/tests'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-1b396a41-c306-4f1d-9e1d-0b68ce0dd446/test_all_skipped_and_missing_t0/workspace
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-1b396a41-c306-4f1d-9e1d-0b68ce0dd446/test_all_skipped_and_missing_t0/workspace'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-1b396a41-c306-4f1d-9e1d-0b68ce0dd446/test_all_skipped_and_missing_t0
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-1b396a41-c306-4f1d-9e1d-0b68ce0dd446/test_all_skipped_and_missing_t0'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-1b396a41-c306-4f1d-9e1d-0b68ce0dd446/test_python_unittest_project_r0/workspace/tests/__pycache__
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-1b396a41-c306-4f1d-9e1d-0b68ce0dd446/test_python_unittest_project_r0/workspace/tests/__pycache__'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-1b396a41-c306-4f1d-9e1d-0b68ce0dd446/test_python_unittest_project_r0/workspace/tests
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-1b396a41-c306-4f1d-9e1d-0b68ce0dd446/test_python_unittest_project_r0/workspace/tests'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-1b396a41-c306-4f1d-9e1d-0b68ce0dd446/test_python_unittest_project_r0/workspace
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-1b396a41-c306-4f1d-9e1d-0b68ce0dd446/test_python_unittest_project_r0/workspace'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-1b396a41-c306-4f1d-9e1d-0b68ce0dd446/test_python_unittest_project_r0
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-1b396a41-c306-4f1d-9e1d-0b68ce0dd446/test_python_unittest_project_r0'
+    warnings.warn(
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123
+  /home/imini/magr-harness-memory-context/v3/.venv/lib/python3.12/site-packages/_pytest/pathlib.py:123: PytestWarning: (rm_rf) error removing /tmp/pytest-of-imini/garbage-1b396a41-c306-4f1d-9e1d-0b68ce0dd446
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-imini/garbage-1b396a41-c306-4f1d-9e1d-0b68ce0dd446'
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+13 passed, 96 warnings in 23.59s

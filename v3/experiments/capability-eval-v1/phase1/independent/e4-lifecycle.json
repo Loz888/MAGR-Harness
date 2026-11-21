@@ -1,0 +1,21 @@
+{
+  "closed_and_reopened_transitions": 4,
+  "disposable_database_context_exited": true,
+  "distinct_project_repo_actor_scopes": 3,
+  "distinct_successive_controller_backends": 5,
+  "holdout_rows_read_or_run": 0,
+  "implementation_revision": "ff1562c6e98bc6788b11141d15c1b215b79701bf",
+  "neutral_ingress_records": 5,
+  "ready_for_next_candidate_lifecycle_smoke": true,
+  "residual_before_database_drop": {
+    "active_controller_backends": 0,
+    "controller_locks": 0
+  },
+  "revisits_to_initial_scope": 2,
+  "runner_sha256": "266be1d4006d4c88b8b3783e4ba0bfa30cdcb5df0dbbeae85ef3ebb31ea9ca23",
+  "scored_memory_writes": 0,
+  "simultaneous_control_locks_at_each_ingress": 1,
+  "smoke_driver_sha256": "882f86307c2ed5e4283865b80ba082672203dea46bcf40ef00f0658ee5d441f2",
+  "status": "PASS",
+  "type": "unscored public lifecycle smoke"
+}

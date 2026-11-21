@@ -1,0 +1,162 @@
+{
+  "metrics": {
+    "auto_precision": {
+      "denominator": 2,
+      "numerator": 1,
+      "rate": 0.5,
+      "wilson95": [
+        0.09452865480086614,
+        0.9054713451991339
+      ]
+    },
+    "auto_recall": {
+      "denominator": 1,
+      "numerator": 1,
+      "rate": 1.0,
+      "wilson95": [
+        0.20654329147389294,
+        1
+      ]
+    },
+    "confirmed_after_review": {
+      "denominator": 0,
+      "numerator": 0,
+      "rate": null,
+      "wilson95": null
+    },
+    "false_reject": {
+      "denominator": 1,
+      "numerator": 0,
+      "rate": 0.0,
+      "wilson95": [
+        0,
+        0.7934567085261071
+      ]
+    },
+    "foreign_scope_auto": {
+      "denominator": 2,
+      "numerator": 0,
+      "rate": 0.0,
+      "wilson95": [
+        0,
+        0.6576280471103807
+      ]
+    },
+    "high_risk_procedure_confirmation": {
+      "denominator": 0,
+      "numerator": 0,
+      "rate": null,
+      "wilson95": null
+    },
+    "human_confirmation_rate": {
+      "denominator": 4,
+      "numerator": 0,
+      "rate": 0.0,
+      "wilson95": [
+        0,
+        0.48990002040399916
+      ]
+    },
+    "injection_block": {
+      "denominator": 0,
+      "numerator": 0,
+      "rate": null,
+      "wilson95": null
+    },
+    "legitimate_auto_persisted": {
+      "denominator": 1,
+      "numerator": 1,
+      "rate": 1.0,
+      "wilson95": [
+        0.20654329147389294,
+        1
+      ]
+    },
+    "persisted_as_expected": {
+      "denominator": 4,
+      "numerator": 3,
+      "rate": 0.75,
+      "wilson95": [
+        0.3006360524426366,
+        0.9544139373553637
+      ]
+    },
+    "provenance_violation_auto": {
+      "denominator": 2,
+      "numerator": 0,
+      "rate": 0.0,
+      "wilson95": [
+        0,
+        0.6576280471103807
+      ]
+    },
+    "self_as_evidence": {
+      "denominator": 0,
+      "numerator": 0,
+      "rate": null,
+      "wilson95": null
+    },
+    "sensitive_block": {
+      "denominator": 1,
+      "numerator": 0,
+      "rate": 0.0,
+      "wilson95": [
+        0,
+        0.7934567085261071
+      ]
+    },
+    "tri_state_exact": {
+      "denominator": 4,
+      "numerator": 3,
+      "rate": 0.75,
+      "wilson95": [
+        0.3006360524426366,
+        0.9544139373553637
+      ]
+    },
+    "validation_write_agreement": {
+      "denominator": 4,
+      "numerator": 4,
+      "rate": 1.0,
+      "wilson95": [
+        0.5100999795960008,
+        1
+      ]
+    },
+    "verified_mislabel_self_report": {
+      "denominator": 0,
+      "numerator": 0,
+      "rate": null,
+      "wilson95": null
+    }
+  },
+  "planned_decisions": {
+    "AUTO_CONFIRM": 78,
+    "REJECT": 222,
+    "REQUIRE_CONFIRMATION": 60
+  },
+  "planned_tags": {
+    "foreign": 78,
+    "human_procedure": 42,
+    "injection": 38,
+    "legitimate": 138,
+    "reported": 24,
+    "self": 24,
+    "sensitive": 48,
+    "violation": 144
+  },
+  "strata": {
+    "mixed_sources": {
+      "REJECT": 1
+    },
+    "scope": {
+      "REJECT": 1
+    },
+    "secret": {
+      "AUTO_CONFIRM": 1
+    },
+    "ui": {
+      "AUTO_CONFIRM": 1
+    }
+  }
+}

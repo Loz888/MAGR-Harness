@@ -1,0 +1,28 @@
+{
+  "artifacts": {
+    "h12/acceptance.json": "1f580c72c17a80012467dec9db463fa765a018a6c77de279ae2c75ec6d011e96",
+    "h12/cases.jsonl": "1106ee3a6f1de723b2f39e92b17202a64b30153036486b5f889afa99cfa4674a",
+    "h12/failures.md": "8eaf0f7d5e165d5cbdeeb2ace15f6c770b7fcc1f2305ed2a27266a303d325b2b",
+    "h12/independent_review.md": "6751ae506f23d9f192b22426417cb869ccd2df2e7ea7b83f007d4a77e425b022",
+    "h12/manifest.json": "5d3aa9a6937a27fea3ac77414388f844f3b07c61fc2e5d270029bfd90047f496",
+    "h12/metrics.json": "b738d641a3d382028c20131898fea4fbb4c062fdf4ac4fe182a1dd81fb3584d7",
+    "h12/raw.jsonl": "7dd3be5418bad904b7405568a7fd7e86f46c9dae0f551db3b1cee49f4000cc2b",
+    "h12/report.md": "1cf4d0502463bdac0fe43f43645afb969139c1e35dc2ecc71e77b57b7a9d6332",
+    "h17/acceptance.json": "680c0c0c79576fb12f9bcab5b913a9c89cb989e9269cbd1ce0b298c9c42e3dbf",
+    "h17/cases.jsonl": "25bd7ac2adb3a32c1203cf22d1c71574a052c78efb7c6dea1aa974fef39ffe82",
+    "h17/failures.md": "d0b7b1460fb5a9d2daadce91c0c0fcbdfb5894179aac8057f6c528e5ce949864",
+    "h17/independent_review.md": "64396f0b83f9b90c24443954f6ddfa843582dcc27359c0d08187e70357ef9bdc",
+    "h17/manifest.json": "edad4dddf7220ee92c7e1d42256a0e7c3c89c041612dd587d5f045d2cee8ecce",
+    "h17/metrics.json": "2472d9a877745adf081a60b2232d064657a989247fb6f2100ae28d3ea81eb9d4",
+    "h17/raw.jsonl": "5fa1ba081658940aeb19d809e74466b181ef06a4ffae0815e0fa427e6d1f8083",
+    "h17/report.md": "434f2e924b19a5eb691fbbfc3c52d445a71d7bb7f7f71a4faea5d0505e26104e"
+  },
+  "engineering": "PASS",
+  "evidence_index_sha256": "9ab03d7bc5f4e9597c91b266edd92f7d64e22697c55263d5ca5d6148c3064a81",
+  "external_independent_review": "NOT_RUN",
+  "formal_paid": "NOT_RUN",
+  "h12_registered_passes": 347,
+  "h17_registered_passes": 18,
+  "paid_calls": 0,
+  "paid_cost_micros": 0
+}

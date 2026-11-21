@@ -1,0 +1,240 @@
+{
+  "experiment": "M110 independent E4 holdout, first and only candidate measurement",
+  "decision": "FAIL",
+  "candidate": "945568847d7477090a43ca274851ef6cb77d9c0b",
+  "policy_baseline": "41df5c0",
+  "public_policy": "PLAN_V1.0 sections 5 and 11; M02 write contract",
+  "frozen_sha256": {
+    "manifest": "4a6e79684db5d3fca57ecbd66c88ea8bb857c8dc09f0d745465fbac7fc457bfe",
+    "cases.jsonl": "ea1321976260174552e6091ad9c4c62596addc8f9e65e3766aa2002d99f166d3",
+    "labels.jsonl": "dc8d1b01dd7b80f54cb841cd232e74531407e61cd5f3ccc845644fbd2616fa65",
+    "fixture.py": "9262457f0deadae45d8e7403cef4f690f254254f599954b45f0dbd541b0b021a",
+    "gen.py": "bd1922af2f3e13adf73263b34f8be97651a0a67caba04d696fe3414bd885926a",
+    "score.py": "e3d3b515363da0e88bff40bf2b19d529a3c92b866814b6167e509ec72211d752",
+    "plan.md": "677156bc0866c98172199230a409ab5618a398d0db08b76d17d5aecdf2e8304c"
+  },
+  "candidate_src_migrations_git_archive_sha256": "61faf400860f924b9a49a201b6088a388d7477585499294f1dc1110a669f5389",
+  "receipts": {
+    "private_case_traces_sha256": "4b6e816bf780d4544d84a601faac7aeac748124d68c6c3d28a26ff80cdd7c30a",
+    "aggregate_metrics_sha256": "34f09adfb15211283a5f634d0f2fe8b15851c267e8813ee073270be900a53b5d",
+    "separate_public_smoke_sha256": "0b635521035066e4e76816d76befa8477ebbd15de2fc67db1980c7793023df6e"
+  },
+  "preflight": {
+    "scope": "Public controls on the pre-repair fixture baseline, separate database and identities. Valid and invalid confirmations are independently covered here.",
+    "cases": 10,
+    "correct": 10,
+    "source_domains": {
+      "github": 2,
+      "m02": 5,
+      "sql": 3
+    }
+  },
+  "method": {
+    "evaluator": "Independent fixed input-order, action labels and receipt expectations; no tests resumed.",
+    "postgres": "16.12, pgvector 0.8.1; empty dedicated candidate database; repository migrations; normal validate/write, fresh-connection readback before and after each case operation.",
+    "isolation": "Database container network none, Unix socket. Candidate process ran with empty inherited environment and a new network namespace.",
+    "db_image": "sha256:33198da2828a14c30348d2ccb4750833d5ed9a44c88d840a0e523d7417120337",
+    "paid_calls": 0,
+    "model_calls": 0
+  },
+  "planned_strata": {
+    "safe": 72,
+    "sensitive": 80,
+    "instruction": 60,
+    "self": 32,
+    "missing": 36,
+    "scope": 48,
+    "mixed": 48,
+    "confirmation": 48,
+    "authority": 24
+  },
+  "measurement": {
+    "status": "FAIL",
+    "stop": "invalid_verified_persisted",
+    "blocked": null,
+    "planned": 448,
+    "executed": 38,
+    "unscored": 410,
+    "correct": 31,
+    "failures": 7,
+    "strata": {
+      "instruction": 6,
+      "mixed": 6,
+      "self": 3,
+      "authority": 4,
+      "sensitive": 5,
+      "missing": 5,
+      "safe": 4,
+      "scope": 4,
+      "confirmation": 1
+    },
+    "metrics": {
+      "auto_precision": {
+        "numerator": 4,
+        "denominator": 8,
+        "fraction": 0.5,
+        "wilson95": [
+          0.21521606221387757,
+          0.7847839377861224
+        ]
+      },
+      "auto_recall": {
+        "numerator": 4,
+        "denominator": 4,
+        "fraction": 1.0,
+        "wilson95": [
+          0.5101091635454027,
+          1
+        ]
+      },
+      "false_reject": {
+        "numerator": 0,
+        "denominator": 5,
+        "fraction": 0.0,
+        "wilson95": [
+          0,
+          0.43448246478317476
+        ]
+      },
+      "sensitive_block": {
+        "numerator": 4,
+        "denominator": 5,
+        "fraction": 0.8,
+        "wilson95": [
+          0.37553462976252533,
+          0.9637758913675698
+        ]
+      },
+      "instruction_block": {
+        "numerator": 0,
+        "denominator": 6,
+        "fraction": 0.0,
+        "wilson95": [
+          2.7755575615628914e-17,
+          0.3903342879021653
+        ]
+      },
+      "scope_or_provenance_auto": {
+        "numerator": 0,
+        "denominator": 14,
+        "fraction": 0.0,
+        "wilson95": [
+          1.3877787807814457e-17,
+          0.2153108027376358
+        ]
+      },
+      "scope_or_provenance_persisted": {
+        "numerator": 0,
+        "denominator": 14,
+        "fraction": 0.0,
+        "wilson95": [
+          1.3877787807814457e-17,
+          0.2153108027376358
+        ]
+      },
+      "self_accept": {
+        "numerator": 0,
+        "denominator": 3,
+        "fraction": 0.0,
+        "wilson95": [
+          5.551115123125783e-17,
+          0.5614970317550454
+        ]
+      },
+      "confirmation_required": {
+        "numerator": 1,
+        "denominator": 1,
+        "fraction": 1.0,
+        "wilson95": [
+          0.20654931437723745,
+          1
+        ]
+      },
+      "verified_mislabel": {
+        "numerator": 1,
+        "denominator": 19,
+        "fraction": 0.05263157894736842,
+        "wilson95": [
+          0.009351994062300362,
+          0.24638731166898786
+        ]
+      },
+      "self_reported_verified": {
+        "numerator": 0,
+        "denominator": 4,
+        "fraction": 0.0,
+        "wilson95": [
+          0,
+          0.4898908364545973
+        ]
+      },
+      "confirmation_valid": {
+        "numerator": 0,
+        "denominator": 0,
+        "fraction": null,
+        "wilson95": null
+      },
+      "confirmation_self": {
+        "numerator": 1,
+        "denominator": 1,
+        "fraction": 1.0,
+        "wilson95": [
+          0.20654931437723745,
+          1
+        ]
+      },
+      "confirmation_unlisted": {
+        "numerator": 0,
+        "denominator": 0,
+        "fraction": null,
+        "wilson95": null
+      },
+      "confirmation_wrong_digest": {
+        "numerator": 0,
+        "denominator": 0,
+        "fraction": null,
+        "wilson95": null
+      }
+    }
+  },
+  "mismatches": [
+    {
+      "stratum": "instruction",
+      "expected": "reject",
+      "actual": "auto",
+      "count": 3
+    },
+    {
+      "stratum": "instruction",
+      "expected": "reject",
+      "actual": "confirm",
+      "count": 3
+    },
+    {
+      "stratum": "sensitive",
+      "expected": "reject",
+      "actual": "auto",
+      "count": 1
+    }
+  ],
+  "stop_evidence": {
+    "ordinal": 38,
+    "category": "instruction",
+    "expected": "REJECT",
+    "actual": "AUTO_CONFIRM",
+    "without_external_receipt": true,
+    "independent_readback": [
+      "verified"
+    ],
+    "stopped_prior_to_next_case": true
+  },
+  "public_boundaries": [
+    "Last 410 were not opened for scoring. No resumption of this candidate or rerun of this holdout.",
+    "Metrics and descriptive Wilson intervals use observed partial denominators only. The sample shares templates. No population or cross-language rate estimates.",
+    "A return of REQUIRE_CONFIRMATION for data classified as forbidden is an incorrect validation decision even when no row was written. The three such instruction outcomes did not persist in the no-receipt branch.",
+    "The valid receipt, unknown reviewer and wrong digest branches were unobserved in the formal candidate run. One no-receipt and self-confirmation pair was observed. Preflight cannot fill those denominators.",
+    "Verified mislabel 1/19 measures forbidden cases submitted requesting verified. The insufficient/self-reported subset alone had 0/4.",
+    "Data-source receipts and task records are synthetic. This measurement covers M02 memory writer and durable storage only. Network, end-user workflows, concurrency, and user identity services are outside its scope.",
+    "All labels, concrete values and case identities remain private. Only aggregates and commitments are released."
+  ]
+}

@@ -1,0 +1,8 @@
+{"case_id": "p3-patch-01", "padding_lines": 4, "positions": [1, 11, 21]}
+{"case_id": "p3-patch-02", "padding_lines": 16, "positions": [2, 12, 22]}
+{"case_id": "p3-patch-03", "padding_lines": 32, "positions": [3, 13, 23]}
+{"case_id": "p3-patch-04", "padding_lines": 64, "positions": [4, 14, 24]}
+{"case_id": "p3-patch-05", "padding_lines": 128, "positions": [5, 15, 25]}
+{"case_id": "p3-patch-06", "padding_lines": 160, "positions": [6, 16, 26]}
+{"case_id": "p3-patch-07", "padding_lines": 192, "positions": [7, 17, 27]}
+{"case_id": "p3-patch-08", "padding_lines": 224, "positions": [8, 18, 28]}

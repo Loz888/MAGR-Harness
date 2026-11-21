@@ -1,0 +1,84 @@
+{
+  "scheduled": 360,
+  "observed": 360,
+  "missing": 0,
+  "status_counts": {
+    "ANSWERED": 328,
+    "FAIL": 32
+  },
+  "passed": 313,
+  "by_arm_success": {
+    "full_history": 83,
+    "magr_compaction": 65,
+    "summary": 82,
+    "truncate": 83
+  },
+  "wrong_fields": {
+    "status": 32,
+    "pending_approval": 8,
+    "constraint": 4,
+    "open_question": 4,
+    "incident": 5,
+    "failure_code": 1
+  },
+  "expected_sha256": "ffa02693e152514f955bd810c911bf973e9f46e3cd19c778b4c3604ab375a7de",
+  "raw_sha256": "0ee541e6576e442b908121c51e7a8c8baff1f1df7197e7f605a155447dfc3186",
+  "grader_sha256": "cc8b38288717b9486b544369089c2170692afc62164bcd2bfc3912ee020ed61d",
+  "unit": "one run (task,scale,arm,rep); per-field failures can overlap",
+  "hashes_matched": true,
+  "transport_fix_sha256": "1f95ef9842b0db2b8932aa7b6e47e9d10e0114a9a3f7cf23052d4e7d39b31e72",
+  "grades_sha256": "3cf69637b3ac1bfc8f54b1ccfd5507319a9ed4a63757a0fd4789e42fe669e96f",
+  "paired": {
+    "case_clusters": 10,
+    "paired_trials": 90,
+    "bootstrap": 5000,
+    "success_delta": -0.2,
+    "success_ci95": [
+      -0.28888888888888886,
+      -0.1
+    ],
+    "cumulative_input_reduction": 0.09354108039767473,
+    "cumulative_input_reduction_ci95": [
+      0.00818394450372395,
+      0.17140649450865897
+    ]
+  },
+  "arms": {
+    "magr_compaction": {
+      "successful_trials": 65,
+      "total_model_calls": 170,
+      "cumulative_input": 1733619,
+      "first_input": 882186,
+      "tariff_nano_usd": 167112792,
+      "reads": 68,
+      "output_tokens": 184053
+    },
+    "full_history": {
+      "successful_trials": 83,
+      "total_model_calls": 103,
+      "cumulative_input": 1912518,
+      "first_input": 1723536,
+      "tariff_nano_usd": 195597300,
+      "reads": 0,
+      "output_tokens": 177489
+    },
+    "summary": {
+      "successful_trials": 82,
+      "total_model_calls": 170,
+      "cumulative_input": 1001061,
+      "first_input": 489699,
+      "tariff_nano_usd": 103214676,
+      "reads": 78,
+      "output_tokens": 112992
+    },
+    "truncate": {
+      "successful_trials": 83,
+      "total_model_calls": 142,
+      "cumulative_input": 1432026,
+      "first_input": 930729,
+      "tariff_nano_usd": 143238156,
+      "reads": 44,
+      "output_tokens": 146782
+    }
+  }
+}

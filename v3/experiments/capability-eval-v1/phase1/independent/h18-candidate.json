@@ -1,0 +1,30 @@
+{
+  "revision": "ff1562c6e98bc6788b11141d15c1b215b79701bf",
+  "cases": {
+    "G01": {
+      "status": "PASS"
+    },
+    "G02": {
+      "status": "PASS"
+    },
+    "G03": {
+      "status": "PASS"
+    },
+    "G04": {
+      "status": "PASS"
+    },
+    "G05": {
+      "status": "PASS"
+    },
+    "G06": {
+      "status": "PASS"
+    },
+    "G07": {
+      "status": "PASS"
+    },
+    "G08": {
+      "status": "PASS"
+    }
+  },
+  "paid_calls": 0
+}

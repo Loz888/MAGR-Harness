@@ -1,0 +1,66 @@
+{
+  "status": "PASS",
+  "phase2_digests": 24,
+  "phase3_engineering_digests": 16,
+  "e2": {
+    "public_files": 36,
+    "local_files": 7,
+    "attempts": 2324,
+    "settled": 2323,
+    "not_sent_adjudicated": 1,
+    "tokens": [
+      24663671,
+      2536440
+    ],
+    "peak_cost_micros": 10443886,
+    "independent_holdout_pass": 313,
+    "independent_holdout_total": 360,
+    "status": "FAIL"
+  },
+  "e3": {
+    "settled": 1061,
+    "tokens": [
+      423933,
+      157205
+    ],
+    "peak_cost_micros": 316312,
+    "success": 640,
+    "trials": 640,
+    "status": "INCONCLUSIVE"
+  },
+  "e5_baseline": {
+    "primary_cells": 120,
+    "primary_requests": 120000,
+    "native_cells": 12,
+    "native_requests": 480
+  },
+  "phase3_live": {
+    "files": 10,
+    "paid_calls": 1451,
+    "tokens": [
+      12588305,
+      408502
+    ],
+    "traces": 212,
+    "peak_cost_micros": 4267357,
+    "denominators": {
+      "h12": {
+        "FAIL": 7,
+        "PASS": 19,
+        "BLOCKED": 6
+      },
+      "h17": {
+        "PASS": 167,
+        "FAIL": 13
+      }
+    }
+  },
+  "phase1_e4": {
+    "executed": 38,
+    "not_run": 410,
+    "registered": 448,
+    "status": "FAIL"
+  },
+  "historical_statuses_preserved": true,
+  "new_paid_calls": 0
+}

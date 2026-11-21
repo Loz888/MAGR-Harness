@@ -1,0 +1,88 @@
+{
+  "junit": {
+    "patch": {
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "tests": 32
+    },
+    "preflight": {
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "tests": 12
+    }
+  },
+  "missing_patch": [],
+  "missing_preflight": [],
+  "patch": {
+    "chunked": {
+      "fixture_cost_micros": 72,
+      "fixture_input_tokens": 3552,
+      "fixture_model_calls": 48,
+      "fixture_output_tokens": 1968,
+      "partial_writes": 0,
+      "patches_parsed_and_applied": 24,
+      "same_run_recoveries": 0,
+      "succeeded": 8,
+      "trials": 8,
+      "trials_with_truncation": 0,
+      "truncated_replies": 0,
+      "truncation_trial_success": 0
+    },
+    "full_file": {
+      "fixture_cost_micros": 72,
+      "fixture_input_tokens": 2368,
+      "fixture_model_calls": 32,
+      "fixture_output_tokens": 3400,
+      "partial_writes": 0,
+      "patches_parsed_and_applied": 4,
+      "same_run_recoveries": 0,
+      "succeeded": 4,
+      "trials": 8,
+      "trials_with_truncation": 4,
+      "truncated_replies": 12,
+      "truncation_trial_success": 0
+    },
+    "structured_plan": {
+      "fixture_cost_micros": 24,
+      "fixture_input_tokens": 1184,
+      "fixture_model_calls": 32,
+      "fixture_output_tokens": 656,
+      "partial_writes": 0,
+      "patches_parsed_and_applied": 8,
+      "same_run_recoveries": 0,
+      "succeeded": 8,
+      "trials": 8,
+      "trials_with_truncation": 0,
+      "truncated_replies": 0,
+      "truncation_trial_success": 0
+    },
+    "verified_resume": {
+      "fixture_cost_micros": 112,
+      "fixture_input_tokens": 4736,
+      "fixture_model_calls": 56,
+      "fixture_output_tokens": 4016,
+      "partial_writes": 0,
+      "patches_parsed_and_applied": 24,
+      "same_run_recoveries": 8,
+      "succeeded": 8,
+      "trials": 8,
+      "trials_with_truncation": 8,
+      "truncated_replies": 8,
+      "truncation_trial_success": 8
+    }
+  },
+  "preflight": {
+    "actual_model_calls": 0,
+    "avoided_invalid_first_slots": 9,
+    "before_model_detections": 9,
+    "correct_categories": 12,
+    "false_blocks": 0,
+    "faults": 9,
+    "healthy": 3,
+    "observed": 12,
+    "recovered_faults": 9,
+    "scheduled": 12
+  }
+}

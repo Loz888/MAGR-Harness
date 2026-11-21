@@ -1,0 +1,18 @@
+{
+  "suite": "E4 independent repair evaluation",
+  "registered": 360,
+  "strata": 12,
+  "public_neutral_controls_passed": 12,
+  "public_neutral_controls_registered": 12,
+  "graded_at_registration": 0,
+  "sha256": {
+    "independent_manifest": "8e9dfabf7fc384e4d2d7eb3ced7047b6c68d98e94cbf2a042361e8664acb5bd5",
+    "inputs": "29b348a4a089c39db74c8be8470b4bb1a06fb8bb21447ad6e2c7a2bcbf118e6b",
+    "labels": "52d7b5e8c0c2454932e0347d213ed64389f1d1c782e816221c22d2cea537a2c1",
+    "scoring": "814fedd324db12330f50adcbc6c5dd27264b86b7a9befb59e1d67bf778bde2b7",
+    "fixture": "2422e674d2922c8bbf0df6eca20f358c5b3b0f14ea586d9ed8d8a60483d7b87f",
+    "runner": "5fbe1bfed5255e6ba8be362c661a8a2da40dd6d07a9f895984c61103f60df017",
+    "protocol": "26e93fdecaeecf0b5d01d44fa13926e8feec944e0faf07738e8903564f812051",
+    "controls": "81ba640d59725bb21beda32a61b46c92041082be920e29ee8107846d1f6c47ed"
+  }
+}

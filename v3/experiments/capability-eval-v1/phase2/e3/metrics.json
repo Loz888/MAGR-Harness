@@ -1,0 +1,2863 @@
+{
+  "manifest_sha256": "7c47b95d45a551be930a249aaaa87d265c290680dfaf3375c141989a5a3dc229",
+  "snapshot_utc": "2026-11-20T14:06:32.573962+00:00",
+  "source": {
+    "fixture": {
+      "selection": "latest_receipt",
+      "raw": {
+        "path": "evidence/CAPABILITY-PHASE2/e3/fixture/5046c789-853c-4bb9-8a72-f5291979b777/raw.jsonl",
+        "sha256": "d241de5f2265a6f3363722565e1aef9506e614ba13297c9c1ac8266254af060b",
+        "bytes": 727594,
+        "complete_session_rows": 640
+      },
+      "attempt": "evidence/CAPABILITY-PHASE2/e3/fixture/5046c789-853c-4bb9-8a72-f5291979b777",
+      "receipt_bound": true,
+      "trailing_incomplete_bytes": 0,
+      "candidate_receipt": {
+        "freeze": "7c47b95d45a551be930a249aaaa87d265c290680dfaf3375c141989a5a3dc229",
+        "sessions": 640,
+        "status": "PASS"
+      }
+    },
+    "formal": {
+      "selection": "latest_receipt",
+      "raw": {
+        "path": "evidence/CAPABILITY-PHASE2/e3/formal/4c12cf89-4482-4dfd-b784-d19472bbd631/raw.jsonl",
+        "sha256": "686689bcaa4436a09b1fd35acf8998b4184e3c7b4e0072785d26059455417024",
+        "bytes": 732728,
+        "complete_session_rows": 640
+      },
+      "attempt": "evidence/CAPABILITY-PHASE2/e3/formal/4c12cf89-4482-4dfd-b784-d19472bbd631",
+      "receipt_bound": true,
+      "trailing_incomplete_bytes": 0,
+      "candidate_receipt": {
+        "freeze": "7c47b95d45a551be930a249aaaa87d265c290680dfaf3375c141989a5a3dc229",
+        "sessions": 640,
+        "status": "EXECUTED"
+      }
+    }
+  },
+  "budget": {
+    "path": "evidence/CAPABILITY-PHASE2/e3/formal/ledger.sqlite",
+    "available": true,
+    "grant_meta_freezes": [
+      "7c47b95d45a551be930a249aaaa87d265c290680dfaf3375c141989a5a3dc229"
+    ],
+    "freeze_matches": true,
+    "sha256_sorted_receipt_metadata_snapshot": "1a143c710987c07772c87aa209cb2d7eb1ce549238c7bab146d3f6f5f11b96df",
+    "receipt_states": {
+      "settled": 1061
+    },
+    "provider_or_policy_reasons": {},
+    "models_returned": {
+      "deepseek-flash": 1061
+    },
+    "totals": {
+      "request_slots": 1061,
+      "settled_calls": 1061,
+      "settled_cost_upper_micros": 316312,
+      "held_reserve_micros": 0,
+      "input_tokens_settled": 423933,
+      "output_tokens_settled": 157205,
+      "unresolved_slots": 0
+    },
+    "combined_exposure_upper_micros": 316312,
+    "authorized_calls": 2040,
+    "authorized_micros": 18000000,
+    "remaining_request_slots": 979,
+    "remaining_after_exposure_micros": 17683688,
+    "invoice_actual_micros": null,
+    "by_arm": {
+      "off": {
+        "request_slots": 320,
+        "settled_calls": 320,
+        "settled_cost_upper_micros": 86691,
+        "held_reserve_micros": 0,
+        "input_tokens_settled": 116824,
+        "output_tokens_settled": 42920,
+        "unresolved_slots": 0,
+        "observed_session_successes": 160,
+        "cost_upper_micros_per_observed_success_including_unfinished_settled": 541.81875
+      },
+      "bm25": {
+        "request_slots": 247,
+        "settled_calls": 247,
+        "settled_cost_upper_micros": 77632,
+        "held_reserve_micros": 0,
+        "input_tokens_settled": 102334,
+        "output_tokens_settled": 39018,
+        "unresolved_slots": 0,
+        "observed_session_successes": 160,
+        "cost_upper_micros_per_observed_success_including_unfinished_settled": 485.2
+      },
+      "hybrid": {
+        "request_slots": 247,
+        "settled_calls": 247,
+        "settled_cost_upper_micros": 75985,
+        "held_reserve_micros": 0,
+        "input_tokens_settled": 102473,
+        "output_tokens_settled": 37607,
+        "unresolved_slots": 0,
+        "observed_session_successes": 160,
+        "cost_upper_micros_per_observed_success_including_unfinished_settled": 474.90625
+      },
+      "hybrid_reranked": {
+        "request_slots": 247,
+        "settled_calls": 247,
+        "settled_cost_upper_micros": 76004,
+        "held_reserve_micros": 0,
+        "input_tokens_settled": 102302,
+        "output_tokens_settled": 37660,
+        "unresolved_slots": 0,
+        "observed_session_successes": 160,
+        "cost_upper_micros_per_observed_success_including_unfinished_settled": 475.025
+      }
+    },
+    "completed_session_mismatches": [],
+    "requests_without_completed_session_row": 0,
+    "uncompleted_sessions_with_requests": []
+  },
+  "additional_receipt_pricing_and_cas_audit": {
+    "binding_matches_this_run": true,
+    "file": {
+      "path": "experiments/capability-eval-v1/phase2/e3/receipt-audit.json",
+      "sha256": "bdbe5282cf440aa91a16a11961933277e11ff6257e4b51b1d24e8f33ce97fc1d",
+      "bytes": 679
+    },
+    "result": {
+      "status": "PASS",
+      "planned_and_observed_sessions": 640,
+      "unique_settled_completions": 1061,
+      "input_tokens": 423933,
+      "output_tokens": 157205,
+      "upper_cost_micros": 316312,
+      "outstanding_micros": 0,
+      "receipt_priced_rows": 1061,
+      "off_peak_estimated_nanodollars": 125223384,
+      "off_peak_estimated_nanodollars_by_arm": {
+        "off": 35711568,
+        "bm25": 30541836,
+        "hybrid": 29284347,
+        "hybrid_reranked": 29685633
+      },
+      "public_rate_source": "https://api-docs.deepseek.com/quick_start/pricing/",
+      "supplier_invoice_review": "NOT_RUN",
+      "delivery_artifacts_verified": 640,
+      "raw_sha256": "686689bcaa4436a09b1fd35acf8998b4184e3c7b4e0072785d26059455417024"
+    }
+  },
+  "preflight_attempts": [
+    {
+      "path": "evidence/CAPABILITY-PHASE2/e3/preflight-1.log",
+      "sha256": "31e8630901ea228175bcec95d89d3f312bda91cf8e23a8ce1bb3642eea49c684",
+      "bytes": 1561,
+      "reason": "本地会话凭据长度校验失败"
+    },
+    {
+      "path": "evidence/CAPABILITY-PHASE2/e3/preflight-2.log",
+      "sha256": "613f6d46579f49d53ba0fa12c35fca3b945685025e427eb36794c30e5e1c5692",
+      "bytes": 1465,
+      "reason": "回执或证据文件解析遇到不完整 JSON"
+    },
+    {
+      "path": "evidence/CAPABILITY-PHASE2/e3/preflight-3.log",
+      "sha256": "e27269b10b4e3022b0e329dabb642d58874e8d27c4c589f987ac02cb2463d2fe",
+      "bytes": 2671,
+      "reason": "PostgreSQL 连接中断"
+    }
+  ],
+  "fixture": {
+    "bootstrap": {
+      "unit": "case_id (all sessions, seeds and both arms retained)",
+      "replicates": 2000,
+      "seed": 691369,
+      "ci": "percentile 95%"
+    },
+    "task_unit": "session; ratio costs include failed and successful observed sessions",
+    "trial_rows": 640,
+    "planned_trials": 640,
+    "missing_trials": [],
+    "limitations": [
+      "Case-weighting follows number of observed sessions per case.",
+      "Paired effects apply to matched cases only. Missing trials can bias the estimate.",
+      "Completeness requires planned case manifests. Latency uses recorded durations only.",
+      "Calibrated known failure opportunities <20 yield an inconclusive rate.",
+      "Deterministic agent decisions give engineering evidence only."
+    ],
+    "results": {
+      "all": {
+        "arms": {
+          "off": {
+            "sessions": 160,
+            "chains": 40,
+            "first_pass_success": {
+              "numerator": 160,
+              "denominator": 160,
+              "rate": 1.0
+            },
+            "final_success": {
+              "numerator": 160,
+              "denominator": 160,
+              "rate": 1.0
+            },
+            "retrieval_hit": {
+              "numerator": 0,
+              "denominator": 160,
+              "rate": 0.0
+            },
+            "adoption_given_hit": {
+              "numerator": 0,
+              "denominator": 0,
+              "rate": null
+            },
+            "repeated_error_rate": {
+              "numerator": 0,
+              "denominator": 0,
+              "rate": null,
+              "status": "INCONCLUSIVE_LOW_OPPORTUNITIES"
+            },
+            "repeated_tool_calls": {
+              "numerator": 97,
+              "denominator": 160,
+              "rate": 0.60625
+            },
+            "historical_memory_observed": 0,
+            "stale_attempts": 0,
+            "stale_accepted": 0,
+            "accounting": {
+              "model_calls": {
+                "known_rows": 160,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 160,
+                "per_successful_session": 0.0
+              },
+              "input_tokens": {
+                "known_rows": 160,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 160,
+                "per_successful_session": 0.0
+              },
+              "output_tokens": {
+                "known_rows": 160,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 160,
+                "per_successful_session": 0.0
+              },
+              "cost_micros": {
+                "known_rows": 160,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 160,
+                "per_successful_session": 0.0
+              }
+            },
+            "duration_ms": {
+              "known_rows": 160,
+              "p50": 59.6295,
+              "p95": 89.81895
+            }
+          },
+          "bm25": {
+            "sessions": 160,
+            "chains": 40,
+            "first_pass_success": {
+              "numerator": 160,
+              "denominator": 160,
+              "rate": 1.0
+            },
+            "final_success": {
+              "numerator": 160,
+              "denominator": 160,
+              "rate": 1.0
+            },
+            "retrieval_hit": {
+              "numerator": 120,
+              "denominator": 160,
+              "rate": 0.75
+            },
+            "adoption_given_hit": {
+              "numerator": 74,
+              "denominator": 120,
+              "rate": 0.6166666666666667
+            },
+            "repeated_error_rate": {
+              "numerator": 0,
+              "denominator": 0,
+              "rate": null,
+              "status": "INCONCLUSIVE_LOW_OPPORTUNITIES"
+            },
+            "repeated_tool_calls": {
+              "numerator": 23,
+              "denominator": 86,
+              "rate": 0.26744186046511625
+            },
+            "historical_memory_observed": 46,
+            "stale_attempts": 0,
+            "stale_accepted": 0,
+            "accounting": {
+              "model_calls": {
+                "known_rows": 160,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 160,
+                "per_successful_session": 0.0
+              },
+              "input_tokens": {
+                "known_rows": 160,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 160,
+                "per_successful_session": 0.0
+              },
+              "output_tokens": {
+                "known_rows": 160,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 160,
+                "per_successful_session": 0.0
+              },
+              "cost_micros": {
+                "known_rows": 160,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 160,
+                "per_successful_session": 0.0
+              }
+            },
+            "duration_ms": {
+              "known_rows": 160,
+              "p50": 103.09049999999999,
+              "p95": 165.77875
+            }
+          },
+          "hybrid": {
+            "sessions": 160,
+            "chains": 40,
+            "first_pass_success": {
+              "numerator": 160,
+              "denominator": 160,
+              "rate": 1.0
+            },
+            "final_success": {
+              "numerator": 160,
+              "denominator": 160,
+              "rate": 1.0
+            },
+            "retrieval_hit": {
+              "numerator": 120,
+              "denominator": 160,
+              "rate": 0.75
+            },
+            "adoption_given_hit": {
+              "numerator": 74,
+              "denominator": 120,
+              "rate": 0.6166666666666667
+            },
+            "repeated_error_rate": {
+              "numerator": 0,
+              "denominator": 0,
+              "rate": null,
+              "status": "INCONCLUSIVE_LOW_OPPORTUNITIES"
+            },
+            "repeated_tool_calls": {
+              "numerator": 23,
+              "denominator": 86,
+              "rate": 0.26744186046511625
+            },
+            "historical_memory_observed": 46,
+            "stale_attempts": 0,
+            "stale_accepted": 0,
+            "accounting": {
+              "model_calls": {
+                "known_rows": 160,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 160,
+                "per_successful_session": 0.0
+              },
+              "input_tokens": {
+                "known_rows": 160,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 160,
+                "per_successful_session": 0.0
+              },
+              "output_tokens": {
+                "known_rows": 160,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 160,
+                "per_successful_session": 0.0
+              },
+              "cost_micros": {
+                "known_rows": 160,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 160,
+                "per_successful_session": 0.0
+              }
+            },
+            "duration_ms": {
+              "known_rows": 160,
+              "p50": 102.249,
+              "p95": 164.2407
+            }
+          },
+          "hybrid_reranked": {
+            "sessions": 160,
+            "chains": 40,
+            "first_pass_success": {
+              "numerator": 160,
+              "denominator": 160,
+              "rate": 1.0
+            },
+            "final_success": {
+              "numerator": 160,
+              "denominator": 160,
+              "rate": 1.0
+            },
+            "retrieval_hit": {
+              "numerator": 120,
+              "denominator": 160,
+              "rate": 0.75
+            },
+            "adoption_given_hit": {
+              "numerator": 74,
+              "denominator": 120,
+              "rate": 0.6166666666666667
+            },
+            "repeated_error_rate": {
+              "numerator": 0,
+              "denominator": 0,
+              "rate": null,
+              "status": "INCONCLUSIVE_LOW_OPPORTUNITIES"
+            },
+            "repeated_tool_calls": {
+              "numerator": 23,
+              "denominator": 86,
+              "rate": 0.26744186046511625
+            },
+            "historical_memory_observed": 46,
+            "stale_attempts": 0,
+            "stale_accepted": 0,
+            "accounting": {
+              "model_calls": {
+                "known_rows": 160,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 160,
+                "per_successful_session": 0.0
+              },
+              "input_tokens": {
+                "known_rows": 160,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 160,
+                "per_successful_session": 0.0
+              },
+              "output_tokens": {
+                "known_rows": 160,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 160,
+                "per_successful_session": 0.0
+              },
+              "cost_micros": {
+                "known_rows": 160,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 160,
+                "per_successful_session": 0.0
+              }
+            },
+            "duration_ms": {
+              "known_rows": 160,
+              "p50": 108.03999999999999,
+              "p95": 170.27779999999998
+            }
+          }
+        },
+        "comparisons": {
+          "bm25": {
+            "matched_case_clusters": 40,
+            "excluded_case_ids": [],
+            "paired_on_minus_off": {
+              "final_success_rate": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "first_pass_success_rate": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "calls_per_success": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "input_tokens_per_success": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "cost_micros_per_success": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              }
+            },
+            "success_improvement": "INCONCLUSIVE",
+            "significant_cost_increase": false
+          },
+          "hybrid": {
+            "matched_case_clusters": 40,
+            "excluded_case_ids": [],
+            "paired_on_minus_off": {
+              "final_success_rate": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "first_pass_success_rate": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "calls_per_success": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "input_tokens_per_success": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "cost_micros_per_success": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              }
+            },
+            "success_improvement": "INCONCLUSIVE",
+            "significant_cost_increase": false
+          },
+          "hybrid_reranked": {
+            "matched_case_clusters": 40,
+            "excluded_case_ids": [],
+            "paired_on_minus_off": {
+              "final_success_rate": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "first_pass_success_rate": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "calls_per_success": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "input_tokens_per_success": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "cost_micros_per_success": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              }
+            },
+            "success_improvement": "INCONCLUSIVE",
+            "significant_cost_increase": false
+          }
+        }
+      },
+      "development": {
+        "arms": {
+          "off": {
+            "sessions": 120,
+            "chains": 30,
+            "first_pass_success": {
+              "numerator": 120,
+              "denominator": 120,
+              "rate": 1.0
+            },
+            "final_success": {
+              "numerator": 120,
+              "denominator": 120,
+              "rate": 1.0
+            },
+            "retrieval_hit": {
+              "numerator": 0,
+              "denominator": 120,
+              "rate": 0.0
+            },
+            "adoption_given_hit": {
+              "numerator": 0,
+              "denominator": 0,
+              "rate": null
+            },
+            "repeated_error_rate": {
+              "numerator": 0,
+              "denominator": 0,
+              "rate": null,
+              "status": "INCONCLUSIVE_LOW_OPPORTUNITIES"
+            },
+            "repeated_tool_calls": {
+              "numerator": 72,
+              "denominator": 120,
+              "rate": 0.6
+            },
+            "historical_memory_observed": 0,
+            "stale_attempts": 0,
+            "stale_accepted": 0,
+            "accounting": {
+              "model_calls": {
+                "known_rows": 120,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 120,
+                "per_successful_session": 0.0
+              },
+              "input_tokens": {
+                "known_rows": 120,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 120,
+                "per_successful_session": 0.0
+              },
+              "output_tokens": {
+                "known_rows": 120,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 120,
+                "per_successful_session": 0.0
+              },
+              "cost_micros": {
+                "known_rows": 120,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 120,
+                "per_successful_session": 0.0
+              }
+            },
+            "duration_ms": {
+              "known_rows": 120,
+              "p50": 59.486,
+              "p95": 87.19564999999999
+            }
+          },
+          "bm25": {
+            "sessions": 120,
+            "chains": 30,
+            "first_pass_success": {
+              "numerator": 120,
+              "denominator": 120,
+              "rate": 1.0
+            },
+            "final_success": {
+              "numerator": 120,
+              "denominator": 120,
+              "rate": 1.0
+            },
+            "retrieval_hit": {
+              "numerator": 90,
+              "denominator": 120,
+              "rate": 0.75
+            },
+            "adoption_given_hit": {
+              "numerator": 54,
+              "denominator": 90,
+              "rate": 0.6
+            },
+            "repeated_error_rate": {
+              "numerator": 0,
+              "denominator": 0,
+              "rate": null,
+              "status": "INCONCLUSIVE_LOW_OPPORTUNITIES"
+            },
+            "repeated_tool_calls": {
+              "numerator": 18,
+              "denominator": 66,
+              "rate": 0.2727272727272727
+            },
+            "historical_memory_observed": 36,
+            "stale_attempts": 0,
+            "stale_accepted": 0,
+            "accounting": {
+              "model_calls": {
+                "known_rows": 120,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 120,
+                "per_successful_session": 0.0
+              },
+              "input_tokens": {
+                "known_rows": 120,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 120,
+                "per_successful_session": 0.0
+              },
+              "output_tokens": {
+                "known_rows": 120,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 120,
+                "per_successful_session": 0.0
+              },
+              "cost_micros": {
+                "known_rows": 120,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 120,
+                "per_successful_session": 0.0
+              }
+            },
+            "duration_ms": {
+              "known_rows": 120,
+              "p50": 104.1985,
+              "p95": 164.3192
+            }
+          },
+          "hybrid": {
+            "sessions": 120,
+            "chains": 30,
+            "first_pass_success": {
+              "numerator": 120,
+              "denominator": 120,
+              "rate": 1.0
+            },
+            "final_success": {
+              "numerator": 120,
+              "denominator": 120,
+              "rate": 1.0
+            },
+            "retrieval_hit": {
+              "numerator": 90,
+              "denominator": 120,
+              "rate": 0.75
+            },
+            "adoption_given_hit": {
+              "numerator": 54,
+              "denominator": 90,
+              "rate": 0.6
+            },
+            "repeated_error_rate": {
+              "numerator": 0,
+              "denominator": 0,
+              "rate": null,
+              "status": "INCONCLUSIVE_LOW_OPPORTUNITIES"
+            },
+            "repeated_tool_calls": {
+              "numerator": 18,
+              "denominator": 66,
+              "rate": 0.2727272727272727
+            },
+            "historical_memory_observed": 36,
+            "stale_attempts": 0,
+            "stale_accepted": 0,
+            "accounting": {
+              "model_calls": {
+                "known_rows": 120,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 120,
+                "per_successful_session": 0.0
+              },
+              "input_tokens": {
+                "known_rows": 120,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 120,
+                "per_successful_session": 0.0
+              },
+              "output_tokens": {
+                "known_rows": 120,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 120,
+                "per_successful_session": 0.0
+              },
+              "cost_micros": {
+                "known_rows": 120,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 120,
+                "per_successful_session": 0.0
+              }
+            },
+            "duration_ms": {
+              "known_rows": 120,
+              "p50": 102.70400000000001,
+              "p95": 163.1463
+            }
+          },
+          "hybrid_reranked": {
+            "sessions": 120,
+            "chains": 30,
+            "first_pass_success": {
+              "numerator": 120,
+              "denominator": 120,
+              "rate": 1.0
+            },
+            "final_success": {
+              "numerator": 120,
+              "denominator": 120,
+              "rate": 1.0
+            },
+            "retrieval_hit": {
+              "numerator": 90,
+              "denominator": 120,
+              "rate": 0.75
+            },
+            "adoption_given_hit": {
+              "numerator": 54,
+              "denominator": 90,
+              "rate": 0.6
+            },
+            "repeated_error_rate": {
+              "numerator": 0,
+              "denominator": 0,
+              "rate": null,
+              "status": "INCONCLUSIVE_LOW_OPPORTUNITIES"
+            },
+            "repeated_tool_calls": {
+              "numerator": 18,
+              "denominator": 66,
+              "rate": 0.2727272727272727
+            },
+            "historical_memory_observed": 36,
+            "stale_attempts": 0,
+            "stale_accepted": 0,
+            "accounting": {
+              "model_calls": {
+                "known_rows": 120,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 120,
+                "per_successful_session": 0.0
+              },
+              "input_tokens": {
+                "known_rows": 120,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 120,
+                "per_successful_session": 0.0
+              },
+              "output_tokens": {
+                "known_rows": 120,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 120,
+                "per_successful_session": 0.0
+              },
+              "cost_micros": {
+                "known_rows": 120,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 120,
+                "per_successful_session": 0.0
+              }
+            },
+            "duration_ms": {
+              "known_rows": 120,
+              "p50": 110.75450000000001,
+              "p95": 170.19895
+            }
+          }
+        },
+        "comparisons": {
+          "bm25": {
+            "matched_case_clusters": 30,
+            "excluded_case_ids": [],
+            "paired_on_minus_off": {
+              "final_success_rate": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "first_pass_success_rate": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "calls_per_success": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "input_tokens_per_success": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "cost_micros_per_success": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              }
+            },
+            "success_improvement": "INCONCLUSIVE",
+            "significant_cost_increase": false
+          },
+          "hybrid": {
+            "matched_case_clusters": 30,
+            "excluded_case_ids": [],
+            "paired_on_minus_off": {
+              "final_success_rate": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "first_pass_success_rate": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "calls_per_success": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "input_tokens_per_success": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "cost_micros_per_success": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              }
+            },
+            "success_improvement": "INCONCLUSIVE",
+            "significant_cost_increase": false
+          },
+          "hybrid_reranked": {
+            "matched_case_clusters": 30,
+            "excluded_case_ids": [],
+            "paired_on_minus_off": {
+              "final_success_rate": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "first_pass_success_rate": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "calls_per_success": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "input_tokens_per_success": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "cost_micros_per_success": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              }
+            },
+            "success_improvement": "INCONCLUSIVE",
+            "significant_cost_increase": false
+          }
+        }
+      },
+      "holdout": {
+        "arms": {
+          "off": {
+            "sessions": 40,
+            "chains": 10,
+            "first_pass_success": {
+              "numerator": 40,
+              "denominator": 40,
+              "rate": 1.0
+            },
+            "final_success": {
+              "numerator": 40,
+              "denominator": 40,
+              "rate": 1.0
+            },
+            "retrieval_hit": {
+              "numerator": 0,
+              "denominator": 40,
+              "rate": 0.0
+            },
+            "adoption_given_hit": {
+              "numerator": 0,
+              "denominator": 0,
+              "rate": null
+            },
+            "repeated_error_rate": {
+              "numerator": 0,
+              "denominator": 0,
+              "rate": null,
+              "status": "INCONCLUSIVE_LOW_OPPORTUNITIES"
+            },
+            "repeated_tool_calls": {
+              "numerator": 25,
+              "denominator": 40,
+              "rate": 0.625
+            },
+            "historical_memory_observed": 0,
+            "stale_attempts": 0,
+            "stale_accepted": 0,
+            "accounting": {
+              "model_calls": {
+                "known_rows": 40,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 40,
+                "per_successful_session": 0.0
+              },
+              "input_tokens": {
+                "known_rows": 40,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 40,
+                "per_successful_session": 0.0
+              },
+              "output_tokens": {
+                "known_rows": 40,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 40,
+                "per_successful_session": 0.0
+              },
+              "cost_micros": {
+                "known_rows": 40,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 40,
+                "per_successful_session": 0.0
+              }
+            },
+            "duration_ms": {
+              "known_rows": 40,
+              "p50": 61.8755,
+              "p95": 93.9414
+            }
+          },
+          "bm25": {
+            "sessions": 40,
+            "chains": 10,
+            "first_pass_success": {
+              "numerator": 40,
+              "denominator": 40,
+              "rate": 1.0
+            },
+            "final_success": {
+              "numerator": 40,
+              "denominator": 40,
+              "rate": 1.0
+            },
+            "retrieval_hit": {
+              "numerator": 30,
+              "denominator": 40,
+              "rate": 0.75
+            },
+            "adoption_given_hit": {
+              "numerator": 20,
+              "denominator": 30,
+              "rate": 0.6666666666666666
+            },
+            "repeated_error_rate": {
+              "numerator": 0,
+              "denominator": 0,
+              "rate": null,
+              "status": "INCONCLUSIVE_LOW_OPPORTUNITIES"
+            },
+            "repeated_tool_calls": {
+              "numerator": 5,
+              "denominator": 20,
+              "rate": 0.25
+            },
+            "historical_memory_observed": 10,
+            "stale_attempts": 0,
+            "stale_accepted": 0,
+            "accounting": {
+              "model_calls": {
+                "known_rows": 40,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 40,
+                "per_successful_session": 0.0
+              },
+              "input_tokens": {
+                "known_rows": 40,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 40,
+                "per_successful_session": 0.0
+              },
+              "output_tokens": {
+                "known_rows": 40,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 40,
+                "per_successful_session": 0.0
+              },
+              "cost_micros": {
+                "known_rows": 40,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 40,
+                "per_successful_session": 0.0
+              }
+            },
+            "duration_ms": {
+              "known_rows": 40,
+              "p50": 101.0935,
+              "p95": 166.69879999999998
+            }
+          },
+          "hybrid": {
+            "sessions": 40,
+            "chains": 10,
+            "first_pass_success": {
+              "numerator": 40,
+              "denominator": 40,
+              "rate": 1.0
+            },
+            "final_success": {
+              "numerator": 40,
+              "denominator": 40,
+              "rate": 1.0
+            },
+            "retrieval_hit": {
+              "numerator": 30,
+              "denominator": 40,
+              "rate": 0.75
+            },
+            "adoption_given_hit": {
+              "numerator": 20,
+              "denominator": 30,
+              "rate": 0.6666666666666666
+            },
+            "repeated_error_rate": {
+              "numerator": 0,
+              "denominator": 0,
+              "rate": null,
+              "status": "INCONCLUSIVE_LOW_OPPORTUNITIES"
+            },
+            "repeated_tool_calls": {
+              "numerator": 5,
+              "denominator": 20,
+              "rate": 0.25
+            },
+            "historical_memory_observed": 10,
+            "stale_attempts": 0,
+            "stale_accepted": 0,
+            "accounting": {
+              "model_calls": {
+                "known_rows": 40,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 40,
+                "per_successful_session": 0.0
+              },
+              "input_tokens": {
+                "known_rows": 40,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 40,
+                "per_successful_session": 0.0
+              },
+              "output_tokens": {
+                "known_rows": 40,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 40,
+                "per_successful_session": 0.0
+              },
+              "cost_micros": {
+                "known_rows": 40,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 40,
+                "per_successful_session": 0.0
+              }
+            },
+            "duration_ms": {
+              "known_rows": 40,
+              "p50": 99.8305,
+              "p95": 165.0849
+            }
+          },
+          "hybrid_reranked": {
+            "sessions": 40,
+            "chains": 10,
+            "first_pass_success": {
+              "numerator": 40,
+              "denominator": 40,
+              "rate": 1.0
+            },
+            "final_success": {
+              "numerator": 40,
+              "denominator": 40,
+              "rate": 1.0
+            },
+            "retrieval_hit": {
+              "numerator": 30,
+              "denominator": 40,
+              "rate": 0.75
+            },
+            "adoption_given_hit": {
+              "numerator": 20,
+              "denominator": 30,
+              "rate": 0.6666666666666666
+            },
+            "repeated_error_rate": {
+              "numerator": 0,
+              "denominator": 0,
+              "rate": null,
+              "status": "INCONCLUSIVE_LOW_OPPORTUNITIES"
+            },
+            "repeated_tool_calls": {
+              "numerator": 5,
+              "denominator": 20,
+              "rate": 0.25
+            },
+            "historical_memory_observed": 10,
+            "stale_attempts": 0,
+            "stale_accepted": 0,
+            "accounting": {
+              "model_calls": {
+                "known_rows": 40,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 40,
+                "per_successful_session": 0.0
+              },
+              "input_tokens": {
+                "known_rows": 40,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 40,
+                "per_successful_session": 0.0
+              },
+              "output_tokens": {
+                "known_rows": 40,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 40,
+                "per_successful_session": 0.0
+              },
+              "cost_micros": {
+                "known_rows": 40,
+                "known_total": 0,
+                "all_rows_total": 0,
+                "successful_sessions": 40,
+                "per_successful_session": 0.0
+              }
+            },
+            "duration_ms": {
+              "known_rows": 40,
+              "p50": 100.439,
+              "p95": 170.81545
+            }
+          }
+        },
+        "comparisons": {
+          "bm25": {
+            "matched_case_clusters": 10,
+            "excluded_case_ids": [],
+            "paired_on_minus_off": {
+              "final_success_rate": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "first_pass_success_rate": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "calls_per_success": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "input_tokens_per_success": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "cost_micros_per_success": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              }
+            },
+            "success_improvement": "INCONCLUSIVE",
+            "significant_cost_increase": false
+          },
+          "hybrid": {
+            "matched_case_clusters": 10,
+            "excluded_case_ids": [],
+            "paired_on_minus_off": {
+              "final_success_rate": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "first_pass_success_rate": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "calls_per_success": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "input_tokens_per_success": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "cost_micros_per_success": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              }
+            },
+            "success_improvement": "INCONCLUSIVE",
+            "significant_cost_increase": false
+          },
+          "hybrid_reranked": {
+            "matched_case_clusters": 10,
+            "excluded_case_ids": [],
+            "paired_on_minus_off": {
+              "final_success_rate": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "first_pass_success_rate": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "calls_per_success": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "input_tokens_per_success": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "cost_micros_per_success": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              }
+            },
+            "success_improvement": "INCONCLUSIVE",
+            "significant_cost_increase": false
+          }
+        }
+      }
+    }
+  },
+  "formal": {
+    "bootstrap": {
+      "unit": "case_id (all sessions, seeds and both arms retained)",
+      "replicates": 2000,
+      "seed": 691369,
+      "ci": "percentile 95%"
+    },
+    "task_unit": "session; ratio costs include failed and successful observed sessions",
+    "trial_rows": 640,
+    "planned_trials": 640,
+    "missing_trials": [],
+    "limitations": [
+      "Case-weighting follows number of observed sessions per case.",
+      "Paired effects apply to matched cases only. Missing trials can bias the estimate.",
+      "Completeness requires planned case manifests. Latency uses recorded durations only.",
+      "Calibrated known failure opportunities <20 yield an inconclusive rate.",
+      "Deterministic agent decisions give engineering evidence only."
+    ],
+    "results": {
+      "all": {
+        "arms": {
+          "off": {
+            "sessions": 160,
+            "chains": 40,
+            "first_pass_success": {
+              "numerator": 160,
+              "denominator": 160,
+              "rate": 1.0
+            },
+            "final_success": {
+              "numerator": 160,
+              "denominator": 160,
+              "rate": 1.0
+            },
+            "retrieval_hit": {
+              "numerator": 0,
+              "denominator": 160,
+              "rate": 0.0
+            },
+            "adoption_given_hit": {
+              "numerator": 0,
+              "denominator": 0,
+              "rate": null
+            },
+            "repeated_error_rate": {
+              "numerator": 0,
+              "denominator": 0,
+              "rate": null,
+              "status": "INCONCLUSIVE_LOW_OPPORTUNITIES"
+            },
+            "repeated_tool_calls": {
+              "numerator": 97,
+              "denominator": 160,
+              "rate": 0.60625
+            },
+            "historical_memory_observed": 0,
+            "stale_attempts": 0,
+            "stale_accepted": 0,
+            "accounting": {
+              "model_calls": {
+                "known_rows": 160,
+                "known_total": 320,
+                "all_rows_total": 320,
+                "successful_sessions": 160,
+                "per_successful_session": 2.0
+              },
+              "input_tokens": {
+                "known_rows": 160,
+                "known_total": 116824,
+                "all_rows_total": 116824,
+                "successful_sessions": 160,
+                "per_successful_session": 730.15
+              },
+              "output_tokens": {
+                "known_rows": 160,
+                "known_total": 42920,
+                "all_rows_total": 42920,
+                "successful_sessions": 160,
+                "per_successful_session": 268.25
+              },
+              "cost_micros": {
+                "known_rows": 160,
+                "known_total": 86691,
+                "all_rows_total": 86691,
+                "successful_sessions": 160,
+                "per_successful_session": 541.81875
+              }
+            },
+            "duration_ms": {
+              "known_rows": 160,
+              "p50": 2699.911,
+              "p95": 3361.4879499999993
+            }
+          },
+          "bm25": {
+            "sessions": 160,
+            "chains": 40,
+            "first_pass_success": {
+              "numerator": 159,
+              "denominator": 160,
+              "rate": 0.99375
+            },
+            "final_success": {
+              "numerator": 160,
+              "denominator": 160,
+              "rate": 1.0
+            },
+            "retrieval_hit": {
+              "numerator": 120,
+              "denominator": 160,
+              "rate": 0.75
+            },
+            "adoption_given_hit": {
+              "numerator": 74,
+              "denominator": 120,
+              "rate": 0.6166666666666667
+            },
+            "repeated_error_rate": {
+              "numerator": 0,
+              "denominator": 2,
+              "rate": null,
+              "status": "INCONCLUSIVE_LOW_OPPORTUNITIES"
+            },
+            "repeated_tool_calls": {
+              "numerator": 23,
+              "denominator": 86,
+              "rate": 0.26744186046511625
+            },
+            "historical_memory_observed": 46,
+            "stale_attempts": 0,
+            "stale_accepted": 0,
+            "accounting": {
+              "model_calls": {
+                "known_rows": 160,
+                "known_total": 247,
+                "all_rows_total": 247,
+                "successful_sessions": 160,
+                "per_successful_session": 1.54375
+              },
+              "input_tokens": {
+                "known_rows": 160,
+                "known_total": 102334,
+                "all_rows_total": 102334,
+                "successful_sessions": 160,
+                "per_successful_session": 639.5875
+              },
+              "output_tokens": {
+                "known_rows": 160,
+                "known_total": 39018,
+                "all_rows_total": 39018,
+                "successful_sessions": 160,
+                "per_successful_session": 243.8625
+              },
+              "cost_micros": {
+                "known_rows": 160,
+                "known_total": 77632,
+                "all_rows_total": 77632,
+                "successful_sessions": 160,
+                "per_successful_session": 485.2
+              }
+            },
+            "duration_ms": {
+              "known_rows": 160,
+              "p50": 2397.883,
+              "p95": 3489.783949999999
+            }
+          },
+          "hybrid": {
+            "sessions": 160,
+            "chains": 40,
+            "first_pass_success": {
+              "numerator": 160,
+              "denominator": 160,
+              "rate": 1.0
+            },
+            "final_success": {
+              "numerator": 160,
+              "denominator": 160,
+              "rate": 1.0
+            },
+            "retrieval_hit": {
+              "numerator": 120,
+              "denominator": 160,
+              "rate": 0.75
+            },
+            "adoption_given_hit": {
+              "numerator": 73,
+              "denominator": 120,
+              "rate": 0.6083333333333333
+            },
+            "repeated_error_rate": {
+              "numerator": 0,
+              "denominator": 0,
+              "rate": null,
+              "status": "INCONCLUSIVE_LOW_OPPORTUNITIES"
+            },
+            "repeated_tool_calls": {
+              "numerator": 24,
+              "denominator": 87,
+              "rate": 0.27586206896551724
+            },
+            "historical_memory_observed": 46,
+            "stale_attempts": 0,
+            "stale_accepted": 0,
+            "accounting": {
+              "model_calls": {
+                "known_rows": 160,
+                "known_total": 247,
+                "all_rows_total": 247,
+                "successful_sessions": 160,
+                "per_successful_session": 1.54375
+              },
+              "input_tokens": {
+                "known_rows": 160,
+                "known_total": 102473,
+                "all_rows_total": 102473,
+                "successful_sessions": 160,
+                "per_successful_session": 640.45625
+              },
+              "output_tokens": {
+                "known_rows": 160,
+                "known_total": 37607,
+                "all_rows_total": 37607,
+                "successful_sessions": 160,
+                "per_successful_session": 235.04375
+              },
+              "cost_micros": {
+                "known_rows": 160,
+                "known_total": 75985,
+                "all_rows_total": 75985,
+                "successful_sessions": 160,
+                "per_successful_session": 474.90625
+              }
+            },
+            "duration_ms": {
+              "known_rows": 160,
+              "p50": 2275.1295,
+              "p95": 3354.7614
+            }
+          },
+          "hybrid_reranked": {
+            "sessions": 160,
+            "chains": 40,
+            "first_pass_success": {
+              "numerator": 159,
+              "denominator": 160,
+              "rate": 0.99375
+            },
+            "final_success": {
+              "numerator": 160,
+              "denominator": 160,
+              "rate": 1.0
+            },
+            "retrieval_hit": {
+              "numerator": 120,
+              "denominator": 160,
+              "rate": 0.75
+            },
+            "adoption_given_hit": {
+              "numerator": 74,
+              "denominator": 120,
+              "rate": 0.6166666666666667
+            },
+            "repeated_error_rate": {
+              "numerator": 0,
+              "denominator": 1,
+              "rate": null,
+              "status": "INCONCLUSIVE_LOW_OPPORTUNITIES"
+            },
+            "repeated_tool_calls": {
+              "numerator": 23,
+              "denominator": 86,
+              "rate": 0.26744186046511625
+            },
+            "historical_memory_observed": 46,
+            "stale_attempts": 0,
+            "stale_accepted": 0,
+            "accounting": {
+              "model_calls": {
+                "known_rows": 160,
+                "known_total": 247,
+                "all_rows_total": 247,
+                "successful_sessions": 160,
+                "per_successful_session": 1.54375
+              },
+              "input_tokens": {
+                "known_rows": 160,
+                "known_total": 102302,
+                "all_rows_total": 102302,
+                "successful_sessions": 160,
+                "per_successful_session": 639.3875
+              },
+              "output_tokens": {
+                "known_rows": 160,
+                "known_total": 37660,
+                "all_rows_total": 37660,
+                "successful_sessions": 160,
+                "per_successful_session": 235.375
+              },
+              "cost_micros": {
+                "known_rows": 160,
+                "known_total": 76004,
+                "all_rows_total": 76004,
+                "successful_sessions": 160,
+                "per_successful_session": 475.025
+              }
+            },
+            "duration_ms": {
+              "known_rows": 160,
+              "p50": 2292.0460000000003,
+              "p95": 3389.9515499999993
+            }
+          }
+        },
+        "comparisons": {
+          "bm25": {
+            "matched_case_clusters": 40,
+            "excluded_case_ids": [],
+            "paired_on_minus_off": {
+              "final_success_rate": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "first_pass_success_rate": {
+                "estimate": -0.006249999999999978,
+                "ci95": [
+                  -0.019867549668874163,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "calls_per_success": {
+                "estimate": -0.45625000000000004,
+                "ci95": [
+                  -0.5345911949685536,
+                  -0.3812500000000001
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "input_tokens_per_success": {
+                "estimate": -90.5625,
+                "ci95": [
+                  -131.51567401682206,
+                  -51.36523623316942
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "cost_micros_per_success": {
+                "estimate": -56.618750000000034,
+                "ci95": [
+                  -80.60149291896141,
+                  -31.826227678571446
+                ],
+                "defined_bootstrap_draws": 2000
+              }
+            },
+            "success_improvement": "INCONCLUSIVE",
+            "significant_cost_increase": false
+          },
+          "hybrid": {
+            "matched_case_clusters": 40,
+            "excluded_case_ids": [],
+            "paired_on_minus_off": {
+              "final_success_rate": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "first_pass_success_rate": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "calls_per_success": {
+                "estimate": -0.45625000000000004,
+                "ci95": [
+                  -0.5361555980017632,
+                  -0.37973028873996867
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "input_tokens_per_success": {
+                "estimate": -89.69375000000002,
+                "ci95": [
+                  -132.91551131257083,
+                  -48.2121910789632
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "cost_micros_per_success": {
+                "estimate": -66.91250000000002,
+                "ci95": [
+                  -89.79239073829265,
+                  -44.49669740274058
+                ],
+                "defined_bootstrap_draws": 2000
+              }
+            },
+            "success_improvement": "INCONCLUSIVE",
+            "significant_cost_increase": false
+          },
+          "hybrid_reranked": {
+            "matched_case_clusters": 40,
+            "excluded_case_ids": [],
+            "paired_on_minus_off": {
+              "final_success_rate": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "first_pass_success_rate": {
+                "estimate": -0.006249999999999978,
+                "ci95": [
+                  -0.019230769230769273,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "calls_per_success": {
+                "estimate": -0.45625000000000004,
+                "ci95": [
+                  -0.5364278791794541,
+                  -0.3788819875776397
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "input_tokens_per_success": {
+                "estimate": -90.76249999999993,
+                "ci95": [
+                  -133.73327922077928,
+                  -49.72317934782612
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "cost_micros_per_success": {
+                "estimate": -66.79375000000005,
+                "ci95": [
+                  -89.09712423312891,
+                  -44.58607469512194
+                ],
+                "defined_bootstrap_draws": 2000
+              }
+            },
+            "success_improvement": "INCONCLUSIVE",
+            "significant_cost_increase": false
+          }
+        }
+      },
+      "development": {
+        "arms": {
+          "off": {
+            "sessions": 120,
+            "chains": 30,
+            "first_pass_success": {
+              "numerator": 120,
+              "denominator": 120,
+              "rate": 1.0
+            },
+            "final_success": {
+              "numerator": 120,
+              "denominator": 120,
+              "rate": 1.0
+            },
+            "retrieval_hit": {
+              "numerator": 0,
+              "denominator": 120,
+              "rate": 0.0
+            },
+            "adoption_given_hit": {
+              "numerator": 0,
+              "denominator": 0,
+              "rate": null
+            },
+            "repeated_error_rate": {
+              "numerator": 0,
+              "denominator": 0,
+              "rate": null,
+              "status": "INCONCLUSIVE_LOW_OPPORTUNITIES"
+            },
+            "repeated_tool_calls": {
+              "numerator": 72,
+              "denominator": 120,
+              "rate": 0.6
+            },
+            "historical_memory_observed": 0,
+            "stale_attempts": 0,
+            "stale_accepted": 0,
+            "accounting": {
+              "model_calls": {
+                "known_rows": 120,
+                "known_total": 240,
+                "all_rows_total": 240,
+                "successful_sessions": 120,
+                "per_successful_session": 2.0
+              },
+              "input_tokens": {
+                "known_rows": 120,
+                "known_total": 87188,
+                "all_rows_total": 87188,
+                "successful_sessions": 120,
+                "per_successful_session": 726.5666666666667
+              },
+              "output_tokens": {
+                "known_rows": 120,
+                "known_total": 31708,
+                "all_rows_total": 31708,
+                "successful_sessions": 120,
+                "per_successful_session": 264.23333333333335
+              },
+              "cost_micros": {
+                "known_rows": 120,
+                "known_total": 64311,
+                "all_rows_total": 64311,
+                "successful_sessions": 120,
+                "per_successful_session": 535.925
+              }
+            },
+            "duration_ms": {
+              "known_rows": 120,
+              "p50": 2618.775,
+              "p95": 3321.41655
+            }
+          },
+          "bm25": {
+            "sessions": 120,
+            "chains": 30,
+            "first_pass_success": {
+              "numerator": 120,
+              "denominator": 120,
+              "rate": 1.0
+            },
+            "final_success": {
+              "numerator": 120,
+              "denominator": 120,
+              "rate": 1.0
+            },
+            "retrieval_hit": {
+              "numerator": 90,
+              "denominator": 120,
+              "rate": 0.75
+            },
+            "adoption_given_hit": {
+              "numerator": 54,
+              "denominator": 90,
+              "rate": 0.6
+            },
+            "repeated_error_rate": {
+              "numerator": 0,
+              "denominator": 0,
+              "rate": null,
+              "status": "INCONCLUSIVE_LOW_OPPORTUNITIES"
+            },
+            "repeated_tool_calls": {
+              "numerator": 18,
+              "denominator": 66,
+              "rate": 0.2727272727272727
+            },
+            "historical_memory_observed": 36,
+            "stale_attempts": 0,
+            "stale_accepted": 0,
+            "accounting": {
+              "model_calls": {
+                "known_rows": 120,
+                "known_total": 186,
+                "all_rows_total": 186,
+                "successful_sessions": 120,
+                "per_successful_session": 1.55
+              },
+              "input_tokens": {
+                "known_rows": 120,
+                "known_total": 76921,
+                "all_rows_total": 76921,
+                "successful_sessions": 120,
+                "per_successful_session": 641.0083333333333
+              },
+              "output_tokens": {
+                "known_rows": 120,
+                "known_total": 29019,
+                "all_rows_total": 29019,
+                "successful_sessions": 120,
+                "per_successful_session": 241.825
+              },
+              "cost_micros": {
+                "known_rows": 120,
+                "known_total": 57982,
+                "all_rows_total": 57982,
+                "successful_sessions": 120,
+                "per_successful_session": 483.18333333333334
+              }
+            },
+            "duration_ms": {
+              "known_rows": 120,
+              "p50": 2401.6835,
+              "p95": 3489.78395
+            }
+          },
+          "hybrid": {
+            "sessions": 120,
+            "chains": 30,
+            "first_pass_success": {
+              "numerator": 120,
+              "denominator": 120,
+              "rate": 1.0
+            },
+            "final_success": {
+              "numerator": 120,
+              "denominator": 120,
+              "rate": 1.0
+            },
+            "retrieval_hit": {
+              "numerator": 90,
+              "denominator": 120,
+              "rate": 0.75
+            },
+            "adoption_given_hit": {
+              "numerator": 53,
+              "denominator": 90,
+              "rate": 0.5888888888888889
+            },
+            "repeated_error_rate": {
+              "numerator": 0,
+              "denominator": 0,
+              "rate": null,
+              "status": "INCONCLUSIVE_LOW_OPPORTUNITIES"
+            },
+            "repeated_tool_calls": {
+              "numerator": 19,
+              "denominator": 67,
+              "rate": 0.2835820895522388
+            },
+            "historical_memory_observed": 36,
+            "stale_attempts": 0,
+            "stale_accepted": 0,
+            "accounting": {
+              "model_calls": {
+                "known_rows": 120,
+                "known_total": 187,
+                "all_rows_total": 187,
+                "successful_sessions": 120,
+                "per_successful_session": 1.5583333333333333
+              },
+              "input_tokens": {
+                "known_rows": 120,
+                "known_total": 77499,
+                "all_rows_total": 77499,
+                "successful_sessions": 120,
+                "per_successful_session": 645.825
+              },
+              "output_tokens": {
+                "known_rows": 120,
+                "known_total": 28115,
+                "all_rows_total": 28115,
+                "successful_sessions": 120,
+                "per_successful_session": 234.29166666666666
+              },
+              "cost_micros": {
+                "known_rows": 120,
+                "known_total": 57073,
+                "all_rows_total": 57073,
+                "successful_sessions": 120,
+                "per_successful_session": 475.60833333333335
+              }
+            },
+            "duration_ms": {
+              "known_rows": 120,
+              "p50": 2322.787,
+              "p95": 3368.1290999999997
+            }
+          },
+          "hybrid_reranked": {
+            "sessions": 120,
+            "chains": 30,
+            "first_pass_success": {
+              "numerator": 119,
+              "denominator": 120,
+              "rate": 0.9916666666666667
+            },
+            "final_success": {
+              "numerator": 120,
+              "denominator": 120,
+              "rate": 1.0
+            },
+            "retrieval_hit": {
+              "numerator": 90,
+              "denominator": 120,
+              "rate": 0.75
+            },
+            "adoption_given_hit": {
+              "numerator": 54,
+              "denominator": 90,
+              "rate": 0.6
+            },
+            "repeated_error_rate": {
+              "numerator": 0,
+              "denominator": 1,
+              "rate": null,
+              "status": "INCONCLUSIVE_LOW_OPPORTUNITIES"
+            },
+            "repeated_tool_calls": {
+              "numerator": 18,
+              "denominator": 66,
+              "rate": 0.2727272727272727
+            },
+            "historical_memory_observed": 36,
+            "stale_attempts": 0,
+            "stale_accepted": 0,
+            "accounting": {
+              "model_calls": {
+                "known_rows": 120,
+                "known_total": 187,
+                "all_rows_total": 187,
+                "successful_sessions": 120,
+                "per_successful_session": 1.5583333333333333
+              },
+              "input_tokens": {
+                "known_rows": 120,
+                "known_total": 77328,
+                "all_rows_total": 77328,
+                "successful_sessions": 120,
+                "per_successful_session": 644.4
+              },
+              "output_tokens": {
+                "known_rows": 120,
+                "known_total": 28214,
+                "all_rows_total": 28214,
+                "successful_sessions": 120,
+                "per_successful_session": 235.11666666666667
+              },
+              "cost_micros": {
+                "known_rows": 120,
+                "known_total": 57149,
+                "all_rows_total": 57149,
+                "successful_sessions": 120,
+                "per_successful_session": 476.2416666666667
+              }
+            },
+            "duration_ms": {
+              "known_rows": 120,
+              "p50": 2272.182,
+              "p95": 3321.7064499999997
+            }
+          }
+        },
+        "comparisons": {
+          "bm25": {
+            "matched_case_clusters": 30,
+            "excluded_case_ids": [],
+            "paired_on_minus_off": {
+              "final_success_rate": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "first_pass_success_rate": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "calls_per_success": {
+                "estimate": -0.44999999999999996,
+                "ci95": [
+                  -0.5470085470085471,
+                  -0.3524475409836067
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "input_tokens_per_success": {
+                "estimate": -85.5583333333334,
+                "ci95": [
+                  -135.86970565602152,
+                  -34.25246555118113
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "cost_micros_per_success": {
+                "estimate": -52.74166666666662,
+                "ci95": [
+                  -82.74363771370619,
+                  -24.956962719298293
+                ],
+                "defined_bootstrap_draws": 2000
+              }
+            },
+            "success_improvement": "INCONCLUSIVE",
+            "significant_cost_increase": false
+          },
+          "hybrid": {
+            "matched_case_clusters": 30,
+            "excluded_case_ids": [],
+            "paired_on_minus_off": {
+              "final_success_rate": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "first_pass_success_rate": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "calls_per_success": {
+                "estimate": -0.44166666666666665,
+                "ci95": [
+                  -0.5398354981444475,
+                  -0.3361344537815125
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "input_tokens_per_success": {
+                "estimate": -80.74166666666667,
+                "ci95": [
+                  -133.0958919354839,
+                  -25.511890243902428
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "cost_micros_per_success": {
+                "estimate": -60.316666666666606,
+                "ci95": [
+                  -86.94497983193278,
+                  -32.1485744750657
+                ],
+                "defined_bootstrap_draws": 2000
+              }
+            },
+            "success_improvement": "INCONCLUSIVE",
+            "significant_cost_increase": false
+          },
+          "hybrid_reranked": {
+            "matched_case_clusters": 30,
+            "excluded_case_ids": [],
+            "paired_on_minus_off": {
+              "final_success_rate": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "first_pass_success_rate": {
+                "estimate": -0.008333333333333304,
+                "ci95": [
+                  -0.025862068965517238,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "calls_per_success": {
+                "estimate": -0.44166666666666665,
+                "ci95": [
+                  -0.5398230088495575,
+                  -0.34166666666666656
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "input_tokens_per_success": {
+                "estimate": -82.16666666666674,
+                "ci95": [
+                  -133.0958919354839,
+                  -29.630153991200697
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "cost_micros_per_success": {
+                "estimate": -59.68333333333328,
+                "ci95": [
+                  -86.94121621621629,
+                  -32.53784512510793
+                ],
+                "defined_bootstrap_draws": 2000
+              }
+            },
+            "success_improvement": "INCONCLUSIVE",
+            "significant_cost_increase": false
+          }
+        }
+      },
+      "holdout": {
+        "arms": {
+          "off": {
+            "sessions": 40,
+            "chains": 10,
+            "first_pass_success": {
+              "numerator": 40,
+              "denominator": 40,
+              "rate": 1.0
+            },
+            "final_success": {
+              "numerator": 40,
+              "denominator": 40,
+              "rate": 1.0
+            },
+            "retrieval_hit": {
+              "numerator": 0,
+              "denominator": 40,
+              "rate": 0.0
+            },
+            "adoption_given_hit": {
+              "numerator": 0,
+              "denominator": 0,
+              "rate": null
+            },
+            "repeated_error_rate": {
+              "numerator": 0,
+              "denominator": 0,
+              "rate": null,
+              "status": "INCONCLUSIVE_LOW_OPPORTUNITIES"
+            },
+            "repeated_tool_calls": {
+              "numerator": 25,
+              "denominator": 40,
+              "rate": 0.625
+            },
+            "historical_memory_observed": 0,
+            "stale_attempts": 0,
+            "stale_accepted": 0,
+            "accounting": {
+              "model_calls": {
+                "known_rows": 40,
+                "known_total": 80,
+                "all_rows_total": 80,
+                "successful_sessions": 40,
+                "per_successful_session": 2.0
+              },
+              "input_tokens": {
+                "known_rows": 40,
+                "known_total": 29636,
+                "all_rows_total": 29636,
+                "successful_sessions": 40,
+                "per_successful_session": 740.9
+              },
+              "output_tokens": {
+                "known_rows": 40,
+                "known_total": 11212,
+                "all_rows_total": 11212,
+                "successful_sessions": 40,
+                "per_successful_session": 280.3
+              },
+              "cost_micros": {
+                "known_rows": 40,
+                "known_total": 22380,
+                "all_rows_total": 22380,
+                "successful_sessions": 40,
+                "per_successful_session": 559.5
+              }
+            },
+            "duration_ms": {
+              "known_rows": 40,
+              "p50": 2777.6275,
+              "p95": 3409.5065999999993
+            }
+          },
+          "bm25": {
+            "sessions": 40,
+            "chains": 10,
+            "first_pass_success": {
+              "numerator": 39,
+              "denominator": 40,
+              "rate": 0.975
+            },
+            "final_success": {
+              "numerator": 40,
+              "denominator": 40,
+              "rate": 1.0
+            },
+            "retrieval_hit": {
+              "numerator": 30,
+              "denominator": 40,
+              "rate": 0.75
+            },
+            "adoption_given_hit": {
+              "numerator": 20,
+              "denominator": 30,
+              "rate": 0.6666666666666666
+            },
+            "repeated_error_rate": {
+              "numerator": 0,
+              "denominator": 2,
+              "rate": null,
+              "status": "INCONCLUSIVE_LOW_OPPORTUNITIES"
+            },
+            "repeated_tool_calls": {
+              "numerator": 5,
+              "denominator": 20,
+              "rate": 0.25
+            },
+            "historical_memory_observed": 10,
+            "stale_attempts": 0,
+            "stale_accepted": 0,
+            "accounting": {
+              "model_calls": {
+                "known_rows": 40,
+                "known_total": 61,
+                "all_rows_total": 61,
+                "successful_sessions": 40,
+                "per_successful_session": 1.525
+              },
+              "input_tokens": {
+                "known_rows": 40,
+                "known_total": 25413,
+                "all_rows_total": 25413,
+                "successful_sessions": 40,
+                "per_successful_session": 635.325
+              },
+              "output_tokens": {
+                "known_rows": 40,
+                "known_total": 9999,
+                "all_rows_total": 9999,
+                "successful_sessions": 40,
+                "per_successful_session": 249.975
+              },
+              "cost_micros": {
+                "known_rows": 40,
+                "known_total": 19650,
+                "all_rows_total": 19650,
+                "successful_sessions": 40,
+                "per_successful_session": 491.25
+              }
+            },
+            "duration_ms": {
+              "known_rows": 40,
+              "p50": 2326.1859999999997,
+              "p95": 3376.7339999999986
+            }
+          },
+          "hybrid": {
+            "sessions": 40,
+            "chains": 10,
+            "first_pass_success": {
+              "numerator": 40,
+              "denominator": 40,
+              "rate": 1.0
+            },
+            "final_success": {
+              "numerator": 40,
+              "denominator": 40,
+              "rate": 1.0
+            },
+            "retrieval_hit": {
+              "numerator": 30,
+              "denominator": 40,
+              "rate": 0.75
+            },
+            "adoption_given_hit": {
+              "numerator": 20,
+              "denominator": 30,
+              "rate": 0.6666666666666666
+            },
+            "repeated_error_rate": {
+              "numerator": 0,
+              "denominator": 0,
+              "rate": null,
+              "status": "INCONCLUSIVE_LOW_OPPORTUNITIES"
+            },
+            "repeated_tool_calls": {
+              "numerator": 5,
+              "denominator": 20,
+              "rate": 0.25
+            },
+            "historical_memory_observed": 10,
+            "stale_attempts": 0,
+            "stale_accepted": 0,
+            "accounting": {
+              "model_calls": {
+                "known_rows": 40,
+                "known_total": 60,
+                "all_rows_total": 60,
+                "successful_sessions": 40,
+                "per_successful_session": 1.5
+              },
+              "input_tokens": {
+                "known_rows": 40,
+                "known_total": 24974,
+                "all_rows_total": 24974,
+                "successful_sessions": 40,
+                "per_successful_session": 624.35
+              },
+              "output_tokens": {
+                "known_rows": 40,
+                "known_total": 9492,
+                "all_rows_total": 9492,
+                "successful_sessions": 40,
+                "per_successful_session": 237.3
+              },
+              "cost_micros": {
+                "known_rows": 40,
+                "known_total": 18912,
+                "all_rows_total": 18912,
+                "successful_sessions": 40,
+                "per_successful_session": 472.8
+              }
+            },
+            "duration_ms": {
+              "known_rows": 40,
+              "p50": 2212.7799999999997,
+              "p95": 3248.92035
+            }
+          },
+          "hybrid_reranked": {
+            "sessions": 40,
+            "chains": 10,
+            "first_pass_success": {
+              "numerator": 40,
+              "denominator": 40,
+              "rate": 1.0
+            },
+            "final_success": {
+              "numerator": 40,
+              "denominator": 40,
+              "rate": 1.0
+            },
+            "retrieval_hit": {
+              "numerator": 30,
+              "denominator": 40,
+              "rate": 0.75
+            },
+            "adoption_given_hit": {
+              "numerator": 20,
+              "denominator": 30,
+              "rate": 0.6666666666666666
+            },
+            "repeated_error_rate": {
+              "numerator": 0,
+              "denominator": 0,
+              "rate": null,
+              "status": "INCONCLUSIVE_LOW_OPPORTUNITIES"
+            },
+            "repeated_tool_calls": {
+              "numerator": 5,
+              "denominator": 20,
+              "rate": 0.25
+            },
+            "historical_memory_observed": 10,
+            "stale_attempts": 0,
+            "stale_accepted": 0,
+            "accounting": {
+              "model_calls": {
+                "known_rows": 40,
+                "known_total": 60,
+                "all_rows_total": 60,
+                "successful_sessions": 40,
+                "per_successful_session": 1.5
+              },
+              "input_tokens": {
+                "known_rows": 40,
+                "known_total": 24974,
+                "all_rows_total": 24974,
+                "successful_sessions": 40,
+                "per_successful_session": 624.35
+              },
+              "output_tokens": {
+                "known_rows": 40,
+                "known_total": 9446,
+                "all_rows_total": 9446,
+                "successful_sessions": 40,
+                "per_successful_session": 236.15
+              },
+              "cost_micros": {
+                "known_rows": 40,
+                "known_total": 18855,
+                "all_rows_total": 18855,
+                "successful_sessions": 40,
+                "per_successful_session": 471.375
+              }
+            },
+            "duration_ms": {
+              "known_rows": 40,
+              "p50": 2382.5265,
+              "p95": 3454.585599999998
+            }
+          }
+        },
+        "comparisons": {
+          "bm25": {
+            "matched_case_clusters": 10,
+            "excluded_case_ids": [],
+            "paired_on_minus_off": {
+              "final_success_rate": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "first_pass_success_rate": {
+                "estimate": -0.025000000000000022,
+                "ci95": [
+                  -0.08333333333333337,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "calls_per_success": {
+                "estimate": -0.4750000000000001,
+                "ci95": [
+                  -0.631578947368421,
+                  -0.33333333333333326
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "input_tokens_per_success": {
+                "estimate": -105.57499999999993,
+                "ci95": [
+                  -187.3207535885168,
+                  -30.803759398496204
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "cost_micros_per_success": {
+                "estimate": -68.25,
+                "ci95": [
+                  -114.9365957446808,
+                  -22.395911295911414
+                ],
+                "defined_bootstrap_draws": 2000
+              }
+            },
+            "success_improvement": "INCONCLUSIVE",
+            "significant_cost_increase": false
+          },
+          "hybrid": {
+            "matched_case_clusters": 10,
+            "excluded_case_ids": [],
+            "paired_on_minus_off": {
+              "final_success_rate": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "first_pass_success_rate": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "calls_per_success": {
+                "estimate": -0.5,
+                "ci95": [
+                  -0.6522981366459627,
+                  -0.3555555555555556
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "input_tokens_per_success": {
+                "estimate": -116.54999999999995,
+                "ci95": [
+                  -196.03379065040644,
+                  -39.322101449275394
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "cost_micros_per_success": {
+                "estimate": -86.69999999999999,
+                "ci95": [
+                  -127.47694078947364,
+                  -42.99797297297299
+                ],
+                "defined_bootstrap_draws": 2000
+              }
+            },
+            "success_improvement": "INCONCLUSIVE",
+            "significant_cost_increase": false
+          },
+          "hybrid_reranked": {
+            "matched_case_clusters": 10,
+            "excluded_case_ids": [],
+            "paired_on_minus_off": {
+              "final_success_rate": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "first_pass_success_rate": {
+                "estimate": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "calls_per_success": {
+                "estimate": -0.5,
+                "ci95": [
+                  -0.6522981366459627,
+                  -0.3555555555555556
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "input_tokens_per_success": {
+                "estimate": -116.54999999999995,
+                "ci95": [
+                  -196.03379065040644,
+                  -39.322101449275394
+                ],
+                "defined_bootstrap_draws": 2000
+              },
+              "cost_micros_per_success": {
+                "estimate": -88.125,
+                "ci95": [
+                  -120.20637626262625,
+                  -52.42679195804199
+                ],
+                "defined_bootstrap_draws": 2000
+              }
+            },
+            "success_improvement": "INCONCLUSIVE",
+            "significant_cost_increase": false
+          }
+        }
+      }
+    }
+  }
+}

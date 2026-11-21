@@ -1,0 +1,258 @@
+{
+  "candidate": "c86319673c8bbfb83428cffb571b0e3e6c616bc3",
+  "original_200": {
+    "ERROR": 0,
+    "FAIL": 0,
+    "NOT_RUN": 0,
+    "PASS": 200
+  },
+  "regression_review": 20,
+  "regression_version_races": 8,
+  "sensitive_public": {
+    "stage": "public_development_regression",
+    "date": "2026-11-20",
+    "specification": "experiments/capability-eval-v1/PLAN_V1.0.md §5.3 W2",
+    "baseline_product": "ff1562c",
+    "test": "tests/test_phase1_memory_sensitive.py",
+    "test_sha256": "91815bc6f59831c81ee1819f8ed82eea416a255af5a2d3df03347b8a3ea8e0fd",
+    "reproduction": "With project PostgreSQL test credentials and the locked environment, run pytest -q -s --tb=no tests/test_phase1_memory_sensitive.py. For baseline, copy this test to an ff1562c checkout and run the same command from that checkout.",
+    "setup": "Each pytest session creates and migrates a fresh PostgreSQL database. Evidence is registered against a run. Summary bytes are written to local CAS. Each case verifies production validate, write and PostgreSQL record count. Both semantic cases also exercise authorized second-person confirmation.",
+    "baseline": {
+      "log": "baseline-frozen.log",
+      "sha256": "9088fd14f858885edec771943fc9481855dc76a117521cb304dab0a99eee02b3",
+      "sensitive_rejected": [
+        0,
+        11
+      ],
+      "sensitive_written_without_review": 10,
+      "sensitive_written_with_review": 1,
+      "benign_actions_correct": [
+        4,
+        4
+      ],
+      "pytest_exit": 1
+    },
+    "candidate": {
+      "log": "candidate.log",
+      "sha256": "2f12b0c5fdef46dd5aa7474683b6869774729cad1759d91bdd3718ffbb93fa70",
+      "sensitive_rejected": [
+        11,
+        11
+      ],
+      "sensitive_written_without_review": 0,
+      "sensitive_written_with_review": 0,
+      "benign_actions_correct": [
+        4,
+        4
+      ],
+      "sensitive_audits_redacted_and_rule_matched": [
+        11,
+        11
+      ],
+      "pytest_exit": 0
+    },
+    "compatibility": {
+      "log": "personal-memory.log",
+      "tests": "tests/test_general_agent_ga10.py -k 'sensitive_memory or quality_recall'",
+      "passed": 2,
+      "deselected": 3
+    },
+    "earlier_observations": [
+      "initial-local-pg-setup.log: 14 setup errors before behavioral checks; an isolated local PostgreSQL 16 instance lacked the required vector extension. The subsequent sessions used the configured PostgreSQL service and fresh per-session databases.",
+      "before.log.gz and after-initial.log.gz: first 14-case probe, 10 failed/4 passed on baseline, 14 passed on initial repair. Both sessions also reported unrelated pytest temp-directory cleanup warnings. The final pair used isolated pytest base temp directories."
+    ],
+    "scope": "Public, independently authored synthetic credential-shaped fixtures, nested field representations, selected encodings and benign controls. Scanner rules recognize identifiable signals. Oversized inputs and exhausted parse/scan budgets reject conservatively. Independent holdout outcomes and coverage of arbitrary credential formats are outside this measurement.",
+    "model_calls": 0
+  },
+  "recipes": {
+    "baseline": [
+      {
+        "case": "owned-tool",
+        "accepted": false,
+        "reasons": [
+          "INDEPENDENT_SOURCE_REQUIRED"
+        ],
+        "first": "MEMORY_CANDIDATE_REJECTED",
+        "first_records": 0,
+        "second_person": "MEMORY_CANDIDATE_REJECTED",
+        "second_person_records": 0
+      },
+      {
+        "case": "owned-verdict",
+        "accepted": false,
+        "reasons": [
+          "INDEPENDENT_SOURCE_REQUIRED"
+        ],
+        "first": "MEMORY_CANDIDATE_REJECTED",
+        "first_records": 0,
+        "second_person": "MEMORY_CANDIDATE_REJECTED",
+        "second_person_records": 0
+      },
+      {
+        "case": "owned-run",
+        "accepted": false,
+        "reasons": [
+          "INDEPENDENT_SOURCE_REQUIRED"
+        ],
+        "first": "MEMORY_CANDIDATE_REJECTED",
+        "first_records": 0,
+        "second_person": "MEMORY_CANDIDATE_REJECTED",
+        "second_person_records": 0
+      },
+      {
+        "case": "self-only",
+        "accepted": true,
+        "reasons": [],
+        "first": "MEMORY_CONFIRMATION_REQUIRED",
+        "first_records": 0,
+        "second_person": "active",
+        "second_person_records": 1
+      },
+      {
+        "case": "unowned",
+        "accepted": false,
+        "reasons": [
+          "INDEPENDENT_SOURCE_REQUIRED"
+        ],
+        "first": "MEMORY_CANDIDATE_REJECTED",
+        "first_records": 0,
+        "second_person": "MEMORY_CANDIDATE_REJECTED",
+        "second_person_records": 0
+      }
+    ],
+    "final": [
+      {
+        "case": "owned-tool",
+        "accepted": true,
+        "reasons": [],
+        "first": "MEMORY_CONFIRMATION_REQUIRED",
+        "first_records": 0,
+        "second_person": "active",
+        "second_person_records": 1
+      },
+      {
+        "case": "owned-verdict",
+        "accepted": true,
+        "reasons": [],
+        "first": "MEMORY_CONFIRMATION_REQUIRED",
+        "first_records": 0,
+        "second_person": "active",
+        "second_person_records": 1
+      },
+      {
+        "case": "owned-run",
+        "accepted": true,
+        "reasons": [],
+        "first": "MEMORY_CONFIRMATION_REQUIRED",
+        "first_records": 0,
+        "second_person": "active",
+        "second_person_records": 1
+      },
+      {
+        "case": "self-only",
+        "accepted": false,
+        "reasons": [
+          "INDEPENDENT_SOURCE_REQUIRED"
+        ],
+        "first": "MEMORY_CANDIDATE_REJECTED",
+        "first_records": 0,
+        "second_person": "MEMORY_CANDIDATE_REJECTED",
+        "second_person_records": 0
+      },
+      {
+        "case": "unowned",
+        "accepted": false,
+        "reasons": [
+          "INDEPENDENT_SOURCE_REQUIRED"
+        ],
+        "first": "MEMORY_CANDIDATE_REJECTED",
+        "first_records": 0,
+        "second_person": "MEMORY_CANDIDATE_REJECTED",
+        "second_person_records": 0
+      }
+    ]
+  },
+  "registered": {
+    "M02": {
+      "counts": {
+        "tests": 63,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "status": "PASS",
+      "source_sha256": "5bf5a1e8e1ba73926a72a72557bbeed256b6eef10ce101d6219d5e9952927d64",
+      "finished_source_sha256": "5bf5a1e8e1ba73926a72a72557bbeed256b6eef10ce101d6219d5e9952927d64",
+      "attempt_path": "evidence/M02/20261120T132800Z-91ff4343",
+      "git_commit": "c86319673c8bbfb83428cffb571b0e3e6c616bc3"
+    },
+    "V35-M01": {
+      "counts": {
+        "tests": 49,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "status": "PASS",
+      "source_sha256": "5bf5a1e8e1ba73926a72a72557bbeed256b6eef10ce101d6219d5e9952927d64",
+      "finished_source_sha256": "5bf5a1e8e1ba73926a72a72557bbeed256b6eef10ce101d6219d5e9952927d64",
+      "attempt_path": "evidence/V35-M01/20261120T132811Z-18079d4f",
+      "git_commit": "c86319673c8bbfb83428cffb571b0e3e6c616bc3"
+    }
+  },
+  "consumers_test_count": 21,
+  "full_blind": "FAIL_STOPPED",
+  "blind_score": {
+    "attempted": 4,
+    "blocked": null,
+    "candidate": "c86319673c8bbfb83428cffb571b0e3e6c616bc3",
+    "executed": 4,
+    "failed_count": 1,
+    "indeterminate": 0,
+    "migration_tree": "6b345b2e4b0517b76cd098b801334085051167a0",
+    "not_run": 356,
+    "planned": 360,
+    "preregistration_sha256": "8e9dfabf7fc384e4d2d7eb3ced7047b6c68d98e94cbf2a042361e8664acb5bd5",
+    "provider_calls": 0,
+    "raw_sha256": "25a5dd5123e97c5e6af4fc8485a684d79867c0add76cdf92e4bfc743bcc45a2c",
+    "remote_writes": 0,
+    "result": "FAIL",
+    "source_tar_sha256": "1a83aa7da527cdc0b68c9a33fedb918bd5c9323e37734afcfd56412eac24a485",
+    "source_tree": "0ad0ceeb104c6627efb72ff50157328071fb228d",
+    "stop": [
+      "INCORRECT_VERIFIED"
+    ],
+    "usd": 0
+  },
+  "evidence_sha256": {
+    "evidence/CAPABILITY-PHASE1/repair2-sensitive/personal-memory.log": "7a1835e79ccb004fa2fcc73dc5749b6c97b4f8de06e257b8cf69858e8680f9d9",
+    "evidence/CAPABILITY-PHASE1/repair2-sensitive/candidate.log": "2f12b0c5fdef46dd5aa7474683b6869774729cad1759d91bdd3718ffbb93fa70",
+    "evidence/CAPABILITY-PHASE1/repair2-sensitive/initial-local-pg-setup.log": "ed8d6a77b232d3dd2481a6db95a7661e6770db39f9af0bf941e2a092d8061005",
+    "evidence/CAPABILITY-PHASE1/repair2-sensitive/baseline-frozen.log": "9088fd14f858885edec771943fc9481855dc76a117521cb304dab0a99eee02b3",
+    "evidence/CAPABILITY-PHASE1/repair2-recipe/repaired.log": "4499563dc563af0c886bf432044fcb3e2920cd40bc2ae5b3413d6230bc1746a0",
+    "evidence/CAPABILITY-PHASE1/repair2-recipe/final.log": "fde2e190a48425d07d2cdd433638ceeac2efe11ff114860c87904af41b415616",
+    "evidence/CAPABILITY-PHASE1/repair2-recipe/baseline.log": "868447be884bbf946cc9e8f3b5ebbc426a69dc081826a149f3f2a617152199ce",
+    "evidence/CAPABILITY-PHASE1/repair2-recipe/final-writes.json": "cf53b019266a39279352df282c3ce30e69d378dde37d2a73747e6bf7115bc25c",
+    "evidence/CAPABILITY-PHASE1/repair2-recipe/baseline-writes.json": "63ba7ee6fca07dcbcb9456ab26c548e2fc6944aa232071292173cce6bb49ca18",
+    "evidence/CAPABILITY-PHASE1/repair2-integrated/consumers-pre.log": "7e3d9a4712bd74cddacfaa0f375c174e0c11986555b1140c3a80b9da2fffe1e3",
+    "evidence/CAPABILITY-PHASE1/repair2-integrated/static-type.log": "10a6b410981c92e79a891c07570b58b82f950c0ba69b0807965ad1dd082829dd",
+    "evidence/CAPABILITY-PHASE1/repair2-integrated/audit-attachments.log": "f923f6f64f077ec0709ad3da1f0cd38a197f2a1e489ef150468948b612ada082",
+    "evidence/CAPABILITY-PHASE1/repair2-integrated/audit-after.log": "e2e48f9cc152130981f338cdc53c59242b73aa59f862aa50aed8b976516993c2",
+    "evidence/CAPABILITY-PHASE1/repair2-integrated/registered-v35.json.log": "86b6650cf2dd11a7206dc1d3d434ae4daab2b835b6e6a4034811cf219eebf843",
+    "evidence/CAPABILITY-PHASE1/repair2-integrated/regression.log": "4a500e382535b0d3c90373bb0d19a0b3aa2261ff2358438f402e7dcf7e7a7c05",
+    "evidence/CAPABILITY-PHASE1/repair2-integrated/prepare-lint.log": "d548cd6525f1b51cd6f1191dce70ed3f45a55bdda111b6ca7b1afd6ad6f2711f",
+    "evidence/CAPABILITY-PHASE1/repair2-integrated/prepare-typecheck.log": "10a6b410981c92e79a891c07570b58b82f950c0ba69b0807965ad1dd082829dd",
+    "evidence/CAPABILITY-PHASE1/repair2-integrated/registered-m02.json.log": "ded6a5acbeee8ed1cad8d1336ba36620e4ecafc18b7460a65f8ab3e8b887e378",
+    "evidence/CAPABILITY-PHASE1/repair2-integrated/static-lint.log": "a220b562d6bdb3655673add818cabd1dbd6857a7efc7d06ff8178f9e0e2501e2",
+    "evidence/CAPABILITY-PHASE1/repair2-integrated/audit-before.log": "73deb3fd483e011e97df22fd9f53931886e96c3ce4b3e3886ec11419c6129af0",
+    "evidence/CAPABILITY-PHASE1/repair2-integrated/consumers-pre.xml": "b475c5ee0cbe7114d98eedbf7cb3e5d4260709a03b3f236968b4b33a74ab2315",
+    "evidence/CAPABILITY-PHASE1/repair2-integrated/audit-after.xml": "e1a21353e036082e9d20c862126def9838a2d8496a3d29b9c7b7692e0e1f8084",
+    "evidence/CAPABILITY-PHASE1/repair2-integrated/audit-attachments.xml": "61c96a94539bda07e51785a47b295ba96ff2c5afdd4487645414e0822013c2ca",
+    "evidence/CAPABILITY-PHASE1/repair2-integrated/audit-before.xml": "02cda313af4c34ca6242750c61d0141e92ca52180085c24c19affc96d8464d92",
+    "evidence/CAPABILITY-PHASE1/repair2-integrated/original-200/summary.json": "251c33fef90341256b3a9bcdf19e4dcba178335ac035aa4a04c0073e4b48bc8a",
+    "evidence/CAPABILITY-PHASE1/repair2-integrated/original-200/races.jsonl": "ff174c745c762b0364afe2d732ee72c63d80168bfb84eb80ac1182d875dc2ec0",
+    "evidence/CAPABILITY-PHASE1/repair2-integrated/original-200/observations.jsonl": "bee391cf6e7bf22ede699d23e993f474f776ed2a224585d70539c2c670f01dcf",
+    "evidence/CAPABILITY-PHASE1/repair2-integrated/original-200/freeze.json": "ede83e4f159ff87e6cfe2bb512bd76da561d60822a9c81d3b96b177397ab2da9",
+    "evidence/CAPABILITY-PHASE1/repair2-integrated/original-200/confirmation.jsonl": "8926e546e736ec0a90e8dfe12558cc42c3b2f6421565818726fb99524a24372b"
+  }
+}

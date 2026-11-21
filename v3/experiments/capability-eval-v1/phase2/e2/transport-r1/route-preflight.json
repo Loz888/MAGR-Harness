@@ -1,0 +1,1 @@
+{"sent_application_bytes": 0, "model_calls": 0, "proxies_present": {"HTTPS_PROXY": true, "https_proxy": true, "ALL_PROXY": false, "all_proxy": false}, "dns_addresses": 1, "direct_error": {"type": "TimeoutError", "errno": null, "reason": "_ssl.c:983: The handshake operation timed out"}}
