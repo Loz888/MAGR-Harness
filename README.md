@@ -1,10 +1,29 @@
 # MAGR-Harness
 
-MAGR-Harness 是独立的研发 Agent 项目。你可以直接描述需求，让 Agent 调查 GitHub 仓库、理解本地项目、在隔离工作区提出修改，并根据测试回执审查结果。项目使用自己的版本号，当前源码发行版为 **0.1.0**。
+MAGR-Harness 是一个独立的研发 Agent 项目，帮助使用者提出任务、在授权范围内执行，并根据测试、产物和回执审查结果。它也提供可复用的单次任务执行能力。项目源码发行版为 0.1.0；[当前状态](v3/docs/CURRENT_STATUS.md)按候选和验证范围区分可用入口、工程证据与尚未放行的能力。
+
+一次真实记录展示了为什么任务需要可检查的恢复过程：数据库导入完成后，运行目录因权限故障无法发布。CLI 指明数据库已恢复；恢复权限后，操作者使用相同快照、数据库、目标和命令完成剩余发布，并核对 CAS 字节和收据。这是 2026-11-19 在 WSL2 上对候选 `8a6489b` 的本地故障注入，定向 **1/1**，没有真实模型调用；生产和原生 Linux 宿主未验收。[恢复案例与原记录](v3/docs/PROJECT_OVERVIEW.md#数据库已经恢复运行目录发布失败后怎样继续)
+
+## 一个任务怎样推进
+
+- **明确目标与范围：** 在工作台提交需求、补充交付物和完成条件；个人任务访问项目资源时需要关联已授权项目。
+- **执行与观察：** 研发任务可使用隔离工作区、项目指导及获准工具；执行过程和产物供使用者查看。
+- **验证与审查：** 测试和验证回执为结果提供依据；工具调用成功不等于业务任务已完成或获准发布。
+- **恢复与交付：** 检查阶段状态与已知回执后继续适用的操作；外部操作结果未知时先核对，不盲目重试。
+
+通用工作台提供个人需求记录、补充和规划；项目助手与 GitHub 分析有各自入口和授权。跨领域真实自动执行取决于独立验收与具体执行入口，不能从页面可访问推断已通过。更多任务过程见[项目说明](v3/docs/PROJECT_OVERVIEW.md)与 [GA13 候选说明](v3/docs/general-agent-v1/GA13_RC.md)。
+
+## 当前边界
+
+GA13 候选 `175cabc` 的本地独立工程复验通过，RC 发布仍 **BLOCKED**；专用账户真实 Coding、Data、Office 和跨领域端到端为 **NOT_RUN**，真实任务集与门槛待冻结。历史 H12 冻结质量矩阵开发集和持出集各 11/12，属于该实验候选；较新的能力实验及其限制另行记录。上述结果不代表当前源码已完成新的全量验证。[当前状态与来源](v3/docs/CURRENT_STATUS.md) · [实验解读](v3/docs/EVALUATION_SUMMARY.md)
+
+## 与 Super-Agent 的关系
+
+[Magr-super-agent](https://github.com/Loz888/Magr-super-agent) 关注同一研发问题跨消息与事件的接续；Harness 关注单次任务执行、验证与恢复。历史交接和已接收契约有固定版本，尚未找到两个当前公开基线完成联合部署验收的记录。[版本与验证范围](v3/docs/CURRENT_STATUS.md#与-super-agent-的关系)
 
 ## 开始使用
 
-准备 Git、Make、uv、Python 3.12、Docker 和 Docker Compose。Windows 用户可使用 [WSL2 安装说明](v3/README.md#wsl2-首次启动)。
+准备 Git、Make、uv、Python 3.12、Docker 和 Docker Compose。Windows 用户可参阅 [WSL2 安装说明](v3/README.md#wsl2-首次启动)。
 
 ```bash
 git clone https://github.com/Loz888/MAGR-Harness.git
@@ -18,25 +37,6 @@ make doctor
 make dev
 ```
 
-打开 `http://127.0.0.1:18080` 进入通用智能体工作台，首次使用创建管理员账户。登录后可以直接提交个人任务，访问项目资源时再关联已授权的项目。提交后可补充任务范围、查看计划和已验证结果。项目助手和 GitHub 分析可从侧栏进入，并使用各自的模型与项目授权。[通用工作台](v3/docs/general-agent-v1/GA13_RC.md) · [项目助手](v3/docs/agent-ui.md) · [安装与恢复](v3/docs/harness-v4/H18_OPERATIONS.md)
+打开 `http://127.0.0.1:18080`，首次使用时创建管理员账户。实际入口与依赖准备见[应用说明](v3/README.md)、[工作台候选说明](v3/docs/general-agent-v1/GA13_RC.md)和[安装与恢复](v3/docs/harness-v4/H18_OPERATIONS.md)。
 
-## 已交付能力
-
-| 能力 | 内容 |
-| --- | --- |
-| 项目 Agent | 自然语言任务、可恢复会话、流式执行过程、固定测试、补丁审查 |
-| GitHub 仓库分析 | 固定提交、只读取证、证据引用、持续追问 |
-| CLI 与 Python SDK | 使用同一套任务、事件和产物接口进行自动化 |
-| 项目指导与工具集成 | AGENTS.md、版本化扩展及授权 MCP |
-| Runner 与多用户 | 配对设备运行固定计划、项目和凭据隔离、队列与取消恢复 |
-| 只读仓库专家 | 操作者可按需开启，共享 Run 预算，默认单 Agent |
-| 运维与恢复 | 发行包校验、doctor、PostgreSQL 与 CAS 快照、脱敏指标 |
-
-项目以 PostgreSQL 保存权威任务状态，使用 Docker 隔离项目执行。模型调用和外部写入受原有授权、预算和审批约束。[技术报告](v3/docs/TECHNICAL_REPORT.md) · [CLI 与 SDK](v3/docs/harness-v4/HEADLESS.md) · [扩展与 MCP](v3/docs/harness-v4/PROJECT_GUIDANCE_AND_PLUGINS.md)
-
-## 验收记录
-
-- H12 的冻结真实模型质量评测共通过 22/24，开发集与独立持出集各 11/12。该记录的产品发布状态为 `NOT_RELEASED`。[独立质量复核](v3/docs/harness-v4/H12_R08_INDEPENDENT_MATRIX_REVIEW_20261118.md)
-- H13 至 H18 的本地独立工程验收已归档。H17 受控对照支持保留单 Agent 默认设置。H18 复核通过 WSL2 安装、Debian 12 容器安装及恢复权限后用原命令继续发布。原生 Linux 宿主机和生产多机验收为 `NOT_RUN`。[H13](v3/docs/harness-v4/H13_INDEPENDENT_ACCEPTANCE_20261118.md) · [H14](v3/docs/harness-v4/H14_INDEPENDENT_ACCEPTANCE_20261118.md) · [H15](v3/docs/harness-v4/H15_INDEPENDENT_ACCEPTANCE_20261118.md) · [H16](v3/docs/harness-v4/H16_INDEPENDENT_ACCEPTANCE_20261118.md) · [H17](v3/docs/harness-v4/H17_INDEPENDENT_ACCEPTANCE_20261119.md) · [H18](v3/docs/harness-v4/H18_PUBLISH_RETRY_INDEPENDENT_20261119.md)
-
-[实验档案与结果](v3/experiments/capability-eval-v1/README.md) · [文档导航](v3/docs/README.md) · [任务卡](v3/docs/harness-v4/TASKS.md) · [历史公开快照说明](PUBLICATION.md)
+[文档导航](v3/docs/README.md) · [项目说明](v3/docs/PROJECT_OVERVIEW.md) · [实验档案](v3/experiments/capability-eval-v1/README.md) · [历史公开快照](PUBLICATION.md)

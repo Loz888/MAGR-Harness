@@ -1,0 +1,4066 @@
+{
+  "repository": "Loz888/MAGR-Harness",
+  "baseline_sha": "c07fdd5c2b696a8148e4295a0b6909686b90a76b",
+  "default_branch": "main",
+  "work_branch": "narrative-refactor-20261121",
+  "recorded_at": "2026-11-21T10:25:36.339968+00:00",
+  "protection": "Baseline tracked documentation and evidence inventory; compare blob IDs and preserve historical material. The listed editable entries may change after review.",
+  "inventory": [
+    {
+      "path": "PUBLICATION.json",
+      "blob": "9daffe22eca64beb345786a76598764a7885f248"
+    },
+    {
+      "path": "PUBLICATION.md",
+      "blob": "be8c80cb9070b6439654bfa7ed010eb013821506"
+    },
+    {
+      "path": "README.md",
+      "blob": "4f73048eb32b3f00842e51a9bb5c6ff95c8319ef"
+    },
+    {
+      "path": "v3/README.md",
+      "blob": "02dcf784382621275b05eefd48682d3692773e36"
+    },
+    {
+      "path": "v3/docs/README.md",
+      "blob": "0082fa9808a0d6b20ac15ce4e40a15b21d6d8f77"
+    },
+    {
+      "path": "v3/docs/TECHNICAL_REPORT.md",
+      "blob": "05fb97640c9e3dac417de2739dbfb6e7acf4ecec"
+    },
+    {
+      "path": "v3/docs/acceptance/r1-live-20261102.json",
+      "blob": "60ff8450986fc5138c2080ef0571d3a5b80fbb2a"
+    },
+    {
+      "path": "v3/docs/acceptance/r2-engineering-20261102.json",
+      "blob": "878f2df2f4d40b8c2e43af12c2fb1fe9de128e8d"
+    },
+    {
+      "path": "v3/docs/acceptance/r3-20261102.json",
+      "blob": "c804c93e6c428bb3da785251da6dd24fbdfd76d3"
+    },
+    {
+      "path": "v3/docs/acceptance/r4-20261102.json",
+      "blob": "0d328f16cb149abfbba464b7251fc3e4c83d15e3"
+    },
+    {
+      "path": "v3/docs/acceptance/r4-live-20261102.json",
+      "blob": "900520942ee12c1e3ccbce69b42d46359b1437c5"
+    },
+    {
+      "path": "v3/docs/acceptance/r5-engineering-20261102.json",
+      "blob": "c6ab2c7b5504b886d25a668d7d03acd909c54ceb"
+    },
+    {
+      "path": "v3/docs/acceptance/r5-live-20261103.json",
+      "blob": "3e0a5ffef85762e11736db1399e9e4adc229e9e0"
+    },
+    {
+      "path": "v3/docs/acceptance/r5-native-engineering-20261102.json",
+      "blob": "d042108055ffe4b1d678943fca6c3d3263ff2e78"
+    },
+    {
+      "path": "v3/docs/acceptance/r6-coordination-v1.json",
+      "blob": "aa2878e522313b08d9e0a0a314fbee8b3cb59b61"
+    },
+    {
+      "path": "v3/docs/acceptance/r6-coordination-v2.json",
+      "blob": "940d38f7e4157a43c4748b4b2555d96d4045644e"
+    },
+    {
+      "path": "v3/docs/acceptance/r6-engineering-20261103.json",
+      "blob": "7ee6b3ebf01e4add16d94ef158ee063275ae6345"
+    },
+    {
+      "path": "v3/docs/acceptance/r6-host-20261105.json",
+      "blob": "a3e22fc0f79ae53de1cfe17a605d62c8f42a5b7c"
+    },
+    {
+      "path": "v3/docs/acceptance/r6-observe-engineering-20261103.json",
+      "blob": "1759f4b25f4d2cadf0de56ecd0fdd566cc402dc9"
+    },
+    {
+      "path": "v3/docs/acceptance/r6-repair-20261105.json",
+      "blob": "35c713fc062e2b043e5bcc8ff6c00f2dd2c40587"
+    },
+    {
+      "path": "v3/docs/acceptance/r6-usage-reconciliation-20261103.json",
+      "blob": "07ee9625b14382156ce5480c43abf5b0ddf156d5"
+    },
+    {
+      "path": "v3/docs/adr/0001-v31-boundaries.md",
+      "blob": "9667e2078def902743e1f2f5aed1bb4e22a24a16"
+    },
+    {
+      "path": "v3/docs/adr/0002-mcp-sdk.md",
+      "blob": "7ce82a4de47a9600329e24275d3a95f17930e413"
+    },
+    {
+      "path": "v3/docs/adr/0002-r2-mailbox.md",
+      "blob": "fac10c990513ae31e5dfc7e461de1e2cf93ea232"
+    },
+    {
+      "path": "v3/docs/adr/0003-r1-scope.md",
+      "blob": "5d26875a9226555868c3e24aef5b0d91a228e2f0"
+    },
+    {
+      "path": "v3/docs/adr/0003-r3-router.md",
+      "blob": "7784829ff1398aa6f02718101bc53d663ada6439"
+    },
+    {
+      "path": "v3/docs/adr/0004-profile-call-limits.md",
+      "blob": "983bdbfdfca51af4a7aafaa4b0fafe151315b579"
+    },
+    {
+      "path": "v3/docs/adr/0005-r4-investigation.md",
+      "blob": "ef3ca4438ee7cc5f8b34fd0c33a33b24616dfc1d"
+    },
+    {
+      "path": "v3/docs/adr/0006-r4-live-evaluation.md",
+      "blob": "9ae386a3a213dbc2c9bbfda42817757e81a5d498"
+    },
+    {
+      "path": "v3/docs/adr/0007-r5-repair-boundaries.md",
+      "blob": "dd6a17cf81cb15684b18c917f6b35b0191e39063"
+    },
+    {
+      "path": "v3/docs/adr/0008-r5-native-adapters.md",
+      "blob": "ebb8ff6de4102ac2d2c623dd654468d050fadaab"
+    },
+    {
+      "path": "v3/docs/adr/0009-r5-counts-only-replay.md",
+      "blob": "d21edf54384e870989a26e6e7e13084c251f9eeb"
+    },
+    {
+      "path": "v3/docs/adr/0010-explicit-review-renewal.md",
+      "blob": "e1193443c6383c3ce9a41b6c18f7a6e3011a6724"
+    },
+    {
+      "path": "v3/docs/adr/0011-observe-only-watchdog.md",
+      "blob": "1036984ce723df7c3245119a9a8af75ede5abc66"
+    },
+    {
+      "path": "v3/docs/adr/0012-r6-monitoring-proactivity-evaluation.md",
+      "blob": "54aafe9a337ec02b84f23567830f0c7659f3f58c"
+    },
+    {
+      "path": "v3/docs/adr/0013-r6-host-acceptance.md",
+      "blob": "bb6037718b78931f9db90bb2a89347ba61391c94"
+    },
+    {
+      "path": "v3/docs/adr/0014-coordination-comparison.md",
+      "blob": "a0ae28f2ed01da6f17a274c1a33b77b6da2b6f94"
+    },
+    {
+      "path": "v3/docs/adr/0015-coordination-candidate-contract.md",
+      "blob": "b3028d443274075400fd1abb5a18bccc473d333f"
+    },
+    {
+      "path": "v3/docs/adr/0016-p0-commerce-and-business-results-design.md",
+      "blob": "b50f814e18f7c77c4c502c5107323abc1e67d0d3"
+    },
+    {
+      "path": "v3/docs/adr/0017-p0-commerce-implementation.md",
+      "blob": "661b90e1d66a0ec02e3be10b5295e70a3de47316"
+    },
+    {
+      "path": "v3/docs/adr/0018-exact-proposal-review.md",
+      "blob": "59ef79056924fcd4a7b37ae2bb7aabf3a3077376"
+    },
+    {
+      "path": "v3/docs/agent-ui.md",
+      "blob": "6b8a528dc8adf9b2d96331cea158bf23c0e32d00"
+    },
+    {
+      "path": "v3/docs/assets/architecture.svg",
+      "blob": "f879b2cb400804e418b1403f682702f09949df76"
+    },
+    {
+      "path": "v3/docs/assets/delivery.svg",
+      "blob": "5680368ef018e74c62f6ce2fa065d28df40b3594"
+    },
+    {
+      "path": "v3/docs/baseline.md",
+      "blob": "e1ed25a6dbfec4b698c7fbfed2278447032d78af"
+    },
+    {
+      "path": "v3/docs/budget-amendment-2026-11-02.md",
+      "blob": "08f7beb7565fb79dc2c499a55a1c96c2e64033e5"
+    },
+    {
+      "path": "v3/docs/design/p0-commerce-v1/01-commerce-workflow.md",
+      "blob": "0319fbd87e26407980890e16f81b68b133be68ab"
+    },
+    {
+      "path": "v3/docs/design/p0-commerce-v1/02-business-result.md",
+      "blob": "42a90e01a1a7f71e5123e80d78cb379e5bc93805"
+    },
+    {
+      "path": "v3/docs/design/p0-commerce-v1/README.md",
+      "blob": "9158bfdc37c373851682ebfb106ad79cc4d92973"
+    },
+    {
+      "path": "v3/docs/design/p0-commerce-v1/acceptance-plan.json",
+      "blob": "c49180d2e7914e6d50d354fb82b36f56fd2e5176"
+    },
+    {
+      "path": "v3/docs/design/p0-commerce-v1/contracts/result.schema.json",
+      "blob": "6d8004dc657c16f3886999ace92fedafa2c88e76"
+    },
+    {
+      "path": "v3/docs/design/p0-commerce-v1/contracts/task.schema.json",
+      "blob": "d0427342d3a76cd03488af381e3fca193135ac2c"
+    },
+    {
+      "path": "v3/docs/design/p0-commerce-v1/contracts/view.schema.json",
+      "blob": "7df6b546278e442815011168ac068979dcd3ce42"
+    },
+    {
+      "path": "v3/docs/design/p0-commerce-v1/design-review.json",
+      "blob": "4792a8980b7691a6ecfe98ff4c35d532d7747988"
+    },
+    {
+      "path": "v3/docs/design/p0-commerce-v1/examples/results.json",
+      "blob": "31dbcef477808501f20ad2b9f7ef155a14176238"
+    },
+    {
+      "path": "v3/docs/design/p0-commerce-v1/examples/tasks.json",
+      "blob": "413c700c0a50ae31496b573d4531c36bed9db1e0"
+    },
+    {
+      "path": "v3/docs/design/p0-commerce-v1/examples/views.json",
+      "blob": "3728023b3fe6775393e2afd7daae900c9d392bfc"
+    },
+    {
+      "path": "v3/docs/design/p0-commerce-v1/fixtures/commerce.json",
+      "blob": "a246326e870fc55f8c2b8beed780a9dea088b433"
+    },
+    {
+      "path": "v3/docs/design/p0-commerce-v1/status-rules.json",
+      "blob": "4db77e650cec8a080989fce6a1b8535cf5d236c4"
+    },
+    {
+      "path": "v3/docs/evidence/v32-live-ex-followup-report-02.md",
+      "blob": "74875db1b2cebb5508e494fbb7900ad53485ae0d"
+    },
+    {
+      "path": "v3/docs/evidence/v32-live-ex-followup-report.md",
+      "blob": "82e69d88a2c419949e91b02567a2f6e718752478"
+    },
+    {
+      "path": "v3/docs/evidence/v32-live-ex-injection-report.md",
+      "blob": "92940b18925093ab1d836059ee6e1c274bbe3bd7"
+    },
+    {
+      "path": "v3/docs/evidence/v32-live-ex-symbol-missing-report.md",
+      "blob": "bd3dd8ed30319f543d718b140823f616c86e28a4"
+    },
+    {
+      "path": "v3/docs/evidence/v32-live-flask-partial-07.md",
+      "blob": "80cb539835e9b0fd12b0ed4e41c47e9ca99e3f14"
+    },
+    {
+      "path": "v3/docs/evidence/v32-live-flask-report-08.md",
+      "blob": "eba1229c2e10e07be1c03a114b2755ce4332c9d6"
+    },
+    {
+      "path": "v3/docs/evidence/v32-live-httpx-report-02.md",
+      "blob": "7745f6d46fe9edbdfcadf409d569afb1b78a3520"
+    },
+    {
+      "path": "v3/docs/evidence/v32-live-requests-report.md",
+      "blob": "30f9b581e1f16d5d21d8e32ce7ac8aac41ebe24b"
+    },
+    {
+      "path": "v3/docs/experiments/coordination-v1/README.md",
+      "blob": "a286cb882da498a16a0427fb1d66206e8e5cea46"
+    },
+    {
+      "path": "v3/docs/experiments/coordination-v1/acceptance.json",
+      "blob": "24d9b5d316a8eb13574f622ce6d2ea6874ed52d4"
+    },
+    {
+      "path": "v3/docs/experiments/coordination-v1/all-attempt-terminal-latency.json",
+      "blob": "28d2417ad23a9b7a8670d21227512e196edd2be7"
+    },
+    {
+      "path": "v3/docs/experiments/coordination-v1/development-issues.json",
+      "blob": "df62f97fd05168d7885d15fd3927891d6f7508d2"
+    },
+    {
+      "path": "v3/docs/experiments/coordination-v1/engineering-log-hashes.json",
+      "blob": "02b111a0c36f2256b4945d0104ac85d7460bb3ec"
+    },
+    {
+      "path": "v3/docs/experiments/coordination-v1/engineering-restored-environment.json",
+      "blob": "b51638a92ce400cb53121a585631f7f474bcf666"
+    },
+    {
+      "path": "v3/docs/experiments/coordination-v1/engineering.json",
+      "blob": "a8b35f313dce959b2556ce66c6a1e8a8bb05567c"
+    },
+    {
+      "path": "v3/docs/experiments/coordination-v1/environment-restore.json",
+      "blob": "94b97bc4b0397b3b3d9f7cb04a5ac9f51c56d0a8"
+    },
+    {
+      "path": "v3/docs/experiments/coordination-v1/finance.json",
+      "blob": "3ffbf7501698da7664039a0a0fc1e58443144d01"
+    },
+    {
+      "path": "v3/docs/experiments/coordination-v1/freeze.json",
+      "blob": "05d5e5b9dcdcdcda326e0127471cc6cfc3eb556c"
+    },
+    {
+      "path": "v3/docs/experiments/coordination-v1/normal-task-outcomes.json",
+      "blob": "91bf5134a4630ecbecd970c7187a93cc195ac2ae"
+    },
+    {
+      "path": "v3/docs/experiments/coordination-v1/plan-before-execution.md",
+      "blob": "f004a3e5de9fe3ec8ab0bfde2b39034ce6ff52d1"
+    },
+    {
+      "path": "v3/docs/experiments/coordination-v1/recovery.json",
+      "blob": "02d1603629e88792364547aeace4eb09485ac5de"
+    },
+    {
+      "path": "v3/docs/experiments/coordination-v1/request-repetition-analysis.json",
+      "blob": "87d1736b669f77eb84396aa64a17b9d3c40a87ac"
+    },
+    {
+      "path": "v3/docs/experiments/coordination-v1/results.json",
+      "blob": "8e5058cf6c0f5d8b56739140aed1c7a5beb6b4e6"
+    },
+    {
+      "path": "v3/docs/experiments/coordination-v1/supplemental-epoch-cleanup.json",
+      "blob": "f370227b8e4f35ab6c3fda97f90b243ea5cfc362"
+    },
+    {
+      "path": "v3/docs/experiments/coordination-v1/supplemental-epoch-probe.json",
+      "blob": "5f119e1ef35476766a7de5c59abf22bcc14e443e"
+    },
+    {
+      "path": "v3/docs/experiments/coordination-v2/README.md",
+      "blob": "5799ee9ad3098067b195e56e4ab4e114760ef827"
+    },
+    {
+      "path": "v3/docs/experiments/coordination-v2/acceptance.json",
+      "blob": "940d38f7e4157a43c4748b4b2555d96d4045644e"
+    },
+    {
+      "path": "v3/docs/experiments/coordination-v2/candidate-attempts.json",
+      "blob": "e32af4072373d805228a96a5d6b9b5771f2d5c38"
+    },
+    {
+      "path": "v3/docs/experiments/coordination-v2/finance.json",
+      "blob": "ec67f33c42d80672deb83922bfa95dd3ed87ce49"
+    },
+    {
+      "path": "v3/docs/experiments/coordination-v2/manifest.json",
+      "blob": "1fb54611ad136172089b46aa4039df430806a7f8"
+    },
+    {
+      "path": "v3/docs/experiments/coordination-v2/normal-task-outcomes.json",
+      "blob": "ce7025cfbd08ccecbc074010712647f7ab0181da"
+    },
+    {
+      "path": "v3/docs/experiments/coordination-v2/recovery.json",
+      "blob": "53c661cdd37132c462dba8f90fa010ea7a45f26f"
+    },
+    {
+      "path": "v3/docs/experiments/coordination-v2/results.json",
+      "blob": "9b1b3aad16ffee88483891aee31c5c1a88a2afdc"
+    },
+    {
+      "path": "v3/docs/first-batch-status.md",
+      "blob": "83f919b4503a18c117ce2a655f907a53874f1e1c"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/GA00_ARCHITECTURE.md",
+      "blob": "7c48e0a03a5828a4d033f11c971d791ee699754c"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/GA00_BASELINE_20261119.md",
+      "blob": "c780e9ab2e40822881b07a89498f8ea33a891713"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/GA00_ENGINEERING_REPAIR_20261119.md",
+      "blob": "83a939f27cc7fcd0634cea04efb3979154eecea4"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/GA00_ENGINEERING_REPAIR_INDEPENDENT_20261119.md",
+      "blob": "fe9dc31e5293526a883b91ed23234a381527d859"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/GA00_INDEPENDENT_20261119.md",
+      "blob": "32d27cfa23db7fa09c6f6c4fb7449f542c08134d"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/GA00_RECHECK.md",
+      "blob": "32638e8f2f2e6aaab274949b793ad5445b622887"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/GA01_INDEPENDENT_20261119.md",
+      "blob": "7628290eebb25cddcd60caca848a4df2d890bbf6"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/GA01_TASK_OUTCOME.md",
+      "blob": "c52696f670e79e051ca0838d40f2c25773ada335"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/GA02_GA03_INDEPENDENT_20261119.md",
+      "blob": "e45b49248ff548c2fd56e3e81e6937bd610fad78"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/GA02_GA04_GA05_INDEPENDENT_20261119.md",
+      "blob": "3fd58a7159513fb67fa9f41d3b2e4cf09ba01cd7"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/GA02_REPLAN_REPAIR_20261119.md",
+      "blob": "5cbd30a6bb5f326a7a770d78ee461c3ee79ce5d1"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/GA02_TASK_GRAPH.md",
+      "blob": "1d1dab321689e86a2d6f048ca2c7d7c51501f11e"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/GA03_CAPABILITY_ROUTING.md",
+      "blob": "eb4c2d08e36c9fb8aa471ecbc45b7e8c9ac19582"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/GA04_ACTION_CONTRACT.md",
+      "blob": "3591e18431db70127f04efb4805c6218056b457b"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/GA04_PAYLOAD_REPAIR_INDEPENDENT_20261119.md",
+      "blob": "fadedc58cd86e440fecfb8703d0f02f73bcb926d"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/GA05_VERIFICATION_CONTRACT.md",
+      "blob": "559d1bfff1bdba9da8f9005d3b9eb5ef1e8cb9e8"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/GA06_GA08_REPAIRS_INDEPENDENT_20261119.md",
+      "blob": "f5c4284b2cfbd4b39a6fd7a36058c81b512dd350"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/GA06_GA10_INDEPENDENT_20261119.md",
+      "blob": "ac91203ff6b85bd926d23634aa382751a98c7522"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/GA06_WEB_RESEARCH_EXECUTOR.md",
+      "blob": "19fb360c56f7d4853e155fccd84f6f99aa1ecf5a"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/GA07_DATA_EXECUTOR.md",
+      "blob": "0dae60fc8358c8277692bae34a783f044daf40ed"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/GA08_OFFICE_EXECUTOR.md",
+      "blob": "753a5eb3242f75d209b38c94ab7c5a76a9999e4d"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/GA09_CODING_EXECUTOR.md",
+      "blob": "b2fc848d6d14285a524a6017f2e4335c8f70d70e"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/GA10_PERSONAL_MEMORY.md",
+      "blob": "ed483fbd329596ce170b4a6ffb9607d78a18003c"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/GA11_GA12_ACCEPTANCE_20261119.md",
+      "blob": "e450ed2c498b733316f78de455466826c722e115"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/GA11_GA12_INDEPENDENT_20261119.md",
+      "blob": "a5404b8e59b1ee6d35b36f4d1094e3a4cc3b91b0"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/GA11_KNOWLEDGE_GATEWAY.md",
+      "blob": "9946af33cfc9e0521f671b087b11da66ce2590c3"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/GA12_BENCHMARK.md",
+      "blob": "daae35bbfe35aa992826cad1a534a44b4b092415"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/GA12_CASE_CONTRACT.md",
+      "blob": "1e45e2508bc91838d4beee36ecb81c0b57895dd3"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/GA12_HOLDOUT_ADMISSION_REPAIR_20261119.md",
+      "blob": "9f01ddd4357a58263815a1fc446806cceda6ba5b"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/GA12_HOLDOUT_ADMISSION_REPAIR_INDEPENDENT_20261119.md",
+      "blob": "415308896f9162e1db2e02df7c341f012e0360fe"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/GA13_ACCEPTANCE_20261119.md",
+      "blob": "1a3ecfda755442238a6f51bcda5bc86c48622ea2"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/GA13_INDEPENDENT_20261119.md",
+      "blob": "1391e901c1ab5d56ea61b26b6cedeeb82095c7a0"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/GA13_RC.md",
+      "blob": "b4c877f041cfda74a723b1c3f57c5e99804f234a"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/TASKBOOK_V1.md",
+      "blob": "9e887f41049abd92d6a231d0b77c1b8ae3bc2088"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/TASKS.md",
+      "blob": "8712e7c5b155cbeb495c8fde0af164eecfc32913"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/accept/GA00/accept.json",
+      "blob": "020591f49eb827a2efedf2c0f7af62ff6a471e62"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/accept/GA00/engineering-repair-20261119.json",
+      "blob": "c4c3e899a1a9f4b1f6fea9299449edb9229a06c8"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/accept/GA00/engineering-repair-independent-20261119.json",
+      "blob": "a28cfcae7efef736d16dde6f3434c48cfcd34e22"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/accept/GA00/independent-20261119.json",
+      "blob": "cf1a2540596432bd60df8cd5b710ce4271055e0f"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/accept/GA00/non-passing-cases.json",
+      "blob": "2bcff79ffeec97950a95e72c7898b1bc356681be"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/accept/GA01/accept.json",
+      "blob": "fb80ee3675cf60eb9af7df48c3a777e7a4e63033"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/accept/GA01/independent-20261119.json",
+      "blob": "f4aab62e013e297d88d4a521df90dcaf0d950932"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/accept/GA02/accept.json",
+      "blob": "5e1a4bae3a5934feb2d663c93ca212dbc17028a8"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/accept/GA02/independent-20261119.json",
+      "blob": "ff209257b19b30449a7de636760020f722965c99"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/accept/GA02/replan-repair-20261119.json",
+      "blob": "8d876590f7308bc4807b545c278031a38b09bde8"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/accept/GA02/replan-repair-independent-20261119.json",
+      "blob": "68588f229f36a9ae11b8f59cd6162b6ebee8eb6e"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/accept/GA03/accept.json",
+      "blob": "e1c7101cece179ca051779c9df85c9f0979a6988"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/accept/GA03/independent-20261119.json",
+      "blob": "09be15e8fab788398b86cb1b2f35453eec35750f"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/accept/GA04/accept.json",
+      "blob": "933c5f8781de03fa3debe42568e74603f301e377"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/accept/GA04/independent-20261119.json",
+      "blob": "a31babd9d1aedd1a256a1b2c977ccecad8ff09a6"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/accept/GA04/payload-repair-20261119.json",
+      "blob": "c141c763b41728ef0add07e10ec0a369ec1ba0e2"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/accept/GA04/payload-repair-independent-20261119.json",
+      "blob": "0b2bcf5eff649b7702fb507f223a5f553a1c8602"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/accept/GA05/accept.json",
+      "blob": "e8e928f2c18e81f17aa26178bac1a9f2d7591943"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/accept/GA05/independent-20261119.json",
+      "blob": "5f3edc201d20a74c7afc33340bd4baf7e5ddf714"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/accept/GA06-GA10/accept.json",
+      "blob": "a1011396e4ccdbe2b026e7333582316e81249b6a"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/accept/GA06-GA10/ga06-ga08-repairs-20261119.json",
+      "blob": "cacece2d90a81d0a4f0bd28c149b3c7e7e14aaa3"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/accept/GA06-GA10/ga06-ga08-repairs-independent-20261119.json",
+      "blob": "5e3a6c41dc26bc5b34db7c21109edce6afe8f192"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/accept/GA06-GA10/independent-20261119.json",
+      "blob": "7aabd48b496aefdd5c6b635c09290d4110b8f4dc"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/accept/GA11-GA12/accept.json",
+      "blob": "717e60778caa98d7bc87a18a6c75cce5ca3496be"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/accept/GA11-GA12/holdout-admission-repair-20261119.json",
+      "blob": "364c45dd186cb29aff1d310e5c0d7cf87e7d2500"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/accept/GA11-GA12/holdout-admission-repair-independent-20261119.json",
+      "blob": "daeb5c71d63e3f8d6cd65a0f8c37762cf4384865"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/accept/GA11-GA12/independent-20261119.json",
+      "blob": "8b8aa5d165a9bf98295a449bb0a0a957829db1a2"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/accept/GA13/accept.json",
+      "blob": "388cef9ca01471efcfccf658e87b2612d6992d7b"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/accept/GA13/independent-20261119.json",
+      "blob": "f390aa317dd757894328a96f08447a6a68ec5047"
+    },
+    {
+      "path": "v3/docs/general-agent-v1/recheck_ga00.py",
+      "blob": "d54dfb8ab2799577530e1cddccb3057af896707b"
+    },
+    {
+      "path": "v3/docs/harness-v4/ACCEPTANCE.md",
+      "blob": "ed9e4dab8a42c0c91b42cfd075db603cfb49c7d3"
+    },
+    {
+      "path": "v3/docs/harness-v4/ACCEPTANCE_CONTRACT.md",
+      "blob": "e1ac5e49d7c5ae397085359e5da51f05f3fcfe4b"
+    },
+    {
+      "path": "v3/docs/harness-v4/ANALYSIS_BUDGET_AND_COMPOSER_20261113.md",
+      "blob": "497b25791458d9fac5ca43b61942738aa4dbbf05"
+    },
+    {
+      "path": "v3/docs/harness-v4/ANALYSIS_COLLABORATION_DELIVERY_TASK.md",
+      "blob": "434a075c8873052ea69bf2acfe8a497902beb765"
+    },
+    {
+      "path": "v3/docs/harness-v4/ANALYSIS_CONTINUATION_AND_PROGRESS_20261113.md",
+      "blob": "b897ee0e39c6092a06444bba22c826865e0dc25e"
+    },
+    {
+      "path": "v3/docs/harness-v4/ANALYSIS_RECEIPT_AND_CACHE_REPAIR_20261113.md",
+      "blob": "69d465121dc9f60c2ecf8f43e2b9fcdcb0d8e1c6"
+    },
+    {
+      "path": "v3/docs/harness-v4/BASELINE_REGRESSION.md",
+      "blob": "f9922d40a564573dd8a81a933078e7364d97c323"
+    },
+    {
+      "path": "v3/docs/harness-v4/CAPABILITY_AUDIT.md",
+      "blob": "b00b596a805884ce8d60917081ff1ac008cc905e"
+    },
+    {
+      "path": "v3/docs/harness-v4/CAPABILITY_BROKER.md",
+      "blob": "fcff9e42225aa0f5aadfb166eaf20805e19a1ab3"
+    },
+    {
+      "path": "v3/docs/harness-v4/CODEX_CLI_H10_REVIEW_TASK.md",
+      "blob": "f7c69c766e720edce78c077bfb0d2275dd2517da"
+    },
+    {
+      "path": "v3/docs/harness-v4/CODEX_CLI_H10_TASK.md",
+      "blob": "8d1c10c2f09f4a0d5d9c2fbe2e2331dacae2be12"
+    },
+    {
+      "path": "v3/docs/harness-v4/CODEX_CLI_H11_REVIEW_TASK.md",
+      "blob": "1034bb7367fbbeea4924212e39f4146ec5ae44a9"
+    },
+    {
+      "path": "v3/docs/harness-v4/CODEX_CLI_H11_TASK.md",
+      "blob": "f31631a7ea4b16ba77ec72bde1834980003a1c76"
+    },
+    {
+      "path": "v3/docs/harness-v4/CODEX_CLI_H12_ENV_UNBLOCK_TASK.md",
+      "blob": "da57c7b104468ba1a4692bf6880acfab80972d1a"
+    },
+    {
+      "path": "v3/docs/harness-v4/CODEX_CLI_H12_FIRST_MODEL_RECOVERY_TASK.md",
+      "blob": "5661740721b1331a80713eb0cfe09c4518ee9179"
+    },
+    {
+      "path": "v3/docs/harness-v4/CODEX_CLI_H12_R00_TASK.md",
+      "blob": "e5cc1a8eeac086eea7c989bbcc3065f03b143781"
+    },
+    {
+      "path": "v3/docs/harness-v4/CODEX_CLI_H12_R01_TASK.md",
+      "blob": "da7859c5f6ce82a133cbe983f7ab3aebc748d6f8"
+    },
+    {
+      "path": "v3/docs/harness-v4/CODEX_CLI_H12_R02_TASK.md",
+      "blob": "ec0d6db158e90fad564d9953763e2817fc3136f8"
+    },
+    {
+      "path": "v3/docs/harness-v4/CODEX_CLI_H12_R03_TASK.md",
+      "blob": "9e57c99f4399645ec64006649cd66f2bf8dd303a"
+    },
+    {
+      "path": "v3/docs/harness-v4/CODEX_CLI_H12_R04_TASK.md",
+      "blob": "ba79f9969726828b5b353fe300bdd7a285c571ec"
+    },
+    {
+      "path": "v3/docs/harness-v4/CODEX_CLI_H12_R05_TASK.md",
+      "blob": "7ac4632adf98ae6397b1dd15923c7288cecc608f"
+    },
+    {
+      "path": "v3/docs/harness-v4/CODEX_CLI_H12_R06_TASK.md",
+      "blob": "1ffee04891037b5b0bbec1d52241fc82fd21f575"
+    },
+    {
+      "path": "v3/docs/harness-v4/CODEX_CLI_H12_R07_TASK.md",
+      "blob": "0d7b98f1106a3caad17b8ccdf03b6397519cfbe5"
+    },
+    {
+      "path": "v3/docs/harness-v4/CODEX_CLI_H12_R08_ENTRY_REPAIR_TASK.md",
+      "blob": "49eff6156e9e2fc0c539040d05fce05555406919"
+    },
+    {
+      "path": "v3/docs/harness-v4/CODEX_CLI_H12_R08_TARGETED_V2_TASK.md",
+      "blob": "ff8bb7fa71a839af227f559d634d304154713d09"
+    },
+    {
+      "path": "v3/docs/harness-v4/CODEX_CLI_H12_R08_TASK.md",
+      "blob": "b390552aa13a151ca8e01cf4d42f877ff68f6ffa"
+    },
+    {
+      "path": "v3/docs/harness-v4/CODEX_CLI_H12_TASK.md",
+      "blob": "4aea7ec4c95f07e430185141a6b74f16dd11f109"
+    },
+    {
+      "path": "v3/docs/harness-v4/CODING_LOOP.md",
+      "blob": "ac66efa894900daff1b8e3a12d3f26218a0bef37"
+    },
+    {
+      "path": "v3/docs/harness-v4/COMMAND_EXECUTION.md",
+      "blob": "da1b9c0dd067832547680e0c71d2ad5d8d4e6570"
+    },
+    {
+      "path": "v3/docs/harness-v4/CONTEXT_AND_UI_REPAIR_20261112.md",
+      "blob": "f86cf38c82c9f9bad69b9da3d00f354f2c4b6790"
+    },
+    {
+      "path": "v3/docs/harness-v4/DEEPSEEK_REASONING_20261115.md",
+      "blob": "087a562077729c599bc9bb7933b6396e66958d75"
+    },
+    {
+      "path": "v3/docs/harness-v4/H10_P1_REPAIR.md",
+      "blob": "fcabc78cd109a0da44748625cdd73ae538e5b105"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_BILLING_RECONCILIATION_20261114.md",
+      "blob": "41f62f290508f23c836f1e4c681aea3a2bbe01e0"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_ENV_REPAIR_20261112.md",
+      "blob": "0f8dff924b58a9f8d407ce28cee6b99eb6325882"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_EVALUATION.md",
+      "blob": "e772095cf0887166f15e8ac1cf3dab4d11a5fe62"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_FULL_DEV_REPAIR_20261113.md",
+      "blob": "afc0e5f189cf6b619a76c01725909dbba9150294"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_FULL_MATRIX_THINKING_20261115.md",
+      "blob": "6930d1ac18f5b0d833e5b3f7fc9a3cdb5637316d"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_HOLDOUT_CURATOR_TASK.md",
+      "blob": "c721f2769b4b193eec0f4538032eb4799adb8ce6"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_INDEPENDENT_REAL_QUALITY_20261114.md",
+      "blob": "a71de11fb8d062ee03a9c48488d319cc692515d7"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_INDEPENDENT_RECHECK_20261114.md",
+      "blob": "96611330d32ba3535aaeaf319fb593743795edb9"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_LOCAL_RETEST_0308789_20261113.md",
+      "blob": "4e7a84e8b565bb64f61842f78ae98bfb8e5aa217"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_PUBLIC_DEV_ACCEPTANCE_20261113.md",
+      "blob": "6c0afd85a8d59b4820fa3bd4e2302fee1a5b42b8"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_PUBLIC_PROBE_REPAIR_20261113.md",
+      "blob": "7542bb339f7087ce792a53c6358ec5be79151ceb"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_QUALITY_ACCEPTANCE_20261113.md",
+      "blob": "f0a8b46626f3fc3acca40731ab72fb423b789438"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_QUALITY_REPAIR_20261114.md",
+      "blob": "a230bbc05a072771f5545ccca0efd9ed3673bde7"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_R00_BASELINE_FREEZE_20261115.md",
+      "blob": "2a9f14564aa4aad382b7ae708644f7d4fb111076"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_R01_ACCEPTANCE_CONTRACT_20261115.md",
+      "blob": "52e64e974ead82bb32b5fe37cbbe2740e61e2cdb"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_R02_OUTPUT_RECOVERY_20261115.md",
+      "blob": "0371e7a025100be6bef5b9d5560228dc25f00fef"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_R03_TOOL_RECOVERY_20261115.md",
+      "blob": "86f2be8a3ae57c148f9efb6cfd94b520eff5bfc1"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_R04_LIFECYCLE_20261116.md",
+      "blob": "1a73f61b9b580628b3c54580356eaa14a8303c1c"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_R04_LIFECYCLE_PROTOCOL.md",
+      "blob": "2f748b5056322a6ed06e7a4b8d84073cf4ea319a"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_R05_INDEPENDENT_REGRESSION_20261116.md",
+      "blob": "722acc01b9d30e84b5ffb972a2c913d0a27f3020"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_R05_REGRESSION_PROTOCOL.md",
+      "blob": "b726748305a78e9ae4711b7b658562aaf063cdf4"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_R06_BASELINE_JUDGE_PROTOCOL.md",
+      "blob": "453ed282aa18751fd8a4cb1506918dbf033596d6"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_R06_BASELINE_JUDGE_REVIEW_20261116.md",
+      "blob": "6d8f32f0b9aa9bd1766b5fe3a4f4dc08eb0db513"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_R06_BENCHMARK_REVIEW_20261116.md",
+      "blob": "41be65d61a842cffd5be1b65ffa2b226973fe87e"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_R07_PUBLIC_BOUNDARY_MATRIX.md",
+      "blob": "11bc351342c89506886990f12e2d40993bb9093b"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_R07_PUBLIC_FEEDBACK_20261116.md",
+      "blob": "4495a2d579caf28422855e46cd53917944af6675"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_R07_PUBLIC_FEEDBACK_PROTOCOL.md",
+      "blob": "d70d66ced0bf29db4684f0fded5fd91461306c7c"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_R08_ARTIFACT_RESTORE_REPAIR_20261117.md",
+      "blob": "2d6d318a9aecc4c1516f02411b81db62f7b31c74"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_R08_DEVELOPMENT_20261118.md",
+      "blob": "40b45d052643e56398290ad855e40bcb9b2c55ea"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_R08_ENTRY_OBSERVER_REPAIR_20261117.md",
+      "blob": "ea0f8e93d946e12d05458fead19a487c5d3849bc"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_R08_FAILED_ONLY_20261117.md",
+      "blob": "18ae00ddbd8e3361b9eff86ff61e2516c0260e66"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_R08_FORMAL_REAL_MODEL_20261118.md",
+      "blob": "b300ff9df1ef22fb3fd3174b409b2fa80f23f895"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_R08_INDEPENDENT_MATRIX_REVIEW_20261118.md",
+      "blob": "59f620156d3b04a6e77fe385cf1b386ef7077c73"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_R08_PUBLIC_DIAGNOSTICS_REPAIR_20261117.md",
+      "blob": "f4a870a599a4ff4df03cd98c5fbae26398cf9ec5"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_R08_REAL_QUALITY_20261117.md",
+      "blob": "6880b7f425294098c888eca69ad63a1cea1233c2"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_R08_REMAINING_RETEST_20261118.md",
+      "blob": "b64f751ef535a32cc701b75fe57c90b8b5e6f87f"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_R08_SYMBOL_FEEDBACK_REPAIR_20261117.md",
+      "blob": "4c8ae8d981655dad6eb148113a07e1d8ff451afd"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_R08_TARGETED_REPAIRS_20261118.md",
+      "blob": "6183a445d26333ba22254be9d9a9f8d87984147f"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_R08_TIMING_INDEPENDENT_20261118.md",
+      "blob": "e48dcad817d0ce14324de49483e6393bdf8605cc"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_R08_WIRE_REPAIR_20261117.md",
+      "blob": "a0d8a78a153e3547a020a1ac2cf600e48d9b2794"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_REPAIR_20261112.md",
+      "blob": "7ff67e258f2a230012038dc0ead3439733535f09"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_RESULTS.md",
+      "blob": "f0983e3ac610e3d925062695170e87a083003efe"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_REVISION_AND_FOLLOWUPS.md",
+      "blob": "d22b7cdc5797174c71ef0025a14053895b482c56"
+    },
+    {
+      "path": "v3/docs/harness-v4/H12_RUNTIME_REPAIR_20261113.md",
+      "blob": "812d3c07d88945e5c9193e082867818778c90a99"
+    },
+    {
+      "path": "v3/docs/harness-v4/H13_INDEPENDENT_ACCEPTANCE_20261118.md",
+      "blob": "abda6b42b4c48d9d4118bde8f2ca10a6b70715c3"
+    },
+    {
+      "path": "v3/docs/harness-v4/H14_ACCEPTANCE_20261118.md",
+      "blob": "c5713970b89386c79cb2fbc0821aaf4718fcd1cd"
+    },
+    {
+      "path": "v3/docs/harness-v4/H14_HANDOFF.md",
+      "blob": "b2753ca5c660d7726cc89c6c87993f9da941fae6"
+    },
+    {
+      "path": "v3/docs/harness-v4/H14_INDEPENDENT_ACCEPTANCE_20261118.md",
+      "blob": "c0b16539594c2c7643b20c49c396dd67deb8bacb"
+    },
+    {
+      "path": "v3/docs/harness-v4/H15_INDEPENDENT_ACCEPTANCE_20261118.md",
+      "blob": "dec268989d460fe08b2fc4edb8b202723e851649"
+    },
+    {
+      "path": "v3/docs/harness-v4/H16_ACCEPTANCE_20261118.md",
+      "blob": "8bc86f5e22d11f1649b2b72f7539aa11206ccd35"
+    },
+    {
+      "path": "v3/docs/harness-v4/H16_INDEPENDENT_ACCEPTANCE_20261118.md",
+      "blob": "d1c06c34ae8659c1680623773f96804b17e2e1c8"
+    },
+    {
+      "path": "v3/docs/harness-v4/H17_ACCEPTANCE_20261118.md",
+      "blob": "d805194897a9b8d1d4ef4a73f05e0b9442fc49b9"
+    },
+    {
+      "path": "v3/docs/harness-v4/H17_EVALUATION_PROTOCOL.md",
+      "blob": "5b34b8cb919e69cb9c3e2bd680960c1ee700e2bb"
+    },
+    {
+      "path": "v3/docs/harness-v4/H17_INDEPENDENT_ACCEPTANCE_20261119.md",
+      "blob": "15db507cd2d02e4907df19ee39963ab566032907"
+    },
+    {
+      "path": "v3/docs/harness-v4/H18_ACCEPTANCE_20261118.md",
+      "blob": "d27f79a5568fb492eb7200e131d9be61751bf844"
+    },
+    {
+      "path": "v3/docs/harness-v4/H18_INDEPENDENT_ACCEPTANCE_20261119.md",
+      "blob": "9b91df8113eba75c28c80deeb23b51293b2c13b5"
+    },
+    {
+      "path": "v3/docs/harness-v4/H18_OPERATIONS.md",
+      "blob": "c27455b9a808b2294780ee95842e18754829e49e"
+    },
+    {
+      "path": "v3/docs/harness-v4/H18_PUBLISH_RETRY_20261119.md",
+      "blob": "4479b45477338cbb7a50bf69bf846f4239a3c768"
+    },
+    {
+      "path": "v3/docs/harness-v4/H18_PUBLISH_RETRY_INDEPENDENT_20261119.md",
+      "blob": "b61536dabc8a2d10bf01a7a26f15083b23351ef6"
+    },
+    {
+      "path": "v3/docs/harness-v4/H18_RESTORE_RETRY_20261119.md",
+      "blob": "b9186d441c445c8d110f4a70ff819e639756f75f"
+    },
+    {
+      "path": "v3/docs/harness-v4/H18_RESTORE_RETRY_INDEPENDENT_20261119.md",
+      "blob": "df2edf6f1c32e912552af444593cd4f4b8a09bbc"
+    },
+    {
+      "path": "v3/docs/harness-v4/HANDOFF_TO_CODEX.md",
+      "blob": "452ab9251db370d7aab37756943e82ff2ab4cdce"
+    },
+    {
+      "path": "v3/docs/harness-v4/HARNESS_CONTRACTS.md",
+      "blob": "bd3e115af5d69fcf8e956eb16ed5266b5c67d1ce"
+    },
+    {
+      "path": "v3/docs/harness-v4/HARNESS_PRODUCT_TASK.md",
+      "blob": "4988ca9c4812883d104b92e371dbf2da280fd3b5"
+    },
+    {
+      "path": "v3/docs/harness-v4/HEADLESS.md",
+      "blob": "f9850a00fa1b3e2ade9c69cde32209fe01da718b"
+    },
+    {
+      "path": "v3/docs/harness-v4/INCREMENTAL_EDITS.md",
+      "blob": "5d5b08d831c585e8e263bcf1ab61db39dd83dc2c"
+    },
+    {
+      "path": "v3/docs/harness-v4/LONG_CONTEXT.md",
+      "blob": "3fd14f4c54749d31dcb44d2f1805e6b31e8742af"
+    },
+    {
+      "path": "v3/docs/harness-v4/MODEL_ADAPTERS.md",
+      "blob": "6da4e5d751230d72654fdf134cb60dfe796bf63f"
+    },
+    {
+      "path": "v3/docs/harness-v4/MULTI_USER.md",
+      "blob": "1f7259aa775f6a4efbbff632b5383cc803fc1e66"
+    },
+    {
+      "path": "v3/docs/harness-v4/OUTPUT_RECOVERY.md",
+      "blob": "50321b151c4e7cae26d9a2a4c7ac41dd8ec9a045"
+    },
+    {
+      "path": "v3/docs/harness-v4/PROJECT_GUIDANCE_AND_PLUGINS.md",
+      "blob": "98a1c2d0840dbb0ff0f0499a92f3dbc41ed81e39"
+    },
+    {
+      "path": "v3/docs/harness-v4/README.md",
+      "blob": "1c7276512b815dd9f32103f5fe8cbc98d8f0e4c9"
+    },
+    {
+      "path": "v3/docs/harness-v4/RECORD_RECONCILIATION_20261111.json",
+      "blob": "4c474ba4d1088fc56afea79d8c918b0d785cdbe4"
+    },
+    {
+      "path": "v3/docs/harness-v4/RECOVERY.md",
+      "blob": "1a1334d04466b4382c4ac67110be95fa2a628af8"
+    },
+    {
+      "path": "v3/docs/harness-v4/ROADMAP.md",
+      "blob": "cca058402bfd0cd6102d1b6c78148222f6d5150a"
+    },
+    {
+      "path": "v3/docs/harness-v4/RUNNER.md",
+      "blob": "104d084cfe60a0175905d9acef7ced1d26f31923"
+    },
+    {
+      "path": "v3/docs/harness-v4/SCORING_PROTOCOL.md",
+      "blob": "0e835671cc7adf908e6bdcdaa7088041621e9011"
+    },
+    {
+      "path": "v3/docs/harness-v4/SUPER_AGENT_HANDOFF.md",
+      "blob": "7256ddd2d6048321d8abbc488796cb15ca8a0afc"
+    },
+    {
+      "path": "v3/docs/harness-v4/TASKS.md",
+      "blob": "93ebf6bbd1926b1e393c4fc9110e571211ff7081"
+    },
+    {
+      "path": "v3/docs/harness-v4/TASK_TYPES.md",
+      "blob": "362f72999a5a4a77606cd4ea4165b1c15954eb6e"
+    },
+    {
+      "path": "v3/docs/harness-v4/TOOL_ERROR_TAXONOMY.md",
+      "blob": "e6c530fbbed85b8ae64ac46880d7cbb50c8df080"
+    },
+    {
+      "path": "v3/docs/harness-v4/WORKSPACES.md",
+      "blob": "015cb4fecf855f6674a4895077f8212da703c204"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/AGENT-COLLABORATION/accept.json",
+      "blob": "85970eaa31340ae52b22a12b09a1f6a4cbe09bca"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/AGENT-COLLABORATION/github-delivery/engineering-summary.json",
+      "blob": "8c7435f0fe4cf6d65c4bc2dc247593f4adac9d63"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/ANALYSIS-CONTINUATION-20261113/accept.json",
+      "blob": "022b38483b32a44274b5954122a835118ca8718b"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/ANALYSIS-FAILURE-20261113/accept.json",
+      "blob": "3e40bd491368d3b7107841412e286ef97f4e03ff"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/ANALYSIS-UX-20261113/accept.json",
+      "blob": "1d856b186ed7aa6ffd3b9d2d188847334711830d"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/CONTEXT-UI-20261112/accept.json",
+      "blob": "ea53ded57e5b3dec19713c084fde882888ab1199"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/DEEPSEEK-REASONING-20261115/accept.json",
+      "blob": "6694d3264165d05d4466855a76c8ab0dce655d58"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-BILLING-20261114/first-score-accounting-view.json",
+      "blob": "ef26977f75a4018fbcaedc9b0ab00173be89be89"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-BILLING-20261114/reconciliation.json",
+      "blob": "17ba757728f595de7203c59577a10300300bdb38"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-CONTINUATION-20261114/click-response-loss-accounting-score.json",
+      "blob": "497aec007c51ffeb09a52504fdfcf0a19caa1b0e"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-CONTINUATION-20261114/final-ledger.json",
+      "blob": "7c476ed5955ed114fb43e43fa43490ea49e8f036"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-CONTINUATION-20261114/quoted-content-type-score.json",
+      "blob": "a4065d8110134e0c75dd8f53e1a1d69bfd92d586"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-CONTINUATION-20261114/quoted-public-tests.json",
+      "blob": "0ffa789c87d8e0f2ea1541cfbfabe48b8ee5377e"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-CONTINUATION-20261114/requests-url-score.json",
+      "blob": "0d6b96ac590e60a982cf0cf263620c75a0bc3d02"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-CONTINUATION-20261114/summary.json",
+      "blob": "10e7375ea4d6323945fe160a1b06463a1dfc9547"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-CONTINUATION-20261114/url-tool-feedback.json",
+      "blob": "843a08cfc3a6ea06924725bce27b0957652d6875"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-FIRST-MODEL-RECOVERY-20261115/analysis.json",
+      "blob": "7c57eea51f715c12a0f3e6f1b6a6391e196e43e8"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-FIRST-MODEL-RECOVERY-20261115/closure.json",
+      "blob": "c82d7317ddc1f30a3af0fc9f266cb53fe93129d7"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-FIRST-MODEL-RECOVERY-20261115/controllers/common.py",
+      "blob": "6236b21082a0d3cd2b2f4c9868b0f6c852224ad9"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-FIRST-MODEL-RECOVERY-20261115/controllers/driver.py",
+      "blob": "daa4578c580c05b6238bd31604822ce64e1a763b"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-FIRST-MODEL-RECOVERY-20261115/controllers/manifest.json",
+      "blob": "968a47ad3fbae9e689f3a5bd139e13a4aee1d27a"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-FIRST-MODEL-RECOVERY-20261115/controllers/prepare.py",
+      "blob": "8b3d0fff3f93ad9d30f4b611800dfbfc8d77340b"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-FIRST-MODEL-RECOVERY-20261115/controllers/progress.py",
+      "blob": "c3393bcf2f80bf45cd6b2e499e32191d2bd44935"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-FIRST-MODEL-RECOVERY-20261115/controllers/render.py",
+      "blob": "cb80d9802cfde46127f0db7b62ea8c56dcd00cdb"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-FIRST-MODEL-RECOVERY-20261115/controllers/report.py",
+      "blob": "cb57d67e489e92a00de6b4f4289176437f8955eb"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-FIRST-MODEL-RECOVERY-20261115/controllers/seal.py",
+      "blob": "1d3c90f9d32cb030efd1f35b27f900df34aeff8e"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-FIRST-MODEL-RECOVERY-20261115/controllers/support.py",
+      "blob": "057f263f00883bba319486d9ee372dc6c37d5039"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-FIRST-MODEL-RECOVERY-20261115/engineering-metric-followup.json",
+      "blob": "6ae99810665769dd0325555fb5d7282c8690ad10"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-FIRST-MODEL-RECOVERY-20261115/engineering.json",
+      "blob": "9144fe79daab067f0e7b59db89d9895c37bad05e"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-FIRST-MODEL-RECOVERY-20261115/readiness.json",
+      "blob": "80badce4c39b9071e0a620e6ad9eb733eb59e381"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-FIRST-MODEL-RECOVERY-20261115/results.json",
+      "blob": "0534f7671132a10cae7c1a3b8872dd74b728284e"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-FULL-DEV-REPAIR-20261113/accept.json",
+      "blob": "bca44d585ec2b61a3384c8c5cff46dd64f6c2976"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-FULL-DEV-REPAIR-20261113/engineering.json",
+      "blob": "ab45579da02299451939260a4b4ffc675fb7e2eb"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-FULL-DEV-REPAIR-20261113/environment-repair-v2.json",
+      "blob": "f11274f4411c146ec3330a704f07a0ea4f8cf70b"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-FULL-DEV-REPAIR-20261113/first-live-score.json",
+      "blob": "34f966025c179945654e7d8950e397e4a79aa228"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-FULL-DEV-REPAIR-20261113/first-provider-receipt.json",
+      "blob": "4d359e04b21d7ae6a9a5df5c32d0e4dce7f39b19"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-FULL-DEV-REPAIR-20261113/frozen-public-development.json",
+      "blob": "bb08ca9e7cb79a3dfd129fb8c1848d80754dffea"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-FULL-DEV-REPAIR-20261113/live-plan.json",
+      "blob": "1fb169b666bde4225c4516778f1b5b0bda3360f8"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-FULL-MATRIX-THINKING-20261115/analysis.json",
+      "blob": "58df085737ecb37079b1ea304e96c4204a04c9de"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-FULL-MATRIX-THINKING-20261115/controllers/common.py",
+      "blob": "84c7541bfa7b9dce6948a2f913bc2f15f7267259"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-FULL-MATRIX-THINKING-20261115/controllers/driver.py",
+      "blob": "2aa39c74480c33f785f2c9786767765479c7964b"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-FULL-MATRIX-THINKING-20261115/controllers/index.json",
+      "blob": "5e7c952fb4e7d8210591ef44158a3c834dfd6785"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-FULL-MATRIX-THINKING-20261115/controllers/parallel-driver.py",
+      "blob": "5c6fb770225450cb480235755111563c3498f965"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-FULL-MATRIX-THINKING-20261115/controllers/parallel-launch-check.py",
+      "blob": "c3de0901ca3d9402c63b4573966af7312d482863"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-FULL-MATRIX-THINKING-20261115/controllers/parallel-rehearsal.py",
+      "blob": "481c397541b7be20494acb8aa0a5fe5a0d41ccd4"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-FULL-MATRIX-THINKING-20261115/controllers/parallel_support.py",
+      "blob": "3a399193f19ae137fce59fd1a47fee08caf38314"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-FULL-MATRIX-THINKING-20261115/controllers/render.py",
+      "blob": "d7d2aaea8d2fc6a14848319120bcac64552d0161"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-FULL-MATRIX-THINKING-20261115/controllers/resume-driver.py",
+      "blob": "6c5312390740986c5622a8c8db5cd532b886a3d7"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-FULL-MATRIX-THINKING-20261115/engineering.json",
+      "blob": "017c1e565ff1730c5be85654364ece620902d2b0"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-FULL-MATRIX-THINKING-20261115/readiness.json",
+      "blob": "9eb6e7cc2c9d2cfff9b8d43ba3c0d712232d6e10"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-FULL-MATRIX-THINKING-20261115/results.json",
+      "blob": "29e8d22cdd47ae59bffdb3ff0875b4d6d7773086"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-INDEPENDENT-20261114/accept.json",
+      "blob": "156ac88b296ffffceb826d9e9ef23712b0580f5f"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-INDEPENDENT-LIVE-20261114/accept.json",
+      "blob": "c42de03c180c9ddf2eb82a1b4c92479bd9ea8d4c"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-LOCAL-RETEST-0308789-20261113/accept.json",
+      "blob": "0891b74761b6175575d0b41b792883e27d866b36"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-PUBLIC-PROBE-20261113/accept.json",
+      "blob": "ba4d8b908f2fbdea41b6a115caf5801440e3ae89"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-PUBLIC-PROBE-20261113/execution.json",
+      "blob": "ac60913a80f65e2d99dd34ef8650a0119a9f37b4"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-PUBLIC-PROBE-20261113/read-manifest.json",
+      "blob": "5066df039861db2e5cf5c91ba5056e75e17435dd"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-QUALITY-REPAIR-20261114/card-recovery-v8.json",
+      "blob": "cff7d709ae3c79a134da1d669e6caada7d82930a"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-QUALITY-REPAIR-20261114/card-recovery-v9.json",
+      "blob": "7a8daa764ed92547d0b684e9020c3cca138d125a"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-QUALITY-REPAIR-20261114/click-judge-contract.json",
+      "blob": "a3db86df9adc41bb3a55acd7247b14191b702c0f"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-QUALITY-REPAIR-20261114/engineering-acceptance-v9.json",
+      "blob": "a244fccf8d6617d9447dd6e5c965b6d6eb907615"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-QUALITY-REPAIR-20261114/engineering-amended-v5.json",
+      "blob": "c37e593d5c785065ae5e79913709182653b6fde6"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-QUALITY-REPAIR-20261114/engineering-context-v8.json",
+      "blob": "65efaddf5fdbdda928394ab0688cf3c3d07d8cee"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-QUALITY-REPAIR-20261114/engineering-environment-v10.json",
+      "blob": "cd0c177770919c84d9f53a035699c69d8842ba36"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-QUALITY-REPAIR-20261114/engineering-formats-v2.json",
+      "blob": "1f1ac0515bcb3c24eaa7de7e8b3914ff40db7cf7"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-QUALITY-REPAIR-20261114/engineering-readiness-v4.json",
+      "blob": "9203cffbaac07a60dd9d8edce8fa3aae656e1799"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-QUALITY-REPAIR-20261114/engineering-registration-v3.json",
+      "blob": "57d5ea3c4c45822fba26bc7d8f93fe9dc89e08b6"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-QUALITY-REPAIR-20261114/engineering.json",
+      "blob": "b1e6239c6bc4095e56f07fbdb5f9db66ef5b7981"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-QUALITY-REPAIR-20261114/full-readiness-v10.json",
+      "blob": "0a1fa64fc2be764b9596a171595f78c5b44605a8"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-QUALITY-REPAIR-20261114/full-readiness-v4.json",
+      "blob": "74357a713916fcac7199910edfd471dcb0e6eb40"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-QUALITY-REPAIR-20261114/full-readiness-v5.json",
+      "blob": "58bdc045045d1a1d1714477ca58e31025b2529ac"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-QUALITY-REPAIR-20261114/full-readiness-v8.json",
+      "blob": "89e66f519c253c959a06999407f902067801e606"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-QUALITY-REPAIR-20261114/full-readiness-v9.json",
+      "blob": "7c18f1dc3afa4b0fa94e259d416082ef0d16369d"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-QUALITY-REPAIR-20261114/public-failure-evidence-v10.json",
+      "blob": "103bc95b9e300cc1996dc643a73f01620be96196"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-QUALITY-REPAIR-20261114/real-development-v4.json",
+      "blob": "1427f31c572d7b19eeffa42aafad44aac6a2e904"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-QUALITY-REPAIR-20261114/real-development-v5.json",
+      "blob": "c34be0af48f5b87d1271e454adb367354436cf8b"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-QUALITY-REPAIR-20261114/real-development-v8.json",
+      "blob": "7df7655c957648f7a4a79efed426d554c7705a82"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-QUALITY-REPAIR-20261114/real-quality-v10.json",
+      "blob": "485e0a0ee09487441fb93b273aa4b59fffc27bac"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-QUALITY-REPAIR-20261114/real-quality-v9.json",
+      "blob": "382e319b54cfb40869b1078dfa9839058b948772"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-RUNTIME-REPAIR-20261113/accept.json",
+      "blob": "c5cccd48b7521e50c6a83247621d53248f71c4e9"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/H12-RUNTIME-REPAIR-20261113/requests-quoted-content-type-diagnosis.json",
+      "blob": "ca5c748d9fd8e8c3ff4127c798da5a02239379a2"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H00/accept.json",
+      "blob": "266a2ea8672281ca4c4772d72ba63b8217f42099"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H01/accept.json",
+      "blob": "317d5cb5ae37c3e5fba6e10e1de8f9c8ccbfb547"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H02/accept.json",
+      "blob": "3094eb9d7ebd749105adf3ad8866e0d705635a6a"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H03/accept.json",
+      "blob": "67faa64503d5a0eac3d9d6f5869cfe54d068c5f7"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H04/accept.json",
+      "blob": "85777f3de739df0f8d57490988c6e3f48c902923"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H05/accept.json",
+      "blob": "c15b605d3b3a97190a6a43fc5259397a3ae2dcf9"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H06/accept.json",
+      "blob": "705c5e8545d6200022e7c7c1861fd98a0a4a4eb4"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H07/accept.json",
+      "blob": "aefcfadb034f3317eefcaca17c80c1492003de35"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H08/accept.json",
+      "blob": "f71bd9999955b9129486789bfc098beaef14d65a"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H09/accept.json",
+      "blob": "33a5669f6516494313201a863e3c0e1ad426b5f4"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H09/workspace-hash-recheck-20261111.json",
+      "blob": "84bc55ec70fe5340194e12f20116e82de84abbf4"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H10/accept.json",
+      "blob": "ec0c2b23a647a15ddb36c527c736e58266137b09"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H10/independent-recheck-20261111T104041Z-supplement.json",
+      "blob": "367b1f5bfde4a657be9068a15e6fec51a618b193"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H10/independent-recheck-20261111T104041Z.json",
+      "blob": "9c8860a6a62710a18423fe71cbfa63a995c1627b"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H10/independent-recheck-20261111T104754Z.json",
+      "blob": "d08a9f252573607c13eb54d91d1f92e8edc23702"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H10/repair-c140dad-independent-recheck-20261111T120756Z.json",
+      "blob": "6ca3894ac1f1a28ef55fe2e3ff2928662ddaf3c7"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H10/repair-c140dad.json",
+      "blob": "48d7dd97ff1729a1ab26558b8903927b73fbdb7d"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H11/accept.json",
+      "blob": "1bc6337e36ad098778406c66d44691e421a0f0d6"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H11/independent-recheck-20261111T134513Z.json",
+      "blob": "4a5cc909f00d5ed0ead1101272f3bc83423c830e"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-ENV/accept.json",
+      "blob": "22ab0a0fde1443fec620739ec1f473d034eb76cc"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R00/accept.json",
+      "blob": "2d514112d72f8331ce8e97f1ae32f8e1cd5c77d2"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R00/baseline.json",
+      "blob": "22c549ec8ce69aae90647a9d63f4ec838ef783e1"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R00/basis-differences.json",
+      "blob": "0a1cdfbf8d1373f9356ffbaee8279ac2d25a9b5a"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R00/commands.json",
+      "blob": "06c5804de77f41280a6d5a6f91f0f98957228da0"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R00/diagnostic-fixtures/public/contract-loss.json",
+      "blob": "277b70abe1358aed11f5eb126690a292187a6e04"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R00/diagnostic-fixtures/public/feature-red-baseline.json",
+      "blob": "dca4e8e281b8be00c70a6281b6faa090e9f585fd"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R00/diagnostic-fixtures/public/invalid-tool-call.json",
+      "blob": "1dc234e61776a90b34693655f6064e95b5aa9d40"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R00/diagnostic-fixtures/public/output-truncated.json",
+      "blob": "b13e0effccfb9c246c6be1e026c8c19105b55f9c"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R00/diagnostic-fixtures/public/path-denied.json",
+      "blob": "7a14844d074cbba2fe348771f59ae7897de8549a"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R00/diagnostic-fixtures/public/ready-missing.json",
+      "blob": "b3c20ff8ac3dab9972e6d4888402623462962ca9"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R00/diagnostic-fixtures/public/refactor-structure.json",
+      "blob": "929d06f7b6fabf4deabe4a05f57eb4b9c02c5588"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R00/diagnostic-fixtures/public/regression-not-run.json",
+      "blob": "5463790cde98bf9065be62a2783a486a76fbb6ca"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R00/diagnostic-fixtures/replay-results.json",
+      "blob": "746954175d475e050dd292e4b75e59914e7eb468"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R00/documentation-seal.json",
+      "blob": "0002087b30070ba0b99014bc708fcf6dd95942df"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R00/evidence-manifest.json",
+      "blob": "6bbe26c94d9a1e2446af7e1aab2608f290262483"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R00/h12-case-index.json",
+      "blob": "976c2ffff0cccbc444286797310b4ed733f615f7"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R00/source-manifest.json",
+      "blob": "ac504144a2dbdbd42889ae0509cafe8969031ad4"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R00/test-results.json",
+      "blob": "e19552293c8c44d2280a1e54c9fa19ce8722d9fc"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R01/accept.json",
+      "blob": "f9f48538194f421335564976ac647e2db2df036d"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R02/accept.json",
+      "blob": "067829c8c7bd53a6b9d47f698171631503623462"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R03/accept.json",
+      "blob": "d8bd67eda8e7c9730a7c72cde0c54c7bcede1f0f"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R04/accept.json",
+      "blob": "58903b4e9201638cbb1d1b71cdf405305f05adce"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R04/cases.json",
+      "blob": "e449aebf8eb1cfa9b31c772c7d90805fc1a1ee13"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R04/delivery-manifest.json",
+      "blob": "af0fa62d86b5c4a525dca0a3fa88696f8646bb0c"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R05/accept.json",
+      "blob": "a9b9974ea224169e82690dcc46f790632ac322aa"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R05/cases.json",
+      "blob": "4536a7a75fd86da92819bbfe57671221610464a3"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R05/delivery-manifest.json",
+      "blob": "ce8193badd120d20d09fb303cab995edbf82bd7e"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R06/accept.json",
+      "blob": "c7ca728c18f37600c284787cd5650672a3bff5d3"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R06/cases.json",
+      "blob": "5bbcab751106b34148d4711614d7c1074bbc8a32"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R06/delivery-manifest.json",
+      "blob": "7e89c1211372dbdd8c8586ec3271f90dcc174214"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R07/accept.json",
+      "blob": "67c197539ae03fe577f31af27e04f718f6c8aeee"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R07/cases.json",
+      "blob": "4bca87e10a1b4316b411760d6dfe99cf779c6e6f"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R07/delivery-manifest.json",
+      "blob": "8d57e8d01bd19ac345110b80bdd1a95bc6c63a0e"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R08-ENTRY-REPAIR/accept.json",
+      "blob": "af7d4cfefce652a04040ad1b99c5c390ff21054e"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R08-ENTRY-REPAIR/cases-exact-nodeids.json",
+      "blob": "18e1475468b86e4cbef7900fdd134badaddeed2d"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R08-FORMAL-20261118/accept.json",
+      "blob": "58fc73b594816b9d683af4683f449496e94c030f"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R08-FORMAL-20261118/independent-review.json",
+      "blob": "224a9c20174af798a350d8e850514b898844c7e7"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R08-READ-SIZE/accept.json",
+      "blob": "489cda4318691cef221c05da4c2e7b3552f18ab0"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R08-REMAINING/accept.json",
+      "blob": "71fefb115cff8d814500c8bf97385e141a16828e"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R08-TARGETED-V2/accept.json",
+      "blob": "ca631e5542c268b7e7a9d77031212423856c49f0"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-R08/accept.json",
+      "blob": "daed836db5ffc9722928da95b1a91e59c02729c6"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-REPAIR/accept.json",
+      "blob": "0330133df968d3ca464115f33d5c1a9f9f66fafb"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12-V2-QUALITY/accept.json",
+      "blob": "1944f7f03d9e1233317e3dee72c6f948d97a9099"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H12/accept.json",
+      "blob": "6edec75ad44c57bb2ee546b6091cd1d89a088fb5"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H13/accept.json",
+      "blob": "b9bbff4e1345bd649cbceaf51bdf6aa68a6d0a2a"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H13/independent-20261118.json",
+      "blob": "eed2658e8f6d6e72e08be9bb5ed4594fc267747b"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H13/integration.json",
+      "blob": "77edbaac70bc0ed6a686eb7791cfb34d842f5a1b"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H14/accept.json",
+      "blob": "17ef9abc432a3241dc5730d814a0c84cf90766b2"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H14/independent-20261118.json",
+      "blob": "7b5e2ad3bd4817eca134612809c9dc7b2e2695b5"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H15/accept.json",
+      "blob": "8423156f5f5e9bc89e52c7cf3f1f68f8b64a95bd"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H15/independent-20261118.json",
+      "blob": "20931cd36817ec8ebd56837356203fb6fc1d0887"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H16/accept.json",
+      "blob": "8e12bf62d804fe036e48f42bb3e1f1222c9e464e"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H16/independent-20261118.json",
+      "blob": "3dff9daaf9d2535928464b2318bdc6b136f235d0"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H17/accept.json",
+      "blob": "f422cb779131b16ccfafa440af5c55fcf6feff32"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H17/independent-20261119.json",
+      "blob": "0d7e95ce4b00ae825350dce49cd1a34aa6435435"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H18/accept.json",
+      "blob": "403f18e6cb555c22d7737efbfe368530f3526c79"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H18/independent-20261119.json",
+      "blob": "cf1dc7d40e898602e63df85443eb86c8eaa475da"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H18/publish-retry-20261119.json",
+      "blob": "2f2737706b921f61a95d89878820e5bae4536e90"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H18/publish-retry-independent-20261119.json",
+      "blob": "725c8ec9acd7ddfb349740b138982d9fe47fe183"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H18/restore-retry-20261119.json",
+      "blob": "3eff00f1fd9437cc9258d7027ccf83d70e5ea9e5"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-H18/restore-retry-independent-20261119.json",
+      "blob": "ee7d97e7b9d756b9cd415401ecb433a4394e79ff"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/HV4-PRODUCT/accept.json",
+      "blob": "a00ee25efb3017297ca73d6173cfc778952ddd67"
+    },
+    {
+      "path": "v3/docs/harness-v4/accept/TOPBAR-HISTORY-20261113.json",
+      "blob": "b4195950ef843186c2c7a2ed8229c19385886fe4"
+    },
+    {
+      "path": "v3/docs/harness-v4/adr/HV4-H01-deepseek-harness.md",
+      "blob": "b8205202aaf11aa6701b096ab3b7c79edb7f81e7"
+    },
+    {
+      "path": "v3/docs/harness-v4/adr/HV4-H02-model-protocols.md",
+      "blob": "6d6b347f06e21f8f82db06960a7ba2ae729635fa"
+    },
+    {
+      "path": "v3/docs/harness-v4/plan.json",
+      "blob": "99d132490784f32d056dd66fcba2fea62d08d778"
+    },
+    {
+      "path": "v3/docs/harness-v4/protocol/r04/entrypoint-batch.schema.json",
+      "blob": "f18671e8787203236dd7d9e5c27b76ab35d09b0b"
+    },
+    {
+      "path": "v3/docs/harness-v4/protocol/r04/process-port-receipt.schema.json",
+      "blob": "2d634d3b1f2f5f1a9afd66420f3441f6ad158410"
+    },
+    {
+      "path": "v3/docs/harness-v4/protocol/r04/ready-receipt.schema.json",
+      "blob": "1c92f1a3e357ab9435570be41a590d20537c47e6"
+    },
+    {
+      "path": "v3/docs/harness-v4/protocol/r04/service-evidence.schema.json",
+      "blob": "e9b1acb5a088d730a1e066aa927711cea68a471e"
+    },
+    {
+      "path": "v3/docs/harness-v4/protocol/r05/DimensionReceipt.schema.json",
+      "blob": "9d256aa431ca59d295e525239ab9eab818b890b3"
+    },
+    {
+      "path": "v3/docs/harness-v4/protocol/r05/IndependentComparison.schema.json",
+      "blob": "a90f6be0ad0ed5c709843f48113d68ceea803133"
+    },
+    {
+      "path": "v3/docs/harness-v4/protocol/r05/IndependentEvaluationEvidence.schema.json",
+      "blob": "490cb56483e79fda2894a42c004b82a11aa35870"
+    },
+    {
+      "path": "v3/docs/harness-v4/protocol/r05/IndependentRegressionReport.schema.json",
+      "blob": "49bc4b6bab7a34b5de86ed686869130993996ec7"
+    },
+    {
+      "path": "v3/docs/harness-v4/protocol/r05/IndependentTestReceipt.schema.json",
+      "blob": "f5b7a75a9d98ee82464f12cae12d679b9de5dc93"
+    },
+    {
+      "path": "v3/docs/harness-v4/protocol/r05/JudgeAttestation.schema.json",
+      "blob": "38269f98467980549391bdf30579e5054f0d58a9"
+    },
+    {
+      "path": "v3/docs/harness-v4/protocol/r05/RegressionPlan.schema.json",
+      "blob": "fe8aee50f18958751f7a4f9caf166b67fbf363b1"
+    },
+    {
+      "path": "v3/docs/harness-v4/protocol/r06/BaselineAssessment.schema.json",
+      "blob": "17b37f54a7c2fdd3243512bb79d18fb06acb23d8"
+    },
+    {
+      "path": "v3/docs/harness-v4/protocol/r06/IndependentEvaluationEvidence.schema.json",
+      "blob": "1ce17ef208ea4ae48a8ca251cfa6dca77911a570"
+    },
+    {
+      "path": "v3/docs/harness-v4/protocol/r06/JudgeAttestation.schema.json",
+      "blob": "7c5c1c3a05a228e6a72fc54621935ce75e2277f4"
+    },
+    {
+      "path": "v3/docs/harness-v4/protocol/r06/JudgeTraceabilityManifest.schema.json",
+      "blob": "52d4e9f1c71d1928692301a46298e0fb61993a94"
+    },
+    {
+      "path": "v3/docs/harness-v4/protocol/r06/README.md",
+      "blob": "91808d7fbc1900c42f31d114e7d00980ad2bd493"
+    },
+    {
+      "path": "v3/docs/harness-v4/protocol/r06/SemanticRevision.schema.json",
+      "blob": "2f436d99c122df955e6f11420a3d17449e517b81"
+    },
+    {
+      "path": "v3/docs/harness-v4/protocol/r06/SharedHelperSpec.schema.json",
+      "blob": "1456826545cc4f4665a2ffff01a4e2bd5074f8bc"
+    },
+    {
+      "path": "v3/docs/harness-v4/protocol/r06/TaskBaselinePolicy.schema.json",
+      "blob": "0f177359fce2f0898d784be0b9db7012ca97a9d0"
+    },
+    {
+      "path": "v3/docs/harness-v4/protocol/r06/benchmark-review.json",
+      "blob": "1dda43f46e6b3968935f877e43a5dffd7a095ac5"
+    },
+    {
+      "path": "v3/docs/harness-v4/protocol/r06/public-synthetic-policy.json",
+      "blob": "bb49022bacb8c253cd816b1d2c41bc11bdca04b8"
+    },
+    {
+      "path": "v3/docs/harness-v4/protocol/r06/synthetic-traceability-example.json",
+      "blob": "f79193c9845a8a6fd0c19530143f233fda2ab007"
+    },
+    {
+      "path": "v3/docs/harness-v4/protocol/r07/ExecutionReceipt.schema.json",
+      "blob": "553a3f1a6b48afac91ae7195bdf87f8b3724be32"
+    },
+    {
+      "path": "v3/docs/harness-v4/protocol/r07/PublicFeedbackPolicy.schema.json",
+      "blob": "09ec63e4bf13bb6530957cd41206e38fff7d14e6"
+    },
+    {
+      "path": "v3/docs/harness-v4/protocol/r07/PublicTestFeedback.schema.json",
+      "blob": "b50d79955348cc2fb1d0685d64d958de636416fa"
+    },
+    {
+      "path": "v3/docs/harness-v4/protocol/r07/README.md",
+      "blob": "7ba5026f1dd27acce2731c17afe3bfcc48be5a90"
+    },
+    {
+      "path": "v3/docs/harness-v4/protocol/r07/TaskPlan.schema.json",
+      "blob": "0061931d035f1b97663395064b7ff6a5beba2b3a"
+    },
+    {
+      "path": "v3/docs/harness-v4/protocol/r07/WorkingState.schema.json",
+      "blob": "2fa4d036340d6a89db2c4f5bd1f5a8c0509c190e"
+    },
+    {
+      "path": "v3/docs/harness-v4/sources.json",
+      "blob": "e7efd8c8c3f07ef372c5fa967c518573f900cf03"
+    },
+    {
+      "path": "v3/docs/p0-commerce-runbook.md",
+      "blob": "9a1db766381242c6d0dbe917c094ce87b3af1b88"
+    },
+    {
+      "path": "v3/docs/r4-live-report.md",
+      "blob": "ea7761c091767ee63024bc5bbe3ca9cd9cf48076"
+    },
+    {
+      "path": "v3/docs/r4-runbook.md",
+      "blob": "5c80ca9c3d9ab8a2d6d06a28e56aceb96e1cd36d"
+    },
+    {
+      "path": "v3/docs/r5-live-report.md",
+      "blob": "11822982620c343d98ba54933878d8567a4cfe28"
+    },
+    {
+      "path": "v3/docs/r5-runbook.md",
+      "blob": "e3546efc6190bb94128f3dc43a032888dd184311"
+    },
+    {
+      "path": "v3/docs/r6-delivery.md",
+      "blob": "da595f1ee52af3a8fc3378c69b2d9bc82e2f3dbb"
+    },
+    {
+      "path": "v3/docs/r6-failure-matrix.md",
+      "blob": "3cc86d4dc05709f785f7b555901acffc44c35a14"
+    },
+    {
+      "path": "v3/docs/r6-runbook.md",
+      "blob": "db7a4bd03b3e1a128111251b170caeba126d786a"
+    },
+    {
+      "path": "v3/docs/repairs/COORD-20261106/README.md",
+      "blob": "c6f594fb32f8f9da99636116744aec0ae901aded"
+    },
+    {
+      "path": "v3/docs/repairs/COORD-20261106/engineering-invalidated-first-attempt.json",
+      "blob": "827d8d031e6dd0da65aa2ad78291847c542d0761"
+    },
+    {
+      "path": "v3/docs/repairs/COORD-20261106/engineering.json",
+      "blob": "492fb5871b325939cb2428c98e92ba0ded2be51d"
+    },
+    {
+      "path": "v3/docs/repairs/COORD-20261106/historical-11-reproductions.json",
+      "blob": "7101d83b7203b63daf27639ab86472da9b8cd13e"
+    },
+    {
+      "path": "v3/docs/repairs/COORD-20261106/historical-files-unchanged.json",
+      "blob": "953cea857e8f97f61b33e386408afec9cf72f78e"
+    },
+    {
+      "path": "v3/docs/repairs/COORD-20261106/issue-register.json",
+      "blob": "0b8e4c23179569cee7bc6e347ceb853afbdf752d"
+    },
+    {
+      "path": "v3/docs/repairs/COORD-20261106/publication-review.json",
+      "blob": "4de94d7351b763e6426427862ff395972e62f9c6"
+    },
+    {
+      "path": "v3/docs/repairs/COORD-20261106/v2-residual-failure.json",
+      "blob": "81484fff08ded37413dbefd8696b3a31d8652dc5"
+    },
+    {
+      "path": "v3/docs/repairs/P0-20261106/README.md",
+      "blob": "29264e28344ae767d25361f4e4f4b29e5d20f613"
+    },
+    {
+      "path": "v3/docs/repairs/P0-20261106/acceptance.json",
+      "blob": "742a966a7fa6f52ada626fb573df0edf4fcaf513"
+    },
+    {
+      "path": "v3/docs/repairs/P0-20261106/artifact-index.json",
+      "blob": "77b2d65344e389c3fe8fd12693135ac1d5cba903"
+    },
+    {
+      "path": "v3/docs/repairs/P0-20261106/draft-pr-review.md",
+      "blob": "35580eeb57e2f6273f3f080a8b0cb3a366a80e8e"
+    },
+    {
+      "path": "v3/docs/repairs/P0-20261106/engineering-final-p0-30.json",
+      "blob": "22b8f48df5991de98c07a5355108bef35d0334c7"
+    },
+    {
+      "path": "v3/docs/repairs/P0-20261106/engineering-full-404.json",
+      "blob": "a8a030474e72f0bc0c84021dd93a4a76fc4087a4"
+    },
+    {
+      "path": "v3/docs/repairs/P0-20261106/live-results.json",
+      "blob": "233e18b864cc77fecdd3a559287521eb7d7d1d80"
+    },
+    {
+      "path": "v3/docs/repairs/P0-20261107/README.md",
+      "blob": "50ed9215d22e68a39229fbd46b523ce507538bc9"
+    },
+    {
+      "path": "v3/docs/repairs/P0-20261107/acceptance.json",
+      "blob": "58b06657cfa4ae35f556f38bd2f603b6d3023b30"
+    },
+    {
+      "path": "v3/docs/repairs/P0-20261107/artifact-index.json",
+      "blob": "79abba793fa7d57d85779a9e3be054034a1d0c23"
+    },
+    {
+      "path": "v3/docs/repairs/P0-20261107/delivery-results.json",
+      "blob": "886c0b7108cf80b791706c2d09fb6059de026325"
+    },
+    {
+      "path": "v3/docs/repairs/P0-20261107/engineering-p0-30.json",
+      "blob": "a76f86ea449e7a698d4e0c9b277c6839a8167ecd"
+    },
+    {
+      "path": "v3/docs/repairs/P0-20261107/engineering-review-13.json",
+      "blob": "3c0dea7d2f7ae8491d36590cde508144e0674193"
+    },
+    {
+      "path": "v3/docs/repairs/P0-20261107/history-preserved.json",
+      "blob": "76e670d906a05f6f4008d31d8c59369af67bd582"
+    },
+    {
+      "path": "v3/docs/repairs/R6-20261103/README.md",
+      "blob": "1f5548e4a509f188ea7142a455107d9d8b294782"
+    },
+    {
+      "path": "v3/docs/repairs/R6-20261103/baseline-index.json",
+      "blob": "553d98b6325f377a2c6af2f46be9410346448f0d"
+    },
+    {
+      "path": "v3/docs/repairs/R6-20261103/before-after.json",
+      "blob": "f991d24f954e3ba2d394785e74d76fcfc9fdafc9"
+    },
+    {
+      "path": "v3/docs/repairs/R6-20261103/engineering-baseline.json",
+      "blob": "8400e4811fbdbb7acc09dc5df8a5020b7dbb6097"
+    },
+    {
+      "path": "v3/docs/repairs/R6-20261103/engineering-final.json",
+      "blob": "fa4e83501163e5651deaa574747c6c4113bb73c2"
+    },
+    {
+      "path": "v3/docs/repairs/R6-20261103/engineering-json-guard.json",
+      "blob": "eb05927f75244bea8caf1e8ff4f4966f955c24ab"
+    },
+    {
+      "path": "v3/docs/repairs/R6-20261103/engineering-v4.json",
+      "blob": "109d0416672796253ae800898f4b99538a099ca9"
+    },
+    {
+      "path": "v3/docs/repairs/R6-20261103/engineering-v5-first-attempt.json",
+      "blob": "78e1621fa39aa0a0385cdd513def037065ac518e"
+    },
+    {
+      "path": "v3/docs/repairs/R6-20261103/engineering-v5.json",
+      "blob": "e208a9f0747be961d7f603da33f06be52915f2de"
+    },
+    {
+      "path": "v3/docs/repairs/R6-20261103/engineering-v6.json",
+      "blob": "670fdd349d1d99410a50818871ae46d2f4d265e9"
+    },
+    {
+      "path": "v3/docs/repairs/R6-20261103/expert-malformed-reproduction.json",
+      "blob": "97e7255a24623b3e49be52318dadb7c93f976b2a"
+    },
+    {
+      "path": "v3/docs/repairs/R6-20261103/failures.json",
+      "blob": "a5f24197a518e79fd0d62dcff4ed619ea2391ba3"
+    },
+    {
+      "path": "v3/docs/repairs/R6-20261103/final-assessment-before-host-acceptance.json",
+      "blob": "35c713fc062e2b043e5bcc8ff6c00f2dd2c40587"
+    },
+    {
+      "path": "v3/docs/repairs/R6-20261103/final-assessment.json",
+      "blob": "3fd1748a1388852896f562e972995fc331deeca1"
+    },
+    {
+      "path": "v3/docs/repairs/R6-20261103/host-capability-check-20261105.json",
+      "blob": "d0ef57dc6f97b12ea3572539f25125f61b3af918"
+    },
+    {
+      "path": "v3/docs/repairs/R6-20261103/interim-v3.json",
+      "blob": "6f2097d04a88e5878da0415cc10cdf16d2a2d952"
+    },
+    {
+      "path": "v3/docs/repairs/R6-20261103/issue-register-before-host-acceptance.json",
+      "blob": "edd6f115efc92831254cd64dbae67a063cee1ac6"
+    },
+    {
+      "path": "v3/docs/repairs/R6-20261103/issue-register.json",
+      "blob": "982d1a2d43321b70b6173e308f26a11ddbb433e2"
+    },
+    {
+      "path": "v3/docs/repairs/R6-20261103/json-mode-incident.md",
+      "blob": "fe4854f04213272192f8aceed7a8e4e464549e3f"
+    },
+    {
+      "path": "v3/docs/repairs/R6-20261103/next-proposal.json",
+      "blob": "99c94ba8858aad5a43fa79e2d078934aae216fb6"
+    },
+    {
+      "path": "v3/docs/repairs/R6-20261103/next-proposal.md",
+      "blob": "acf8e021a0152f974ed0581cc9d43ce237a27ad5"
+    },
+    {
+      "path": "v3/docs/repairs/R6-20261103/numeric-reproduction.json",
+      "blob": "73ccc495309aebc9c6ac7b3b888f33c3e2729d2d"
+    },
+    {
+      "path": "v3/docs/repairs/R6-20261103/provider-usage-20261105-audit.json",
+      "blob": "37076af8436927f8e81190aadef127f9c838cf28"
+    },
+    {
+      "path": "v3/docs/repairs/R6-20261103/source-change-history.json",
+      "blob": "5ae999d27ffe12c4b930d7777a90657a81b155f9"
+    },
+    {
+      "path": "v3/docs/repairs/R6-20261103/v4-assessment-narrative.md",
+      "blob": "d0f35a53064791eea0e82cef491ac089b0c16197"
+    },
+    {
+      "path": "v3/docs/repairs/R6-20261103/v4-before-after.json",
+      "blob": "8023b8e2ad28c50d48edacb06d149ba791daedf0"
+    },
+    {
+      "path": "v3/docs/repairs/R6-20261103/v4-final-assessment.json",
+      "blob": "9527f5974248274aa2ef5f6c5ecb32da425f4054"
+    },
+    {
+      "path": "v3/docs/repairs/R6-20261103/v5-incident.json",
+      "blob": "ed3f311018ba8eb8770c2aabab1bc7647531adf9"
+    },
+    {
+      "path": "v3/docs/repairs/R6-20261103/v5-proposal-original.json",
+      "blob": "65ea72c0c1b6e33ef754ee5b2fda0d6848970a9f"
+    },
+    {
+      "path": "v3/docs/repairs/R6-20261103/v6-residual-reproductions.json",
+      "blob": "6fbba1dfa0e5f8544c50e41fb6e21b1388209f72"
+    },
+    {
+      "path": "v3/docs/repairs/R6-20261103/v6-vs-original.json",
+      "blob": "f991d24f954e3ba2d394785e74d76fcfc9fdafc9"
+    },
+    {
+      "path": "v3/docs/repairs/R6-20261103/v6-vs-v4.json",
+      "blob": "c01d9da20dde699740321f6318ba930dffc63a8a"
+    },
+    {
+      "path": "v3/docs/repairs/R6-HOST-20261105/README.md",
+      "blob": "092f90fa02569fcfee9f292d30adbfe0f5b059c4"
+    },
+    {
+      "path": "v3/docs/repairs/R6-HOST-20261105/acceptance.json",
+      "blob": "a3e22fc0f79ae53de1cfe17a605d62c8f42a5b7c"
+    },
+    {
+      "path": "v3/docs/repairs/R6-HOST-20261105/engineering-checks.json",
+      "blob": "f0902936a94d87c2a11f00db86734383382df372"
+    },
+    {
+      "path": "v3/docs/repairs/R6-HOST-20261105/failure-history.json",
+      "blob": "b3d4866fe8606b2657f3800aa95f60701278cced"
+    },
+    {
+      "path": "v3/docs/repairs/R6-HOST-20261105/guest-check-versions.json",
+      "blob": "c1c7715d1e7563826180700f431cc87e21168dd3"
+    },
+    {
+      "path": "v3/docs/repairs/R6-HOST-20261105/host-result.json",
+      "blob": "b2b60bbcfadcd4bdbe9b2b0785ed6710ac264766"
+    },
+    {
+      "path": "v3/docs/repairs/R6-HOST-20261105/image-build.json",
+      "blob": "00891df6f67f594775f1580f816bd6c7dfa19271"
+    },
+    {
+      "path": "v3/docs/repairs/R6-HOST-20261105/overlay-module.json",
+      "blob": "5d0b2e694964206780fe79391955584c023fb1fe"
+    },
+    {
+      "path": "v3/docs/repairs/R6-HOST-20261105/sandbox-cache-variant.json",
+      "blob": "b269f749c654f559c201f3a8fbd3bea64444337b"
+    },
+    {
+      "path": "v3/docs/repairs/R6-HOST-20261105/supervision-regression.json",
+      "blob": "6c4cac3611195f3207ce6369c759f411227f0f38"
+    },
+    {
+      "path": "v3/docs/repairs/R6-HOST-20261105/v2-engineering.json",
+      "blob": "047599283c63447876d448fb9581d640da5ed5ff"
+    },
+    {
+      "path": "v3/docs/repairs/STARTUP-20261112.md",
+      "blob": "80e7bc2e7ba04a095ac17f2e6b1a52ae9bbe6ec7"
+    },
+    {
+      "path": "v3/docs/repo-analysis.md",
+      "blob": "82c1bcc026f473df556ac3413c275694b7f0502c"
+    },
+    {
+      "path": "v3/docs/reports/20261106/MGAR-V3.1-Technical-Report.html",
+      "blob": "66fe63505aeabbafaddc2ed0b7b491919078f7a2"
+    },
+    {
+      "path": "v3/docs/reports/20261106/MGAR-V3.1-Technical-Report.pdf",
+      "blob": "c7792ce35b2c8f71415e5ee6c1a8cd31bd0b18d0"
+    },
+    {
+      "path": "v3/docs/reports/20261106/render.json",
+      "blob": "a750f0218208075fa30009e2b03cbe1be0b0161b"
+    },
+    {
+      "path": "v3/docs/reports/20261106/report-data.json",
+      "blob": "51e821fc211bc3928b1366f7b3b73ec0a0b7e742"
+    },
+    {
+      "path": "v3/docs/reports/20261106/review.json",
+      "blob": "8dd915fb3f9f26a6a208724e1340e889cc2232ce"
+    },
+    {
+      "path": "v3/docs/retention.md",
+      "blob": "d4ea4547aa9287cecb2144c5c696c5be931a5fda"
+    },
+    {
+      "path": "v3/docs/v33/A01-repository-workspace.md",
+      "blob": "29db1858f747fd758f507fba74c20f605bb674b1"
+    },
+    {
+      "path": "v3/docs/v33/A02-scanners.md",
+      "blob": "a89ed78a1f99a3a7ba2e7f4400dfa602b3e0af35"
+    },
+    {
+      "path": "v3/docs/v33/A03-findings.md",
+      "blob": "e351f2e88c803c991358e6580a49ab3d943f2e85"
+    },
+    {
+      "path": "v3/docs/v33/A04-defect-verifier.md",
+      "blob": "9e1e679bfb6bc32c3dd34a0951046a21da9f094c"
+    },
+    {
+      "path": "v3/docs/v33/ARCHITECTURE_CONTRACT.md",
+      "blob": "9a18db2d3a7e628c54cdf18b357da43cb875bc7c"
+    },
+    {
+      "path": "v3/docs/v33/E01-real-repository-evaluation.md",
+      "blob": "603487cad26e637ed5f75c58281fd2bc31d72f15"
+    },
+    {
+      "path": "v3/docs/v33/E02-security-failure-recovery.md",
+      "blob": "bf4f6a3218138117c9747871de760172c7747b56"
+    },
+    {
+      "path": "v3/docs/v33/M01-memory-schema.md",
+      "blob": "00233932389a0d69024e5e250aa997c476329641"
+    },
+    {
+      "path": "v3/docs/v33/M02-memory-write.md",
+      "blob": "604b7eef46e1563d7de42f8195fac7327dcbb322"
+    },
+    {
+      "path": "v3/docs/v33/M03-memory-retrieval.md",
+      "blob": "252327cd10d6461abb29de121910461d0691631d"
+    },
+    {
+      "path": "v3/docs/v33/M04-context-compaction.md",
+      "blob": "6cc2fc272349dd9b43f9eb8c3c56625180edca9a"
+    },
+    {
+      "path": "v3/docs/v33/M05-memory-agent-loop.md",
+      "blob": "e721c94d08762a71b11ffd45b28fdd1471b67aab"
+    },
+    {
+      "path": "v3/docs/v33/R01-repair-handoff.md",
+      "blob": "76ce246351d7db4d679c5ad09cad5a66a54bbb4f"
+    },
+    {
+      "path": "v3/docs/v33/R02-patch-workspace.md",
+      "blob": "bd9ad568b850b88f9bd939f4bc0a141d405253c5"
+    },
+    {
+      "path": "v3/docs/v33/R03-sandbox-executor.md",
+      "blob": "bc0903cbdd9198c72f5c4003872fb1a4ea0baae7"
+    },
+    {
+      "path": "v3/docs/v33/R04-repair-agent.md",
+      "blob": "c6a5ae9ca3f68665b6a5cf85d887cd800f6ccd2a"
+    },
+    {
+      "path": "v3/docs/v33/R05-pr-delivery.md",
+      "blob": "8ca34b144fd36e43bcc6c72b70d1a323a6b88188"
+    },
+    {
+      "path": "v3/docs/v33/U01-repository-workbench.md",
+      "blob": "d2ee9b3b0b48757a50512463a8f9a3591ba3d390"
+    },
+    {
+      "path": "v3/docs/v33/accept/A01/accept.json",
+      "blob": "97ad020ce99f7ea783df7a60a8f20015a8875877"
+    },
+    {
+      "path": "v3/docs/v33/accept/A02/accept.json",
+      "blob": "82b9085ed7c5643f6c9796a0cd729c5e449526a4"
+    },
+    {
+      "path": "v3/docs/v33/accept/A03/accept.json",
+      "blob": "57d44d03ca51ac82aacf6aac5d30c4cdbf8a9984"
+    },
+    {
+      "path": "v3/docs/v33/accept/A04/accept.json",
+      "blob": "cf752e602ba1a9ddd618b8bda519299473cfd870"
+    },
+    {
+      "path": "v3/docs/v33/accept/B00/accept.json",
+      "blob": "c2cc76e54bee717dde352e1f623f8a30143fec46"
+    },
+    {
+      "path": "v3/docs/v33/accept/E01/accept.json",
+      "blob": "9dc7029a9f64eec7fabbf80139f6a3fd9c81c32f"
+    },
+    {
+      "path": "v3/docs/v33/accept/E02/accept.json",
+      "blob": "00473cb3da8ad8ef467bf13383ef1df111c5c692"
+    },
+    {
+      "path": "v3/docs/v33/accept/M01/accept.json",
+      "blob": "715741b99f2a3c9d4b74d2ef1236c48daa9e1e56"
+    },
+    {
+      "path": "v3/docs/v33/accept/M02/accept.json",
+      "blob": "bcbe384e64bc18f6d295be994d24ef26947df414"
+    },
+    {
+      "path": "v3/docs/v33/accept/M03/accept.json",
+      "blob": "bc0b6c1a9952c87b02453fc360be7cd0c6cd589d"
+    },
+    {
+      "path": "v3/docs/v33/accept/M04/accept.json",
+      "blob": "89c12911bb54873c84f7126943b65433fb05c6be"
+    },
+    {
+      "path": "v3/docs/v33/accept/M05/accept.json",
+      "blob": "4bbc921e5642256ea95e868c323133e847c2be0c"
+    },
+    {
+      "path": "v3/docs/v33/accept/R01/accept.json",
+      "blob": "99f792429e4f701d1e12b844c15e8dd478cd569f"
+    },
+    {
+      "path": "v3/docs/v33/accept/R02/accept.json",
+      "blob": "2e30a7a34fe45f837c8ab3e8541b7000d16d15c6"
+    },
+    {
+      "path": "v3/docs/v33/accept/R03/accept.json",
+      "blob": "9e4c886d4de6deb5deba26127861b55324caa028"
+    },
+    {
+      "path": "v3/docs/v33/accept/R04/accept.json",
+      "blob": "461da9ae20558ba01f7d8f8e6a69892cb7644c3c"
+    },
+    {
+      "path": "v3/docs/v33/accept/R05/accept.json",
+      "blob": "1e6d1aa9fde0afd083ef0b222251d84443a43d8b"
+    },
+    {
+      "path": "v3/docs/v33/accept/U01/accept.json",
+      "blob": "2ee131959707df94ed9c712abb83dfee809b622a"
+    },
+    {
+      "path": "v3/docs/v35/ARCHITECTURE_CONTRACT.md",
+      "blob": "a8d98732a24dd9e12947cc0af4e1e9cd86573b7c"
+    },
+    {
+      "path": "v3/docs/v35/BASELINE.md",
+      "blob": "6bff227167e39a171747b57bf9b1fb4e7099a614"
+    },
+    {
+      "path": "v3/docs/v35/DEMO.md",
+      "blob": "c8064a13b5ba9daaa64def840ba131eed5096e0b"
+    },
+    {
+      "path": "v3/docs/v35/EVALUATION_INDEX.md",
+      "blob": "b515236b98d8699550cd5fbc403349b59878b74d"
+    },
+    {
+      "path": "v3/docs/v35/PRODUCT.md",
+      "blob": "039cb818d9d7b07b3956b775528cd398b46573a2"
+    },
+    {
+      "path": "v3/docs/v35/TASK_QUEUE.md",
+      "blob": "1c85696d50ebbd0ea6fe10c50322d9324989dfb2"
+    },
+    {
+      "path": "v3/docs/v35/accept/V35-B00/accept.json",
+      "blob": "f54ee02277f40de7d39eb34ff009462c538af415"
+    },
+    {
+      "path": "v3/docs/v35/accept/V35-D01/accept.json",
+      "blob": "79451ad9dd9e2243119c730f79bb28b429667923"
+    },
+    {
+      "path": "v3/docs/v35/accept/V35-E01/accept.json",
+      "blob": "9bf7591560eca33deae761a9d353670e01253924"
+    },
+    {
+      "path": "v3/docs/v35/accept/V35-E02/accept.json",
+      "blob": "ab00569b890e636c3bb7f093a031429493d01403"
+    },
+    {
+      "path": "v3/docs/v35/accept/V35-E03/accept.json",
+      "blob": "12c1064800ccfd473784a89adf65337d7f9391d8"
+    },
+    {
+      "path": "v3/docs/v35/accept/V35-M01/accept.json",
+      "blob": "7bf22b9d582b78639ec172e2b304d3c78f506126"
+    },
+    {
+      "path": "v3/docs/v35/accept/V35-M02/accept.json",
+      "blob": "99e8e9a6154f90f3040c90cdf8ba35a7463d1578"
+    },
+    {
+      "path": "v3/docs/v35/accept/V35-R01/accept.json",
+      "blob": "de74b1d5977e7b18ab97dcaf2676218bf2a3ee76"
+    },
+    {
+      "path": "v3/docs/v35/accept/V35-R02/accept.json",
+      "blob": "4197c9acc1ce4d47e1455af278f8dda9cbd743e0"
+    },
+    {
+      "path": "v3/docs/v35/accept/V35-R03/accept.json",
+      "blob": "1b4d38bd37a6fd8df8887f30bac5a193fa1b3698"
+    },
+    {
+      "path": "v3/docs/v35/accept/V35-R04/accept.json",
+      "blob": "a08ba2b8ac04786bb8f3a573f76478fb9e90f078"
+    },
+    {
+      "path": "v3/docs/v35/accept/V35-R05/accept.json",
+      "blob": "426471f74363c9f6be84f79a5670102cc45ecb70"
+    },
+    {
+      "path": "v3/docs/v35/accept/V35-U01/accept.json",
+      "blob": "69f9e988b373b1a57a7619a04eb097a4bf6249c2"
+    },
+    {
+      "path": "v3/docs/v35/accept/V35-U02/accept.json",
+      "blob": "daf33f501423b5a4c01c648aa08e1b7aa66b6e0b"
+    },
+    {
+      "path": "v3/docs/v35/accept/V35-X01/accept.json",
+      "blob": "e917d25579468846cfeb0e943cbd0324b237887a"
+    },
+    {
+      "path": "v3/docs/v35/cards/V35-B00.md",
+      "blob": "1384e3a409c3ae3fc332341f820e0e22c0695a5b"
+    },
+    {
+      "path": "v3/docs/v35/cards/V35-D01.md",
+      "blob": "10548b3ad5e52c1cf67c8ce9e18a442df95c7127"
+    },
+    {
+      "path": "v3/docs/v35/cards/V35-E01.md",
+      "blob": "0c6f53f647fcbf5af3de024d9c999e5241b168fc"
+    },
+    {
+      "path": "v3/docs/v35/cards/V35-E02.md",
+      "blob": "f0c8d412bbefb9ae5eccde85ed5aaf94d21124ae"
+    },
+    {
+      "path": "v3/docs/v35/cards/V35-E03.md",
+      "blob": "7df0083e02b9aa7c43159ef6f71a63eb07e61ce7"
+    },
+    {
+      "path": "v3/docs/v35/cards/V35-M01.md",
+      "blob": "a954e0db4fd271123636334fe0d8bed37ca39d0c"
+    },
+    {
+      "path": "v3/docs/v35/cards/V35-M02.md",
+      "blob": "6ea82a3987dbe89a0fa43f0fb0a60b03e31dba3e"
+    },
+    {
+      "path": "v3/docs/v35/cards/V35-R01.md",
+      "blob": "836d8a664c2191d17df129f7f32aaf8467b7af9c"
+    },
+    {
+      "path": "v3/docs/v35/cards/V35-R02.md",
+      "blob": "55ae467bd184c30fac83b3c46f0ba261b3f14d45"
+    },
+    {
+      "path": "v3/docs/v35/cards/V35-R03.md",
+      "blob": "bed9851f79eaddc7e121efef6630b4776a641fb8"
+    },
+    {
+      "path": "v3/docs/v35/cards/V35-R04.md",
+      "blob": "06cb105faf0752f6cba91cb9522b0ea555367fa9"
+    },
+    {
+      "path": "v3/docs/v35/cards/V35-R05.md",
+      "blob": "0e2fa54713ae1317cacae0ced0611421134c1add"
+    },
+    {
+      "path": "v3/docs/v35/cards/V35-U01.md",
+      "blob": "cd7fbd20e926f9b4448270a46a6c0b227bb61af6"
+    },
+    {
+      "path": "v3/docs/v35/cards/V35-U02.md",
+      "blob": "2c25d5e127bf51b662318d7632de26b9d4f634d2"
+    },
+    {
+      "path": "v3/docs/v35/cards/V35-X01.md",
+      "blob": "1f7a52f512d4cc093e3df2ccbee06a06741ff919"
+    },
+    {
+      "path": "v3/docs/versions.md",
+      "blob": "f2c14f4f7624ef7cb57a51a959915e9ba9beadfe"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/PLAN_V1.0.md",
+      "blob": "9ec884affb7d60d1edc65a5b9dcbacf0017e8235"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/README.md",
+      "blob": "7002ca3732bb1c33d826ec9aa32fbbf5c9b78d44"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase0/acceptance.json",
+      "blob": "34774318c3d51f78ef8e80c9fc97cdb9d06a7faa"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase0/cases.jsonl",
+      "blob": "713c94f59383b6dc29d19b6fdbfe7c6fa10c4dc9"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase0/failures.md",
+      "blob": "39458b8ecfae8e7b21ce77566bc1b4a135dd4954"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase0/independent_review.md",
+      "blob": "27675a3e03b7d5d010a55b81eada9c080a3ec9cf"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase0/manifest.json",
+      "blob": "5ec00dc537fcb4cece3bbe78ca3ea3de67b159b4"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase0/metrics.json",
+      "blob": "272a00f10f662a5d4a69e851a9b59a20f56a2e18"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase0/raw.jsonl",
+      "blob": "4bd2616d588cc8c74973e5129244a05cfb1ee544"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase0/report.md",
+      "blob": "feca7b5651295f8c0dea8f298d3ecf6e0b6f9ea0"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase0/verify.py",
+      "blob": "c38f7e24c159135a42b1bb1adf77257f2e4f8af2"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase1-write-repair/9455688-review/acceptance.json",
+      "blob": "c94987dc4ec54ab10274506b9659a5e44095b317"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase1-write-repair/9455688-review/metrics.json",
+      "blob": "82bd3d9c5304d8d3d4297009887be2a32f8af048"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase1-write-repair/9455688-review/preflight.json",
+      "blob": "5c5e1d7c40296a21dc1478d2f4cdc2e8018e63e3"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase1-write-repair/acceptance.json",
+      "blob": "4375912ede1312ec6e7093e3129785327f816eab"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase1-write-repair/c863196-engineering.json",
+      "blob": "be9d6fccf6231016c78d6b213fa5bf6b928bc1fc"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase1-write-repair/c863196-review/acceptance.json",
+      "blob": "9913f5f6f8279c7f89e222ad6f7c4df4a543b580"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase1-write-repair/c863196-review/aggregate.json",
+      "blob": "0763a2a9341324ce969904ce3c39906bd3a0b1ab"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase1-write-repair/c863196-review/bundle-hashes.json",
+      "blob": "44392f700f4623376e39be933922d4f35ad77fc4"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase1-write-repair/c863196-review/failures.md",
+      "blob": "55580defa1f75b5528c137565b85316c0c0bf5b2"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase1-write-repair/c863196-review/independent_review.md",
+      "blob": "8305165558abb794d29ead5920b4e1586e6af856"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase1-write-repair/c863196-review/metrics.json",
+      "blob": "712eab2bd4dc8cea90375c74cafdbf57589425b3"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase1-write-repair/c863196-review/preregistration.json",
+      "blob": "604f39ebe494e99aea487fcf95b4d11a8610f47c"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase1-write-repair/c863196-review/report.md",
+      "blob": "371078d19801af99e6de13f5be87e384e3f193d6"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase1-write-repair/cases.jsonl",
+      "blob": "2765a94547d7fc1ec492c0d6423dfcf3b5ebee6c"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase1-write-repair/failures.md",
+      "blob": "5bd8cbc00ebaf60de51aa705c1608baa04f28edf"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase1-write-repair/independent_review.md",
+      "blob": "c0e93d9b0faf41cf22e1d44932bdbd5aedb502c0"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase1-write-repair/manifest.json",
+      "blob": "2443c10679062612ff2c09edb8a11c275aaf0797"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase1-write-repair/metrics.json",
+      "blob": "f334b8eb17b147f2d159c09c80140c63dba9c2c1"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase1-write-repair/protocol-followup.md",
+      "blob": "5e8e1159dbd42fc7c4a1157f7595c3178809b2b4"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase1-write-repair/protocol.md",
+      "blob": "1ca832958d6866d3647604c03c4276e4026c2ed0"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase1-write-repair/raw.jsonl",
+      "blob": "62d41fe949e84b3af8b6fcb40f71cf71602f1ea5"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase1-write-repair/registration-followup.json",
+      "blob": "36664340e4e6149a9078d311b40e45c474f7b32c"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase1-write-repair/registration.json",
+      "blob": "fa82f03d10eae7244cc2004771dc285f66bf2512"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase1-write-repair/report.md",
+      "blob": "b7ea5a728ac57c2604be3fdca414d4afbbf5f051"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase1/acceptance.json",
+      "blob": "ae8d391524a77523e6dcb250b10f31817dc13f35"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase1/cases.jsonl",
+      "blob": "0c30462fb8075e4b69c3415168da9e812c100760"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase1/failures.md",
+      "blob": "3087258d50eaa743a75663a918c881fab0659e59"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase1/independent/e4-lifecycle.json",
+      "blob": "bd5dce242a8498eb8c6abc803ddc04349167c6c1"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase1/independent/e4-r1.json",
+      "blob": "7f4b35d12c13d2dea57d854823c3763ddce964fc"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase1/independent/h18-baseline.json",
+      "blob": "3c4879010ead43e150c996252aab1add5606761c"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase1/independent/h18-candidate.json",
+      "blob": "d58d145c65dff12c7a8b8cd4852fe85b0247109e"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase1/independent/h18-report.md",
+      "blob": "789c3a51e54bb3f44e268557b9f911a9775fb73e"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase1/independent_review.md",
+      "blob": "4227735dffc4db2476dab6b82664c70866b19025"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase1/manifest.json",
+      "blob": "fbbd5d6f32fb62c6f21a1e61381538a7491c2094"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase1/metrics.json",
+      "blob": "b3aa813cbc5073dbaf2587c1fbb64d155690b82c"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase1/protocol.md",
+      "blob": "43b7e7bf6a6726b943883a68f8247b3dd760794f"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase1/raw.jsonl",
+      "blob": "2b95d1e2fda50761962a7d7b110f186543ab2ef8"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase1/replay_e4.py",
+      "blob": "bc6637b4d0a96d32d43d2ce7ae0337ecff3c6425"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase1/report.md",
+      "blob": "0da701f272cb528dae4c910ab6a739f2b580c923"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/acceptance.json",
+      "blob": "c37ea1a265f0d51f9de5e39a2a7032c0d2acab66"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e1/acceptance.json",
+      "blob": "b363f7039db723c8a6f86d9a785a7d295c602ca4"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e1/base-corpus.jsonl",
+      "blob": "a59861a72e9055f1e41195ccc0041578ba005faf"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e1/cases.jsonl",
+      "blob": "760e4c7e936dcfeec12ef129146eabb3714ce33b"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e1/development-label-review.json",
+      "blob": "f9c07f6589e961395460a9d23832fe9c010595ca"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e1/development-overlay.jsonl",
+      "blob": "030e89900aa59e91865d58f53c44538f05097b4a"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e1/development-rank.log",
+      "blob": "e11b67adf7dc65d6c46521ac7dd0d77f7554b3ae"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e1/development-score.log",
+      "blob": "3599b2d679fb6991486d146e9d6bfb1710be31a9"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e1/development.labels.jsonl",
+      "blob": "4ca33da46160506eb6ec808e9588f757e1b471ac"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e1/development.queries.jsonl",
+      "blob": "e9b3be5da46acd5e16ef7a48e830f47788a0250a"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e1/development/acceptance.json",
+      "blob": "8fa0997d9bb1b643b7731f7e3f81a9e64ee00796"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e1/development/cases.jsonl",
+      "blob": "c5017eb9f349ccdd46d767df045dcd2291dedacf"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e1/development/failures.md",
+      "blob": "8efa1226a13b5becf08df921117c069017a39cb0"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e1/development/metrics.json",
+      "blob": "dc25d4455c6ca0c60cc1f9e69c6cafa51ed6e334"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e1/development/raw.jsonl",
+      "blob": "e564062132d35302fa4fe0857cd41681fc07cff4"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e1/development/report.md",
+      "blob": "71c9f494ddd3c3f8f5a2b1f8bce996445cd6e119"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e1/development/run.json",
+      "blob": "c35f28e6ddf5d1e342e6354c231a594b44042792"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e1/development/scope-filters.jsonl",
+      "blob": "5ad90c2dd3246068934d3921a43f6f5782e89113"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e1/e1-r1-manifest.json",
+      "blob": "4ac4294b3d0d647fef03d2ff9a5bb3f3bbea5b02"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e1/engineering/M03/20261120T135658Z-8f68ba45/command.log",
+      "blob": "38b89e60eac16abd71346ce14ea2a155e4c45907"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e1/engineering/M03/20261120T135658Z-8f68ba45/junit.xml",
+      "blob": "7b7e28ebb5fe34d55fed0a38ab501a3f8355cca6"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e1/engineering/M03/20261120T135658Z-8f68ba45/result.json",
+      "blob": "a168602e5435ee96a9f58f734788ce8f57404777"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e1/engineering/M03/acceptance.json",
+      "blob": "a168602e5435ee96a9f58f734788ce8f57404777"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e1/engineering/entrypoint-parity.json",
+      "blob": "94b0940da7258895c1891132c206039a1874ddc1"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e1/failures.md",
+      "blob": "2455e7cb314283fe7521e88b94e79cfcb4d13349"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e1/grade.py",
+      "blob": "b8e78af0508df135cf0d14f3be74fc0a02211bf2"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e1/holdout-commitment.json",
+      "blob": "c7b5adbe1d04c5044bcbcda8b58558b664bf136b"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e1/holdout/acceptance.json",
+      "blob": "71341bdb6a67a58d9be3323cea92382109319103"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e1/holdout/independent_review.md",
+      "blob": "2980c7c74e9f072ae986755302d14c4505708ce4"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e1/holdout/metrics.json",
+      "blob": "bc96ebfbefd043db48e21f82bd71625320a7e193"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e1/holdout/run.json",
+      "blob": "8f4644bffc87db0273282cf2e40f492c8494ba6c"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e1/independent_review.md",
+      "blob": "eef98e96777b8644f750e72d23634bdf5a211129"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e1/manifest.json",
+      "blob": "cef78e252500c59539bbfeb46d7fcd2966a15f75"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e1/metrics.json",
+      "blob": "2056e8915b5943aa2e011fcab810109a48d9dcd2"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e1/prepare.py",
+      "blob": "5207ab699d2b4e2abdc8a4789d91c9267f68b7e2"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e1/protocol.md",
+      "blob": "18546d0be9f63f5b89a9d5a4e95663df44e632f7"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e1/raw.jsonl",
+      "blob": "98f6c874857080f527b5aeff901b39bb2eddef51"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e1/report.md",
+      "blob": "cce5eb25ffa4ee147ebdff00d53933172a4d37ea"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e1/run.py",
+      "blob": "0aa78137d47ebebb3f73427b1f0bb0e27c3af896"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e2/acceptance.json",
+      "blob": "76af7c17a29b3a31e15716ebf58741a67cd9195c"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e2/accounting-audit.json",
+      "blob": "310d7f15880003910bcbf3ca7190af0b07da0038"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e2/analyze.py",
+      "blob": "6c6724de01f7b36cfa531604b272bf061053a403"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e2/analyze_repair.py",
+      "blob": "a00a18726008b838a67772bd060084672a43acc6"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e2/custody.jsonl",
+      "blob": "6b143712bbfc997f0c48ff83a6c43e14edea3c67"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e2/development.jsonl",
+      "blob": "1136057fee168a3aeef2c921e9c1af8f5a5bb734"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e2/e2_independent_grader.py",
+      "blob": "47bc35b54915cafabfab621b80d568ca55d9cf2b"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e2/failures.md",
+      "blob": "0d134f9c91ff97d91995b46d7a7a6a54b0192903"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e2/holdout-commitment.json",
+      "blob": "e94c38dbebae80affcdc41d4fc2b2c55b47dca21"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e2/independent-formal.json",
+      "blob": "8f26be3d31b30542c3781299a78f7367fed5d251"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e2/independent_review.md",
+      "blob": "f12629dd61ae5dfa3dce5b9ed5b611e5ba86674f"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e2/lifecycle.py",
+      "blob": "2dd997be5b6902cdd760eb4adef65477f1a5b465"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e2/make_dev.py",
+      "blob": "db7d4f6eacb5b00e02221d50d021fd8dabe6d9e3"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e2/manifest.json",
+      "blob": "c2aa91f7a4683e8e7482f937a7a0e246d00db627"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e2/matrix.py",
+      "blob": "9378918951fa06267d6d077b031899e2713846b1"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e2/metrics.json",
+      "blob": "9badcede93a906ad7740114726b5b2de1c805332"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e2/preflight.json",
+      "blob": "72b0eb92a67ce401ab2e6edaadf7590bbb354975"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e2/protocol.md",
+      "blob": "33b295e6a3a14d0bfd66877bf3ad15baa2cf520f"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e2/raw.jsonl",
+      "blob": "8f0a6e1801a45cfc03124cd41f67003d6562b755"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e2/repair-validation.json",
+      "blob": "aaacc05790fd0e4f2af6e5842122088cd7a1dbef"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e2/report.md",
+      "blob": "a3542203c4613452e528fe904c27df989254d5ec"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e2/result-hashes.json",
+      "blob": "fdfa0a167ed2921706590bc1e1a36029e3188f9c"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e2/tool-diagnostics.json",
+      "blob": "51b8ce04e2b8be5ef1244cfef922faa5417fa779"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e2/transport-fix.json",
+      "blob": "56348464ee9f69b7ee3b50c9c5342e7af00588c3"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e2/transport-r1/acceptance.json",
+      "blob": "04bbf0551a651930ba4bae1784fd3137178ded9c"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e2/transport-r1/dependencies.json",
+      "blob": "560b1c258faaa17649a24ac791a5bc37d9902f03"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e2/transport-r1/metrics.json",
+      "blob": "f5aa7d84c74e06ccb2dd7c441da5dea566ff9a21"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e2/transport-r1/proxy-preflight.json",
+      "blob": "832fc9fed32a9474e8b808ee0b9aeaae9326f981"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e2/transport-r1/reconciliation.md",
+      "blob": "798c7148b5002099d7b4068bfe0bffd38f3a1737"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e2/transport-r1/route-preflight.json",
+      "blob": "a9590dd052613c285590a6ef4499cc46a977a8f0"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e2/transport_fix.py",
+      "blob": "9298b07e08fdcfb938fc01f2e8a25a0ac717f592"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e3/acceptance.json",
+      "blob": "e862e483d62e474e6b6d04727fa5c5be5116cb2b"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e3/audit_receipts.py",
+      "blob": "3b0d996562c96d8f1487917d94a2cf61e9070a59"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e3/controls.py",
+      "blob": "257555973b9d247d87d85cb4847d19d02e463647"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e3/development.jsonl",
+      "blob": "55f85050e6533e7d578ec171f40914d11510da1c"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e3/e3_independent_grader.py",
+      "blob": "5cb36b8615fb5e16386a34c3dbb3847d2ead2dfd"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e3/failures.md",
+      "blob": "9ca1c2207a31b784d308ee1be31cbcc84f6bd52f"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e3/holdout-commitment.json",
+      "blob": "6bd961417a69854c4143e4c62f9b4042af9327ac"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e3/independent-fixture.json",
+      "blob": "db75459dccedcb0aff333ffd3ddbadd4daf7d67f"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e3/independent-fixture.md",
+      "blob": "90070a8f802fad177e6cce1ede3227674b7393f9"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e3/independent-formal.json",
+      "blob": "9f17bb38bede1b0ce9b25343fab580dc66ffa04f"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e3/independent-formal.md",
+      "blob": "b4cded26faf679c80d99460d0dbeb75dd486e155"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e3/independent_review.md",
+      "blob": "9687e5b5890c47b128322570c66f1b76b6af9fd9"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e3/manifest.json",
+      "blob": "b935ee214180ac628bcae5482d42d3e7046fbfb4"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e3/metrics.json",
+      "blob": "1efdbf92d12fd6b613709c3a5b7790ba60423382"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e3/protocol.md",
+      "blob": "e66000892f4cf8e03301b4dbb6e0229bd21abac4"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e3/provider.py",
+      "blob": "ef1f706e710d13918697573cee8a790f5131913b"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e3/raw.jsonl",
+      "blob": "94328ee052a0849ffea0a8eca484b5b65e0c4304"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e3/receipt-audit.json",
+      "blob": "1d47bf7656541d51ccc089496f4cc7158e40f719"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e3/report.md",
+      "blob": "692678b0b71a9b219c4cf62b2a18c26f2c74030c"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e3/report_results.py",
+      "blob": "70ea99517461606bdcf3cf21ff7c37cf532240b4"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e3/run.py",
+      "blob": "e3730b14e0a960a88c2b85acf3646f930e8c5c08"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/e3/summarize.py",
+      "blob": "97d9b01b2cec38971e2979a822b3e12881115843"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase2/report.md",
+      "blob": "4baee1e118df2f8d1add7fcb1d5f361fa7398ac0"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/acceptance.json",
+      "blob": "bf3ecb72de5768d5743fe04ccd95818603525098"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/evidence-index.json",
+      "blob": "23d2955f821a113be590b9e1ec6dc8323812a67a"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/h12/acceptance.json",
+      "blob": "fbdf89b221dee1e7e2f645a97a388c1612721a07"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/h12/cases.jsonl",
+      "blob": "7ab7c8c0eb39176dea6a947330928c02b990fd23"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/h12/failures.md",
+      "blob": "335003997ea24f68e8ca43fd530873abb91dc566"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/h12/independent_review.md",
+      "blob": "d86d9bf95e066cd890ef7670ed4bae3e1c4f8da1"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/h12/manifest.json",
+      "blob": "0eb6749181df3e0dff2acc05b26ce7cae36135f5"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/h12/metrics.json",
+      "blob": "83e9577877dab0a541abff4116e7aae428391cd8"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/h12/preflight-cases.jsonl",
+      "blob": "d968608a4df8aa336dd2284038a869e77f621305"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/h12/preflight.py",
+      "blob": "60b5c2dfc8d0260795e555d95fb73015e224e29a"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/h12/raw.jsonl",
+      "blob": "8dcc18bfa95597b3ec40eea6dcfe48c211e507c7"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/h12/report.md",
+      "blob": "0879bb0ddde5deb36cbe3c6b1238c320a9c1e309"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/h12/test_matrix.py",
+      "blob": "230450972862213afb2a8e7948180eb485581679"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/h17/acceptance.json",
+      "blob": "289d1eceeb84e3b6e1096c567e0dc28e734a3a41"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/h17/cases.jsonl",
+      "blob": "bbda277d00c96fc1d3bef37b4873806ada1e1eaf"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/h17/failures.md",
+      "blob": "d7f447f17cab904e5c8db6ed607530b5f183464a"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/h17/grader.py",
+      "blob": "85c711a148d5880af10ce18958439469cc6151c1"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/h17/independent_review.md",
+      "blob": "1985a2e17bd45b82c2c42b0166eb0134617bb71f"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/h17/manifest.json",
+      "blob": "76b684e424ad34d36757fd12734053cfac283ec5"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/h17/metrics.json",
+      "blob": "9fe387cd2cb3d5ecad5262cef2241873ae790c20"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/h17/raw.jsonl",
+      "blob": "1226858c216f10288e7e0b2420a46cec8641bb0f"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/h17/report.md",
+      "blob": "2bc5400ea85010dc2658bdcf199455f22da0c7c2"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/h17/schedule.jsonl",
+      "blob": "0e46e3facc71e8c7fc736fad2089c822be514070"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/h17/test_paired.py",
+      "blob": "52e8b2410d1af54678345e521c81d28255481964"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/live/acceptance.json",
+      "blob": "1fe97d1dfb673392df5776825a4f0e0e8e3d9d7f"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/live/audit_tariff.py",
+      "blob": "84634e4fd4b95386c04bb2bb331568639dbd6ead"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/live/budget.py",
+      "blob": "c3795e5be3a1bc9e3c02413f80b728007fb596db"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/live/evidence-index.json",
+      "blob": "b0230fca3cfb78fbdde68943ac2b247abedd23be"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/live/failures.md",
+      "blob": "8f2cfafb866f184260a53c7d89bb388581571447"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/live/grade.py",
+      "blob": "639dc7fd90ff32e9676851e8ec48bdb5d68a26ad"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/live/h12-report.md",
+      "blob": "88452241bffad543a66b2362a7e0bd5fd46a6c1c"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/live/h17-report.md",
+      "blob": "9f4f0a1e11760912561f1d231bbf132bbf58f074"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/live/independent_review.md",
+      "blob": "9f2bb3b48c223d40df0ad62d59af71923a4c3166"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/live/manifest-binding.json",
+      "blob": "8adac5e8d768a339a75b20280d32ddc624dda46e"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/live/manifest-first.json",
+      "blob": "44d8bb22c6eb22b164566610c87c0b3c688a221f"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/live/manifest-input-bound.json",
+      "blob": "a28862d4a74cf14087355019783e0f8193d6f06e"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/live/manifest.json",
+      "blob": "0d2f9765e165fa49555be6adfbc826259e4c6087"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/live/metrics.json",
+      "blob": "7505aaf2c031fe957e83d6c3cd983c50b2ef4c3c"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/live/protocol.md",
+      "blob": "36cf5f1b14230732986d6c1e70f4ad1171f0f29a"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/live/raw.jsonl",
+      "blob": "b6956e1b2ce3c5aa418acfa7ed763c0c0e482cdd"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/live/report.md",
+      "blob": "e5a78d0b8f94d32efd50ec03a7f4706047043705"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/live/run.py",
+      "blob": "9d2175479790178c4076ab160c46c7f9cb18a1ac"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/live/schedule.jsonl",
+      "blob": "736f9fd85a66619242c6d0c370b741cfd271560a"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/live/summarize.py",
+      "blob": "ad4dd7c0b6461915b87fb425462420fc72c929fc"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/live/tariff-audit.json",
+      "blob": "7466da5c878b979f21a9e8721a9718615160fa30"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/manifest-matrix01.json",
+      "blob": "408e88a6b323a4fc8dc702dd821a3fd3d278cd73"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/manifest.json",
+      "blob": "56db326319a7dec65b649189a1cd51db8932be89"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/protocol.md",
+      "blob": "358667b01db58e37ec04bfc1524dac76d509243a"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/report.md",
+      "blob": "46c8ff7b13479e7c166754d40e5e362a011ac391"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/run.py",
+      "blob": "c7e87c2db6e3e0ec6f5b9be768733cd302d8738f"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase3/summarize.py",
+      "blob": "9b3a5f99d1150424dbe22be66cf62a8a5f214ca0"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase4/acceptance.json",
+      "blob": "ff428add9573fc1935643a21162db3c714fd721c"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase4/archive-audit.json",
+      "blob": "9212a0b07230539c6db8e3c298a4153b94b16bfa"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase4/audit.py",
+      "blob": "c61c8e3be06c37956a2afd1cdf6247a02c365f8a"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase4/candidate.py",
+      "blob": "8ff62efec4970843e10afddb41e54ff68557fc82"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase4/cases.jsonl",
+      "blob": "03b165eaaa56273e1d4dd5476efa689932f941cf"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase4/e1-development.json",
+      "blob": "716bd7821153f0929aa76c62c152a297d9561e6c"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase4/e1-holdout.json",
+      "blob": "be7980367ced1665b7e9545dc1048669801b6cc1"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase4/evidence-index.json",
+      "blob": "854ed1ef3ebfd60fb8f0ca634206a3696f4c7a8b"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase4/failures.md",
+      "blob": "eae2456d57a943efffd4a6f92d39121fcfc74c56"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase4/independent_review.md",
+      "blob": "ee1b9cb95c3d5da838c5f8c696ad0452419172b5"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase4/manifest.json",
+      "blob": "162df7c9ce8c7519479d46fbc91593c5966f4374"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase4/metrics.json",
+      "blob": "38b1443057bc91ce0647621226ee27bb46697823"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase4/protocol.md",
+      "blob": "49f1fa8eb47336a0045543b03f726c4ad3092fbd"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase4/raw.jsonl",
+      "blob": "d74e4e4e357e0ca9cb646e4caeaeac14bb5612fd"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase4/report.md",
+      "blob": "a16abe318df31e3b49822c6f9269605b27ca5c08"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase4/report.py",
+      "blob": "7e3c73742c712653a1ce0c19b575ed2affa0b997"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase4/review.py",
+      "blob": "d22cb2bcabe2d77cdd2554dc3050ac881428ba83"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase4/run.py",
+      "blob": "a729a84e92ee46ae3116fa173784129d9ce3de94"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/phase4/samples.tar.gz",
+      "blob": "d1dcecb26e5326cc0c72a26e650e1b066355bd9f"
+    },
+    {
+      "path": "v3/experiments/capability-eval-v1/publication.json",
+      "blob": "98fee7d91c91614f81013a5a226007dbabd0bc94"
+    },
+    {
+      "path": "v3/experiments/general-agent/ga12/dev.freeze.json",
+      "blob": "58af6dc574ed2d1155756877d59386ad05b042d3"
+    },
+    {
+      "path": "v3/experiments/general-agent/ga12/dev.jsonl",
+      "blob": "2c7c4a847998a78fa314a1e90b572283259d8ebb"
+    },
+    {
+      "path": "v3/experiments/general-agent/ga12/holdout.commitment.json",
+      "blob": "7d4dfe8a78f5cb8b59edc7b4906d7317249762e1"
+    },
+    {
+      "path": "v3/experiments/general-agent/ga12/holdout.first.receipt.json",
+      "blob": "a336acff70dee0ff581aa5a19359523b074e9b1a"
+    },
+    {
+      "path": "v3/experiments/general-agent/ga12/holdout.recheck.receipt.json",
+      "blob": "8fbfecca42f53c98d5727d216298593462833395"
+    },
+    {
+      "path": "v3/experiments/harness-v4/baseline.json",
+      "blob": "f4d8b8dec830fcd9c4beb2c7c18982445f450c93"
+    },
+    {
+      "path": "v3/experiments/harness-v4/benchmark-v2/README.md",
+      "blob": "ab2f6ae0d6b3f2cc04717a2cfe08271d8165d9b8"
+    },
+    {
+      "path": "v3/experiments/harness-v4/benchmark-v2/dev.jsonl",
+      "blob": "c8dcf3bf521026adcbf157fe966ea3b530e93c40"
+    },
+    {
+      "path": "v3/experiments/harness-v4/benchmark-v2/got-public-amendments.json",
+      "blob": "1539820054adf16eef199c30838b89c14e7eca89"
+    },
+    {
+      "path": "v3/experiments/harness-v4/benchmark-v2/proposal.json",
+      "blob": "8da21a5cdaa03ae2e6ac4aae0b25bdd8c3855b13"
+    },
+    {
+      "path": "v3/experiments/harness-v4/h02-live-probe.py",
+      "blob": "0c11cd8d4472f20d86c4d3ba94292ec0bc2dfe08"
+    },
+    {
+      "path": "v3/experiments/harness-v4/h02-live-results.json",
+      "blob": "eb0f94d61057a1fe25bccd874eeca88ac5183f7c"
+    },
+    {
+      "path": "v3/experiments/harness-v4/h12-authorization-v1.json",
+      "blob": "21970814bf6bc7f1d71dd3cd98d69ec6e7753fc6"
+    },
+    {
+      "path": "v3/experiments/harness-v4/h12-dev-environment-v3.json",
+      "blob": "1f5ce0f3bca701dfd7bee6988b2e61238f2e557c"
+    },
+    {
+      "path": "v3/experiments/harness-v4/h12-dev-environment-v4.json",
+      "blob": "d266a8b75cc43ece3d4b7d9f162604f4f3d2c4cb"
+    },
+    {
+      "path": "v3/experiments/harness-v4/h12-holdout-infrastructure-v4.json",
+      "blob": "e459574a6a9600f6eb575350178442e24a52c504"
+    },
+    {
+      "path": "v3/experiments/harness-v4/h12-model-v1.json",
+      "blob": "8a369a378c9952637b01869811d358533e981fdb"
+    },
+    {
+      "path": "v3/experiments/harness-v4/h12-model-v2.json",
+      "blob": "94a998d4b9b0eb48019af1e94274ea954d871b8d"
+    },
+    {
+      "path": "v3/experiments/harness-v4/harness-contract-v1.json",
+      "blob": "9e6087a9e9ade96dfc298b09c1a4a21f32e65082"
+    },
+    {
+      "path": "v3/experiments/harness-v4/model-capabilities-v1.json",
+      "blob": "947c41a959cf29d3bf529b6d2f7336cb3517b128"
+    },
+    {
+      "path": "v3/experiments/harness-v4/public-plans-v1/PYTHON_SCOPE_REVIEW.md",
+      "blob": "e28c35605a62f0f9588d5aa27426cfbd954c6336"
+    },
+    {
+      "path": "v3/experiments/harness-v4/public-plans-v1/assets/399d2dbd650ae7832c460da535cc7c69dd3a5687e2731171ca45d141422275e6/probe.py",
+      "blob": "8180af74cc954411f8cbead139e6380378e90045"
+    },
+    {
+      "path": "v3/experiments/harness-v4/public-plans-v1/assets/70b557db561e2b6dee8998b7ccc1150d725cf9abb65f9834deebc71fe43af7ad/probe.py",
+      "blob": "ee48a9f71741e8cbc72187a7bc40a553fb8c4265"
+    },
+    {
+      "path": "v3/experiments/harness-v4/public-plans-v1/assets/8e7382b7852ce1b9247110b9e0742f1415349a7c20da955f6a6a64233170a62b/probe.py",
+      "blob": "a661a541d2cc3eeb483e3f20108dd88877c1af69"
+    },
+    {
+      "path": "v3/experiments/harness-v4/public-plans-v1/assets/e7bfde07ae8f12c20c7fd1e788c9da67dc2458b65bb093fa3d86f80e260f86e5/probe.py",
+      "blob": "00262d7d25c939c81e4379f23028c747d094b1b8"
+    },
+    {
+      "path": "v3/experiments/harness-v4/public-plans-v1/build-command-review.json",
+      "blob": "a05db6679d73594e2693ef192b53536f2bd8fbdd"
+    },
+    {
+      "path": "v3/experiments/harness-v4/public-plans-v1/click-source-binding-v2-review.json",
+      "blob": "e4a6b1ea1c271c8cdb6c8ea14e44cd3bd64f34d7"
+    },
+    {
+      "path": "v3/experiments/harness-v4/public-plans-v1/manifests/hv4-dev-click-help-name-snapshot-v2.json",
+      "blob": "541431660966dc8e9616367b36e1fce4191d5421"
+    },
+    {
+      "path": "v3/experiments/harness-v4/public-plans-v1/manifests/hv4-dev-click-help-name.json",
+      "blob": "2247cedba9d4f3f160de0513d4db513542a58b5d"
+    },
+    {
+      "path": "v3/experiments/harness-v4/public-plans-v1/manifests/hv4-dev-pflag-unknown-flag.json",
+      "blob": "cd5d0fdad24c13f8069b4b3da03d7b49d1c3f413"
+    },
+    {
+      "path": "v3/experiments/harness-v4/public-plans-v1/manifests/hv4-dev-requests-http-url-helper.json",
+      "blob": "287ccc62a3d961279e1c6d6e77075af6917e0c99"
+    },
+    {
+      "path": "v3/experiments/harness-v4/public-plans-v1/manifests/hv4-v2-dev-requests-quoted-content-type.json",
+      "blob": "071ec86ce00a4e6761b1fbd0920775ce4ea78a26"
+    },
+    {
+      "path": "v3/experiments/harness-v4/public-plans-v1/narrow-cache-service-review.json",
+      "blob": "a4601c1257014c6620c2db96bda24edbdaa566e5"
+    },
+    {
+      "path": "v3/experiments/harness-v4/public-plans-v1/pflag-engineering-review.json",
+      "blob": "1255dd3cc62c2a387b24a78bac04d1dc35ac8a89"
+    },
+    {
+      "path": "v3/experiments/harness-v4/public-plans-v1/protected-directory-mask-review.json",
+      "blob": "e0384661e1d4de1b8da3de47ad9a62254a8b1777"
+    },
+    {
+      "path": "v3/experiments/harness-v4/public-plans-v1/public-basis/hv4-dev-click-help-name.json",
+      "blob": "2acea5a3dfa91fa4a17f7a741dec440675a04acc"
+    },
+    {
+      "path": "v3/experiments/harness-v4/public-plans-v1/public-basis/hv4-dev-pflag-unknown-flag.json",
+      "blob": "0e9f4e918b76a8eb067d06e9ba29ea0fbd85fa7a"
+    },
+    {
+      "path": "v3/experiments/harness-v4/public-plans-v1/public-basis/hv4-dev-requests-http-url-helper.json",
+      "blob": "e3f8ec011995f6863c26f57dadbefc5747af1b65"
+    },
+    {
+      "path": "v3/experiments/harness-v4/public-plans-v1/public-basis/hv4-v2-dev-requests-quoted-content-type.json",
+      "blob": "6f78cb50fe61f73900dd6fa5482402486a3ea372"
+    },
+    {
+      "path": "v3/experiments/harness-v4/public-plans-v1/public-plan-map.json",
+      "blob": "7a624dfb716376ccf645571ec0733dd0b576ee8b"
+    },
+    {
+      "path": "v3/experiments/harness-v4/public-plans-v1/python-asset-index.json",
+      "blob": "8326cce8d75a40bb0cc7a6fa9ac76b6ad0937fc5"
+    },
+    {
+      "path": "v3/experiments/harness-v4/public-plans-v1/python-click-cachefix-review.json",
+      "blob": "db39f1aedea16911969c093f9739628a5790188c"
+    },
+    {
+      "path": "v3/experiments/harness-v4/public-plans-v1/python-engineering-review.json",
+      "blob": "04672f0898572d7c81133d664ebb6040c64fcf16"
+    },
+    {
+      "path": "v3/experiments/harness-v4/public-plans-v1/python-failed-task-plans.json",
+      "blob": "c148a8be02c868038d5768f50bba7b9fe733a763"
+    },
+    {
+      "path": "v3/experiments/harness-v4/public-plans-v1/sources/click-help-name.py",
+      "blob": "00262d7d25c939c81e4379f23028c747d094b1b8"
+    },
+    {
+      "path": "v3/experiments/harness-v4/public-plans-v1/sources/pflag_stop_unknown.py",
+      "blob": "a661a541d2cc3eeb483e3f20108dd88877c1af69"
+    },
+    {
+      "path": "v3/experiments/harness-v4/public-plans-v1/sources/requests-http-url.py",
+      "blob": "8180af74cc954411f8cbead139e6380378e90045"
+    },
+    {
+      "path": "v3/experiments/harness-v4/public-plans-v1/sources/requests-quoted-content-type.py",
+      "blob": "ee48a9f71741e8cbc72187a7bc40a553fb8c4265"
+    },
+    {
+      "path": "v3/experiments/harness-v4/public-plans-v2/README.md",
+      "blob": "7b221118f9fdbc84ca316d01441d4ea66897fc67"
+    },
+    {
+      "path": "v3/experiments/harness-v4/public-plans-v2/click-help-name.json",
+      "blob": "7bfaeff8a31ea098567eafd62c6967ed0889f9d5"
+    },
+    {
+      "path": "v3/experiments/harness-v4/public-plans-v2/public-plan-map.json",
+      "blob": "892b82ebf1cf0a0857b1e2915e350855e0c67213"
+    },
+    {
+      "path": "v3/experiments/harness-v4/r08-timing-admission-v1/test_timing_admission.py",
+      "blob": "e0edb365c5d3c7f7ed6d32596109dc200335464f"
+    },
+    {
+      "path": "v3/experiments/harness-v4/r08-timing-admission-v1/timing_admission.py",
+      "blob": "66586db4156464c4884c509079e1b6c7cf8a66ed"
+    },
+    {
+      "path": "v3/experiments/harness-v4/scoring-v1.json",
+      "blob": "4cde3e11abfb720b9060c3699e33cc83a3542cd5"
+    },
+    {
+      "path": "v3/experiments/harness-v4/task-types.json",
+      "blob": "d24a126e6ee4e43bd3f4cc7254ebee1a62979e12"
+    },
+    {
+      "path": "v3/experiments/harness-v4/tasks/dev.jsonl",
+      "blob": "8814fc89204a48dc9ed7f4a6f2d14846810f65cd"
+    },
+    {
+      "path": "v3/experiments/memory-context-v1/E1_PREPARATION.md",
+      "blob": "6946ca0bac3cda47266f3b414b119d146ee7a87b"
+    },
+    {
+      "path": "v3/experiments/memory-context-v1/E1_PROTOCOL.md",
+      "blob": "4628cfe189c9845f3e757e3c7054c3db4e584c17"
+    },
+    {
+      "path": "v3/experiments/memory-context-v1/E2_PROTOCOL.md",
+      "blob": "b446208fc1e408a202f472e0760e0a376525bc24"
+    },
+    {
+      "path": "v3/experiments/memory-context-v1/E3_PROTOCOL.md",
+      "blob": "dcaed8df811fc35a8d1326cceb26aa0e7eb10241"
+    },
+    {
+      "path": "v3/experiments/memory-context-v1/E4_PROTOCOL.md",
+      "blob": "e8cdb815fa572a106346b5946c8f1f43a347a5d3"
+    },
+    {
+      "path": "v3/experiments/memory-context-v1/E5_PROTOCOL.md",
+      "blob": "c34b7d72e43cecf38ea5e2de7b16b54bc65f109b"
+    },
+    {
+      "path": "v3/experiments/memory-context-v1/acceptance/E1_FORMAL_20261120.md",
+      "blob": "caee30e0079ebedab36878895f5fb11a71b22560"
+    },
+    {
+      "path": "v3/experiments/memory-context-v1/acceptance/E2_START_20261120.md",
+      "blob": "22192d7a4034ec180980d39914b21de9cada1c93"
+    },
+    {
+      "path": "v3/experiments/memory-context-v1/acceptance/E3_PILOT_20261120.md",
+      "blob": "24d3ac58a9a1f190e05fcbdbccf32c0bc1baf868"
+    },
+    {
+      "path": "v3/experiments/memory-context-v1/acceptance/E4_WRITE_GATE_20261120.md",
+      "blob": "98f503a0cb4230adad9450615f378b0e334a6c37"
+    },
+    {
+      "path": "v3/experiments/memory-context-v1/acceptance/E5_RETRIEVAL_PERFORMANCE_20261120.md",
+      "blob": "8ed7c2ed6b6362eaa644bcee0cd45cb2643d5c11"
+    },
+    {
+      "path": "v3/experiments/memory-context-v1/acceptance/e1-formal-20261120.json",
+      "blob": "2f5138d982a87aad61123726a4e9cd740e15e2d3"
+    },
+    {
+      "path": "v3/experiments/memory-context-v1/acceptance/e1-preparation-20261120.json",
+      "blob": "b89652581b4d595025df922c62ac5edd339998c5"
+    },
+    {
+      "path": "v3/experiments/memory-context-v1/acceptance/e1-ranking-20261120.png",
+      "blob": "74ef1a75e2a18829f0019f24de45941448010532"
+    },
+    {
+      "path": "v3/experiments/memory-context-v1/acceptance/e2-start-20261120.json",
+      "blob": "3d2ed1a77b9953b2735adff8d4e471726d845010"
+    },
+    {
+      "path": "v3/experiments/memory-context-v1/acceptance/e3-20261120.json",
+      "blob": "84ef8bbef81b4083c1f388c8a3860d03ac447b77"
+    },
+    {
+      "path": "v3/experiments/memory-context-v1/acceptance/e4-20261120.json",
+      "blob": "e2d10320124e09568fce0375d62e966ee9da1564"
+    },
+    {
+      "path": "v3/experiments/memory-context-v1/acceptance/e4-confusion-20261120.png",
+      "blob": "419ad189c8f95ed0f52c11b45ed5a323f9a133ff"
+    },
+    {
+      "path": "v3/experiments/memory-context-v1/acceptance/e5-20261120.json",
+      "blob": "362bab995151283b239403bcb7c883a2e5a3123e"
+    },
+    {
+      "path": "v3/experiments/memory-context-v1/acceptance/e5-performance-20261120.png",
+      "blob": "5ea23254f27bb36f350091b94c47f3551589b32d"
+    },
+    {
+      "path": "v3/experiments/memory-context-v1/acceptance/final_report.md",
+      "blob": "4df4e08bc05caad56c8131301b530fe8f4f84280"
+    },
+    {
+      "path": "v3/experiments/memory-context-v1/e5-seed.sql",
+      "blob": "99484428bd45febb6b93ae29c3fabeb78ae0bde7"
+    },
+    {
+      "path": "v3/experiments/quality-upgrade/README.md",
+      "blob": "426bbbbe0f1a7ea95fd9806d6aca17e4f4f5bba4"
+    },
+    {
+      "path": "v3/experiments/quality-upgrade/qev-02-rehearsal/cases.jsonl",
+      "blob": "72538a24d0e1bd6fb51108dca213510dd6476e37"
+    },
+    {
+      "path": "v3/experiments/quality-upgrade/qev-02-rehearsal/comparison.json",
+      "blob": "c2fceee82e7c1909efd7dc48ccb23b79adcecee6"
+    },
+    {
+      "path": "v3/experiments/quality-upgrade/qev-02-rehearsal/comparison.md",
+      "blob": "2f212cd6c34aa7d9f9b7bf434e6b62ba4294a6fd"
+    },
+    {
+      "path": "v3/experiments/quality-upgrade/qev-02-rehearsal/manifest.json",
+      "blob": "cb1d3b470b93dc130906869142d4c6fece0468fb"
+    },
+    {
+      "path": "v3/experiments/quality-upgrade/qev-02-rehearsal/summary.json",
+      "blob": "ed8f8c9e4af91b39aeca7c0ca5f37697f0053e36"
+    },
+    {
+      "path": "v3/experiments/quality-upgrade/qev-02-rehearsal/summary.md",
+      "blob": "00e0837b584790267cd0ba46dc734396691d6dba"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/config/evaluation.json",
+      "blob": "9b4eb1951db97b1f9cb18f7311e869290f514385"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/dataset.json",
+      "blob": "f5380e07c948272fec05fb5a094432b14659619e"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/harness-selftest.json",
+      "blob": "75315162507290b5022cf51dfb6e026396d91dc0"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/manifest.json",
+      "blob": "c01212000979698c48acc889812273f5c61931e8"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/repositories.json",
+      "blob": "d520b0e50d8ba45185e0349aaa52109ea2af2ed7"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/3cbcf9b11546f4cf10b36d3e2e531733ba6fe001/LICENSE.txt",
+      "blob": "d12a849186982399c537c5b9a8fd77bf2edd5eab"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/3cbcf9b11546f4cf10b36d3e2e531733ba6fe001/src/click/__init__.py",
+      "blob": "a34ab023a658c1b38fe75e57781afd3380718638"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/3cbcf9b11546f4cf10b36d3e2e531733ba6fe001/src/click/_compat.py",
+      "blob": "8507a503abf9b5fcaf3285dc3999ae223c7608c8"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/3cbcf9b11546f4cf10b36d3e2e531733ba6fe001/src/click/_termui_impl.py",
+      "blob": "70aabf8f17c56ce5ed559ea88ce233a7944dbe3a"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/3cbcf9b11546f4cf10b36d3e2e531733ba6fe001/src/click/_textwrap.py",
+      "blob": "82840f2dff3ce627712c0ece2752382a0f7dab8b"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/3cbcf9b11546f4cf10b36d3e2e531733ba6fe001/src/click/_utils.py",
+      "blob": "05ee2e99757adb19882664e1fc0377ac29c92f80"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/3cbcf9b11546f4cf10b36d3e2e531733ba6fe001/src/click/_winconsole.py",
+      "blob": "d25178d66ff7a9c8a1da52e61379da240be625b6"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/3cbcf9b11546f4cf10b36d3e2e531733ba6fe001/src/click/core.py",
+      "blob": "de129ec2ceaa1e77cab696cad672b0a3ca84413d"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/3cbcf9b11546f4cf10b36d3e2e531733ba6fe001/src/click/decorators.py",
+      "blob": "cc42e5d42c48e7bddca9346bc4dd4f240a30c2e3"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/3cbcf9b11546f4cf10b36d3e2e531733ba6fe001/src/click/exceptions.py",
+      "blob": "6272c38a448d57241d9a6bff4191897f4a9bb7d6"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/3cbcf9b11546f4cf10b36d3e2e531733ba6fe001/src/click/formatting.py",
+      "blob": "c4aa2de571a1eb17bfeb1853e315d28bc968e74c"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/3cbcf9b11546f4cf10b36d3e2e531733ba6fe001/src/click/globals.py",
+      "blob": "a2f91723d21cefdf658be327174e1f8ccdc20fcd"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/3cbcf9b11546f4cf10b36d3e2e531733ba6fe001/src/click/parser.py",
+      "blob": "4fcbf7caa83a474cee2d3ea25da56b0399dd893a"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/3cbcf9b11546f4cf10b36d3e2e531733ba6fe001/src/click/py.typed",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/3cbcf9b11546f4cf10b36d3e2e531733ba6fe001/src/click/shell_completion.py",
+      "blob": "8a2668b09f1525ae95e814fa92a23bfdbee2c21d"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/3cbcf9b11546f4cf10b36d3e2e531733ba6fe001/src/click/termui.py",
+      "blob": "8fe0085273f875d22a598377da76a522ef5076aa"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/3cbcf9b11546f4cf10b36d3e2e531733ba6fe001/src/click/testing.py",
+      "blob": "cc123d4d15fda16262db16cefc467b1fffd9ac5d"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/3cbcf9b11546f4cf10b36d3e2e531733ba6fe001/src/click/types.py",
+      "blob": "0eb84621d3ceb92e240f1523e2e58d5951335633"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/3cbcf9b11546f4cf10b36d3e2e531733ba6fe001/src/click/utils.py",
+      "blob": "b529eb04b34189f08e1211c95c7c8a30ca778490"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/6d5bac5c712195cbfa9666ba0ecbf0573cdea356/LICENSE.txt",
+      "blob": "d12a849186982399c537c5b9a8fd77bf2edd5eab"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/6d5bac5c712195cbfa9666ba0ecbf0573cdea356/src/click/__init__.py",
+      "blob": "a34ab023a658c1b38fe75e57781afd3380718638"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/6d5bac5c712195cbfa9666ba0ecbf0573cdea356/src/click/_compat.py",
+      "blob": "8507a503abf9b5fcaf3285dc3999ae223c7608c8"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/6d5bac5c712195cbfa9666ba0ecbf0573cdea356/src/click/_termui_impl.py",
+      "blob": "70aabf8f17c56ce5ed559ea88ce233a7944dbe3a"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/6d5bac5c712195cbfa9666ba0ecbf0573cdea356/src/click/_textwrap.py",
+      "blob": "82840f2dff3ce627712c0ece2752382a0f7dab8b"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/6d5bac5c712195cbfa9666ba0ecbf0573cdea356/src/click/_utils.py",
+      "blob": "2d4e8f242619dce6fe36d6f262500ea513214db5"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/6d5bac5c712195cbfa9666ba0ecbf0573cdea356/src/click/_winconsole.py",
+      "blob": "dc287bc283858d4160406442eb791754fcc0ef0a"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/6d5bac5c712195cbfa9666ba0ecbf0573cdea356/src/click/core.py",
+      "blob": "a0f12c23e1bca80584e693c120be8b5ba8a3d0cd"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/6d5bac5c712195cbfa9666ba0ecbf0573cdea356/src/click/decorators.py",
+      "blob": "cc42e5d42c48e7bddca9346bc4dd4f240a30c2e3"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/6d5bac5c712195cbfa9666ba0ecbf0573cdea356/src/click/exceptions.py",
+      "blob": "6272c38a448d57241d9a6bff4191897f4a9bb7d6"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/6d5bac5c712195cbfa9666ba0ecbf0573cdea356/src/click/formatting.py",
+      "blob": "c4aa2de571a1eb17bfeb1853e315d28bc968e74c"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/6d5bac5c712195cbfa9666ba0ecbf0573cdea356/src/click/globals.py",
+      "blob": "a2f91723d21cefdf658be327174e1f8ccdc20fcd"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/6d5bac5c712195cbfa9666ba0ecbf0573cdea356/src/click/parser.py",
+      "blob": "4fcbf7caa83a474cee2d3ea25da56b0399dd893a"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/6d5bac5c712195cbfa9666ba0ecbf0573cdea356/src/click/py.typed",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/6d5bac5c712195cbfa9666ba0ecbf0573cdea356/src/click/shell_completion.py",
+      "blob": "8a2668b09f1525ae95e814fa92a23bfdbee2c21d"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/6d5bac5c712195cbfa9666ba0ecbf0573cdea356/src/click/termui.py",
+      "blob": "8fe0085273f875d22a598377da76a522ef5076aa"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/6d5bac5c712195cbfa9666ba0ecbf0573cdea356/src/click/testing.py",
+      "blob": "cc123d4d15fda16262db16cefc467b1fffd9ac5d"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/6d5bac5c712195cbfa9666ba0ecbf0573cdea356/src/click/types.py",
+      "blob": "b6e98a965a8fc136f9b1bc16ca7eb3616a21dc1c"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/6d5bac5c712195cbfa9666ba0ecbf0573cdea356/src/click/utils.py",
+      "blob": "b529eb04b34189f08e1211c95c7c8a30ca778490"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/8abb77a8432e03ed14a95f972b44f905279415a7/LICENSE.txt",
+      "blob": "d12a849186982399c537c5b9a8fd77bf2edd5eab"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/8abb77a8432e03ed14a95f972b44f905279415a7/src/click/core.py",
+      "blob": "b4317257c1ed6f2384c981932901cb0de9f40863"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/8c1a0a7abbc1c36f70d1f65f3604acc46c5ce6ab/LICENSE.txt",
+      "blob": "d12a849186982399c537c5b9a8fd77bf2edd5eab"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/8c1a0a7abbc1c36f70d1f65f3604acc46c5ce6ab/src/click/__init__.py",
+      "blob": "2d9918bced6c1bb709efbf53fbf0e310fe5215f3"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/8c1a0a7abbc1c36f70d1f65f3604acc46c5ce6ab/src/click/_compat.py",
+      "blob": "9c6968824152ae8e335087656daea7d91a6756fd"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/8c1a0a7abbc1c36f70d1f65f3604acc46c5ce6ab/src/click/_termui_impl.py",
+      "blob": "fadae940625f8275fed17833d527c19e2422ef4e"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/8c1a0a7abbc1c36f70d1f65f3604acc46c5ce6ab/src/click/_textwrap.py",
+      "blob": "82840f2dff3ce627712c0ece2752382a0f7dab8b"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/8c1a0a7abbc1c36f70d1f65f3604acc46c5ce6ab/src/click/_utils.py",
+      "blob": "05ee2e99757adb19882664e1fc0377ac29c92f80"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/8c1a0a7abbc1c36f70d1f65f3604acc46c5ce6ab/src/click/_winconsole.py",
+      "blob": "d25178d66ff7a9c8a1da52e61379da240be625b6"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/8c1a0a7abbc1c36f70d1f65f3604acc46c5ce6ab/src/click/core.py",
+      "blob": "6de421687b6d4b27e7266d023ef630bf53f27dc5"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/8c1a0a7abbc1c36f70d1f65f3604acc46c5ce6ab/src/click/decorators.py",
+      "blob": "cc42e5d42c48e7bddca9346bc4dd4f240a30c2e3"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/8c1a0a7abbc1c36f70d1f65f3604acc46c5ce6ab/src/click/exceptions.py",
+      "blob": "6272c38a448d57241d9a6bff4191897f4a9bb7d6"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/8c1a0a7abbc1c36f70d1f65f3604acc46c5ce6ab/src/click/formatting.py",
+      "blob": "c4aa2de571a1eb17bfeb1853e315d28bc968e74c"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/8c1a0a7abbc1c36f70d1f65f3604acc46c5ce6ab/src/click/globals.py",
+      "blob": "a2f91723d21cefdf658be327174e1f8ccdc20fcd"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/8c1a0a7abbc1c36f70d1f65f3604acc46c5ce6ab/src/click/parser.py",
+      "blob": "4fcbf7caa83a474cee2d3ea25da56b0399dd893a"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/8c1a0a7abbc1c36f70d1f65f3604acc46c5ce6ab/src/click/py.typed",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/8c1a0a7abbc1c36f70d1f65f3604acc46c5ce6ab/src/click/shell_completion.py",
+      "blob": "5652214b017edc98c184677ae9d34fc7d2d15ff5"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/8c1a0a7abbc1c36f70d1f65f3604acc46c5ce6ab/src/click/termui.py",
+      "blob": "4bd74ed19ac1852557259706ea21d0e697b9f5b5"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/8c1a0a7abbc1c36f70d1f65f3604acc46c5ce6ab/src/click/testing.py",
+      "blob": "19fae4a620ea8ae28410cb8b29d965c1ac8cc524"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/8c1a0a7abbc1c36f70d1f65f3604acc46c5ce6ab/src/click/types.py",
+      "blob": "a27983b3a2431de9e221cbcfdd780a7b6f236956"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/8c1a0a7abbc1c36f70d1f65f3604acc46c5ce6ab/src/click/utils.py",
+      "blob": "4d4d52ac3be0b90a8087a465901bb698e5150664"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/bb695aaecdef95832d167fc1d508921745aa824e/LICENSE.txt",
+      "blob": "d12a849186982399c537c5b9a8fd77bf2edd5eab"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/click/bb695aaecdef95832d167fc1d508921745aa824e/src/click/core.py",
+      "blob": "9cf05a9b4583b8e64c64474afff5c08e15e3195a"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/goexample/7a4eec550fb2aaa1904ddcbc4eeaa9f4d995791f/LICENSE",
+      "blob": "2a7cf70da6e498df9c11ab6a5eaa2ddd7af34da4"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/goexample/7a4eec550fb2aaa1904ddcbc4eeaa9f4d995791f/internal/cmd/weave/weave.go",
+      "blob": "d20e03cfa9a111a65bd073d26c95d982a506b1c6"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/pflag/2084408437188b1fbf46984a53a56136a5f30f99/LICENSE",
+      "blob": "63ed1cfea1fb28c2051b00a3ae05a0b2cae7ce6a"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/pflag/2084408437188b1fbf46984a53a56136a5f30f99/int.go",
+      "blob": "d48704a4def7bdbda5e99ad713ddd1519af5b0c3"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/pflag/2084408437188b1fbf46984a53a56136a5f30f99/uint.go",
+      "blob": "64bd966509fc4e103cd4a6ce0cb7de2c9438ecdc"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/pflag/d26a4dcd30a3c17923a2083b48bd6233aada9d47/LICENSE",
+      "blob": "63ed1cfea1fb28c2051b00a3ae05a0b2cae7ce6a"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/pflag/d26a4dcd30a3c17923a2083b48bd6233aada9d47/count.go",
+      "blob": "521b5d2156cba1a9be1a839625d9e5fe53be3cdc"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/pflag/f8a990678a6d44385313e9b19e40737f889f9b14/LICENSE",
+      "blob": "63ed1cfea1fb28c2051b00a3ae05a0b2cae7ce6a"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/pflag/f8a990678a6d44385313e9b19e40737f889f9b14/flag.go",
+      "blob": "2670bb79d7e7cca8ff1d847a18d55b46699891dc"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/pflag/f8a990678a6d44385313e9b19e40737f889f9b14/string.go",
+      "blob": "c96b8020268fcf7a749acc58ef0ed158fd27b1c7"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/requests/1b40fdd004bfc8ba5301bcf8a6908264e9b6b877/LICENSE",
+      "blob": "67db8588217f266eb561f75fae738656325deac9"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/requests/1b40fdd004bfc8ba5301bcf8a6908264e9b6b877/src/requests/utils.py",
+      "blob": "4d3039b200a7aaf14cc6af4a1bc5927068dafa47"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/requests/bc7dd0fc4d56e808bcdd85ac2d797b3107c89259/LICENSE",
+      "blob": "67db8588217f266eb561f75fae738656325deac9"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/snapshots/requests/bc7dd0fc4d56e808bcdd85ac2d797b3107c89259/src/requests/utils.py",
+      "blob": "54959bb8aba33d35583b0ed34ae395a3eb1f3999"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/summary.json",
+      "blob": "32d12dfab487dfadec6cdbc2b3688988aef6f8f6"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/summary.md",
+      "blob": "d247ee92b14681483d1fa8eab509edbe269e765a"
+    },
+    {
+      "path": "v3/experiments/v34-audit-repair/tasks.jsonl",
+      "blob": "89ef96e7247abb66a69e1d1ce332f5e5d48ef14e"
+    },
+    {
+      "path": "v3/experiments/v35-harness/config.json",
+      "blob": "02f68ca30d09c404505ba583354b7d98da4b72aa"
+    },
+    {
+      "path": "v3/experiments/v35-harness/dev/public/test_help_name_public.py",
+      "blob": "1b61e40a8611ed7dc625149a7eac9aeb307c582f"
+    },
+    {
+      "path": "v3/experiments/v35-harness/dev/public/test_short_help_abbreviation_public.py",
+      "blob": "c1da76910089bf6395637593637a3b257801d3cd"
+    },
+    {
+      "path": "v3/experiments/v35-harness/dev/public/test_short_help_public.py",
+      "blob": "d03db17b63af98e8f77cdf9d96abe6a75a53bb31"
+    },
+    {
+      "path": "v3/experiments/v35-harness/tasks.jsonl",
+      "blob": "78aa65313c1c77988ae8bbc66a2ad60ea34ee8af"
+    }
+  ],
+  "entry_candidates": [
+    "README.md",
+    "v3/README.md",
+    "v3/docs/README.md",
+    "v3/docs/CURRENT_STATUS.md",
+    "v3/docs/PROJECT_OVERVIEW.md",
+    "v3/docs/EVALUATION_SUMMARY.md",
+    "v3/docs/harness-v4/README.md",
+    "v3/docs/general-agent-v1/GA13_RC.md"
+  ],
+  "evidence_roots": [
+    "v3/docs/",
+    "v3/experiments/",
+    "evidence/"
+  ],
+  "note": "Publication historical edition hashes must be interpreted against the specific published revision; do not rewrite historical records or hashes.",
+  "editable_entries": [
+    "README.md",
+    "v3/docs/README.md"
+  ]
+}
