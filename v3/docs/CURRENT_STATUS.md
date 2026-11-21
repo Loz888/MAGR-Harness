@@ -20,4 +20,4 @@
 | 下游试用 | 下游 2026-11-18 的 L02 在特定 Worker `2f5205a` 和隔离候选 `f8a0b14` 上记录真实飞书回执、补丁和定向检查，正式 Verifier 为 incomplete。[下游进展](https://github.com/Loz888/Magr-super-agent/blob/3fce8c15f9d9dd6ba6315889a33790ad58775666/v3/docs/super-agent-v1/SA22_PROGRESS_20261118.md) |
 | 尚未确认 | 未找到本页基线与下游公开基线 `3fce8c1` 组合完成联合部署验收的记录；也未找到下游接收 H12 formal-v5 并重验其试用门的记录。上游固定矩阵 PASS 和下游记录的试用质量 FAIL 各自保留，互不自动覆盖。 |
 
-[项目说明](PROJECT_OVERVIEW.md) · [实验解读](EVALUATION_SUMMARY.md) · [文档导航](README.md)
+[项目说明](PROJECT_OVERVIEW.md) · [实验解读](EVALUATION_SUMMARY.md) · [文档导航](README.md) · [Super-Agent 当前状态](https://github.com/Loz888/Magr-super-agent/blob/main/v3/docs/CURRENT_STATUS.md)
